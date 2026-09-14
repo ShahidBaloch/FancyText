@@ -1,14 +1,16 @@
 import { BackToTool } from "@/components/seo/BackToTool";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
+import { BioBuilder } from "@/components/tool/BioBuilder";
 import { DiscordColorTool } from "@/components/tool/DiscordColorTool";
 import { HtmlRichTool } from "@/components/tool/HtmlRichTool";
 import { StyleGallery } from "@/components/tool/StyleGallery";
 import type { PlatformConfig } from "@/data/platforms";
-import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
+import { SITE_NAME, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 import { DISCORD_COLOR_CODES } from "@/lib/discord/ansi";
 
 type PlatformViewProps = {
@@ -29,7 +31,24 @@ export function PlatformView({ config }: PlatformViewProps) {
 
   return (
     <div className="site-shell">
-      {page ? <PageJsonLd page={page} faq={config.faq} crumbName={h1} /> : null}
+      {page ? (
+        <PageJsonLd
+          page={page}
+          faq={config.faq}
+          crumbName={h1}
+          howTo={{
+            name: config.howToHeading ?? `How to use ${h1.toLowerCase()}`,
+            steps: config.howToSteps,
+          }}
+        />
+      ) : null}
+
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: h1 },
+        ]}
+      />
 
       <PageHero
         h1={h1}
@@ -41,6 +60,8 @@ export function PlatformView({ config }: PlatformViewProps) {
           <DiscordColorTool initialText={config.initialText} />
         ) : config.toolType === "html-rich" ? (
           <HtmlRichTool initialText={config.initialText} />
+        ) : config.toolType === "bio-builder" ? (
+          <BioBuilder initialText={config.initialText} />
         ) : (
           <StyleGallery
             initialText={config.initialText}

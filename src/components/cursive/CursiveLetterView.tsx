@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import {
   JsonLd,
@@ -115,6 +116,14 @@ export function CursiveLetterView({
           { name: "Cursive text generator", url: hubUrl },
           { name: h1, url: absoluteUrl },
         ])}
+      />
+
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: "Cursive text generator", href: "/cursive-text-generator/" },
+          { name: h1 },
+        ]}
       />
 
       <PageHero h1={h1} lead={letterDescription(letter, letterCase)} />

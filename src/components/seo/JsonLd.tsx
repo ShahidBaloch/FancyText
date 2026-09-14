@@ -91,13 +91,26 @@ export function webSiteJsonLd(opts: {
     name: opts.name,
     url: opts.url,
     description: opts.description,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${opts.url}?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+  };
+}
+
+export function howToJsonLd(opts: {
+  name: string;
+  description: string;
+  url: string;
+  steps: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: opts.name,
+    description: opts.description,
+    url: opts.url,
+    step: opts.steps.map((text, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: `Step ${index + 1}`,
+      text,
+    })),
   };
 }

@@ -353,6 +353,41 @@ function glitch(text: string): string {
   return out;
 }
 
+function reverseText(text: string): string {
+  return Array.from(text).reverse().join("");
+}
+
+function decorateChars(text: string, mark: string): string {
+  let out = "";
+  for (const ch of text) {
+    out += /\s/.test(ch) ? ch : ch + mark;
+  }
+  return out;
+}
+
+const sansItalic = buildAlphaMap({
+  upper: 0x1d608,
+  lower: 0x1d622,
+});
+
+const boldFraktur = buildAlphaMap({
+  upper: 0x1d56c,
+  lower: 0x1d586,
+});
+
+const parenthesized: Record<string, string> = (() => {
+  const map: Record<string, string> = {};
+  for (let i = 0; i < 26; i++) {
+    const letter = String.fromCharCode(0x249c + i);
+    map[String.fromCharCode(97 + i)] = letter;
+    map[String.fromCharCode(65 + i)] = letter;
+  }
+  for (let i = 0; i < 9; i++) {
+    map[String(i + 1)] = String.fromCodePoint(0x2474 + i);
+  }
+  return map;
+})();
+
 function smallCapsTransform(text: string): string {
   let out = "";
   for (const ch of text) {
@@ -495,6 +530,62 @@ export const STYLES: FontStyle[] = [
     category: "fun",
     description: "Cursed Zalgo-style combining marks.",
     transform: glitch,
+  },
+  {
+    id: "tiny",
+    label: "Tiny / Small",
+    category: "utility",
+    description: "Raised small letters for compact bios and tags.",
+    transform: (t) => applyMap(t, superscriptMap),
+  },
+  {
+    id: "mirror",
+    label: "Mirror / Reverse",
+    category: "fun",
+    description: "Reverses letter order for mirror-style novelty text.",
+    transform: reverseText,
+  },
+  {
+    id: "sans-italic",
+    label: "Sans Italic",
+    category: "classic",
+    description: "Clean sans-serif italic Unicode.",
+    transform: (t) => applyMap(t, sansItalic),
+  },
+  {
+    id: "bold-fraktur",
+    label: "Bold Old English",
+    category: "fun",
+    description: "Heavy blackletter / gothic Unicode.",
+    transform: (t) => applyMap(t, boldFraktur),
+  },
+  {
+    id: "parenthesized",
+    label: "Parenthesized",
+    category: "fun",
+    description: "Letters inside parentheses, ⒜⒝⒞ style.",
+    transform: (t) => applyMap(t, parenthesized),
+  },
+  {
+    id: "hearts",
+    label: "Hearts",
+    category: "fun",
+    description: "Adds a heart after each letter.",
+    transform: (t) => decorateChars(t, "♥"),
+  },
+  {
+    id: "stars",
+    label: "Stars",
+    category: "fun",
+    description: "Adds a star after each letter.",
+    transform: (t) => decorateChars(t, "★"),
+  },
+  {
+    id: "slash",
+    label: "Slash Overlay",
+    category: "utility",
+    description: "Combining solidus through each letter.",
+    transform: (t) => applyCombining(t, "\u0338"),
   },
 ];
 

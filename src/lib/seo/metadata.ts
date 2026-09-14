@@ -11,7 +11,7 @@ const DEFAULT_OG = {
 export function pageMetadata(page: PageEntry): Metadata {
   const canonical = new URL(page.url, SITE_URL).toString();
   return {
-    title: page.title,
+    title: { absolute: page.title },
     description: page.description,
     alternates: { canonical },
     openGraph: {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
@@ -13,7 +14,12 @@ import {
   getHubShowcase,
   type KaomojiList,
 } from "@/data/kaomoji";
-import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
+import {
+  SITE_NAME,
+  SITE_URL,
+  getPageByUrl,
+  getTopicalRelated,
+} from "@/data/pages/registry";
 
 type KaomojiListViewProps = {
   config: KaomojiList;
@@ -28,7 +34,7 @@ const hubFaq = [
   {
     question: "Are kaomoji free to copy and paste?",
     answer:
-      "Yes. Every face on FancyText is free Unicode text. No account or download required.",
+      "Yes. Every face on FancifyText is free Unicode text. No account or download required.",
   },
   {
     question: "Do Japanese emoticons work on Discord?",
@@ -53,8 +59,25 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
   return (
     <div className="site-shell">
       {page ? (
-        <PageJsonLd page={page} faq={config.faq} crumbName={config.h1} />
+        <PageJsonLd
+          page={page}
+          faq={config.faq}
+          crumbName={config.h1}
+          crumbs={[
+            { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+            { name: "Kaomoji", url: new URL("/kaomoji/", SITE_URL).toString() },
+            { name: config.h1, url: new URL(url, SITE_URL).toString() },
+          ]}
+        />
       ) : null}
+
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: "Kaomoji", href: "/kaomoji/" },
+          { name: config.h1 },
+        ]}
+      />
 
       <PageHero h1={config.h1} lead={config.description} />
 
@@ -124,7 +147,28 @@ export function KaomojiHubView() {
 
   return (
     <div className="site-shell">
-      {page ? <PageJsonLd page={page} faq={hubFaq} crumbName="Kaomoji" /> : null}
+      {page ? (
+        <PageJsonLd
+          page={page}
+          faq={hubFaq}
+          crumbName="Kaomoji"
+          howTo={{
+            name: "How to copy kaomoji",
+            steps: [
+              "Pick a face from the grid or open an emotion list.",
+              "Tap Copy.",
+              "Paste into any app that supports Unicode text.",
+            ],
+          }}
+        />
+      ) : null}
+
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: "Kaomoji" },
+        ]}
+      />
 
       <PageHero
         h1="Kaomoji"

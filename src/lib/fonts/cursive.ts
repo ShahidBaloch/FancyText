@@ -99,9 +99,9 @@ export function letterTitle(letter: Letter, letterCase: LetterCase): string {
   const upper = letter.toUpperCase();
   const glyph = cursiveGlyph(letter, letterCase);
   if (letterCase === "capital") {
-    return `Cursive Capital ${upper}, Small ${upper} In Cursive (${glyph}) | FancyText`;
+    return `Cursive Capital ${upper}, Small ${upper} In Cursive (${glyph}) | FancifyText`;
   }
-  return `${upper} in Cursive — Small Cursive ${upper} (${glyph}) Copy & Paste | FancyText`;
+  return `${upper} in Cursive — Small Cursive ${upper} (${glyph}) Copy & Paste | FancifyText`;
 }
 
 export function letterDescription(

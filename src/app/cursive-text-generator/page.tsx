@@ -1,4 +1,5 @@
 import { BackToTool } from "@/components/seo/BackToTool";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { LetterGrid } from "@/components/seo/LetterGrid";
@@ -7,14 +8,14 @@ import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { SampleCopyList } from "@/components/tool/SampleCopyList";
 import { TextTool } from "@/components/tool/TextTool";
-import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated, SITE_NAME } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 const page = getPageByUrl("/cursive-text-generator/")!;
 
 export const metadata = pageMetadata(page);
 
-const samples = ["FancyText", "Your Name", "Instagram Bio", "Cursive Fonts"];
+const samples = ["fancy text", "Your Name", "Instagram Bio", "Cursive Fonts"];
 
 const faqItems = [
   {
@@ -44,7 +45,25 @@ export default function CursiveHubPage() {
 
   return (
     <div className="site-shell">
-      <PageJsonLd page={page} faq={faqItems} crumbName="Cursive text generator" />
+      <PageJsonLd
+        page={page}
+        faq={faqItems}
+        crumbName="Cursive text generator"
+        howTo={{
+          name: "How to make cursive text",
+          steps: [
+            "Enter your name or phrase in the box above.",
+            "Choose Cursive / Script (or Bold Cursive).",
+            "Copy the result and paste it into your bio, chat, or worksheet.",
+          ],
+        }}
+      />
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: "Cursive text generator" },
+        ]}
+      />
       <PageHero
         h1="Cursive text generator"
         lead="Type any word and copy elegant cursive / script Unicode fonts. Browse capital and small cursive letters A–Z when you only need one glyph."

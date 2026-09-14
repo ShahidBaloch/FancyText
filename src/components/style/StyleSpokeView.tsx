@@ -1,4 +1,5 @@
 import { BackToTool } from "@/components/seo/BackToTool";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
@@ -7,7 +8,7 @@ import { RelatedTools } from "@/components/seo/RelatedTools";
 import { StyleSpokeTool } from "@/components/style/StyleSpokeTool";
 import { SampleCopyList } from "@/components/tool/SampleCopyList";
 import type { StyleSpokeConfig } from "@/data/style-spokes";
-import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
+import { SITE_NAME, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 type StyleSpokeViewProps = {
   config: StyleSpokeConfig;
@@ -28,7 +29,21 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
 
   return (
     <div className="site-shell">
-      {page ? <PageJsonLd page={page} faq={config.faq} crumbName={h1} /> : null}
+      {page ? (
+        <PageJsonLd
+          page={page}
+          faq={config.faq}
+          crumbName={h1}
+          howTo={{ name: `How to use ${shortName.toLowerCase()}`, steps: config.howToSteps }}
+        />
+      ) : null}
+
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: h1 },
+        ]}
+      />
 
       <PageHero
         h1={h1}

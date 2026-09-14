@@ -1,17 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageHero } from "@/components/seo/PageHero";
-import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
+import { SITE_NAME } from "@/data/pages/registry";
+import { pageMetadata } from "@/lib/seo/metadata";
+
+const title = "Terms of Use | FancifyText";
+const description = `Terms for using ${SITE_NAME}, a free Unicode fancy text generator.`;
 
 export const metadata: Metadata = {
-  title: "Terms of Use",
-  description: `Terms for using ${SITE_NAME}, a free Unicode fancy text generator.`,
-  alternates: { canonical: new URL("/terms/", SITE_URL).toString() },
+  ...pageMetadata({
+    phase: 0,
+    priority: "P2",
+    url: "/terms/",
+    group: "H_Trust",
+    primaryKeyword: "terms of use",
+    title,
+    description,
+    fellowKeywords: [],
+  }),
 };
 
 export default function TermsPage() {
   return (
     <div className="site-shell">
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: "Terms of Use" },
+        ]}
+      />
       <PageHero
         h1="Terms of Use"
         lead={`Simple rules for using ${SITE_NAME}. By using the site, you agree to these terms.`}
@@ -68,7 +86,7 @@ export default function TermsPage() {
 
         <h2>Third-party platforms</h2>
         <p>
-          Instagram, Discord, TikTok, WhatsApp, and other platforms have their
+          Instagram, Discord, TikTok, WhatsApp, Facebook, and other platforms have their
           own rules. Mentions of those brands are for descriptive purposes only
           and do not imply endorsement or affiliation.
         </p>
@@ -80,9 +98,11 @@ export default function TermsPage() {
         </p>
 
         <p>
-          <Link href="/">Back to FancyText</Link>
+          <Link href="/">Back to FancifyText</Link>
           {" · "}
           <Link href="/privacy/">Privacy Policy</Link>
+          {" · "}
+          <Link href="/contact/">Contact</Link>
         </p>
       </div>
     </div>

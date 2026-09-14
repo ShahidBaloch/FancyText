@@ -1,48 +1,66 @@
 import Link from "next/link";
-import { getFooterPages, SITE_NAME } from "@/data/pages/registry";
+import {
+  getExplorePages,
+  getFooterPages,
+  SITE_NAME,
+} from "@/data/pages/registry";
+
+const LEGAL = [
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
+  { href: "/cool-symbols/", label: "Cool symbols" },
+  { href: "/guides/instagram-bio-fonts/", label: "Instagram bio guide" },
+  { href: "/guides/how-unicode-fancy-fonts-work/", label: "How fancy fonts work" },
+  { href: "/guides/discord-colored-text-not-working/", label: "Discord color fixes" },
+  { href: "/privacy/", label: "Privacy" },
+  { href: "/terms/", label: "Terms" },
+];
 
 export function SiteFooter() {
-  const links = getFooterPages();
+  const tools = getFooterPages();
+  const explore = getExplorePages();
 
   return (
     <footer className="site-footer">
-      <div className="site-shell footer-inner">
-        <div>
-          <p className="footer-brand">{SITE_NAME}</p>
-          <p className="footer-tag">
-            Free Unicode fancy fonts to copy and paste for social bios, chats,
-            and usernames.
+      <div className="site-shell footer-shell">
+        <div className="footer-brand-block">
+          <Link href="/" className="footer-brand">
+            {SITE_NAME}
+          </Link>
+          <p className="footer-tagline">
+            Free Unicode fancy text to copy and paste.
           </p>
         </div>
-        <div>
-          <p className="footer-heading">Popular tools</p>
-          <ul className="footer-links">
-            {links.map((p) => (
-              <li key={p.url}>
-                <Link href={p.url}>{p.primaryKeyword}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="footer-heading">Legal</p>
-          <ul className="footer-links">
-            <li>
-              <Link href="/privacy/">Privacy Policy</Link>
-            </li>
-            <li>
-              <Link href="/terms/">Terms of Use</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="site-shell footer-base">
-        <p>
-          © {new Date().getFullYear()} {SITE_NAME}. All generators run in your
-          browser.{" "}
-          <Link href="/privacy/">Privacy</Link>
-          {" · "}
-          <Link href="/terms/">Terms</Link>
+
+        <nav className="footer-col" aria-label="Tools">
+          <p className="footer-col-title">Tools</p>
+          {tools.map((item) => (
+            <Link key={item.url} href={item.url}>
+              {item.navLabel ?? item.primaryKeyword}
+            </Link>
+          ))}
+        </nav>
+
+        <nav className="footer-col" aria-label="Explore">
+          <p className="footer-col-title">Explore</p>
+          {explore.map((item) => (
+            <Link key={item.url} href={item.url}>
+              {item.primaryKeyword}
+            </Link>
+          ))}
+        </nav>
+
+        <nav className="footer-col" aria-label="Legal">
+          <p className="footer-col-title">Site</p>
+          {LEGAL.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <p className="footer-copy">
+          © {new Date().getFullYear()} {SITE_NAME}
         </p>
       </div>
     </footer>

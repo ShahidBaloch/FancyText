@@ -8,7 +8,7 @@ import {
   webSiteJsonLd,
 } from "@/components/seo/JsonLd";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
-import { PageHero } from "@/components/seo/PageHero";
+import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { StyleGallery } from "@/components/tool/StyleGallery";
 import { TextTool } from "@/components/tool/TextTool";
@@ -33,7 +33,7 @@ const faqItems = [
   {
     question: "Is the fancy text generator free?",
     answer:
-      "Yes. FancyText runs entirely in your browser—no account, no download, and no watermark. Generate and copy as many styles as you want.",
+      "Yes. FancifyText runs entirely in your browser—no account, no download, and no watermark. Generate and copy as many styles as you want.",
   },
   {
     question: "Is this a cool font maker or a real font download?",
@@ -58,7 +58,7 @@ const faqItems = [
   {
     question: "Is this the same as installing a font?",
     answer:
-      "No. Installed fonts change how an app draws letters. FancyText swaps characters for Unicode look-alikes, so no install is required.",
+      "No. Installed fonts change how an app draws letters. FancifyText swaps characters for Unicode look-alikes, so no install is required.",
   },
   {
     question: "Can I make a long paragraph in fancy text?",
@@ -96,26 +96,48 @@ export default function HomePage() {
           description: page.description,
         })}
       />
-      <PageJsonLd page={page} faq={faqItems} crumbName="Fancy text generator" />
-      <PageHero
-        h1="Fancy text generator"
-        lead="Type once, then copy bold, cursive, bubble, aesthetic, and other cool fonts for social bios, chats, and usernames."
+      <PageJsonLd
+        page={page}
+        faq={faqItems}
+        crumbName="Fancy text generator"
+        howTo={{
+          name: "How to use the fancy text generator",
+          steps: [
+            "Type or paste your words into the box above.",
+            "Pick a style chip (cursive, bold, bubble, and more).",
+            "Tap Copy, then paste into Instagram, Discord, TikTok, WhatsApp, or anywhere Unicode works.",
+          ],
+        }}
       />
+      <HomeHero />
 
       <div className="tool-stage" id="tool">
-        <TextTool />
+        <TextTool
+          styleIds={[
+            "cursive",
+            "bold",
+            "sans-bold",
+            "italic",
+            "bubble",
+            "tiny",
+            "small-caps",
+            "fullwidth",
+            "fraktur",
+            "mirror",
+          ]}
+        />
       </div>
 
       <section className="seo-section" aria-labelledby="gallery-heading">
-        <h2 id="gallery-heading">Cool fonts, pretty fonts & stylish text</h2>
+        <h2 id="gallery-heading">All Unicode styles in one gallery</h2>
         <p className="seo-lead">
-          Browse every style as a live word font generator and cool font maker.
-          Update the gallery input and copy any row—great when you want a stylish
-          text generator or special text generator without hopping between pages.
+          Preview every FancifyText style as a live word converter. Use this
+          gallery when you want the full set; open a collection when you only
+          want aesthetic, cute, or graphic looks.
         </p>
         <StyleGallery
-          initialText="FancyText"
-          presets={["FancyText", "cool bio", "username", "aesthetic"]}
+          initialText="fancy text"
+          presets={["fancy text", "cool bio", "username", "aesthetic"]}
         />
       </section>
 
@@ -148,20 +170,34 @@ export default function HomePage() {
             <Link href="/tiktok-font-generator/">TikTok fonts</Link>)
           </li>
           <li>
+            <strong>Facebook</strong> — display names (
+            <Link href="/facebook-font-generator/">Facebook fonts</Link>
+            ). Keep the @username in plain letters.
+          </li>
+          <li>
             <strong>WhatsApp</strong> — status lines and chat flair (
             <Link href="/whatsapp-fonts/">WhatsApp fonts</Link>)
           </li>
-          <li>Game usernames, Snapchat, and other Unicode-friendly fields</li>
+          <li>
+            Game usernames,{" "}
+            <Link href="/snapchat-font-generator/">Snapchat</Link>,{" "}
+            <Link href="/twitter-font-generator/">X / Twitter</Link>, and{" "}
+            <Link href="/roblox-font-generator/">Roblox</Link> fields
+          </li>
         </ul>
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="unicode-heading">
         <h2 id="unicode-heading">How Unicode fancy fonts work</h2>
         <p>
-          FancyText maps each letter to a look-alike character from Unicode blocks
+          FancifyText maps each letter to a look-alike character from Unicode blocks
           such as Mathematical Alphanumeric Symbols. The result is still text—so
           you can select, copy, and paste it. That is why a font generators search
-          and a fancy text maker search lead to the same kind of tool.
+          and a fancy text maker search lead to the same kind of tool.{" "}
+          <Link href="/guides/how-unicode-fancy-fonts-work/">
+            Read how fancy fonts work
+          </Link>
+          .
         </p>
       </section>
 
@@ -200,6 +236,18 @@ export default function HomePage() {
             <Link href="/copy-paste-fonts/">Copy and paste fonts</Link>
           </li>
           <li>
+            <Link href="/small-text-generator/">Small text generator</Link>
+          </li>
+          <li>
+            <Link href="/cool-symbols/">Cool symbols</Link>
+          </li>
+          <li>
+            <Link href="/text-decorator/">Text decorator</Link>
+          </li>
+          <li>
+            <Link href="/facebook-font-generator/">Facebook font generator</Link>
+          </li>
+          <li>
             <Link href="/aesthetic-fonts/">Aesthetic fonts</Link>
           </li>
           <li>
@@ -214,7 +262,24 @@ export default function HomePage() {
             </Link>
           </li>
           <li>
-            <Link href="/whatsapp-fonts/">WhatsApp fonts</Link>
+            <Link href="/guides/instagram-bio-fonts/">
+              How to change Instagram bio fonts
+            </Link>
+          </li>
+          <li>
+            <Link href="/guides/discord-colored-text-not-working/">
+              Discord colored text not working
+            </Link>
+          </li>
+          <li>
+            <Link href="/guides/how-unicode-fancy-fonts-work/">
+              How Unicode fancy fonts work
+            </Link>
+          </li>
+          <li>
+            <Link href="/guides/whatsapp-stylish-text/">
+              WhatsApp stylish text
+            </Link>
           </li>
         </ul>
       </section>

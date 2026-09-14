@@ -1,17 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageHero } from "@/components/seo/PageHero";
-import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
+import { SITE_NAME } from "@/data/pages/registry";
+import { pageMetadata } from "@/lib/seo/metadata";
+
+const title = "Privacy Policy | FancifyText";
+const description = `How ${SITE_NAME} handles privacy for this free Unicode fancy text tool.`;
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: `How ${SITE_NAME} handles privacy for this free Unicode fancy text tool.`,
-  alternates: { canonical: new URL("/privacy/", SITE_URL).toString() },
+  ...pageMetadata({
+    phase: 0,
+    priority: "P2",
+    url: "/privacy/",
+    group: "H_Trust",
+    primaryKeyword: "privacy policy",
+    title,
+    description,
+    fellowKeywords: [],
+  }),
 };
 
 export default function PrivacyPage() {
   return (
     <div className="site-shell">
+      <Breadcrumbs
+        items={[
+          { name: SITE_NAME, href: "/" },
+          { name: "Privacy Policy" },
+        ]}
+      />
       <PageHero
         h1="Privacy Policy"
         lead={`${SITE_NAME} is a free browser-based fancy text tool. This page explains what we collect and what we do not.`}
@@ -85,15 +103,19 @@ export default function PrivacyPage() {
 
         <h2>Contact</h2>
         <p>
-          Questions about privacy for {SITE_NAME} can be sent via the contact
-          options listed on the live domain when available, or through the
+          Questions about privacy for {SITE_NAME} can be sent via the{" "}
+          <Link href="/contact/">Contact</Link> page, or through the
           project owner&apos;s public GitHub profile linked to this repository.
         </p>
 
         <p>
-          <Link href="/">Back to FancyText</Link>
+          <Link href="/privacy/">Privacy Policy</Link>
           {" · "}
           <Link href="/terms/">Terms of Use</Link>
+          {" · "}
+          <Link href="/about/">About</Link>
+          {" · "}
+          <Link href="/contact/">Contact</Link>
         </p>
       </div>
     </div>

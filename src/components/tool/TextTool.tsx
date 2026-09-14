@@ -19,7 +19,7 @@ export function TextTool({
   defaultStyleId = "cursive",
   placeholder = "Type your fancy text here…",
   styleIds,
-  initialText = "FancyText",
+  initialText = "fancy text",
   text: controlledText,
   onTextChange,
 }: TextToolProps) {

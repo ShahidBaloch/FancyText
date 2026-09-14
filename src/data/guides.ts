@@ -1,0 +1,277 @@
+export type GuideSection = {
+  heading: string;
+  body: string[];
+};
+
+export type GuideConfig = {
+  slug: string;
+  h1: string;
+  howToSteps: string[];
+  sections: GuideSection[];
+  faq: { question: string; answer: string }[];
+};
+
+export const GUIDES: GuideConfig[] = [
+  {
+    slug: "discord-colored-text-not-working",
+    h1: "Discord colored text not working",
+    howToSteps: [
+      "Copy a fresh ```ansi block from the Discord color text tool—do not type the codes by hand.",
+      "Paste into a Discord message as the entire message (or a full code block), then send.",
+      "If color still fails, check you are not in a plain-text context (forum titles, some mobile embeds) and try the desktop app.",
+    ],
+    sections: [
+      {
+        heading: "Colored text needs an ANSI code block",
+        body: [
+          "Discord does not color normal messages. It only paints text inside a fenced code block that starts with ```ansi and includes ANSI escape codes.",
+          "If you paste the letters without the fence, Discord shows plain white (or theme) text. Generate the full block on the Discord color text tool and copy that, not just the inner sentence.",
+        ],
+      },
+      {
+        heading: "Fixes that actually work",
+        body: [
+          "Paste as a new message. Editing an old message sometimes drops the escape characters.",
+          "Do not wrap the block in extra backticks. One opening ```ansi and one closing ``` is enough.",
+          "Try the desktop app. Some mobile and in-game overlays render ANSI poorly or strip the escape sequence on paste.",
+          "Avoid nicknames, channel topics, and forum post titles—those fields are not ANSI message bodies.",
+          "If a bot or webhook posted the text, confirm the payload still contains the ESC character (U+001B), not a copied “missing glyph” square.",
+        ],
+      },
+      {
+        heading: "When to use fonts instead of color",
+        body: [
+          "Unicode fancy fonts (bold, cursive, bubble) work in nicknames and many bios. ANSI colors do not. If you need a colored-looking name, use the Discord font generator instead of ANSI.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Why is my Discord color text not working on mobile?",
+        answer:
+          "Some mobile clients render ANSI weakly or strip the escape on paste. Generate a fresh ```ansi block and test in the desktop app. Color was never supported in nicknames.",
+      },
+      {
+        question: "Does Discord colored text work in embeds?",
+        answer:
+          "Standard user messages with ```ansi work. Many embed fields and interaction responses do not paint ANSI the same way.",
+      },
+      {
+        question: "Can I color a Discord nickname?",
+        answer:
+          "No. Use Unicode fonts for nicknames. ANSI color is for message code blocks only.",
+      },
+    ],
+  },
+  {
+    slug: "instagram-bio-fonts",
+    h1: "How to change your Instagram bio font",
+    howToSteps: [
+      "Type your bio in the Instagram font generator or the multi-line bio builder.",
+      "Copy a style that stays readable (cursive, bold, or small caps).",
+      "Open Instagram → Edit profile → Bio, paste, and check you are still under 150 characters.",
+    ],
+    sections: [
+      {
+        heading: "Instagram has no font picker",
+        body: [
+          "The Instagram app cannot load a custom TTF for your bio. “Changing the font” means pasting Unicode look-alike letters generated in a browser.",
+          "That is why every Instagram font changer is a copy-and-paste tool, not a download.",
+        ],
+      },
+      {
+        heading: "Stay inside 150 characters",
+        body: [
+          "The bio field is 150 characters. Fancy letters still count as characters, and some look wider on a phone.",
+          "If you need line breaks, spacers, and a live counter for Instagram vs TikTok vs X, use the social media bio generator. Use the Instagram font generator when you only need a single styled line.",
+        ],
+      },
+      {
+        heading: "Keep the bio searchable",
+        body: [
+          "Instagram search and some screen readers struggle with dense Unicode. Put your name or niche in plain letters, then add one stylish line for flair.",
+          "Skip glitch and squared styles in the bio—they break more often and waste the limit.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Can I change the Instagram font for my whole app?",
+        answer:
+          "No. You can only paste Unicode into fields like bio, name, and captions. The rest of the Instagram UI stays the system font.",
+      },
+      {
+        question: "Why does my fancy bio look like boxes?",
+        answer:
+          "The device font is missing those Unicode glyphs. Switch to bold, sans bold, or cursive and paste again.",
+      },
+      {
+        question: "Will a fancy bio hurt Instagram reach?",
+        answer:
+          "The bio is not a ranking caption. Still, keep keywords in plain text so people and assistive tech can read them.",
+      },
+    ],
+  },
+  {
+    slug: "how-unicode-fancy-fonts-work",
+    h1: "How Unicode fancy fonts work",
+    howToSteps: [
+      "Type a word on the fancy text generator and copy a style such as bold or cursive.",
+      "Paste it into Notes or a chat and select one letter—you will see it is a different character, not a font setting.",
+      "If a box appears, switch to a more common block (bold, sans bold) instead of installing a file.",
+    ],
+    sections: [
+      {
+        heading: "They are letters, not a downloaded font",
+        body: [
+          "Social apps do not let you install a custom typeface for your bio. A “fancy font” on Instagram or Discord is almost always a different Unicode character that happens to look like a styled A.",
+          "FancifyText maps A–Z onto blocks such as Mathematical Alphanumeric Symbols (bold, italic, script, Fraktur, double-struck, sans). The clipboard still holds text, so you can paste it anywhere that accepts those code points.",
+        ],
+      },
+      {
+        heading: "Why some styles show as empty boxes",
+        body: [
+          "A box means the device font file does not include that glyph. Bold and sans-bold are widely covered. Old English (Fraktur), some superscript letters, and dense combining marks (glitch / slash overlay) fail more often.",
+          "This is a font-coverage problem on the phone or app, not a broken generator. Try another style rather than downloading a TTF—the destination app would still draw its own font.",
+        ],
+      },
+      {
+        heading: "Combining marks are a different trick",
+        body: [
+          "Strikethrough, underline, slash overlay, and Zalgo do not replace the letter. They add extra marks on top of the original character. Those strings are longer than they look and can break layout in usernames.",
+          "Keep combining styles to a short joke. Public bios should stay on mapped letters (bold, cursive, bubble) plus maybe one symbol from the cool symbols list.",
+        ],
+      },
+      {
+        heading: "Search, accessibility, and filters",
+        body: [
+          "Screen readers and in-app search often read fancy letters as symbols or skip them. Put your name and niche in plain ASCII, then add one stylish line for flair.",
+          "Username filters (Roblox, some Discord servers, Facebook handles) reject unusual code points. Display names are usually looser than @usernames.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Is Unicode fancy text the same as installing a font?",
+        answer:
+          "No. Installing a font changes how an app draws the same A–Z. Fancy text replaces those letters with other Unicode characters that already look styled.",
+      },
+      {
+        question: "Can Google rank a page written entirely in fancy text?",
+        answer:
+          "It can index the characters, but people and many parsers still expect normal letters. Use fancy text for names and short bios, not articles.",
+      },
+      {
+        question: "Why does copy-paste work across apps?",
+        answer:
+          "You are copying characters, not a font file. Any app that can render those Unicode points will show the style.",
+      },
+    ],
+  },
+  {
+    slug: "facebook-name-fonts",
+    h1: "How to change your Facebook name font",
+    howToSteps: [
+      "Generate a short display name on the Facebook font generator (sans bold or cursive).",
+      "On Facebook, open Profile → Edit → Name (or the display name field). Paste the Unicode. Leave the username / handle in plain letters.",
+      "Save and check the name on a phone. If Facebook rejects it, drop bubble or gothic styles and retry.",
+    ],
+    sections: [
+      {
+        heading: "Display name vs username",
+        body: [
+          "Facebook’s display name is the line friends see on your profile. That field often accepts Unicode. The @username (and many page usernames) is closer to a login handle and should stay A–Z, digits, and periods.",
+          "If people cannot find you in search, the fancy name is usually the reason. Keep one searchable word in normal letters.",
+        ],
+      },
+      {
+        heading: "Name rules still apply",
+        body: [
+          "Facebook can still reject names that look like spam, impersonation, or strings of symbols. A single styled first name is safer than a sentence of hearts and blackletter.",
+          "Page names used for a business should stay readable. Fancy letters in an ad or shop title can fail review or look like boxes on older phones.",
+        ],
+      },
+      {
+        heading: "Comments and posts",
+        body: [
+          "You can paste a short fancy word into a comment. Long Fraktur paragraphs are hard to read and more likely to render poorly. For a bio-style stack, the social media bio generator is built for Instagram/TikTok/X limits—not Facebook’s about fields, which are longer but still need plain keywords.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Can I change the Facebook app font?",
+        answer:
+          "No. This only changes characters you paste into a name or comment. The rest of the Facebook UI stays the system font.",
+      },
+      {
+        question: "Why did Facebook reject my stylish name?",
+        answer:
+          "Filters block some symbols and look-alike strings. Try sans bold or regular bold, shorten the name, and retry with a plain username.",
+      },
+      {
+        question: "Do old English fonts work on Facebook?",
+        answer:
+          "Sometimes in a display name, often not. Test a short Fraktur word before you replace a business page title.",
+      },
+    ],
+  },
+  {
+    slug: "whatsapp-stylish-text",
+    h1: "WhatsApp stylish text vs built-in formatting",
+    howToSteps: [
+      "For a normal chat, try WhatsApp’s own markdown first: *bold*, _italic_, ~strike~, ```monospace```.",
+      "For a status, group name, or display name that cannot use markdown, generate Unicode on the WhatsApp fonts tool and paste it.",
+      "Keep the important words in plain letters so search and quotes still work.",
+    ],
+    sections: [
+      {
+        heading: "WhatsApp already has bold and italic",
+        body: [
+          "In chats, wrap words with *asterisks* for bold, _underscores_ for italic, and ~tildes~ for strikethrough. That formatting is real rich text. It stays readable, copies as normal letters, and does not depend on Unicode coverage.",
+          "Use those marks when you are writing a message. Unicode stylish text is the workaround for fields that do not parse markdown—status, group titles, and some profile lines.",
+        ],
+      },
+      {
+        heading: "When Unicode still wins",
+        body: [
+          "Group names and status lines do not give you a font picker. Pasting sans bold or cursive is the same trick as Instagram bios.",
+          "Bubble and fullwidth look playful but eat width on a phone. Glitch text can crash layout in a status. Prefer bold, cursive, or small caps.",
+        ],
+      },
+      {
+        heading: "Quoted replies and search",
+        body: [
+          "If someone quotes your message, Unicode letters travel with the quote. Chat search may not find a word you only typed in fancy letters. Put keywords in plain text, then add one stylish word for flair.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Is WhatsApp stylish text the same as *bold*?",
+        answer:
+          "No. *bold* is WhatsApp markdown on normal letters. Stylish Unicode is different characters. Use markdown in chats; use Unicode in names and status.",
+      },
+      {
+        question: "Will fancy WhatsApp fonts work on every phone?",
+        answer:
+          "Common bold and cursive usually will. Old English and combining marks often box out. Always preview on the device you care about.",
+      },
+      {
+        question: "Can I use small text in a WhatsApp status?",
+        answer:
+          "Yes for a short line. Tiny superscript is hard to read; small caps is usually clearer. Generate it on the small text generator.",
+      },
+    ],
+  },
+];
+
+export const GUIDES_BY_SLUG = Object.fromEntries(
+  GUIDES.map((g) => [g.slug, g]),
+) as Record<string, GuideConfig>;
+
+export function getGuide(slug: string): GuideConfig | undefined {
+  return GUIDES_BY_SLUG[slug];
+}
+
+export const GUIDE_SLUGS = GUIDES.map((g) => g.slug);

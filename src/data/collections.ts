@@ -14,6 +14,8 @@ export type CollectionConfig = {
   /** Optional H2 buckets (aesthetic / cute / cool…). */
   buckets?: { heading: string; body: string; href?: string }[];
   mobileHowTo?: string;
+  /** Unique positioning vs overlapping collections. */
+  difference?: { heading: string; body: string };
   faq: { question: string; answer: string }[];
 };
 
@@ -51,6 +53,10 @@ export const COLLECTIONS: CollectionConfig[] = [
       { label: "Cursive text", href: "/cursive-text-generator/" },
       { label: "Bubble text", href: "/bubble-text-generator/" },
       { label: "WhatsApp fonts", href: "/whatsapp-fonts/" },
+      { label: "Small text", href: "/small-text-generator/" },
+      { label: "Old English", href: "/old-english-text-generator/" },
+      { label: "Cool symbols", href: "/cool-symbols/" },
+      { label: "Text decorator", href: "/text-decorator/" },
     ],
     buckets: [
       {
@@ -78,7 +84,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       {
         question: "Are font copy and paste tools free?",
         answer:
-          "Yes. FancyText runs in your browser with no account. Generate as many styles as you need and copy them instantly.",
+          "Yes. FancifyText runs in your browser with no account. Generate as many styles as you need and copy them instantly.",
       },
       {
         question: "Do copy paste fonts work on Instagram?",
@@ -98,7 +104,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       {
         question: "How many fonts can I copy?",
         answer:
-          "The gallery lists every style FancyText supports. Scroll, preview live, and copy as many as you want—there is no download limit.",
+          "The gallery lists every style FancifyText supports. Scroll, preview live, and copy as many as you want—there is no download limit.",
       },
       {
         question: "Can I use these fonts on Discord and WhatsApp?",
@@ -130,6 +136,10 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Soft captions and quote posts",
         "Minimal username flair where Unicode is allowed",
       ],
+      difference: {
+        heading: "Aesthetic vs cute vs stylish",
+        body: "This collection is the soft, wide, script set—fullwidth spacing, cursive, and delicate small caps. Cute fonts are bubble and squared kawaii letters. Stylish text is the bold, italic, and glitch set. Use the copy-and-paste gallery when you want every style on one page.",
+      },
       faq: [
         {
           question: "What are aesthetic fonts?",
@@ -156,13 +166,13 @@ export const COLLECTIONS: CollectionConfig[] = [
   ),
   collection(
     "cute-fonts",
-    ["bubble", "fullwidth", "cursive", "bold-cursive", "small-caps", "squared"],
+    ["bubble", "squared", "small-caps", "hearts", "parenthesized"],
     {
       initialText: "cute",
-      presets: ["cute", "kawaii", "hello ✿", "sweet"],
+      presets: ["cute", "kawaii", "hello", "sweet"],
       howToSteps: [
         "Type a cute phrase, name, or bio line.",
-        "Pick bubble, script, or soft styles from the live grid.",
+        "Pick bubble, squared, small-caps, hearts, or parenthesized letters from the live grid.",
         "Copy and paste into Discord, Instagram, or messages.",
       ],
       uses: [
@@ -170,11 +180,15 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Playful Discord and Roblox-style nicknames",
         "Cute group chat names and status lines",
       ],
+      difference: {
+        heading: "What makes these cute fonts",
+        body: "Cute fonts here are circled bubble letters, squared caps, compact small caps, heart letters, and parenthesized glyphs—the kawaii set. Soft wide script lives on aesthetic fonts. High-contrast bold and glitch live on stylish text. Open those pages if you want a different vibe.",
+      },
       faq: [
         {
           question: "What are cute fonts copy and paste?",
           answer:
-            "They are playful Unicode styles—especially bubble and script letters—you copy from a generator and paste into social apps.",
+            "They are playful Unicode styles—especially bubble letters, squared caps, and compact small caps—you copy from a generator and paste into social apps.",
         },
         {
           question: "Is this a cute font generator?",
@@ -184,12 +198,12 @@ export const COLLECTIONS: CollectionConfig[] = [
         {
           question: "Do kawaii fonts work on TikTok?",
           answer:
-            "TikTok bios and captions often accept Unicode cute styles. Copy a short bubble or script row and test on your device.",
+            "TikTok bios and captions often accept Unicode cute styles. Copy a short bubble or squared row and test on your device.",
         },
         {
           question: "Can I use cute fonts on Discord?",
           answer:
-            "Discord display names and topics frequently use bubble and script Unicode. Keep names short for best results.",
+            "Discord display names and topics frequently use bubble and squared Unicode. Keep names short for best results.",
         },
       ],
     },
@@ -202,7 +216,6 @@ export const COLLECTIONS: CollectionConfig[] = [
       "cursive",
       "bold-cursive",
       "small-caps",
-      "bubble",
       "monospace",
       "double-struck",
     ],
@@ -217,9 +230,14 @@ export const COLLECTIONS: CollectionConfig[] = [
       uses: [
         "Instagram and TikTok display names",
         "Discord nicknames and clan tags",
+        "Facebook display names (keep the @username plain)",
         "Game usernames and profile titles",
         "Snapchat and WhatsApp name styling",
       ],
+      difference: {
+        heading: "Name fonts, not a full gallery",
+        body: "This page is for short names and usernames: clean sans bold, script signatures, and compact small caps. It skips bubble and glitch styles that often fail username filters. For a full bio with line breaks, use the social media bio generator.",
+      },
       faq: [
         {
           question: "What are name fonts?",
@@ -250,11 +268,12 @@ export const COLLECTIONS: CollectionConfig[] = [
       "sans-bold",
       "bold",
       "italic",
+      "sans-italic",
       "bold-italic",
       "monospace",
-      "squared",
-      "bubble",
       "glitch",
+      "strikethrough",
+      "slash",
     ],
     {
       initialText: "stylish",
@@ -267,8 +286,12 @@ export const COLLECTIONS: CollectionConfig[] = [
       uses: [
         "High-contrast bios and CTAs",
         "Cool captions and comment flair",
-        "Discord nicknames with bold or bubble punch",
+        "Discord nicknames with bold or graphic punch",
       ],
+      difference: {
+        heading: "Stylish is the graphic set",
+        body: "Stylish text is bold, italic, monospace, strikethrough, and glitch—high contrast, not soft. Bubble and squared kawaii letters are on cute fonts. Wide script is on aesthetic fonts. Pick the collection that matches the look, instead of ranking the same gallery three times.",
+      },
       faq: [
         {
           question: "What is a stylish text generator?",
@@ -283,7 +306,7 @@ export const COLLECTIONS: CollectionConfig[] = [
         {
           question: "Can I create stylish fonts for free?",
           answer:
-            "FancyText is free in the browser—no signup. Generate and copy as many stylish variants as you need.",
+            "FancifyText is free in the browser—no signup. Generate and copy as many stylish variants as you need.",
         },
         {
           question: "Which stylish font works best on mobile?",

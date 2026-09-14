@@ -19,7 +19,7 @@ type StyleGalleryProps = {
 };
 
 export function StyleGallery({
-  initialText = "FancyText",
+  initialText = "fancy text",
   styleIds,
   presets,
   inputLabel = "Type to preview every font",

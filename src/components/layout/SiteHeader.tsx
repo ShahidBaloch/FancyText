@@ -54,7 +54,7 @@ export function SiteHeader() {
       <div className="site-shell header-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
           <span className="brand-mark" aria-hidden>
-            ℱ
+            F
           </span>
           <span className="brand-name">{SITE_NAME}</span>
         </Link>

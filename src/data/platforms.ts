@@ -1,7 +1,7 @@
 import type { PageEntry } from "@/data/pages/registry";
 import { getPageByUrl } from "@/data/pages/registry";
 
-export type PlatformToolType = "fonts" | "discord-color" | "html-rich";
+export type PlatformToolType = "fonts" | "discord-color" | "html-rich" | "bio-builder";
 
 export type PlatformConfig = {
   slug: string;
@@ -101,7 +101,7 @@ export const PLATFORMS: PlatformConfig[] = [
       {
         question: "Can I copy Discord fonts for free?",
         answer:
-          "Yes. FancyText runs in your browser. Generate and copy as many Discord font styles as you need.",
+          "Yes. FancifyText runs in your browser. Generate and copy as many Discord font styles as you need.",
       },
       {
         question: "Do cute Discord fonts work in usernames?",
@@ -205,7 +205,7 @@ export const PLATFORMS: PlatformConfig[] = [
       {
         question: "Is this an Instagram text generator?",
         answer:
-          "People search Instagram font generator, Instagram font changer, and Instagram fonts copy and paste for the same tool.",
+          "People search Instagram font generator, Instagram font changer, and Instagram fonts copy and paste for this gallery. For a stacked profile with character limits, use the social media bio generator instead.",
       },
     ],
   }),
@@ -298,55 +298,238 @@ export const PLATFORMS: PlatformConfig[] = [
       },
     ],
   }),
-  platform("social-media-bio-generator", "fonts", {
-    styleIds: [
-      "cursive",
-      "bold-cursive",
-      "fullwidth",
-      "bold",
-      "sans-bold",
-      "small-caps",
-      "bubble",
-      "double-struck",
-    ],
-    initialText: "My Bio",
-    presets: ["My Bio", "Creator", "link in bio", "aesthetic life"],
-    howToHeading: "How to generate a social media bio",
+  platform("social-media-bio-generator", "bio-builder", {
+    initialText: "your name\ncreator · city",
+    howToHeading: "How to build a multi-platform bio",
     howToSteps: [
-      "Type a short bio line (keep it under ~150 characters for most apps).",
-      "Preview stylish Unicode options in the gallery.",
-      "Copy the best line and paste into Instagram, TikTok, Twitter/X, or Discord about-me.",
+      "Type each bio line on its own row—name, role, location, or a short tagline.",
+      "Pick Instagram, TikTok, X, or Discord to see that platform’s character limit.",
+      "Choose a Unicode style, insert spacers if you want, then copy the full stacked bio.",
     ],
     uses: [
-      "Instagram and TikTok profile bios",
-      "Twitter/X and Threads profile text",
-      "Discord about-me and server intros",
+      "Instagram 150-character profile bios",
+      "TikTok 80-character bios",
+      "X / Twitter 160-character bios",
+      "Discord About Me (190 characters)",
     ],
     faq: [
       {
         question: "What is a social media bio generator?",
         answer:
-          "It helps you style a short profile bio with Unicode fancy fonts you can copy into Instagram, TikTok, and other networks.",
+          "This tool builds a multi-line profile bio with live character counts for Instagram, TikTok, X, and Discord—then styles those lines with Unicode fonts you can paste.",
+      },
+      {
+        question: "How is this different from the Instagram font generator?",
+        answer:
+          "The Instagram font generator is a single-line font gallery for captions and names. This bio generator is for stacked profile text, spacers, and per-platform length limits.",
       },
       {
         question: "How long should a fancy bio be?",
         answer:
-          "Keep it short. Fancy characters can use more width—aim for one or two lines so phones stay readable.",
+          "Stay inside the chip you selected: 150 for Instagram, 80 for TikTok, 160 for X, 190 for Discord About Me. Fancy letters still count as characters.",
       },
       {
         question: "Will fancy bios hurt discoverability?",
         answer:
-          "Search inside apps prefers plain text. Use fancy text for flair, but keep your handle and key words readable.",
+          "In-app search prefers plain text. Keep your handle and one keyword in normal letters; use fancy styles for the display line.",
       },
       {
-        question: "Can I use this for Instagram and TikTok together?",
+        question: "Can I reuse one bio on Instagram and TikTok?",
         answer:
-          "Yes. Generate once and paste into both—just check each app’s character limit.",
+          "Yes—switch the platform chips and shorten TikTok first. Copy once it fits the smallest network you need.",
+      },
+    ],
+  }),
+  platform("twitter-font-generator", "fonts", {
+    styleIds: [
+      "sans-bold",
+      "bold",
+      "italic",
+      "cursive",
+      "small-caps",
+      "monospace",
+    ],
+    initialText: "display name",
+    presets: ["display name", "bio line", "creator", "hello"],
+    howToHeading: "How to use X / Twitter fonts",
+    howToSteps: [
+      "Type a short display name (X allows 50 characters) or a bio line (160).",
+      "Preview clean Unicode styles—skip glitch and dense bubble stacks that break the profile.",
+      "Copy and paste into X → Edit profile. Check the live character count on X after pasting.",
+    ],
+    uses: [
+      "X / Twitter display names",
+      "160-character profile bios",
+      "Reply flair where Unicode is allowed",
+    ],
+    faq: [
+      {
+        question: "Does X (Twitter) allow fancy fonts in names?",
+        answer:
+          "Display names accept many Unicode letters. Usernames (@handles) are much stricter—keep the handle in plain ASCII.",
       },
       {
-        question: "Which bio fonts look best?",
+        question: "What is a Twitter font generator?",
         answer:
-          "Cursive, bold, and aesthetic fullwidth are popular. Bubble works for playful brands; avoid heavy glitch in bios.",
+          "It converts normal letters into Unicode styles you paste into an X profile. X has no native font picker for bios or display names.",
+      },
+      {
+        question: "How long can a fancy X bio be?",
+        answer:
+          "The bio field is 160 characters. Fancy letters still count. Use the social media bio generator if you want a live 160-character counter.",
+      },
+      {
+        question: "Which styles are safest on X?",
+        answer:
+          "Sans bold, bold, italic, and cursive usually render. Glitch, squared, and heavy combining marks often fail or look like boxes.",
+      },
+      {
+        question: "Is this an X font generator or Twitter fonts copy and paste?",
+        answer:
+          "Same tool. People still search Twitter fonts; the product is X. This page is for profile fields, not tweet body styling.",
+      },
+    ],
+  }),
+  platform("roblox-font-generator", "fonts", {
+    styleIds: ["sans-bold", "bold", "small-caps", "monospace", "italic"],
+    initialText: "Roblox",
+    presets: ["Roblox", "DisplayName", "clan", "user"],
+    howToHeading: "How to use Roblox fonts",
+    howToSteps: [
+      "Type the display name you want (not the account username if filters are strict).",
+      "Preview conservative Unicode styles—Roblox filters block many novelty symbols.",
+      "Copy and test in Roblox settings. If it rejects the name, try sans bold or plain small caps.",
+    ],
+    uses: [
+      "Roblox display names where Unicode is allowed",
+      "Experience titles and UI labels you type yourself",
+      "Jumping to HTML/rich text tags for supported Roblox UI",
+    ],
+    faq: [
+      {
+        question: "Can I use fancy fonts in a Roblox username?",
+        answer:
+          "Account usernames are tightly filtered. Display names are more flexible but still reject many symbols. Always test in Roblox after copying.",
+      },
+      {
+        question: "Why did Roblox reject my stylish name?",
+        answer:
+          "Filters block unusual Unicode, lookalike letters, and some punctuation. Sans bold and small caps fail less often than bubble or glitch.",
+      },
+      {
+        question: "Is this the same as Roblox rich text?",
+        answer:
+          "No. This page is Unicode letters. Roblox rich text uses tags like <b> in some UI—open the HTML text generator for those snippets.",
+      },
+      {
+        question: "Do Roblox fonts copy and paste into chat?",
+        answer:
+          "Sometimes. Chat filters are stricter than display names. If chat strips the style, keep fancy text for the profile only.",
+      },
+      {
+        question: "Which Roblox name fonts are safest?",
+        answer:
+          "Sans bold, bold, italic, and small caps. Skip zalgo, fullwidth, and squared letters for names.",
+      },
+    ],
+  }),
+  platform("facebook-font-generator", "fonts", {
+    styleIds: [
+      "sans-bold",
+      "bold",
+      "italic",
+      "cursive",
+      "small-caps",
+      "bubble",
+    ],
+    initialText: "display name",
+    presets: ["display name", "page title", "hello", "bio line"],
+    howToHeading: "How to use Facebook fonts",
+    howToSteps: [
+      "Type a short display name or a single bio line—not a whole post.",
+      "Preview readable Unicode (sans bold, bold, cursive). Skip glitch and dense hearts.",
+      "Copy and paste into Facebook → Profile → Edit. Usernames (@handles) stay plain ASCII.",
+    ],
+    uses: [
+      "Facebook display names",
+      "Page names where Unicode is allowed",
+      "Comments and intros that need a short stylish word",
+    ],
+    faq: [
+      {
+        question: "Does Facebook allow fancy fonts in names?",
+        answer:
+          "Display names often accept Unicode letters. The @username field is much stricter. Keep the handle in normal A–Z so people can find you.",
+      },
+      {
+        question: "What is a Facebook font generator?",
+        answer:
+          "It converts normal letters into Unicode styles you paste into Facebook. Facebook has no font picker for names or bios.",
+      },
+      {
+        question: "Will fancy text work in Facebook comments?",
+        answer:
+          "Usually yes for a short word. Long blackletter or glitch strings can look like boxes on some phones and may get extra spam scrutiny.",
+      },
+      {
+        question: "Which styles are safest on Facebook?",
+        answer:
+          "Sans bold, bold, italic, and cursive are the most reliable. Bubble is playful but wide. Old English and combining-mark styles fail more often.",
+      },
+      {
+        question: "Is this the same as changing Facebook’s app font?",
+        answer:
+          "No. You cannot install a custom typeface in the Facebook app. This tool only changes the characters you paste into a field.",
+      },
+    ],
+  }),
+  platform("snapchat-font-generator", "fonts", {
+    styleIds: [
+      "bubble",
+      "bold",
+      "sans-bold",
+      "cursive",
+      "small-caps",
+      "italic",
+    ],
+    initialText: "Snapchat",
+    presets: ["Snapchat", "display name", "story", "friends"],
+    howToHeading: "How to use Snapchat fonts",
+    howToSteps: [
+      "Type a short display name or story line.",
+      "Preview bubble, bold, and script styles that stay readable on a tiny profile row.",
+      "Copy and paste into Snapchat profile settings. Keep it under a few words.",
+    ],
+    uses: [
+      "Snapchat display names",
+      "Short story or spotlight captions",
+      "Bitmoji-adjacent profile flair",
+    ],
+    faq: [
+      {
+        question: "Can I change Snapchat fonts in the app?",
+        answer:
+          "Snapchat has no full font picker for your display name. Unicode copy-and-paste is the usual workaround.",
+      },
+      {
+        question: "Do Snapchat fonts copy and paste into stories?",
+        answer:
+          "Some captions accept Unicode; others flatten to a default font. Test a short bubble or bold line on your device.",
+      },
+      {
+        question: "Which Snapchat name fonts fit the profile?",
+        answer:
+          "Bubble and bold are popular. Long cursive names get clipped—keep two or three words.",
+      },
+      {
+        question: "Is this different from Instagram fonts?",
+        answer:
+          "Same Unicode idea, tighter space. Snapchat profiles are shorter than Instagram bios, so skip fullwidth and glitch.",
+      },
+      {
+        question: "Will Snapchat ban stylish letters?",
+        answer:
+          "Unusual symbols can fail the name filter. If save fails, drop bubble and try sans bold.",
       },
     ],
   }),

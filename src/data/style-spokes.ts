@@ -137,7 +137,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       },
     ],
   }),
-  spoke("italic-text-generator", "italic", ["italic", "bold-italic", "cursive"], {
+  spoke("italic-text-generator", "italic", ["italic", "sans-italic", "bold-italic", "cursive"], {
     sampleInput: "Italic Text",
     examples: ["Italic Text", "Elegant quote", "Soft emphasis", "Stylish bio"],
     showGallery: true,
@@ -146,6 +146,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         name: "Mathematical italic",
         styleId: "italic",
         blurb: "Clean slanted Unicode for quotes and bios.",
+      },
+      {
+        name: "Sans-serif italic",
+        styleId: "sans-italic",
+        blurb: "A cleaner slant without serifs—often easier to read in bios.",
       },
       {
         name: "Bold italic",
@@ -347,6 +352,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
             "Yes. The superscript preview raises digits and many letters. Copy it directly—no keyboard shortcuts needed.",
         },
         {
+          question: "Is this the same as a small text generator?",
+          answer:
+            "No. This page is for math and chemistry-style H₂O. The small text generator is for tiny bios and tags, including small caps when a letter has no superscript twin.",
+        },
+        {
           question: "Does tiny text work everywhere?",
           answer:
             "Support varies. Digits and common letters work in most apps; exotic symbols may not have subscript or superscript twins.",
@@ -354,7 +364,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         {
           question: "Is this a tiny text generator?",
           answer:
-            "People also call superscript and subscript tools tiny text generators because the output looks smaller than normal letters.",
+            "For chemistry-style tiny digits, yes. For a whole bio in small letters, use the small text generator—that page also offers small caps when superscript is missing a letter.",
         },
       ],
     },
@@ -439,6 +449,175 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       },
     ],
   }),
+  spoke("small-text-generator", "tiny", ["tiny", "superscript", "small-caps", "subscript"], {
+    sampleInput: "small text",
+    examples: ["small text", "tiny bio", "mini caption", "footnote"],
+    showGallery: true,
+    variants: [
+      {
+        name: "Tiny superscript",
+        styleId: "tiny",
+        blurb: "Raised small letters for compact tags and bios.",
+      },
+      {
+        name: "Superscript numbers",
+        styleId: "superscript",
+        blurb: "Best when you need x² / footnotes rather than a whole bio.",
+      },
+      {
+        name: "Small caps",
+        styleId: "small-caps",
+        blurb: "Short, even-height letters—more readable than tiny superscript.",
+      },
+    ],
+    howToSteps: [
+      "Type a short word or bio line.",
+      "Copy the tiny row for superscript-style small text, or small caps if you need it more readable.",
+      "Paste into a bio, nickname, or caption. Keep it short—tiny letters are hard to read in long sentences.",
+    ],
+    uses: [
+      "Compact Instagram and TikTok bio lines",
+      "Tiny Discord nicknames and tags",
+      "Footnote-style captions next to a normal sentence",
+    ],
+    compatibilityNotes: [
+      "Not every letter has a superscript twin (Q is a common miss). Small caps covers more of the alphabet.",
+      "This page is for tiny display text. Use the superscript & subscript generator for chemistry-style H₂O.",
+    ],
+    faq: [
+      {
+        question: "What is a small text generator?",
+        answer:
+          "It turns normal letters into tiny Unicode (mostly superscript) so you can paste compact text into bios and usernames. It is not a smaller installed font.",
+      },
+      {
+        question: "Is small text the same as superscript?",
+        answer:
+          "Tiny bios usually use superscript letters. The superscript & subscript tool is aimed at math and chemistry. Use this page when you want a whole word in small type.",
+      },
+      {
+        question: "Why are some tiny letters missing?",
+        answer:
+          "Unicode does not have a superscript Q and a few other glyphs. Switch to small caps for a full alphabet.",
+      },
+      {
+        question: "Can I use small text in an Instagram bio?",
+        answer:
+          "Yes for a short line. Tiny letters still count toward the 150-character limit and can be hard to read—keep the important words in normal type.",
+      },
+    ],
+  }),
+  spoke("mirror-text-generator", "mirror", ["mirror", "upside-down"], {
+    sampleInput: "mirror",
+    examples: ["mirror", "hello", "backwards", "secret"],
+    showGallery: true,
+    variants: [
+      {
+        name: "Reverse / mirror order",
+        styleId: "mirror",
+        blurb: "Flips the letter order: hello becomes olleh.",
+      },
+      {
+        name: "Upside down",
+        styleId: "upside-down",
+        blurb: "Flips and rotates letters. Different from a simple reverse.",
+      },
+    ],
+    howToSteps: [
+      "Type the word you want reversed.",
+      "Copy the mirror row for backwards order, or upside-down if you want flipped glyphs too.",
+      "Paste into a chat or bio. Read it in a mirror or from the end of the string.",
+    ],
+    uses: [
+      "Novelty Discord messages and memes",
+      "Backwards usernames where the platform allows it",
+      "Puzzle or “secret” captions",
+    ],
+    compatibilityNotes: [
+      "Reverse text is plain letters, so it works almost everywhere.",
+      "Upside-down uses special Unicode and may box out on older phones.",
+    ],
+    faq: [
+      {
+        question: "What is a mirror text generator?",
+        answer:
+          "It reverses the order of your characters so the word reads backwards. That is different from upside-down text, which also swaps in flipped Unicode letters.",
+      },
+      {
+        question: "Is mirror text the same as upside down text?",
+        answer:
+          "No. Mirror/reverse keeps the same letters in reverse order. Upside-down maps each letter to a rotated look-alike and usually reverses as well.",
+      },
+      {
+        question: "Will backwards text work on Instagram?",
+        answer:
+          "Yes—it is still normal A–Z. People can copy it. It is just hard to read on purpose.",
+      },
+      {
+        question: "Can I mirror a whole sentence?",
+        answer:
+          "You can, but long reversed sentences are painful to type replies to. Keep it to a word or a short joke.",
+      },
+    ],
+  }),
+  spoke(
+    "old-english-text-generator",
+    "fraktur",
+    ["fraktur", "bold-fraktur"],
+    {
+      sampleInput: "Old English",
+      examples: ["Old English", "Gothic", "Clan Name", "Ye Olde"],
+      showGallery: true,
+      variants: [
+        {
+          name: "Fraktur / gothic",
+          styleId: "fraktur",
+          blurb: "Classic blackletter Unicode for titles and usernames.",
+        },
+        {
+          name: "Bold old English",
+          styleId: "bold-fraktur",
+          blurb: "Heavier blackletter for short display names.",
+        },
+      ],
+      howToSteps: [
+        "Type a short name or title.",
+        "Copy fraktur for a classic gothic look, or bold old English for extra weight.",
+        "Paste into a bio or username and check it on your phone—blackletter is ornate.",
+      ],
+      uses: [
+        "Gaming clan tags and gothic usernames",
+        "Halloween and metal-aesthetic bios",
+        "Titles where a medieval look is the point",
+      ],
+      compatibilityNotes: [
+        "Fraktur is less compatible than bold or sans bold. Test before locking a username.",
+        "Keep old English text short. Long blackletter paragraphs are hard to read and may fail filters.",
+      ],
+      faq: [
+        {
+          question: "What is an old English text generator?",
+          answer:
+            "It maps your letters to Unicode Fraktur (blackletter) characters that look like gothic / medieval type. You copy them—no font file to install.",
+        },
+        {
+          question: "Is old English the same as gothic or fraktur?",
+          answer:
+            "In fancy-text tools, yes. People search old English, gothic font, and fraktur for this blackletter Unicode set.",
+        },
+        {
+          question: "Can I use old English fonts on Discord?",
+          answer:
+            "Often in nicknames and messages. Some servers or mobile fonts will show empty boxes—keep a sans-bold backup.",
+        },
+        {
+          question: "Why not put old English on the bold page?",
+          answer:
+            "Bold is mathematical bold. Old English is a different Unicode block with a different look and worse compatibility. It needs its own tool.",
+        },
+      ],
+    },
+  ),
 ];
 
 export const STYLE_SPOKES_BY_SLUG = Object.fromEntries(
