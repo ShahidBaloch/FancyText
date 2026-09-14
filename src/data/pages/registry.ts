@@ -1365,4 +1365,4 @@ export function getLivePages(): PageEntry[] {
 export const SITE_NAME = "FancifyText";
 /** Production domain. Override via NEXT_PUBLIC_SITE_URL in Vercel. */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://fancifytext.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fancifytext.com";
