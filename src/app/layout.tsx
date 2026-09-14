@@ -21,7 +21,7 @@ const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 const isPreview = process.env.VERCEL_ENV === "preview";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(SITE_URL || "https://fancifytext.com"),
   title: {
     default: `Fancy Text Generator — Stylize Unicode Fonts | ${SITE_NAME}`,
     template: `%s | ${SITE_NAME}`,

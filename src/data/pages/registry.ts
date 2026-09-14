@@ -1363,6 +1363,19 @@ export function getLivePages(): PageEntry[] {
 }
 
 export const SITE_NAME = "FancifyText";
+
+const DEFAULT_SITE_URL = "https://fancifytext.com";
+
 /** Production domain. Override via NEXT_PUBLIC_SITE_URL in Vercel. */
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fancifytext.com";
+export const SITE_URL = resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
+
+function resolveSiteUrl(raw: string | undefined): string {
+  const value = raw?.trim();
+  if (!value) return DEFAULT_SITE_URL;
+  try {
+    const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+    return new URL(withProtocol).origin;
+  } catch {
+    return DEFAULT_SITE_URL;
+  }
+}
