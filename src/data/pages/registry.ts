@@ -1,0 +1,1013 @@
+export type PageGroup =
+  | "A_Hub"
+  | "B_Cursive"
+  | "C_CopyPaste"
+  | "D_Bold"
+  | "D_Style_Other"
+  | "E_Platform"
+  | "F_Kaomoji"
+  | "G_Aesthetic_Cute"
+  | "G_Name";
+
+export type PageEntry = {
+  phase: number;
+  priority: "P0" | "P1" | "P2";
+  url: string;
+  group: PageGroup;
+  primaryKeyword: string;
+  title: string;
+  description: string;
+  fellowKeywords: string[];
+  navLabel?: string;
+};
+
+function fellows(...items: string[]): string[] {
+  return items;
+}
+
+/** Registry driven by nextjs-page-blueprint.csv (planning folder). */
+export const PAGES: PageEntry[] = [
+  {
+    phase: 0,
+    priority: "P0",
+    url: "/",
+    group: "A_Hub",
+    primaryKeyword: "fancy text generator",
+    title: "Fancy Text Generator — Stylize Unicode Fonts | FancyText",
+    description:
+      "Free fancy text generator. Convert normal letters into bold, cursive, bubble, and stylish Unicode for Discord, Instagram, TikTok, and more.",
+    fellowKeywords: fellows(
+      "cool font maker",
+      "special text generator",
+      "word font generator",
+      "pretty font generator",
+      "font changer text",
+      "font generators",
+      "cool cool text",
+    ),
+    navLabel: "Home",
+  },
+  {
+    phase: 1,
+    priority: "P0",
+    url: "/cursive-text-generator/",
+    group: "B_Cursive",
+    primaryKeyword: "cursive text generator",
+    title: "Cursive Text Generator — Script Fonts Copy & Paste | FancyText",
+    description:
+      "Generate cursive and script Unicode fonts. Copy elegant letters for names, bios, and captions.",
+    fellowKeywords: fellows(
+      "elegant cursive fonts copy and paste",
+      "cursive copy and paste fonts",
+    ),
+    navLabel: "Cursive",
+  },
+  {
+    phase: 2,
+    priority: "P0",
+    url: "/bold-text-generator/",
+    group: "D_Bold",
+    primaryKeyword: "bold text generator",
+    title: "Bold Text Generator — Bold Fonts Copy & Paste | FancyText",
+    description:
+      "Make bold Unicode text instantly. Copy and paste bold fonts for Discord, Instagram, and bios.",
+    fellowKeywords: fellows(
+      "bold font generator",
+      "bold text font",
+      "text bold",
+      "bolded text",
+    ),
+    navLabel: "Bold",
+  },
+  {
+    phase: 2,
+    priority: "P0",
+    url: "/italic-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "italic text generator",
+    title: "Italic Text Generator — Slanted Fonts Copy & Paste | FancyText",
+    description:
+      "Convert text to italic Unicode fonts in one click. Copy slanted letters for quotes, captions, and bios.",
+    fellowKeywords: fellows("italic font generator"),
+    navLabel: "Italic",
+  },
+  {
+    phase: 2,
+    priority: "P1",
+    url: "/bubble-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "bubble text generator",
+    title: "Bubble Text Generator — Circled Letters Copy & Paste | FancyText",
+    description:
+      "Generate circled bubble letters and numbers. Copy playful bubble fonts for Discord names and bios.",
+    fellowKeywords: fellows("bubble font generator"),
+    navLabel: "Bubble",
+  },
+  {
+    phase: 2,
+    priority: "P1",
+    url: "/strikethrough-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "strikethrough text generator",
+    title: "Strikethrough Text Generator — Cross Out Text | FancyText",
+    description:
+      "Add strikethrough to any text with Unicode combining marks. Copy crossed-out text for jokes and bios.",
+    fellowKeywords: fellows("strikethrough font"),
+  },
+  {
+    phase: 2,
+    priority: "P1",
+    url: "/superscript-subscript-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "subscript generator",
+    title: "Superscript & Subscript Generator — Tiny Text | FancyText",
+    description:
+      "Make superscript and subscript text for math, chemistry-style notes, and footnotes. Copy tiny Unicode characters.",
+    fellowKeywords: fellows("superscript generator"),
+  },
+  {
+    phase: 2,
+    priority: "P2",
+    url: "/upside-down-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "upside down text",
+    title: "Upside Down Text Generator — Flip Text Copy & Paste | FancyText",
+    description:
+      "Flip your text upside down with Unicode. Copy reversed, inverted text for memes and novelty bios.",
+    fellowKeywords: fellows("upside down text generator"),
+  },
+  {
+    phase: 2,
+    priority: "P2",
+    url: "/glitch-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "glitch text generator",
+    title: "Glitch Text Generator — Zalgo Cursed Text | FancyText",
+    description:
+      "Create glitchy Zalgo-style cursed text. Copy distorted combining-mark effects for horror aesthetics and usernames.",
+    fellowKeywords: fellows("zalgo text"),
+  },
+  {
+    phase: 3,
+    priority: "P0",
+    url: "/copy-paste-fonts/",
+    group: "C_CopyPaste",
+    primaryKeyword: "copy and paste fonts",
+    title: "Copy and Paste Fonts — Cool Font Gallery | FancyText",
+    description:
+      "Browse the cool fonts gallery to copy and paste. Aesthetic, cute, bold, and cursive Unicode styles for bios, usernames, and captions.",
+    fellowKeywords: fellows(
+      "font copy and paste",
+      "fonts copy paste",
+      "copy paste fonts",
+    ),
+    navLabel: "Copy & Paste",
+  },
+  {
+    phase: 3,
+    priority: "P1",
+    url: "/aesthetic-fonts/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "aesthetic fonts",
+    title: "Aesthetic Fonts — Soft Wide & Script Unicode | FancyText",
+    description:
+      "Aesthetic Unicode fonts with soft fullwidth, script, and delicate styles for dreamy bios, usernames, and captions.",
+    fellowKeywords: fellows(
+      "font generator aesthetic",
+      "aesthetic font generator",
+      "aesthetic text generator",
+    ),
+  },
+  {
+    phase: 3,
+    priority: "P1",
+    url: "/cute-fonts/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "cute fonts copy and paste",
+    title: "Cute Fonts Copy and Paste | FancyText",
+    description: "Cute and kawaii-style fonts ready to copy.",
+    fellowKeywords: fellows("cute font generator", "kawaii fonts"),
+  },
+  {
+    phase: 3,
+    priority: "P1",
+    url: "/name-font-generator/",
+    group: "G_Name",
+    primaryKeyword: "name fonts",
+    title: "Name Font Generator — Cool Username Fonts | FancyText",
+    description: "Stylish fonts for names and usernames. Copy and paste freely.",
+    fellowKeywords: fellows("cool name fonts", "username fonts"),
+  },
+  {
+    phase: 3,
+    priority: "P2",
+    url: "/stylish-text-generator/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "stylish text generator",
+    title: "Stylish Text Generator — Bold & Graphic Unicode | FancyText",
+    description:
+      "Generate stylish text with bold, italic, and graphic Unicode fonts. Copy modern high-contrast styles for bios and usernames.",
+    fellowKeywords: fellows("stylish fonts", "create stylish text"),
+  },
+  {
+    phase: 4,
+    priority: "P0",
+    url: "/discord-color-text/",
+    group: "E_Platform",
+    primaryKeyword: "discord colored text generator",
+    title: "Discord Color Text Generator — ANSI Copy & Paste | FancyText",
+    description:
+      "Make Discord colored text with ANSI code blocks. Copy red, blue, green, and more for messages and announcements.",
+    fellowKeywords: fellows(
+      "discord text color",
+      "discord color text",
+      "discord color codes",
+      "discord colored text",
+    ),
+    navLabel: "Discord",
+  },
+  {
+    phase: 4,
+    priority: "P1",
+    url: "/discord-font-generator/",
+    group: "E_Platform",
+    primaryKeyword: "discord font generator",
+    title: "Discord Font Generator — Fancy Fonts Copy & Paste | FancyText",
+    description:
+      "Generate Discord fonts and nicknames with Unicode. Copy bold, script, bubble, and monospace styles.",
+    fellowKeywords: fellows(
+      "discord font copy and paste",
+      "discord text generator",
+      "cute discord fonts",
+    ),
+  },
+  {
+    phase: 4,
+    priority: "P1",
+    url: "/tiktok-font-generator/",
+    group: "E_Platform",
+    primaryKeyword: "tiktok font generator",
+    title: "TikTok Font Generator — Profile & Caption Fonts | FancyText",
+    description:
+      "Create TikTok profile and caption fonts with aesthetic Unicode text. Copy and paste into your profile or posts.",
+    fellowKeywords: fellows("tiktok bio fonts", "tiktok font name"),
+  },
+  {
+    phase: 4,
+    priority: "P1",
+    url: "/instagram-font-generator/",
+    group: "E_Platform",
+    primaryKeyword: "instagram font generator",
+    title: "Instagram Font Generator — Aesthetic Bio Font Changer | FancyText",
+    description:
+      "Change Instagram bio text with fancy Unicode fonts. Copy script, aesthetic, and bold styles instantly.",
+    fellowKeywords: fellows(
+      "instagram font changer",
+      "instagram fonts copy and paste",
+      "instagram text generator",
+    ),
+  },
+  {
+    phase: 4,
+    priority: "P1",
+    url: "/html-text-generator/",
+    group: "E_Platform",
+    primaryKeyword: "html text generator",
+    title: "HTML Text Generator — Rich Text Snippets | FancyText",
+    description:
+      "Generate HTML and rich text snippets—bold, color spans, headings, and pre blocks to copy and paste.",
+    fellowKeywords: fellows(
+      "rich text generator",
+      "colored text copy and paste",
+      "roblox rich text",
+    ),
+  },
+  {
+    phase: 4,
+    priority: "P2",
+    url: "/whatsapp-fonts/",
+    group: "E_Platform",
+    primaryKeyword: "whatsapp fonts",
+    title: "WhatsApp Fonts — Stylish Text Copy & Paste | FancyText",
+    description:
+      "Generate WhatsApp fonts for status, group names, and chats. Copy bold, cursive, bubble, and more Unicode styles.",
+    fellowKeywords: fellows(
+      "whatsapp font style",
+      "fancy text for whatsapp",
+      "whatsapp stylish text",
+    ),
+  },
+  {
+    phase: 4,
+    priority: "P2",
+    url: "/social-media-bio-generator/",
+    group: "E_Platform",
+    primaryKeyword: "social media bio generator",
+    title: "Social Media Bio Generator — Multi-Platform Bio Fonts | FancyText",
+    description:
+      "Create a stylish social bio once and reuse it across networks. Unicode bio fonts for short multi-platform profile lines.",
+    fellowKeywords: fellows(
+      "bio font generator",
+      "social bio generator",
+      "bio font maker",
+    ),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/kaomoji/",
+    group: "F_Kaomoji",
+    primaryKeyword: "kaomoji",
+    title: "Kaomoji Copy and Paste — Japanese Emoticons | FancyText",
+    description:
+      "Free kaomoji copy and paste. Browse Japanese emoticons and text faces by emotion—cry, cute, hug, heart, and more.",
+    fellowKeywords: fellows(
+      "japanese emoticons",
+      "text faces",
+      "kaomoji copy and paste",
+    ),
+    navLabel: "Kaomoji",
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/angry-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "angry kaomoji",
+    title: "Angry Kaomojis Copy and Paste | FancyText",
+    description:
+      "Copy angry kaomoji and mad text faces. Free Japanese emoticons for Discord and chat.",
+    fellowKeywords: fellows("mad kaomoji", "angry text face"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/bear-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "bear kaomoji",
+    title: "Bear Kaomojis Copy and Paste | FancyText",
+    description: "Copy bear kaomoji faces like ʕ•ᴥ•ʔ. Free cute bear emoticons.",
+    fellowKeywords: fellows("bear face emoticon", "cute bear kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/cat-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "cat kaomoji",
+    title: "Cat Kaomojis Copy and Paste | FancyText",
+    description: "Copy cat kaomoji and kitty text faces. Free feline Japanese emoticons.",
+    fellowKeywords: fellows("cat face emoticon", "kitty kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/confused-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "confused kaomoji",
+    title: "Confused Kaomojis Copy and Paste | FancyText",
+    description: "Copy confused kaomoji and puzzled text faces for chat.",
+    fellowKeywords: fellows("confused text face", "puzzled kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/cry-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "cry kaomoji",
+    title: "Cry Kaomojis Copy and Paste | FancyText",
+    description:
+      "Copy cry kaomoji and crying text faces. Free sad Japanese emoticons.",
+    fellowKeywords: fellows("crying kaomoji", "kaomoji cry"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/cute-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "cute kaomoji",
+    title: "Cute Kaomojis Copy and Paste | FancyText",
+    description: "Copy cute kaomoji and kawaii text faces for bios and chats.",
+    fellowKeywords: fellows("kawaii kaomoji", "cute text faces"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/drool-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "drool kaomoji",
+    title: "Drool Kaomojis Copy and Paste | FancyText",
+    description: "Copy drool kaomoji and hungry text faces.",
+    fellowKeywords: fellows("hungry kaomoji", "drooling face text"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/evil-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "evil kaomoji",
+    title: "Evil Kaomojis Copy and Paste | FancyText",
+    description: "Copy evil kaomoji and mischievous text faces.",
+    fellowKeywords: fellows("evil text face", "mischievous kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/heart-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "heart kaomoji",
+    title: "Heart Kaomojis Copy and Paste | FancyText",
+    description: "Copy heart kaomoji and love text faces for messages.",
+    fellowKeywords: fellows("love kaomoji", "heart text face"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/hug-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "hug kaomoji",
+    title: "Hug Kaomojis Copy and Paste | FancyText",
+    description: "Copy hug kaomoji and cuddle text faces.",
+    fellowKeywords: fellows("hug text face", "cuddle kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/kiss-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "kiss kaomoji",
+    title: "Kiss Kaomojis Copy and Paste | FancyText",
+    description: "Copy kiss kaomoji and smooches text faces.",
+    fellowKeywords: fellows("kiss text face", "smooch kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/music-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "music kaomoji",
+    title: "Music Kaomojis Copy and Paste | FancyText",
+    description: "Copy music kaomoji and singing text faces.",
+    fellowKeywords: fellows("singing kaomoji", "music text face"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/sad-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "sad kaomoji",
+    title: "Sad Kaomojis Copy and Paste | FancyText",
+    description: "Copy sad kaomoji and melancholy text faces.",
+    fellowKeywords: fellows("sad text face", "melancholy kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/shocked-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "shocked kaomoji",
+    title: "Shocked Kaomojis Copy and Paste | FancyText",
+    description:
+      "Copy shocked kaomoji and jaw-drop text faces for extreme reactions in Discord and chat.",
+    fellowKeywords: fellows("shocked text face", "jaw drop kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/thank-you-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "thank you kaomoji",
+    title: "Thank You Kaomojis Copy and Paste | FancyText",
+    description: "Copy thank you kaomoji and grateful text faces.",
+    fellowKeywords: fellows("thanks kaomoji", "arigatou emoticon"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/surprised-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "surprised kaomoji",
+    title: "Surprised Kaomojis Copy and Paste | FancyText",
+    description:
+      "Copy surprised kaomoji and soft OMG text faces for milder astonishment in chats and bios.",
+    fellowKeywords: fellows("omg kaomoji", "astonished text face"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/shy-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "shy kaomoji",
+    title: "Shy Kaomojis Copy and Paste | FancyText",
+    description: "Copy shy kaomoji and blushing text faces.",
+    fellowKeywords: fellows("blushing kaomoji", "shy text face"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/excited-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "excited kaomoji",
+    title: "Excited Kaomojis Copy and Paste | FancyText",
+    description: "Copy excited kaomoji and hyped text faces.",
+    fellowKeywords: fellows("excited text face", "hype kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/thinking-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "thinking kaomoji",
+    title: "Thinking Kaomojis Copy and Paste | FancyText",
+    description: "Copy thinking kaomoji and pondering text faces.",
+    fellowKeywords: fellows("thinking text face", "hmm kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/scared-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "scared kaomoji",
+    title: "Scared Kaomojis Copy and Paste | FancyText",
+    description: "Copy scared kaomoji and frightened text faces.",
+    fellowKeywords: fellows("scared text face", "fear kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/dog-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "dog kaomoji",
+    title: "Dog Kaomojis Copy and Paste | FancyText",
+    description: "Copy dog kaomoji and puppy text faces.",
+    fellowKeywords: fellows("dog face emoticon", "puppy kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/funny-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "funny kaomoji",
+    title: "Funny Kaomojis Copy and Paste | FancyText",
+    description: "Copy funny kaomoji and joking text faces.",
+    fellowKeywords: fellows("funny text face", "lol kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/proud-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "proud kaomoji",
+    title: "Proud Kaomojis Copy and Paste | FancyText",
+    description: "Copy proud kaomoji and smug text faces.",
+    fellowKeywords: fellows("proud text face", "smug kaomoji"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/lenny-face/",
+    group: "F_Kaomoji",
+    primaryKeyword: "lenny face",
+    title: "Lenny Face Copy and Paste ( ͡° ͜ʖ ͡°) | FancyText",
+    description:
+      "Copy Lenny face ( ͡° ͜ʖ ͡°) and variants. Free emoticon for Discord and Reddit.",
+    fellowKeywords: fellows("lenny face copy paste", "lenny emoticon"),
+  },
+  {
+    phase: 5,
+    priority: "P2",
+    url: "/shrug-emoticon/",
+    group: "F_Kaomoji",
+    primaryKeyword: "shrug emoticon",
+    title: "Shrug Emoticon Copy and Paste ¯\\_(ツ)_/¯ | FancyText",
+    description:
+      "Copy the shrug emoticon ¯\\_(ツ)_/¯ and variants. Free idk text faces.",
+    fellowKeywords: fellows("shrug face", "shrug emoji text"),
+  },
+];
+
+/** Highest build phase with live routes (bump as phases ship). */
+export const LIVE_MAX_PHASE = 5;
+
+export function getPageByUrl(url: string): PageEntry | undefined {
+  return PAGES.find((p) => p.url === url);
+}
+
+/** Related links for live pages only — prefer same group, then backfill. */
+export function getRelatedPages(
+  currentUrl: string,
+  limit = 8,
+  maxPhase = LIVE_MAX_PHASE,
+): PageEntry[] {
+  const current = getPageByUrl(currentUrl);
+  const live = PAGES.filter(
+    (p) => p.url !== currentUrl && p.phase <= maxPhase,
+  );
+  if (!current) return live.slice(0, limit);
+
+  const sameGroup = live.filter((p) => p.group === current.group);
+  if (sameGroup.length >= limit) return sameGroup.slice(0, limit);
+
+  const others = live.filter((p) => p.group !== current.group);
+  return [...sameGroup, ...others].slice(0, limit);
+}
+
+/** Curated topical neighbors (falls back to sequential related). */
+const TOPICAL_RELATED: Record<string, string[]> = {
+  "/": [
+    "/copy-paste-fonts/",
+    "/bold-text-generator/",
+    "/cursive-text-generator/",
+    "/discord-color-text/",
+    "/instagram-font-generator/",
+    "/kaomoji/",
+  ],
+  "/bold-text-generator/": [
+    "/",
+    "/copy-paste-fonts/",
+    "/italic-text-generator/",
+    "/discord-font-generator/",
+    "/instagram-font-generator/",
+    "/whatsapp-fonts/",
+  ],
+  "/italic-text-generator/": [
+    "/bold-text-generator/",
+    "/cursive-text-generator/",
+    "/copy-paste-fonts/",
+    "/instagram-font-generator/",
+  ],
+  "/bubble-text-generator/": [
+    "/cute-fonts/",
+    "/copy-paste-fonts/",
+    "/discord-font-generator/",
+    "/name-font-generator/",
+  ],
+  "/strikethrough-text-generator/": [
+    "/bold-text-generator/",
+    "/glitch-text-generator/",
+    "/copy-paste-fonts/",
+  ],
+  "/superscript-subscript-generator/": [
+    "/html-text-generator/",
+    "/copy-paste-fonts/",
+    "/bold-text-generator/",
+  ],
+  "/upside-down-text-generator/": [
+    "/glitch-text-generator/",
+    "/copy-paste-fonts/",
+    "/",
+  ],
+  "/glitch-text-generator/": [
+    "/upside-down-text-generator/",
+    "/discord-font-generator/",
+    "/copy-paste-fonts/",
+  ],
+  "/copy-paste-fonts/": [
+    "/",
+    "/aesthetic-fonts/",
+    "/cute-fonts/",
+    "/bold-text-generator/",
+    "/name-font-generator/",
+    "/whatsapp-fonts/",
+  ],
+  "/cursive-text-generator/": [
+    "/",
+    "/bold-text-generator/",
+    "/copy-paste-fonts/",
+    "/instagram-font-generator/",
+    "/name-font-generator/",
+  ],
+  "/discord-color-text/": [
+    "/discord-font-generator/",
+    "/bold-text-generator/",
+    "/kaomoji/",
+    "/",
+  ],
+  "/whatsapp-fonts/": [
+    "/bold-text-generator/",
+    "/copy-paste-fonts/",
+    "/instagram-font-generator/",
+    "/social-media-bio-generator/",
+  ],
+  "/social-media-bio-generator/": [
+    "/instagram-font-generator/",
+    "/tiktok-font-generator/",
+    "/aesthetic-fonts/",
+    "/whatsapp-fonts/",
+  ],
+  "/kaomoji/": [
+    "/cute-kaomojis/",
+    "/lenny-face/",
+    "/shrug-emoticon/",
+    "/discord-font-generator/",
+    "/",
+  ],
+  "/aesthetic-fonts/": [
+    "/copy-paste-fonts/",
+    "/cute-fonts/",
+    "/stylish-text-generator/",
+    "/instagram-font-generator/",
+    "/tiktok-font-generator/",
+    "/",
+  ],
+  "/cute-fonts/": [
+    "/aesthetic-fonts/",
+    "/bubble-text-generator/",
+    "/cute-kaomojis/",
+    "/copy-paste-fonts/",
+    "/name-font-generator/",
+  ],
+  "/name-font-generator/": [
+    "/copy-paste-fonts/",
+    "/cursive-text-generator/",
+    "/bold-text-generator/",
+    "/discord-font-generator/",
+    "/stylish-text-generator/",
+  ],
+  "/stylish-text-generator/": [
+    "/",
+    "/aesthetic-fonts/",
+    "/copy-paste-fonts/",
+    "/bold-text-generator/",
+    "/instagram-font-generator/",
+  ],
+  "/discord-font-generator/": [
+    "/discord-color-text/",
+    "/bold-text-generator/",
+    "/copy-paste-fonts/",
+    "/kaomoji/",
+    "/",
+  ],
+  "/tiktok-font-generator/": [
+    "/instagram-font-generator/",
+    "/aesthetic-fonts/",
+    "/social-media-bio-generator/",
+    "/copy-paste-fonts/",
+    "/cute-fonts/",
+  ],
+  "/instagram-font-generator/": [
+    "/tiktok-font-generator/",
+    "/social-media-bio-generator/",
+    "/aesthetic-fonts/",
+    "/cursive-text-generator/",
+    "/copy-paste-fonts/",
+  ],
+  "/html-text-generator/": [
+    "/bold-text-generator/",
+    "/superscript-subscript-generator/",
+    "/copy-paste-fonts/",
+    "/",
+  ],
+};
+
+const KAOMOJI_FALLBACK = [
+  "/kaomoji/",
+  "/cute-kaomojis/",
+  "/heart-kaomojis/",
+  "/lenny-face/",
+  "/shrug-emoticon/",
+];
+
+/** Sibling emotions so lists do not all point at the same two winners. */
+const KAOMOJI_FAMILIES: Record<string, string[]> = {
+  "angry-kaomojis": [
+    "/evil-kaomojis/",
+    "/scared-kaomojis/",
+    "/funny-kaomojis/",
+    "/kaomoji/",
+  ],
+  "evil-kaomojis": [
+    "/angry-kaomojis/",
+    "/proud-kaomojis/",
+    "/funny-kaomojis/",
+    "/kaomoji/",
+  ],
+  "cry-kaomojis": [
+    "/sad-kaomojis/",
+    "/scared-kaomojis/",
+    "/hug-kaomojis/",
+    "/kaomoji/",
+  ],
+  "sad-kaomojis": [
+    "/cry-kaomojis/",
+    "/thinking-kaomojis/",
+    "/hug-kaomojis/",
+    "/kaomoji/",
+  ],
+  "cute-kaomojis": [
+    "/bear-kaomojis/",
+    "/cat-kaomojis/",
+    "/heart-kaomojis/",
+    "/shy-kaomojis/",
+  ],
+  "bear-kaomojis": [
+    "/cute-kaomojis/",
+    "/cat-kaomojis/",
+    "/dog-kaomojis/",
+    "/kaomoji/",
+  ],
+  "cat-kaomojis": [
+    "/cute-kaomojis/",
+    "/bear-kaomojis/",
+    "/dog-kaomojis/",
+    "/kaomoji/",
+  ],
+  "dog-kaomojis": [
+    "/bear-kaomojis/",
+    "/cat-kaomojis/",
+    "/cute-kaomojis/",
+    "/kaomoji/",
+  ],
+  "heart-kaomojis": [
+    "/kiss-kaomojis/",
+    "/hug-kaomojis/",
+    "/cute-kaomojis/",
+    "/shy-kaomojis/",
+  ],
+  "kiss-kaomojis": [
+    "/heart-kaomojis/",
+    "/shy-kaomojis/",
+    "/hug-kaomojis/",
+    "/kaomoji/",
+  ],
+  "hug-kaomojis": [
+    "/heart-kaomojis/",
+    "/cute-kaomojis/",
+    "/sad-kaomojis/",
+    "/kaomoji/",
+  ],
+  "shocked-kaomojis": [
+    "/surprised-kaomojis/",
+    "/scared-kaomojis/",
+    "/confused-kaomojis/",
+    "/kaomoji/",
+  ],
+  "surprised-kaomojis": [
+    "/shocked-kaomojis/",
+    "/excited-kaomojis/",
+    "/confused-kaomojis/",
+    "/kaomoji/",
+  ],
+  "scared-kaomojis": [
+    "/shocked-kaomojis/",
+    "/confused-kaomojis/",
+    "/cry-kaomojis/",
+    "/kaomoji/",
+  ],
+  "confused-kaomojis": [
+    "/thinking-kaomojis/",
+    "/surprised-kaomojis/",
+    "/scared-kaomojis/",
+    "/kaomoji/",
+  ],
+  "thinking-kaomojis": [
+    "/confused-kaomojis/",
+    "/proud-kaomojis/",
+    "/funny-kaomojis/",
+    "/kaomoji/",
+  ],
+  "shy-kaomojis": [
+    "/cute-kaomojis/",
+    "/kiss-kaomojis/",
+    "/heart-kaomojis/",
+    "/kaomoji/",
+  ],
+  "excited-kaomojis": [
+    "/funny-kaomojis/",
+    "/proud-kaomojis/",
+    "/surprised-kaomojis/",
+    "/kaomoji/",
+  ],
+  "funny-kaomojis": [
+    "/excited-kaomojis/",
+    "/proud-kaomojis/",
+    "/lenny-face/",
+    "/kaomoji/",
+  ],
+  "proud-kaomojis": [
+    "/funny-kaomojis/",
+    "/evil-kaomojis/",
+    "/excited-kaomojis/",
+    "/kaomoji/",
+  ],
+  "music-kaomojis": [
+    "/excited-kaomojis/",
+    "/cute-kaomojis/",
+    "/funny-kaomojis/",
+    "/kaomoji/",
+  ],
+  "drool-kaomojis": [
+    "/funny-kaomojis/",
+    "/cute-kaomojis/",
+    "/excited-kaomojis/",
+    "/kaomoji/",
+  ],
+  "thank-you-kaomojis": [
+    "/hug-kaomojis/",
+    "/heart-kaomojis/",
+    "/cute-kaomojis/",
+    "/kaomoji/",
+  ],
+  "lenny-face": [
+    "/shrug-emoticon/",
+    "/funny-kaomojis/",
+    "/kaomoji/",
+    "/discord-font-generator/",
+  ],
+  "shrug-emoticon": [
+    "/lenny-face/",
+    "/confused-kaomojis/",
+    "/thinking-kaomojis/",
+    "/kaomoji/",
+  ],
+};
+
+const CURSIVE_LETTER_FALLBACK = [
+  "/cursive-text-generator/",
+  "/",
+  "/copy-paste-fonts/",
+  "/name-font-generator/",
+  "/instagram-font-generator/",
+  "/bold-text-generator/",
+];
+
+function pagesFromUrls(urls: string[], currentUrl: string, limit: number): PageEntry[] {
+  return urls
+    .map((u) => getPageByUrl(u))
+    .filter((p): p is PageEntry => Boolean(p && p.url !== currentUrl))
+    .slice(0, limit);
+}
+
+export function getTopicalRelated(
+  currentUrl: string,
+  limit = 6,
+): PageEntry[] {
+  const urls = TOPICAL_RELATED[currentUrl];
+  if (urls?.length) {
+    return pagesFromUrls(urls, currentUrl, limit);
+  }
+
+  if (
+    currentUrl.includes("kaomoji") ||
+    currentUrl === "/lenny-face/" ||
+    currentUrl === "/shrug-emoticon/"
+  ) {
+    const slug = currentUrl.replace(/^\/|\/$/g, "");
+    const family = KAOMOJI_FAMILIES[slug];
+    if (family?.length) {
+      return pagesFromUrls(family, currentUrl, limit);
+    }
+    return pagesFromUrls(KAOMOJI_FALLBACK, currentUrl, limit);
+  }
+
+  if (
+    currentUrl.startsWith("/cursive-capital-") ||
+    currentUrl.startsWith("/cursive-small-")
+  ) {
+    return pagesFromUrls(CURSIVE_LETTER_FALLBACK, currentUrl, limit);
+  }
+
+  return getRelatedPages(currentUrl, limit);
+}
+
+/** Hub-focused footer — not every live URL. */
+const FOOTER_URLS = [
+  "/",
+  "/cursive-text-generator/",
+  "/bold-text-generator/",
+  "/copy-paste-fonts/",
+  "/aesthetic-fonts/",
+  "/discord-color-text/",
+  "/instagram-font-generator/",
+  "/whatsapp-fonts/",
+  "/social-media-bio-generator/",
+  "/kaomoji/",
+];
+
+export function getFooterPages(): PageEntry[] {
+  return FOOTER_URLS.map((u) => getPageByUrl(u)).filter(
+    (p): p is PageEntry => Boolean(p),
+  );
+}
+
+const NAV_URLS = new Set([
+  "/",
+  "/cursive-text-generator/",
+  "/copy-paste-fonts/",
+  "/bold-text-generator/",
+  "/discord-color-text/",
+  "/kaomoji/",
+]);
+
+export function getNavPages(): PageEntry[] {
+  return PAGES.filter((p) => p.navLabel && NAV_URLS.has(p.url));
+}
+
+export function getLivePages(): PageEntry[] {
+  return PAGES.filter((p) => p.phase <= LIVE_MAX_PHASE);
+}
+
+export const SITE_NAME = "FancyText";
+/** Production domain. Override via NEXT_PUBLIC_SITE_URL in Vercel. */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://fancifytext.com";

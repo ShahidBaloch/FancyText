@@ -1,0 +1,31 @@
+import type { Letter } from "@/lib/fonts/cursive";
+
+/** One unique stroke/use tip per letter — reduces thin-template duplication. */
+export const LETTER_TIPS: Record<Letter, string> = {
+  a: "Cursive a usually starts with a soft entry oval before the stem; digitally, the Unicode script a already carries that loop for bios and signatures.",
+  b: "Cursive capital B needs a tall stem and two stacked bowls—copy the Unicode glyph when you want a formal fancy B without redrawing it.",
+  c: "Cursive c is an open curve that leads into the next letter; use the Unicode form for short monograms and aesthetic usernames.",
+  d: "Cursive d often finishes with an ascending loop—pair capital D with small script letters for elegant display names.",
+  e: "Cursive e is a quick reverse loop; the Unicode character is popular in soft Instagram names where a plain e looks too sharp.",
+  f: "Cursive f crosses a descending stroke—great for flourish at the start of a fancy first name when pasted as Unicode.",
+  g: "Cursive g drops a closed descender; keep it for end-of-word flair in bios where tall glyphs still fit character limits.",
+  h: "Cursive h rises then arches into the next letter—Unicode h works well mid-name without crowding neighboring characters.",
+  i: "Cursive i is a short stem with a dotted finish in handwriting; Unicode script i keeps the flow for nicknames and captions.",
+  j: "Cursive j mirrors g with a longer drop—use sparingly in usernames because descenders can look cramped on mobile.",
+  k: "Cursive k branches from the stem into two arms; the Unicode form reads bold in Discord nicknames and channel titles.",
+  l: "Cursive l is a tall loop—pair it with smaller letters so fancy names stay balanced in Instagram display fields.",
+  m: "Cursive m uses linked arches; Unicode m is a strong middle letter for monograms and multi-syllable fancy names.",
+  n: "Cursive n is a single arch after a short stem—reliable in almost every social bio where exotic glyphs fail.",
+  o: "Cursive o stays a clean oval; use it when you need readable fancy text that still looks soft next to script neighbors.",
+  p: "Cursive p drops below the line; short bios handle one p well—avoid stacking many descenders in one username.",
+  q: "Cursive q often mirrors g with a unique exit stroke; Unicode q adds rare flair for niche handles and signatures.",
+  r: "Cursive r is a small shoulder after the stem—common in fancy first names and easiest to mix with bold script variants.",
+  s: "Cursive s snakes through an entry and exit curve; one of the most searched single letters for Snapchat-style names.",
+  t: "Cursive t crosses after a tall stem; Unicode t keeps titles and worksheet headings looking handwritten without fonts.",
+  u: "Cursive u is a simple trough that connects forward—safe for long fancy words that must stay readable on phones.",
+  v: "Cursive v points then exits high; use it for sharp aesthetic names that still belong in the script family.",
+  w: "Cursive w doubles the u motion; Unicode w can look wide—keep surrounding letters short for balance.",
+  x: "Cursive x crosses two strokes; rarer in bios, so it stands out when you need a distinctive Unicode monogram.",
+  y: "Cursive y drops like g after a v-shape; great for stylish last-name initials when pasted as Unicode.",
+  z: "Cursive z zigzags then may drop a tail; Unicode z is a stylish closer for aesthetic signatures and short tags.",
+};
