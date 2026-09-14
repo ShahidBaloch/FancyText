@@ -20,5 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...pages, ...letters];
+  const legal = ["/privacy/", "/terms/"].map((path) => ({
+    url: new URL(path, SITE_URL).toString(),
+    lastModified: now,
+    changeFrequency: "yearly" as const,
+    priority: 0.3,
+  }));
+
+  return [...pages, ...letters, ...legal];
 }

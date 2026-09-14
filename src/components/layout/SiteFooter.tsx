@@ -24,11 +24,25 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
+        <div>
+          <p className="footer-heading">Legal</p>
+          <ul className="footer-links">
+            <li>
+              <Link href="/privacy/">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="/terms/">Terms of Use</Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="site-shell footer-base">
         <p>
           © {new Date().getFullYear()} {SITE_NAME}. All generators run in your
-          browser.
+          browser.{" "}
+          <Link href="/privacy/">Privacy</Link>
+          {" · "}
+          <Link href="/terms/">Terms</Link>
         </p>
       </div>
     </footer>

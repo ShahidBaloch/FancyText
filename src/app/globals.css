@@ -570,7 +570,7 @@ a {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.4fr 1fr 0.8fr;
   gap: 1.5rem;
   padding: 2rem 0 1.25rem;
 }
@@ -618,6 +618,20 @@ a {
 .footer-base {
   padding: 0 0 1.25rem;
   font-size: 0.85rem;
+}
+
+.footer-base a {
+  color: color-mix(in srgb, #f4efe6 85%, transparent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.footer-base a:hover {
+  color: #fff;
+}
+
+.legal-prose h2 {
+  margin-top: 1.75rem;
 }
 
 .letter-stage .glyph-hero {

@@ -20,28 +20,47 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deployment
 
-This app is optimized for deployment on **Vercel** with the custom domain `fancifytext.com`.
+Deploy on **Vercel** with the custom domain **`fancifytext.com`** (purchased on Spaceship).
 
 ### 1. Push to GitHub
-Since the repository is initialized but has no commits, commit your files and push them to your remote repository:
+
 ```bash
-git add .
-git commit -m "Initial commit of FancyText generator app"
-git branch -M main
 git push -u origin main
 ```
 
 ### 2. Deploy on Vercel
-1. Go to the [Vercel Dashboard](https://vercel.com/) and click **New Project**.
-2. Import the `FancyText` repository from GitHub.
-3. In the **Environment Variables** section, add:
-   - `NEXT_PUBLIC_SITE_URL` = `https://fancifytext.com`
-4. Click **Deploy**.
 
-### 3. Configure Custom Domain
-1. In Vercel, go to **Project Settings > Domains**.
-2. Add your custom domain `fancifytext.com` (and optionally `www.fancifytext.com`).
-3. Update your DNS settings at your registrar (e.g., Namecheap, Porkbun, or Cloudflare) with the CNAME or A records provided by Vercel.
+1. Open [Vercel](https://vercel.com/) → **New Project** → import `FancyText`.
+2. Add environment variables:
+
+| Name | Value |
+|------|--------|
+| `NEXT_PUBLIC_SITE_URL` | `https://fancifytext.com` |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-…` (optional, after GA4 property exists) |
+| `NEXT_PUBLIC_GSC_VERIFICATION` | HTML-tag token (optional, from Search Console) |
+
+3. Deploy.
+
+### 3. Connect the domain (Spaceship → Vercel)
+
+1. Vercel → Project → **Settings → Domains** → add `fancifytext.com` (and `www` if you want).
+2. In Spaceship DNS, add the **A / CNAME records Vercel shows** (do not guess — copy from the Domains panel).
+3. Wait for HTTPS to show as valid.
+
+### 4. After the site is live
+
+1. **Google Search Console**
+   - Add property `https://fancifytext.com` (Domain or URL-prefix).
+   - Verify with the HTML tag: paste the content token into `NEXT_PUBLIC_GSC_VERIFICATION` on Vercel and redeploy.
+   - Submit sitemap: `https://fancifytext.com/sitemap.xml`
+2. **Google Analytics (GA4)**
+   - Create a GA4 property → copy Measurement ID (`G-…`).
+   - Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` on Vercel → redeploy.
+
+## Legal
+
+- Privacy: `/privacy/`
+- Terms: `/terms/`
 
 ## Stack
 
@@ -51,11 +70,6 @@ git push -u origin main
 
 ## Phases
 
-0. Hub `/` — done
-1. Cursive hub + 52 letter pages — done
-2. Style spokes (bold, italic, bubble, strike, sub/sup, upside-down, glitch) — done
-3. Copy-paste hub + aesthetic / cute / name / stylish collections — done
-4. Platform pages (Discord color/fonts, TikTok, Instagram, HTML) — done
-5. Kaomoji hub + emotion lists + lenny/shrug — done
+0–5 shipped (hub, cursive + letters, styles, collections, platforms, kaomoji).
 
-**Domain:** `fancifytext.com` (Spaceship) — wire DNS to Vercel after deploy.
+**Domain:** `fancifytext.com` (Spaceship) — connect DNS to Vercel after first deploy.
