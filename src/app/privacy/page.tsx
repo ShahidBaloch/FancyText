@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageHero } from "@/components/seo/PageHero";
+import { CONTACT_EMAIL } from "@/data/contact";
 import { SITE_NAME } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -101,11 +102,19 @@ export default function PrivacyPage() {
           “Last updated” date at the top will change when we do.
         </p>
 
+        <h2>Contact form</h2>
+        <p>
+          Messages sent through the{" "}
+          <Link href="/contact/">contact form</Link> or to{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> are used
+          only to reply to your inquiry. We do not sell your contact details.
+        </p>
+
         <h2>Contact</h2>
         <p>
           Questions about privacy for {SITE_NAME} can be sent via the{" "}
-          <Link href="/contact/">Contact</Link> page, or through the
-          project owner&apos;s public GitHub profile linked to this repository.
+          <Link href="/contact/">Contact</Link> page or{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
         </p>
 
         <p>

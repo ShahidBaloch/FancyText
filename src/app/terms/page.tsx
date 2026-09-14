@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageHero } from "@/components/seo/PageHero";
+import { CONTACT_EMAIL } from "@/data/contact";
 import { SITE_NAME } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -95,6 +96,14 @@ export default function TermsPage() {
         <p>
           We may update these terms. Continued use of the site after changes
           means you accept the updated terms.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          The <Link href="/contact/">contact form</Link> is a question, not a
+          binding contract. Email{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> for
+          questions about these terms.
         </p>
 
         <p>

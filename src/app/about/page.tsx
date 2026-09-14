@@ -7,6 +7,7 @@ import {
 } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { pageMetadata } from "@/lib/seo/metadata";
+import { CONTACT_EMAIL } from "@/data/contact";
 import { SITE_NAME, SITE_URL, getPageByUrl } from "@/data/pages/registry";
 
 const page = getPageByUrl("/about/")!;
@@ -84,8 +85,9 @@ export default function AboutPage() {
         <p>
           See the <Link href="/privacy/">Privacy Policy</Link>,{" "}
           <Link href="/terms/">Terms of Use</Link>, and{" "}
-          <Link href="/contact/">Contact</Link>. We do not take font-file orders
-          or recover social accounts.
+          <Link href="/contact/">Contact</Link> (
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          ). We do not take font-file orders or recover social accounts.
         </p>
 
         <p>

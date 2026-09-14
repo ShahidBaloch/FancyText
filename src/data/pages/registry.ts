@@ -742,9 +742,9 @@ export const PAGES: PageEntry[] = [
     url: "/contact/",
     group: "H_Trust",
     primaryKeyword: "contact fancifytext",
-    title: "Contact FancifyText — Questions & Limits | FancifyText",
+    title: "Contact FancifyText — Email & Query Form | FancifyText",
     description:
-      "How to reach FancifyText, what we can help with, and what these Unicode tools cannot do (no font files, no account recovery).",
+      "Contact FancifyText by email (hello@fancifytext.com) or a short query form. We typically reply within one business day.",
     fellowKeywords: fellows("fancifytext contact", "fancy text support"),
     navLabel: "Contact",
   },

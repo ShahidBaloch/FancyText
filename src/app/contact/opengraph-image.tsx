@@ -7,6 +7,6 @@ export const contentType = "image/png";
 export default function OpenGraphImage() {
   return renderOgImage({
     title: "Contact FancifyText",
-    subtitle: "What these Unicode tools can and cannot help with",
+    subtitle: "Email or a short query form",
   });
 }
