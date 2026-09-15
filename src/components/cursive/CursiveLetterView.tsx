@@ -23,7 +23,8 @@ import {
   type Letter,
   type LetterCase,
 } from "@/lib/fonts/cursive";
-import { LETTER_TIPS } from "@/lib/fonts/letter-tips";
+import { LETTER_EXAMPLES, LETTER_TIPS } from "@/lib/fonts/letter-tips";
+import { transform } from "@/lib/fonts/styles";
 
 type CursiveLetterViewProps = {
   letter: Letter;
@@ -177,6 +178,24 @@ export function CursiveLetterView({
       <section className="seo-section seo-prose" aria-labelledby="tip-heading">
         <h2 id="tip-heading">About cursive {upper}</h2>
         <p>{LETTER_TIPS[letter]}</p>
+      </section>
+
+      <section className="seo-section" aria-labelledby="examples-heading">
+        <h2 id="examples-heading">Example words with cursive {upper}</h2>
+        <ul className="sample-list">
+          {LETTER_EXAMPLES[letter].map((word) => {
+            const styled = transform(word, letterCase === "capital" ? "cursive" : "cursive");
+            return (
+              <li key={word} className="sample-row">
+                <span className="sample-plain">{word}</span>
+                <span className="sample-fancy" lang="en">
+                  {styled}
+                </span>
+                <CopyButton text={styled} id={`ex-${letter}-${word}`} />
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="worksheet-heading">

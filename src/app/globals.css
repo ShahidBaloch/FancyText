@@ -554,7 +554,7 @@ a {
   font: inherit;
   font-size: 0.76rem;
   font-weight: 600;
-  cursor: pointer;
+  cursor: default;
   opacity: 0.55;
   transition:
     opacity 160ms ease,
@@ -562,15 +562,17 @@ a {
     background 160ms ease;
 }
 
-.home-specimen-chip:hover {
-  opacity: 0.9;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
 .home-specimen-chip.is-active {
   opacity: 1;
   border-color: #fff;
   background: rgba(255, 255, 255, 0.18);
+}
+
+.gallery-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 @media (min-width: 900px) {
@@ -1072,6 +1074,11 @@ a.use-card:hover {
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
+}
+
+.search-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .gallery-output {

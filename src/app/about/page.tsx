@@ -9,7 +9,7 @@ import {
 } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { pageMetadata } from "@/lib/seo/metadata";
-import { CONTACT_EMAIL } from "@/data/contact";
+import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
 import { SITE_NAME, SITE_URL, getPageByUrl } from "@/data/pages/registry";
 
 const page = getPageByUrl("/about/")!;
@@ -27,6 +27,7 @@ export default function AboutPage() {
             url: SITE_URL,
             description: page.description,
             email: CONTACT_EMAIL,
+            sameAs: SITE_SAME_AS,
           }),
           foundingDate: "2026",
           knowsAbout: [
@@ -66,11 +67,12 @@ export default function AboutPage() {
       <div className="seo-section seo-prose">
         <h2>Who runs this site</h2>
         <p>
-          {SITE_NAME} is an independent utility site. There is no parent media
-          company and no paid “font pack.” The generators run in your browser:
-          we convert letters to Unicode look-alikes so you can copy and paste
-          them into Instagram, Discord, TikTok, WhatsApp, and other apps that
-          accept special characters.
+          {SITE_NAME} is an independent utility site operated as a focused
+          FancyText product. There is no parent media company and no paid “font
+          pack.” The generators run in your browser: we convert letters to
+          Unicode look-alikes so you can copy and paste them into Instagram,
+          Discord, TikTok, WhatsApp, and other apps that accept special
+          characters.
         </p>
 
         <h2>How the tools work</h2>
@@ -84,12 +86,21 @@ export default function AboutPage() {
 
         <h2>What we maintain</h2>
         <ul>
-          <li>Style-specific generators (bold, cursive, bubble, small text, old English, and more)</li>
+          <li>Style-specific generators (bold, cursive, bubble, small text, old English, binary, and more)</li>
           <li>Platform notes for Discord (including ANSI color), Instagram, TikTok, WhatsApp, Facebook, X, Snapchat, and Roblox</li>
           <li>A cool-symbols list and a text decorator that wraps names instead of cloning decorative “wrapper fonts”</li>
           <li>Kaomoji lists with meanings, not just a dump of faces</li>
           <li>Cursive letter pages for people who need a single glyph</li>
+          <li>Guides that explain failures (boxes, ANSI not working, platform filters)</li>
         </ul>
+
+        <h2>Maintenance cadence</h2>
+        <p>
+          We update style maps, compatibility notes, and guides when platforms
+          change filters or when users report broken glyphs. Content freshness
+          is reflected in sitemap lastmod dates. Bug reports go to{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+        </p>
 
         <h2>Editorial policy</h2>
         <p>
@@ -111,6 +122,8 @@ export default function AboutPage() {
 
         <p>
           <Link href="/">Open the fancy text generator</Link>
+          {" · "}
+          <Link href="/search/">Search all tools</Link>
         </p>
       </div>
     </div>

@@ -10,7 +10,7 @@ import {
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { HomePlayground } from "@/components/tool/HomePlayground";
-import { CONTACT_EMAIL } from "@/data/contact";
+import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
 import {
   SITE_NAME,
   SITE_URL,
@@ -87,6 +87,7 @@ export default function HomePage() {
           url: SITE_URL,
           description: page.description,
           email: CONTACT_EMAIL,
+          sameAs: SITE_SAME_AS,
         })}
       />
       <JsonLd
@@ -94,12 +95,13 @@ export default function HomePage() {
           name: SITE_NAME,
           url: SITE_URL,
           description: page.description,
+          searchUrlTemplate: `${SITE_URL}/search/?q={search_term_string}`,
         })}
       />
       <PageJsonLd
         page={page}
         faq={faqItems}
-        crumbName="Fancy text generator"
+        crumbs={[]}
         howTo={{
           name: "How to use the fancy text generator",
           steps: [

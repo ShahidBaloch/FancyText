@@ -67,6 +67,12 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="contact-form" aria-labelledby="contact-query">
+      <p className="seo-lead">
+        Prefer email? Write to{" "}
+        <a href={`mailto:${contactConfig.email}`}>{contactConfig.email}</a>
+        . We typically reply within one business day.
+      </p>
+
       <label className="contact-label">
         Email
         <input
@@ -112,8 +118,9 @@ export function ContactForm() {
 
       {status === "error" ? (
         <p className="contact-error" role="alert">
-          {error}{" "}
-          <a href={`mailto:${contactConfig.email}`}>{contactConfig.email}</a>.
+          {error} Or email{" "}
+          <a href={`mailto:${contactConfig.email}`}>{contactConfig.email}</a>{" "}
+          directly.
         </p>
       ) : null}
     </form>

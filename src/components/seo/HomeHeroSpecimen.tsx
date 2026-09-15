@@ -18,9 +18,9 @@ const SHOWCASE = SHOWCASE_IDS.map(
   (id) => STYLES.find((s) => s.id === id) ?? STYLES[0],
 );
 
+/** Decorative rotating preview only — does not control the main tool. */
 export function HomeHeroSpecimen({ text }: { text?: string }) {
   const [index, setIndex] = useState(0);
-  const [cycle, setCycle] = useState(0);
   const style = SHOWCASE[index] ?? SHOWCASE[0];
   const source = text?.trim() ? text : SPECIMEN;
   const specimen = transform(source, style.id);
@@ -29,37 +29,25 @@ export function HomeHeroSpecimen({ text }: { text?: string }) {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduceMotion.matches) return;
 
-    let intervalId = 0;
-    const startId = window.setTimeout(() => {
-      intervalId = window.setInterval(() => {
-        setIndex((i) => (i + 1) % SHOWCASE.length);
-      }, 2200);
-    }, 2500);
+    const intervalId = window.setInterval(() => {
+      setIndex((i) => (i + 1) % SHOWCASE.length);
+    }, 2200);
 
-    return () => {
-      window.clearTimeout(startId);
-      window.clearInterval(intervalId);
-    };
-  }, [cycle]);
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   return (
-    <div className="home-specimen" aria-live="polite">
+    <div className="home-specimen" aria-hidden="true">
       <p className="home-specimen-label">{style.label}</p>
       <p className="home-specimen-text">{specimen}</p>
       <div className="home-specimen-row">
         {SHOWCASE.map((s, i) => (
-          <button
+          <span
             key={s.id}
-            type="button"
             className={`home-specimen-chip${i === index ? " is-active" : ""}`}
-            aria-pressed={i === index}
-            onClick={() => {
-              setIndex(i);
-              setCycle((n) => n + 1);
-            }}
           >
             {s.label}
-          </button>
+          </span>
         ))}
       </div>
     </div>

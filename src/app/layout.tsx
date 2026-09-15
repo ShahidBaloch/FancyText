@@ -26,6 +26,12 @@ export const metadata: Metadata = {
   },
   description:
     "Free fancy text generator and cool fonts to copy and paste for Instagram, Discord, TikTok, and more.",
+  alternates: {
+    languages: {
+      "en": SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
   ...(isPreview ? { robots: { index: false, follow: false } } : {}),
   ...(gscVerification
     ? { verification: { google: gscVerification } }

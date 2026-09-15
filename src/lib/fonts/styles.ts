@@ -14,6 +14,8 @@ export type FontStyle = {
   category: StyleCategory;
   description: string;
   transform: (text: string) => string;
+  /** True when some letters may stay Latin (incomplete Unicode set). */
+  partialCoverage?: boolean;
 };
 
 const bold = buildAlphaMap({
@@ -406,6 +408,164 @@ function tinyTransform(text: string): string {
   return out;
 }
 
+const sans = buildAlphaMap({
+  upper: 0x1d5a0,
+  lower: 0x1d5ba,
+});
+
+const sansBoldItalic = buildAlphaMap({
+  upper: 0x1d63c,
+  lower: 0x1d656,
+});
+
+const blueCircle = buildAlphaMap({ upper: 0x1f150 });
+const negativeSquared = buildAlphaMap({ upper: 0x1f170 });
+
+const currencyLike: Record<string, string> = {
+  a: "₳",
+  A: "₳",
+  b: "฿",
+  B: "฿",
+  c: "¢",
+  C: "ℂ",
+  e: "€",
+  E: "€",
+  k: "₭",
+  K: "₭",
+  n: "₦",
+  N: "₦",
+  p: "₽",
+  P: "₱",
+  r: "₹",
+  R: "₹",
+  s: "$",
+  S: "$",
+  t: "₮",
+  T: "₮",
+  w: "₩",
+  W: "₩",
+  y: "¥",
+  Y: "¥",
+};
+
+const greekLike: Record<string, string> = {
+  a: "α",
+  A: "Α",
+  b: "β",
+  B: "Β",
+  d: "δ",
+  D: "Δ",
+  e: "ε",
+  E: "Ε",
+  i: "ι",
+  I: "Ι",
+  k: "κ",
+  K: "Κ",
+  n: "η",
+  N: "Ν",
+  o: "ο",
+  O: "Ο",
+  p: "ρ",
+  P: "Ρ",
+  r: "г",
+  R: "Γ",
+  t: "τ",
+  T: "Τ",
+  u: "υ",
+  U: "Υ",
+  v: "ν",
+  V: "V",
+  w: "ω",
+  W: "Ω",
+  x: "χ",
+  X: "Χ",
+  y: "γ",
+  Y: "Υ",
+  z: "ζ",
+  Z: "Ζ",
+};
+
+function spacedText(text: string): string {
+  return [...text.trim()].join(" ");
+}
+
+function wrapPhrase(text: string, emoji: string): string {
+  const t = text.trim();
+  return t ? `${emoji} ${t} ${emoji}` : emoji;
+}
+
+function clapWords(text: string): string {
+  const parts = text.trim().split(/\s+/).filter(Boolean);
+  return parts.length ? parts.join(" 👏 ") : text;
+}
+
+function toBinary(text: string): string {
+  const bytes = new TextEncoder().encode(text);
+  return Array.from(bytes, (b) => b.toString(2).padStart(8, "0")).join(" ");
+}
+
+const MORSE: Record<string, string> = {
+  a: ".-",
+  b: "-...",
+  c: "-.-.",
+  d: "-..",
+  e: ".",
+  f: "..-.",
+  g: "--.",
+  h: "....",
+  i: "..",
+  j: ".---",
+  k: "-.-",
+  l: ".-..",
+  m: "--",
+  n: "-.",
+  o: "---",
+  p: ".--.",
+  q: "--.-",
+  r: ".-.",
+  s: "...",
+  t: "-",
+  u: "..-",
+  v: "...-",
+  w: ".--",
+  x: "-..-",
+  y: "-.--",
+  z: "--..",
+  "0": "-----",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
+  " ": "/",
+};
+
+function toMorse(text: string): string {
+  return [...text.toLowerCase()]
+    .map((ch) => MORSE[ch] ?? ch)
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function creepy(text: string): string {
+  const marks = ["\u0300", "\u0301", "\u0308", "\u0315"];
+  let out = "";
+  let i = 0;
+  for (const ch of text) {
+    if (/\s/.test(ch)) out += ch;
+    else {
+      out += ch + marks[i % marks.length] + marks[(i + 1) % marks.length];
+      i += 1;
+    }
+  }
+  return out;
+}
+
 export const STYLES: FontStyle[] = [
   {
     id: "bold",
@@ -518,6 +678,7 @@ export const STYLES: FontStyle[] = [
     category: "utility",
     description: "Raised letters and numbers.",
     transform: (t) => applyMap(t, superscriptMap),
+    partialCoverage: true,
   },
   {
     id: "subscript",
@@ -525,6 +686,7 @@ export const STYLES: FontStyle[] = [
     category: "utility",
     description: "Lowered letters and numbers.",
     transform: (t) => applyMap(t, subscriptMap),
+    partialCoverage: true,
   },
   {
     id: "upside-down",
@@ -596,6 +758,144 @@ export const STYLES: FontStyle[] = [
     category: "utility",
     description: "Combining solidus through each letter.",
     transform: (t) => applyCombining(t, "\u0338"),
+  },
+  {
+    id: "vaporwave",
+    label: "Vaporwave",
+    category: "social",
+    description: "Fullwidth vaporwave letters (same Unicode as aesthetic width).",
+    transform: (t) => applyMap(t, fullwidth),
+  },
+  {
+    id: "sans",
+    label: "Sans",
+    category: "classic",
+    description: "Mathematical sans-serif letters.",
+    transform: (t) => applyMap(t, sans),
+  },
+  {
+    id: "sans-bold-italic",
+    label: "Sans Bold Italic",
+    category: "classic",
+    description: "Bold slanted sans Unicode.",
+    transform: (t) => applyMap(t, sansBoldItalic),
+  },
+  {
+    id: "spaced",
+    label: "Spaced Aesthetic",
+    category: "social",
+    description: "Inserts spaces between characters for wide bio vibes.",
+    transform: spacedText,
+  },
+  {
+    id: "double-underline",
+    label: "Double Underline",
+    category: "utility",
+    description: "Double combining underline under each letter.",
+    transform: (t) => applyCombining(t, "\u0333"),
+  },
+  {
+    id: "dots",
+    label: "Dot Overlay",
+    category: "utility",
+    description: "Combining dots above each letter.",
+    transform: (t) => applyCombining(t, "\u0307"),
+  },
+  {
+    id: "wave",
+    label: "Wavy",
+    category: "fun",
+    description: "Combining tilde below for a wavy look.",
+    transform: (t) => applyCombining(t, "\u0330"),
+  },
+  {
+    id: "fire",
+    label: "Fire Wrap",
+    category: "fun",
+    description: "Wraps your phrase with fire emoji.",
+    transform: (t) => wrapPhrase(t, "🔥"),
+  },
+  {
+    id: "sparkle",
+    label: "Sparkle Wrap",
+    category: "fun",
+    description: "Wraps your phrase with sparkles.",
+    transform: (t) => wrapPhrase(t, "✨"),
+  },
+  {
+    id: "clap",
+    label: "Clap Between",
+    category: "fun",
+    description: "Puts 👏 between words.",
+    transform: clapWords,
+  },
+  {
+    id: "blue-circle",
+    label: "Blue Circle Caps",
+    category: "fun",
+    description: "Regional-style blue circle letter emoji (A–Z).",
+    transform: (t) => applyMap(t.toUpperCase(), blueCircle),
+    partialCoverage: true,
+  },
+  {
+    id: "negative-squared",
+    label: "Negative Squared",
+    category: "fun",
+    description: "Filled squared Latin capitals.",
+    transform: (t) => applyMap(t.toUpperCase(), negativeSquared),
+    partialCoverage: true,
+  },
+  {
+    id: "currency",
+    label: "Currency Lookalike",
+    category: "fun",
+    description: "Letter lookalikes from currency and symbol sets.",
+    transform: (t) => applyMap(t, currencyLike),
+    partialCoverage: true,
+  },
+  {
+    id: "greek",
+    label: "Greek Lookalike",
+    category: "fun",
+    description: "Latin letters swapped for similar Greek glyphs.",
+    transform: (t) => applyMap(t, greekLike),
+    partialCoverage: true,
+  },
+  {
+    id: "binary",
+    label: "Binary",
+    category: "utility",
+    description: "UTF-8 bytes as 8-bit binary groups.",
+    transform: toBinary,
+  },
+  {
+    id: "morse",
+    label: "Morse Code",
+    category: "utility",
+    description: "Letters and digits as Morse sequences.",
+    transform: toMorse,
+    partialCoverage: true,
+  },
+  {
+    id: "creepy",
+    label: "Creepy Marks",
+    category: "fun",
+    description: "Lighter glitch combining marks for horror tags.",
+    transform: creepy,
+  },
+  {
+    id: "brace",
+    label: "Brace Frame",
+    category: "fun",
+    description: "Frames the phrase with fancy braces.",
+    transform: (t) => `【${t.trim()}】`,
+  },
+  {
+    id: "corner",
+    label: "Corner Frame",
+    category: "fun",
+    description: "Frames the phrase with corner brackets.",
+    transform: (t) => `『${t.trim()}』`,
   },
 ];
 

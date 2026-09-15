@@ -51,6 +51,9 @@ export function useCopyFeedback(resetMs = 1400) {
     const ok = await copyText(text);
     if (ok) {
       setCopiedId(id);
+      void import("@/components/seo/GoogleAnalytics").then((m) =>
+        m.trackEvent("copy_fancy_text", { style_id: id }),
+      );
       window.setTimeout(
         () => setCopiedId((cur) => (cur === id ? null : cur)),
         resetMs,

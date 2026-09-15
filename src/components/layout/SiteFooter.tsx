@@ -11,6 +11,9 @@ const GUIDES = [
   { href: "/guides/discord-colored-text-not-working/", label: "Discord color fixes" },
   { href: "/guides/whatsapp-stylish-text/", label: "WhatsApp stylish text" },
   { href: "/guides/facebook-name-fonts/", label: "Facebook name fonts" },
+  { href: "/guides/fancy-text-shows-boxes/", label: "Why fancy text shows boxes" },
+  { href: "/guides/roblox-fancy-text/", label: "Roblox fancy text" },
+  { href: "/guides/snapchat-name-fonts/", label: "Snapchat name fonts" },
 ];
 
 const LEGAL = [

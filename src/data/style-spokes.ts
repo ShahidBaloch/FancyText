@@ -618,6 +618,42 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       ],
     },
   ),
+  spoke("binary-text-generator", "binary", ["binary", "morse", "monospace", "fullwidth"], {
+    sampleInput: "Hello",
+    examples: ["Hello", "Code", "Hack", "UTF-8"],
+    showGallery: true,
+    howToSteps: [
+      "Type plain text in the box.",
+      "Copy Binary for UTF-8 bit groups, or Morse for dit-dah sequences.",
+      "Paste into homework, Discord, or a geeky bio line.",
+    ],
+    uses: [
+      "CS homework and UTF-8 demos",
+      "Hacker-aesthetic bios and Discord status",
+      "Morse novelty messages",
+    ],
+    compatibilityNotes: [
+      "Binary and Morse are plain ASCII — they work everywhere.",
+      "This is encoding, not a font. Pair with monospace if you want a code look on the original letters.",
+    ],
+    faq: [
+      {
+        question: "What is a binary text generator?",
+        answer:
+          "It encodes your text as UTF-8 bytes shown as 8-bit binary groups you can copy and paste.",
+      },
+      {
+        question: "Can I decode binary back to text?",
+        answer:
+          "This page focuses on encode-for-copy. For decode, paste binary into a UTF-8 binary decoder or a programming console.",
+      },
+      {
+        question: "Is Morse complete for every character?",
+        answer:
+          "Letters, digits, and spaces are mapped. Punctuation may stay as the original character (partial map).",
+      },
+    ],
+  }),
 ];
 
 export const STYLE_SPOKES_BY_SLUG = Object.fromEntries(

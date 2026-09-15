@@ -88,7 +88,7 @@ export const PLATFORMS: PlatformConfig[] = [
       "Copy a row and paste into Discord display name, channel topic, or message.",
     ],
     uses: [
-      "Discord nicknames and clan tags",
+      "Discord nicknames and clan tags (display name ≠ username)",
       "Server names and channel titles",
       "About-me and status text with fancy Unicode",
     ],
@@ -106,12 +106,22 @@ export const PLATFORMS: PlatformConfig[] = [
       {
         question: "Do cute Discord fonts work in usernames?",
         answer:
-          "Discord allows many Unicode symbols in display names, but some characters may be rejected. Try sans bold or bubble styles if one fails.",
+          "Discord allows many Unicode symbols in display names, but some characters may be rejected. Try sans bold or bubble styles if one fails. Your @username should stay plain ASCII.",
+      },
+      {
+        question: "Unicode fonts vs Discord ANSI color—what is the difference?",
+        answer:
+          "Fancy fonts work in nicknames and many text fields. ANSI colors only work inside ```ansi message code blocks—see the Discord color text tool.",
       },
       {
         question: "Is this the same as discord font copy and paste?",
         answer:
           "Yes. Discord font copy paste searches mean copying pre-styled Unicode text into Discord fields.",
+      },
+      {
+        question: "Why does my Discord nickname show boxes on mobile?",
+        answer:
+          "Mobile clients use different fonts. Switch to sans bold or monospace, or shorten the nickname.",
       },
     ],
   }),
@@ -182,7 +192,7 @@ export const PLATFORMS: PlatformConfig[] = [
       "Copy your favorite row and paste into Instagram profile or caption.",
     ],
     uses: [
-      "Instagram bio and display name styling",
+      "Instagram bio and display name styling (150-character bio limit)",
       "Captions and comment flair",
       "Highlight text for link-in-bio pages",
     ],
@@ -195,7 +205,12 @@ export const PLATFORMS: PlatformConfig[] = [
       {
         question: "Can I copy Instagram fonts for my bio?",
         answer:
-          "Yes. Generate styled text here, tap Copy, and paste directly into your Instagram bio field.",
+          "Yes. Generate styled text here, tap Copy, and paste directly into your Instagram bio field. Stay under 150 characters—fancy letters still count.",
+      },
+      {
+        question: "Which styles does Instagram reject or break?",
+        answer:
+          "Dense Zalgo/glitch, some squared letters, and rare letterlike symbols often show as boxes or fail to save. Prefer cursive, bold, sans bold, bubble, or small caps.",
       },
       {
         question: "Do Instagram fonts copy and paste work on Reels captions?",
@@ -206,6 +221,11 @@ export const PLATFORMS: PlatformConfig[] = [
         question: "Is this an Instagram text generator?",
         answer:
           "People search Instagram font generator, Instagram font changer, and Instagram fonts copy and paste for this gallery. For a stacked profile with character limits, use the social media bio generator instead.",
+      },
+      {
+        question: "Will a fancy bio hurt Instagram search?",
+        answer:
+          "Put your niche keywords in plain letters. Use one stylish line for flair so people and assistive tech can still read the important words.",
       },
     ],
   }),

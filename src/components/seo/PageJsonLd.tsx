@@ -82,7 +82,9 @@ export function PageJsonLd({
           })}
         />
       ) : null}
-      <JsonLd data={breadcrumbJsonLd(breadcrumbItems)} />
+      {breadcrumbItems.length > 1 ? (
+        <JsonLd data={breadcrumbJsonLd(breadcrumbItems)} />
+      ) : null}
     </>
   );
 }

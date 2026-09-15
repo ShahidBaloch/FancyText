@@ -1,0 +1,44 @@
+# FancifyText
+
+> Free Unicode fancy text generators for bios, nicknames, and captions.
+
+Site: https://fancifytext.com/
+Contact: hello@fancifytext.com
+
+## What this site does
+
+FancifyText converts normal letters into Unicode look-alike “fonts” (bold, cursive, bubble, aesthetic, and more) that users copy and paste into Instagram, Discord, TikTok, WhatsApp, and similar apps. It does **not** install TTF/OTF font files.
+
+## Primary tools
+
+- / — Fancy text generator (hub)
+- /copy-paste-fonts/ — Full style gallery
+- /cursive-text-generator/ — Script / cursive
+- /bold-text-generator/ — Bold Unicode
+- /discord-color-text/ — Discord ANSI colors
+- /discord-font-generator/ — Discord nicknames
+- /instagram-font-generator/ — Instagram bio fonts
+- /social-media-bio-generator/ — Multi-platform bio builder with limits
+- /kaomoji/ — Japanese emoticons by emotion
+- /cool-symbols/ — Symbol copy grid
+- /text-decorator/ — Frame / wrap text
+- /binary-text-generator/ — Text to binary / Morse
+- /search/ — Site tool search
+
+## Guides
+
+- /guides/how-unicode-fancy-fonts-work/
+- /guides/instagram-bio-fonts/
+- /guides/discord-colored-text-not-working/
+- /guides/whatsapp-stylish-text/
+- /guides/facebook-name-fonts/
+- /guides/roblox-fancy-text/
+- /guides/fancy-text-shows-boxes/
+- /guides/snapchat-name-fonts/
+
+## Policies
+
+- /about/
+- /contact/
+- /privacy/
+- /terms/

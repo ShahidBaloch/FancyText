@@ -29,3 +29,33 @@ export const LETTER_TIPS: Record<Letter, string> = {
   y: "Cursive y drops like g after a v-shape; great for stylish last-name initials when pasted as Unicode.",
   z: "Cursive z zigzags then may drop a tail; Unicode z is a stylish closer for aesthetic signatures and short tags.",
 };
+
+/** Unique example words per letter to reduce doorway-template sameness. */
+export const LETTER_EXAMPLES: Record<Letter, string[]> = {
+  a: ["Ava", "Alex", "Aura"],
+  b: ["Blake", "Bella", "Boss"],
+  c: ["Cora", "Chris", "Cute"],
+  d: ["Dana", "Drew", "Dream"],
+  e: ["Eva", "Eden", "Elite"],
+  f: ["Finn", "Faye", "Fire"],
+  g: ["Grace", "Gabe", "Glow"],
+  h: ["Harper", "Hugo", "Heart"],
+  i: ["Ivy", "Iris", "Icon"],
+  j: ["Jade", "Joel", "Jazz"],
+  k: ["Kai", "Kate", "King"],
+  l: ["Luna", "Leo", "Love"],
+  m: ["Maya", "Max", "Moon"],
+  n: ["Nora", "Noah", "Neon"],
+  o: ["Olivia", "Owen", "Orbit"],
+  p: ["Piper", "Paul", "Pixel"],
+  q: ["Quinn", "Quest", "Quiet"],
+  r: ["Riley", "Rose", "Rebel"],
+  s: ["Sofia", "Sam", "Star"],
+  t: ["Tara", "Theo", "True"],
+  u: ["Uma", "Uri", "Ultra"],
+  v: ["Vera", "Vince", "Vibe"],
+  w: ["Wren", "Will", "Wave"],
+  x: ["Xander", "Xen", "Xoxo"],
+  y: ["Yara", "Yves", "Yoga"],
+  z: ["Zoe", "Zack", "Zen"],
+};

@@ -823,6 +823,62 @@ export const PAGES: PageEntry[] = [
       "whatsapp bold italic strike",
     ),
   },
+  {
+    phase: 6,
+    priority: "P1",
+    url: "/binary-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "binary text generator",
+    title: "Binary Text Generator — Text to Binary Copy & Paste | FancifyText",
+    description:
+      "Convert text to UTF-8 binary (and Morse). Copy geeky encoded text for Discord, homework, and bios.",
+    fellowKeywords: fellows("text to binary", "binary code generator", "morse code generator"),
+    navLabel: "Binary",
+  },
+  {
+    phase: 6,
+    priority: "P2",
+    url: "/guides/roblox-fancy-text/",
+    group: "I_Guides",
+    primaryKeyword: "roblox fancy text",
+    title: "Roblox Fancy Text & Rich Text Guide | FancifyText",
+    description:
+      "How to use Unicode fancy text and limited rich-text tags in Roblox names, bios, and UI—plus what gets filtered.",
+    fellowKeywords: fellows("roblox font generator", "roblox stylish name"),
+  },
+  {
+    phase: 6,
+    priority: "P2",
+    url: "/guides/fancy-text-shows-boxes/",
+    group: "I_Guides",
+    primaryKeyword: "fancy text shows as boxes",
+    title: "Why Fancy Text Shows as Boxes (and Fixes) | FancifyText",
+    description:
+      "Empty tofu boxes mean a missing glyph. Learn which Unicode styles are safest on iOS, Android, and Windows.",
+    fellowKeywords: fellows("unicode tofu boxes", "fancy font not showing"),
+  },
+  {
+    phase: 6,
+    priority: "P2",
+    url: "/guides/snapchat-name-fonts/",
+    group: "I_Guides",
+    primaryKeyword: "snapchat name fonts",
+    title: "Snapchat Name Fonts Copy and Paste | FancifyText",
+    description:
+      "Snapchat has no font picker. Paste Unicode into display names carefully—filters reject many symbols.",
+    fellowKeywords: fellows("snapchat fancy name", "change snapchat font"),
+  },
+  {
+    phase: 6,
+    priority: "P2",
+    url: "/search/",
+    group: "H_Trust",
+    primaryKeyword: "search fancifytext tools",
+    title: "Search Fancy Text Tools | FancifyText",
+    description:
+      "Find FancifyText generators by keyword—bold, cursive, Discord, Instagram, kaomoji, and more.",
+    fellowKeywords: fellows("fancy text tools list"),
+  },
 ];
 
 /** Highest build phase with live routes (bump as phases ship). */
@@ -1338,6 +1394,8 @@ const EXPLORE_URLS = [
   "/social-media-bio-generator/",
   "/name-font-generator/",
   "/html-text-generator/",
+  "/binary-text-generator/",
+  "/search/",
 ];
 
 export function getExplorePages(): PageEntry[] {
@@ -1349,6 +1407,7 @@ export function getExplorePages(): PageEntry[] {
 const NAV_URLS = [
   "/",
   "/cursive-text-generator/",
+  "/bold-text-generator/",
   "/copy-paste-fonts/",
   "/instagram-font-generator/",
   "/discord-font-generator/",

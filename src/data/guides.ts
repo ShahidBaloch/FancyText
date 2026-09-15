@@ -276,6 +276,121 @@ export const GUIDES: GuideConfig[] = [
       },
     ],
   },
+  {
+    slug: "roblox-fancy-text",
+    h1: "Roblox fancy text and rich text",
+    datePublished: "2026-09-15",
+    dateModified: "2026-09-15",
+    howToSteps: [
+      "Generate a short Unicode name on the Roblox font generator.",
+      "Paste into a display name or bio and check Roblox does not strip the characters.",
+      "For UI labels that support rich text, prefer simple HTML-like tags from the HTML text generator instead of dense Zalgo.",
+    ],
+    sections: [
+      {
+        heading: "Unicode names vs rich text tags",
+        body: [
+          "Roblox chat and many name fields accept some Unicode fancy letters, but filters reject glitch marks and odd symbols. Start with sans bold or bubble.",
+          "Experience UI text sometimes supports limited rich-text tags (bold, color). That is markup, not Unicode fonts—use the HTML text generator and test in Studio.",
+        ],
+      },
+      {
+        heading: "What usually fails",
+        body: [
+          "Zalgo / heavy combining marks, squared letters, and rare letterlike symbols often get filtered or show as boxes on console fonts.",
+          "Keep usernames short. Long fancy strings look broken in the friends list.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Can I use cursive in a Roblox username?",
+        answer:
+          "Sometimes in display-style fields. Account usernames are stricter. Always keep a plain backup name.",
+      },
+      {
+        question: "Is Roblox fancy text a real font download?",
+        answer:
+          "No. Like other fancy text tools, you paste Unicode characters. Nothing installs on the device.",
+      },
+    ],
+  },
+  {
+    slug: "fancy-text-shows-boxes",
+    h1: "Why fancy text shows as boxes",
+    datePublished: "2026-09-15",
+    dateModified: "2026-09-15",
+    howToSteps: [
+      "If you see □ or empty glyphs, switch to bold, sans bold, or bubble.",
+      "Shorten the string—rare letters in the middle of a word often fail first.",
+      "Preview on the phone or OS where the bio will be read.",
+    ],
+    sections: [
+      {
+        heading: "Missing glyphs, not a broken generator",
+        body: [
+          "Fancy text is still text. Boxes (“tofu”) appear when the device font file does not include that Unicode code point.",
+          "Mathematical bold and sans bold are widely covered. Fraktur, parenthesized, and some combining overlays fail more often on older Android skins and console overlays.",
+        ],
+      },
+      {
+        heading: "Safer style order",
+        body: [
+          "Try sans bold → bold → bubble → cursive → small caps → fullwidth. Keep glitch and squared for novelty only.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Why does Instagram show boxes but Discord does not?",
+        answer:
+          "Each app embeds different fonts. Test in the destination app, not only in the browser preview.",
+      },
+      {
+        question: "Do boxes hurt SEO?",
+        answer:
+          "On your own website, prefer plain keywords. Fancy Unicode in a public bio is fine for style but weak for search matching.",
+      },
+    ],
+  },
+  {
+    slug: "snapchat-name-fonts",
+    h1: "Snapchat name fonts",
+    datePublished: "2026-09-15",
+    dateModified: "2026-09-15",
+    howToSteps: [
+      "Generate a short name on the Snapchat font generator.",
+      "Copy sans bold or bubble first—Snapchat filters reject many symbols.",
+      "Paste into the display name field and confirm it saves.",
+    ],
+    sections: [
+      {
+        heading: "Snapchat is picky",
+        body: [
+          "Snapchat has no font picker. Unicode is the only workaround, and the app rejects a long list of symbols for abuse and spoofing reasons.",
+          "If a paste fails, strip combining marks and try sans bold or small caps. Keep the username handle plain.",
+        ],
+      },
+      {
+        heading: "Bitmoji and search",
+        body: [
+          "Friends still find you by username more than by fancy display letters. Put searchable words in plain text when you can.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Why won’t Snapchat save my fancy name?",
+        answer:
+          "The character set is filtered. Switch to a more compatible Unicode style or shorten the name.",
+      },
+      {
+        question: "Can I use cursive on Snapchat?",
+        answer:
+          "Sometimes. Script letters are hit-or-miss; sans bold is the safer first try.",
+      },
+    ],
+  },
 ];
 
 export const GUIDES_BY_SLUG = Object.fromEntries(

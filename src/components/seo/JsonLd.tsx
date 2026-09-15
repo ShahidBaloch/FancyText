@@ -137,6 +137,7 @@ export function organizationJsonLd(opts: {
   url: string;
   description: string;
   email?: string;
+  sameAs?: string[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -148,6 +149,7 @@ export function organizationJsonLd(opts: {
       "@type": "ImageObject",
       url: new URL("/icon", opts.url).toString(),
     },
+    ...(opts.sameAs?.length ? { sameAs: opts.sameAs } : {}),
     ...(opts.email
       ? {
           contactPoint: {
@@ -165,6 +167,7 @@ export function webSiteJsonLd(opts: {
   name: string;
   url: string;
   description: string;
+  searchUrlTemplate?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -178,6 +181,18 @@ export function webSiteJsonLd(opts: {
       name: opts.name,
       url: opts.url,
     },
+    ...(opts.searchUrlTemplate
+      ? {
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: opts.searchUrlTemplate,
+            },
+            "query-input": "required name=search_term_string",
+          },
+        }
+      : {}),
   };
 }
 

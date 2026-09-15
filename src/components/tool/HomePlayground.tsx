@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HomeHero } from "@/components/seo/HomeHero";
 import { TextTool } from "@/components/tool/TextTool";
 
@@ -32,6 +32,24 @@ const HOME_STYLE_IDS = [
 
 export function HomePlayground() {
   const [text, setText] = useState(INITIAL_TEXT);
+  const [showGallery, setShowGallery] = useState(false);
+  const galleryRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const node = galleryRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShowGallery(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -46,19 +64,30 @@ export function HomePlayground() {
         />
       </div>
 
-      <section className="seo-section" aria-labelledby="gallery-heading">
+      <section
+        ref={galleryRef}
+        className="seo-section"
+        aria-labelledby="gallery-heading"
+      >
         <h2 id="gallery-heading">All Unicode styles in one gallery</h2>
         <p className="seo-lead">
           Preview every FancifyText style as a live word converter. Use this
           gallery when you want the full set; open a collection when you only
           want aesthetic, cute, or graphic looks.
         </p>
-        <StyleGallery
-          initialText={INITIAL_TEXT}
-          text={text}
-          onTextChange={setText}
-          presets={["fancy text", "cool bio", "username", "aesthetic"]}
-        />
+        {showGallery ? (
+          <StyleGallery
+            initialText={INITIAL_TEXT}
+            text={text}
+            onTextChange={setText}
+            showInput={false}
+            enableFavorites
+            enableCategoryFilter
+            presets={["fancy text", "cool bio", "username", "aesthetic"]}
+          />
+        ) : (
+          <p className="seo-lead">Scroll to load the full style gallery…</p>
+        )}
       </section>
     </>
   );

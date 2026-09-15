@@ -48,5 +48,8 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|svg|ico)$).*)"],
+  // Keep crawl essentials out of proxy so bots always hit robots/sitemap directly.
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|robots\\.txt|sitemap\\.xml|.*\\.(?:png|jpg|svg|ico)$).*)",
+  ],
 };
