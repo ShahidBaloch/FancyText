@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
 import { FaqSection } from "@/components/seo/FaqSection";
@@ -9,9 +8,8 @@ import {
   webSiteJsonLd,
 } from "@/components/seo/JsonLd";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
-import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
-import { TextTool } from "@/components/tool/TextTool";
+import { HomePlayground } from "@/components/tool/HomePlayground";
 import { CONTACT_EMAIL } from "@/data/contact";
 import {
   SITE_NAME,
@@ -20,16 +18,6 @@ import {
   getTopicalRelated,
 } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
-
-const StyleGallery = dynamic(
-  () =>
-    import("@/components/tool/StyleGallery").then((mod) => mod.StyleGallery),
-  {
-    loading: () => (
-      <p className="seo-lead">Loading live style previews…</p>
-    ),
-  },
-);
 
 const page = getPageByUrl("/")!;
 
@@ -121,37 +109,7 @@ export default function HomePage() {
           ],
         }}
       />
-      <HomeHero />
-
-      <div className="tool-stage" id="tool">
-        <TextTool
-          styleIds={[
-            "cursive",
-            "bold",
-            "sans-bold",
-            "italic",
-            "bubble",
-            "tiny",
-            "small-caps",
-            "fullwidth",
-            "fraktur",
-            "mirror",
-          ]}
-        />
-      </div>
-
-      <section className="seo-section" aria-labelledby="gallery-heading">
-        <h2 id="gallery-heading">All Unicode styles in one gallery</h2>
-        <p className="seo-lead">
-          Preview every FancifyText style as a live word converter. Use this
-          gallery when you want the full set; open a collection when you only
-          want aesthetic, cute, or graphic looks.
-        </p>
-        <StyleGallery
-          initialText="fancy text"
-          presets={["fancy text", "cool bio", "username", "aesthetic"]}
-        />
-      </section>
+      <HomePlayground />
 
       <section className="seo-section" aria-labelledby="how-heading">
         <h2 id="how-heading">How to use</h2>
@@ -199,10 +157,14 @@ export default function HomePage() {
             </Link>
           </li>
           <li>
-            <Link href="/discord-color-text/" className="use-card">
+            <div className="use-card use-card--static">
               <span className="use-name">Discord</span>
-              <span className="use-desc">Nicknames, topics, ANSI color</span>
-            </Link>
+              <span className="use-desc">
+                <Link href="/discord-font-generator/">Nicknames</Link>
+                {" · "}
+                <Link href="/discord-color-text/">ANSI color</Link>
+              </span>
+            </div>
           </li>
           <li>
             <Link href="/tiktok-font-generator/" className="use-card">
@@ -329,6 +291,11 @@ export default function HomePage() {
           <li>
             <Link href="/guides/whatsapp-stylish-text/">
               WhatsApp stylish text
+            </Link>
+          </li>
+          <li>
+            <Link href="/guides/facebook-name-fonts/">
+              How to change Facebook name fonts
             </Link>
           </li>
         </ul>

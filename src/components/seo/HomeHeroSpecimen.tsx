@@ -18,11 +18,12 @@ const SHOWCASE = SHOWCASE_IDS.map(
   (id) => STYLES.find((s) => s.id === id) ?? STYLES[0],
 );
 
-export function HomeHeroSpecimen() {
+export function HomeHeroSpecimen({ text }: { text?: string }) {
   const [index, setIndex] = useState(0);
   const [cycle, setCycle] = useState(0);
   const style = SHOWCASE[index] ?? SHOWCASE[0];
-  const specimen = transform(SPECIMEN, style.id);
+  const source = text?.trim() ? text : SPECIMEN;
+  const specimen = transform(source, style.id);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");

@@ -397,6 +397,15 @@ function smallCapsTransform(text: string): string {
   return out;
 }
 
+/** Superscript where it exists; small-caps fallback so whole bios stay tiny. */
+function tinyTransform(text: string): string {
+  let out = "";
+  for (const ch of text) {
+    out += superscriptMap[ch] ?? smallCapsLower[ch.toLowerCase()] ?? ch;
+  }
+  return out;
+}
+
 export const STYLES: FontStyle[] = [
   {
     id: "bold",
@@ -535,8 +544,9 @@ export const STYLES: FontStyle[] = [
     id: "tiny",
     label: "Tiny / Small",
     category: "utility",
-    description: "Raised small letters for compact bios and tags.",
-    transform: (t) => applyMap(t, superscriptMap),
+    description:
+      "Compact bio letters: superscript plus small-caps fallback for missing glyphs.",
+    transform: tinyTransform,
   },
   {
     id: "mirror",

@@ -228,7 +228,6 @@ export const PAGES: PageEntry[] = [
       "discord color codes",
       "discord colored text",
     ),
-    navLabel: "Discord",
   },
   {
     phase: 4,
@@ -244,6 +243,7 @@ export const PAGES: PageEntry[] = [
       "discord text generator",
       "cute discord fonts",
     ),
+    navLabel: "Discord",
   },
   {
     phase: 4,
@@ -1351,7 +1351,7 @@ const NAV_URLS = [
   "/cursive-text-generator/",
   "/copy-paste-fonts/",
   "/instagram-font-generator/",
-  "/discord-color-text/",
+  "/discord-font-generator/",
   "/cool-symbols/",
   "/kaomoji/",
 ] as const;

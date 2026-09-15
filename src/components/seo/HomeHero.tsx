@@ -1,6 +1,6 @@
 import { HomeHeroSpecimen } from "@/components/seo/HomeHeroSpecimen";
 
-export function HomeHero() {
+export function HomeHero({ text }: { text?: string }) {
   return (
     <section className="home-hero" aria-labelledby="home-title">
       <div className="home-hero-copy">
@@ -22,7 +22,7 @@ export function HomeHero() {
         </div>
       </div>
 
-      <HomeHeroSpecimen />
+      <HomeHeroSpecimen text={text} />
     </section>
   );
 }

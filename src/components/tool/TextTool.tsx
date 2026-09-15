@@ -59,12 +59,28 @@ export function TextTool({
           className="style-chips"
           role="radiogroup"
           aria-label="Font style"
+          onKeyDown={(e) => {
+            if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+            if (chips.length < 2) return;
+            e.preventDefault();
+            const index = chips.findIndex((style) => style.id === styleId);
+            const delta = e.key === "ArrowRight" ? 1 : -1;
+            const next =
+              chips[(index + delta + chips.length) % chips.length];
+            if (!next) return;
+            setStyleId(next.id);
+            const target = e.currentTarget.querySelector<HTMLElement>(
+              `[data-style-id="${next.id}"]`,
+            );
+            target?.focus();
+          }}
         >
           {chips.map((style) => (
             <button
               key={style.id}
               type="button"
               role="radio"
+              data-style-id={style.id}
               aria-checked={styleId === style.id}
               className={`style-chip${styleId === style.id ? " is-active" : ""}`}
               onClick={() => setStyleId(style.id)}

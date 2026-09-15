@@ -10,6 +10,7 @@ const GUIDES = [
   { href: "/guides/how-unicode-fancy-fonts-work/", label: "How fancy fonts work" },
   { href: "/guides/discord-colored-text-not-working/", label: "Discord color fixes" },
   { href: "/guides/whatsapp-stylish-text/", label: "WhatsApp stylish text" },
+  { href: "/guides/facebook-name-fonts/", label: "Facebook name fonts" },
 ];
 
 const LEGAL = [
@@ -19,9 +20,28 @@ const LEGAL = [
   { href: "/terms/", label: "Terms" },
 ];
 
-function sentenceCase(value: string): string {
-  if (!value) return value;
-  return value.charAt(0).toUpperCase() + value.slice(1);
+const BRAND_WORDS: Record<string, string> = {
+  html: "HTML",
+  tiktok: "TikTok",
+  whatsapp: "WhatsApp",
+  discord: "Discord",
+  instagram: "Instagram",
+  facebook: "Facebook",
+  youtube: "YouTube",
+};
+
+function navLinkLabel(value: string): string {
+  const small = new Set(["and", "or", "for", "of", "the", "a", "an"]);
+  return value
+    .split(/(\s+)/)
+    .map((part, index) => {
+      const lower = part.toLowerCase();
+      if (BRAND_WORDS[lower]) return BRAND_WORDS[lower];
+      if (!part.trim()) return part;
+      if (index > 0 && small.has(lower)) return lower;
+      return part.charAt(0).toUpperCase() + part.slice(1);
+    })
+    .join("");
 }
 
 export function SiteFooter() {
@@ -44,7 +64,7 @@ export function SiteFooter() {
           <p className="footer-col-title">Tools</p>
           {tools.map((item) => (
             <Link key={item.url} href={item.url}>
-              {sentenceCase(item.navLabel ?? item.primaryKeyword)}
+              {item.navLabel ?? navLinkLabel(item.primaryKeyword)}
             </Link>
           ))}
         </nav>
@@ -53,7 +73,7 @@ export function SiteFooter() {
           <p className="footer-col-title">Explore</p>
           {explore.map((item) => (
             <Link key={item.url} href={item.url}>
-              {sentenceCase(item.primaryKeyword)}
+              {navLinkLabel(item.primaryKeyword)}
             </Link>
           ))}
         </nav>

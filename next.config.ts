@@ -12,6 +12,22 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  async redirects() {
+    return [
+      {
+        source: "/",
+        has: [{ type: "host", value: "www.fancifytext.com" }],
+        destination: "https://fancifytext.com/",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.fancifytext.com" }],
+        destination: "https://fancifytext.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

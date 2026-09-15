@@ -11,7 +11,7 @@
   --panel: #ffffff;
   --panel-solid: #ffffff;
   --accent: #ff5e1f;
-  --accent-deep: #e54d12;
+  --accent-deep: #c2410c;
   --accent-hot: #ff4801;
   --accent-soft: #fff4ed;
   --ink-soft: #1d1d1d;
@@ -400,7 +400,7 @@ a {
   padding: 0.78rem 1.3rem;
   border-radius: 999px;
   border: none;
-  background: var(--accent);
+  background: var(--accent-deep);
   color: #fff;
   font: inherit;
   font-size: 0.95rem;
@@ -414,7 +414,7 @@ a {
 }
 
 .btn-primary:hover {
-  background: var(--accent-deep);
+  background: #9a3412;
 }
 
 .btn-primary:active {
@@ -696,14 +696,14 @@ a {
 }
 
 .style-chip.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
   color: #fff;
 }
 
 .style-chip.is-active:hover {
-  background: var(--accent-deep);
-  border-color: var(--accent-deep);
+  background: #9a3412;
+  border-color: #9a3412;
   color: #fff;
 }
 
