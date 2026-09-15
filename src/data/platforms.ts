@@ -3,6 +3,22 @@ import { getPageByUrl } from "@/data/pages/registry";
 
 export type PlatformToolType = "fonts" | "discord-color" | "html-rich" | "bio-builder";
 
+/**
+ * Whether a given profile field will accept Unicode styled text at all.
+ * The near-universal rule is that @handles are ASCII-only while display names
+ * and bios are not — which is why "my font worked in my name but not my
+ * username" is the most common complaint in this niche.
+ */
+export type FieldUnicode = "yes" | "no" | "filtered";
+
+export type PlatformField = {
+  name: string;
+  unicode: FieldUnicode;
+  /** Character limit where it is stable and well documented; null when it varies. */
+  limit: number | null;
+  note: string;
+};
+
 export type PlatformConfig = {
   slug: string;
   toolType: PlatformToolType;
@@ -13,7 +29,15 @@ export type PlatformConfig = {
   howToSteps: string[];
   uses: string[];
   colorCodes?: boolean;
+  /** Per-field Unicode support, rendered as the "Where fonts work" table. */
+  fields?: PlatformField[];
   faq: { question: string; answer: string }[];
+};
+
+export const FIELD_UNICODE_LABELS: Record<FieldUnicode, string> = {
+  yes: "Fancy fonts work",
+  no: "Plain text only",
+  filtered: "Partly filtered",
 };
 
 function platform(
@@ -92,6 +116,32 @@ export const PLATFORMS: PlatformConfig[] = [
       "Server names and channel titles",
       "About-me and status text with fancy Unicode",
     ],
+    fields: [
+      {
+        name: "Display name",
+        unicode: "yes",
+        limit: 32,
+        note: "Your global name across servers. Accepts Unicode styles.",
+      },
+      {
+        name: "Username (@handle)",
+        unicode: "no",
+        limit: 32,
+        note: "Lowercase letters, numbers, underscores, and periods only. Styled characters cannot be used here.",
+      },
+      {
+        name: "Server nickname",
+        unicode: "yes",
+        limit: 32,
+        note: "Set per server, so you can style your name in one community and leave it plain in another.",
+      },
+      {
+        name: "About me",
+        unicode: "yes",
+        limit: 190,
+        note: "Accepts Unicode styles, but Discord also supports real **bold** and *italic* markdown here, which stays readable to screen readers.",
+      },
+    ],
     faq: [
       {
         question: "What is a Discord font generator?",
@@ -149,6 +199,32 @@ export const PLATFORMS: PlatformConfig[] = [
       "Video captions and on-screen text ideas",
       "Aesthetic creator branding",
     ],
+    fields: [
+      {
+        name: "Name (nickname)",
+        unicode: "yes",
+        limit: 30,
+        note: "Accepts Unicode styles, and TikTok limits changes to roughly once a week.",
+      },
+      {
+        name: "Username (@handle)",
+        unicode: "no",
+        limit: null,
+        note: "Letters, numbers, underscores, and periods only. Styled characters are rejected outright.",
+      },
+      {
+        name: "Bio",
+        unicode: "yes",
+        limit: 80,
+        note: "The tightest bio limit of the major platforms, so wide styles such as fullwidth run out of room quickly.",
+      },
+      {
+        name: "Video captions",
+        unicode: "yes",
+        limit: null,
+        note: "Styled text works, but keep hashtags plain so they stay clickable and searchable.",
+      },
+    ],
     faq: [
       {
         question: "What is a TikTok font generator?",
@@ -195,6 +271,32 @@ export const PLATFORMS: PlatformConfig[] = [
       "Instagram bio and display name styling (150-character bio limit)",
       "Captions and comment flair",
       "Highlight text for link-in-bio pages",
+    ],
+    fields: [
+      {
+        name: "Name (display name)",
+        unicode: "yes",
+        limit: 30,
+        note: "Accepts Unicode styles. Instagram limits how often this can be changed, so settle on a style before saving repeatedly.",
+      },
+      {
+        name: "Username (@handle)",
+        unicode: "no",
+        limit: 30,
+        note: "Restricted to lowercase letters, numbers, periods, and underscores. No Unicode style can be used here, and this is also what keeps you findable in search.",
+      },
+      {
+        name: "Bio",
+        unicode: "yes",
+        limit: 150,
+        note: "The best place for styled text. Blank lines are collapsed unless the line holds an invisible character.",
+      },
+      {
+        name: "Captions and comments",
+        unicode: "yes",
+        limit: null,
+        note: "Styled text works, but keep hashtags and keywords in plain letters or they stop matching searches.",
+      },
     ],
     faq: [
       {
@@ -381,6 +483,32 @@ export const PLATFORMS: PlatformConfig[] = [
       "X / Twitter display names",
       "160-character profile bios",
       "Reply flair where Unicode is allowed",
+    ],
+    fields: [
+      {
+        name: "Display name",
+        unicode: "yes",
+        limit: 50,
+        note: "Accepts Unicode styles and can be changed as often as you like.",
+      },
+      {
+        name: "Username (@handle)",
+        unicode: "no",
+        limit: 15,
+        note: "Letters, numbers, and underscores only, with the shortest handle limit of any major platform.",
+      },
+      {
+        name: "Bio",
+        unicode: "yes",
+        limit: 160,
+        note: "Accepts Unicode styles. Links and @mentions still work around styled text.",
+      },
+      {
+        name: "Posts",
+        unicode: "yes",
+        limit: null,
+        note: "Styled text posts fine, but it is excluded from search results because it no longer matches the plain words people type.",
+      },
     ],
     faq: [
       {

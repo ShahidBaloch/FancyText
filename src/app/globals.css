@@ -1119,6 +1119,24 @@ a.use-card:hover {
   color: var(--danger);
 }
 
+.gallery-support[data-field-unicode="yes"] {
+  border-color: color-mix(in srgb, #15803d 35%, var(--line));
+  background: color-mix(in srgb, #15803d 7%, white);
+  color: #15803d;
+}
+
+.gallery-support[data-field-unicode="filtered"] {
+  border-color: color-mix(in srgb, #b45309 35%, var(--line));
+  background: color-mix(in srgb, #b45309 7%, white);
+  color: #b45309;
+}
+
+.gallery-support[data-field-unicode="no"] {
+  border-color: color-mix(in srgb, var(--danger) 35%, var(--line));
+  background: color-mix(in srgb, var(--danger) 7%, white);
+  color: var(--danger);
+}
+
 .gallery-support[data-support="username"] {
   border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
   background: var(--accent-soft);

@@ -9,7 +9,7 @@ import { BioBuilder } from "@/components/tool/BioBuilder";
 import { DiscordColorTool } from "@/components/tool/DiscordColorTool";
 import { HtmlRichTool } from "@/components/tool/HtmlRichTool";
 import { StyleGallery } from "@/components/tool/StyleGallery";
-import type { PlatformConfig } from "@/data/platforms";
+import { FIELD_UNICODE_LABELS, type PlatformConfig } from "@/data/platforms";
 import { SITE_NAME, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 import { DISCORD_COLOR_CODES } from "@/lib/discord/ansi";
 
@@ -71,6 +71,46 @@ export function PlatformView({ config }: PlatformViewProps) {
           />
         )}
       </div>
+
+      {config.fields?.length ? (
+        <section className="seo-section" aria-labelledby="fields-heading">
+          <h2 id="fields-heading">Which {h1.split(" ")[0]} fields accept fancy fonts</h2>
+          <p className="seo-lead">
+            Styled text is Unicode characters, not a font setting, so whether it
+            works depends entirely on which characters the field allows. Handles
+            are the ones that never accept it.
+          </p>
+          <div className="codes-table-wrap">
+            <table className="codes-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Fancy fonts</th>
+                  <th>Limit</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {config.fields.map((field) => (
+                  <tr key={field.name}>
+                    <td>{field.name}</td>
+                    <td>
+                      <span
+                        className="gallery-support"
+                        data-field-unicode={field.unicode}
+                      >
+                        {FIELD_UNICODE_LABELS[field.unicode]}
+                      </span>
+                    </td>
+                    <td>{field.limit ? `${field.limit} chars` : "Varies"}</td>
+                    <td>{field.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ) : null}
 
       {config.colorCodes ? (
         <section className="seo-section" aria-labelledby="codes-heading">
