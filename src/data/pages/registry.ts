@@ -892,6 +892,22 @@ export const PAGES: PageEntry[] = [
   },
   {
     phase: 6,
+    priority: "P1",
+    url: "/guides/do-fancy-fonts-break-screen-readers/",
+    group: "I_Guides",
+    primaryKeyword: "do fancy fonts break screen readers",
+    title: "Do Fancy Fonts Break Screen Readers? (2026) | FancifyText",
+    description:
+      "NVDA 2025.1 now reads Unicode bold and cursive as plain words by default. What still breaks, what to do instead.",
+    fellowKeywords: fellows(
+      "unicode text accessibility",
+      "is unicode bold accessible",
+      "zalgo text accessibility",
+      "screen reader fancy text",
+    ),
+  },
+  {
+    phase: 6,
     priority: "P2",
     url: "/guides/snapchat-name-fonts/",
     group: "I_Guides",
@@ -1044,7 +1060,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/guides/how-unicode-fancy-fonts-work/": [
     "/",
     "/copy-paste-fonts/",
-    "/about/",
+    "/guides/do-fancy-fonts-break-screen-readers/",
     "/bold-text-generator/",
   ],
   "/guides/facebook-name-fonts/": [
@@ -1198,6 +1214,12 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/instagram-font-generator/",
     "/social-media-bio-generator/",
     "/aesthetic-fonts/",
+  ],
+  "/guides/do-fancy-fonts-break-screen-readers/": [
+    "/guides/how-unicode-fancy-fonts-work/",
+    "/guides/fancy-text-shows-boxes/",
+    "/bold-text-generator/",
+    "/glitch-text-generator/",
   ],
 };
 

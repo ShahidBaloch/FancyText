@@ -391,6 +391,94 @@ export const GUIDES: GuideConfig[] = [
       },
     ],
   },
+  {
+    slug: "do-fancy-fonts-break-screen-readers",
+    h1: "Do fancy fonts break screen readers?",
+    datePublished: "2026-09-15",
+    dateModified: "2026-09-15",
+    howToSteps: [
+      "Decide whether the text is decoration (a display name, a one-line bio accent) or content people need to read.",
+      "For decoration, style a short fragment and leave the words that carry meaning in ordinary letters.",
+      "For content—captions, posts, headings, anything longer than a few words—use real bold or italic formatting instead of Unicode look-alikes.",
+    ],
+    sections: [
+      {
+        heading: "The short answer: less than they used to, but it depends on the reader",
+        body: [
+          "Almost every guide on this topic says the same thing: a screen reader hears “MATHEMATICAL BOLD SMALL H, MATHEMATICAL BOLD SMALL I” when you write 𝐡𝐢. That was true for years. It is no longer true everywhere, and the pages still repeating it have not been updated.",
+          "NVDA—the most widely used screen reader on Windows—turned Unicode normalization on by default for speech in version 2025.1. With it on, 𝐡𝐞𝐥𝐥𝐨, 𝒽𝑒𝓁𝓁𝑜 and 𝗵𝗲𝗹𝗹𝗼 are all simply spoken as “hello”. The setting lives under Speech in NVDA’s settings dialog and can be switched off.",
+          "So the honest answer in 2026 is: it depends on which reader, which version, and which output. That is less satisfying than a blanket warning, but a blanket warning would send you to the wrong decision half the time.",
+        ],
+      },
+      {
+        heading: "Why normalization works at all",
+        body: [
+          "These characters were never meant for prose. The Unicode standard’s own note on the Mathematical Alphanumeric Symbols block says they are “to be used for mathematical variables where style variations are important semantically. For general text, use standard Latin and Greek letters with markup.”",
+          "Each one does carry a formal link back to its plain twin. U+1D41A MATHEMATICAL BOLD SMALL A has a decomposition type of “font” and a decomposition mapping to plain “a”. Normalization follows that mapping, which is how a screen reader can recover “hello” from 𝐡𝐞𝐥𝐥𝐨 without guessing.",
+          "That also explains the limits. The mapping only exists for characters that have a plain equivalent. Anything without one cannot be recovered.",
+        ],
+      },
+      {
+        heading: "Where it still breaks",
+        body: [
+          "Braille displays. NVDA enabled normalization for speech, but left it off by default for braille output. A braille reader can still get an unreadable line where a speech user gets clean text—and braille users are exactly the people least likely to have a sighted person nearby to explain it.",
+          "Other screen readers. VoiceOver on macOS and iOS, TalkBack on Android, and JAWS do not share NVDA’s default. Behaviour ranges from reading the formal character name, to spelling letters out, to skipping characters entirely. Do not assume NVDA’s fix is universal.",
+          "Combining-mark styles. Normalization does not rescue these. Strikethrough, underline, and especially zalgo work by stacking extra marks on top of ordinary letters, and those marks have no plain equivalent to fall back to. A reader may announce every single one. Zalgo is the genuinely hostile case and always has been.",
+          "Superscript and subscript. Here normalization actively costs you meaning: ⁱ becomes “i” and ₙ becomes “n”, so x² and x₂ can both flatten to “x2”. Fine for a bio, bad for anything where the position was the point.",
+          "Search, mentions, and autocorrect. This is not accessibility, but it lands on the same people. Styled letters do not match plain-text search, @-mentions often fail, and spellcheck gives up. A name nobody can find or tag is its own kind of inaccessible.",
+        ],
+      },
+      {
+        heading: "What to actually do",
+        body: [
+          "Style the accent, not the information. A display name reading “Maya ✦ 𝓹𝓱𝓸𝓽𝓸𝓰𝓻𝓪𝓹𝓱𝔂” keeps the searchable, speakable part intact. A name fully converted to script does not.",
+          "Never style a whole paragraph. A caption in Unicode cursive is slow to read for everyone, not only screen reader users—dyslexic readers, people on small phones, and anyone reading in bright sunlight all lose out.",
+          "Use real formatting where the platform offers it. Discord’s **bold**, Markdown, and rich-text editors produce genuine semantic bold that announces correctly, survives copy-paste, and stays searchable. Unicode substitution is a workaround for fields that allow no formatting at all.",
+          "On the web, you have a clean escape hatch: show the styled characters and hand assistive technology the plain word with aria-label. You get the visual and the accessible name, with no compromise.",
+          "Skip zalgo anywhere it will be read rather than looked at.",
+        ],
+      },
+      {
+        heading: "How we handle this on FancifyText",
+        body: [
+          "Every style in our gallery carries a compatibility badge and a note, and styles that are known to cause trouble in usernames are flagged rather than quietly offered. The preview on each tool page is built from the same Unicode maps the copy button uses, so what you hear about is what you actually get.",
+          "We also check our own character maps on every build: the Mathematical Alphanumeric block has 24 reserved gaps where a naive generator emits an unassigned character that renders as a tofu box, and a test fails the build if any style ever produces one.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Do fancy fonts break screen readers?",
+        answer:
+          "Not as reliably as older guides claim. NVDA 2025.1 enabled Unicode normalization by default for speech, so styled letters like 𝐛𝐨𝐥𝐝 are read as ordinary words on Windows. VoiceOver, TalkBack and JAWS do not share that default, and NVDA leaves braille output un-normalized, so the safe rule is still to style short accents rather than whole sentences.",
+      },
+      {
+        question: "Is Unicode bold accessible?",
+        answer:
+          "It is more accessible than it was, but it is not equivalent to real bold. Unicode bold replaces each letter with a separate character; real bold keeps the letter and adds styling. Real bold stays searchable, spellcheckable, and readable on every assistive technology, so use it wherever the platform allows formatting.",
+      },
+      {
+        question: "Is zalgo text bad for accessibility?",
+        answer:
+          "Yes, and unlike plain styled letters this has not improved. Zalgo stacks combining marks that have no plain-text equivalent, so normalization cannot undo it. A screen reader may announce each mark individually. Avoid it anywhere the text needs to be read.",
+      },
+      {
+        question: "Why does my styled name not show up in search or mentions?",
+        answer:
+          "Because the letters are different characters from the ones you typed. 𝐌𝐚𝐲𝐚 does not match a search for “Maya”. Keep your username plain and put styling in the display name, which is not used for lookups.",
+      },
+      {
+        question: "What is the most accessible way to use fancy text?",
+        answer:
+          "Style a short fragment, keep the meaningful words in ordinary letters, avoid combining-mark styles, and use real formatting whenever the platform supports it. On your own site, pair the styled characters with an aria-label containing the plain text.",
+      },
+      {
+        question: "Does this affect SEO too?",
+        answer:
+          "Yes. Search engines index the actual code points, so a heading written in Unicode cursive is not the same string as the plain word. Keep headings and body copy in ordinary letters and reserve styled text for visual accents.",
+      },
+    ],
+  },
 ];
 
 export const GUIDES_BY_SLUG = Object.fromEntries(
