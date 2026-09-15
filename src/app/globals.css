@@ -1100,14 +1100,15 @@ a.use-card:hover {
   white-space: nowrap;
 }
 
-.gallery-support[data-support="universal"],
-.gallery-support[data-support="wide"] {
+.gallery-support[data-support="universal"] {
   border-color: color-mix(in srgb, #15803d 35%, var(--line));
   background: color-mix(in srgb, #15803d 7%, white);
   color: #15803d;
 }
 
-.gallery-support[data-support="mixed"] {
+/* Amber is the caution tier: the style works, but not everywhere you might paste it. */
+.gallery-support[data-support="mixed"],
+.gallery-support[data-support="username-unsafe"] {
   border-color: color-mix(in srgb, #b45309 35%, var(--line));
   background: color-mix(in srgb, #b45309 7%, white);
   color: #b45309;
@@ -1135,12 +1136,6 @@ a.use-card:hover {
   border-color: color-mix(in srgb, var(--danger) 35%, var(--line));
   background: color-mix(in srgb, var(--danger) 7%, white);
   color: var(--danger);
-}
-
-.gallery-support[data-support="username"] {
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
-  background: var(--accent-soft);
-  color: var(--accent-deep);
 }
 
 .gallery-search {

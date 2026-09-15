@@ -205,18 +205,24 @@ export function StyleGallery({
             <div className="gallery-info">
               <span className="gallery-label">{style.label}</span>
               <span className="gallery-cat">{style.category}</span>
-              <span
-                className="gallery-support"
-                data-support={style.support}
-                title={style.supportNote}
-              >
-                {SUPPORT_LABELS[style.support]}
-              </span>
-              {style.usernameSafe ? (
-                <span className="gallery-support" data-support="username">
-                  Username safe
+              {style.support !== "wide" ? (
+                <span
+                  className="gallery-support"
+                  data-support={style.support}
+                  title={style.supportNote}
+                >
+                  {SUPPORT_LABELS[style.support]}
                 </span>
               ) : null}
+              {style.usernameSafe ? null : (
+                <span
+                  className="gallery-support"
+                  data-support="username-unsafe"
+                  title="Most platforms reject these characters in a username. They usually work in a display name or bio."
+                >
+                  Not for usernames
+                </span>
+              )}
               {shouldExplain(style) ? (
                 <span className="gallery-blurb">{style.supportNote}</span>
               ) : null}
