@@ -5,16 +5,24 @@ import {
   SITE_NAME,
 } from "@/data/pages/registry";
 
+const GUIDES = [
+  { href: "/guides/instagram-bio-fonts/", label: "Instagram bio fonts" },
+  { href: "/guides/how-unicode-fancy-fonts-work/", label: "How fancy fonts work" },
+  { href: "/guides/discord-colored-text-not-working/", label: "Discord color fixes" },
+  { href: "/guides/whatsapp-stylish-text/", label: "WhatsApp stylish text" },
+];
+
 const LEGAL = [
   { href: "/about/", label: "About" },
   { href: "/contact/", label: "Contact" },
-  { href: "/cool-symbols/", label: "Cool symbols" },
-  { href: "/guides/instagram-bio-fonts/", label: "Instagram bio guide" },
-  { href: "/guides/how-unicode-fancy-fonts-work/", label: "How fancy fonts work" },
-  { href: "/guides/discord-colored-text-not-working/", label: "Discord color fixes" },
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },
 ];
+
+function sentenceCase(value: string): string {
+  if (!value) return value;
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
 
 export function SiteFooter() {
   const tools = getFooterPages();
@@ -36,7 +44,7 @@ export function SiteFooter() {
           <p className="footer-col-title">Tools</p>
           {tools.map((item) => (
             <Link key={item.url} href={item.url}>
-              {item.navLabel ?? item.primaryKeyword}
+              {sentenceCase(item.navLabel ?? item.primaryKeyword)}
             </Link>
           ))}
         </nav>
@@ -45,13 +53,22 @@ export function SiteFooter() {
           <p className="footer-col-title">Explore</p>
           {explore.map((item) => (
             <Link key={item.url} href={item.url}>
-              {item.primaryKeyword}
+              {sentenceCase(item.primaryKeyword)}
+            </Link>
+          ))}
+        </nav>
+
+        <nav className="footer-col" aria-label="Guides">
+          <p className="footer-col-title">Guides</p>
+          {GUIDES.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
             </Link>
           ))}
         </nav>
 
         <nav className="footer-col" aria-label="Legal">
-          <p className="footer-col-title">Site</p>
+          <p className="footer-col-title">Legal</p>
           {LEGAL.map((item) => (
             <Link key={item.href} href={item.href}>
               {item.label}

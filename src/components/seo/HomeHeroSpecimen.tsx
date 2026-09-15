@@ -20,6 +20,7 @@ const SHOWCASE = SHOWCASE_IDS.map(
 
 export function HomeHeroSpecimen() {
   const [index, setIndex] = useState(0);
+  const [cycle, setCycle] = useState(0);
   const style = SHOWCASE[index] ?? SHOWCASE[0];
   const specimen = transform(SPECIMEN, style.id);
 
@@ -38,20 +39,26 @@ export function HomeHeroSpecimen() {
       window.clearTimeout(startId);
       window.clearInterval(intervalId);
     };
-  }, []);
+  }, [cycle]);
 
   return (
     <div className="home-specimen" aria-live="polite">
       <p className="home-specimen-label">{style.label}</p>
       <p className="home-specimen-text">{specimen}</p>
-      <div className="home-specimen-row" aria-hidden>
+      <div className="home-specimen-row">
         {SHOWCASE.map((s, i) => (
-          <span
+          <button
             key={s.id}
+            type="button"
             className={`home-specimen-chip${i === index ? " is-active" : ""}`}
+            aria-pressed={i === index}
+            onClick={() => {
+              setIndex(i);
+              setCycle((n) => n + 1);
+            }}
           >
             {s.label}
-          </span>
+          </button>
         ))}
       </div>
     </div>

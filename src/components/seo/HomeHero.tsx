@@ -1,12 +1,10 @@
 import { HomeHeroSpecimen } from "@/components/seo/HomeHeroSpecimen";
 
-const BRAND = "FancifyText";
-
 export function HomeHero() {
   return (
     <section className="home-hero" aria-labelledby="home-title">
       <div className="home-hero-copy">
-        <p className="home-brand">{BRAND}</p>
+        <p className="home-brand">Free Unicode fonts</p>
         <h1 id="home-title" className="home-title">
           Fancy text generator
         </h1>

@@ -59,13 +59,18 @@ export default function ContactPage() {
       />
 
       <div className="contact-layout">
-        <div>
-          <p className="contact-eyebrow">Email</p>
+        <div className="contact-card contact-card--aside">
+          <p className="contact-eyebrow">Direct email</p>
           <ul className="contact-channels">
             <li>
+              <p className="contact-channel-label">Inbox</p>
               <a href={`mailto:${contactConfig.email}`} className="contact-channel-value">
                 {contactConfig.email}
               </a>
+            </li>
+            <li>
+              <p className="contact-channel-label">Reply time</p>
+              <span className="contact-channel-value">Typically one business day</span>
             </li>
           </ul>
         </div>

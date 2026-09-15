@@ -21,6 +21,8 @@ export function DiscordColorTool({
   const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
   const canCopy = Boolean(text.trim());
 
+  const selected =
+    DISCORD_COLORS.find((c) => c.code === colorCode) ?? DISCORD_COLORS[3]!;
   const block = discordColorBlock(deferredText || " ", colorCode, bold);
   const ansiOnly = discordAnsi(deferredText || " ", colorCode, bold);
 
@@ -49,7 +51,8 @@ export function DiscordColorTool({
             type="button"
             role="radio"
             aria-checked={colorCode === c.code}
-            className={`style-chip${colorCode === c.code ? " is-active" : ""}`}
+            className={`style-chip style-chip--color${colorCode === c.code ? " is-active" : ""}`}
+            style={{ "--chip-color": c.hex } as React.CSSProperties}
             onClick={() => setColorCode(c.code)}
           >
             <span
@@ -76,6 +79,18 @@ export function DiscordColorTool({
           {errorMessage}
         </p>
       ) : null}
+
+      <div className="discord-live" aria-live="polite">
+        <div className="preview-meta">
+          <span>How it looks — {selected.label}</span>
+        </div>
+        <p
+          className={`discord-live-text${bold ? " is-bold" : ""}`}
+          style={{ color: selected.hex }}
+        >
+          {canCopy ? deferredText : "Type above to preview"}
+        </p>
+      </div>
 
       <div className="preview-panel">
         <div className="preview-meta">

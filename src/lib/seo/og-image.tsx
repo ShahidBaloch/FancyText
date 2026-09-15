@@ -21,8 +21,8 @@ export function renderOgImage(opts: {
           justifyContent: "center",
           padding: 72,
           background:
-            "linear-gradient(145deg, #eef3f1 0%, #cfe8df 45%, #d5e4f2 100%)",
-          color: "#14201c",
+            "linear-gradient(160deg, #ffffff 0%, #fff4ed 48%, #ff5e1f 160%)",
+          color: "#262626",
         }}
       >
         <div
@@ -38,8 +38,8 @@ export function renderOgImage(opts: {
               width: 64,
               height: 64,
               borderRadius: 14,
-              background: "#14201c",
-              color: "#f8f2e8",
+              background: "#ff5e1f",
+              color: "#ffffff",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -47,7 +47,7 @@ export function renderOgImage(opts: {
               fontWeight: 700,
             }}
           >
-            ℱ
+            F
           </div>
           <div style={{ fontSize: 48, fontWeight: 700, letterSpacing: -1 }}>
             FancifyText
@@ -68,7 +68,7 @@ export function renderOgImage(opts: {
           style={{
             marginTop: 20,
             fontSize: 26,
-            color: "#4d5c57",
+            color: "#5c5c5c",
             maxWidth: 860,
             lineHeight: 1.35,
           }}
