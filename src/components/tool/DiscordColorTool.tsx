@@ -83,6 +83,19 @@ export function DiscordColorTool({
       <div className="discord-live" aria-live="polite">
         <div className="preview-meta">
           <span>How it looks — {selected.label}</span>
+          <button
+            type="button"
+            className="copy-btn"
+            aria-label={`Copy ${selected.label} Discord text`}
+            disabled={!canCopy}
+            onClick={() => copy("live", block)}
+          >
+            {copiedId === "live"
+              ? "Copied!"
+              : errorId === "live"
+                ? "Failed"
+                : `Copy ${selected.label}`}
+          </button>
         </div>
         <p
           className={`discord-live-text${bold ? " is-bold" : ""}`}
