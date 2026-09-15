@@ -37,7 +37,9 @@ export function useCopyFeedback(resetMs = 1400) {
     setErrorId(null);
     setErrorMessage(null);
 
-    if (!text.trim()) {
+    // Emptiness, not blankness: whitespace and invisible characters are valid
+    // payloads here. Callers that need non-blank input gate their own button.
+    if (!text) {
       const message = "Nothing to copy — type some text first.";
       setErrorId(id);
       setErrorMessage(message);

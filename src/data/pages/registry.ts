@@ -440,6 +440,22 @@ export const PAGES: PageEntry[] = [
   },
   {
     phase: 6,
+    priority: "P1",
+    url: "/invisible-character/",
+    group: "D_Style_Other",
+    primaryKeyword: "invisible character",
+    title: "Invisible Character — Blank Text Copy & Paste | FancifyText",
+    description:
+      "Copy invisible and blank characters that actually survive pasting. Compare blank glyphs against zero-width controls, with the right one for bios, names, and empty messages.",
+    fellowKeywords: fellows(
+      "blank text copy paste",
+      "invisible text",
+      "empty character copy paste",
+      "blank space copy paste",
+    ),
+  },
+  {
+    phase: 6,
     priority: "P2",
     url: "/text-decorator/",
     group: "D_Style_Other",
@@ -981,6 +997,14 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/cute-fonts/",
     "/copy-paste-fonts/",
   ],
+  "/invisible-character/": [
+    "/social-media-bio-generator/",
+    "/name-font-generator/",
+    "/instagram-font-generator/",
+    "/cool-symbols/",
+    "/guides/how-unicode-fancy-fonts-work/",
+    "/",
+  ],
   "/facebook-font-generator/": [
     "/instagram-font-generator/",
     "/guides/facebook-name-fonts/",
@@ -1395,6 +1419,7 @@ const EXPLORE_URLS = [
   "/name-font-generator/",
   "/html-text-generator/",
   "/binary-text-generator/",
+  "/invisible-character/",
   "/search/",
 ];
 

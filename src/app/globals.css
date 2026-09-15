@@ -859,6 +859,16 @@ a {
   max-width: 62ch;
 }
 
+/* Preflight zeroes block margins, so stacked prose blocks otherwise run
+   together with no visual break between them. */
+.seo-prose p + p,
+.seo-prose p + ul,
+.seo-prose p + ol,
+.seo-prose ul + p,
+.seo-prose ol + p {
+  margin-top: 0.95rem;
+}
+
 .seo-prose h2 {
   margin-top: 2.15rem;
 }
@@ -1117,6 +1127,74 @@ a.use-card:hover {
 
 .gallery-search {
   margin-bottom: 0.9rem;
+}
+
+/* ——— Invisible character tool ——— */
+.invisible-meta {
+  margin: 0.9rem 0 1.1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-deep);
+}
+
+.invisible-kind {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-deep);
+}
+
+.invisible-kind[data-kind="zero-width"] {
+  color: var(--danger);
+}
+
+.invisible-best,
+.invisible-notes {
+  margin: 0 0 0.45rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.invisible-notes {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.invisible-repeat {
+  margin-bottom: 1rem;
+}
+
+.invisible-repeat input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.invisible-preview {
+  margin: 0;
+  font-size: 1.6rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+/* Dotted fill makes the copied width legible even though the glyphs are blank. */
+.invisible-payload {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.28) 0 3px,
+    transparent 3px 6px
+  );
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.45);
+  white-space: pre-wrap;
+}
+
+.invisible-readout {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: #d4d4d4;
 }
 
 .gallery-count {
