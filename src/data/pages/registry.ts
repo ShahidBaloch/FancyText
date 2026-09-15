@@ -108,6 +108,30 @@ export const PAGES: PageEntry[] = [
   {
     phase: 2,
     priority: "P1",
+    url: "/small-caps-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "small caps generator",
+    title: "Small Caps Generator — ꜱᴍᴀʟʟ ᴄᴀᴘꜱ Copy & Paste | FancifyText",
+    description:
+      "Turn text into small capitals for bios and display names. Includes why the letter x has no small-caps form.",
+    fellowKeywords: fellows("small caps text", "small capital letters"),
+    navLabel: "Small Caps",
+  },
+  {
+    phase: 2,
+    priority: "P1",
+    url: "/monospace-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "monospace text generator",
+    title: "Monospace Text Generator — Typewriter Text | FancifyText",
+    description:
+      "Fixed-width Unicode letters and digits for bios and names. Includes what Discord does to them and when to use a real code block.",
+    fellowKeywords: fellows("typewriter font generator", "monospace font copy paste"),
+    navLabel: "Monospace",
+  },
+  {
+    phase: 2,
+    priority: "P1",
     url: "/strikethrough-text-generator/",
     group: "D_Style_Other",
     primaryKeyword: "strikethrough text generator",
@@ -992,6 +1016,18 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/bold-text-generator/",
     "/glitch-text-generator/",
     "/copy-paste-fonts/",
+  ],
+  "/small-caps-text-generator/": [
+    "/aesthetic-fonts/",
+    "/instagram-font-generator/",
+    "/monospace-text-generator/",
+    "/social-media-bio-generator/",
+  ],
+  "/monospace-text-generator/": [
+    "/small-caps-text-generator/",
+    "/discord-font-generator/",
+    "/copy-paste-fonts/",
+    "/guides/how-unicode-fancy-fonts-work/",
   ],
   "/superscript-subscript-generator/": [
     "/small-text-generator/",

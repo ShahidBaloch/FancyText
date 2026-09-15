@@ -319,6 +319,119 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     },
   ),
   spoke(
+    "small-caps-text-generator",
+    "small-caps",
+    ["small-caps", "sans-bold", "monospace", "fullwidth"],
+    {
+      sampleInput: "small caps",
+      examples: [
+        "small caps",
+        "now playing",
+        "read more",
+        "coming soon",
+        "photography",
+        "link in bio",
+      ],
+      howToSteps: [
+        "Type your text—capitals and lowercase both come out as small capitals.",
+        "Check the preview for the letter x, which Unicode has no small-capital form for.",
+        "Copy and paste into a bio, display name, or caption.",
+      ],
+      uses: [
+        "Quiet section labels in a bio, where full caps would feel like shouting",
+        "Display names that need emphasis without looking aggressive",
+        "Menu-style or editorial captions",
+      ],
+      compatibilityNotes: [
+        "There is no small capital X in Unicode, so x stays a normal lowercase x. In a word like “box” the mismatch is visible—that is the font, not a bug in the tool.",
+        "Q uses ǫ (o with ogonek) as a stand-in. A true small capital Q exists but was only added in Unicode 11, so it is still missing on many older phones.",
+        "F and S come from a later Unicode block than the other letters and can render slightly differently in some fonts.",
+        "These are phonetic letters, not a typeface, so search and @-mentions will not match them against plain text.",
+      ],
+      faq: [
+        {
+          question: "Why is the letter x not in small caps?",
+          answer:
+            "Unicode never encoded a small capital X. The small-capital letters come mostly from the phonetic alphabet, which had no use for one, so every small caps generator on the web falls back to a normal lowercase x. Words containing x will always look slightly uneven.",
+        },
+        {
+          question: "Is small caps the same as all caps?",
+          answer:
+            "No. All caps uses ordinary capital letters and reads as shouting in most contexts. Small caps are separate Unicode characters shaped like short capitals, so they read as emphasis rather than volume.",
+        },
+        {
+          question: "Does small caps work on Instagram and TikTok?",
+          answer:
+            "Yes, in bios, captions and display names on both. It is one of the more widely supported styles because the characters are old and well covered by system fonts. Usernames are a different matter—those are restricted to plain characters.",
+        },
+        {
+          question: "Can screen readers read small caps?",
+          answer:
+            "Better than most styled text. NVDA 2025.1 normalizes them to ordinary letters for speech by default. Other screen readers may read them as phonetic characters, so keep the meaningful words in plain text. See our screen reader guide for the full picture.",
+        },
+        {
+          question: "Why do some letters look different from the others?",
+          answer:
+            "The set was assembled from several Unicode blocks over many years rather than designed as one font. F, S and Q in particular come from different additions, so a font may style them inconsistently.",
+        },
+      ],
+    },
+  ),
+  spoke(
+    "monospace-text-generator",
+    "monospace",
+    ["monospace", "small-caps", "fullwidth", "double-struck"],
+    {
+      sampleInput: "monospace",
+      examples: [
+        "monospace",
+        "SYSTEM ONLINE",
+        "hello world",
+        "01 02 03",
+        "terminal",
+        "loading...",
+      ],
+      howToSteps: [
+        "Type your text, including numbers—monospace covers digits as well as letters.",
+        "Copy the preview.",
+        "Paste anywhere that will not let you set a real font, such as a bio or display name.",
+      ],
+      uses: [
+        "Typewriter or terminal aesthetics in a bio",
+        "Retro and coding-adjacent display names",
+        "Short lines where every character occupying the same width looks deliberate",
+      ],
+      compatibilityNotes: [
+        "Discord and Slack may re-render this inside their own code formatting, which can override the look you copied.",
+        "Fixed-width only holds if the receiving app uses a font that respects it. In a proportional font the spacing advantage largely disappears.",
+        "Digits are included, unlike several other styles, so times and numbers stay consistent.",
+        "This is not a code block. If you want real monospaced code on a platform that supports it, use that platform's code formatting instead—it stays searchable and copyable.",
+      ],
+      faq: [
+        {
+          question: "Is this the same as a code block?",
+          answer:
+            "No. A code block is formatting applied to ordinary letters; this swaps each letter for a separate Unicode character that happens to look monospaced. Use a real code block for code—it stays searchable, selectable and readable by screen readers.",
+        },
+        {
+          question: "Why does my monospace text change in Discord?",
+          answer:
+            "Discord applies its own formatting to text it treats as code, which can re-render the characters in its own monospaced font. The characters are still there; the display is being overridden. It usually holds in nicknames.",
+        },
+        {
+          question: "Does monospace include numbers?",
+          answer:
+            "Yes. Letters and digits 0–9 all have monospace forms, which is not true of every style here. That makes it a reasonable pick for dates, scores, or countdowns in a bio.",
+        },
+        {
+          question: "Will monospace letters actually line up in columns?",
+          answer:
+            "Only if the app renders them in a font that honours the fixed width. Many social apps substitute a fallback font for these characters, so treat the alignment as a bonus rather than something to rely on.",
+        },
+      ],
+    },
+  ),
+  spoke(
     "superscript-subscript-generator",
     "superscript",
     ["superscript", "subscript"],
