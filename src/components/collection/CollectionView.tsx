@@ -25,6 +25,8 @@ export function CollectionView({ config }: CollectionViewProps) {
   const h1 = page?.primaryKeyword
     ? capitalizeKeyword(page.primaryKeyword)
     : capitalizeKeyword(config.slug.replace(/-/g, " "));
+  /** Long lists need filtering; a curated dozen is faster to just scroll. */
+  const isLargeSet = config.styleIds.length === 0 || config.styleIds.length > 12;
 
   return (
     <div className="site-shell">
@@ -55,6 +57,10 @@ export function CollectionView({ config }: CollectionViewProps) {
           styleIds={config.styleIds.length ? config.styleIds : undefined}
           presets={config.presets}
           inputLabel={`Preview ${h1.toLowerCase()}`}
+          enableFavorites
+          {...(isLargeSet
+            ? { enableCategoryFilter: true, enableSearch: true }
+            : {})}
         />
       </div>
 

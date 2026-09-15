@@ -8,8 +8,25 @@ export type StyleCategory =
   | "social"
   | "utility";
 
-export type FontStyle = {
-  id: string;
+/**
+ * How reliably a style renders across current consumer devices.
+ * - universal: plain ASCII or a block shipped in every system font
+ * - wide: modern iOS / Android / Windows / macOS all render it
+ * - mixed: renders in most places but has known failure surfaces
+ * - limited: expect breakage; use for short novelty text only
+ */
+export type StyleSupport = "universal" | "wide" | "mixed" | "limited";
+
+export type StyleCompat = {
+  support: StyleSupport;
+  /** Concrete note about where this style actually breaks. */
+  supportNote: string;
+  /** Survives most platform display-name and username filters. */
+  usernameSafe: boolean;
+};
+
+export type FontStyle = StyleCompat & {
+  id: StyleId;
   label: string;
   category: StyleCategory;
   description: string;
@@ -566,7 +583,305 @@ function creepy(text: string): string {
   return out;
 }
 
-export const STYLES: FontStyle[] = [
+/**
+ * Rendering reality per style, checked against the Unicode block each map uses.
+ * Keys here define the canonical style id set — a style without an entry is a
+ * type error, so compatibility copy can never silently drift from the maps.
+ */
+const STYLE_COMPAT = {
+  // Mathematical Alphanumeric Symbols (U+1D400–U+1D7FF): shipped in the default
+  // font stack of every current OS. The safest family of "fancy" letters.
+  bold: {
+    support: "wide",
+    supportNote:
+      "Mathematical bold. Renders on all current phones and desktops; only pre-2015 Android may miss glyphs.",
+    usernameSafe: true,
+  },
+  italic: {
+    support: "wide",
+    supportNote:
+      "Mathematical italic. Broadly supported; a few Windows browsers substitute a slightly different serif.",
+    usernameSafe: true,
+  },
+  "bold-italic": {
+    support: "wide",
+    supportNote: "Mathematical bold italic. Same coverage as bold and italic.",
+    usernameSafe: true,
+  },
+  cursive: {
+    support: "wide",
+    supportNote:
+      "Mathematical script. Well supported, but Windows often draws it with a plainer fallback than iOS does.",
+    usernameSafe: true,
+  },
+  "bold-cursive": {
+    support: "wide",
+    supportNote:
+      "Mathematical bold script. Slightly thinner font coverage than plain script on older Android.",
+    usernameSafe: true,
+  },
+  fraktur: {
+    support: "wide",
+    supportNote:
+      "Mathematical Fraktur. Five letters (C H I R Z) come from the Letterlike Symbols block and can look mismatched.",
+    usernameSafe: true,
+  },
+  "bold-fraktur": {
+    support: "wide",
+    supportNote:
+      "Mathematical bold Fraktur. Heavier blackletter; coverage matches regular Fraktur.",
+    usernameSafe: true,
+  },
+  "double-struck": {
+    support: "wide",
+    supportNote:
+      "Blackboard bold. Several capitals (C H N P Q R Z) come from Letterlike Symbols, so weights can differ slightly.",
+    usernameSafe: true,
+  },
+  sans: {
+    support: "wide",
+    supportNote: "Mathematical sans-serif. Clean and broadly supported.",
+    usernameSafe: true,
+  },
+  "sans-bold": {
+    support: "universal",
+    supportNote:
+      "The most reliable fancy style. Renders correctly on every platform we have tested, including older Android.",
+    usernameSafe: true,
+  },
+  "sans-italic": {
+    support: "wide",
+    supportNote: "Mathematical sans-serif italic. Same coverage as sans.",
+    usernameSafe: true,
+  },
+  "sans-bold-italic": {
+    support: "wide",
+    supportNote: "Mathematical sans-serif bold italic. Same coverage as sans.",
+    usernameSafe: true,
+  },
+  monospace: {
+    support: "wide",
+    supportNote:
+      "Mathematical monospace. Reliable, though Discord and Slack may re-render it inside code blocks.",
+    usernameSafe: true,
+  },
+
+  // Non-mathematical blocks with their own quirks.
+  fullwidth: {
+    support: "universal",
+    supportNote:
+      "Halfwidth and Fullwidth Forms, shipped with CJK fonts everywhere. Each character is double width, so bios hit character limits about twice as fast.",
+    usernameSafe: true,
+  },
+  vaporwave: {
+    support: "universal",
+    supportNote:
+      "Identical characters to Aesthetic / Fullwidth — same universal support and same double-width spacing cost.",
+    usernameSafe: true,
+  },
+  bubble: {
+    support: "wide",
+    supportNote:
+      "Enclosed Alphanumerics. Widely supported; some Android builds draw the circles noticeably smaller than the surrounding text.",
+    usernameSafe: true,
+  },
+  "small-caps": {
+    support: "wide",
+    supportNote:
+      "Latin phonetic letters. Lowercase x has no small-cap form in Unicode and stays plain; F and S use Latin Extended-D, which older Android can miss.",
+    usernameSafe: true,
+  },
+  greek: {
+    support: "wide",
+    supportNote:
+      "Real Greek letters, so support is excellent — but screen readers announce them as Greek and only some Latin letters have a lookalike.",
+    usernameSafe: true,
+  },
+  mirror: {
+    support: "universal",
+    supportNote:
+      "Reverses character order without changing the characters, so the output is ordinary text that renders anywhere.",
+    usernameSafe: true,
+  },
+  spaced: {
+    support: "universal",
+    supportNote:
+      "Plain letters separated by spaces. Renders everywhere, but @handle fields that reject spaces will refuse it.",
+    usernameSafe: true,
+  },
+  binary: {
+    support: "universal",
+    supportNote:
+      "Plain digits — an encoding, not a font. Always renders, never looks styled.",
+    usernameSafe: true,
+  },
+  morse: {
+    support: "universal",
+    supportNote:
+      "Plain dots and dashes. Always renders; letters without a Morse code are passed through unchanged.",
+    usernameSafe: true,
+  },
+
+  // Combining marks: the character count doubles and many apps strip or
+  // mis-stack them. Never safe for usernames.
+  strikethrough: {
+    support: "mixed",
+    supportNote:
+      "Uses a combining overlay after every character, which doubles the character count. Some apps strip the marks on paste or shift them off-centre.",
+    usernameSafe: false,
+  },
+  underline: {
+    support: "mixed",
+    supportNote:
+      "Combining low line. Renders in most chat apps but can collide with descenders like g and y.",
+    usernameSafe: false,
+  },
+  "double-underline": {
+    support: "mixed",
+    supportNote:
+      "Combining double low line. Slightly patchier than single underline on Android.",
+    usernameSafe: false,
+  },
+  slash: {
+    support: "mixed",
+    supportNote:
+      "Combining solidus. Alignment varies a lot between fonts; often sits off-centre on iOS.",
+    usernameSafe: false,
+  },
+  dots: {
+    support: "mixed",
+    supportNote:
+      "Combining dot above. Can be clipped when the line height is tight.",
+    usernameSafe: false,
+  },
+  wave: {
+    support: "mixed",
+    supportNote:
+      "Combining tilde below. Usually renders, but can be clipped in single-line fields.",
+    usernameSafe: false,
+  },
+  creepy: {
+    support: "mixed",
+    supportNote:
+      "Two combining accents per character. Lighter than Zalgo, but still triples the character count.",
+    usernameSafe: false,
+  },
+  glitch: {
+    support: "limited",
+    supportNote:
+      "Stacks many combining marks per character, which multiplies the character count, overflows line height, and is frequently stripped or truncated. Keep it very short.",
+    usernameSafe: false,
+  },
+
+  // Incomplete alphabets — some letters cannot be converted at all.
+  superscript: {
+    support: "mixed",
+    supportNote:
+      "Unicode has no superscript q, and capitals are missing C F Q S X Y Z. Those letters stay plain.",
+    usernameSafe: false,
+  },
+  subscript: {
+    support: "mixed",
+    supportNote:
+      "Unicode only defines subscripts for a e h i j k l m n o p r s t u v x. Every other letter stays plain.",
+    usernameSafe: false,
+  },
+  tiny: {
+    support: "mixed",
+    supportNote:
+      "Superscript letters where they exist, small caps everywhere else, so the height is deliberately uneven. Very small on high-density screens.",
+    usernameSafe: false,
+  },
+  "upside-down": {
+    support: "mixed",
+    supportNote:
+      "Borrows lookalikes from several scripts, so a few capitals render in a different style to the rest of the word.",
+    usernameSafe: false,
+  },
+  parenthesized: {
+    support: "mixed",
+    supportNote:
+      "Unicode only defines parenthesized lowercase letters, so capitals map to the same glyphs as lowercase.",
+    usernameSafe: false,
+  },
+  currency: {
+    support: "mixed",
+    supportNote:
+      "Currency signs used as letter lookalikes. Only a few letters have a match and readability is poor.",
+    usernameSafe: false,
+  },
+
+  // Supplementary-plane blocks that many platforms draw as emoji.
+  squared: {
+    support: "mixed",
+    supportNote:
+      "Squared Latin capitals from the Enclosed Alphanumeric Supplement. Capitals only, and some platforms render them as emoji tiles rather than text.",
+    usernameSafe: false,
+  },
+  "negative-squared": {
+    support: "limited",
+    supportNote:
+      "iOS and Android draw these as coloured emoji (🅰 style) rather than letters, so the result rarely matches the preview.",
+    usernameSafe: false,
+  },
+  "blue-circle": {
+    support: "limited",
+    supportNote:
+      "Rendered as coloured emoji on most phones. Capitals only, and the colour cannot be controlled.",
+    usernameSafe: false,
+  },
+
+  // Decoration rather than letterforms.
+  hearts: {
+    support: "wide",
+    supportNote:
+      "Inserts ♥ after every character, which doubles the length. The heart itself renders everywhere.",
+    usernameSafe: false,
+  },
+  stars: {
+    support: "wide",
+    supportNote:
+      "Inserts ★ after every character, which doubles the length. The star itself renders everywhere.",
+    usernameSafe: false,
+  },
+  brace: {
+    support: "wide",
+    supportNote:
+      "CJK bracket punctuation. Renders everywhere, but adds full-width padding on each side.",
+    usernameSafe: false,
+  },
+  corner: {
+    support: "wide",
+    supportNote:
+      "CJK corner brackets. Renders everywhere, but adds full-width padding on each side.",
+    usernameSafe: false,
+  },
+  fire: {
+    support: "wide",
+    supportNote:
+      "Wraps the phrase in emoji. Emoji are blocked in most username fields and read aloud by screen readers.",
+    usernameSafe: false,
+  },
+  sparkle: {
+    support: "wide",
+    supportNote:
+      "Wraps the phrase in emoji. Emoji are blocked in most username fields and read aloud by screen readers.",
+    usernameSafe: false,
+  },
+  clap: {
+    support: "wide",
+    supportNote:
+      "Inserts a clap emoji between words. Renders everywhere, but is read aloud once per word by screen readers.",
+    usernameSafe: false,
+  },
+} as const satisfies Record<string, StyleCompat>;
+
+/** Canonical style id set, derived from the compatibility table. */
+export type StyleId = keyof typeof STYLE_COMPAT;
+
+type RawStyle = Omit<FontStyle, keyof StyleCompat>;
+
+const RAW_STYLES: RawStyle[] = [
   {
     id: "bold",
     label: "Bold",
@@ -898,6 +1213,18 @@ export const STYLES: FontStyle[] = [
     transform: (t) => `『${t.trim()}』`,
   },
 ];
+
+export const STYLES: FontStyle[] = RAW_STYLES.map((style) => ({
+  ...style,
+  ...STYLE_COMPAT[style.id],
+}));
+
+export const SUPPORT_LABELS: Record<StyleSupport, string> = {
+  universal: "Works everywhere",
+  wide: "Wide support",
+  mixed: "Mixed support",
+  limited: "Limited support",
+};
 
 export const STYLES_BY_ID = Object.fromEntries(
   STYLES.map((s) => [s.id, s]),

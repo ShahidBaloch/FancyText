@@ -1,6 +1,10 @@
 import { HomeHeroSpecimen } from "@/components/seo/HomeHeroSpecimen";
 
-export function HomeHero({ text }: { text?: string }) {
+/**
+ * Server-rendered hero. Only the rotating specimen is a client island, which
+ * keeps the H1 and lead paragraph (the LCP element) out of the client bundle.
+ */
+export function HomeHero() {
   return (
     <section className="home-hero" aria-labelledby="home-title">
       <div className="home-hero-copy">
@@ -22,7 +26,7 @@ export function HomeHero({ text }: { text?: string }) {
         </div>
       </div>
 
-      <HomeHeroSpecimen text={text} />
+      <HomeHeroSpecimen />
     </section>
   );
 }

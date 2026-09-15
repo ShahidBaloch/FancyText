@@ -2,32 +2,37 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { getLivePages } from "@/data/pages/registry";
+
+/**
+ * Pre-flattened on the server so the full page registry never ships to the
+ * browser — only the label, href, description, and a prebuilt haystack.
+ */
+export type SearchEntry = {
+  href: string;
+  label: string;
+  description: string;
+  haystack: string;
+  featured: boolean;
+};
 
 function normalize(value: string): string {
   return value.toLowerCase().trim();
 }
 
-export function ToolSearch({ initialQuery = "" }: { initialQuery?: string }) {
+export function ToolSearch({
+  entries,
+  initialQuery = "",
+}: {
+  entries: SearchEntry[];
+  initialQuery?: string;
+}) {
   const [query, setQuery] = useState(initialQuery);
-  const pages = useMemo(() => getLivePages(), []);
 
   const results = useMemo(() => {
     const q = normalize(query);
-    if (!q) return pages.filter((p) => p.group !== "H_Trust").slice(0, 24);
-    return pages.filter((page) => {
-      const hay = [
-        page.primaryKeyword,
-        page.title,
-        page.description,
-        ...page.fellowKeywords,
-        page.url,
-      ]
-        .join(" ")
-        .toLowerCase();
-      return hay.includes(q);
-    });
-  }, [pages, query]);
+    if (!q) return entries.filter((e) => e.featured).slice(0, 24);
+    return entries.filter((entry) => entry.haystack.includes(q));
+  }, [entries, query]);
 
   return (
     <div className="tool-search">
@@ -47,12 +52,10 @@ export function ToolSearch({ initialQuery = "" }: { initialQuery?: string }) {
         {results.length} result{results.length === 1 ? "" : "s"}
       </p>
       <ul className="taxonomy-links">
-        {results.map((page) => (
-          <li key={page.url}>
-            <Link href={page.url}>
-              {page.navLabel ?? page.primaryKeyword}
-            </Link>
-            <span className="search-desc"> — {page.description}</span>
+        {results.map((entry) => (
+          <li key={entry.href}>
+            <Link href={entry.href}>{entry.label}</Link>
+            <span className="search-desc"> — {entry.description}</span>
           </li>
         ))}
       </ul>

@@ -1031,7 +1031,7 @@ a.use-card:hover {
 
 .gallery-row {
   display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+  grid-template-columns: 12.5rem minmax(0, 1fr) auto;
   gap: 1rem;
   align-items: center;
   padding: 1rem 1.15rem;
@@ -1074,6 +1074,55 @@ a.use-card:hover {
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
+}
+
+.gallery-support {
+  display: inline-block;
+  margin-top: 0.3rem;
+  margin-right: 0.3rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.gallery-support[data-support="universal"],
+.gallery-support[data-support="wide"] {
+  border-color: color-mix(in srgb, #15803d 35%, var(--line));
+  background: color-mix(in srgb, #15803d 7%, white);
+  color: #15803d;
+}
+
+.gallery-support[data-support="mixed"] {
+  border-color: color-mix(in srgb, #b45309 35%, var(--line));
+  background: color-mix(in srgb, #b45309 7%, white);
+  color: #b45309;
+}
+
+.gallery-support[data-support="limited"] {
+  border-color: color-mix(in srgb, var(--danger) 35%, var(--line));
+  background: color-mix(in srgb, var(--danger) 7%, white);
+  color: var(--danger);
+}
+
+.gallery-support[data-support="username"] {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+}
+
+.gallery-search {
+  margin-bottom: 0.9rem;
+}
+
+.gallery-count {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .search-desc {

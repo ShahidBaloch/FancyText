@@ -53,9 +53,13 @@ export function SiteNav({
   const toggleRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  // Adjust during render rather than in an effect: navigating (including via
+  // browser back/forward) must close the drawer without a second paint.
+  const [renderedPath, setRenderedPath] = useState(pathname);
+  if (renderedPath !== pathname) {
+    setRenderedPath(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!open) return;

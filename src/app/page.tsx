@@ -8,6 +8,7 @@ import {
   webSiteJsonLd,
 } from "@/components/seo/JsonLd";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { HomePlayground } from "@/components/tool/HomePlayground";
 import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
@@ -111,6 +112,7 @@ export default function HomePage() {
           ],
         }}
       />
+      <HomeHero />
       <HomePlayground />
 
       <section className="seo-section" aria-labelledby="how-heading">

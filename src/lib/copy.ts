@@ -31,19 +31,20 @@ export function useCopyFeedback(resetMs = 1400) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [errorId, setErrorId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [announcement, setAnnouncement] = useState("");
 
-  async function copy(id: string, text: string) {
+  async function copy(id: string, text: string, label?: string) {
     setErrorId(null);
     setErrorMessage(null);
 
     if (!text.trim()) {
+      const message = "Nothing to copy — type some text first.";
       setErrorId(id);
-      setErrorMessage("Nothing to copy — type some text first.");
+      setErrorMessage(message);
+      setAnnouncement(message);
       window.setTimeout(() => {
         setErrorId((cur) => (cur === id ? null : cur));
-        setErrorMessage((cur) =>
-          cur === "Nothing to copy — type some text first." ? null : cur,
-        );
+        setErrorMessage((cur) => (cur === message ? null : cur));
       }, resetMs + 600);
       return false;
     }
@@ -51,6 +52,9 @@ export function useCopyFeedback(resetMs = 1400) {
     const ok = await copyText(text);
     if (ok) {
       setCopiedId(id);
+      // Button labels stay static so the accessible name does not churn; this
+      // is the only success signal a screen reader gets.
+      setAnnouncement(`Copied ${label ?? id} to clipboard`);
       void import("@/components/seo/GoogleAnalytics").then((m) =>
         m.trackEvent("copy_fancy_text", { style_id: id }),
       );
@@ -59,8 +63,10 @@ export function useCopyFeedback(resetMs = 1400) {
         resetMs,
       );
     } else {
+      const message = "Copy failed — select the text and copy manually.";
       setErrorId(id);
-      setErrorMessage("Copy failed — select the text and copy manually.");
+      setErrorMessage(message);
+      setAnnouncement(message);
       window.setTimeout(() => {
         setErrorId((cur) => (cur === id ? null : cur));
         setErrorMessage(null);
@@ -69,5 +75,5 @@ export function useCopyFeedback(resetMs = 1400) {
     return ok;
   }
 
-  return { copiedId, errorId, errorMessage, copy };
+  return { copiedId, errorId, errorMessage, announcement, copy };
 }

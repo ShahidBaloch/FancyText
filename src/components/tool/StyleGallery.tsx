@@ -1,25 +1,45 @@
 "use client";
 
-import { useDeferredValue, useEffect, useId, useState } from "react";
+import { useDeferredValue, useId, useMemo, useState } from "react";
 import {
   STYLES,
+  SUPPORT_LABELS,
+  type FontStyle,
   type StyleCategory,
   transformAll,
   transformSelected,
 } from "@/lib/fonts/styles";
 import { useCopyFeedback } from "@/lib/copy";
+import { useFavoriteStyles } from "@/lib/favorites";
 
-const FAVORITES_KEY = "fancifytext-favorite-styles";
+type FilterKey = StyleCategory | "all" | "favorites" | "username-safe";
 
-const CATEGORY_LABELS: Record<StyleCategory | "all" | "favorites", string> = {
+const FILTER_KEYS: FilterKey[] = [
+  "all",
+  "favorites",
+  "username-safe",
+  "classic",
+  "script",
+  "social",
+  "fun",
+  "utility",
+];
+
+const FILTER_LABELS: Record<FilterKey, string> = {
   all: "All",
   favorites: "Favorites",
+  "username-safe": "Username safe",
   classic: "Classic",
   script: "Script",
   social: "Social",
   fun: "Fun",
   utility: "Utility",
 };
+
+/** Styles whose rendering caveats are worth spelling out next to the preview. */
+function shouldExplain(style: FontStyle): boolean {
+  return style.support === "mixed" || style.support === "limited";
+}
 
 type StyleGalleryProps = {
   initialText?: string;
@@ -32,6 +52,8 @@ type StyleGalleryProps = {
   blurbs?: Record<string, string>;
   enableFavorites?: boolean;
   enableCategoryFilter?: boolean;
+  /** Name filter — worth enabling wherever the full style set is shown. */
+  enableSearch?: boolean;
 };
 
 export function StyleGallery({
@@ -45,8 +67,10 @@ export function StyleGallery({
   blurbs,
   enableFavorites = false,
   enableCategoryFilter = false,
+  enableSearch = false,
 }: StyleGalleryProps) {
   const inputId = useId();
+  const searchId = useId();
   const [internalText, setInternalText] = useState(initialText);
   const text = controlledText ?? internalText;
   const setText = (value: string) => {
@@ -54,52 +78,49 @@ export function StyleGallery({
     if (controlledText === undefined) setInternalText(value);
   };
   const deferredText = useDeferredValue(text);
-  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, announcement, copy } =
+    useCopyFeedback();
   const canCopy = Boolean(text.trim());
-  const [category, setCategory] = useState<StyleCategory | "all" | "favorites">(
-    "all",
-  );
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [filter, setFilter] = useState<FilterKey>("all");
+  const [query, setQuery] = useState("");
+  const { favorites, toggleFavorite } = useFavoriteStyles();
 
-  useEffect(() => {
-    if (!enableFavorites) return;
-    try {
-      const raw = localStorage.getItem(FAVORITES_KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw) as unknown;
-      if (Array.isArray(parsed)) {
-        setFavorites(parsed.filter((id): id is string => typeof id === "string"));
+  const rows = useMemo(() => {
+    let list = styleIds?.length
+      ? transformSelected(deferredText || " ", styleIds)
+      : transformAll(deferredText || " ");
+
+    if (enableCategoryFilter && filter !== "all") {
+      if (filter === "favorites") {
+        list = list.filter(({ style }) => favorites.includes(style.id));
+      } else if (filter === "username-safe") {
+        list = list.filter(({ style }) => style.usernameSafe);
+      } else {
+        list = list.filter(({ style }) => style.category === filter);
       }
-    } catch {
-      /* ignore */
     }
-  }, [enableFavorites]);
 
-  function toggleFavorite(id: string) {
-    setFavorites((prev) => {
-      const next = prev.includes(id)
-        ? prev.filter((x) => x !== id)
-        : [...prev, id];
-      try {
-        localStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
-      } catch {
-        /* ignore */
-      }
-      return next;
-    });
-  }
-
-  let rows = styleIds?.length
-    ? transformSelected(deferredText || " ", styleIds)
-    : transformAll(deferredText || " ");
-
-  if (enableCategoryFilter && category !== "all") {
-    if (category === "favorites") {
-      rows = rows.filter(({ style }) => favorites.includes(style.id));
-    } else {
-      rows = rows.filter(({ style }) => style.category === category);
+    const q = query.trim().toLowerCase();
+    if (enableSearch && q) {
+      list = list.filter(({ style }) =>
+        `${style.label} ${style.category} ${style.description}`
+          .toLowerCase()
+          .includes(q),
+      );
     }
-  }
+
+    return list;
+  }, [
+    styleIds,
+    deferredText,
+    enableCategoryFilter,
+    filter,
+    favorites,
+    enableSearch,
+    query,
+  ]);
+
+  const totalCount = styleIds?.length ?? STYLES.length;
 
   return (
     <div className={`style-gallery${showInput ? "" : " is-compact"}`}>
@@ -115,23 +136,10 @@ export function StyleGallery({
             onChange={(e) => setText(e.target.value)}
             spellCheck={false}
           />
-          {presets?.length ? (
-            <div className="preset-chips" aria-label="Quick presets">
-              {presets.map((preset) => (
-                <button
-                  key={preset}
-                  type="button"
-                  className="style-chip"
-                  onClick={() => setText(preset)}
-                  aria-label={`Use preset: ${preset}`}
-                >
-                  {preset}
-                </button>
-              ))}
-            </div>
-          ) : null}
         </>
-      ) : presets?.length ? (
+      ) : null}
+
+      {presets?.length ? (
         <div className="preset-chips" aria-label="Quick presets">
           {presets.map((preset) => (
             <button
@@ -149,20 +157,39 @@ export function StyleGallery({
 
       {enableCategoryFilter ? (
         <div className="preset-chips" role="tablist" aria-label="Style categories">
-          {(
-            ["all", "favorites", "classic", "script", "social", "fun", "utility"] as const
-          ).map((key) => (
+          {FILTER_KEYS.map((key) => (
             <button
               key={key}
               type="button"
               role="tab"
-              aria-selected={category === key}
-              className={`style-chip${category === key ? " is-active" : ""}`}
-              onClick={() => setCategory(key)}
+              aria-selected={filter === key}
+              className={`style-chip${filter === key ? " is-active" : ""}`}
+              onClick={() => setFilter(key)}
             >
-              {CATEGORY_LABELS[key]}
+              {FILTER_LABELS[key]}
             </button>
           ))}
+        </div>
+      ) : null}
+
+      {enableSearch ? (
+        <div className="gallery-search">
+          <label className="field-label" htmlFor={searchId}>
+            Find a style by name
+          </label>
+          <input
+            id={searchId}
+            type="search"
+            className="text-input"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="bold, script, bubble, small caps…"
+            autoComplete="off"
+            spellCheck={false}
+          />
+          <p className="gallery-count" aria-live="polite">
+            Showing {rows.length} of {totalCount} styles
+          </p>
         </div>
       ) : null}
 
@@ -178,8 +205,20 @@ export function StyleGallery({
             <div className="gallery-info">
               <span className="gallery-label">{style.label}</span>
               <span className="gallery-cat">{style.category}</span>
-              {style.partialCoverage ? (
-                <span className="gallery-blurb">Partial map — some letters stay plain</span>
+              <span
+                className="gallery-support"
+                data-support={style.support}
+                title={style.supportNote}
+              >
+                {SUPPORT_LABELS[style.support]}
+              </span>
+              {style.usernameSafe ? (
+                <span className="gallery-support" data-support="username">
+                  Username safe
+                </span>
+              ) : null}
+              {shouldExplain(style) ? (
+                <span className="gallery-blurb">{style.supportNote}</span>
               ) : null}
               {blurbs?.[style.id] ? (
                 <span className="gallery-blurb">{blurbs[style.id]}</span>
@@ -209,7 +248,7 @@ export function StyleGallery({
                 className="copy-btn copy-btn--light"
                 aria-label={`Copy ${style.label} text`}
                 disabled={!canCopy}
-                onClick={() => copy(style.id, output.trim())}
+                onClick={() => copy(style.id, output.trim(), style.label)}
               >
                 {copiedId === style.id
                   ? "Copied!"
@@ -221,9 +260,18 @@ export function StyleGallery({
           </li>
         ))}
       </ul>
-      {enableCategoryFilter && category === "favorites" && rows.length === 0 ? (
-        <p className="seo-lead">Star styles to save them here on this device.</p>
+
+      {rows.length === 0 ? (
+        <p className="seo-lead">
+          {filter === "favorites"
+            ? "Star styles to save them here on this device."
+            : "No styles matched. Clear the filters to see the full set."}
+        </p>
       ) : null}
+
+      <p className="sr-only" role="status">
+        {announcement}
+      </p>
     </div>
   );
 }

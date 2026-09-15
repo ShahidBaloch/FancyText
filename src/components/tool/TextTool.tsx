@@ -35,9 +35,11 @@ export function TextTool({
   };
   const [styleId, setStyleId] = useState(defaultStyleId);
   const deferredText = useDeferredValue(text);
-  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, announcement, copy } =
+    useCopyFeedback();
   const output = transform(deferredText || " ", styleId);
   const canCopy = Boolean(text.trim());
+  const activeLabel = STYLES_BY_ID[styleId]?.label ?? "styled text";
 
   return (
     <div className="text-tool">
@@ -97,9 +99,9 @@ export function TextTool({
           <button
             type="button"
             className="copy-btn"
-            aria-label={`Copy ${STYLES_BY_ID[styleId]?.label ?? "styled"} text`}
+            aria-label={`Copy ${activeLabel} text`}
             disabled={!canCopy}
-            onClick={() => copy("main", output.trim())}
+            onClick={() => copy("main", output.trim(), activeLabel)}
           >
             {copiedId === "main"
               ? "Copied!"
@@ -108,7 +110,10 @@ export function TextTool({
                 : "Copy"}
           </button>
         </div>
-        <p className="preview-text" aria-live="polite">
+        {/* Not a live region: announcing every restyled character on each
+            keystroke is unusable with a screen reader. Copy feedback below
+            carries the status instead. */}
+        <p className="preview-text">
           {canCopy ? output : "Type above to preview"}
         </p>
         {errorId === "main" && errorMessage ? (
@@ -117,6 +122,9 @@ export function TextTool({
           </p>
         ) : null}
       </div>
+      <p className="sr-only" role="status">
+        {announcement}
+      </p>
     </div>
   );
 }
