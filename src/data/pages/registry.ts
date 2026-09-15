@@ -441,6 +441,23 @@ export const PAGES: PageEntry[] = [
   {
     phase: 6,
     priority: "P1",
+    url: "/case-converter/",
+    group: "D_Style_Other",
+    primaryKeyword: "case converter",
+    title: "Case Converter — Sentence, Title, Upper & Lower | FancifyText",
+    description:
+      "Convert text between sentence case, title case, capitalized, upper, lower, alternating, and inverse case. Plain readable text with a live word and character count.",
+    fellowKeywords: fellows(
+      "convert case",
+      "title case converter",
+      "sentence case converter",
+      "uppercase to lowercase",
+      "capitalize my title",
+    ),
+  },
+  {
+    phase: 6,
+    priority: "P1",
     url: "/invisible-character/",
     group: "D_Style_Other",
     primaryKeyword: "invisible character",
@@ -997,6 +1014,14 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/cute-fonts/",
     "/copy-paste-fonts/",
   ],
+  "/case-converter/": [
+    "/",
+    "/small-text-generator/",
+    "/bold-text-generator/",
+    "/guides/how-unicode-fancy-fonts-work/",
+    "/copy-paste-fonts/",
+    "/binary-text-generator/",
+  ],
   "/invisible-character/": [
     "/social-media-bio-generator/",
     "/name-font-generator/",
@@ -1420,6 +1445,7 @@ const EXPLORE_URLS = [
   "/html-text-generator/",
   "/binary-text-generator/",
   "/invisible-character/",
+  "/case-converter/",
   "/search/",
 ];
 
