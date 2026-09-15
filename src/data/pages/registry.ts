@@ -270,6 +270,7 @@ export const PAGES: PageEntry[] = [
       "instagram fonts copy and paste",
       "instagram text generator",
     ),
+    navLabel: "Instagram",
   },
   {
     phase: 4,
@@ -1345,17 +1346,20 @@ export function getExplorePages(): PageEntry[] {
   );
 }
 
-const NAV_URLS = new Set([
+const NAV_URLS = [
   "/",
   "/cursive-text-generator/",
   "/copy-paste-fonts/",
-  "/bold-text-generator/",
+  "/instagram-font-generator/",
   "/discord-color-text/",
+  "/cool-symbols/",
   "/kaomoji/",
-]);
+] as const;
 
 export function getNavPages(): PageEntry[] {
-  return PAGES.filter((p) => p.navLabel && NAV_URLS.has(p.url));
+  return NAV_URLS.map((url) => getPageByUrl(url)).filter(
+    (p): p is PageEntry => Boolean(p?.navLabel),
+  );
 }
 
 export function getLivePages(): PageEntry[] {
@@ -1368,22 +1372,16 @@ const DEFAULT_SITE_URL = "https://fancifytext.com";
 
 /**
  * Canonical site origin used in metadata, sitemap, and JSON-LD.
- * Priority: NEXT_PUBLIC_SITE_URL → Vercel host → fancifytext.com.
- * Set NEXT_PUBLIC_SITE_URL to your custom domain once it is attached.
+ * Prefer NEXT_PUBLIC_SITE_URL; otherwise always apex (never *.vercel.app).
  */
 export const SITE_URL = resolveSiteUrl();
+
+/** Shared content freshness signal for sitemap lastmod. */
+export const SITE_CONTENT_UPDATED = new Date("2026-09-15T00:00:00.000Z");
 
 function resolveSiteUrl(): string {
   const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);
   if (fromEnv && isUsableSiteOrigin(fromEnv)) return fromEnv;
-
-  const vercelHost =
-    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-    process.env.NEXT_PUBLIC_VERCEL_URL ||
-    process.env.VERCEL_URL;
-  const fromVercel = normalizeOrigin(vercelHost);
-  if (fromVercel) return fromVercel;
-
   return DEFAULT_SITE_URL;
 }
 
@@ -1404,6 +1402,7 @@ function isUsableSiteOrigin(origin: string): boolean {
     const { hostname } = new URL(origin);
     if (!hostname.includes(".")) return false;
     if (hostname === "localhost" || hostname === "aaa") return false;
+    if (hostname.endsWith(".vercel.app")) return false;
     return true;
   } catch {
     return false;

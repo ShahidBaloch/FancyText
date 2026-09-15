@@ -22,7 +22,7 @@ import {
   getPlatform,
   getPlatformPage,
 } from "@/data/platforms";
-import { SITE_URL, getPageByUrl } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL, getPageByUrl } from "@/data/pages/registry";
 import {
   getStyleSpoke,
   getStyleSpokePage,
@@ -106,13 +106,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: kaomoji.title,
         description: kaomoji.description,
         url: canonical,
-        images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+        siteName: SITE_NAME,
+        type: "website",
+        locale: "en_US",
       },
       twitter: {
         card: "summary_large_image",
         title: kaomoji.title,
         description: kaomoji.description,
-        images: ["/opengraph-image"],
       },
     };
   }
@@ -148,13 +149,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: canonical,
-      images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+      siteName: SITE_NAME,
+      type: "website",
+      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/opengraph-image"],
     },
   };
 }

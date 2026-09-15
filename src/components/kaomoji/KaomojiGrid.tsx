@@ -7,28 +7,40 @@ type KaomojiGridProps = {
 };
 
 export function KaomojiGrid({ faces }: KaomojiGridProps) {
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
 
   return (
-    <ul className="kaomoji-grid">
-      {faces.map((face, index) => {
-        const id = `k-${index}`;
-        return (
-          <li key={`${face}-${index}`}>
-            <button
-              type="button"
-              className="kaomoji-btn"
-              onClick={() => copy(id, face)}
-              title="Copy kaomoji"
-            >
-              <span className="kaomoji-face">{face}</span>
-              <span className="kaomoji-copy">
-                {copiedId === id ? "Copied!" : "Copy"}
-              </span>
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      {errorMessage ? (
+        <p className="copy-status" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
+      <ul className="kaomoji-grid">
+        {faces.map((face, index) => {
+          const id = `k-${index}`;
+          return (
+            <li key={`${face}-${index}`}>
+              <button
+                type="button"
+                className="kaomoji-btn"
+                onClick={() => copy(id, face)}
+                title={`Copy ${face}`}
+                aria-label={`Copy kaomoji ${face}`}
+              >
+                <span className="kaomoji-face">{face}</span>
+                <span className="kaomoji-copy">
+                  {copiedId === id
+                    ? "Copied!"
+                    : errorId === id
+                      ? "Failed"
+                      : "Copy"}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }

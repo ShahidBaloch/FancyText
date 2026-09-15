@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 type NavItem = {
@@ -50,6 +50,8 @@ export function SiteNav({
   const pathname = normalizePath(usePathname() || "/");
   const [open, setOpen] = useState(false);
   const menuId = useId();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setOpen(false);
@@ -57,13 +59,45 @@ export function SiteNav({
 
   useEffect(() => {
     if (!open) return;
+
+    const drawer = drawerRef.current;
+    const focusables = drawer?.querySelectorAll<HTMLElement>(
+      "a[href], button:not([disabled])",
+    );
+    focusables?.[0]?.focus();
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab" || !focusables?.length) return;
+      const list = Array.from(focusables);
+      const first = list[0]!;
+      const last = list[list.length - 1]!;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+
+    const onPointerDown = (e: PointerEvent) => {
+      const target = e.target as Node;
+      if (drawerRef.current?.contains(target)) return;
+      if (toggleRef.current?.contains(target)) return;
+      setOpen(false);
+    };
+
     document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown);
       document.body.style.overflow = "";
     };
   }, [open]);
@@ -85,6 +119,7 @@ export function SiteNav({
           />
         </nav>
         <button
+          ref={toggleRef}
           type="button"
           className="nav-toggle"
           aria-expanded={open}
@@ -100,7 +135,7 @@ export function SiteNav({
         </button>
       </div>
       {open ? (
-        <div id={menuId} className="site-nav-drawer is-open">
+        <div ref={drawerRef} id={menuId} className="site-nav-drawer is-open">
           <nav className="site-nav site-nav--mobile" aria-label="Mobile">
             <NavLinks
               items={items}

@@ -19,6 +19,8 @@ type PageJsonLdProps = {
   howTo?: { name: string; steps: string[] };
   /** tool = WebApplication (default); article = Article; page = WebPage */
   kind?: "tool" | "article" | "page";
+  datePublished?: string;
+  dateModified?: string;
 };
 
 export function PageJsonLd({
@@ -28,6 +30,8 @@ export function PageJsonLd({
   crumbs,
   howTo,
   kind = "tool",
+  datePublished,
+  dateModified,
 }: PageJsonLdProps) {
   const absoluteUrl = new URL(page.url, SITE_URL).toString();
   const name = crumbName ?? page.primaryKeyword;
@@ -47,6 +51,8 @@ export function PageJsonLd({
           url: absoluteUrl,
           siteName: SITE_NAME,
           siteUrl: SITE_URL,
+          datePublished,
+          dateModified,
         })
       : kind === "page"
         ? webPageJsonLd({

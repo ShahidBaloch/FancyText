@@ -43,7 +43,7 @@ export function BioBuilder({
   const [styleId, setStyleId] = useState<string>("cursive");
   const [platformId, setPlatformId] =
     useState<(typeof BIO_PLATFORMS)[number]["id"]>("instagram");
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
 
   const styled = text
     .split("\n")
@@ -55,10 +55,11 @@ export function BioBuilder({
   const count = codePointLength(styled);
   const over = count > platform.max;
   const chips = BIO_STYLE_IDS.map((id) => STYLES_BY_ID[id]).filter(Boolean);
+  const canCopy = Boolean(text.trim());
 
   return (
     <div className="text-tool bio-builder">
-      <div className="bio-builder-platforms" aria-label="Bio length">
+      <div className="bio-builder-platforms" role="group" aria-label="Bio length">
         {BIO_PLATFORMS.map((item) => (
           <button
             key={item.id}
@@ -102,13 +103,17 @@ export function BioBuilder({
       </div>
 
       {chips.length ? (
-        <div className="style-chips" role="listbox" aria-label="Bio font style">
+        <div
+          className="style-chips"
+          role="radiogroup"
+          aria-label="Bio font style"
+        >
           {chips.map((style) => (
             <button
               key={style.id}
               type="button"
-              role="option"
-              aria-selected={styleId === style.id}
+              role="radio"
+              aria-checked={styleId === style.id}
               className={`style-chip${styleId === style.id ? " is-active" : ""}`}
               onClick={() => setStyleId(style.id)}
             >
@@ -119,7 +124,9 @@ export function BioBuilder({
       ) : null}
 
       <div className="preview-panel">
-        <pre className="bio-preview">{styled || " "}</pre>
+        <pre className="bio-preview">
+          {canCopy ? styled : "Type above to preview"}
+        </pre>
       </div>
 
       <p className={`bio-count${over ? " is-over" : ""}`}>
@@ -130,10 +137,26 @@ export function BioBuilder({
       <button
         type="button"
         className="copy-btn"
+        aria-label="Copy full bio"
+        disabled={!canCopy}
         onClick={() => copy("bio", styled)}
       >
-        {copiedId === "bio" ? "Copied bio" : "Copy full bio"}
+        {copiedId === "bio"
+          ? "Copied bio"
+          : errorId === "bio"
+            ? "Copy failed"
+            : "Copy full bio"}
       </button>
+      {errorId === "bio" && errorMessage ? (
+        <p className="copy-status" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
+      {over && canCopy ? (
+        <p className="copy-status" role="status">
+          Bio is over the {platform.label} limit — paste may be truncated.
+        </p>
+      ) : null}
     </div>
   );
 }

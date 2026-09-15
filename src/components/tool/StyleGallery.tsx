@@ -36,7 +36,8 @@ export function StyleGallery({
     if (controlledText === undefined) setInternalText(value);
   };
   const deferredText = useDeferredValue(text);
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
+  const canCopy = Boolean(text.trim());
   const rows = styleIds?.length
     ? transformSelected(deferredText || " ", styleIds)
     : transformAll(deferredText || " ");
@@ -73,6 +74,12 @@ export function StyleGallery({
         </>
       ) : null}
 
+      {errorMessage ? (
+        <p className="copy-status" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
+
       <ul className="gallery-list">
         {rows.map(({ style, output }) => (
           <li key={style.id} className="gallery-row">
@@ -83,13 +90,21 @@ export function StyleGallery({
                 <span className="gallery-blurb">{blurbs[style.id]}</span>
               ) : null}
             </div>
-            <p className="gallery-output">{output}</p>
+            <p className="gallery-output">
+              {canCopy ? output : "Type above to preview"}
+            </p>
             <button
               type="button"
               className="copy-btn copy-btn--light"
+              aria-label={`Copy ${style.label} text`}
+              disabled={!canCopy}
               onClick={() => copy(style.id, output.trim())}
             >
-              {copiedId === style.id ? "Copied!" : "Copy"}
+              {copiedId === style.id
+                ? "Copied!"
+                : errorId === style.id
+                  ? "Failed"
+                  : "Copy"}
             </button>
           </li>
         ))}

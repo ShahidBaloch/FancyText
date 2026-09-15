@@ -35,8 +35,9 @@ export function TextTool({
   };
   const [styleId, setStyleId] = useState(defaultStyleId);
   const deferredText = useDeferredValue(text);
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
   const output = transform(deferredText || " ", styleId);
+  const canCopy = Boolean(text.trim());
 
   return (
     <div className="text-tool">
@@ -54,13 +55,17 @@ export function TextTool({
       />
 
       {chips.length > 1 ? (
-        <div className="style-chips" role="listbox" aria-label="Font style">
+        <div
+          className="style-chips"
+          role="radiogroup"
+          aria-label="Font style"
+        >
           {chips.map((style) => (
             <button
               key={style.id}
               type="button"
-              role="option"
-              aria-selected={styleId === style.id}
+              role="radio"
+              aria-checked={styleId === style.id}
               className={`style-chip${styleId === style.id ? " is-active" : ""}`}
               onClick={() => setStyleId(style.id)}
             >
@@ -76,14 +81,25 @@ export function TextTool({
           <button
             type="button"
             className="copy-btn"
+            aria-label={`Copy ${STYLES_BY_ID[styleId]?.label ?? "styled"} text`}
+            disabled={!canCopy}
             onClick={() => copy("main", output.trim())}
           >
-            {copiedId === "main" ? "Copied!" : "Copy"}
+            {copiedId === "main"
+              ? "Copied!"
+              : errorId === "main"
+                ? "Failed"
+                : "Copy"}
           </button>
         </div>
         <p className="preview-text" aria-live="polite">
-          {output}
+          {canCopy ? output : "Type above to preview"}
         </p>
+        {errorId === "main" && errorMessage ? (
+          <p className="copy-status copy-status--on-dark" role="alert">
+            {errorMessage}
+          </p>
+        ) : null}
       </div>
     </div>
   );
@@ -116,9 +132,10 @@ export function DualStylePreview({
     if (controlledText === undefined) setInternalText(value);
   };
   const deferredText = useDeferredValue(text);
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
   const primaryOut = transform(deferredText || " ", primaryStyleId);
   const secondaryOut = transform(deferredText || " ", secondaryStyleId);
+  const canCopy = Boolean(text.trim());
 
   return (
     <div className="text-tool">
@@ -140,12 +157,20 @@ export function DualStylePreview({
             <button
               type="button"
               className="copy-btn"
+              aria-label={`Copy ${primaryLabel}`}
+              disabled={!canCopy}
               onClick={() => copy("primary", primaryOut.trim())}
             >
-              {copiedId === "primary" ? "Copied!" : "Copy"}
+              {copiedId === "primary"
+                ? "Copied!"
+                : errorId === "primary"
+                  ? "Failed"
+                  : "Copy"}
             </button>
           </div>
-          <p className="preview-text">{primaryOut}</p>
+          <p className="preview-text">
+            {canCopy ? primaryOut : "Type above to preview"}
+          </p>
         </div>
         <div className="preview-panel">
           <div className="preview-meta">
@@ -153,14 +178,27 @@ export function DualStylePreview({
             <button
               type="button"
               className="copy-btn"
+              aria-label={`Copy ${secondaryLabel}`}
+              disabled={!canCopy}
               onClick={() => copy("secondary", secondaryOut.trim())}
             >
-              {copiedId === "secondary" ? "Copied!" : "Copy"}
+              {copiedId === "secondary"
+                ? "Copied!"
+                : errorId === "secondary"
+                  ? "Failed"
+                  : "Copy"}
             </button>
           </div>
-          <p className="preview-text">{secondaryOut}</p>
+          <p className="preview-text">
+            {canCopy ? secondaryOut : "Type above to preview"}
+          </p>
         </div>
       </div>
+      {errorMessage && (errorId === "primary" || errorId === "secondary") ? (
+        <p className="copy-status" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
     </div>
   );
 }

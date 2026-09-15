@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useState } from "react";
+import { useDeferredValue, useId, useState } from "react";
 import { useCopyFeedback } from "@/lib/copy";
 
 type HtmlSnippet = {
@@ -65,22 +65,30 @@ export function HtmlRichTool({
 }: {
   initialText?: string;
 }) {
+  const inputId = useId();
   const [text, setText] = useState(initialText);
   const deferredText = useDeferredValue(text);
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
+  const canCopy = Boolean(text.trim());
 
   return (
     <div className="text-tool">
-      <label className="field-label" htmlFor="html-input">
+      <label className="field-label" htmlFor={inputId}>
         Plain text
       </label>
       <input
-        id="html-input"
+        id={inputId}
         className="text-input gallery-input"
         value={text}
         onChange={(e) => setText(e.target.value)}
         spellCheck={false}
       />
+
+      {errorMessage ? (
+        <p className="copy-status" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
 
       <ul className="gallery-list">
         {SNIPPETS.map((snippet) => {
@@ -90,13 +98,21 @@ export function HtmlRichTool({
               <div className="gallery-info">
                 <span className="gallery-label">{snippet.label}</span>
               </div>
-              <pre className="gallery-output code-inline">{output}</pre>
+              <pre className="gallery-output code-inline">
+                {canCopy ? output : "Type above to preview"}
+              </pre>
               <button
                 type="button"
                 className="copy-btn"
+                aria-label={`Copy ${snippet.label}`}
+                disabled={!canCopy}
                 onClick={() => copy(snippet.id, output)}
               >
-                {copiedId === snippet.id ? "Copied!" : "Copy"}
+                {copiedId === snippet.id
+                  ? "Copied!"
+                  : errorId === snippet.id
+                    ? "Failed"
+                    : "Copy"}
               </button>
             </li>
           );

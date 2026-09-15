@@ -43,7 +43,7 @@ export function webApplicationJsonLd(opts: {
     url: opts.url,
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Any",
-    browserRequirements: "Requires JavaScript. Requires HTML5.",
+    browserRequirements: "Requires a modern web browser.",
     isAccessibleForFree: true,
     inLanguage: "en",
     offers: {

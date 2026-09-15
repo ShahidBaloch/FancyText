@@ -7,8 +7,37 @@ type ContactBody = {
   website?: string;
 };
 
+const RATE_WINDOW_MS = 15 * 60 * 1000;
+const RATE_MAX = 5;
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+function clientKey(req: Request): string {
+  const forwarded = req.headers.get("x-forwarded-for");
+  if (forwarded) return forwarded.split(",")[0]?.trim() || "unknown";
+  return req.headers.get("x-real-ip") || "unknown";
+}
+
+function isRateLimited(key: string): boolean {
+  const now = Date.now();
+  const bucket = rateBuckets.get(key);
+  if (!bucket || now >= bucket.resetAt) {
+    rateBuckets.set(key, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return false;
+  }
+  if (bucket.count >= RATE_MAX) return true;
+  bucket.count += 1;
+  return false;
+}
+
 export async function POST(req: Request) {
   try {
+    if (isRateLimited(clientKey(req))) {
+      return Response.json(
+        { ok: false, error: "Too many messages. Please try again later." },
+        { status: 429 },
+      );
+    }
+
     const body = (await req.json()) as ContactBody;
 
     // Honeypot — bots fill hidden fields; humans leave them empty.

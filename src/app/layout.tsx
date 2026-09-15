@@ -48,8 +48,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col font-sans">
         <GoogleAnalytics />
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <SiteHeader />
-        <main className="site-main">{children}</main>
+        <main id="main-content" className="site-main" tabIndex={-1}>
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>

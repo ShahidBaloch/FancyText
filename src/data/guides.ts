@@ -6,6 +6,8 @@ export type GuideSection = {
 export type GuideConfig = {
   slug: string;
   h1: string;
+  datePublished: string;
+  dateModified: string;
   howToSteps: string[];
   sections: GuideSection[];
   faq: { question: string; answer: string }[];
@@ -15,6 +17,8 @@ export const GUIDES: GuideConfig[] = [
   {
     slug: "discord-colored-text-not-working",
     h1: "Discord colored text not working",
+    datePublished: "2026-03-01",
+    dateModified: "2026-09-15",
     howToSteps: [
       "Copy a fresh ```ansi block from the Discord color text tool—do not type the codes by hand.",
       "Paste into a Discord message as the entire message (or a full code block), then send.",
@@ -66,6 +70,8 @@ export const GUIDES: GuideConfig[] = [
   {
     slug: "instagram-bio-fonts",
     h1: "How to change your Instagram bio font",
+    datePublished: "2026-03-01",
+    dateModified: "2026-09-15",
     howToSteps: [
       "Type your bio in the Instagram font generator or the multi-line bio builder.",
       "Copy a style that stays readable (cursive, bold, or small caps).",
@@ -115,6 +121,8 @@ export const GUIDES: GuideConfig[] = [
   {
     slug: "how-unicode-fancy-fonts-work",
     h1: "How Unicode fancy fonts work",
+    datePublished: "2026-03-01",
+    dateModified: "2026-09-15",
     howToSteps: [
       "Type a word on the fancy text generator and copy a style such as bold or cursive.",
       "Paste it into Notes or a chat and select one letter—you will see it is a different character, not a font setting.",
@@ -171,6 +179,8 @@ export const GUIDES: GuideConfig[] = [
   {
     slug: "facebook-name-fonts",
     h1: "How to change your Facebook name font",
+    datePublished: "2026-03-15",
+    dateModified: "2026-09-15",
     howToSteps: [
       "Generate a short display name on the Facebook font generator (sans bold or cursive).",
       "On Facebook, open Profile → Edit → Name (or the display name field). Paste the Unicode. Leave the username / handle in plain letters.",
@@ -219,6 +229,8 @@ export const GUIDES: GuideConfig[] = [
   {
     slug: "whatsapp-stylish-text",
     h1: "WhatsApp stylish text vs built-in formatting",
+    datePublished: "2026-03-15",
+    dateModified: "2026-09-15",
     howToSteps: [
       "For a normal chat, try WhatsApp’s own markdown first: *bold*, _italic_, ~strike~, ```monospace```.",
       "For a status, group name, or display name that cannot use markdown, generate Unicode on the WhatsApp fonts tool and paste it.",

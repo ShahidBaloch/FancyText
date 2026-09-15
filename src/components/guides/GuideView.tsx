@@ -29,6 +29,8 @@ export function GuideView({ config }: GuideViewProps) {
           kind="article"
           faq={config.faq}
           crumbName={config.h1}
+          datePublished={config.datePublished}
+          dateModified={config.dateModified}
           crumbs={[
             { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
             { name: config.h1, url: absoluteUrl },

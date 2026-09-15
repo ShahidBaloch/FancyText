@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useState } from "react";
+import { useDeferredValue, useId, useState } from "react";
 import {
   DISCORD_COLORS,
   discordAnsi,
@@ -13,22 +13,24 @@ export function DiscordColorTool({
 }: {
   initialText?: string;
 }) {
+  const inputId = useId();
   const [text, setText] = useState(initialText);
   const [colorCode, setColorCode] = useState<string>(DISCORD_COLORS[3]!.code);
   const [bold, setBold] = useState(false);
   const deferredText = useDeferredValue(text);
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
+  const canCopy = Boolean(text.trim());
 
   const block = discordColorBlock(deferredText || " ", colorCode, bold);
   const ansiOnly = discordAnsi(deferredText || " ", colorCode, bold);
 
   return (
     <div className="text-tool">
-      <label className="field-label" htmlFor="discord-input">
+      <label className="field-label" htmlFor={inputId}>
         Your message
       </label>
       <textarea
-        id="discord-input"
+        id={inputId}
         className="text-input"
         rows={2}
         value={text}
@@ -36,11 +38,17 @@ export function DiscordColorTool({
         spellCheck={false}
       />
 
-      <div className="style-chips" role="listbox" aria-label="Discord color">
+      <div
+        className="style-chips"
+        role="radiogroup"
+        aria-label="Discord color"
+      >
         {DISCORD_COLORS.map((c) => (
           <button
             key={c.id}
             type="button"
+            role="radio"
+            aria-checked={colorCode === c.code}
             className={`style-chip${colorCode === c.code ? " is-active" : ""}`}
             onClick={() => setColorCode(c.code)}
           >
@@ -63,18 +71,30 @@ export function DiscordColorTool({
         Bold ANSI text
       </label>
 
+      {errorMessage ? (
+        <p className="copy-status" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
+
       <div className="preview-panel">
         <div className="preview-meta">
           <span>Discord code block</span>
           <button
             type="button"
             className="copy-btn"
+            aria-label="Copy Discord code block"
+            disabled={!canCopy}
             onClick={() => copy("block", block)}
           >
-            {copiedId === "block" ? "Copied!" : "Copy block"}
+            {copiedId === "block"
+              ? "Copied!"
+              : errorId === "block"
+                ? "Failed"
+                : "Copy block"}
           </button>
         </div>
-        <pre className="code-preview">{block}</pre>
+        <pre className="code-preview">{canCopy ? block : "Type above to preview"}</pre>
       </div>
 
       <div className="preview-panel preview-panel--secondary">
@@ -83,12 +103,20 @@ export function DiscordColorTool({
           <button
             type="button"
             className="copy-btn"
+            aria-label="Copy ANSI only"
+            disabled={!canCopy}
             onClick={() => copy("ansi", ansiOnly)}
           >
-            {copiedId === "ansi" ? "Copied!" : "Copy ANSI"}
+            {copiedId === "ansi"
+              ? "Copied!"
+              : errorId === "ansi"
+                ? "Failed"
+                : "Copy ANSI"}
           </button>
         </div>
-        <pre className="code-preview code-preview--sm">{ansiOnly}</pre>
+        <pre className="code-preview code-preview--sm">
+          {canCopy ? ansiOnly : "Type above to preview"}
+        </pre>
       </div>
     </div>
   );

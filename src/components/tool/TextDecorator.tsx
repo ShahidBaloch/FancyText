@@ -11,7 +11,8 @@ type TextDecoratorProps = {
 export function TextDecorator({ initialText = "your name" }: TextDecoratorProps) {
   const inputId = useId();
   const [text, setText] = useState(initialText);
-  const { copiedId, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
+  const canCopy = Boolean(text.trim());
 
   return (
     <div className="text-tool">
@@ -28,6 +29,12 @@ export function TextDecorator({ initialText = "your name" }: TextDecoratorProps)
         placeholder="Type a short name…"
       />
 
+      {errorMessage ? (
+        <p className="copy-status" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
+
       <ul className="decorator-grid">
         {DECORATOR_WRAPS.map((wrap) => {
           const output = wrapText(text, wrap);
@@ -38,12 +45,20 @@ export function TextDecorator({ initialText = "your name" }: TextDecoratorProps)
                 <button
                   type="button"
                   className="copy-btn copy-btn--light"
+                  aria-label={`Copy ${wrap.label} decoration`}
+                  disabled={!canCopy}
                   onClick={() => copy(wrap.id, output)}
                 >
-                  {copiedId === wrap.id ? "Copied!" : "Copy"}
+                  {copiedId === wrap.id
+                    ? "Copied!"
+                    : errorId === wrap.id
+                      ? "Failed"
+                      : "Copy"}
                 </button>
               </div>
-              <p className="decorator-preview">{output}</p>
+              <p className="decorator-preview">
+                {canCopy ? output : "Type above to preview"}
+              </p>
               <p className="decorator-blurb">{wrap.blurb}</p>
             </li>
           );
