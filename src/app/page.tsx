@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
 import { FaqSection } from "@/components/seo/FaqSection";
@@ -10,7 +11,6 @@ import {
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
-import { StyleGallery } from "@/components/tool/StyleGallery";
 import { TextTool } from "@/components/tool/TextTool";
 import { CONTACT_EMAIL } from "@/data/contact";
 import {
@@ -20,6 +20,16 @@ import {
   getTopicalRelated,
 } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
+
+const StyleGallery = dynamic(
+  () =>
+    import("@/components/tool/StyleGallery").then((mod) => mod.StyleGallery),
+  {
+    loading: () => (
+      <p className="seo-lead">Loading live style previews…</p>
+    ),
+  },
+);
 
 const page = getPageByUrl("/")!;
 
@@ -143,48 +153,86 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="seo-section seo-prose" aria-labelledby="how-heading">
+      <section className="seo-section" aria-labelledby="how-heading">
         <h2 id="how-heading">How to use</h2>
-        <ol>
-          <li>Type or paste your words into the box above.</li>
-          <li>Pick a style chip (cursive, bold, bubble, and more).</li>
+        <ol className="how-steps">
           <li>
-            Tap Copy, then paste into Instagram, Discord, TikTok, WhatsApp, or
-            anywhere Unicode works.
+            <span className="how-num" aria-hidden>
+              1
+            </span>
+            <div>
+              <strong>Type your words</strong>
+              <p>Paste into the box above — names, bios, or a short caption.</p>
+            </div>
+          </li>
+          <li>
+            <span className="how-num" aria-hidden>
+              2
+            </span>
+            <div>
+              <strong>Pick a style</strong>
+              <p>Cursive, bold, bubble, and more — tap a chip to preview.</p>
+            </div>
+          </li>
+          <li>
+            <span className="how-num" aria-hidden>
+              3
+            </span>
+            <div>
+              <strong>Copy and paste</strong>
+              <p>
+                Works in Instagram, Discord, TikTok, WhatsApp, and other Unicode
+                apps.
+              </p>
+            </div>
           </li>
         </ol>
       </section>
 
-      <section className="seo-section seo-prose" aria-labelledby="uses-heading">
+      <section className="seo-section" aria-labelledby="uses-heading">
         <h2 id="uses-heading">Where can you use fancy text?</h2>
-        <ul>
+        <ul className="use-grid">
           <li>
-            <strong>Instagram</strong> — bios, captions, and display names (
-            <Link href="/instagram-font-generator/">Instagram font generator</Link>
-            )
+            <Link href="/instagram-font-generator/" className="use-card">
+              <span className="use-name">Instagram</span>
+              <span className="use-desc">Bios, captions, display names</span>
+            </Link>
           </li>
           <li>
-            <strong>Discord</strong> — nicknames, topics, and colored ANSI text (
-            <Link href="/discord-color-text/">Discord color text</Link>)
+            <Link href="/discord-color-text/" className="use-card">
+              <span className="use-name">Discord</span>
+              <span className="use-desc">Nicknames, topics, ANSI color</span>
+            </Link>
           </li>
           <li>
-            <strong>TikTok</strong> — profile bios and captions (
-            <Link href="/tiktok-font-generator/">TikTok fonts</Link>)
+            <Link href="/tiktok-font-generator/" className="use-card">
+              <span className="use-name">TikTok</span>
+              <span className="use-desc">Profile bios and captions</span>
+            </Link>
           </li>
           <li>
-            <strong>Facebook</strong> — display names (
-            <Link href="/facebook-font-generator/">Facebook fonts</Link>
-            ). Keep the @username in plain letters.
+            <Link href="/facebook-font-generator/" className="use-card">
+              <span className="use-name">Facebook</span>
+              <span className="use-desc">Display names — keep @username plain</span>
+            </Link>
           </li>
           <li>
-            <strong>WhatsApp</strong> — status lines and chat flair (
-            <Link href="/whatsapp-fonts/">WhatsApp fonts</Link>)
+            <Link href="/whatsapp-fonts/" className="use-card">
+              <span className="use-name">WhatsApp</span>
+              <span className="use-desc">Status lines and chat flair</span>
+            </Link>
           </li>
           <li>
-            Game usernames,{" "}
-            <Link href="/snapchat-font-generator/">Snapchat</Link>,{" "}
-            <Link href="/twitter-font-generator/">X / Twitter</Link>, and{" "}
-            <Link href="/roblox-font-generator/">Roblox</Link> fields
+            <div className="use-card use-card--static">
+              <span className="use-name">Games &amp; more</span>
+              <span className="use-desc">
+                <Link href="/snapchat-font-generator/">Snapchat</Link>
+                {" · "}
+                <Link href="/twitter-font-generator/">X / Twitter</Link>
+                {" · "}
+                <Link href="/roblox-font-generator/">Roblox</Link>
+              </span>
+            </div>
           </li>
         </ul>
       </section>
