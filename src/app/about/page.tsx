@@ -3,7 +3,9 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import {
   JsonLd,
+  breadcrumbJsonLd,
   organizationJsonLd,
+  webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -11,6 +13,7 @@ import { CONTACT_EMAIL } from "@/data/contact";
 import { SITE_NAME, SITE_URL, getPageByUrl } from "@/data/pages/registry";
 
 const page = getPageByUrl("/about/")!;
+const absoluteUrl = new URL("/about/", SITE_URL).toString();
 
 export const metadata: Metadata = pageMetadata(page);
 
@@ -23,6 +26,7 @@ export default function AboutPage() {
             name: SITE_NAME,
             url: SITE_URL,
             description: page.description,
+            email: CONTACT_EMAIL,
           }),
           foundingDate: "2026",
           knowsAbout: [
@@ -32,6 +36,21 @@ export default function AboutPage() {
             "kaomoji",
           ],
         }}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          name: "About FancifyText",
+          description: page.description,
+          url: absoluteUrl,
+          siteName: SITE_NAME,
+          siteUrl: SITE_URL,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          { name: "About", url: absoluteUrl },
+        ])}
       />
       <Breadcrumbs
         items={[

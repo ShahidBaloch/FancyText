@@ -26,6 +26,7 @@ export function GuideView({ config }: GuideViewProps) {
       {page ? (
         <PageJsonLd
           page={page}
+          kind="article"
           faq={config.faq}
           crumbName={config.h1}
           crumbs={[

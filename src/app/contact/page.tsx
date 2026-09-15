@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { JsonLd, organizationJsonLd } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbJsonLd, organizationJsonLd, webPageJsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -15,6 +15,7 @@ import {
 
 const page = getPageByUrl("/contact/")!;
 const related = getTopicalRelated("/contact/", 6);
+const absoluteUrl = new URL("/contact/", SITE_URL).toString();
 
 export const metadata: Metadata = pageMetadata(page);
 
@@ -27,9 +28,24 @@ export default function ContactPage() {
             name: SITE_NAME,
             url: SITE_URL,
             description: page.description,
+            email: contactConfig.email,
           }),
-          email: contactConfig.email,
         }}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          name: "Contact FancifyText",
+          description: page.description,
+          url: absoluteUrl,
+          siteName: SITE_NAME,
+          siteUrl: SITE_URL,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          { name: "Contact", url: absoluteUrl },
+        ])}
       />
       <Breadcrumbs
         items={[

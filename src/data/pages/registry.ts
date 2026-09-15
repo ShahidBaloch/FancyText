@@ -1366,16 +1366,46 @@ export const SITE_NAME = "FancifyText";
 
 const DEFAULT_SITE_URL = "https://fancifytext.com";
 
-/** Production domain. Override via NEXT_PUBLIC_SITE_URL in Vercel. */
-export const SITE_URL = resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
+/**
+ * Canonical site origin used in metadata, sitemap, and JSON-LD.
+ * Priority: NEXT_PUBLIC_SITE_URL → Vercel host → fancifytext.com.
+ * Set NEXT_PUBLIC_SITE_URL to your custom domain once it is attached.
+ */
+export const SITE_URL = resolveSiteUrl();
 
-function resolveSiteUrl(raw: string | undefined): string {
+function resolveSiteUrl(): string {
+  const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);
+  if (fromEnv && isUsableSiteOrigin(fromEnv)) return fromEnv;
+
+  const vercelHost =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.NEXT_PUBLIC_VERCEL_URL ||
+    process.env.VERCEL_URL;
+  const fromVercel = normalizeOrigin(vercelHost);
+  if (fromVercel) return fromVercel;
+
+  return DEFAULT_SITE_URL;
+}
+
+function normalizeOrigin(raw: string | undefined): string | null {
   const value = raw?.trim();
-  if (!value) return DEFAULT_SITE_URL;
+  if (!value) return null;
   try {
     const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
     return new URL(withProtocol).origin;
   } catch {
-    return DEFAULT_SITE_URL;
+    return null;
+  }
+}
+
+/** Reject placeholder / junk values like "aaa" that break canonicals. */
+function isUsableSiteOrigin(origin: string): boolean {
+  try {
+    const { hostname } = new URL(origin);
+    if (!hostname.includes(".")) return false;
+    if (hostname === "localhost" || hostname === "aaa") return false;
+    return true;
+  } catch {
+    return false;
   }
 }

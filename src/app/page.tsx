@@ -12,6 +12,7 @@ import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { StyleGallery } from "@/components/tool/StyleGallery";
 import { TextTool } from "@/components/tool/TextTool";
+import { CONTACT_EMAIL } from "@/data/contact";
 import {
   SITE_NAME,
   SITE_URL,
@@ -87,6 +88,7 @@ export default function HomePage() {
           name: SITE_NAME,
           url: SITE_URL,
           description: page.description,
+          email: CONTACT_EMAIL,
         })}
       />
       <JsonLd

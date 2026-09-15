@@ -1,9 +1,11 @@
 import {
   JsonLd,
+  articleJsonLd,
   breadcrumbJsonLd,
   faqPageJsonLd,
   howToJsonLd,
   webApplicationJsonLd,
+  webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
 
@@ -15,6 +17,8 @@ type PageJsonLdProps = {
   crumbName?: string;
   crumbs?: CrumbItem[];
   howTo?: { name: string; steps: string[] };
+  /** tool = WebApplication (default); article = Article; page = WebPage */
+  kind?: "tool" | "article" | "page";
 };
 
 export function PageJsonLd({
@@ -23,9 +27,11 @@ export function PageJsonLd({
   crumbName,
   crumbs,
   howTo,
+  kind = "tool",
 }: PageJsonLdProps) {
   const absoluteUrl = new URL(page.url, SITE_URL).toString();
   const name = crumbName ?? page.primaryKeyword;
+  const displayName = page.title.split("|")[0].trim();
   const breadcrumbItems =
     crumbs ??
     [
@@ -33,15 +39,32 @@ export function PageJsonLd({
       { name, url: absoluteUrl },
     ];
 
-  return (
-    <>
-      <JsonLd
-        data={webApplicationJsonLd({
-          name: page.title.split("|")[0].trim(),
+  const primary =
+    kind === "article"
+      ? articleJsonLd({
+          headline: displayName,
           description: page.description,
           url: absoluteUrl,
-        })}
-      />
+          siteName: SITE_NAME,
+          siteUrl: SITE_URL,
+        })
+      : kind === "page"
+        ? webPageJsonLd({
+            name: displayName,
+            description: page.description,
+            url: absoluteUrl,
+            siteName: SITE_NAME,
+            siteUrl: SITE_URL,
+          })
+        : webApplicationJsonLd({
+            name: displayName,
+            description: page.description,
+            url: absoluteUrl,
+          });
+
+  return (
+    <>
+      <JsonLd data={primary} />
       {faq?.length ? <JsonLd data={faqPageJsonLd(absoluteUrl, faq)} /> : null}
       {howTo?.steps.length ? (
         <JsonLd

@@ -6,6 +6,7 @@ import {
   JsonLd,
   breadcrumbJsonLd,
   faqPageJsonLd,
+  webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import { LetterGrid } from "@/components/seo/LetterGrid";
 import { PageHero } from "@/components/seo/PageHero";
@@ -109,6 +110,15 @@ export function CursiveLetterView({
 
   return (
     <div className="site-shell">
+      <JsonLd
+        data={webPageJsonLd({
+          name: h1,
+          description: letterDescription(letter, letterCase),
+          url: absoluteUrl,
+          siteName: SITE_NAME,
+          siteUrl: SITE_URL,
+        })}
+      />
       <JsonLd data={faqPageJsonLd(absoluteUrl, faqItems)} />
       <JsonLd
         data={breadcrumbJsonLd([

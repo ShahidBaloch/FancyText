@@ -9,11 +9,13 @@ import "./globals.css";
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;

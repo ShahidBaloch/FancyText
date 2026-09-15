@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import {
+  JsonLd,
+  breadcrumbJsonLd,
+  webPageJsonLd,
+} from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { SITE_NAME } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 const title = "Privacy Policy | FancifyText";
 const description = `How ${SITE_NAME} handles privacy for this free Unicode fancy text tool.`;
+const absoluteUrl = new URL("/privacy/", SITE_URL).toString();
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -25,6 +31,21 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="site-shell">
+      <JsonLd
+        data={webPageJsonLd({
+          name: "Privacy Policy",
+          description,
+          url: absoluteUrl,
+          siteName: SITE_NAME,
+          siteUrl: SITE_URL,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          { name: "Privacy Policy", url: absoluteUrl },
+        ])}
+      />
       <Breadcrumbs
         items={[
           { name: SITE_NAME, href: "/" },

@@ -25,6 +25,9 @@ export function HomeHero() {
   const specimen = transform(SPECIMEN, style.id);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduceMotion.matches) return;
+
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % SHOWCASE.length);
     }, 2200);

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-/** Apex host used for www → non-www 301s. */
+/** Apex host used for www → non-www 301s (after custom domain is attached). */
 const APEX_HOST = "fancifytext.com";
 
 export function proxy(request: NextRequest) {
@@ -15,10 +15,9 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  const isPreview =
-    process.env.VERCEL_ENV === "preview" || host.endsWith(".vercel.app");
-
-  if (isPreview) {
+  // Only noindex git preview deployments — production *.vercel.app stays indexable
+  // until the custom domain is attached.
+  if (process.env.VERCEL_ENV === "preview") {
     const response = NextResponse.next();
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
     return response;

@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import {
+  JsonLd,
+  breadcrumbJsonLd,
+  webPageJsonLd,
+} from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { SITE_NAME } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 const title = "Terms of Use | FancifyText";
 const description = `Terms for using ${SITE_NAME}, a free Unicode fancy text generator.`;
+const absoluteUrl = new URL("/terms/", SITE_URL).toString();
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -25,6 +31,21 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="site-shell">
+      <JsonLd
+        data={webPageJsonLd({
+          name: "Terms of Use",
+          description,
+          url: absoluteUrl,
+          siteName: SITE_NAME,
+          siteUrl: SITE_URL,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          { name: "Terms of Use", url: absoluteUrl },
+        ])}
+      />
       <Breadcrumbs
         items={[
           { name: SITE_NAME, href: "/" },
