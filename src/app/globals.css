@@ -1699,7 +1699,7 @@ a.use-card:hover {
 
 .alphabet-row {
   display: grid;
-  grid-template-columns: minmax(7rem, 9.5rem) 1fr auto;
+  grid-template-columns: minmax(7rem, 9.5rem) minmax(0, 1fr) auto;
   gap: 0.75rem 1rem;
   align-items: center;
   padding: 0.95rem 1rem;
@@ -1710,10 +1710,10 @@ a.use-card:hover {
 
 .alphabet-glyphs {
   margin: 0;
-  font-size: 1.2rem;
-  line-height: 1.65;
-  letter-spacing: 0.04em;
-  word-break: break-word;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
 }
 
 .letter-grid-block {
