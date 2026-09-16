@@ -53,7 +53,7 @@ git push -u origin main
    - `/sitemap.xml`
    - `/robots.txt`
    - Verified search bots (Googlebot, Bingbot)  
-   Without this, automated SEO tools may see a challenge page or HTTP 500 instead of the sitemap. `/sitemap.xml` is a static XML file generated at build from the page registry (`src/app/sitemap.xml`) and should return 200 with an indexable URL set (noindex cursive letter pages and thin kaomoji emotion tails are omitted).
+   Without this, automated SEO tools may see a challenge page or HTTP 500 instead of the sitemap. `/sitemap.xml` is a **public static file** generated at build (`public/sitemap.xml`) so it does not go through Next.js’ metadata sitemap pipeline. It should return 200 with an indexable URL set (noindex cursive letter pages and thin kaomoji emotion tails are omitted).
 
 ### CMP / ads (do not skip)
 
