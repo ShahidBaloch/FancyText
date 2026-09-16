@@ -79,6 +79,31 @@ export function letterUrl(letter: Letter, letterCase: LetterCase): string {
     : `/cursive-small-${letter}/`;
 }
 
+/** Full A–Z Mathematical Script row for the cursive hub alphabet section. */
+export function cursiveAlphabet(letterCase: LetterCase): string {
+  return LETTERS.map((letter) => cursiveGlyph(letter, letterCase)).join("");
+}
+
+export function parseCursiveSlug(
+  slug: string,
+): { letter: Letter; letterCase: LetterCase } | null {
+  const capital = /^cursive-capital-([a-z])$/i.exec(slug);
+  if (capital && isLetter(capital[1].toLowerCase())) {
+    return {
+      letter: capital[1].toLowerCase() as Letter,
+      letterCase: "capital",
+    };
+  }
+  const small = /^cursive-small-([a-z])$/i.exec(slug);
+  if (small && isLetter(small[1].toLowerCase())) {
+    return {
+      letter: small[1].toLowerCase() as Letter,
+      letterCase: "small",
+    };
+  }
+  return null;
+}
+
 export function letterPrimaryKeyword(
   letter: Letter,
   letterCase: LetterCase,

@@ -3,12 +3,7 @@ import { getCollectionPage } from "@/data/collections";
 import { getPlatformPage } from "@/data/platforms";
 import { getPageByUrl } from "@/data/pages/registry";
 import { getStyleSpokePage } from "@/data/style-spokes";
-import {
-  isLetter,
-  letterTitle,
-  type Letter,
-  type LetterCase,
-} from "@/lib/fonts/cursive";
+import { letterTitle, parseCursiveSlug } from "@/lib/fonts/cursive";
 import {
   OG_SIZE,
   renderOgImage,
@@ -18,18 +13,6 @@ import {
 export const size = OG_SIZE;
 export const contentType = "image/png";
 export const alt = "FancifyText";
-
-function parseCursiveSlug(slug: string): { letter: Letter; letterCase: LetterCase } | null {
-  const capital = /^cursive-capital-([a-z])$/i.exec(slug);
-  if (capital && isLetter(capital[1].toLowerCase())) {
-    return { letter: capital[1].toLowerCase() as Letter, letterCase: "capital" };
-  }
-  const small = /^cursive-small-([a-z])$/i.exec(slug);
-  if (small && isLetter(small[1].toLowerCase())) {
-    return { letter: small[1].toLowerCase() as Letter, letterCase: "small" };
-  }
-  return null;
-}
 
 function ogTitle(slug: string): string {
   if (slug === "kaomoji") {

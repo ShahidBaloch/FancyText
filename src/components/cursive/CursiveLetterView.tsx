@@ -75,7 +75,7 @@ export function CursiveLetterView({
           },
           {
             question: `How do I type small ${upper} in cursive?`,
-            answer: `Use our small letter page for ${letter} in cursive (${small}), or open the cursive text generator to convert a whole word.`,
+            answer: `Copy ${small} on this page, or open the cursive text generator to convert a whole word or name at once.`,
           },
         ]
       : [
@@ -101,7 +101,7 @@ export function CursiveLetterView({
           },
           {
             question: `How do I make a full name in cursive?`,
-            answer: `Open the cursive text generator, type your name, and copy the script output—or combine letters from the A–Z grid below.`,
+            answer: `Open the cursive text generator, type your name, and copy Cursive / Script or Bold Cursive. That is faster and more accurate than combining letters from the A–Z grid.`,
           },
         ];
 
@@ -173,6 +173,16 @@ export function CursiveLetterView({
           Looking for the other size?{" "}
           <Link href={otherUrl}>{otherLabel}</Link>
         </p>
+
+        <aside className="letter-generator-cta">
+          <p>
+            This page copies one letter. For a whole word, name, or bio line, use
+            the cursive generator—type once and copy the full script string.
+          </p>
+          <Link href="/cursive-text-generator/" className="btn-primary">
+            Open cursive text generator
+          </Link>
+        </aside>
       </div>
 
       <section className="seo-section seo-prose" aria-labelledby="tip-heading">

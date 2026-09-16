@@ -28,41 +28,12 @@ import {
   getStyleSpokePage,
   STYLE_SPOKE_SLUGS,
 } from "@/data/style-spokes";
-import {
-  LETTERS,
-  isLetter,
-  letterDescription,
-  letterTitle,
-  type Letter,
-  type LetterCase,
-} from "@/lib/fonts/cursive";
-import { pageMetadata } from "@/lib/seo/metadata";
+import { LETTERS, parseCursiveSlug } from "@/lib/fonts/cursive";
+import { cursiveLetterMetadata, pageMetadata } from "@/lib/seo/metadata";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
-
-type ParsedCursive = { kind: "cursive"; letter: Letter; letterCase: LetterCase };
-
-function parseCursiveSlug(slug: string): ParsedCursive | null {
-  const capital = /^cursive-capital-([a-z])$/i.exec(slug);
-  if (capital && isLetter(capital[1].toLowerCase())) {
-    return {
-      kind: "cursive",
-      letter: capital[1].toLowerCase() as Letter,
-      letterCase: "capital",
-    };
-  }
-  const small = /^cursive-small-([a-z])$/i.exec(slug);
-  if (small && isLetter(small[1].toLowerCase())) {
-    return {
-      kind: "cursive",
-      letter: small[1].toLowerCase() as Letter,
-      letterCase: "small",
-    };
-  }
-  return null;
-}
 
 export const dynamicParams = false;
 
@@ -138,27 +109,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const parsed = parseCursiveSlug(slug);
   if (!parsed) return {};
-  const title = letterTitle(parsed.letter, parsed.letterCase);
-  const description = letterDescription(parsed.letter, parsed.letterCase);
-  const canonical = new URL(`/${slug}/`, SITE_URL).toString();
-  return {
-    title: { absolute: title },
-    description,
-    alternates: { canonical },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      siteName: SITE_NAME,
-      type: "website",
-      locale: "en_US",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
-  };
+  return cursiveLetterMetadata(parsed.letter, parsed.letterCase);
 }
 
 export default async function SlugPage({ params }: Props) {

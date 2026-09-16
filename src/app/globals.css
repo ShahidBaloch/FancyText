@@ -1667,6 +1667,55 @@ a.use-card:hover {
   color: var(--accent);
 }
 
+.letter-generator-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+
+.letter-generator-cta p {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--ink);
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.letter-generator-cta .btn-primary {
+  flex-shrink: 0;
+}
+
+.alphabet-specimen {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.alphabet-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 9.5rem) 1fr auto;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel-solid);
+}
+
+.alphabet-glyphs {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  letter-spacing: 0.04em;
+  word-break: break-word;
+}
+
 .letter-grid-block {
   margin-top: 1rem;
 }
@@ -2321,6 +2370,15 @@ a.use-card:hover {
 
   .dual-preview {
     grid-template-columns: 1fr;
+  }
+
+  .alphabet-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .letter-generator-cta .btn-primary {
+    width: 100%;
   }
 }
 

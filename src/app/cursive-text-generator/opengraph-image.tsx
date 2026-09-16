@@ -7,6 +7,6 @@ export const contentType = "image/png";
 export default function OpenGraphImage() {
   return renderOgImage({
     title: "Cursive text generator",
-    subtitle: "Script Unicode fonts and A–Z cursive letters to copy and paste",
+    subtitle: "Type a name, then copy script Unicode and the A–Z cursive alphabet",
   });
 }
