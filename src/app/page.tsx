@@ -26,9 +26,9 @@ export const metadata = pageMetadata(page);
 
 const faqItems = [
   {
-    question: "What does this generator actually change?",
+    question: "What is a fancy text generator?",
     answer:
-      "It swaps each letter for a Unicode look-alike (bold, cursive, bubble, and so on). The result is still text. Instagram, Discord, and TikTok do not install a font from this page.",
+      "A fancy text generator swaps each letter for a Unicode look-alike (bold, cursive, bubble, and so on). The result is still text. Instagram, Discord, and TikTok do not install a font from this page.",
   },
   {
     question: "Is this the same page as copy and paste fonts?",
@@ -89,7 +89,7 @@ export default function HomePage() {
         faq={faqItems}
         crumbs={[]}
         howTo={{
-          name: "Type, pick a style, paste",
+          name: "How to use the fancy text generator",
           steps: [
             "Type a name, bio line, or short caption in the box at the top.",
             "Tap a style chip. This page shows the full set—cool lookalikes, cursive, bubble, and the rest.",
@@ -101,7 +101,7 @@ export default function HomePage() {
       <HomePlayground />
 
       <section className="seo-section" aria-labelledby="how-heading">
-        <h2 id="how-heading">Type, pick a style, paste</h2>
+        <h2 id="how-heading">How to use the fancy text generator</h2>
         <ol className="how-steps">
           <li>
             <span className="how-num" aria-hidden>

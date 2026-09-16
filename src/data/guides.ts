@@ -355,7 +355,7 @@ export const GUIDES: GuideConfig[] = [
   },
   {
     slug: "snapchat-name-fonts",
-    h1: "Why Snapchat rejects fancy display names",
+    h1: "Snapchat name fonts",
     datePublished: "2026-09-15",
     dateModified: "2026-09-15",
     howToSteps: [

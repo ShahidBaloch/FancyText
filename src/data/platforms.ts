@@ -55,7 +55,7 @@ export const PLATFORMS: PlatformConfig[] = [
   platform("discord-color-text", "discord-color", {
     initialText: "Hello Discord",
     presets: ["Welcome", "Rules", "Announcement", "Nickname"],
-    howToHeading: "Color a Discord message (not a nickname)",
+    howToHeading: "How to use Discord colored text",
     howToSteps: [
       "Type the announcement and tap an ANSI color chip.",
       "Copy the whole ```ansi code block—not just the inner sentence.",
@@ -68,6 +68,11 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     colorCodes: true,
     faq: [
+      {
+        question: "What is a Discord colored text generator?",
+        answer:
+          "Discord colored text uses ANSI escape codes inside a ```ansi code block. It paints a message, not a nickname.",
+      },
       {
         question: "Why is my nickname still not colored?",
         answer:
@@ -103,7 +108,7 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     initialText: "Discord",
     presets: ["Discord", "Server Name", "Nickname", "Cool Status"],
-    howToHeading: "Style a Discord nick, not the @handle",
+    howToHeading: "How to use Discord fonts",
     howToSteps: [
       "Type the nickname, channel title, or about-me line.",
       "Prefer sans bold, bubble, or script for nicknames. Cherokee and Japanese lookalikes are on the cool text generator.",
@@ -146,7 +151,10 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     faq: [
       {
-        question: "Will this change my @username?",
+        question: "What is a Discord font generator?",
+        answer:
+          "It converts plain text into Unicode letters you paste into Discord display names, nicknames, and about-me. No bot or Nitro required. The @username stays lowercase ASCII.",
+      },
         answer:
           "No. Discord usernames are lowercase ASCII. Paste Unicode into the display name or a server nickname instead. No bot or Nitro needed for that.",
       },
@@ -180,7 +188,7 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     initialText: "TikTok Bio",
     presets: ["TikTok Bio", "aesthetic", "viral", "creator"],
-    howToHeading: "Fit fancy letters into an 80-character TikTok bio",
+    howToHeading: "How to use TikTok fonts",
     howToSteps: [
       "Type the bio line or caption. TikTok bios are only 80 characters—wide fullwidth runs out of room first.",
       "Preview script, small caps, or sans bold. Skip glitch.",
@@ -223,6 +231,11 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     faq: [
       {
+        question: "What is a TikTok font generator?",
+        answer:
+          "TikTok has no font picker. This tool makes Unicode letters for the 80-character bio, the nickname, and captions. The @handle stays plain.",
+      },
+      {
         question: "Why is my bio suddenly too long?",
         answer:
           "Fancy letters still count, and fullwidth looks even wider. Cut the line or switch to small caps / sans bold. The limit is 80.",
@@ -257,7 +270,7 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     initialText: "Instagram Bio",
     presets: ["Instagram Bio", "aesthetic", "link in bio", "caption"],
-    howToHeading: "Change an Instagram bio without a font picker",
+    howToHeading: "How to use Instagram fonts",
     howToSteps: [
       "Type the bio, display name, or caption. Watch the 150-character bio limit—script still counts.",
       "Preview cursive, bold, or small caps. Skip dense zalgo; Instagram often will not save it.",
@@ -299,6 +312,11 @@ export const PLATFORMS: PlatformConfig[] = [
       },
     ],
     faq: [
+      {
+        question: "What is an Instagram font generator?",
+        answer:
+          "Instagram has no font picker for bios. An Instagram font generator converts letters to Unicode look-alikes you paste in. Nothing installs. The @handle stays lowercase letters.",
+      },
       {
         question: "Why won’t Instagram let me pick a font?",
         answer:
@@ -376,7 +394,7 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     initialText: "WhatsApp",
     presets: ["WhatsApp", "Status", "Group name", "Hello"],
-    howToHeading: "When to paste Unicode vs WhatsApp *bold*",
+    howToHeading: "How to use WhatsApp fonts",
     howToSteps: [
       "For a chat message, try WhatsApp’s own *bold*, _italic_, and ~strike~ first—those stay searchable.",
       "For status, About, or a group name (no markdown there), type a short line here and pick bold, cursive, or bubble.",
@@ -418,6 +436,11 @@ export const PLATFORMS: PlatformConfig[] = [
       },
     ],
     faq: [
+      {
+        question: "What are WhatsApp fonts?",
+        answer:
+          "WhatsApp fonts usually mean Unicode you paste into About, status, or a group name. In chats, *bold* _italic_ ~strike~ markdown is cleaner and stays searchable.",
+      },
       {
         question: "Should I use *bold* or this Unicode?",
         answer:
@@ -494,7 +517,7 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     initialText: "display name",
     presets: ["display name", "bio line", "creator", "hello"],
-    howToHeading: "Fit Unicode into an X display name and 160-character bio",
+    howToHeading: "How to use X / Twitter fonts",
     howToSteps: [
       "Type a short display name (50 characters) or a bio line (160).",
       "Stay on sans bold, bold, italic, or cursive. Skip glitch and dense bubble stacks.",
@@ -537,6 +560,11 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     faq: [
       {
+        question: "What is a Twitter font generator?",
+        answer:
+          "X (Twitter) has no font picker. This generator makes Unicode for the display name and 160-character bio. The @handle stays letters, numbers, and underscores.",
+      },
+      {
         question: "Can the @handle be fancy?",
         answer:
           "No. Display names accept many Unicode letters. The @handle is the shortest of the major apps (15 characters) and stays plain.",
@@ -562,7 +590,7 @@ export const PLATFORMS: PlatformConfig[] = [
     styleIds: ["sans-bold", "bold", "small-caps", "monospace", "italic"],
     initialText: "Roblox",
     presets: ["Roblox", "DisplayName", "clan", "user"],
-    howToHeading: "Test a Roblox display name the filter might allow",
+    howToHeading: "How to use Roblox fonts",
     howToSteps: [
       "Type the display name you want—not the account username, which is stricter.",
       "Start with sans bold or small caps. Roblox strips a lot of novelty symbols.",
@@ -575,6 +603,11 @@ export const PLATFORMS: PlatformConfig[] = [
       "A jump to HTML-like tags for supported Roblox UI (that is markup, not this Unicode)",
     ],
     faq: [
+      {
+        question: "What is a Roblox font generator?",
+        answer:
+          "It previews Unicode for Roblox display names. Account usernames are much stricter. Always paste in Roblox and see if it saves—filters strip a lot of novelty symbols.",
+      },
       {
         question: "Can the account username be cursive?",
         answer:
@@ -608,7 +641,7 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     initialText: "display name",
     presets: ["display name", "page title", "hello", "bio line"],
-    howToHeading: "Paste Unicode into a Facebook display name",
+    howToHeading: "How to use Facebook fonts",
     howToSteps: [
       "Type a short display name—not a whole post.",
       "Preview sans bold, bold, or cursive. Skip glitch and dense hearts; Facebook may treat them as spam.",
@@ -651,6 +684,11 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     faq: [
       {
+        question: "What is a Facebook font generator?",
+        answer:
+          "Facebook has no name font picker. This generator makes Unicode for the display name. Keep the @username in plain letters so people can find you.",
+      },
+      {
         question: "Will Facebook save a cursive first name?",
         answer:
           "Sometimes. Display names often accept Unicode. The @username is much stricter. If save fails, drop bubble or gothic and retry with a shorter name.",
@@ -683,7 +721,7 @@ export const PLATFORMS: PlatformConfig[] = [
     ],
     initialText: "Snapchat",
     presets: ["Snapchat", "display name", "story", "friends"],
-    howToHeading: "Get a Snapchat display name past the filter",
+    howToHeading: "How to use Snapchat fonts",
     howToSteps: [
       "Type two or three words—Snapchat profiles are tiny.",
       "Start with sans bold or bubble. Script and combining marks fail more often.",
@@ -718,6 +756,11 @@ export const PLATFORMS: PlatformConfig[] = [
       },
     ],
     faq: [
+      {
+        question: "What is a Snapchat font generator?",
+        answer:
+          "Snapchat has no font picker for display names. This generator makes Unicode you paste in. Filters reject many symbols—try sans bold or bubble, then shorten if save fails.",
+      },
       {
         question: "Why won’t Snapchat save my fancy name?",
         answer:

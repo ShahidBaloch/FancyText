@@ -32,7 +32,7 @@ const howToSteps = [
 
 const faqItems = [
   {
-    question: "Is this handwriting or a font file?",
+    question: "What is a cursive text generator?",
     answer:
       "A cursive text generator converts normal Latin letters into Mathematical Script Unicode (script / cursive look-alikes). You copy the result and paste it anywhere that accepts text—no font download and no app install.",
   },
@@ -78,7 +78,7 @@ export default function CursiveHubPage() {
         faq={faqItems}
         crumbName="Cursive text generator"
         howTo={{
-          name: "Type the whole word, then copy",
+          name: "How to make cursive text",
           steps: howToSteps,
         }}
       />
@@ -90,7 +90,7 @@ export default function CursiveHubPage() {
       />
       <PageHero
         h1="Cursive text generator"
-        lead="Type a name, copy Mathematical Script Unicode, paste it. This page also has the A–Z alphabet if you only need one glyph—no font to install, and letters will not join like calligraphy."
+        lead="Cursive text generator: type a name, copy Mathematical Script Unicode, paste it. This page also has the A–Z alphabet if you only need one glyph—no font to install, and letters will not join like calligraphy."
       />
 
       <div className="tool-stage" id="tool">
@@ -110,7 +110,7 @@ export default function CursiveHubPage() {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">Type the whole word, then copy</h2>
+        <h2 id="how-heading">How to make cursive text</h2>
         <ol>
           {howToSteps.map((step) => (
             <li key={step}>{step}</li>
@@ -148,7 +148,7 @@ export default function CursiveHubPage() {
       <CursiveAlphabet />
 
       <section className="seo-section seo-prose" aria-labelledby="uses-heading">
-        <h2 id="uses-heading">Bios, nicks, and worksheets</h2>
+        <h2 id="uses-heading">Where to use cursive text</h2>
         <ul>
           <li>
             <Link href="/instagram-font-generator/">Instagram</Link> bios,

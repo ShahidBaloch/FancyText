@@ -29,7 +29,7 @@ type KaomojiListViewProps = {
 
 const hubFaq = [
   {
-    question: "What does kaomoji mean?",
+    question: "What are kaomoji?",
     answer:
       "顔文字: face characters. They are punctuation emoticons from Japanese chat culture, not emoji stickers. This hub is the index; cute, cry, and heart are the main mood pages, plus Lenny and shrug.",
   },
@@ -175,7 +175,7 @@ export function KaomojiHubView() {
           faq={hubFaq}
           crumbName="Kaomoji"
           howTo={{
-            name: "Grab a kaomoji from the grid",
+            name: "How to copy kaomoji",
             steps: [
               "Tap a face above, or open cute / cry / heart for a longer list.",
               "The clipboard gets ordinary text—no sticker pack.",
@@ -239,7 +239,7 @@ export function KaomojiHubView() {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="what-heading">
-        <h2 id="what-heading">Faces made of punctuation</h2>
+        <h2 id="what-heading">What are kaomoji?</h2>
         <p>
           Kaomoji are Japanese emoticons built from Unicode characters. Unlike
           emoji stickers, they are plain text—so they paste into Discord,
@@ -250,7 +250,7 @@ export function KaomojiHubView() {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="how-hub-heading">
-        <h2 id="how-hub-heading">Grab a face from the grid</h2>
+        <h2 id="how-hub-heading">How to copy kaomoji</h2>
         <ol>
           <li>Tap a face above, or open cute / cry / heart if you want a longer list.</li>
           <li>The clipboard gets ordinary text—no sticker pack.</li>

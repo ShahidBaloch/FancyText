@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Type a word, copy Unicode styles, paste them into a bio or chat. No font file to install.",
+    "Free fancy text generator. Convert letters into Unicode styles you can copy and paste for Instagram, Discord, TikTok, and more.",
   alternates: {
     languages: {
       "en": SITE_URL,

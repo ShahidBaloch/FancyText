@@ -17,7 +17,7 @@ const related = getTopicalRelated("/big-text-generator/", 6);
 
 const FAQ = [
   {
-    question: "Is this a huge font or banner art?",
+    question: "What is a big text generator?",
     answer:
       "It turns a short phrase into large copy-paste ASCII letters built from ordinary characters like #, |, and /. The result is banner-sized text art, not a downloadable font and not a Unicode fancy style.",
   },

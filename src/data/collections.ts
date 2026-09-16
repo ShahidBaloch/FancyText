@@ -162,7 +162,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       ],
       faq: [
         {
-          question: "What are copy and paste fonts, really?",
+          question: "What are copy and paste fonts?",
           answer:
             "Styled Unicode characters—not a downloadable TTF. You copy the symbols and paste them into apps that accept them. This page lists those collections; it is not a second homepage gallery.",
         },
@@ -203,6 +203,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       initialText: "aesthetic",
       presets: ["aesthetic", "soft vibes", "dreamy", "minimal"],
       howToHeading: "Build a soft, wide bio line",
+      howToName: "How to copy aesthetic fonts",
       howToSteps: [
         "Type the caption or username you actually want to publish—not a paragraph.",
         "Look for fullwidth spacing, script, and quiet small caps. Skip bubble and glitch; those live on other pages.",
@@ -220,7 +221,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       },
       faq: [
         {
-          question: "What counts as an “aesthetic” font here?",
+          question: "What are aesthetic fonts?",
           answer:
             "Wide fullwidth letters, script, and quiet small caps. The point is space and softness, not circled bubbles or heavy bold.",
         },
@@ -249,6 +250,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       initialText: "cute",
       presets: ["cute", "kawaii", "hello", "sweet"],
       howToHeading: "Pick a kawaii letter set",
+      howToName: "How to copy cute fonts copy and paste",
       howToSteps: [
         "Type a short name or hello—circled letters get wide fast.",
         "Choose bubble, squared caps, hearts, or parenthesized glyphs. Fullwidth script is on aesthetic fonts, not here.",
@@ -266,7 +268,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       },
       faq: [
         {
-          question: "What is in this cute set?",
+          question: "What are cute fonts copy and paste?",
           answer:
             "Bubble circles, squared caps, heart letters, and parenthesized glyphs. Soft fullwidth script is on aesthetic fonts, not here.",
         },
@@ -303,6 +305,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       initialText: "Luna",
       presets: ["Luna", "Alex", "gamerX", "username"],
       howToHeading: "Style a short name that filters might allow",
+      howToName: "How to copy name fonts",
       howToSteps: [
         "Type the name you log in with, or the display name you actually want to show.",
         "Compare sans bold, script, and small caps. Bubble, glitch, and Cherokee lookalikes are on other pages because they fail username filters.",
@@ -321,7 +324,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       },
       faq: [
         {
-          question: "What is a “name font” here?",
+          question: "What are name fonts?",
           answer:
             "Unicode applied to a first name, nickname, or display name. The @username / login is a different field and usually has to stay A–Z.",
         },
@@ -360,6 +363,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       initialText: "stylish",
       presets: ["stylish", "graphic bio", "profile", "caption"],
       howToHeading: "Get high-contrast letters, not cute ones",
+      howToName: "How to use a stylish text generator",
       howToSteps: [
         "Type the phrase you want to punch up—a CTA, a nick, a caption.",
         "Stay on bold, italic, monospace, strikethrough, and glitch. Soft fullwidth and bubble are on other collections.",
@@ -377,7 +381,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       },
       faq: [
         {
-          question: "What is “stylish” on this page?",
+          question: "What is a stylish text generator?",
           answer:
             "Bold, italic, graphic, and glitch Unicode—high contrast. Not the soft aesthetic set and not kawaii bubbles.",
         },
@@ -405,7 +409,7 @@ export const COLLECTIONS: CollectionConfig[] = [
     {
       initialText: "Cool Text",
       presets: ["Cool Text", "gamer tag", "clan", "username"],
-      howToHeading: "Paste lookalikes without installing a font",
+      howToHeading: "How to copy cool text",
       howToSteps: [
         "Type a short name, clan tag, or bio line. Lookalikes fall apart on long sentences.",
         "Browse Cherokee, Japanese, CJK, fat, letterlike, and squared rows. Each one is Unicode, not a TTF.",
@@ -453,7 +457,7 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Type in the box, tap Copy, switch to Discord or Instagram, long-press Paste. Empty boxes mean your phone’s fonts skip that glyph—try Fat Letters, Accent Mashup, or sans bold on the name fonts page.",
       faq: [
         {
-          question: "What is “cool text” on this site?",
+          question: "What is a cool text generator?",
           answer:
             "Unicode lookalikes: Cherokee, Japanese/CJK strokes, fat syllabics, squared caps, and similar mappings. You copy characters. There is no font file and no trademarked typeface attached to a row.",
         },

@@ -105,9 +105,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     ],
     faq: [
       {
-        question: "Is this a downloadable bold font?",
+        question: "What is a bold text generator?",
         answer:
-          "No. It swaps letters for Mathematical Bold Unicode. The weight travels with the text. Discord chats can use **markdown** instead; this is for bios and nicks with no bold button.",
+          "A bold text generator swaps letters for Mathematical Bold Unicode. The weight travels with the text. Discord chats can use **markdown** instead; this is for bios and nicks with no bold button.",
       },
       {
         question: "Sans bold or mathematical bold?",
@@ -170,6 +170,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     ],
     faq: [
       {
+        question: "What is an italic text generator?",
+        answer:
+          "It turns plain letters into Unicode italic so a quote can look slanted in apps with no italic button. Cursive/script is a different, more handwritten Unicode set.",
+      },
+      {
         question: "Is italic the same as cursive?",
         answer:
           "No. Italic is slanted mathematical letters. Cursive/script is a different Unicode block with more handwritten curves. Use the cursive generator for script names.",
@@ -225,9 +230,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     },
     faq: [
       {
-        question: "What are these circles?",
+        question: "What is a bubble text generator?",
         answer:
-          "Unicode enclosed alphanumerics—letters and digits inside circles. Not a rounded font file.",
+          "A bubble text generator makes Unicode enclosed alphanumerics—letters and digits inside circles. Not a rounded font file.",
       },
       {
         question: "Do numbers work?",
@@ -270,9 +275,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       ],
       faq: [
       {
-        question: "How does strikethrough text work?",
+        question: "What is a strikethrough text generator?",
         answer:
-          "The tool adds a Unicode combining long stroke overlay to each letter. The base letter stays readable with a line through it.",
+          "A strikethrough text generator adds a Unicode combining long stroke overlay to each letter. The base letter stays readable with a line through it.",
       },
       {
         question: "Can I strikethrough text on Instagram?",
@@ -331,6 +336,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         body: "Small caps replace letters with short-capital Unicode (ꜱᴍᴀʟʟ ᴄᴀᴘꜱ). They stay roughly normal x-height. The small text generator makes compact superscript-style bios. The superscript & subscript generator raises or lowers characters for math and footnotes. Use this page only when you want small capitals.",
       },
       faq: [
+        {
+          question: "What is a small caps generator?",
+          answer:
+            "A small caps generator turns letters into short-capital Unicode (ꜱᴍᴀʟʟ ᴄᴀᴘꜱ) at normal reading size. It is not tiny superscript bios and not math subscripts.",
+        },
         {
           question: "Why is the letter x not in small caps?",
           answer:
@@ -391,6 +401,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         "This is not a code block. If you want real monospaced code on a platform that supports it, use that platform's code formatting instead—it stays searchable and copyable.",
       ],
       faq: [
+        {
+          question: "What is a monospace text generator?",
+          answer:
+            "A monospace text generator swaps letters for fixed-width Unicode so a bio or display name can look typewritten. It is not a code block.",
+        },
         {
           question: "Is this the same as a code block?",
           answer:
@@ -522,9 +537,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     ],
     faq: [
       {
-        question: "What is glitch text / Zalgo text?",
+        question: "What is a glitch text generator?",
         answer:
-          "Glitch or Zalgo text stacks Unicode combining diacritical marks above and below letters to create a corrupted, creepy effect.",
+          "A glitch text generator stacks Unicode combining diacritical marks above and below letters to create a corrupted Zalgo / cursed effect.",
       },
       {
         question: "Is a glitch text generator safe to use?",
@@ -587,9 +602,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     },
     faq: [
       {
-        question: "How is this different from small caps or math subscripts?",
+        question: "What is a small text generator?",
         answer:
-          "It turns normal letters into tiny Unicode (mostly superscript) so you can paste compact text into bios and usernames. It is not a smaller installed font.",
+          "A small text generator turns normal letters into tiny Unicode (mostly superscript) so you can paste compact text into bios and usernames. It is not a smaller installed font.",
       },
       {
         question: "Is small text the same as superscript or small caps?",
@@ -641,9 +656,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     ],
     faq: [
       {
-        question: "Does this reverse letters or flip them upside down?",
+        question: "What is a mirror text generator?",
         answer:
-          "It reverses the order of your characters so the word reads backwards. That is different from upside-down text, which also swaps in flipped Unicode letters.",
+          "A mirror text generator reverses the order of your characters so the word reads backwards. That is different from upside-down text, which also swaps in flipped Unicode letters.",
       },
       {
         question: "Is mirror text the same as upside down text?",
@@ -742,7 +757,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     ],
     faq: [
       {
-        question: "Is this a font, or UTF-8 bits?",
+        question: "What is a binary text generator?",
         answer:
           "It encodes your text as UTF-8 bytes shown as 8-bit binary groups you can copy and paste.",
       },
