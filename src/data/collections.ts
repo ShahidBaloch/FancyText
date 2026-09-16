@@ -142,6 +142,11 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Soft captions and quote posts",
         "Minimal username flair where Unicode is allowed",
       ],
+      taxonomy: [
+        { label: "Cool lookalike letters", href: "/cool-text-generator/" },
+        { label: "Cute fonts", href: "/cute-fonts/" },
+        { label: "Stylish text", href: "/stylish-text-generator/" },
+      ],
       difference: {
         heading: "Aesthetic vs cute vs stylish",
         body: "This collection is the soft, wide, script set—fullwidth spacing, cursive, and delicate small caps. Cute fonts are bubble and squared kawaii letters. Cool text is Cherokee, Japanese, and fat lookalikes for gaming tags. Stylish text is the bold, italic, and glitch set. Use the copy-and-paste gallery when you want every style on one page.",
@@ -185,6 +190,11 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Kawaii-style bios and captions",
         "Playful Discord and Roblox-style nicknames",
         "Cute group chat names and status lines",
+      ],
+      taxonomy: [
+        { label: "Cool lookalike letters", href: "/cool-text-generator/" },
+        { label: "Aesthetic fonts", href: "/aesthetic-fonts/" },
+        { label: "Bubble text", href: "/bubble-text-generator/" },
       ],
       difference: {
         heading: "What makes these cute fonts",
@@ -240,6 +250,11 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Game usernames and profile titles",
         "Snapchat and WhatsApp name styling",
       ],
+      taxonomy: [
+        { label: "Cool lookalike letters", href: "/cool-text-generator/" },
+        { label: "Discord fonts", href: "/discord-font-generator/" },
+        { label: "Roblox fonts", href: "/roblox-font-generator/" },
+      ],
       difference: {
         heading: "Name fonts, not a full gallery",
         body: "This page is for short names and usernames: clean sans bold, script signatures, and compact small caps. It skips bubble, glitch, and cool lookalikes (Cherokee, Japanese, fat letters) that often fail username filters — those live on the cool text generator. For a full bio with line breaks, use the social media bio generator.",
@@ -293,6 +308,11 @@ export const COLLECTIONS: CollectionConfig[] = [
         "High-contrast bios and CTAs",
         "Cool captions and comment flair",
         "Discord nicknames with bold or graphic punch",
+      ],
+      taxonomy: [
+        { label: "Cool lookalike letters", href: "/cool-text-generator/" },
+        { label: "Aesthetic fonts", href: "/aesthetic-fonts/" },
+        { label: "Bold text", href: "/bold-text-generator/" },
       ],
       difference: {
         heading: "Stylish is the graphic set",
