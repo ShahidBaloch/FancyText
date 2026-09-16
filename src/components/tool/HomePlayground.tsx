@@ -12,6 +12,8 @@ const HOME_STYLE_IDS = [
   "sans-bold",
   "italic",
   "bubble",
+  "japanese",
+  "fat",
   "tiny",
   "small-caps",
   "fullwidth",
@@ -39,8 +41,8 @@ export function HomePlayground() {
         <p className="seo-lead">
           Preview every FancifyText style as a live word converter. Search by
           name or star a style to pin it at the top — favorites stay in this
-          browser. Open a collection when you only want aesthetic, cute, or
-          graphic looks.
+          browser. Open a collection when you only want aesthetic, cute, cool
+          lookalike, or graphic looks.
         </p>
         <StyleGallery
           initialText={INITIAL_TEXT}

@@ -112,7 +112,7 @@ export const PLATFORMS: PlatformConfig[] = [
       "Copy a row and paste into Discord display name, channel topic, or message.",
     ],
     uses: [
-      "Discord nicknames and clan tags (display name ≠ username)",
+      "Discord nicknames and clan tags (display name ≠ username). For Cherokee, Japanese, and fat lookalikes, open the cool text generator — those styles rarely survive @handles.",
       "Server names and channel titles",
       "About-me and status text with fancy Unicode",
     ],
@@ -157,6 +157,11 @@ export const PLATFORMS: PlatformConfig[] = [
         question: "Do cute Discord fonts work in usernames?",
         answer:
           "Discord allows many Unicode symbols in display names, but some characters may be rejected. Try sans bold or bubble styles if one fails. Your @username should stay plain ASCII.",
+      },
+      {
+        question: "Where can I get cooler lookalike letters for Discord?",
+        answer:
+          "Cherokee, Japanese, fat, and squared lookalikes live on the cool text generator. They often work in display names and nicknames, but they are not for the @username field and may box out on some phones.",
       },
       {
         question: "Unicode fonts vs Discord ANSI color—what is the difference?",
@@ -552,6 +557,7 @@ export const PLATFORMS: PlatformConfig[] = [
       "Roblox display names where Unicode is allowed",
       "Experience titles and UI labels you type yourself",
       "Jumping to HTML/rich text tags for supported Roblox UI",
+      "Cool lookalike letters (Cherokee, Japanese, fat) — try them on the cool text generator, then test in Roblox; filters often strip them",
     ],
     faq: [
       {
@@ -577,7 +583,7 @@ export const PLATFORMS: PlatformConfig[] = [
       {
         question: "Which Roblox name fonts are safest?",
         answer:
-          "Sans bold, bold, italic, and small caps. Skip zalgo, fullwidth, and squared letters for names.",
+          "Sans bold, bold, italic, and small caps. Skip zalgo, fullwidth, and squared letters for names. Cool lookalikes (Cherokee, CJK, fat) are even more likely to be filtered — use them in Discord or a bio instead.",
       },
     ],
   }),
