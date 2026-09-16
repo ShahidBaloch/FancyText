@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/write-sitemap.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:unicode": "node scripts/check-unicode.mjs"
+    "check:unicode": "node scripts/check-unicode.mjs",
+    "check:sitemap": "node scripts/write-sitemap.mjs"
   },
   "dependencies": {
     "next": "16.3.5",

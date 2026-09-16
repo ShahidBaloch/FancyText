@@ -53,7 +53,7 @@ git push -u origin main
    - `/sitemap.xml`
    - `/robots.txt`
    - Verified search bots (Googlebot, Bingbot)  
-   Without this, automated SEO tools may see a challenge page or HTTP 500 instead of the sitemap. `/sitemap.xml` is generated as a static XML route and should return 200 with an indexable URL set (noindex cursive letter pages and thin kaomoji emotion tails are omitted).
+   Without this, automated SEO tools may see a challenge page or HTTP 500 instead of the sitemap. `/sitemap.xml` is a **public static file** generated at build (`public/sitemap.xml`) so it does not go through Next.js’ metadata sitemap pipeline. It should return 200 with an indexable URL set (noindex cursive letter pages and thin kaomoji emotion tails are omitted). lastmod is `CONTENT_UPDATED_AT` in `src/data/pages/registry.ts` — bump that date only when intentionally publishing changes; after GSC submit the site is meant for infrequent updates.
 
 ### CMP / ads (do not skip)
 
