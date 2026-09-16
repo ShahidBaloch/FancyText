@@ -17,7 +17,7 @@ const related = getTopicalRelated("/big-text-generator/", 6);
 
 const FAQ = [
   {
-    question: "What is a big text generator?",
+    question: "Is this a huge font or banner art?",
     answer:
       "It turns a short phrase into large copy-paste ASCII letters built from ordinary characters like #, |, and /. The result is banner-sized text art, not a downloadable font and not a Unicode fancy style.",
   },
@@ -37,14 +37,9 @@ const FAQ = [
       "Proportional fonts squeeze spaces. Copy the code-block version and paste that into Discord or Reddit so the letters stay on a grid. On mobile, preview in landscape if a long word overflows.",
   },
   {
-    question: "Will this work in an Instagram bio?",
+    question: "Will this fit in an Instagram bio?",
     answer:
       "Almost never. Instagram bios are 150 characters, collapse extra spaces, and do not render as a fixed-width grid. Use the Instagram font generator for a single stylish line instead.",
-  },
-  {
-    question: "Does this run in my browser?",
-    answer:
-      "Yes. Letters are mapped client-side. Nothing you type is uploaded as part of generating the banner.",
   },
 ];
 
@@ -74,7 +69,7 @@ export function BigTextView() {
       </div>
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">How to make large copy-paste letters</h2>
+        <h2 id="how-heading">Draw a banner from ordinary characters</h2>
         <ol>
           <li>Type a short word — a name, a server title, or a one-line shout.</li>
           <li>

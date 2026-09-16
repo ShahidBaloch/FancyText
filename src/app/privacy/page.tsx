@@ -56,7 +56,7 @@ export default function PrivacyPage() {
       />
       <PageHero
         h1="Privacy Policy"
-        lead={`${SITE_NAME} is a free browser-based fancy text tool. This page explains what we collect, how advertising partners (including Google) may use data when ads are enabled, and what we do not do.`}
+        lead={`${SITE_NAME} is a free browser tool. This page says what we collect, what advertising partners (including Google) may use if ads are on, and what we do not store.`}
       />
 
       <div className="seo-section seo-prose legal-prose">

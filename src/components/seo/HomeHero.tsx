@@ -13,8 +13,8 @@ export function HomeHero() {
           Fancy text generator
         </h1>
         <p className="home-lead">
-          Type once, then copy bold, cursive, bubble, and aesthetic fonts for
-          bios, chats, and usernames.
+          Type a word. Copy bold, cursive, bubble, or aesthetic Unicode. Paste
+          it into a bio or chat—nothing to install.
         </p>
         <div className="home-cta">
           <a className="btn-primary" href="#tool">

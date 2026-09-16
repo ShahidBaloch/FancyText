@@ -1,12 +1,15 @@
 /** Unique meta + meanings + FAQ overlays for kaomoji lists (slug → copy). */
-export const KAOMOJI_UNIQUE_COPY: Record<
-  string,
-  {
-    description: string;
-    meanings: string;
-    faq: { question: string; answer: string }[];
-  }
-> = {
+export type KaomojiUniqueCopy = {
+  description: string;
+  meanings: string;
+  meaningsHeading?: string;
+  howToHeading?: string;
+  howToSteps?: string[];
+  mobileNote?: string;
+  faq: { question: string; answer: string }[];
+};
+
+export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   "angry-kaomojis": {
     description:
       "Copy furious angry kaomojis and mad text faces like (ノಠ益ಠ)ノ. Express rage and frustration in Discord, chats, and comments.",
@@ -141,9 +144,18 @@ export const KAOMOJI_UNIQUE_COPY: Record<
   },
   "cry-kaomojis": {
     description:
-      "Copy cry kaomoji and tearful text faces. Free crying Japanese emoticons for sad or dramatic chat moments.",
+      "Tearful text faces like (Ｔ▽Ｔ) and (╥﹏╥). Copy a cry kaomoji for dramatic replies—not the quiet sad list.",
+    meaningsHeading: "Tears vs a quiet frown",
     meanings:
-      "Cry kaomojis show falling tears, sob lines, or watery eyes. They suit dramatic reactions, sad news replies, and over-the-top apology memes. Prefer sad kaomojis for quiet melancholy without visible tears.",
+      "Cry kaomojis show falling tears or sob lines. Use them for over-the-top apology memes and dramatic reactions. Prefer sad kaomojis when you want melancholy without the waterworks.",
+    howToHeading: "Copy a crying face",
+    howToSteps: [
+      "Pick a face with visible tears, not just a downturned mouth.",
+      "Tap it. Short marks like (T_T) survive phones better than dense drip stacks.",
+      "Paste in a reply. One crying face is enough next to plain words.",
+    ],
+    mobileNote:
+      "On a phone, (╥_╥) and (T_T) rarely box out. If a fancy tear glyph fails, use those.",
     faq: [
       {
         question: "What is a cry kaomoji?",
@@ -174,9 +186,18 @@ export const KAOMOJI_UNIQUE_COPY: Record<
   },
   "cute-kaomojis": {
     description:
-      "Copy cute kaomoji and kawaii text faces for bios, nicknames, and soft Discord vibes.",
+      "Blush marks, round eyes, and small smiles—kawaii people-faces, not cat ears. Copy a cute kaomoji for a bio or a soft Discord nick.",
+    meaningsHeading: "Kawaii faces, not animal ears",
     meanings:
-      "Cute kaomojis prioritize blush marks, round eyes, and gentle mouths. Ideal for Instagram bios, Discord nicknames, and friendly hellos. Keep them short so the kawaii details stay readable on phones.",
+      "Cute kaomojis prioritize blush (///), round eyes, and gentle mouths. They are people-shaped, not cat/bear/dog. Keep them short so the details stay readable on a phone bio.",
+    howToHeading: "Copy a blush or round-eye face",
+    howToSteps: [
+      "Skip animal-ear lists—those are cat, bear, and dog pages.",
+      "Prefer a compact smile like (｡◕‿◕｡) if the bio is already crowded; dense blush slashes eat width.",
+      "Paste one face. Extra kaomoji get truncated in Discord’s member list.",
+    ],
+    mobileNote:
+      "Blush slashes (／) sometimes box out on older Androids. Fall back to a short punctuation smile.",
     faq: [
       {
         question: "What counts as a cute kaomoji?",
@@ -273,9 +294,18 @@ export const KAOMOJI_UNIQUE_COPY: Record<
   },
   "heart-kaomojis": {
     description:
-      "Copy heart and love kaomoji for sweet messages, couple chats, and affectionate bios.",
+      "Faces with ♡ or heart-shaped arms. Copy a heart kaomoji for DMs and soft bios—not a standalone heart emoji.",
+    meaningsHeading: "Affection in punctuation",
     meanings:
-      "Heart kaomojis weave ♡ or similar marks into faces for affection. Use in DMs, thank-you notes, and soft bios. Pair with kiss or hug lists when you want a full romance vibe.",
+      "Heart kaomojis weave ♡ or similar marks into a face. Use them in DMs, thank-you notes, and soft bios. Kiss lists are flirty; hug lists are comfort. Mix only if the message is clearly friendly or romantic.",
+    howToHeading: "Copy a face that includes a heart",
+    howToSteps: [
+      "Pick a face with ♡ or heart arms, not a lone emoji.",
+      "Tap a short one for a bio—Instagram’s 150-character limit goes fast.",
+      "Paste. If a fancy heart boxes out, use a simple ♡ from the list.",
+    ],
+    mobileNote:
+      "Simple ♡ usually shows in Discord and WhatsApp. Rare ornate hearts are the ones that fail.",
     faq: [
       {
         question: "What is a heart kaomoji?",

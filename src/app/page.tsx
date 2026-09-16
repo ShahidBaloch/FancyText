@@ -26,59 +26,39 @@ export const metadata = pageMetadata(page);
 
 const faqItems = [
   {
-    question: "What is a fancy text generator?",
+    question: "What does this generator actually change?",
     answer:
-      "A fancy text generator converts normal letters into Unicode “fonts” (bold, cursive, bubble, aesthetic, and more) that you can copy and paste into Instagram, Discord, TikTok, WhatsApp, and other apps that support Unicode.",
+      "It swaps each letter for a Unicode look-alike (bold, cursive, bubble, and so on). The result is still text. Instagram, Discord, and TikTok do not install a font from this page.",
   },
   {
-    question: "Is the fancy text generator free?",
+    question: "Is this the same page as copy and paste fonts?",
     answer:
-      "Yes. FancifyText runs entirely in your browser—no account, no download, and no watermark. Generate and copy as many styles as you want.",
+      "No. This homepage is the live converter: type once, preview every style. Copy and paste fonts is a catalog of collections (aesthetic, cute, cursive, cool lookalikes, platforms, big ASCII). Stay here to try styles. Open the catalog when you already know the vibe.",
   },
   {
-    question: "Is this a font download or a Unicode converter?",
+    question: "Why do some styles become empty boxes?",
     answer:
-      "It is a Unicode converter—not downloadable TTF/OTF files. The stylish look travels with the text when you paste it. For lookalike “cool text” (Cherokee, Japanese, fat letters), use the cool text generator.",
+      "The phone or app is missing that glyph. Bold, sans bold, and bubble usually survive. Fullwidth, Fraktur, and glitch miss more often. Switch styles rather than downloading a TTF—the destination app still draws its own font.",
   },
   {
-    question: "Will fancy text work in all apps?",
+    question: "Can I put this in an Instagram name or bio?",
     answer:
-      "Most modern apps support common Unicode styles. If a character shows as a box, try bold, sans bold, or bubble—those usually render more reliably.",
+      "Bios and many display names, yes. The @username field, no—keep that plain so people can find you. The bio is 150 characters; fancy letters still count.",
   },
   {
-    question: "Why do some styles show as boxes?",
+    question: "Where are the Japanese / Cherokee “cool” letters?",
     answer:
-      "Your device font may not include every Unicode symbol. Shorten the text or switch styles. Compatibility notes on each tool page list safer options.",
+      "Those lookalikes live on the cool text generator. They are a different trick from bold or cursive, and most @handles reject them.",
   },
   {
-    question: "Can I use fancy text in my Instagram name or bio?",
+    question: "Should I style a whole paragraph?",
     answer:
-      "Yes for bios and many display names. Instagram does not offer a native font picker, so Unicode copy-paste is the standard workaround.",
+      "Skip it. Long styled prose is hard to read, awkward for screen readers, and burns character limits. Use this for names, one bio line, or a short caption.",
   },
   {
-    question: "Is this the same as installing a font?",
+    question: "Do I need an account?",
     answer:
-      "No. Installed fonts change how an app draws letters. FancifyText swaps characters for Unicode look-alikes, so no install is required.",
-  },
-  {
-    question: "Can I make a long paragraph in fancy text?",
-    answer:
-      "You can, but very long fancy paragraphs can be hard to read and may hit character limits. Use fancy styles for names, bios, and short captions.",
-  },
-  {
-    question: "How do I copy and paste on mobile?",
-    answer:
-      "Type in the box, tap Copy on a style, then paste into the app. Everything works in Safari, Chrome, and in-app browsers.",
-  },
-  {
-    question: "Which styles are the most compatible?",
-    answer:
-      "Bold, sans bold, italic, cursive, and bubble tend to work across Discord, Instagram, TikTok, and WhatsApp. Fullwidth and glitch styles vary more by device.",
-  },
-  {
-    question: "Where are copy and paste fonts if this is the fancy text generator?",
-    answer:
-      "This homepage is the fancy text generator—the full live converter. Copy and paste fonts is a collections hub (aesthetic, cute, cursive, cool lookalikes, platforms, big text), not a second copy of this gallery.",
+      "No. It runs in the browser. Copy as many rows as you want.",
   },
 ];
 
@@ -109,11 +89,11 @@ export default function HomePage() {
         faq={faqItems}
         crumbs={[]}
         howTo={{
-          name: "How to use the fancy text generator",
+          name: "Type, pick a style, paste",
           steps: [
-            "Type or paste your words into the box above.",
-            "Pick a style chip (cursive, bold, bubble, and more).",
-            "Tap Copy, then paste into Instagram, Discord, TikTok, WhatsApp, or anywhere Unicode works.",
+            "Type a name, bio line, or short caption in the box at the top.",
+            "Tap a style chip. This page shows the full set—cool lookalikes, cursive, bubble, and the rest.",
+            "Tap Copy, then paste into the app. Stay here if you want every style at once; collections live on copy and paste fonts.",
           ],
         }}
       />
@@ -121,15 +101,15 @@ export default function HomePage() {
       <HomePlayground />
 
       <section className="seo-section" aria-labelledby="how-heading">
-        <h2 id="how-heading">How to use</h2>
+        <h2 id="how-heading">Type, pick a style, paste</h2>
         <ol className="how-steps">
           <li>
             <span className="how-num" aria-hidden>
               1
             </span>
             <div>
-              <strong>Type your words</strong>
-              <p>Paste into the box above — names, bios, or a short caption.</p>
+              <strong>Type in the box</strong>
+              <p>A name, one bio line, or a short caption works best.</p>
             </div>
           </li>
           <li>
@@ -137,8 +117,11 @@ export default function HomePage() {
               2
             </span>
             <div>
-              <strong>Pick a style</strong>
-              <p>Cursive, bold, bubble, and more — tap a chip to preview.</p>
+              <strong>Tap a style</strong>
+              <p>
+                Cursive, bold, bubble, and the rest update live. Star a favorite
+                if you keep coming back to it.
+              </p>
             </div>
           </li>
           <li>
@@ -146,10 +129,10 @@ export default function HomePage() {
               3
             </span>
             <div>
-              <strong>Copy and paste</strong>
+              <strong>Copy, then paste</strong>
               <p>
-                Works in Instagram, Discord, TikTok, WhatsApp, and other Unicode
-                apps.
+                The look travels with the characters. Nothing installs on your
+                phone.
               </p>
             </div>
           </li>
@@ -157,7 +140,7 @@ export default function HomePage() {
       </section>
 
       <section className="seo-section" aria-labelledby="uses-heading">
-        <h2 id="uses-heading">Where can you use fancy text?</h2>
+        <h2 id="uses-heading">Where people actually paste this</h2>
         <ul className="use-grid">
           <li>
             <Link href="/instagram-font-generator/" className="use-card">
@@ -209,43 +192,47 @@ export default function HomePage() {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="unicode-heading">
-        <h2 id="unicode-heading">How Unicode fancy fonts work</h2>
+        <h2 id="unicode-heading">These are letters, not a font file</h2>
         <p>
-          FancifyText maps each letter to a look-alike character from Unicode blocks
-          such as Mathematical Alphanumeric Symbols. The result is still text—so
-          you can select, copy, and paste it. That is why a font generators search
-          and a fancy text maker search lead to the same kind of tool.{" "}
+          Each style maps A–Z onto another Unicode block (often Mathematical
+          Alphanumeric Symbols). You copy characters, not a TTF. That is why a
+          bio can look “bold” even though Instagram has no font picker.{" "}
           <Link href="/guides/how-unicode-fancy-fonts-work/">
-            Read how fancy fonts work
+            How fancy fonts work
           </Link>
           .
         </p>
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="compat-heading">
-        <h2 id="compat-heading">Platform compatibility</h2>
+        <h2 id="compat-heading">Safer styles vs fragile ones</h2>
         <p>
-          Bold and sans bold are usually safest. Script/cursive and bubble look
-          great on modern phones. Glitch and dense combining marks can break layout
-          in some apps—keep those short. Always preview on the device you care about.
+          Bold and sans bold are the least likely to box out. Script and bubble
+          look good on current phones. Glitch and stacked combining marks can
+          wreck a layout—keep those tiny. Always check the device you care about,
+          not only this preview.
         </p>
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="practices-heading">
-        <h2 id="practices-heading">Best practices & accessibility</h2>
+        <h2 id="practices-heading">A few honest limits</h2>
         <ul>
-          <li>Use fancy text for names and short bios—not entire articles.</li>
-          <li>Keep important keywords in plain text for search and screen readers.</li>
-          <li>Test usernames: some platforms reject certain symbols.</li>
+          <li>Style a name or one bio line, not an article.</li>
           <li>
-            Prefer readable styles (bold, cursive) over extreme glitch for public
-            profiles.
+            Keep the words people search for (and screen readers speak) in plain
+            letters.
+          </li>
+          <li>
+            Test usernames. Login handles often reject symbols that a bio accepts.
+          </li>
+          <li>
+            Public profiles read better in bold or cursive than in extreme glitch.
           </li>
         </ul>
       </section>
 
       <section className="seo-section" aria-labelledby="popular-heading">
-        <h2 id="popular-heading">Popular style tools</h2>
+        <h2 id="popular-heading">If you already know the style</h2>
         <ul className="taxonomy-links">
           <li>
             <Link href="/bold-text-generator/">Bold text generator</Link>

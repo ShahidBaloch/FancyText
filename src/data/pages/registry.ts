@@ -44,7 +44,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "fancy text generator",
     title: "Fancy Text Generator — Stylize Unicode Fonts | FancifyText",
     description:
-      "Free fancy text generator. Convert normal letters into bold, cursive, bubble, and stylish Unicode for Discord, Instagram, TikTok, and more.",
+      "Type a word, copy bold, cursive, bubble, or aesthetic Unicode, and paste it into a bio or chat. No font file to install.",
     fellowKeywords: fellows(
       "special text generator",
       "word font generator",
@@ -63,7 +63,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cursive text generator",
     title: "Cursive Text Generator — Script Fonts Copy & Paste | FancifyText",
     description:
-      "Type a name or phrase into cursive Unicode. Copy elegant script words plus the full A–Z alphabet—no font download.",
+      "Type a name or phrase into cursive Unicode. Copy script words plus the A–Z alphabet. Letters will not join like a calligraphy font.",
     fellowKeywords: fellows(
       "elegant cursive fonts copy and paste",
       "cursive copy and paste fonts",
@@ -80,7 +80,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "bold text generator",
     title: "Bold Text Generator — Bold Fonts Copy & Paste | FancifyText",
     description:
-      "Make bold Unicode text instantly. Copy and paste bold fonts for Discord, Instagram, and bios.",
+      "Make bold Unicode text for fields with no bold button. Sans bold is the safer fallback if a glyph boxes out.",
     fellowKeywords: fellows(
       "bold font generator",
       "bold text font",
@@ -189,7 +189,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "copy and paste fonts",
     title: "Copy and Paste Fonts — Unicode Font Collections | FancifyText",
     description:
-      "Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII. Unicode styles—not a second full fancy-text gallery.",
+      "Collections of Unicode fonts you can paste: aesthetic, cute, cursive, cool lookalikes, platform fields, and big ASCII. Not a second homepage gallery.",
     fellowKeywords: fellows(
       "font copy and paste",
       "fonts copy paste",
@@ -288,7 +288,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "discord font generator",
     title: "Discord Font Generator — Fancy Fonts Copy & Paste | FancifyText",
     description:
-      "Generate Discord fonts and nicknames with Unicode. Copy bold, script, bubble, and monospace styles.",
+      "Style a Discord nick or about-me with Unicode. The @username stays plain ASCII. For colored messages, use the ANSI tool instead.",
     fellowKeywords: fellows(
       "discord font copy and paste",
       "discord text generator",
@@ -315,7 +315,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "instagram font generator",
     title: "Instagram Font Generator — Aesthetic Bio Font Changer | FancifyText",
     description:
-      "Change Instagram bio text with fancy Unicode fonts. Copy script, aesthetic, and bold styles instantly.",
+      "Paste Unicode into an Instagram bio or display name. The @handle stays plain. Watch the 150-character bio limit.",
     fellowKeywords: fellows(
       "instagram font changer",
       "instagram fonts copy and paste",
@@ -562,7 +562,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "kaomoji",
     title: "Kaomoji Copy and Paste — Japanese Emoticons | FancifyText",
     description:
-      "Free kaomoji copy and paste. The canonical Japanese emoticon hub—cute, cry, and heart lists plus Lenny and shrug—with every face in one index.",
+      "Japanese text faces (顔文字). Copy a mood from the grid, or open cute, cry, heart, Lenny, or shrug.",
     fellowKeywords: fellows(
       "japanese emoticons",
       "text faces",
@@ -619,7 +619,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cry kaomoji",
     title: "Cry Kaomojis Copy and Paste | FancifyText",
     description:
-      "Copy cry kaomoji and crying text faces. Free sad Japanese emoticons.",
+      "Tearful faces like (Ｔ▽Ｔ)—dramatic replies, not the quiet sad list.",
     fellowKeywords: fellows("crying kaomoji", "kaomoji cry"),
   },
   {
@@ -629,7 +629,8 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "cute kaomoji",
     title: "Cute Kaomojis Copy and Paste | FancifyText",
-    description: "Copy cute kaomoji and kawaii text faces for bios and chats.",
+    description:
+      "Blush marks and round-eye faces for bios and Discord nicks. These are kawaii people-faces, not cat ears.",
     fellowKeywords: fellows("kawaii kaomoji", "cute text faces"),
   },
   {
@@ -659,7 +660,8 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "heart kaomoji",
     title: "Heart Kaomojis Copy and Paste | FancifyText",
-    description: "Copy heart kaomoji and love text faces for messages.",
+    description:
+      "Faces with ♡ or heart-shaped arms for DMs and soft bios—not a standalone heart emoji.",
     fellowKeywords: fellows("love kaomoji", "heart text face"),
   },
   {
@@ -834,7 +836,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "about fancifytext",
     title: "About FancifyText — Unicode Fancy Text Tools",
     description:
-      "Who runs FancifyText, how the Unicode fancy text generator works, and how we keep these free copy-and-paste tools accurate.",
+      "Who runs FancifyText, how the Unicode converters work in the browser, and how we keep the copy honest about what will not paste.",
     fellowKeywords: fellows("about fancify text", "who made fancifytext"),
     navLabel: "About",
   },
@@ -979,10 +981,10 @@ export const PAGES: PageEntry[] = [
     priority: "P2",
     url: "/guides/snapchat-name-fonts/",
     group: "I_Guides",
-    primaryKeyword: "snapchat name fonts",
-    title: "Snapchat Name Fonts Copy and Paste | FancifyText",
+    primaryKeyword: "how snapchat name fonts get filtered",
+    title: "Why Snapchat Rejects Fancy Display Names | FancifyText",
     description:
-      "Snapchat has no font picker. Paste Unicode into display names carefully—filters reject many symbols.",
+      "Snapchat has no font picker and filters a long list of symbols. How to paste Unicode into a display name, and what usually fails.",
     fellowKeywords: fellows("snapchat fancy name", "change snapchat font"),
   },
   {

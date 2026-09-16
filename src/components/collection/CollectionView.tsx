@@ -35,7 +35,10 @@ export function CollectionView({ config }: CollectionViewProps) {
           page={page}
           faq={config.faq}
           crumbName={h1}
-          howTo={{ name: `How to copy ${h1.toLowerCase()}`, steps: config.howToSteps }}
+          howTo={{
+            name: config.howToName ?? config.howToHeading ?? `How to copy ${h1.toLowerCase()}`,
+            steps: config.howToSteps,
+          }}
         />
       ) : null}
 
@@ -48,16 +51,20 @@ export function CollectionView({ config }: CollectionViewProps) {
 
       <PageHero
         h1={h1}
-        lead={page?.description ?? "Browse fonts to copy and paste instantly."}
+        lead={page?.description ?? "Pick a collection of Unicode styles to copy."}
       />
 
       {config.hubCards?.length ? (
         <section className="seo-section" aria-labelledby="hub-heading">
-          <h2 id="hub-heading">Font collections</h2>
-          <p className="seo-lead">
-            Start with a collection. Each card is a filtered page with its own
-            job—not a second copy of the homepage gallery.
-          </p>
+          <h2 id="hub-heading">{config.hubHeading ?? "Font collections"}</h2>
+          {config.hubLead ? (
+            <p className="seo-lead">{config.hubLead}</p>
+          ) : (
+            <p className="seo-lead">
+              Start with a collection. Each card is a filtered page with its own
+              job—not a second copy of the homepage gallery.
+            </p>
+          )}
           <ul className="use-grid">
             {config.hubCards.map((card) => (
               <li key={card.href}>
@@ -106,7 +113,7 @@ export function CollectionView({ config }: CollectionViewProps) {
 
       {config.taxonomy?.length ? (
         <section className="seo-section" aria-labelledby="taxonomy-heading">
-          <h2 id="taxonomy-heading">Browse by style</h2>
+          <h2 id="taxonomy-heading">{config.taxonomyHeading ?? "Browse by style"}</h2>
           <ul className="taxonomy-links">
             {config.taxonomy.map((item) => (
               <li key={item.href}>
@@ -139,7 +146,7 @@ export function CollectionView({ config }: CollectionViewProps) {
       ))}
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">{config.howToHeading ?? "How to copy fonts"}</h2>
+        <h2 id="how-heading">{config.howToHeading ?? "Picking a style"}</h2>
         <ol>
           {config.howToSteps.map((step) => (
             <li key={step}>{step}</li>
@@ -149,13 +156,13 @@ export function CollectionView({ config }: CollectionViewProps) {
 
       {config.mobileHowTo ? (
         <section className="seo-section seo-prose" aria-labelledby="mobile-heading">
-          <h2 id="mobile-heading">On mobile & desktop</h2>
+          <h2 id="mobile-heading">{config.mobileHeading ?? "On a phone"}</h2>
           <p>{config.mobileHowTo}</p>
         </section>
       ) : null}
 
       <section className="seo-section seo-prose" aria-labelledby="uses-heading">
-        <h2 id="uses-heading">Where to use these fonts</h2>
+        <h2 id="uses-heading">{config.usesHeading ?? "Where these fonts go"}</h2>
         <ul>
           {config.uses.map((use) => (
             <li key={use}>{use}</li>

@@ -355,7 +355,7 @@ export const GUIDES: GuideConfig[] = [
   },
   {
     slug: "snapchat-name-fonts",
-    h1: "Snapchat name fonts",
+    h1: "Why Snapchat rejects fancy display names",
     datePublished: "2026-09-15",
     dateModified: "2026-09-15",
     howToSteps: [
@@ -365,7 +365,7 @@ export const GUIDES: GuideConfig[] = [
     ],
     sections: [
       {
-        heading: "Snapchat is picky",
+        heading: "No font picker, and a picky filter",
         body: [
           "Snapchat has no font picker. Unicode is the only workaround, and the app rejects a long list of symbols for abuse and spoofing reasons.",
           "If a paste fails, strip combining marks and try sans bold or small caps. Keep the username handle plain.",

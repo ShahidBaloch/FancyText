@@ -52,7 +52,7 @@ export function PlatformView({ config }: PlatformViewProps) {
 
       <PageHero
         h1={h1}
-        lead={page?.description ?? "Platform-specific fancy text tools."}
+        lead={page?.description ?? "Unicode styles for this app’s name and bio fields."}
       />
 
       <div className="tool-stage" id="tool">
@@ -74,11 +74,13 @@ export function PlatformView({ config }: PlatformViewProps) {
 
       {config.fields?.length ? (
         <section className="seo-section" aria-labelledby="fields-heading">
-          <h2 id="fields-heading">Which {h1.split(" ")[0]} fields accept fancy fonts</h2>
+          <h2 id="fields-heading">
+            {config.fieldsHeading ??
+              `Which ${h1.split(" ")[0]} fields accept fancy fonts`}
+          </h2>
           <p className="seo-lead">
-            Styled text is Unicode characters, not a font setting, so whether it
-            works depends entirely on which characters the field allows. Handles
-            are the ones that never accept it.
+            {config.fieldsLead ??
+              "These are not a font setting. The app either allows the characters in that field or it does not. Handles almost never do."}
           </p>
           <div className="codes-table-wrap">
             <table className="codes-table">
@@ -148,7 +150,7 @@ export function PlatformView({ config }: PlatformViewProps) {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="uses-heading">
-        <h2 id="uses-heading">Where to use this</h2>
+        <h2 id="uses-heading">{config.usesHeading ?? "Where it belongs"}</h2>
         <ul>
           {config.uses.map((use) => (
             <li key={use}>{use}</li>

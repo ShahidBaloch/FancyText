@@ -61,7 +61,7 @@ export default function AboutPage() {
       />
       <PageHero
         h1="About FancifyText"
-        lead="A small, free Unicode toolkit for bios, nicknames, and captions—built to stay accurate, fast, and readable."
+        lead="A small Unicode toolkit for bios, nicknames, and captions. Free, runs in the browser, and tries to stay honest about what will not paste."
       />
 
       <div className="seo-section seo-prose">
@@ -102,13 +102,13 @@ export default function AboutPage() {
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
         </p>
 
-        <h2>Editorial policy</h2>
+        <h2>How we write these pages</h2>
         <p>
-          Copy on this site is written to explain Unicode behavior, compatibility
-          limits, and when a style is a bad idea (for example glitch text in a
-          public bio). We do not sell generated characters, and we do not claim
-          affiliation with Instagram, Discord, TikTok, or other platforms named
-          for descriptive purposes.
+          Copy here is meant to explain Unicode behavior, compatibility limits,
+          and when a style is a bad idea (for example glitch text in a public
+          bio). We do not sell generated characters, and we are not affiliated
+          with Instagram, Discord, TikTok, or other apps named for descriptive
+          purposes.
         </p>
 
         <h2>Privacy and contact</h2>

@@ -29,7 +29,7 @@ type FellowKeywordsProps = {
 export function FellowKeywords({
   keywords,
   currentUrl,
-  heading = "Related searches",
+  heading = "Nearby tools",
 }: FellowKeywordsProps) {
   const links = keywords
     .map((kw) => ({ kw, href: resolveFellowHref(kw, currentUrl) }))
