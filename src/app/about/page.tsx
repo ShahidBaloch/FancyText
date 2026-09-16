@@ -86,7 +86,7 @@ export default function AboutPage() {
 
         <h2>What we maintain</h2>
         <ul>
-          <li>Style-specific generators (bold, cursive, bubble, small text, old English, binary, and more)</li>
+          <li>Style-specific generators (bold, cursive, bubble, small text, big ASCII letters, old English, binary, and more)</li>
           <li>Platform notes for Discord (including ANSI color), Instagram, TikTok, WhatsApp, Facebook, X, Snapchat, and Roblox</li>
           <li>A cool-symbols list and a text decorator that wraps names instead of cloning decorative “wrapper fonts”</li>
           <li>Kaomoji lists with meanings, not just a dump of faces</li>
