@@ -100,44 +100,44 @@ export function BigTextTool({
       <div className="preview-panel ascii-panel">
         <div className="preview-meta">
           <span>{font.label} preview</span>
-          <div className="preview-actions">
-            <button
-              type="button"
-              className="copy-btn"
-              aria-label={`Copy ${font.label} ASCII`}
-              disabled={!canCopy}
-              onClick={() => copy("ascii", result.art, font.label)}
-            >
-              {copiedId === "ascii"
-                ? "Copied!"
-                : errorId === "ascii"
-                  ? "Failed"
-                  : "Copy"}
-            </button>
-            <button
-              type="button"
-              className="copy-btn"
-              aria-label={`Copy ${font.label} as a Discord code block`}
-              disabled={!canCopy}
-              onClick={() =>
-                copy(
-                  "codeblock",
-                  wrapAsCodeBlock(result.art),
-                  `${font.label} code block`,
-                )
-              }
-            >
-              {copiedId === "codeblock"
-                ? "Copied!"
-                : errorId === "codeblock"
-                  ? "Failed"
-                  : "Copy code block"}
-            </button>
-          </div>
         </div>
         <pre className="ascii-preview">
           {canCopy ? result.art : "Type above to preview"}
         </pre>
+        <div className="preview-actions">
+          <button
+            type="button"
+            className="copy-btn"
+            aria-label={`Copy ${font.label} ASCII`}
+            disabled={!canCopy}
+            onClick={() => copy("ascii", result.art, font.label)}
+          >
+            {copiedId === "ascii"
+              ? "Copied!"
+              : errorId === "ascii"
+                ? "Failed"
+                : "Copy"}
+          </button>
+          <button
+            type="button"
+            className="copy-btn"
+            aria-label={`Copy ${font.label} as a Discord code block`}
+            disabled={!canCopy}
+            onClick={() =>
+              copy(
+                "codeblock",
+                wrapAsCodeBlock(result.art),
+                `${font.label} code block`,
+              )
+            }
+          >
+            {copiedId === "codeblock"
+              ? "Copied!"
+              : errorId === "codeblock"
+                ? "Failed"
+                : "Copy code block"}
+          </button>
+        </div>
       </div>
       <p className="ascii-note">
         Paste into Discord, Reddit, or any monospace field. Use{" "}

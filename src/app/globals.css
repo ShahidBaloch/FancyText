@@ -1929,18 +1929,30 @@ a.use-card:hover {
 }
 
 .ascii-panel .preview-meta {
-  flex-wrap: wrap;
+  margin-bottom: 0.55rem;
+}
+
+.ascii-panel .preview-actions {
+  margin-top: 0.8rem;
+  justify-content: flex-start;
 }
 
 .ascii-preview {
   margin: 0;
   max-width: 100%;
+  min-height: 4.25rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   white-space: pre;
   font-family: ui-monospace, Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: clamp(0.58rem, 1.8vw, 0.82rem);
+  font-size: clamp(0.7rem, 2.2vw, 0.95rem);
   line-height: 1.12;
+}
+
+@media (max-width: 640px) {
+  .ascii-panel .preview-actions .copy-btn {
+    flex: 1 1 auto;
+  }
 }
 
 .code-preview--sm {
