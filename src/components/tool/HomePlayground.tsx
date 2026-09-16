@@ -37,9 +37,10 @@ export function HomePlayground() {
       <section className="seo-section" aria-labelledby="gallery-heading">
         <h2 id="gallery-heading">All Unicode styles in one gallery</h2>
         <p className="seo-lead">
-          Preview every FancifyText style as a live word converter. Use this
-          gallery when you want the full set; open a collection when you only
-          want aesthetic, cute, or graphic looks.
+          Preview every FancifyText style as a live word converter. Search by
+          name or star a style to pin it at the top — favorites stay in this
+          browser. Open a collection when you only want aesthetic, cute, or
+          graphic looks.
         </p>
         <StyleGallery
           initialText={INITIAL_TEXT}
