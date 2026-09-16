@@ -36,9 +36,9 @@ const faqItems = [
       "Yes. FancifyText runs entirely in your browser—no account, no download, and no watermark. Generate and copy as many styles as you want.",
   },
   {
-    question: "Is this a cool font maker or a real font download?",
+    question: "Is this a font download or a Unicode converter?",
     answer:
-      "It is a cool font maker that uses Unicode characters—not downloadable TTF/OTF files. The stylish look travels with the text when you paste it.",
+      "It is a Unicode converter—not downloadable TTF/OTF files. The stylish look travels with the text when you paste it. For lookalike “cool text” (Cherokee, Japanese, fat letters), use the cool text generator.",
   },
   {
     question: "Will fancy text work in all apps?",
@@ -74,6 +74,11 @@ const faqItems = [
     question: "Which styles are the most compatible?",
     answer:
       "Bold, sans bold, italic, cursive, and bubble tend to work across Discord, Instagram, TikTok, and WhatsApp. Fullwidth and glitch styles vary more by device.",
+  },
+  {
+    question: "Where are copy and paste fonts if this is the fancy text generator?",
+    answer:
+      "This homepage is the fancy text generator—the full live converter. Copy and paste fonts is a collections hub (aesthetic, cute, cursive, cool lookalikes, platforms, big text), not a second copy of this gallery.",
   },
 ];
 

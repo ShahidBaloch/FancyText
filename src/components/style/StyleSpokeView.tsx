@@ -55,6 +55,13 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
         placeholder={`Type ${shortName.toLowerCase()}…`}
       />
 
+      {config.difference ? (
+        <section className="seo-section seo-prose" aria-labelledby="diff-heading">
+          <h2 id="diff-heading">{config.difference.heading}</h2>
+          <p>{config.difference.body}</p>
+        </section>
+      ) : null}
+
       {!config.showGallery && config.variants?.length ? (
         <section className="seo-section seo-prose" aria-labelledby="variants-heading">
           <h2 id="variants-heading">Style variants</h2>

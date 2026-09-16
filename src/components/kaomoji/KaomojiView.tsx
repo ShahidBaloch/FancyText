@@ -9,9 +9,11 @@ import { RelatedTools } from "@/components/seo/RelatedTools";
 import { KaomojiGrid } from "@/components/kaomoji/KaomojiGrid";
 import {
   ALL_KAOMOJI_PAGES,
-  KAOMOJI_LISTS,
+  INDEXABLE_KAOMOJI_SLUGS,
   SPECIAL_KAOMOJI,
   getHubShowcase,
+  getTailKaomojiLists,
+  kaomojiPathIsIndexable,
   type KaomojiList,
 } from "@/data/kaomoji";
 import {
@@ -29,7 +31,7 @@ const hubFaq = [
   {
     question: "What does kaomoji mean?",
     answer:
-      "Kaomoji (顔文字) means “face characters.” They are text emoticons popular in Japan and online chats worldwide.",
+      "Kaomoji (顔文字) means “face characters.” They are text emoticons popular in Japan and online chats worldwide. This hub is the canonical kaomoji index on FancifyText.",
   },
   {
     question: "Are kaomoji free to copy and paste?",
@@ -46,15 +48,25 @@ const hubFaq = [
     answer:
       "Text faces (kaomoji) are built from letters and symbols. Emoji are separate picture characters. Both can appear in the same message.",
   },
+  {
+    question: "Which emotion lists are the main kaomoji pages?",
+    answer:
+      "Start here on the hub, then cute, cry, and heart lists, plus Lenny face and the shrug emoticon. Other emotion URLs stay available for old links but this hub is the page to bookmark.",
+  },
 ];
 
 export function KaomojiListView({ config }: KaomojiListViewProps) {
   const url = `/${config.slug}/`;
   const page = getPageByUrl(url);
   const related = getTopicalRelated(url, 6);
-  const relatedEmotions = ALL_KAOMOJI_PAGES.filter(
-    (k) => k.slug !== config.slug,
-  ).slice(0, 12);
+  const relatedEmotions = [
+    ...ALL_KAOMOJI_PAGES.filter(
+      (k) => k.slug !== config.slug && INDEXABLE_KAOMOJI_SLUGS.has(k.slug),
+    ),
+    ...ALL_KAOMOJI_PAGES.filter(
+      (k) => k.slug !== config.slug && !INDEXABLE_KAOMOJI_SLUGS.has(k.slug),
+    ),
+  ].slice(0, 8);
 
   return (
     <div className="site-shell">
@@ -80,6 +92,15 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
       />
 
       <PageHero h1={config.h1} lead={config.description} />
+
+      {!kaomojiPathIsIndexable(config.slug) ? (
+        <p className="seo-lead">
+          This emotion list stays available for old links. The canonical kaomoji
+          copy-and-paste index is the{" "}
+          <Link href="/kaomoji/">kaomoji hub</Link>
+          , with featured cute, cry, heart, Lenny, and shrug lists.
+        </p>
+      ) : null}
 
       <div className="tool-stage" id="tool">
         <p className="field-label">
@@ -140,6 +161,10 @@ export function KaomojiHubView() {
   const page = getPageByUrl("/kaomoji/");
   const related = getTopicalRelated("/kaomoji/", 6);
   const showcase = getHubShowcase();
+  const featuredShowcase = showcase.filter((item) =>
+    INDEXABLE_KAOMOJI_SLUGS.has(item.href.replace(/^\/|\/$/g, "")),
+  );
+  const tailLists = getTailKaomojiLists();
   const samples = ALL_KAOMOJI_PAGES.flatMap((k) => k.faces.slice(0, 2)).slice(
     0,
     40,
@@ -155,7 +180,7 @@ export function KaomojiHubView() {
           howTo={{
             name: "How to copy kaomoji",
             steps: [
-              "Pick a face from the grid or open an emotion list.",
+              "Pick a face from the grid or open a featured emotion list.",
               "Tap Copy.",
               "Paste into any app that supports Unicode text.",
             ],
@@ -184,9 +209,13 @@ export function KaomojiHubView() {
       </div>
 
       <section className="seo-section" aria-labelledby="emotions-heading">
-        <h2 id="emotions-heading">Browse by emotion</h2>
+        <h2 id="emotions-heading">Top kaomoji lists</h2>
+        <p className="seo-lead">
+          Cute, cry, and heart are the main emotion pages. Lenny and shrug are
+          their own branded queries. This hub is the canonical kaomoji index.
+        </p>
         <ul className="kaomoji-emotion-grid">
-          {showcase.map((item) => (
+          {featuredShowcase.map((item) => (
             <li key={item.href}>
               <Link href={item.href} className="kaomoji-emotion-card">
                 <span className="kaomoji-emotion-sample" aria-hidden>
@@ -218,27 +247,28 @@ export function KaomojiHubView() {
           Kaomoji are Japanese emoticons made from Unicode characters. Unlike
           emoji stickers, they are plain text—so you can copy and paste them
           into Discord, Instagram bios, TikTok captions, WhatsApp, and email.
+          Bookmark this hub when you want Japanese emoticons in general; open a
+          featured emotion list only when you already know the mood.
         </p>
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="how-hub-heading">
         <h2 id="how-hub-heading">How to copy</h2>
         <ol>
-          <li>Pick a face from the grid or open an emotion list.</li>
+          <li>Pick a face from the grid or open a featured emotion list.</li>
           <li>Tap Copy.</li>
           <li>Paste into any app that supports Unicode text.</li>
         </ol>
       </section>
 
       <section className="seo-section" aria-labelledby="lists-heading">
-        <h2 id="lists-heading">All kaomoji lists</h2>
+        <h2 id="lists-heading">More emotion lists</h2>
+        <p className="seo-lead">
+          Extra mood URLs stay live for old links. Prefer this hub plus cute,
+          cry, heart, Lenny, and shrug when you share a kaomoji page.
+        </p>
         <ul className="taxonomy-links">
-          {KAOMOJI_LISTS.map((k) => (
-            <li key={k.slug}>
-              <Link href={`/${k.slug}/`}>{k.h1}</Link>
-            </li>
-          ))}
-          {SPECIAL_KAOMOJI.map((k) => (
+          {tailLists.map((k) => (
             <li key={k.slug}>
               <Link href={`/${k.slug}/`}>{k.h1}</Link>
             </li>

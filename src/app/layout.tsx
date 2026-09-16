@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Free fancy text generator and cool fonts to copy and paste for Instagram, Discord, TikTok, and more.",
+    "Free fancy text generator. Convert letters into Unicode styles you can copy and paste for Instagram, Discord, TikTok, and more.",
   alternates: {
     languages: {
       "en": SITE_URL,
@@ -45,6 +45,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${sora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        {/*
+          Ads / CMP: do not load AdSense or a consent banner from this layout
+          until a Google-certified CMP + IAB TCF is fully configured for
+          EEA/UK/CH. See src/lib/ads/consent.ts (intentionally a no-op stub)
+          and /privacy/. Never insert ad units between a textarea and the
+          first Copy control.
+        */}
         <GoogleAnalytics />
         <a href="#main-content" className="skip-link">
           Skip to content

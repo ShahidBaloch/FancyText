@@ -53,7 +53,13 @@ git push -u origin main
    - `/sitemap.xml`
    - `/robots.txt`
    - Verified search bots (Googlebot, Bingbot)  
-   Without this, automated SEO tools may see a challenge page instead of the sitemap.
+   Without this, automated SEO tools may see a challenge page or HTTP 500 instead of the sitemap. `/sitemap.xml` is generated as a static XML route and should return 200 with an indexable URL set (noindex cursive letter pages and thin kaomoji emotion tails are omitted).
+
+### CMP / ads (do not skip)
+
+Do **not** load AdSense or a consent banner until a **Google-certified CMP** with IAB TCF is fully configured for EEA/UK/CH. A no-op stub lives at `src/lib/ads/consent.ts`. Privacy (`/privacy/`) already discloses Google advertising partners and links to [How Google uses information from sites or apps that use our services](https://policies.google.com/technologies/partner-sites). Never place ads between a textarea and the first Copy control.
+
+Do not invent a GA4 measurement ID. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` only after a real GA4 property exists.
 
 ### 4. After the site is live
 
