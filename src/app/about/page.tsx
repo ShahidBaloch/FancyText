@@ -61,7 +61,7 @@ export default function AboutPage() {
       />
       <PageHero
         h1="About FancifyText"
-        lead="A small Unicode toolkit for bios, nicknames, and captions. Free, runs in the browser, and tries to stay honest about what will not paste."
+        lead="A small, free Unicode toolkit for bios, nicknames, and captions—built to stay accurate, fast, and readable."
       />
 
       <div className="seo-section seo-prose">

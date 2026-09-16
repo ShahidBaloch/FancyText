@@ -141,7 +141,7 @@ export function PlatformView({ config }: PlatformViewProps) {
       ) : null}
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">{config.howToHeading ?? "How to use"}</h2>
+        <h2 id="how-heading">{config.howToHeading ?? `How to use ${h1.toLowerCase()}`}</h2>
         <ol>
           {config.howToSteps.map((step) => (
             <li key={step}>{step}</li>

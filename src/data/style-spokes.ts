@@ -235,6 +235,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
           "A bubble text generator makes Unicode enclosed alphanumerics—letters and digits inside circles. Not a rounded font file.",
       },
       {
+        question: "What is bubble text?",
+        answer:
+          "Bubble text is those circled letters and numbers. Same tool as the bubble text generator on this page.",
+      },
+      {
         question: "Do numbers work?",
         answer:
           "Digits 0–9 map to circled number characters where the device font includes them.",

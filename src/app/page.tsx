@@ -140,7 +140,7 @@ export default function HomePage() {
       </section>
 
       <section className="seo-section" aria-labelledby="uses-heading">
-        <h2 id="uses-heading">Where people actually paste this</h2>
+        <h2 id="uses-heading">Where can you use fancy text?</h2>
         <ul className="use-grid">
           <li>
             <Link href="/instagram-font-generator/" className="use-card">
@@ -192,7 +192,7 @@ export default function HomePage() {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="unicode-heading">
-        <h2 id="unicode-heading">These are letters, not a font file</h2>
+        <h2 id="unicode-heading">How Unicode fancy fonts work</h2>
         <p>
           Each style maps A–Z onto another Unicode block (often Mathematical
           Alphanumeric Symbols). You copy characters, not a TTF. That is why a

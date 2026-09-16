@@ -69,7 +69,7 @@ export function BigTextView() {
       </div>
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">Draw a banner from ordinary characters</h2>
+        <h2 id="how-heading">How to make large copy-paste letters</h2>
         <ol>
           <li>Type a short word — a name, a server title, or a one-line shout.</li>
           <li>

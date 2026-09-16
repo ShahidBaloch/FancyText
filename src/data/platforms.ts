@@ -55,7 +55,7 @@ export const PLATFORMS: PlatformConfig[] = [
   platform("discord-color-text", "discord-color", {
     initialText: "Hello Discord",
     presets: ["Welcome", "Rules", "Announcement", "Nickname"],
-    howToHeading: "How to use Discord colored text",
+    howToHeading: "How to use Discord color text",
     howToSteps: [
       "Type the announcement and tap an ANSI color chip.",
       "Copy the whole ```ansi code block—not just the inner sentence.",
@@ -72,6 +72,11 @@ export const PLATFORMS: PlatformConfig[] = [
         question: "What is a Discord colored text generator?",
         answer:
           "Discord colored text uses ANSI escape codes inside a ```ansi code block. It paints a message, not a nickname.",
+      },
+      {
+        question: "What is Discord colored text?",
+        answer:
+          "Same trick: ANSI color inside a Discord code block. Nicknames cannot use it—open the Discord font generator for Unicode names.",
       },
       {
         question: "Why is my nickname still not colored?",
@@ -320,6 +325,11 @@ export const PLATFORMS: PlatformConfig[] = [
           "Instagram has no font picker for bios. An Instagram font generator converts letters to Unicode look-alikes you paste in. Nothing installs. The @handle stays lowercase letters.",
       },
       {
+        question: "What is an Instagram font changer?",
+        answer:
+          "An Instagram font changer is the same tool: convert normal text into Unicode fancy fonts because Instagram does not let you pick installed fonts in the app.",
+      },
+      {
         question: "Why won’t Instagram let me pick a font?",
         answer:
           "The app has no font picker for bios. This page converts letters to Unicode look-alikes you paste in. Nothing installs.",
@@ -349,7 +359,7 @@ export const PLATFORMS: PlatformConfig[] = [
   platform("html-text-generator", "html-rich", {
     initialText: "Hello World",
     presets: ["Hello World", "Title", "Warning", "Note"],
-    howToHeading: "Copy HTML tags, not Unicode “fonts”",
+    howToHeading: "How to use HTML snippets",
     howToSteps: [
       "Enter plain text in the input box.",
       "Copy the HTML snippet you need—bold, color span, heading, or preformatted block.",
@@ -467,7 +477,7 @@ export const PLATFORMS: PlatformConfig[] = [
   }),
   platform("social-media-bio-generator", "bio-builder", {
     initialText: "your name\ncreator · city",
-    howToHeading: "Build one bio that fits Instagram, TikTok, X, and Discord",
+    howToHeading: "How to build a multi-platform bio",
     usesHeading: "Character limits this counter knows",
     howToSteps: [
       "Type each bio line on its own row—name, role, location, or a short tagline.",
@@ -567,6 +577,11 @@ export const PLATFORMS: PlatformConfig[] = [
           "X (Twitter) has no font picker. This generator makes Unicode for the display name and 160-character bio. The @handle stays letters, numbers, and underscores.",
       },
       {
+        question: "Does X (Twitter) allow fancy fonts in names?",
+        answer:
+          "Display names usually accept Unicode. The @handle does not.",
+      },
+      {
         question: "Can the @handle be fancy?",
         answer:
           "No. Display names accept many Unicode letters. The @handle is the shortest of the major apps (15 characters) and stays plain.",
@@ -609,6 +624,11 @@ export const PLATFORMS: PlatformConfig[] = [
         question: "What is a Roblox font generator?",
         answer:
           "It previews Unicode for Roblox display names. Account usernames are much stricter. Always paste in Roblox and see if it saves—filters strip a lot of novelty symbols.",
+      },
+      {
+        question: "Can I use fancy fonts in a Roblox username?",
+        answer:
+          "Account usernames almost never accept them. Display names are looser but still reject many symbols. Always test after pasting.",
       },
       {
         question: "Can the account username be cursive?",
@@ -691,6 +711,11 @@ export const PLATFORMS: PlatformConfig[] = [
           "Facebook has no name font picker. This generator makes Unicode for the display name. Keep the @username in plain letters so people can find you.",
       },
       {
+        question: "Does Facebook allow fancy fonts in names?",
+        answer:
+          "Display names often accept Unicode. The @username is much stricter. If save fails, drop bubble or gothic and retry with a shorter name.",
+      },
+      {
         question: "Will Facebook save a cursive first name?",
         answer:
           "Sometimes. Display names often accept Unicode. The @username is much stricter. If save fails, drop bubble or gothic and retry with a shorter name.",
@@ -762,6 +787,11 @@ export const PLATFORMS: PlatformConfig[] = [
         question: "What is a Snapchat font generator?",
         answer:
           "Snapchat has no font picker for display names. This generator makes Unicode you paste in. Filters reject many symbols—try sans bold or bubble, then shorten if save fails.",
+      },
+      {
+        question: "Can I change Snapchat fonts in the app?",
+        answer:
+          "No. There is no font picker. You paste Unicode into the display name, and filters still reject many symbols.",
       },
       {
         question: "Why won’t Snapchat save my fancy name?",

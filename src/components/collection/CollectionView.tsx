@@ -146,7 +146,7 @@ export function CollectionView({ config }: CollectionViewProps) {
       ))}
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">{config.howToHeading ?? "Picking a style"}</h2>
+        <h2 id="how-heading">{config.howToHeading ?? `How to copy ${h1.toLowerCase()}`}</h2>
         <ol>
           {config.howToSteps.map((step) => (
             <li key={step}>{step}</li>

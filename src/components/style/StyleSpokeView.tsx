@@ -35,7 +35,7 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
           faq={config.faq}
           crumbName={h1}
           howTo={{
-            name: config.howToHeading ?? `How to use ${shortName.toLowerCase()}`,
+            name: `How to use ${h1.toLowerCase()}`,
             steps: config.howToSteps,
           }}
         />
@@ -88,7 +88,7 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">{config.howToHeading ?? "Make this style"}</h2>
+        <h2 id="how-heading">{`How to use ${h1.toLowerCase()}`}</h2>
         <ol>
           {config.howToSteps.map((step) => (
             <li key={step}>{step}</li>

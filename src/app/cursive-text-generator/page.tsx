@@ -90,7 +90,7 @@ export default function CursiveHubPage() {
       />
       <PageHero
         h1="Cursive text generator"
-        lead="Cursive text generator: type a name, copy Mathematical Script Unicode, paste it. This page also has the A–Z alphabet if you only need one glyph—no font to install, and letters will not join like calligraphy."
+        lead="Type a name or phrase and copy elegant Mathematical Script Unicode. This page is the canonical cursive tool for whole words—plus the full A–Z alphabet to copy without installing a font."
       />
 
       <div className="tool-stage" id="tool">
