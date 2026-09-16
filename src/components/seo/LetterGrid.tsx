@@ -11,12 +11,14 @@ type LetterGridProps = {
   mode?: LetterCase | "both";
   current?: { letter: Letter; letterCase: LetterCase };
   heading?: string;
+  lead?: string;
 };
 
 export function LetterGrid({
   mode = "both",
   current,
   heading = "All cursive letters (A–Z)",
+  lead,
 }: LetterGridProps) {
   const showCapital = mode === "both" || mode === "capital";
   const showSmall = mode === "both" || mode === "small";
@@ -24,6 +26,7 @@ export function LetterGrid({
   return (
     <section className="seo-section" aria-labelledby="letter-grid-heading">
       <h2 id="letter-grid-heading">{heading}</h2>
+      {lead ? <p className="seo-lead">{lead}</p> : null}
       {showCapital ? (
         <div className="letter-grid-block">
           <h3 className="letter-grid-sub">Capital cursive</h3>

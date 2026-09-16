@@ -57,10 +57,12 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cursive text generator",
     title: "Cursive Text Generator — Script Fonts Copy & Paste | FancifyText",
     description:
-      "Generate cursive and script Unicode fonts. Copy elegant letters for names, bios, and captions.",
+      "Type a name or phrase into cursive Unicode. Copy elegant script words plus the full A–Z alphabet—no font download.",
     fellowKeywords: fellows(
       "elegant cursive fonts copy and paste",
       "cursive copy and paste fonts",
+      "cursive alphabet",
+      "script font generator",
     ),
     navLabel: "Cursive",
   },
@@ -1133,9 +1135,12 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/cursive-text-generator/": [
     "/",
     "/bold-text-generator/",
+    "/italic-text-generator/",
     "/copy-paste-fonts/",
     "/instagram-font-generator/",
     "/name-font-generator/",
+    "/aesthetic-fonts/",
+    "/guides/how-unicode-fancy-fonts-work/",
   ],
   "/discord-color-text/": [
     "/discord-font-generator/",

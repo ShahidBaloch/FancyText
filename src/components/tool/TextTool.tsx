@@ -135,6 +135,7 @@ type DualStylePreviewProps = {
   primaryLabel: string;
   secondaryLabel: string;
   initialText?: string;
+  placeholder?: string;
   text?: string;
   onTextChange?: (value: string) => void;
 };
@@ -145,6 +146,7 @@ export function DualStylePreview({
   primaryLabel,
   secondaryLabel,
   initialText = "H2O",
+  placeholder,
   text: controlledText,
   onTextChange,
 }: DualStylePreviewProps) {
@@ -171,6 +173,7 @@ export function DualStylePreview({
         className="text-input"
         rows={2}
         value={text}
+        placeholder={placeholder}
         onChange={(e) => setText(e.target.value)}
         spellCheck={false}
       />
