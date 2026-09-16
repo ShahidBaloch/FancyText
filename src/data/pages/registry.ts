@@ -23,6 +23,8 @@ export type PageEntry = {
   navLabel?: string;
   /** Defaults to true. False = live for old links, noindex, omitted from sitemap. */
   index?: boolean;
+  /** Optional per-URL sitemap lastmod (ISO date or datetime). Falls back to SITE_CONTENT_UPDATED. */
+  updated?: string;
 };
 
 function fellows(...items: string[]): string[] {
