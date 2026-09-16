@@ -23,7 +23,10 @@ export type PageEntry = {
   navLabel?: string;
   /** Defaults to true. False = live for old links, noindex, omitted from sitemap. */
   index?: boolean;
-  /** Optional per-URL sitemap lastmod (ISO date or datetime). Falls back to SITE_CONTENT_UPDATED. */
+  /**
+   * Optional per-URL sitemap lastmod (YYYY-MM-DD or ISO datetime).
+   * Falls back to CONTENT_UPDATED_AT. Set only when that page actually changed.
+   */
   updated?: string;
 };
 
@@ -1631,8 +1634,18 @@ const DEFAULT_SITE_URL = "https://fancifytext.com";
  */
 export const SITE_URL = resolveSiteUrl();
 
-/** Shared content freshness signal for sitemap lastmod. */
-export const SITE_CONTENT_UPDATED = new Date("2026-09-16T12:00:00.000Z");
+/**
+ * Publisher-bumped sitemap lastmod (YYYY-MM-DD).
+ *
+ * Bump this only when intentionally publishing content changes. After Google
+ * Search Console submit, this site is meant for infrequent updates (monthly /
+ * quarterly / yearly). Do not set it to "today" on every deploy — that makes
+ * every URL look freshly updated and creates false churn in GSC.
+ */
+export const CONTENT_UPDATED_AT = "2026-09-16";
+
+/** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
+export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);
 
 function resolveSiteUrl(): string {
   const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);

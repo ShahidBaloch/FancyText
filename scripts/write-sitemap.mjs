@@ -7,6 +7,10 @@
  * succeed for the same client. Serving a public static file bypasses that
  * pipeline entirely (no request-time JS, no ISR regenerate).
  *
+ * lastmod is CONTENT_UPDATED_AT (or per-page `updated`), never "today".
+ * Bump CONTENT_UPDATED_AT only when intentionally publishing changes; after GSC
+ * submit the site is meant for infrequent updates (monthly / quarterly / yearly).
+ *
  * Run with: node scripts/write-sitemap.mjs
  */
 
@@ -33,6 +37,7 @@ await build({
 });
 
 const {
+  CONTENT_UPDATED_AT,
   assertSitemapInvariants,
   getSitemapEntries,
   renderSitemapXml,
@@ -41,6 +46,14 @@ const {
 const entries = getSitemapEntries();
 const xml = renderSitemapXml(entries);
 assertSitemapInvariants(xml, entries);
+
+const lastmods = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map(
+  (m) => m[1],
+);
+const uniqueLastmods = [...new Set(lastmods)];
+console.log(
+  `lastmod values: ${uniqueLastmods.join(", ") || "(omitted)"} (CONTENT_UPDATED_AT=${CONTENT_UPDATED_AT})`,
+);
 
 await mkdir(dirname(dest), { recursive: true });
 await writeFile(dest, xml, "utf8");

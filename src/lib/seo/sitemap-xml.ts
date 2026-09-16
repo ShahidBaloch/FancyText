@@ -1,39 +1,45 @@
 import {
+  CONTENT_UPDATED_AT,
   getLivePages,
-  SITE_CONTENT_UPDATED,
   SITE_URL,
   type PageEntry,
 } from "@/data/pages/registry";
 import { kaomojiPathIsIndexable } from "@/data/kaomoji";
 
+export { CONTENT_UPDATED_AT };
+
 export type SitemapEntry = {
   url: string;
-  lastModified: string;
+  /** YYYY-MM-DD from CONTENT_UPDATED_AT or PageEntry.updated. Omit if unknown. */
+  lastModified?: string;
   changeFrequency: "weekly" | "monthly" | "yearly";
   priority: number;
 };
 
 const SITE_ORIGIN = safeOrigin(SITE_URL) ?? "https://fancifytext.com";
+const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
- * W3C Datetime date (YYYY-MM-DD) for lastmod.
- * Avoids millisecond ISO strings that some sitemap parsers reject.
+ * Honest W3C date (YYYY-MM-DD) for lastmod.
+ * Never uses "now" / build time — fake daily lastmod creates GSC churn.
+ * Returns undefined if the value cannot be parsed (omit lastmod instead).
  */
-export function toSitemapLastmod(value: Date | string | undefined): string {
-  const fallback = new Date().toISOString().slice(0, 10);
+export function toSitemapLastmod(
+  value: Date | string | undefined = CONTENT_UPDATED_AT,
+): string | undefined {
   try {
-    const date =
-      value instanceof Date
-        ? value
-        : value
-          ? new Date(value)
-          : SITE_CONTENT_UPDATED instanceof Date
-            ? SITE_CONTENT_UPDATED
-            : new Date(SITE_CONTENT_UPDATED);
-    if (Number.isNaN(date.getTime())) return fallback;
-    return date.toISOString().slice(0, 10);
+    if (value instanceof Date) {
+      if (Number.isNaN(value.getTime())) return undefined;
+      return value.toISOString().slice(0, 10);
+    }
+    const raw = (value ?? CONTENT_UPDATED_AT).trim();
+    if (!raw) return undefined;
+    if (DATE_ONLY.test(raw)) return raw;
+    const parsed = new Date(raw);
+    if (Number.isNaN(parsed.getTime())) return undefined;
+    return parsed.toISOString().slice(0, 10);
   } catch {
-    return fallback;
+    return undefined;
   }
 }
 
@@ -73,19 +79,21 @@ function entryFor(
   path: string,
   changeFrequency: SitemapEntry["changeFrequency"],
   priority: number,
-  lastModified: string,
+  lastModified: string | undefined,
 ): SitemapEntry | null {
   const url = toAbsoluteUrl(path);
   if (!url) return null;
-  return { url, lastModified, changeFrequency, priority };
+  return lastModified
+    ? { url, lastModified, changeFrequency, priority }
+    : { url, changeFrequency, priority };
 }
 
 function fallbackEntries(): SitemapEntry[] {
   return [
     {
       url: `${SITE_ORIGIN}/`,
-      lastModified: toSitemapLastmod(SITE_CONTENT_UPDATED),
-      changeFrequency: "weekly",
+      lastModified: toSitemapLastmod(CONTENT_UPDATED_AT),
+      changeFrequency: "monthly",
       priority: 1,
     },
   ];
@@ -96,8 +104,9 @@ function fallbackEntries(): SitemapEntry[] {
  * Cursive letter pages and thin kaomoji emotion tails stay live for old links
  * but are noindex + omitted here (same pattern as the cursive hub).
  *
- * Optional per-page `updated` on PageEntry is used when present; otherwise
- * SITE_CONTENT_UPDATED.
+ * lastmod comes from PageEntry.updated or CONTENT_UPDATED_AT — never build time.
+ * Bump CONTENT_UPDATED_AT only when intentionally publishing changes; after GSC
+ * submit the site is meant for infrequent updates (monthly / quarterly / yearly).
  */
 export function getSitemapEntries(): SitemapEntry[] {
   try {
@@ -113,10 +122,9 @@ export function getSitemapEntries(): SitemapEntry[] {
     for (const page of getLivePages()) {
       if (!isIndexablePage(page)) continue;
       const lastModified = toSitemapLastmod(
-        page.updated ?? SITE_CONTENT_UPDATED,
+        page.updated ?? CONTENT_UPDATED_AT,
       );
-      const changeFrequency: SitemapEntry["changeFrequency"] =
-        page.url.startsWith("/guides/") ? "monthly" : "weekly";
+      const changeFrequency: SitemapEntry["changeFrequency"] = "monthly";
       const priority =
         page.url === "/"
           ? 1
@@ -126,7 +134,7 @@ export function getSitemapEntries(): SitemapEntry[] {
       push(entryFor(page.url, changeFrequency, priority, lastModified));
     }
 
-    const legalLastmod = toSitemapLastmod(SITE_CONTENT_UPDATED);
+    const legalLastmod = toSitemapLastmod(CONTENT_UPDATED_AT);
     for (const path of ["/privacy/", "/terms/"]) {
       push(entryFor(path, "yearly", 0.3, legalLastmod));
     }
@@ -146,17 +154,19 @@ function escapeXml(value: string): string {
     .replaceAll("'", "&apos;");
 }
 
-/** Always-valid urlset. Callers should still try/catch and fall back. */
+/** Always-valid urlset. lastmod is omitted when we do not have an honest date. */
 export function renderSitemapXml(entries: SitemapEntry[]): string {
   const urls = (entries.length > 0 ? entries : fallbackEntries())
-    .map(
-      (entry) => `  <url>
-    <loc>${escapeXml(entry.url)}</loc>
-    <lastmod>${escapeXml(entry.lastModified)}</lastmod>
+    .map((entry) => {
+      const lastmod = entry.lastModified
+        ? `\n    <lastmod>${escapeXml(entry.lastModified)}</lastmod>`
+        : "";
+      return `  <url>
+    <loc>${escapeXml(entry.url)}</loc>${lastmod}
     <changefreq>${entry.changeFrequency}</changefreq>
     <priority>${entry.priority.toFixed(entry.priority % 1 === 0 ? 1 : 2)}</priority>
-  </url>`,
-    )
+  </url>`;
+    })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -231,9 +241,19 @@ export function assertSitemapInvariants(xml: string, entries: SitemapEntry[]): v
   const lastmods = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map(
     (m) => m[1],
   );
+  const allowed = new Set<string>([CONTENT_UPDATED_AT]);
+  for (const page of getLivePages()) {
+    const honest = toSitemapLastmod(page.updated);
+    if (honest) allowed.add(honest);
+  }
   for (const lastmod of lastmods) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod)) {
+    if (!DATE_ONLY.test(lastmod)) {
       throw new Error(`invalid lastmod (want YYYY-MM-DD): ${lastmod}`);
+    }
+    if (!allowed.has(lastmod)) {
+      throw new Error(
+        `unstable lastmod ${lastmod}: must be CONTENT_UPDATED_AT (${CONTENT_UPDATED_AT}) or a PageEntry.updated, never build time`,
+      );
     }
   }
 }
