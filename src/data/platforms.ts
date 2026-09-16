@@ -155,6 +155,8 @@ export const PLATFORMS: PlatformConfig[] = [
         answer:
           "It converts plain text into Unicode letters you paste into Discord display names, nicknames, and about-me. No bot or Nitro required. The @username stays lowercase ASCII.",
       },
+      {
+        question: "Can I change my Discord username to fancy letters?",
         answer:
           "No. Discord usernames are lowercase ASCII. Paste Unicode into the display name or a server nickname instead. No bot or Nitro needed for that.",
       },

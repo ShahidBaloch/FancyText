@@ -83,7 +83,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Cat kaomojis lean on pointed ears and ^ω^ eyes for playful or aloof energy. Great for pet accounts, kawaii bios, and sarcastic “meh” reactions. Shorter faces render more reliably on mobile than dense ear stacks.",
     faq: [
       {
-        question: "What makes a kaomoji look like a cat?",
+        question: "What is a cat kaomoji?",
         answer:
           "Pointed ears (=^ ω ^=) and a small ω or ﻌ mouth. Kitty faces are narrower than bear snouts.",
       },
@@ -506,7 +506,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Thank-you faces bow, clasp hands, or smile softly. Perfect after favors, feedback, and community help. They read warmer than a plain “thanks” in Discord and group chats.",
     faq: [
       {
-        question: "What is a thank-you kaomoji?",
+        question: "What is a thank you kaomoji?",
         answer:
           "A bowing or hand-clasping face such as m(_ _)m. It is the text version of a polite Japanese bow.",
       },
