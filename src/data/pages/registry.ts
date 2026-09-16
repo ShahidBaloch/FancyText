@@ -420,6 +420,23 @@ export const PAGES: PageEntry[] = [
   },
   {
     phase: 6,
+    priority: "P1",
+    url: "/big-text-generator/",
+    group: "D_Style_Other",
+    primaryKeyword: "big text generator",
+    title: "Big Text Generator — Copy Huge ASCII Letters | FancifyText",
+    description:
+      "Turn short text into large ASCII / block letters you can copy and paste. Banner art for Discord, comments, and titles—not a Unicode bio font.",
+    fellowKeywords: fellows(
+      "ascii art text",
+      "large text copy paste",
+      "ascii banner generator",
+      "block letters copy paste",
+    ),
+    navLabel: "Big Text",
+  },
+  {
+    phase: 6,
     priority: "P2",
     url: "/mirror-text-generator/",
     group: "D_Style_Other",
@@ -990,7 +1007,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/cursive-text-generator/",
     "/discord-color-text/",
     "/instagram-font-generator/",
-    "/kaomoji/",
+    "/big-text-generator/",
     "/cool-symbols/",
   ],
   "/bold-text-generator/": [
@@ -1042,6 +1059,15 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/social-media-bio-generator/",
     "/instagram-font-generator/",
     "/copy-paste-fonts/",
+    "/big-text-generator/",
+  ],
+  "/big-text-generator/": [
+    "/",
+    "/discord-font-generator/",
+    "/discord-color-text/",
+    "/copy-paste-fonts/",
+    "/binary-text-generator/",
+    "/html-text-generator/",
   ],
   "/mirror-text-generator/": [
     "/upside-down-text-generator/",
@@ -1071,10 +1097,17 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/case-converter/": [
     "/",
     "/small-text-generator/",
+    "/big-text-generator/",
     "/bold-text-generator/",
     "/guides/how-unicode-fancy-fonts-work/",
     "/copy-paste-fonts/",
     "/binary-text-generator/",
+  ],
+  "/binary-text-generator/": [
+    "/big-text-generator/",
+    "/html-text-generator/",
+    "/copy-paste-fonts/",
+    "/",
   ],
   "/invisible-character/": [
     "/social-media-bio-generator/",
@@ -1127,10 +1160,10 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/aesthetic-fonts/",
     "/cute-fonts/",
     "/bold-text-generator/",
+    "/big-text-generator/",
     "/name-font-generator/",
     "/whatsapp-fonts/",
     "/cool-symbols/",
-    "/text-decorator/",
   ],
   "/cursive-text-generator/": [
     "/",
@@ -1145,6 +1178,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/discord-color-text/": [
     "/discord-font-generator/",
     "/bold-text-generator/",
+    "/big-text-generator/",
     "/kaomoji/",
     "/",
   ],
@@ -1202,6 +1236,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/discord-color-text/",
     "/bold-text-generator/",
     "/copy-paste-fonts/",
+    "/big-text-generator/",
     "/kaomoji/",
     "/",
   ],
@@ -1225,6 +1260,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/superscript-subscript-generator/",
     "/copy-paste-fonts/",
     "/roblox-font-generator/",
+    "/big-text-generator/",
     "/",
   ],
   "/twitter-font-generator/": [
@@ -1481,6 +1517,7 @@ const FOOTER_URLS = [
   "/bold-text-generator/",
   "/copy-paste-fonts/",
   "/small-text-generator/",
+  "/big-text-generator/",
   "/cool-symbols/",
   "/text-decorator/",
   "/aesthetic-fonts/",
@@ -1550,7 +1587,7 @@ const DEFAULT_SITE_URL = "https://fancifytext.com";
 export const SITE_URL = resolveSiteUrl();
 
 /** Shared content freshness signal for sitemap lastmod. */
-export const SITE_CONTENT_UPDATED = new Date("2026-09-15T00:00:00.000Z");
+export const SITE_CONTENT_UPDATED = new Date("2026-09-16T00:00:00.000Z");
 
 function resolveSiteUrl(): string {
   const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);
