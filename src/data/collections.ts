@@ -1,6 +1,6 @@
 import type { PageEntry } from "@/data/pages/registry";
 import { getPageByUrl } from "@/data/pages/registry";
-import { STYLE_IDS } from "@/lib/fonts/styles";
+import { COOL_PAGE_STYLE_IDS, STYLE_IDS } from "@/lib/fonts/styles";
 
 export type CollectionConfig = {
   slug: string;
@@ -47,6 +47,7 @@ export const COLLECTIONS: CollectionConfig[] = [
     taxonomy: [
       { label: "Aesthetic fonts", href: "/aesthetic-fonts/" },
       { label: "Cute fonts", href: "/cute-fonts/" },
+      { label: "Cool text", href: "/cool-text-generator/" },
       { label: "Name fonts", href: "/name-font-generator/" },
       { label: "Stylish text", href: "/stylish-text-generator/" },
       { label: "Bold text", href: "/bold-text-generator/" },
@@ -68,6 +69,11 @@ export const COLLECTIONS: CollectionConfig[] = [
         heading: "Cute fonts",
         body: "Bubble, small caps, and playful Unicode for soft bios and nicknames.",
         href: "/cute-fonts/",
+      },
+      {
+        heading: "Cool lookalike fonts",
+        body: "Cherokee, Japanese, CJK, fat, and letterlike Unicode — not installable typefaces. Best for Discord display names and bios, not @handles.",
+        href: "/cool-text-generator/",
       },
       {
         heading: "Cool / bold / elegant fonts",
@@ -138,7 +144,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       ],
       difference: {
         heading: "Aesthetic vs cute vs stylish",
-        body: "This collection is the soft, wide, script set—fullwidth spacing, cursive, and delicate small caps. Cute fonts are bubble and squared kawaii letters. Stylish text is the bold, italic, and glitch set. Use the copy-and-paste gallery when you want every style on one page.",
+        body: "This collection is the soft, wide, script set—fullwidth spacing, cursive, and delicate small caps. Cute fonts are bubble and squared kawaii letters. Cool text is Cherokee, Japanese, and fat lookalikes for gaming tags. Stylish text is the bold, italic, and glitch set. Use the copy-and-paste gallery when you want every style on one page.",
       },
       faq: [
         {
@@ -182,7 +188,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       ],
       difference: {
         heading: "What makes these cute fonts",
-        body: "Cute fonts here are circled bubble letters, squared caps, compact small caps, heart letters, and parenthesized glyphs—the kawaii set. Soft wide script lives on aesthetic fonts. High-contrast bold and glitch live on stylish text. Open those pages if you want a different vibe.",
+        body: "Cute fonts here are circled bubble letters, squared caps, compact small caps, heart letters, and parenthesized glyphs—the kawaii set. Soft wide script lives on aesthetic fonts. Lookalike Cherokee and Japanese letters live on the cool text generator. High-contrast bold and glitch live on stylish text. Open those pages if you want a different vibe.",
       },
       faq: [
         {
@@ -236,7 +242,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       ],
       difference: {
         heading: "Name fonts, not a full gallery",
-        body: "This page is for short names and usernames: clean sans bold, script signatures, and compact small caps. It skips bubble and glitch styles that often fail username filters. For a full bio with line breaks, use the social media bio generator.",
+        body: "This page is for short names and usernames: clean sans bold, script signatures, and compact small caps. It skips bubble, glitch, and cool lookalikes (Cherokee, Japanese, fat letters) that often fail username filters — those live on the cool text generator. For a full bio with line breaks, use the social media bio generator.",
       },
       faq: [
         {
@@ -290,7 +296,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       ],
       difference: {
         heading: "Stylish is the graphic set",
-        body: "Stylish text is bold, italic, monospace, strikethrough, and glitch—high contrast, not soft. Bubble and squared kawaii letters are on cute fonts. Wide script is on aesthetic fonts. Pick the collection that matches the look, instead of ranking the same gallery three times.",
+        body: "Stylish text is bold, italic, monospace, strikethrough, and glitch—high contrast, not soft. Bubble and squared kawaii letters are on cute fonts. Wide script is on aesthetic fonts. Cherokee, Japanese, and fat lookalikes are on the cool text generator. Pick the collection that matches the look, instead of ranking the same gallery three times.",
       },
       faq: [
         {
@@ -308,10 +314,104 @@ export const COLLECTIONS: CollectionConfig[] = [
           answer:
             "FancifyText is free in the browser—no signup. Generate and copy as many stylish variants as you need.",
         },
+          {
+            question: "Which stylish font works best on mobile?",
+            answer:
+              "Sans bold, bold, and italic styles tend to render reliably on phones. Keep glitch and squared styles short.",
+          },
+        ],
+      },
+    ),
+  collection(
+    "cool-text-generator",
+    COOL_PAGE_STYLE_IDS,
+    {
+      initialText: "Cool Text",
+      presets: ["Cool Text", "gamer tag", "clan", "username"],
+      howToSteps: [
+        "Type a short name, clan tag, or bio line — lookalikes work best on a few words.",
+        "Browse Cherokee, Japanese, CJK, fat, letterlike, and squared styles. Each row is Unicode, not a font file.",
+        "Check the compatibility badge. “Not for usernames” means @handles and most game logins will reject it.",
+        "Copy the row you like and paste into Discord, a bio, or a display name that allows Unicode.",
+      ],
+      uses: [
+        "Discord display names, nicknames, and status lines (keep the @username plain ASCII)",
+        "Gaming clan tags and profile flair where Unicode is allowed",
+        "Instagram, TikTok, and Snapchat bios — not the @handle field",
+        "Roblox display names only as a test: filters often strip lookalikes",
+        "Captions and comments that need a cool one-liner, not a whole paragraph",
+      ],
+      taxonomy: [
+        { label: "Name fonts (username-safer)", href: "/name-font-generator/" },
+        { label: "Aesthetic fonts", href: "/aesthetic-fonts/" },
+        { label: "Cute fonts", href: "/cute-fonts/" },
+        { label: "Stylish text", href: "/stylish-text-generator/" },
+        { label: "Copy and paste fonts", href: "/copy-paste-fonts/" },
+        { label: "Discord fonts", href: "/discord-font-generator/" },
+        { label: "Roblox fonts", href: "/roblox-font-generator/" },
+        { label: "Old English / gothic", href: "/old-english-text-generator/" },
+        { label: "Cool symbols", href: "/cool-symbols/" },
+      ],
+      difference: {
+        heading: "Cool lookalikes, not installable fonts",
+        body: "Every style on this page is a Unicode lookalike: Cherokee syllabary, CJK strokes, halfwidth kana, Canadian Aboriginal “fat” letters, Letterlike Symbols, and similar mappings. They are not trademarked typefaces and not TTF downloads. Name fonts stay on the username-safer sans/script set. Cute fonts are bubble and kawaii. Aesthetic fonts are wide fullwidth and script. Use this page when you specifically want cool letters that look borrowed from other writing systems.",
+      },
+      buckets: [
         {
-          question: "Which stylish font works best on mobile?",
+          heading: "Japanese, CJK, and Bopomofo",
+          body: "East-Asian stroke and kana lookalikes for short tags. Phones with Japanese or Chinese fonts usually render them; screen readers will not read them as English.",
+        },
+        {
+          heading: "Cherokee, fat, and syllabics",
+          body: "Chunky capitals popular for Discord and clan tags. Most @username fields still reject them — paste into a display name or bio instead.",
+        },
+        {
+          heading: "Squared, bubble, and letterlike",
+          body: "Boxed capitals, circled letters, and Åℂℝ-style Letterlike Symbols. Some platforms draw the boxed set as emoji tiles.",
+        },
+      ],
+      mobileHowTo:
+        "On iPhone or Android, type in the box, tap Copy on a row, switch to Discord or Instagram, then long-press and Paste. If you see empty boxes, that style is missing from your phone’s fonts — try Fat Letters, Accent Mashup, or Sans Bold on the name fonts page.",
+      faq: [
+        {
+          question: "What is a cool text generator?",
           answer:
-            "Sans bold, bold, and italic styles tend to render reliably on phones. Keep glitch and squared styles short.",
+            "It turns normal letters into Unicode lookalikes — Cherokee, Japanese/CJK strokes, fat syllabics, squared caps, and similar mappings — so you can copy and paste cool text into bios and chats. It does not install a font file.",
+        },
+        {
+          question: "Are these cool fonts I can download?",
+          answer:
+            "No. Cool fonts copy paste on this site means Unicode characters that happen to look like stylized letters. There is no TTF/OTF download and no trademarked typeface name attached to a row.",
+        },
+        {
+          question: "Will cool lookalikes work as a username?",
+          answer:
+            "Usually not. Discord @handles, Instagram handles, Roblox account names, and most game logins are ASCII-only or filter lookalikes. Use a display name, nickname, or bio instead, and keep the login name plain.",
+        },
+        {
+          question: "Do cool letters work on Discord?",
+          answer:
+            "Often in display names, nicknames, and about-me text. If a style shows as boxes on mobile, switch to Fat Letters, Cool Letters, or a simpler bold style. Your @username must stay plain letters.",
+        },
+        {
+          question: "Can I use this for gaming names and clan tags?",
+          answer:
+            "Yes where the game allows Unicode in a display name or clan tag. Roblox, Fortnite, and similar filters frequently strip Cherokee and CJK lookalikes. Test in the game, and keep a sans-bold backup.",
+        },
+        {
+          question: "Why do screen readers say the wrong language?",
+          answer:
+            "Lookalikes are real letters from other scripts. A screen reader may announce Cherokee syllables, Japanese kana, or Russian instead of your English word. Keep important names in plain text.",
+        },
+        {
+          question: "What does Mixed support or Not for usernames mean?",
+          answer:
+            "Mixed support means some devices or apps will show empty boxes. Not for usernames means login and @handle fields typically reject the characters even when they render in a bio.",
+        },
+        {
+          question: "How is this different from cool symbols?",
+          answer:
+            "This page maps your letters into lookalike alphabets. The cool symbols page is a copy list of stars, arrows, and marks — it does not restyle a whole word.",
         },
       ],
     },

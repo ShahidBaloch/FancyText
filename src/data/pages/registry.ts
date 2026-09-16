@@ -240,6 +240,25 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows("stylish fonts", "create stylish text"),
   },
   {
+    phase: 6,
+    priority: "P0",
+    url: "/cool-text-generator/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "cool text generator",
+    title: "Cool Text Generator — Japanese, Squared & Letterlike Styles | FancifyText",
+    description:
+      "Generate cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, squared, and letterlike styles. Copy and paste cool fonts for Discord, bios, and gaming names — not TTF downloads.",
+    fellowKeywords: fellows(
+      "cool fonts copy paste",
+      "cool font generator",
+      "cool letters copy paste",
+      "japanese letters copy paste",
+      "cool text copy paste",
+      "cool text",
+    ),
+    navLabel: "Cool Text",
+  },
+  {
     phase: 4,
     priority: "P0",
     url: "/discord-color-text/",
@@ -1007,6 +1026,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/cursive-text-generator/",
     "/discord-color-text/",
     "/instagram-font-generator/",
+    "/cool-text-generator/",
     "/big-text-generator/",
     "/cool-symbols/",
   ],
@@ -1076,6 +1096,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/",
   ],
   "/old-english-text-generator/": [
+    "/cool-text-generator/",
     "/bold-text-generator/",
     "/name-font-generator/",
     "/discord-font-generator/",
@@ -1157,6 +1178,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/copy-paste-fonts/": [
     "/",
+    "/cool-text-generator/",
     "/aesthetic-fonts/",
     "/cute-fonts/",
     "/bold-text-generator/",
@@ -1205,6 +1227,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/aesthetic-fonts/": [
     "/copy-paste-fonts/",
     "/cute-fonts/",
+    "/cool-text-generator/",
     "/stylish-text-generator/",
     "/instagram-font-generator/",
     "/tiktok-font-generator/",
@@ -1212,6 +1235,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/cute-fonts/": [
     "/aesthetic-fonts/",
+    "/cool-text-generator/",
     "/bubble-text-generator/",
     "/cute-kaomojis/",
     "/copy-paste-fonts/",
@@ -1219,6 +1243,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/cool-symbols/",
   ],
   "/name-font-generator/": [
+    "/cool-text-generator/",
     "/copy-paste-fonts/",
     "/cursive-text-generator/",
     "/bold-text-generator/",
@@ -1227,13 +1252,25 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/stylish-text-generator/": [
     "/",
+    "/cool-text-generator/",
     "/aesthetic-fonts/",
     "/copy-paste-fonts/",
     "/bold-text-generator/",
     "/instagram-font-generator/",
   ],
+  "/cool-text-generator/": [
+    "/name-font-generator/",
+    "/copy-paste-fonts/",
+    "/aesthetic-fonts/",
+    "/discord-font-generator/",
+    "/roblox-font-generator/",
+    "/old-english-text-generator/",
+    "/cute-fonts/",
+    "/cool-symbols/",
+  ],
   "/discord-font-generator/": [
     "/discord-color-text/",
+    "/cool-text-generator/",
     "/bold-text-generator/",
     "/copy-paste-fonts/",
     "/big-text-generator/",
@@ -1271,6 +1308,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/copy-paste-fonts/",
   ],
   "/roblox-font-generator/": [
+    "/cool-text-generator/",
     "/html-text-generator/",
     "/name-font-generator/",
     "/discord-font-generator/",
@@ -1522,6 +1560,7 @@ const FOOTER_URLS = [
   "/text-decorator/",
   "/aesthetic-fonts/",
   "/cute-fonts/",
+  "/cool-text-generator/",
   "/kaomoji/",
 ];
 
@@ -1542,6 +1581,7 @@ const EXPLORE_URLS = [
   "/snapchat-font-generator/",
   "/social-media-bio-generator/",
   "/name-font-generator/",
+  "/cool-text-generator/",
   "/html-text-generator/",
   "/binary-text-generator/",
   "/invisible-character/",
@@ -1560,6 +1600,7 @@ const NAV_URLS = [
   "/cursive-text-generator/",
   "/bold-text-generator/",
   "/copy-paste-fonts/",
+  "/cool-text-generator/",
   "/instagram-font-generator/",
   "/discord-font-generator/",
   "/cool-symbols/",

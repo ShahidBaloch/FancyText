@@ -23,6 +23,7 @@ const FILTER_KEYS: FilterKey[] = [
   "script",
   "social",
   "fun",
+  "cool",
   "utility",
 ];
 
@@ -34,6 +35,7 @@ const FILTER_LABELS: Record<FilterKey, string> = {
   script: "Script",
   social: "Social",
   fun: "Fun",
+  cool: "Cool",
   utility: "Utility",
 };
 
@@ -44,7 +46,7 @@ function shouldExplain(style: FontStyle): boolean {
 
 function styleMatchesQuery(style: FontStyle, query: string): boolean {
   const haystack =
-    `${style.label} ${style.id.replaceAll("-", " ")} ${style.category}`.toLowerCase();
+    `${style.label} ${style.id.replaceAll("-", " ")} ${style.category} ${style.description}`.toLowerCase();
   return haystack.includes(query);
 }
 

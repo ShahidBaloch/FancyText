@@ -252,6 +252,9 @@ export default function HomePage() {
             <Link href="/copy-paste-fonts/">Copy and paste fonts</Link>
           </li>
           <li>
+            <Link href="/cool-text-generator/">Cool text generator</Link>
+          </li>
+          <li>
             <Link href="/small-text-generator/">Small text generator</Link>
           </li>
           <li>

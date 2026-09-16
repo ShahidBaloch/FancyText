@@ -1,12 +1,31 @@
 import { applyCombining, applyMap, buildAlphaMap } from "./buildMap";
 import { BOLD_CURSIVE_MAP, CURSIVE_MAP } from "./cursive";
+import {
+  ACCENT_MAP,
+  ARMENIAN_MAP,
+  BOPOMOFO_MAP,
+  CHEROKEE_MAP,
+  CHEROKEE_SMALL_MAP,
+  CJK_MAP,
+  COOL_SYLLABICS_MAP,
+  COPTIC_MAP,
+  CYRILLIC_MAP,
+  FAT_MAP,
+  JAPANESE_MAP,
+  LETTERLIKE_MAP,
+  LISU_MAP,
+  RUNIC_MAP,
+  SMOOTH_MAP,
+  STROKED_MAP,
+} from "./lookalikes";
 
 export type StyleCategory =
   | "classic"
   | "script"
   | "fun"
   | "social"
-  | "utility";
+  | "utility"
+  | "cool";
 
 /**
  * How reliably a style renders across current consumer devices.
@@ -102,6 +121,14 @@ const fullwidth = (() => {
   map[" "] = "\u3000";
   return map;
 })();
+
+const vaporLambda: Record<string, string> = {
+  ...fullwidth,
+  A: "Λ",
+  a: "Λ",
+  E: "Ξ",
+  e: "Ξ",
+};
 
 const circled = buildAlphaMap({
   upper: 0x24b6,
@@ -329,6 +356,15 @@ function upsideDown(text: string): string {
   return out;
 }
 
+/** Flip glyphs in place without reversing word order (unlike upside-down). */
+function turned(text: string): string {
+  let out = "";
+  for (const ch of text) {
+    out += upsideDownMap[ch] ?? upsideDownMap[ch.toLowerCase()] ?? ch;
+  }
+  return out;
+}
+
 const GLITCH_UP = ["\u030d", "\u030e", "\u0304", "\u0305", "\u0311", "\u0310"];
 const GLITCH_MID = ["\u0315", "\u031b", "\u0340", "\u0341"];
 const GLITCH_DOWN = [
@@ -406,6 +442,8 @@ const parenthesized: Record<string, string> = (() => {
   }
   return map;
 })();
+
+const parenthesizedCaps = buildAlphaMap({ upper: 0x1f110 });
 
 function smallCapsTransform(text: string): string {
   let out = "";
@@ -856,6 +894,136 @@ const STYLE_COMPAT = {
       "CJK corner brackets. Renders everywhere, but adds full-width padding on each side.",
     usernameSafe: false,
   },
+
+  // Cool / lookalike alphabets. These borrow letters from other scripts, so
+  // screen readers announce the source language and almost every @handle field
+  // will reject them. Labelled honestly — they are Unicode lookalikes, not fonts.
+  cherokee: {
+    support: "mixed",
+    supportNote:
+      "Cherokee syllabary lookalikes. Current iOS and Windows usually render the capitals; older Android may show boxes. Screen readers announce Cherokee syllables, not English.",
+    usernameSafe: false,
+  },
+  "cherokee-small": {
+    support: "limited",
+    supportNote:
+      "Lowercase Cherokee was added in Unicode 8. Many phones still lack those glyphs even when the capital set works. Keep it short and have a fallback.",
+    usernameSafe: false,
+  },
+  japanese: {
+    support: "mixed",
+    supportNote:
+      "Mix of halfwidth katakana, Hangul, and CJK strokes. Phones with Japanese/Korean fonts render it; some desktop browsers substitute unevenly. Not a Japanese typeface.",
+    usernameSafe: false,
+  },
+  cjk: {
+    support: "mixed",
+    supportNote:
+      "CJK stroke characters chosen to resemble Latin letters. Strong on iOS/Android, weaker on Windows without East-Asian fonts. Screen readers read Chinese/Japanese names.",
+    usernameSafe: false,
+  },
+  bopomofo: {
+    support: "mixed",
+    supportNote:
+      "Zhuyin (Bopomofo) letters. Compact on CJK-capable phones; a few letters (C/F, A/Y) share a lookalike. Not for usernames.",
+    usernameSafe: false,
+  },
+  fat: {
+    support: "mixed",
+    supportNote:
+      "Canadian Aboriginal Syllabics used as chunky Latin lookalikes. Gadugi (Windows) and iOS include the block; some Android builds still tofu.",
+    usernameSafe: false,
+  },
+  cool: {
+    support: "mixed",
+    supportNote:
+      "A second syllabics set with rounder O/C/E. Same coverage caveats as Fat letters — mixed fonts, rejected by most username filters.",
+    usernameSafe: false,
+  },
+  letterlike: {
+    support: "mixed",
+    supportNote:
+      "Letterlike Symbols (Å, ℂ, ℝ, …). Unicode never encoded a full alphabet here, so D, J, S, T, U, V, W, X, Y stay plain Latin.",
+    usernameSafe: false,
+  },
+  smooth: {
+    support: "mixed",
+    supportNote:
+      "IPA and phonetic lookalikes. Coverage is decent on modern phones, but a handful of capitals come from later Latin extensions.",
+    usernameSafe: false,
+  },
+  accent: {
+    support: "wide",
+    supportNote:
+      "Accented Latin (Å, Ø, ñ). Glyphs themselves are widely supported, but @handles and many gaming usernames still reject the extra marks.",
+    usernameSafe: false,
+  },
+  cyrillic: {
+    support: "wide",
+    supportNote:
+      "Cyrillic letters used as Latin lookalikes. Renders almost everywhere Cyrillic is installed — which is most phones — but screen readers speak them as Russian.",
+    usernameSafe: false,
+  },
+  lisu: {
+    support: "mixed",
+    supportNote:
+      "Lisu (Fraser) letters were designed to look like Latin capitals. Segoe UI Historic and current iOS include them; many Android fonts still miss the block. No lookalike for Q.",
+    usernameSafe: false,
+  },
+  runic: {
+    support: "mixed",
+    supportNote:
+      "Runic lookalikes. Windows (Segoe UI Historic) and iOS usually render them; Android is patchy. A few Latin letters share a rune.",
+    usernameSafe: false,
+  },
+  coptic: {
+    support: "mixed",
+    supportNote:
+      "Coptic letters derived from Greek. Several Latin letters map to the same glyph (C/S, I/J, U/Y). Font coverage is mixed outside academic stacks.",
+    usernameSafe: false,
+  },
+  armenian: {
+    support: "mixed",
+    supportNote:
+      "Armenian lookalikes. The script itself is well supported, but resemblance to Latin is looser than Cherokee or Lisu, and usernames reject it.",
+    usernameSafe: false,
+  },
+  stroked: {
+    support: "mixed",
+    supportNote:
+      "Barred Latin letters (Ø, Ł, Ⱥ). Some capitals live in Latin Extended-D and can box out on older Android. F, M, S, V, W, X have no stroke twin and stay plain.",
+    usernameSafe: false,
+  },
+  "vapor-lambda": {
+    support: "wide",
+    supportNote:
+      "Fullwidth letters with Greek Λ and Ξ swapped in for A and E. Same double-width cost as Aesthetic; the Greek capitals may read as lambda/xi.",
+    usernameSafe: false,
+  },
+  turned: {
+    support: "mixed",
+    supportNote:
+      "Flips each letter in place without reversing the word (unlike Upside Down). Same mixed glyph coverage — a few capitals come from other scripts.",
+    usernameSafe: false,
+  },
+  "parenthesized-caps": {
+    support: "mixed",
+    supportNote:
+      "Parenthesized Latin capitals from the Enclosed Alphanumeric Supplement (🄐). Capitals only; some platforms draw them as emoji-like tiles.",
+    usernameSafe: false,
+  },
+  keycap: {
+    support: "mixed",
+    supportNote:
+      "Combining enclosing keycap after every character. Alignment varies, the character count doubles, and username fields strip the mark.",
+    usernameSafe: false,
+  },
+  ringed: {
+    support: "mixed",
+    supportNote:
+      "Combining enclosing circle. Looks like bubble text built from marks rather than precomposed glyphs, so stacking and clipping vary by font.",
+    usernameSafe: false,
+  },
   fire: {
     support: "wide",
     supportNote:
@@ -1212,6 +1380,161 @@ const RAW_STYLES: RawStyle[] = [
     description: "Frames the phrase with corner brackets.",
     transform: (t) => `『${t.trim()}』`,
   },
+  {
+    id: "cherokee",
+    label: "Cherokee Lookalike",
+    category: "cool",
+    description:
+      "Cherokee syllabary letters that resemble Latin — a Unicode lookalike, not a font.",
+    transform: (t) => applyMap(t, CHEROKEE_MAP),
+  },
+  {
+    id: "cherokee-small",
+    label: "Small Cherokee",
+    category: "cool",
+    description: "Lowercase Cherokee lookalikes. Thinner font coverage than the capitals.",
+    transform: (t) => applyMap(t, CHEROKEE_SMALL_MAP),
+  },
+  {
+    id: "japanese",
+    label: "Japanese Lookalike",
+    category: "cool",
+    description:
+      "Halfwidth kana, Hangul, and CJK strokes mixed into a cool Japanese-style alphabet.",
+    transform: (t) => applyMap(t, JAPANESE_MAP),
+  },
+  {
+    id: "cjk",
+    label: "CJK Strokes",
+    category: "cool",
+    description: "East-Asian stroke characters chosen to look like Latin letters.",
+    transform: (t) => applyMap(t, CJK_MAP),
+  },
+  {
+    id: "bopomofo",
+    label: "Bopomofo Lookalike",
+    category: "cool",
+    description: "Zhuyin letters for compact cool names. A couple of letters share a twin.",
+    transform: (t) => applyMap(t, BOPOMOFO_MAP),
+  },
+  {
+    id: "fat",
+    label: "Fat Letters",
+    category: "cool",
+    description: "Chunky Canadian Aboriginal Syllabics used as fat Latin lookalikes.",
+    transform: (t) => applyMap(t, FAT_MAP),
+  },
+  {
+    id: "cool",
+    label: "Cool Letters",
+    category: "cool",
+    description: "Rounded syllabics lookalikes for short bios, tags, and display names.",
+    transform: (t) => applyMap(t, COOL_SYLLABICS_MAP),
+  },
+  {
+    id: "letterlike",
+    label: "Letterlike Symbols",
+    category: "cool",
+    description:
+      "Å ℂ ℕ ℝ ℤ and other Letterlike Symbols. Incomplete alphabet — missing letters stay Latin.",
+    transform: (t) => applyMap(t, LETTERLIKE_MAP),
+    partialCoverage: true,
+  },
+  {
+    id: "smooth",
+    label: "Smooth Phonetic",
+    category: "cool",
+    description: "IPA and phonetic lookalikes for a soft, even cool-text look.",
+    transform: (t) => applyMap(t, SMOOTH_MAP),
+  },
+  {
+    id: "accent",
+    label: "Accent Mashup",
+    category: "cool",
+    description: "Accented Latin (Å Ø ñ) mashed into a decorative alphabet. Still not a font file.",
+    transform: (t) => applyMap(t, ACCENT_MAP),
+  },
+  {
+    id: "cyrillic",
+    label: "Faux Cyrillic",
+    category: "cool",
+    description: "Cyrillic letters swapped in as Latin lookalikes. Screen readers speak Russian.",
+    transform: (t) => applyMap(t, CYRILLIC_MAP),
+  },
+  {
+    id: "lisu",
+    label: "Lisu Lookalike",
+    category: "cool",
+    description:
+      "Fraser/Lisu capitals designed to mimic Latin. No Q lookalike — that letter stays plain.",
+    transform: (t) => applyMap(t, LISU_MAP),
+    partialCoverage: true,
+  },
+  {
+    id: "runic",
+    label: "Runic Lookalike",
+    category: "cool",
+    description: "Elder Futhark-style runes mapped onto Latin letters for clan tags.",
+    transform: (t) => applyMap(t, RUNIC_MAP),
+  },
+  {
+    id: "coptic",
+    label: "Coptic Lookalike",
+    category: "cool",
+    description: "Coptic (Greek-derived) letters. Some Latin keys share a glyph.",
+    transform: (t) => applyMap(t, COPTIC_MAP),
+  },
+  {
+    id: "armenian",
+    label: "Armenian Lookalike",
+    category: "cool",
+    description: "Armenian letters with a loose Latin resemblance for novelty names.",
+    transform: (t) => applyMap(t, ARMENIAN_MAP),
+  },
+  {
+    id: "stroked",
+    label: "Stroked Letters",
+    category: "cool",
+    description: "Barred Latin (Ø Ł Ⱥ). Letters without a stroke form stay plain.",
+    transform: (t) => applyMap(t, STROKED_MAP),
+    partialCoverage: true,
+  },
+  {
+    id: "vapor-lambda",
+    label: "Vaporwave Lambda",
+    category: "cool",
+    description: "Fullwidth vaporwave with Λ and Ξ swapped in for A and E. Unicode lookalikes.",
+    transform: (t) => applyMap(t, vaporLambda),
+  },
+  {
+    id: "turned",
+    label: "Turned Letters",
+    category: "cool",
+    description: "Flips each letter in place without reversing the word.",
+    transform: turned,
+  },
+  {
+    id: "parenthesized-caps",
+    label: "Squared Lookalike Caps",
+    category: "cool",
+    description: "Parenthesized Latin capitals (🄐🄑🄒). Capitals only — a boxed lookalike set.",
+    transform: (t) => applyMap(t.toUpperCase(), parenthesizedCaps),
+    partialCoverage: true,
+  },
+  {
+    id: "keycap",
+    label: "Keycap Letters",
+    category: "cool",
+    description: "Combining keycap enclosure so each letter looks like a keyboard key.",
+    transform: (t) => applyCombining(t, "\u20E3"),
+  },
+  {
+    id: "ringed",
+    label: "Ringed Letters",
+    category: "cool",
+    description: "Combining enclosing circle — bubble-like marks rather than precomposed bubbles.",
+    transform: (t) => applyCombining(t, "\u20DD"),
+  },
 ];
 
 export const STYLES: FontStyle[] = RAW_STYLES.map((style) => ({
@@ -1244,6 +1567,27 @@ export function transformAll(text: string): { style: FontStyle; output: string }
 }
 
 export const STYLE_IDS = STYLES.map((s) => s.id);
+
+/** New lookalike alphabets (Cherokee, CJK, fat, …). */
+export const COOL_LOOKALIKE_IDS = STYLES.filter((s) => s.category === "cool").map(
+  (s) => s.id,
+);
+
+/**
+ * Cool Text landing page: lookalikes plus the squared / bubble / fullwidth
+ * neighbors people search when they want “cool fonts copy paste”.
+ */
+export const COOL_PAGE_STYLE_IDS = [
+  ...COOL_LOOKALIKE_IDS,
+  "squared",
+  "negative-squared",
+  "bubble",
+  "fullwidth",
+  "vaporwave",
+  "greek",
+  "currency",
+  "parenthesized",
+];
 
 export function transformSelected(
   text: string,
