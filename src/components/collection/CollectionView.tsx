@@ -51,18 +51,58 @@ export function CollectionView({ config }: CollectionViewProps) {
         lead={page?.description ?? "Browse fonts to copy and paste instantly."}
       />
 
-      <div className="tool-stage" id="tool">
-        <StyleGallery
-          initialText={config.initialText}
-          styleIds={config.styleIds.length ? config.styleIds : undefined}
-          presets={config.presets}
-          inputLabel={`Preview ${h1.toLowerCase()}`}
-          enableFavorites
-          {...(isLargeSet
-            ? { enableCategoryFilter: true, enableSearch: true }
-            : {})}
-        />
-      </div>
+      {config.hubCards?.length ? (
+        <section className="seo-section" aria-labelledby="hub-heading">
+          <h2 id="hub-heading">Font collections</h2>
+          <p className="seo-lead">
+            Start with a collection. Each card is a filtered page with its own
+            job—not a second copy of the homepage gallery.
+          </p>
+          <ul className="use-grid">
+            {config.hubCards.map((card) => (
+              <li key={card.href}>
+                <Link href={card.href} className="use-card">
+                  <span className="use-name">{card.title}</span>
+                  <span className="use-desc">{card.body}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {/* AdSense: never place units between this input and the first Copy row. */}
+      {config.galleryHeading ? (
+        <section className="seo-section" aria-labelledby="sample-heading">
+          <h2 id="sample-heading">{config.galleryHeading}</h2>
+          {config.galleryLead ? <p className="seo-lead">{config.galleryLead}</p> : null}
+          <div className="tool-stage" id="tool">
+            <StyleGallery
+              initialText={config.initialText}
+              styleIds={config.styleIds.length ? config.styleIds : undefined}
+              presets={config.presets}
+              inputLabel={`Preview ${h1.toLowerCase()}`}
+              enableFavorites
+              {...(isLargeSet
+                ? { enableCategoryFilter: true, enableSearch: true }
+                : {})}
+            />
+          </div>
+        </section>
+      ) : (
+        <div className="tool-stage" id="tool">
+          <StyleGallery
+            initialText={config.initialText}
+            styleIds={config.styleIds.length ? config.styleIds : undefined}
+            presets={config.presets}
+            inputLabel={`Preview ${h1.toLowerCase()}`}
+            enableFavorites
+            {...(isLargeSet
+              ? { enableCategoryFilter: true, enableSearch: true }
+              : {})}
+          />
+        </div>
+      )}
 
       {config.taxonomy?.length ? (
         <section className="seo-section" aria-labelledby="taxonomy-heading">
@@ -99,7 +139,7 @@ export function CollectionView({ config }: CollectionViewProps) {
       ))}
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">How to copy fonts</h2>
+        <h2 id="how-heading">{config.howToHeading ?? "How to copy fonts"}</h2>
         <ol>
           {config.howToSteps.map((step) => (
             <li key={step}>{step}</li>

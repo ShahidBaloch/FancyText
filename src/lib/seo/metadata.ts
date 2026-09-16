@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { kaomojiPathIsIndexable } from "@/data/kaomoji";
 import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
 import {
   letterDescription,
@@ -17,6 +18,9 @@ export function pageMetadata(page: PageEntry): Metadata {
   return {
     title: { absolute: page.title },
     description: page.description,
+    ...(page.index === false || !kaomojiPathIsIndexable(page.url)
+      ? { robots: { index: false, follow: true } }
+      : {}),
     alternates: { canonical },
     openGraph: {
       title: page.title,

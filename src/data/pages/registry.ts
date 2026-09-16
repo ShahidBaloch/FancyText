@@ -21,6 +21,8 @@ export type PageEntry = {
   description: string;
   fellowKeywords: string[];
   navLabel?: string;
+  /** Defaults to true. False = live for old links, noindex, omitted from sitemap. */
+  index?: boolean;
 };
 
 function fellows(...items: string[]): string[] {
@@ -39,13 +41,12 @@ export const PAGES: PageEntry[] = [
     description:
       "Free fancy text generator. Convert normal letters into bold, cursive, bubble, and stylish Unicode for Discord, Instagram, TikTok, and more.",
     fellowKeywords: fellows(
-      "cool font maker",
       "special text generator",
       "word font generator",
       "pretty font generator",
       "font changer text",
       "font generators",
-      "cool text",
+      "unicode text generator",
     ),
     navLabel: "Home",
   },
@@ -103,7 +104,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "bubble text generator",
     title: "Bubble Text Generator — Circled Letters Copy & Paste | FancifyText",
     description:
-      "Generate circled bubble letters and numbers. Copy playful bubble fonts for Discord names and bios.",
+      "Generate circled bubble letters and numbers only. Cute fonts mix bubble with kawaii extras; this tool is the circled-letter converter.",
     fellowKeywords: fellows("bubble font generator"),
     navLabel: "Bubble",
   },
@@ -115,7 +116,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "small caps generator",
     title: "Small Caps Generator — ꜱᴍᴀʟʟ ᴄᴀᴘꜱ Copy & Paste | FancifyText",
     description:
-      "Turn text into small capitals for bios and display names. Includes why the letter x has no small-caps form.",
+      "Turn text into small capitals (short-cap Unicode), not tiny superscript bios and not math subscripts. Includes why the letter x has no small-caps form.",
     fellowKeywords: fellows("small caps text", "small capital letters"),
     navLabel: "Small Caps",
   },
@@ -147,11 +148,11 @@ export const PAGES: PageEntry[] = [
     priority: "P1",
     url: "/superscript-subscript-generator/",
     group: "D_Style_Other",
-    primaryKeyword: "subscript generator",
-    title: "Superscript & Subscript Generator — Tiny Text | FancifyText",
+    primaryKeyword: "superscript and subscript generator",
+    title: "Superscript & Subscript Generator — Math & Footnotes | FancifyText",
     description:
-      "Make superscript and subscript text for math, chemistry-style notes, and footnotes. Copy tiny Unicode characters.",
-    fellowKeywords: fellows("superscript generator"),
+      "Raise or lower characters for math, chemistry-style notes, and footnotes (H₂O, x²). This is not a tiny-bio or small-caps tool.",
+    fellowKeywords: fellows("superscript generator", "subscript generator"),
   },
   {
     phase: 2,
@@ -181,9 +182,9 @@ export const PAGES: PageEntry[] = [
     url: "/copy-paste-fonts/",
     group: "C_CopyPaste",
     primaryKeyword: "copy and paste fonts",
-    title: "Copy and Paste Fonts — Cool Font Gallery | FancifyText",
+    title: "Copy and Paste Fonts — Unicode Font Collections | FancifyText",
     description:
-      "Browse the cool fonts gallery to copy and paste. Aesthetic, cute, bold, and cursive Unicode styles for bios, usernames, and captions.",
+      "Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII. Unicode styles—not a second full fancy-text gallery.",
     fellowKeywords: fellows(
       "font copy and paste",
       "fonts copy paste",
@@ -199,7 +200,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "aesthetic fonts",
     title: "Aesthetic Fonts — Soft Wide & Script Unicode | FancifyText",
     description:
-      "Aesthetic Unicode fonts with soft fullwidth, script, and delicate styles for dreamy bios, usernames, and captions.",
+      "Aesthetic Unicode fonts: soft fullwidth, script, and delicate small caps. This page is not cute bubble/kawaii, not stylish bold/glitch, and not cool lookalikes.",
     fellowKeywords: fellows(
       "font generator aesthetic",
       "aesthetic font generator",
@@ -214,7 +215,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cute fonts copy and paste",
     title: "Cute Fonts Copy and Paste — Bubble & Kawaii Unicode | FancifyText",
     description:
-      "Copy cute kawaii fonts: bubble letters, squared caps, and compact small caps. Paste playful Unicode into Discord, Instagram, and bios.",
+      "Copy cute kawaii fonts: bubble letters, squared caps, hearts, and parenthesized glyphs. Not aesthetic fullwidth, not stylish bold, and not cool lookalikes.",
     fellowKeywords: fellows("cute font generator", "kawaii fonts"),
   },
   {
@@ -223,10 +224,10 @@ export const PAGES: PageEntry[] = [
     url: "/name-font-generator/",
     group: "G_Name",
     primaryKeyword: "name fonts",
-    title: "Name Font Generator — Cool Username Fonts | FancifyText",
+    title: "Name Font Generator — Username-Safe Unicode Fonts | FancifyText",
     description:
-      "Turn a name or username into copy-ready Unicode fonts. Compare sans bold, script, and small caps that survive most username filters.",
-    fellowKeywords: fellows("cool name fonts", "username fonts"),
+      "Turn a name or username into copy-ready Unicode fonts. Compare sans bold, script, and small caps that survive most username filters—not cool lookalikes.",
+    fellowKeywords: fellows("username fonts", "display name fonts"),
   },
   {
     phase: 3,
@@ -236,7 +237,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "stylish text generator",
     title: "Stylish Text Generator — Bold & Graphic Unicode | FancifyText",
     description:
-      "Generate stylish text with bold, italic, and graphic Unicode fonts. Copy modern high-contrast styles for bios and usernames.",
+      "Generate stylish text with bold, italic, glitch, and graphic Unicode. High-contrast—not cute bubble, not aesthetic fullwidth, and not cool lookalikes.",
     fellowKeywords: fellows("stylish fonts", "create stylish text"),
   },
   {
@@ -430,7 +431,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "small text generator",
     title: "Small Text Generator — Tiny Letters for Bios | FancifyText",
     description:
-      "Make small Unicode text for compact bios and tags. Copy tiny superscript letters or more readable small caps—this is not a chemistry subscript tool.",
+      "Make small Unicode text for compact bios and tags (tiny superscript with small-caps fallback). Not a chemistry H₂O subscript tool and not a small-caps converter.",
     fellowKeywords: fellows(
       "tiny text generator",
       "small text copy and paste",
@@ -556,7 +557,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "kaomoji",
     title: "Kaomoji Copy and Paste — Japanese Emoticons | FancifyText",
     description:
-      "Free kaomoji copy and paste. Browse Japanese emoticons and text faces by emotion—cry, cute, hug, heart, and more.",
+      "Free kaomoji copy and paste. The canonical Japanese emoticon hub—cute, cry, and heart lists plus Lenny and shrug—with every face in one index.",
     fellowKeywords: fellows(
       "japanese emoticons",
       "text faces",
@@ -1047,9 +1048,9 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/bubble-text-generator/": [
     "/cute-fonts/",
-    "/copy-paste-fonts/",
+    "/aesthetic-fonts/",
+    "/stylish-text-generator/",
     "/discord-font-generator/",
-    "/name-font-generator/",
   ],
   "/strikethrough-text-generator/": [
     "/bold-text-generator/",
@@ -1057,10 +1058,11 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/copy-paste-fonts/",
   ],
   "/small-caps-text-generator/": [
+    "/small-text-generator/",
+    "/superscript-subscript-generator/",
     "/aesthetic-fonts/",
     "/instagram-font-generator/",
-    "/monospace-text-generator/",
-    "/social-media-bio-generator/",
+    "/name-font-generator/",
   ],
   "/monospace-text-generator/": [
     "/small-caps-text-generator/",
@@ -1070,15 +1072,15 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/superscript-subscript-generator/": [
     "/small-text-generator/",
+    "/small-caps-text-generator/",
     "/html-text-generator/",
-    "/copy-paste-fonts/",
     "/bold-text-generator/",
   ],
   "/small-text-generator/": [
     "/superscript-subscript-generator/",
+    "/small-caps-text-generator/",
     "/social-media-bio-generator/",
     "/instagram-font-generator/",
-    "/copy-paste-fonts/",
     "/big-text-generator/",
   ],
   "/big-text-generator/": [
@@ -1181,11 +1183,11 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/cool-text-generator/",
     "/aesthetic-fonts/",
     "/cute-fonts/",
-    "/bold-text-generator/",
+    "/cursive-text-generator/",
+    "/instagram-font-generator/",
     "/big-text-generator/",
+    "/stylish-text-generator/",
     "/name-font-generator/",
-    "/whatsapp-fonts/",
-    "/cool-symbols/",
   ],
   "/cursive-text-generator/": [
     "/",
@@ -1628,7 +1630,7 @@ const DEFAULT_SITE_URL = "https://fancifytext.com";
 export const SITE_URL = resolveSiteUrl();
 
 /** Shared content freshness signal for sitemap lastmod. */
-export const SITE_CONTENT_UPDATED = new Date("2026-09-16T00:00:00.000Z");
+export const SITE_CONTENT_UPDATED = new Date("2026-09-16T12:00:00.000Z");
 
 function resolveSiteUrl(): string {
   const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);

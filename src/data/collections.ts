@@ -1,6 +1,6 @@
 import type { PageEntry } from "@/data/pages/registry";
 import { getPageByUrl } from "@/data/pages/registry";
-import { COOL_PAGE_STYLE_IDS, STYLE_IDS } from "@/lib/fonts/styles";
+import { COOL_PAGE_STYLE_IDS } from "@/lib/fonts/styles";
 
 export type CollectionConfig = {
   slug: string;
@@ -13,6 +13,11 @@ export type CollectionConfig = {
   taxonomy?: { label: string; href: string }[];
   /** Optional H2 buckets (aesthetic / cute / cool…). */
   buckets?: { heading: string; body: string; href?: string }[];
+  /** Collections-first hub cards (copy-paste fonts). Rendered before the gallery. */
+  hubCards?: { title: string; body: string; href: string }[];
+  galleryHeading?: string;
+  galleryLead?: string;
+  howToHeading?: string;
   mobileHowTo?: string;
   /** Unique positioning vs overlapping collections. */
   difference?: { heading: string; body: string };
@@ -28,97 +33,149 @@ function collection(
 }
 
 export const COLLECTIONS: CollectionConfig[] = [
-  collection("copy-paste-fonts", STYLE_IDS, {
-    initialText: "Copy Paste Fonts",
-    presets: ["Instagram Bio", "Cool Username", "Discord Name", "Aesthetic"],
-    howToSteps: [
-      "Type any word, name, or phrase in the gallery input.",
-      "Scroll the font list—every row updates live with a different Unicode style.",
-      "Tap Copy on the style you like and paste into Instagram, Discord, TikTok, WhatsApp, or anywhere Unicode works.",
+  collection(
+    "copy-paste-fonts",
+    [
+      "bold",
+      "sans-bold",
+      "cursive",
+      "italic",
+      "bubble",
+      "small-caps",
+      "fullwidth",
+      "fraktur",
     ],
-    mobileHowTo:
-      "On iPhone or Android, open this page in your browser, type in the box, tap Copy on a font row, switch to Instagram/Discord/WhatsApp, then long-press and Paste. No font install is required.",
-    uses: [
-      "Instagram and TikTok bios and captions",
-      "Discord nicknames and server names",
-      "WhatsApp status and group titles",
-      "Gaming usernames and profile flair",
-    ],
-    taxonomy: [
-      { label: "Aesthetic fonts", href: "/aesthetic-fonts/" },
-      { label: "Cute fonts", href: "/cute-fonts/" },
-      { label: "Cool text", href: "/cool-text-generator/" },
-      { label: "Name fonts", href: "/name-font-generator/" },
-      { label: "Stylish text", href: "/stylish-text-generator/" },
-      { label: "Bold text", href: "/bold-text-generator/" },
-      { label: "Cursive text", href: "/cursive-text-generator/" },
-      { label: "Bubble text", href: "/bubble-text-generator/" },
-      { label: "WhatsApp fonts", href: "/whatsapp-fonts/" },
-      { label: "Small text", href: "/small-text-generator/" },
-      { label: "Old English", href: "/old-english-text-generator/" },
-      { label: "Cool symbols", href: "/cool-symbols/" },
-      { label: "Text decorator", href: "/text-decorator/" },
-    ],
-    buckets: [
-      {
-        heading: "Aesthetic fonts",
-        body: "Fullwidth, cursive, and soft script styles for Instagram and TikTok vibes.",
-        href: "/aesthetic-fonts/",
+    {
+      initialText: "Copy Paste Fonts",
+      presets: ["Instagram Bio", "Discord Name", "username", "Aesthetic"],
+      galleryHeading: "Sample copy-and-paste fonts",
+      galleryLead:
+        "A short classic set so you can copy one style here. The homepage fancy text generator is the full live converter. Cool lookalikes (Cherokee, Japanese, fat) live on the cool text page—not in this sample.",
+      howToHeading: "How to pick a collection",
+      howToSteps: [
+        "Decide the job: a vibe collection (aesthetic / cute / stylish), a lookalike (cool text), a script alphabet (cursive), a platform field, or a huge ASCII banner (big text).",
+        "Open that collection card—each page has a filtered grid, not the same dump of every style.",
+        "Copy from that page and paste into the app. Come back here when you want a different category.",
+      ],
+      mobileHowTo:
+        "On a phone, tap a collection card first (Cool, aesthetic, cute, cursive, Instagram, or Big Text). Copy from that page, then long-press Paste in the app. You do not install a font file.",
+      uses: [
+        "Jumping to the right filtered collection instead of scrolling one giant gallery",
+        "Copy-paste font queries that want a catalog of styles, not a how-to converter",
+        "Sending someone a bookmark for “fonts you can paste” rather than the homepage tool",
+      ],
+      hubCards: [
+        {
+          title: "Cool text / lookalikes",
+          body: "Cherokee, Japanese, CJK, fat, and letterlike letters. Owns “cool text” and “cool fonts.” Not for most @handles.",
+          href: "/cool-text-generator/",
+        },
+        {
+          title: "Aesthetic fonts",
+          body: "Soft fullwidth, script, and delicate small caps—vaporwave / dreamy bios, not kawaii bubbles.",
+          href: "/aesthetic-fonts/",
+        },
+        {
+          title: "Cute fonts",
+          body: "Bubble, squared, hearts, and parenthesized kawaii letters. Not aesthetic fullwidth.",
+          href: "/cute-fonts/",
+        },
+        {
+          title: "Cursive / script",
+          body: "Handwritten Unicode script plus the A–Z alphabet. The cursive hub, not this index.",
+          href: "/cursive-text-generator/",
+        },
+        {
+          title: "Stylish / graphic",
+          body: "Bold, italic, glitch, and high-contrast rows—not cute and not soft aesthetic.",
+          href: "/stylish-text-generator/",
+        },
+        {
+          title: "Instagram & platforms",
+          body: "Field-aware generators for Instagram, Discord, TikTok, WhatsApp, and more.",
+          href: "/instagram-font-generator/",
+        },
+        {
+          title: "Big ASCII text",
+          body: "Huge banner letters for Discord and comments. Not Unicode bio fonts.",
+          href: "/big-text-generator/",
+        },
+        {
+          title: "Name / username fonts",
+          body: "Short username-safer sans, script, and small caps. Cool lookalikes stay on Cool.",
+          href: "/name-font-generator/",
+        },
+      ],
+      taxonomy: [
+        { label: "Fancy text generator (home)", href: "/" },
+        { label: "Aesthetic fonts", href: "/aesthetic-fonts/" },
+        { label: "Cute fonts", href: "/cute-fonts/" },
+        { label: "Cool text", href: "/cool-text-generator/" },
+        { label: "Cursive text", href: "/cursive-text-generator/" },
+        { label: "Stylish text", href: "/stylish-text-generator/" },
+        { label: "Bubble letters", href: "/bubble-text-generator/" },
+        { label: "Name fonts", href: "/name-font-generator/" },
+        { label: "Instagram fonts", href: "/instagram-font-generator/" },
+        { label: "Discord fonts", href: "/discord-font-generator/" },
+        { label: "Big text (ASCII)", href: "/big-text-generator/" },
+        { label: "WhatsApp fonts", href: "/whatsapp-fonts/" },
+        { label: "Cool symbols", href: "/cool-symbols/" },
+      ],
+      difference: {
+        heading: "This is the collections hub, not a second fancy text generator",
+        body: "The homepage owns “fancy text generator”: type once, preview every Unicode style, copy. This page owns “copy and paste fonts” as a catalog of collections. Use Cool for lookalikes, aesthetic for soft fullwidth/script, cute for kawaii bubbles, cursive for script alphabets, platform tools for Instagram/Discord field rules, and Big Text for ASCII banners. If you want the full converter, go home—don’t treat this URL as a twin gallery.",
       },
-      {
-        heading: "Cute fonts",
-        body: "Bubble, small caps, and playful Unicode for soft bios and nicknames.",
-        href: "/cute-fonts/",
-      },
-      {
-        heading: "Cool lookalike fonts",
-        body: "Cherokee, Japanese, CJK, fat, and letterlike Unicode — not installable typefaces. Best for Discord display names and bios, not @handles.",
-        href: "/cool-text-generator/",
-      },
-      {
-        heading: "Cool / bold / elegant fonts",
-        body: "Bold, sans bold, italic, and fraktur for emphasis and elegant display names.",
-        href: "/bold-text-generator/",
-      },
-    ],
-    faq: [
-      {
-        question: "What are copy and paste fonts?",
-        answer:
-          "Copy and paste fonts are Unicode character styles—not downloadable font files. You generate fancy text here, copy it, and paste it into apps that support Unicode symbols.",
-      },
-      {
-        question: "Are font copy and paste tools free?",
-        answer:
-          "Yes. FancifyText runs in your browser with no account. Generate as many styles as you need and copy them instantly.",
-      },
-      {
-        question: "Do copy paste fonts work on Instagram?",
-        answer:
-          "Instagram bios and captions do not have a native font picker. Unicode copy paste fonts are the standard workaround—paste directly into the bio field.",
-      },
-      {
-        question: "Why do some fonts show as boxes?",
-        answer:
-          "Your device may not support every Unicode symbol. Try bold, sans bold, or bubble styles if a row fails to render on your phone.",
-      },
-      {
-        question: "Is this the same as fonts copy and paste or fonts copy paste?",
-        answer:
-          "Yes. People search many word orders for the same intent—cool fonts you can copy and paste without installing anything.",
-      },
-      {
-        question: "How many fonts can I copy?",
-        answer:
-          "The gallery lists every style FancifyText supports. Scroll, preview live, and copy as many as you want—there is no download limit.",
-      },
-      {
-        question: "Can I use these fonts on Discord and WhatsApp?",
-        answer:
-          "Yes for most bold, cursive, and bubble styles. Use the Discord and WhatsApp tools for platform-focused presets.",
-      },
-    ],
-  }),
+      buckets: [
+        {
+          heading: "Cool lookalike fonts",
+          body: "Japanese, Cherokee, fat, squared, and letterlike mappings. They are Unicode, not TTF downloads, and they are the reason /cool-text-generator/ exists. Do not hunt “cool fonts” on this hub.",
+          href: "/cool-text-generator/",
+        },
+        {
+          heading: "Aesthetic vs cute vs stylish",
+          body: "Aesthetic = wide/soft/script. Cute = bubble/kawaii. Stylish = bold/graphic/glitch. Open the matching collection so those modifiers don’t all rank the same page.",
+          href: "/aesthetic-fonts/",
+        },
+        {
+          heading: "Platform copy-paste fonts",
+          body: "Instagram bios, Discord nicknames, TikTok captions, WhatsApp status, and other fields have different limits. Use a platform tool when the app—not the vibe—is the query.",
+          href: "/instagram-font-generator/",
+        },
+        {
+          heading: "Big text vs paste-able letters",
+          body: "Huge Discord banners are ASCII art on the big text generator. Copy-paste fonts here are still normal-size Unicode letters you paste into a bio.",
+          href: "/big-text-generator/",
+        },
+      ],
+      faq: [
+        {
+          question: "What are copy and paste fonts?",
+          answer:
+            "Copy and paste fonts are Unicode character styles—not downloadable TTF/OTF files. You copy the symbols and paste them into apps that accept Unicode. This page is the catalog of those collections.",
+        },
+        {
+          question: "Is this the same as the fancy text generator on the homepage?",
+          answer:
+            "No. Home is the head-term converter (every style, search, favorites). This URL is the copy-and-paste fonts hub: collections first, a small sample grid, and links out. Use home when you want to type one phrase into every style.",
+        },
+        {
+          question: "Where do I get cool fonts copy paste?",
+          answer:
+            "Open the cool text generator for lookalike letters (Japanese, Cherokee, fat, squared). This hub only points there so “cool fonts” don’t compete with the fancy-text homepage.",
+        },
+        {
+          question: "Do I need to install a font?",
+          answer:
+            "No. Nothing on FancifyText installs a typeface. The look travels with the characters you paste.",
+        },
+        {
+          question: "Which collection should I open first?",
+          answer:
+            "Vibe → aesthetic, cute, or stylish. Lookalike / clan-tag letters → cool text. Script alphabet → cursive. A social app’s name or bio field → that platform generator. Huge letters → big text.",
+        },
+      ],
+    },
+  ),
   collection(
     "aesthetic-fonts",
     [
@@ -143,8 +200,8 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Minimal username flair where Unicode is allowed",
       ],
       difference: {
-        heading: "Aesthetic vs cute vs stylish",
-        body: "This collection is the soft, wide, script set—fullwidth spacing, cursive, and delicate small caps. Cute fonts are bubble and squared kawaii letters. Cool text is Cherokee, Japanese, and fat lookalikes for gaming tags. Stylish text is the bold, italic, and glitch set. Use the copy-and-paste gallery when you want every style on one page.",
+        heading: "This page is for aesthetic fonts, not cute / stylish / cool",
+        body: "Use this collection when you want soft fullwidth spacing, script, and delicate small caps (dreamy / vaporwave bios). Cute fonts are bubble and kawaii extras. Stylish text is bold, italic, and glitch. Cool text is Cherokee, Japanese, and fat lookalikes. Bubble letters as a standalone circled-letter tool live on the bubble generator. The copy-and-paste fonts hub indexes these collections; the homepage is the full converter.",
       },
       faq: [
         {
@@ -172,13 +229,13 @@ export const COLLECTIONS: CollectionConfig[] = [
   ),
   collection(
     "cute-fonts",
-    ["bubble", "squared", "small-caps", "hearts", "parenthesized"],
+    ["bubble", "squared", "hearts", "parenthesized"],
     {
       initialText: "cute",
       presets: ["cute", "kawaii", "hello", "sweet"],
       howToSteps: [
         "Type a cute phrase, name, or bio line.",
-        "Pick bubble, squared, small-caps, hearts, or parenthesized letters from the live grid.",
+        "Pick bubble, squared, hearts, or parenthesized letters from the live grid—this is the kawaii set, not fullwidth aesthetic.",
         "Copy and paste into Discord, Instagram, or messages.",
       ],
       uses: [
@@ -187,14 +244,14 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Cute group chat names and status lines",
       ],
       difference: {
-        heading: "What makes these cute fonts",
-        body: "Cute fonts here are circled bubble letters, squared caps, compact small caps, heart letters, and parenthesized glyphs—the kawaii set. Soft wide script lives on aesthetic fonts. Lookalike Cherokee and Japanese letters live on the cool text generator. High-contrast bold and glitch live on stylish text. Open those pages if you want a different vibe.",
+        heading: "This page is for cute/kawaii fonts, not aesthetic",
+        body: "Cute fonts here are circled bubble letters, squared caps, heart letters, and parenthesized glyphs. Soft wide script and fullwidth live on aesthetic fonts—do not use this URL for “aesthetic fonts.” Cool lookalikes live on the cool text generator. High-contrast bold and glitch live on stylish text. Circled letters as a dedicated converter live on the bubble text generator. Small caps (short capitals) are a separate tool.",
       },
       faq: [
         {
           question: "What are cute fonts copy and paste?",
           answer:
-            "They are playful Unicode styles—especially bubble letters, squared caps, and compact small caps—you copy from a generator and paste into social apps.",
+            "They are playful Unicode styles—especially bubble letters, squared caps, hearts, and parenthesized glyphs—you copy from a generator and paste into social apps. Soft fullwidth script is on aesthetic fonts, not here.",
         },
         {
           question: "Is this a cute font generator?",
@@ -230,7 +287,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       presets: ["Luna", "Alex", "gamerX", "username"],
       howToSteps: [
         "Type your name or username into the gallery.",
-        "Compare bold, cursive, bubble, and clean sans styles side by side.",
+        "Compare bold, cursive, and clean sans styles side by side. Bubble and cool lookalikes are on other pages.",
         "Copy the version that fits your platform’s character rules and paste it in.",
       ],
       uses: [
@@ -242,7 +299,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       ],
       difference: {
         heading: "Name fonts, not a full gallery",
-        body: "This page is for short names and usernames: clean sans bold, script signatures, and compact small caps. It skips bubble, glitch, and cool lookalikes (Cherokee, Japanese, fat letters) that often fail username filters — those live on the cool text generator. For a full bio with line breaks, use the social media bio generator.",
+        body: "This page is for short names and usernames: clean sans bold, script signatures, and compact small caps. It skips bubble, glitch, and cool lookalikes (Cherokee, Japanese, fat letters) that often fail username filters — those live on the cool text generator, which owns “cool text / cool fonts.” For a full bio with line breaks, use the social media bio generator.",
       },
       faq: [
         {
@@ -256,9 +313,9 @@ export const COLLECTIONS: CollectionConfig[] = [
             "Yes. Username fonts and name fonts searches mean the same thing—stylish Unicode for display names you can copy and paste.",
         },
         {
-          question: "Do cool name fonts work everywhere?",
+          question: "Do these name fonts work everywhere?",
           answer:
-            "Platforms limit which characters usernames allow. If one style fails, try sans bold or a shorter name variant.",
+            "Platforms limit which characters usernames allow. If one style fails, try sans bold or a shorter name variant. Cherokee, Japanese, and fat lookalikes belong on the cool text generator, not this username-safer set.",
         },
         {
           question: "How do I make a custom name font?",
@@ -283,7 +340,7 @@ export const COLLECTIONS: CollectionConfig[] = [
     ],
     {
       initialText: "stylish",
-      presets: ["stylish", "cool text", "profile", "caption"],
+      presets: ["stylish", "graphic bio", "profile", "caption"],
       howToSteps: [
         "Enter the phrase you want to stylize.",
         "Browse bold, italic, and graphic Unicode rows—not the soft aesthetic set.",
@@ -295,8 +352,8 @@ export const COLLECTIONS: CollectionConfig[] = [
         "Discord nicknames with bold or graphic punch",
       ],
       difference: {
-        heading: "Stylish is the graphic set",
-        body: "Stylish text is bold, italic, monospace, strikethrough, and glitch—high contrast, not soft. Bubble and squared kawaii letters are on cute fonts. Wide script is on aesthetic fonts. Cherokee, Japanese, and fat lookalikes are on the cool text generator. Pick the collection that matches the look, instead of ranking the same gallery three times.",
+        heading: "This page is for stylish/graphic text, not cute or aesthetic",
+        body: "Stylish text is bold, italic, monospace, strikethrough, and glitch—high contrast. It is not cute bubble/kawaii, not soft fullwidth aesthetic, and not cool lookalike alphabets. Open cute fonts, aesthetic fonts, or the cool text generator when the modifier in the query is cute, aesthetic, or cool.",
       },
       faq: [
         {

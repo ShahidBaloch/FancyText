@@ -16,6 +16,8 @@ export type StyleSpokeConfig = {
   variants?: { name: string; styleId: string; blurb: string }[];
   /** Show a multi-row style gallery below the primary tool. */
   showGallery?: boolean;
+  /** Unique positioning vs overlapping style tools. */
+  difference?: { heading: string; body: string };
   faq: { question: string; answer: string }[];
 };
 
@@ -240,6 +242,10 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       "Bubble letters work best for short names and headlines.",
       "Digits use circled number Unicode; some platforms limit mixed symbols in usernames.",
     ],
+    difference: {
+      heading: "This page is the circled-letter tool, not the cute collection",
+      body: "Bubble text here is enclosed alphanumerics—letters and digits inside circles. Cute fonts mix bubble with squared, hearts, and parenthesized kawaii extras. Aesthetic fonts are wide fullwidth/script. Stylish text is bold/glitch. Use this URL for “bubble letters / circle text,” not for aesthetic or stylish queries.",
+    },
     faq: [
       {
         question: "What is bubble text?",
@@ -261,11 +267,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         answer:
           "Not every letter has a perfect circled Unicode twin on all devices. Keep names short and test on your target app.",
       },
-      {
-        question: "Is bubble text the same as circle text?",
-        answer:
-          "Mostly yes. Circle text, bubble letters, and enclosed alphanumeric searches usually mean this Unicode style.",
-      },
+        {
+          question: "Is bubble text the same as cute fonts or aesthetic fonts?",
+          answer:
+            "No. This generator is circled letters only. Cute fonts add squared, hearts, and parenthesized kawaii styles. Aesthetic fonts are soft fullwidth and script—not bubbles.",
+        },
       {
         question: "Can I use bubble fonts in WhatsApp status?",
         answer:
@@ -347,7 +353,12 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         "Q uses ǫ (o with ogonek) as a stand-in. A true small capital Q exists but was only added in Unicode 11, so it is still missing on many older phones.",
         "F and S come from a later Unicode block than the other letters and can render slightly differently in some fonts.",
         "These are phonetic letters, not a typeface, so search and @-mentions will not match them against plain text.",
+        "This is not tiny superscript for bios and not math H₂O subscripts. Those are the small text generator and the superscript/subscript generator.",
       ],
+      difference: {
+        heading: "Small caps are short capitals, not tiny bios",
+        body: "Small caps replace letters with short-capital Unicode (ꜱᴍᴀʟʟ ᴄᴀᴘꜱ). They stay roughly normal x-height. The small text generator makes compact superscript-style bios. The superscript & subscript generator raises or lowers characters for math and footnotes. Use this page only when you want small capitals.",
+      },
       faq: [
         {
           question: "Why is the letter x not in small caps?",
@@ -355,9 +366,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
             "Unicode never encoded a small capital X. The small-capital letters come mostly from the phonetic alphabet, which had no use for one, so every small caps generator on the web falls back to a normal lowercase x. Words containing x will always look slightly uneven.",
         },
         {
-          question: "Is small caps the same as all caps?",
+          question: "Is small caps the same as small text or subscript?",
           answer:
-            "No. All caps uses ordinary capital letters and reads as shouting in most contexts. Small caps are separate Unicode characters shaped like short capitals, so they read as emphasis rather than volume.",
+            "No. Small caps are short capital letters at normal reading size. Small text is tiny superscript-style bios. Subscript/superscript is for math and chemistry (H₂O, x²). Open those other two tools when that is the job.",
         },
         {
           question: "Does small caps work on Instagram and TikTok?",
@@ -447,17 +458,21 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       uses: [
         "Chemistry-style notation (H₂O) in captions",
         "Math exponents and footnote markers",
-        "Tiny text accents in bios where allowed",
+        "Not whole-word tiny bios (use the small text generator) and not small capitals (use small caps)",
       ],
       compatibilityNotes: [
         "Superscript has more letter coverage than subscript in Unicode.",
         "Complex formulas may need plain text for accessibility.",
       ],
+      difference: {
+        heading: "Math/footnote positions, not a tiny-bio font",
+        body: "This tool raises (superscript) or lowers (subscript) supported characters for H₂O, x², and footnotes. It is not the small text generator (whole words in tiny type for bios) and not small caps (short capitals at normal size). If your query is “tiny text for Instagram,” go to small text. If you want ꜱᴍᴀʟʟ ᴄᴀᴘꜱ, use the small caps generator.",
+      },
       faq: [
         {
-          question: "What is a subscript generator?",
+          question: "What is a superscript and subscript generator?",
           answer:
-            "It converts supported characters into lowered Unicode subscript forms—useful for chemistry, math, and footnote-style text.",
+            "It converts supported characters into raised Unicode superscript or lowered subscript forms—useful for chemistry, math, and footnote-style text. It is not a small-text bio font.",
         },
         {
           question: "Can I make superscript text online?",
@@ -465,19 +480,14 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
             "Yes. The superscript preview raises digits and many letters. Copy it directly—no keyboard shortcuts needed.",
         },
         {
-          question: "Is this the same as a small text generator?",
+          question: "Is this the same as a small text generator or small caps?",
           answer:
-            "No. This page is for math and chemistry-style H₂O. The small text generator is for tiny bios and tags, including small caps when a letter has no superscript twin.",
+            "No. This page is for math and chemistry-style H₂O and x². The small text generator is for tiny bios and tags. Small caps are short capitals at normal size, not raised or lowered digits.",
         },
         {
-          question: "Does tiny text work everywhere?",
+          question: "Does every letter have a superscript or subscript twin?",
           answer:
-            "Support varies. Digits and common letters work in most apps; exotic symbols may not have subscript or superscript twins.",
-        },
-        {
-          question: "Is this a tiny text generator?",
-          answer:
-            "For chemistry-style tiny digits, yes. For a whole bio in small letters, use the small text generator—that page also offers small caps when superscript is missing a letter.",
+            "No. Digits and common letters work in most apps; some letters have no superscript or subscript form and stay plain.",
         },
       ],
     },
@@ -595,8 +605,12 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     ],
     compatibilityNotes: [
       "Not every letter has a superscript twin (Q is a common miss). Small caps covers more of the alphabet.",
-      "This page is for tiny display text. Use the superscript & subscript generator for chemistry-style H₂O.",
+      "This page is for tiny display text. Use the superscript & subscript generator for chemistry-style H₂O. Use small caps when you want short capitals at normal size—not tiny letters.",
     ],
+    difference: {
+      heading: "Tiny bios, not math subscripts and not small caps",
+      body: "Small text here is a compact bio style: mostly superscript letters, with small caps as a more readable fallback when a glyph is missing. It is not the superscript & subscript generator (H₂O, x², footnotes) and it is not the small caps generator (ꜱᴍᴀʟʟ ᴄᴀᴘꜱ at normal reading size). Three tools, three mechanics.",
+    },
     faq: [
       {
         question: "What is a small text generator?",
@@ -604,9 +618,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
           "It turns normal letters into tiny Unicode (mostly superscript) so you can paste compact text into bios and usernames. It is not a smaller installed font.",
       },
       {
-        question: "Is small text the same as superscript?",
+        question: "Is small text the same as superscript or small caps?",
         answer:
-          "Tiny bios usually use superscript letters. The superscript & subscript tool is aimed at math and chemistry. Use this page when you want a whole word in small type.",
+          "Tiny bios usually use superscript letters, which is why a small-caps fallback exists here when a letter is missing. The superscript & subscript tool is aimed at math and chemistry, not a whole bio. Small caps are short capitals at normal size—use that generator when you want ꜱᴍᴀʟʟ ᴄᴀᴘꜱ, not microscopic type.",
       },
       {
         question: "Why are some tiny letters missing?",

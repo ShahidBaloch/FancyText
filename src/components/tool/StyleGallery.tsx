@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useDeferredValue, useId, useMemo, useState } from "react";
 import {
   STYLES,
@@ -366,6 +367,11 @@ function GalleryRow({
             Not for usernames
           </span>
         )}
+        {style.category === "cool" ? (
+          <Link href="/cool-text-generator/" className="gallery-spoke-link">
+            Cool lookalikes guide
+          </Link>
+        ) : null}
         {shouldExplain(style) ? (
           <span className="gallery-blurb">{style.supportNote}</span>
         ) : null}

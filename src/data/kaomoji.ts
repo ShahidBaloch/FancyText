@@ -1092,9 +1092,39 @@ export function getKaomojiList(slug: string): KaomojiList | undefined {
 
 export const KAOMOJI_SLUGS = ALL_KAOMOJI_PAGES.map((k) => k.slug);
 
-/** Hub showcase: a few faces from each list. */
+/**
+ * Canonical kaomoji URLs that stay indexable.
+ * Hub + Lenny + Shrug + top emotions (cute, cry, heart). There is no happy list.
+ * Remaining emotion URLs stay live for old links but are noindex + sitemap-dropped.
+ */
+export const INDEXABLE_KAOMOJI_SLUGS = new Set([
+  "cute-kaomojis",
+  "cry-kaomojis",
+  "heart-kaomojis",
+  "lenny-face",
+  "shrug-emoticon",
+]);
+
+export function kaomojiPathIsIndexable(urlOrSlug: string): boolean {
+  const slug = urlOrSlug.replace(/^\/|\/$/g, "");
+  if (slug === "kaomoji") return true;
+  if (!KAOMOJI_BY_SLUG[slug]) return true;
+  return INDEXABLE_KAOMOJI_SLUGS.has(slug);
+}
+
+export function getFeaturedKaomojiLists(): KaomojiList[] {
+  return ALL_KAOMOJI_PAGES.filter((k) => INDEXABLE_KAOMOJI_SLUGS.has(k.slug));
+}
+
+export function getTailKaomojiLists(): KaomojiList[] {
+  return ALL_KAOMOJI_PAGES.filter((k) => !INDEXABLE_KAOMOJI_SLUGS.has(k.slug));
+}
+
+/** Hub showcase: featured emotions first, then remaining lists. */
 export function getHubShowcase(): { emotion: string; href: string; sample: string }[] {
-  return KAOMOJI_LISTS.map((k) => ({
+  const featured = KAOMOJI_LISTS.filter((k) => INDEXABLE_KAOMOJI_SLUGS.has(k.slug));
+  const rest = KAOMOJI_LISTS.filter((k) => !INDEXABLE_KAOMOJI_SLUGS.has(k.slug));
+  return [...featured, ...rest].map((k) => ({
     emotion: k.emotion,
     href: `/${k.slug}/`,
     sample: k.faces[0] ?? "",

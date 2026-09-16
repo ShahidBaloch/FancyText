@@ -16,6 +16,7 @@ import {
 import {
   KAOMOJI_SLUGS,
   getKaomojiList,
+  kaomojiPathIsIndexable,
 } from "@/data/kaomoji";
 import {
   PLATFORM_SLUGS,
@@ -61,17 +62,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const kaomoji = getKaomojiList(slug);
   if (kaomoji) {
     const page = getPageByUrl(`/${slug}/`);
+    const noindex = !kaomojiPathIsIndexable(slug);
     if (page) {
       return pageMetadata({
         ...page,
         title: kaomoji.title,
         description: kaomoji.description,
+        ...(noindex ? { index: false } : {}),
       });
     }
     const canonical = new URL(`/${slug}/`, SITE_URL).toString();
     return {
       title: { absolute: kaomoji.title },
       description: kaomoji.description,
+      ...(noindex ? { robots: { index: false, follow: true } } : {}),
       alternates: { canonical },
       openGraph: {
         title: kaomoji.title,
