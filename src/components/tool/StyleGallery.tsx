@@ -13,6 +13,7 @@ import { useCopyFeedback } from "@/lib/copy";
 import { useFavoriteStyles } from "@/lib/favorites";
 
 type FilterKey = StyleCategory | "all" | "favorites" | "username-safe";
+type GalleryItem = { style: FontStyle; output: string };
 
 const FILTER_KEYS: FilterKey[] = [
   "all",
@@ -39,6 +40,12 @@ const FILTER_LABELS: Record<FilterKey, string> = {
 /** Styles whose rendering caveats are worth spelling out next to the preview. */
 function shouldExplain(style: FontStyle): boolean {
   return style.support === "mixed" || style.support === "limited";
+}
+
+function styleMatchesQuery(style: FontStyle, query: string): boolean {
+  const haystack =
+    `${style.label} ${style.id.replaceAll("-", " ")} ${style.category}`.toLowerCase();
+  return haystack.includes(query);
 }
 
 type StyleGalleryProps = {
@@ -71,6 +78,8 @@ export function StyleGallery({
 }: StyleGalleryProps) {
   const inputId = useId();
   const searchId = useId();
+  const favoritesHeadingId = useId();
+  const restHeadingId = useId();
   const [internalText, setInternalText] = useState(initialText);
   const text = controlledText ?? internalText;
   const setText = (value: string) => {
@@ -102,11 +111,7 @@ export function StyleGallery({
 
     const q = query.trim().toLowerCase();
     if (enableSearch && q) {
-      list = list.filter(({ style }) =>
-        `${style.label} ${style.category} ${style.description}`
-          .toLowerCase()
-          .includes(q),
-      );
+      list = list.filter(({ style }) => styleMatchesQuery(style, q));
     }
 
     return list;
@@ -120,7 +125,27 @@ export function StyleGallery({
     query,
   ]);
 
+  const pinFavorites =
+    enableFavorites && !(enableCategoryFilter && filter === "favorites");
+  const favoriteRows = pinFavorites
+    ? rows.filter(({ style }) => favorites.includes(style.id))
+    : [];
+  const otherRows = pinFavorites
+    ? rows.filter(({ style }) => !favorites.includes(style.id))
+    : rows;
+
   const totalCount = styleIds?.length ?? STYLES.length;
+  const filterChips = FILTER_KEYS.filter(
+    (key) => key !== "favorites" || enableFavorites,
+  );
+  const trimmedQuery = query.trim();
+
+  let emptyMessage = "No styles matched. Clear the filters to see the full set.";
+  if (filter === "favorites" && !trimmedQuery) {
+    emptyMessage = "Star styles to save them here on this device.";
+  } else if (trimmedQuery) {
+    emptyMessage = `No styles matched “${trimmedQuery}”. Try another name or clear the search.`;
+  }
 
   return (
     <div className={`style-gallery${showInput ? "" : " is-compact"}`}>
@@ -155,23 +180,6 @@ export function StyleGallery({
         </div>
       ) : null}
 
-      {enableCategoryFilter ? (
-        <div className="preset-chips" role="tablist" aria-label="Style categories">
-          {FILTER_KEYS.map((key) => (
-            <button
-              key={key}
-              type="button"
-              role="tab"
-              aria-selected={filter === key}
-              className={`style-chip${filter === key ? " is-active" : ""}`}
-              onClick={() => setFilter(key)}
-            >
-              {FILTER_LABELS[key]}
-            </button>
-          ))}
-        </div>
-      ) : null}
-
       {enableSearch ? (
         <div className="gallery-search">
           <label className="field-label" htmlFor={searchId}>
@@ -180,17 +188,42 @@ export function StyleGallery({
           <input
             id={searchId}
             type="search"
+            name="style-search"
             className="text-input"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="bold, script, bubble, small caps…"
             autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="none"
             spellCheck={false}
+            enterKeyHint="search"
           />
-          <p className="gallery-count" aria-live="polite">
-            Showing {rows.length} of {totalCount} styles
-          </p>
         </div>
+      ) : null}
+
+      {enableCategoryFilter ? (
+        <div className="preset-chips" role="group" aria-label="Filter styles">
+          {filterChips.map((key) => (
+            <button
+              key={key}
+              type="button"
+              aria-pressed={filter === key}
+              className={`style-chip${filter === key ? " is-active" : ""}`}
+              onClick={() => setFilter(key)}
+            >
+              {key === "favorites" && favorites.length
+                ? `Favorites (${favorites.length})`
+                : FILTER_LABELS[key]}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {enableSearch || enableCategoryFilter ? (
+        <p className="gallery-count" aria-live="polite">
+          Showing {rows.length} of {totalCount} styles
+        </p>
       ) : null}
 
       {errorMessage ? (
@@ -199,85 +232,183 @@ export function StyleGallery({
         </p>
       ) : null}
 
-      <ul className="gallery-list">
-        {rows.map(({ style, output }) => (
-          <li key={style.id} className="gallery-row">
-            <div className="gallery-info">
-              <span className="gallery-label">{style.label}</span>
-              <span className="gallery-cat">{style.category}</span>
-              {style.support !== "wide" ? (
-                <span
-                  className="gallery-support"
-                  data-support={style.support}
-                  title={style.supportNote}
-                >
-                  {SUPPORT_LABELS[style.support]}
-                </span>
-              ) : null}
-              {style.usernameSafe ? null : (
-                <span
-                  className="gallery-support"
-                  data-support="username-unsafe"
-                  title="Most platforms reject these characters in a username. They usually work in a display name or bio."
-                >
-                  Not for usernames
-                </span>
-              )}
-              {shouldExplain(style) ? (
-                <span className="gallery-blurb">{style.supportNote}</span>
-              ) : null}
-              {blurbs?.[style.id] ? (
-                <span className="gallery-blurb">{blurbs[style.id]}</span>
-              ) : null}
-            </div>
-            <p className="gallery-output">
-              {canCopy ? output : "Type above to preview"}
-            </p>
-            <div className="gallery-actions">
-              {enableFavorites ? (
-                <button
-                  type="button"
-                  className="copy-btn copy-btn--light"
-                  aria-pressed={favorites.includes(style.id)}
-                  aria-label={
-                    favorites.includes(style.id)
-                      ? `Remove ${style.label} from favorites`
-                      : `Favorite ${style.label}`
-                  }
-                  onClick={() => toggleFavorite(style.id)}
-                >
-                  {favorites.includes(style.id) ? "★" : "☆"}
-                </button>
-              ) : null}
-              <button
-                type="button"
-                className="copy-btn copy-btn--light"
-                aria-label={`Copy ${style.label} text`}
-                disabled={!canCopy}
-                onClick={() => copy(style.id, output.trim(), style.label)}
-              >
-                {copiedId === style.id
-                  ? "Copied!"
-                  : errorId === style.id
-                    ? "Failed"
-                    : "Copy"}
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {favoriteRows.length > 0 ? (
+        <div className="gallery-group">
+          <h3 className="gallery-group-title" id={favoritesHeadingId}>
+            Favorites
+            <span className="gallery-group-note">Saved on this device</span>
+          </h3>
+          <ul className="gallery-list" aria-labelledby={favoritesHeadingId}>
+            {favoriteRows.map((item) => (
+              <GalleryRow
+                key={item.style.id}
+                item={item}
+                canCopy={canCopy}
+                copiedId={copiedId}
+                errorId={errorId}
+                blurbs={blurbs}
+                favorited
+                enableFavorites={enableFavorites}
+                onToggleFavorite={toggleFavorite}
+                onCopy={copy}
+              />
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {otherRows.length > 0 ? (
+        <div className="gallery-group">
+          {favoriteRows.length > 0 ? (
+            <h3 className="gallery-group-title" id={restHeadingId}>
+              All styles
+            </h3>
+          ) : null}
+          <ul
+            className="gallery-list"
+            aria-labelledby={
+              favoriteRows.length > 0 ? restHeadingId : undefined
+            }
+          >
+            {otherRows.map((item) => (
+              <GalleryRow
+                key={item.style.id}
+                item={item}
+                canCopy={canCopy}
+                copiedId={copiedId}
+                errorId={errorId}
+                blurbs={blurbs}
+                favorited={favorites.includes(item.style.id)}
+                enableFavorites={enableFavorites}
+                onToggleFavorite={toggleFavorite}
+                onCopy={copy}
+              />
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       {rows.length === 0 ? (
-        <p className="seo-lead">
-          {filter === "favorites"
-            ? "Star styles to save them here on this device."
-            : "No styles matched. Clear the filters to see the full set."}
-        </p>
+        <div className="gallery-empty">
+          <p className="seo-lead">{emptyMessage}</p>
+          {trimmedQuery ? (
+            <button
+              type="button"
+              className="style-chip"
+              onClick={() => setQuery("")}
+            >
+              Clear search
+            </button>
+          ) : filter !== "all" ? (
+            <button
+              type="button"
+              className="style-chip"
+              onClick={() => setFilter("all")}
+            >
+              Show all styles
+            </button>
+          ) : null}
+        </div>
       ) : null}
 
       <p className="sr-only" role="status">
         {announcement}
       </p>
     </div>
+  );
+}
+
+function GalleryRow({
+  item,
+  canCopy,
+  copiedId,
+  errorId,
+  blurbs,
+  favorited,
+  enableFavorites,
+  onToggleFavorite,
+  onCopy,
+}: {
+  item: GalleryItem;
+  canCopy: boolean;
+  copiedId: string | null;
+  errorId: string | null;
+  blurbs?: Record<string, string>;
+  favorited: boolean;
+  enableFavorites: boolean;
+  onToggleFavorite: (id: string) => void;
+  onCopy: (id: string, text: string, label?: string) => void;
+}) {
+  const { style, output } = item;
+
+  return (
+    <li className={`gallery-row${favorited ? " is-favorite" : ""}`}>
+      <div className="gallery-info">
+        <span className="gallery-label">{style.label}</span>
+        <span className="gallery-cat">{style.category}</span>
+        {style.support !== "wide" ? (
+          <span
+            className="gallery-support"
+            data-support={style.support}
+            title={style.supportNote}
+          >
+            {SUPPORT_LABELS[style.support]}
+          </span>
+        ) : null}
+        {style.usernameSafe ? null : (
+          <span
+            className="gallery-support"
+            data-support="username-unsafe"
+            title="Most platforms reject these characters in a username. They usually work in a display name or bio."
+          >
+            Not for usernames
+          </span>
+        )}
+        {shouldExplain(style) ? (
+          <span className="gallery-blurb">{style.supportNote}</span>
+        ) : null}
+        {blurbs?.[style.id] ? (
+          <span className="gallery-blurb">{blurbs[style.id]}</span>
+        ) : null}
+      </div>
+      <p className="gallery-output">
+        {canCopy ? output : "Type above to preview"}
+      </p>
+      <div className="gallery-actions">
+        {enableFavorites ? (
+          <button
+            type="button"
+            className="copy-btn copy-btn--light fav-btn"
+            aria-pressed={favorited}
+            aria-label={
+              favorited
+                ? `Remove ${style.label} from favorites`
+                : `Favorite ${style.label}`
+            }
+            title={
+              favorited
+                ? `Remove ${style.label} from favorites`
+                : `Favorite ${style.label}`
+            }
+            onClick={() => onToggleFavorite(style.id)}
+          >
+            {favorited ? "★" : "☆"}
+          </button>
+        ) : null}
+        <button
+          type="button"
+          className="copy-btn copy-btn--light"
+          aria-label={`Copy ${style.label} text`}
+          disabled={!canCopy}
+          onClick={() => onCopy(style.id, output.trim(), style.label)}
+        >
+          {copiedId === style.id
+            ? "Copied!"
+            : errorId === style.id
+              ? "Failed"
+              : "Copy"}
+        </button>
+      </div>
+    </li>
   );
 }
