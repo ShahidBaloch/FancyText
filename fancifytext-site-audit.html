@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FancifyText — Site Audit Report (Pages, Keywords, Uniqueness, Responsive, Design)</title>
+<style>
+  :root{
+    --ink:#1b1b1f; --muted:#5c5c66; --line:#e4e4ea; --bg:#f7f7f9;
+    --card:#fff; --accent:#c2410c; --accent-soft:#fff4ed;
+    --good:#0f7b3e; --good-bg:#e9f7ef; --warn:#8a5a00; --warn-bg:#fff6e0;
+    --bad:#b42318; --bad-bg:#fdecea;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-text-size-adjust:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+  header.rep{background:linear-gradient(140deg,#1b1b1f,#2e2e36);color:#fff;
+    border-radius:18px;padding:2rem 1.75rem;margin-bottom:2rem}
+  header.rep h1{margin:0 0 .5rem;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.2}
+  header.rep p{margin:0;color:#c9c9d2;max-width:60ch}
+  .meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.15rem}
+  .meta span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+    border-radius:999px;padding:.25rem .7rem;font-size:.78rem}
+  h2{margin:2.75rem 0 .5rem;font-size:1.3rem;scroll-margin-top:1rem}
+  h2:first-of-type{margin-top:1.5rem}
+  h3{margin:1.75rem 0 .4rem;font-size:1.03rem}
+  p,li{color:var(--muted)}
+  p.lead{color:var(--ink)}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:1.35rem 1.5rem 1.6rem;margin-bottom:1.25rem}
+  section > h2:first-child{margin-top:0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;margin:1rem 0}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:.85rem .95rem}
+  .card b{display:block;font-size:1.6rem;line-height:1.15;color:var(--ink)}
+  .card small{color:var(--muted);font-size:.79rem;display:block;margin-top:.15rem}
+  .verdict{display:flex;gap:.7rem;align-items:flex-start;border-radius:11px;
+    padding:.85rem 1rem;margin:.9rem 0;border:1px solid}
+  .verdict.ok{background:var(--good-bg);border-color:#bfe3cd}
+  .verdict.warn{background:var(--warn-bg);border-color:#f0dca8}
+  .verdict.bad{background:var(--bad-bg);border-color:#f3c4bf}
+  .verdict strong{color:var(--ink)}
+  .verdict p{margin:.2rem 0 0;color:#3c3c46}
+  .tblwrap{overflow-x:auto;margin:.9rem 0;border:1px solid var(--line);border-radius:11px}
+  table{border-collapse:collapse;width:100%;font-size:.85rem;min-width:620px}
+  th,td{text-align:left;padding:.5rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--muted);position:sticky;top:0;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  code{background:var(--bg);border:1px solid var(--line);border-radius:5px;
+    padding:.06em .35em;font-size:.86em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .kw-primary{font-weight:600;color:var(--ink)}
+  .kw-fellows{max-width:360px}
+  .tag{display:inline-block;background:var(--accent-soft);border:1px solid #f7d9c6;
+    border-radius:5px;padding:.04em .34em;margin:.08em .1em;font-size:.76rem;color:#8a3a10}
+  .pill{display:inline-block;border-radius:999px;padding:.08em .5em;font-size:.72rem;font-weight:700}
+  .pill-p0{background:#e6eefb;color:#1a4b91}
+  .pill-p1{background:#eef1f4;color:#44505e}
+  .pill-p2{background:#f4f1f7;color:#5f5070}
+  .good{color:var(--good);font-weight:600}
+  .warn{color:var(--warn);font-weight:600}
+  .bad{color:var(--bad);font-weight:600}
+  ul.tight{margin:.4rem 0 0;padding-left:1.15rem}
+  ul.tight li{margin:.28rem 0}
+  .note{font-size:.83rem;color:var(--muted);margin-top:.6rem;padding-left:.8rem;
+    border-left:3px solid var(--line)}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:1rem 1.35rem;margin-bottom:1.25rem}
+  nav.toc ol{margin:.35rem 0 0;padding-left:0;list-style:none;columns:2;column-gap:2rem}
+  nav.toc a{color:var(--accent);text-decoration:none}
+  nav.toc a:hover{text-decoration:underline}
+  nav.toc li{margin:.18rem 0;break-inside:avoid}
+  footer.rep{color:var(--muted);font-size:.82rem;text-align:center;margin-top:2rem}
+  @media print{
+    body{background:#fff}
+    section,nav.toc{break-inside:avoid;box-shadow:none}
+    header.rep{background:#1b1b1f !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    th{position:static}
+    .tblwrap{overflow:visible}
+    table{min-width:0;font-size:.72rem}
+  }
+  @media (max-width:640px){
+    nav.toc ol{columns:1}
+    .wrap{padding:1.25rem .85rem 3rem}
+    section{padding:1.1rem 1rem 1.25rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="rep">
+  <h1>FancifyText — Site Audit Report</h1>
+  <p>Page inventory, target keywords, content-uniqueness measurement, responsive
+  testing, and design review. Every number below was measured from the production
+  build and a real Chrome browser, not estimated.</p>
+  <div class="meta">
+    <span>Generated 2026-09-19</span>
+    <span>Branch <code style="background:none;border:none;color:#fff;padding:0">cursor/linkedin-formatting-and-text-cleanup-tools-2945</code></span>
+    <span>Next.js 16.3.5 production build</span>
+    <span>Content date 2026-09-19</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#summary">Summary &amp; verdicts</a></li>
+    <li><a href="#pages">1. How many pages you have</a></li>
+    <li><a href="#keywords">2. Target keywords (full table)</a></li>
+    <li><a href="#cannibal">3. Keyword cannibalisation</a></li>
+    <li><a href="#unique">4. Is the content unique?</a></li>
+    <li><a href="#responsive">5. Is the site responsive?</a></li>
+    <li><a href="#design">6. Is the design OK?</a></li>
+    <li><a href="#perf">7. Performance &amp; page weight</a></li>
+    <li><a href="#fixed">8. Fixed while auditing</a></li>
+    <li><a href="#todo">9. Recommended next actions</a></li>
+    <li><a href="#method">10. How this was measured</a></li>
+  </ol>
+</nav>
+
+<section id="summary">
+  <h2>Summary &amp; verdicts</h2>
+  <div class="cards">
+    <div class="card"><b>79</b><small>pages in the registry, all live</small></div>
+    <div class="card"><b>61</b><small>indexable URLs in sitemap.xml</small></div>
+    <div class="card"><b>227</b><small>distinct keywords targeted</small></div>
+    <div class="card"><b>36,163</b><small>words of indexable body copy</small></div>
+    <div class="card"><b>31%</b><small>worst page-to-page overlap</small></div>
+    <div class="card"><b>0</b><small>layout breaks in 90 viewport tests</small></div>
+  </div>
+
+  <div class="verdict ok">
+    <div><strong>Content uniqueness — PASS.</strong>
+    <p>Across all 60 prerendered indexable pages (1,830 page pairs compared on
+    5-word shingles; <code>/search/</code> is the 61st indexable URL but renders on
+    demand, so it has no static HTML to compare), the highest overlap between any two pages is
+    30.8%. Only 2 pairs exceed 30% and none exceed 35%.
+    There is no duplicate or templated prose in the indexable set, and zero duplicate
+    titles or meta descriptions.</p></div>
+  </div>
+
+  <div class="verdict ok">
+    <div><strong>Responsive — PASS.</strong>
+    <p>90 measurements (18 routes &times; 5 viewports from 320px to
+    1920px) produced <strong>zero</strong> horizontal-scroll or overflow failures, zero
+    console errors, and a cumulative layout shift of 0 on every page tested.</p></div>
+  </div>
+
+  <div class="verdict warn">
+    <div><strong>Design — GOOD, with one real accessibility defect.</strong>
+    <p>Layout, spacing, type scale, and component consistency are solid and the
+    palette is disciplined. But the orange homepage hero fails WCAG AA colour
+    contrast for its small text: the lead paragraph reads 2.61:1 and the
+    &ldquo;FREE UNICODE FONTS&rdquo; eyebrow 2.38:1, against a 4.5:1 requirement.
+    This is the single highest-value design fix on the site. Details in
+    <a href="#design">section 6</a>.</p></div>
+  </div>
+
+  <div class="verdict warn">
+    <div><strong>SEO hygiene — two content chores outstanding.</strong>
+    <p><code>public/llms.txt</code> lists only 17 URLs out of 61 indexable pages, and
+    26 titles exceed 60 characters so Google will truncate them in results.
+    Neither blocks indexing. See <a href="#todo">section 9</a>.</p></div>
+  </div>
+</section>
+
+<section id="pages">
+  <h2>1. How many pages you have</h2>
+  <p class="lead">The honest headline number is <strong>61 indexable pages</strong>. The build
+  produces more routes than that, so here is the full reconciliation.</p>
+
+  <div class="tblwrap"><table>
+    <thead><tr><th>Count</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td class="num"><strong>151</strong></td><td>Routes prerendered by <code>next build</code> (includes dynamic OpenGraph image routes, which are images, not pages)</td></tr>
+      <tr><td class="num"><strong>136</strong></td><td>Static HTML documents written to disk</td></tr>
+      <tr><td class="num"><strong>79</strong></td><td>Entries in the page registry &mdash; every one of them live, none held back for a future phase</td></tr>
+      <tr><td class="num"><strong>61</strong></td><td><strong>Indexable pages in <code>sitemap.xml</code></strong> &mdash; 59 registry pages plus <code>/privacy/</code> and <code>/terms/</code></td></tr>
+      <tr><td class="num"><strong>72</strong></td><td>Deliberately kept out of the sitemap: 20 thin kaomoji category pages and 52 single-letter cursive pages. They stay reachable for old links but do not compete for crawl budget.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Indexable pages by topic cluster</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Cluster</th><th class="num">Total</th><th class="num">In sitemap</th><th class="num">Held back</th></tr></thead>
+    <tbody>
+      <tr><td>Kaomoji &amp; emoticons</td><td class="num">26</td><td class="num">6</td><td class="num">20</td></tr>
+      <tr><td>Other style generators</td><td class="num">17</td><td class="num">17</td><td class="num">&mdash;</td></tr>
+      <tr><td>Platform tools</td><td class="num">13</td><td class="num">13</td><td class="num">&mdash;</td></tr>
+      <tr><td>Guides</td><td class="num">10</td><td class="num">10</td><td class="num">&mdash;</td></tr>
+      <tr><td>Aesthetic &amp; cute</td><td class="num">4</td><td class="num">4</td><td class="num">&mdash;</td></tr>
+      <tr><td>Trust pages</td><td class="num">3</td><td class="num">3</td><td class="num">&mdash;</td></tr>
+      <tr><td>Copy-paste collections</td><td class="num">2</td><td class="num">2</td><td class="num">&mdash;</td></tr>
+      <tr><td>Hub / homepage</td><td class="num">1</td><td class="num">1</td><td class="num">&mdash;</td></tr>
+      <tr><td>Cursive &amp; script</td><td class="num">1</td><td class="num">1</td><td class="num">&mdash;</td></tr>
+      <tr><td>Bold</td><td class="num">1</td><td class="num">1</td><td class="num">&mdash;</td></tr>
+      <tr><td>Names &amp; usernames</td><td class="num">1</td><td class="num">1</td><td class="num">&mdash;</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Held back = Kaomoji &amp; emoticons (20). This is a deliberate choice: those
+  pages are near-identical by nature (one letter or one emoticon set each), so
+  indexing them would create exactly the duplicate-content problem this report
+  otherwise clears you of.</p>
+
+  <h3>Priority mix</h3>
+  <p>P0 (money pages): 9 &nbsp;&middot;&nbsp; P1 (core): 38 &nbsp;&middot;&nbsp; P2 (long tail): 32</p>
+</section>
+
+<section id="keywords">
+  <h2>2. Target keywords</h2>
+  <p class="lead">You target <strong>227 distinct keywords</strong> across the 59 indexable
+  registry pages: one primary keyword per page plus 168 secondary
+  (&ldquo;fellow&rdquo;) keywords, averaging 2.8 secondary terms per page. No page is
+  missing a keyword assignment.</p>
+  <p>The <em>Overlap</em> column is that page's highest prose similarity against any
+  other indexable page &mdash; a per-page uniqueness score. Lower is better;
+  anything under about 35% is comfortably distinct.</p>
+  <div class="tblwrap"><table>
+    <thead><tr>
+      <th>URL</th><th>Primary keyword</th><th>Secondary keywords</th>
+      <th class="num">Words</th><th class="num">Overlap</th><th>Pri</th><th>Cluster</th>
+    </tr></thead>
+    <tbody>
+<tr>
+  <td><code>/</code></td>
+  <td><span class="kw-primary">fancy text generator</span></td>
+  <td class="kw-fellows"><span class="tag">special text generator</span> <span class="tag">word font generator</span> <span class="tag">pretty font generator</span> <span class="tag">font changer text</span> <span class="tag">font generators</span> <span class="tag">unicode text generator</span></td>
+  <td class="num">&mdash;</td>
+  <td class="num">&mdash;</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Hub / homepage</td>
+</tr>
+<tr>
+  <td><code>/cursive-text-generator/</code></td>
+  <td><span class="kw-primary">cursive text generator</span></td>
+  <td class="kw-fellows"><span class="tag">elegant cursive fonts copy and paste</span> <span class="tag">cursive copy and paste fonts</span> <span class="tag">cursive alphabet</span> <span class="tag">script font generator</span></td>
+  <td class="num">964</td>
+  <td class="num">7%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Cursive &amp; script</td>
+</tr>
+<tr>
+  <td><code>/cool-symbols/</code></td>
+  <td><span class="kw-primary">cool symbols copy and paste</span></td>
+  <td class="kw-fellows"><span class="tag">cool symbols</span> <span class="tag">text symbols copy paste</span> <span class="tag">special symbols copy and paste</span></td>
+  <td class="num">815</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Copy-paste collections</td>
+</tr>
+<tr>
+  <td><code>/copy-paste-fonts/</code></td>
+  <td><span class="kw-primary">copy and paste fonts</span></td>
+  <td class="kw-fellows"><span class="tag">font copy and paste</span> <span class="tag">fonts copy paste</span> <span class="tag">copy paste fonts</span></td>
+  <td class="num">968</td>
+  <td class="num">10%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Copy-paste collections</td>
+</tr>
+<tr>
+  <td><code>/bold-text-generator/</code></td>
+  <td><span class="kw-primary">bold text generator</span></td>
+  <td class="kw-fellows"><span class="tag">bold font generator</span> <span class="tag">bold text font</span> <span class="tag">text bold</span> <span class="tag">bolded text</span></td>
+  <td class="num">681</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Bold</td>
+</tr>
+<tr>
+  <td><code>/big-text-generator/</code></td>
+  <td><span class="kw-primary">big text generator</span></td>
+  <td class="kw-fellows"><span class="tag">ascii art text</span> <span class="tag">large text copy paste</span> <span class="tag">ascii banner generator</span> <span class="tag">block letters copy paste</span></td>
+  <td class="num">714</td>
+  <td class="num">10%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/binary-text-generator/</code></td>
+  <td><span class="kw-primary">binary text generator</span></td>
+  <td class="kw-fellows"><span class="tag">text to binary</span> <span class="tag">binary code generator</span> <span class="tag">morse code generator</span></td>
+  <td class="num">359</td>
+  <td class="num">10%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/bubble-text-generator/</code></td>
+  <td><span class="kw-primary">bubble text generator</span></td>
+  <td class="kw-fellows"><span class="tag">bubble font generator</span></td>
+  <td class="num">494</td>
+  <td class="num">11%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/case-converter/</code></td>
+  <td><span class="kw-primary">case converter</span></td>
+  <td class="kw-fellows"><span class="tag">convert case</span> <span class="tag">title case converter</span> <span class="tag">sentence case converter</span> <span class="tag">uppercase to lowercase</span> <span class="tag">capitalize my title</span></td>
+  <td class="num">927</td>
+  <td class="num">7%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/glitch-text-generator/</code></td>
+  <td><span class="kw-primary">glitch text generator</span></td>
+  <td class="kw-fellows"><span class="tag">zalgo text</span></td>
+  <td class="num">288</td>
+  <td class="num">12%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/invisible-character/</code></td>
+  <td><span class="kw-primary">invisible character</span></td>
+  <td class="kw-fellows"><span class="tag">blank text copy paste</span> <span class="tag">invisible text</span> <span class="tag">empty character copy paste</span> <span class="tag">blank space copy paste</span></td>
+  <td class="num">1235</td>
+  <td class="num">4%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/italic-text-generator/</code></td>
+  <td><span class="kw-primary">italic text generator</span></td>
+  <td class="kw-fellows"><span class="tag">italic font generator</span></td>
+  <td class="num">416</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/mirror-text-generator/</code></td>
+  <td><span class="kw-primary">mirror text generator</span></td>
+  <td class="kw-fellows"><span class="tag">backwards text generator</span> <span class="tag">reverse text generator</span> <span class="tag">mirror writing</span></td>
+  <td class="num">411</td>
+  <td class="num">19%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/monospace-text-generator/</code></td>
+  <td><span class="kw-primary">monospace text generator</span></td>
+  <td class="kw-fellows"><span class="tag">typewriter font generator</span> <span class="tag">monospace font copy paste</span></td>
+  <td class="num">478</td>
+  <td class="num">7%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/old-english-text-generator/</code></td>
+  <td><span class="kw-primary">old english text generator</span></td>
+  <td class="kw-fellows"><span class="tag">gothic font generator</span> <span class="tag">old english font copy paste</span> <span class="tag">fraktur text generator</span></td>
+  <td class="num">420</td>
+  <td class="num">13%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/small-caps-text-generator/</code></td>
+  <td><span class="kw-primary">small caps generator</span></td>
+  <td class="kw-fellows"><span class="tag">small caps text</span> <span class="tag">small capital letters</span></td>
+  <td class="num">656</td>
+  <td class="num">8%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/small-text-generator/</code></td>
+  <td><span class="kw-primary">small text generator</span></td>
+  <td class="kw-fellows"><span class="tag">tiny text generator</span> <span class="tag">small text copy and paste</span> <span class="tag">mini text generator</span></td>
+  <td class="num">616</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/strikethrough-text-generator/</code></td>
+  <td><span class="kw-primary">strikethrough text generator</span></td>
+  <td class="kw-fellows"><span class="tag">strikethrough font</span></td>
+  <td class="num">295</td>
+  <td class="num">10%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/superscript-subscript-generator/</code></td>
+  <td><span class="kw-primary">superscript and subscript generator</span></td>
+  <td class="kw-fellows"><span class="tag">superscript generator</span> <span class="tag">subscript generator</span></td>
+  <td class="num">425</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/text-decorator/</code></td>
+  <td><span class="kw-primary">text decorator</span></td>
+  <td class="kw-fellows"><span class="tag">text decorator copy paste</span> <span class="tag">fancy text symbols around name</span> <span class="tag">name decorator</span></td>
+  <td class="num">494</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/unformat-text/</code></td>
+  <td><span class="kw-primary">convert fancy text to normal</span></td>
+  <td class="kw-fellows"><span class="tag">unicode to text converter</span> <span class="tag">remove fancy font from text</span> <span class="tag">unformat text</span> <span class="tag">fancy text to normal text</span> <span class="tag">strip unicode styling</span></td>
+  <td class="num">1132</td>
+  <td class="num">6%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/upside-down-text-generator/</code></td>
+  <td><span class="kw-primary">upside down text</span></td>
+  <td class="kw-fellows"><span class="tag">upside down text generator</span></td>
+  <td class="num">304</td>
+  <td class="num">19%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Other style generators</td>
+</tr>
+<tr>
+  <td><code>/chatgpt-to-linkedin/</code></td>
+  <td><span class="kw-primary">chatgpt to linkedin formatter</span></td>
+  <td class="kw-fellows"><span class="tag">markdown to linkedin</span> <span class="tag">convert chatgpt text to linkedin post</span> <span class="tag">paste chatgpt into linkedin</span> <span class="tag">markdown not working on linkedin</span> <span class="tag">ai text formatter for linkedin</span></td>
+  <td class="num">1284</td>
+  <td class="num">6%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/discord-color-text/</code></td>
+  <td><span class="kw-primary">discord colored text generator</span></td>
+  <td class="kw-fellows"><span class="tag">discord text color</span> <span class="tag">discord color text</span> <span class="tag">discord color codes</span> <span class="tag">discord colored text</span></td>
+  <td class="num">407</td>
+  <td class="num">11%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/discord-font-generator/</code></td>
+  <td><span class="kw-primary">discord font generator</span></td>
+  <td class="kw-fellows"><span class="tag">discord font copy and paste</span> <span class="tag">discord text generator</span> <span class="tag">cute discord fonts</span></td>
+  <td class="num">636</td>
+  <td class="num">11%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/facebook-font-generator/</code></td>
+  <td><span class="kw-primary">facebook font generator</span></td>
+  <td class="kw-fellows"><span class="tag">facebook fonts copy and paste</span> <span class="tag">facebook stylish text</span> <span class="tag">facebook name fonts</span></td>
+  <td class="num">376</td>
+  <td class="num">15%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/html-text-generator/</code></td>
+  <td><span class="kw-primary">html text generator</span></td>
+  <td class="kw-fellows"><span class="tag">rich text generator</span> <span class="tag">colored text copy and paste</span> <span class="tag">roblox rich text</span></td>
+  <td class="num">412</td>
+  <td class="num">10%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/instagram-font-generator/</code></td>
+  <td><span class="kw-primary">instagram font generator</span></td>
+  <td class="kw-fellows"><span class="tag">instagram font changer</span> <span class="tag">instagram fonts copy and paste</span> <span class="tag">instagram text generator</span></td>
+  <td class="num">610</td>
+  <td class="num">18%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/linkedin-text-formatter/</code></td>
+  <td><span class="kw-primary">linkedin text formatter</span></td>
+  <td class="kw-fellows"><span class="tag">linkedin bold text</span> <span class="tag">linkedin font generator</span> <span class="tag">linkedin post formatter</span> <span class="tag">bold text for linkedin</span> <span class="tag">linkedin italic text</span></td>
+  <td class="num">1493</td>
+  <td class="num">6%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/roblox-font-generator/</code></td>
+  <td><span class="kw-primary">roblox font generator</span></td>
+  <td class="kw-fellows"><span class="tag">roblox fonts copy and paste</span> <span class="tag">roblox name fonts</span> <span class="tag">roblox stylish text</span></td>
+  <td class="num">434</td>
+  <td class="num">13%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/snapchat-font-generator/</code></td>
+  <td><span class="kw-primary">snapchat font generator</span></td>
+  <td class="kw-fellows"><span class="tag">snapchat fonts copy and paste</span> <span class="tag">snapchat stylish text</span> <span class="tag">snapchat name fonts</span></td>
+  <td class="num">331</td>
+  <td class="num">10%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/social-media-bio-generator/</code></td>
+  <td><span class="kw-primary">social media bio generator</span></td>
+  <td class="kw-fellows"><span class="tag">bio font generator</span> <span class="tag">social bio generator</span> <span class="tag">bio font maker</span></td>
+  <td class="num">426</td>
+  <td class="num">10%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/tiktok-font-generator/</code></td>
+  <td><span class="kw-primary">tiktok font generator</span></td>
+  <td class="kw-fellows"><span class="tag">tiktok bio fonts</span> <span class="tag">tiktok font name</span></td>
+  <td class="num">472</td>
+  <td class="num">18%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/twitter-font-generator/</code></td>
+  <td><span class="kw-primary">twitter font generator</span></td>
+  <td class="kw-fellows"><span class="tag">x font generator</span> <span class="tag">twitter fonts copy and paste</span> <span class="tag">twitter bio fonts</span></td>
+  <td class="num">514</td>
+  <td class="num">15%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/whatsapp-fonts/</code></td>
+  <td><span class="kw-primary">whatsapp fonts</span></td>
+  <td class="kw-fellows"><span class="tag">whatsapp font style</span> <span class="tag">fancy text for whatsapp</span> <span class="tag">whatsapp stylish text</span></td>
+  <td class="num">359</td>
+  <td class="num">11%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Platform tools</td>
+</tr>
+<tr>
+  <td><code>/cry-kaomojis/</code></td>
+  <td><span class="kw-primary">cry kaomoji</span></td>
+  <td class="kw-fellows"><span class="tag">crying kaomoji</span> <span class="tag">kaomoji cry</span></td>
+  <td class="num">347</td>
+  <td class="num">19%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Kaomoji &amp; emoticons</td>
+</tr>
+<tr>
+  <td><code>/cute-kaomojis/</code></td>
+  <td><span class="kw-primary">cute kaomoji</span></td>
+  <td class="kw-fellows"><span class="tag">kawaii kaomoji</span> <span class="tag">cute text faces</span></td>
+  <td class="num">345</td>
+  <td class="num">18%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Kaomoji &amp; emoticons</td>
+</tr>
+<tr>
+  <td><code>/heart-kaomojis/</code></td>
+  <td><span class="kw-primary">heart kaomoji</span></td>
+  <td class="kw-fellows"><span class="tag">love kaomoji</span> <span class="tag">heart text face</span></td>
+  <td class="num">325</td>
+  <td class="num">18%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Kaomoji &amp; emoticons</td>
+</tr>
+<tr>
+  <td><code>/kaomoji/</code></td>
+  <td><span class="kw-primary">kaomoji</span></td>
+  <td class="kw-fellows"><span class="tag">japanese emoticons</span> <span class="tag">text faces</span> <span class="tag">kaomoji copy and paste</span></td>
+  <td class="num">483</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Kaomoji &amp; emoticons</td>
+</tr>
+<tr>
+  <td><code>/lenny-face/</code></td>
+  <td><span class="kw-primary">lenny face</span></td>
+  <td class="kw-fellows"><span class="tag">lenny face copy paste</span> <span class="tag">lenny emoticon</span></td>
+  <td class="num">352</td>
+  <td class="num">22%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Kaomoji &amp; emoticons</td>
+</tr>
+<tr>
+  <td><code>/shrug-emoticon/</code></td>
+  <td><span class="kw-primary">shrug emoticon</span></td>
+  <td class="kw-fellows"><span class="tag">shrug face</span> <span class="tag">shrug emoji text</span></td>
+  <td class="num">347</td>
+  <td class="num">22%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Kaomoji &amp; emoticons</td>
+</tr>
+<tr>
+  <td><code>/aesthetic-fonts/</code></td>
+  <td><span class="kw-primary">aesthetic fonts</span></td>
+  <td class="kw-fellows"><span class="tag">font generator aesthetic</span> <span class="tag">aesthetic font generator</span> <span class="tag">aesthetic text generator</span></td>
+  <td class="num">467</td>
+  <td class="num">15%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Aesthetic &amp; cute</td>
+</tr>
+<tr>
+  <td><code>/cool-text-generator/</code></td>
+  <td><span class="kw-primary">cool text generator</span></td>
+  <td class="kw-fellows"><span class="tag">cool fonts copy paste</span> <span class="tag">cool font generator</span> <span class="tag">cool letters copy paste</span> <span class="tag">japanese letters copy paste</span> <span class="tag">cool text copy paste</span> <span class="tag">cool text</span></td>
+  <td class="num">1612</td>
+  <td class="num">22%</td>
+  <td><span class="pill pill-p0">P0</span></td>
+  <td>Aesthetic &amp; cute</td>
+</tr>
+<tr>
+  <td><code>/cute-fonts/</code></td>
+  <td><span class="kw-primary">cute fonts copy and paste</span></td>
+  <td class="kw-fellows"><span class="tag">cute font generator</span> <span class="tag">kawaii fonts</span></td>
+  <td class="num">511</td>
+  <td class="num">13%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Aesthetic &amp; cute</td>
+</tr>
+<tr>
+  <td><code>/stylish-text-generator/</code></td>
+  <td><span class="kw-primary">stylish text generator</span></td>
+  <td class="kw-fellows"><span class="tag">stylish fonts</span> <span class="tag">create stylish text</span></td>
+  <td class="num">517</td>
+  <td class="num">14%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Aesthetic &amp; cute</td>
+</tr>
+<tr>
+  <td><code>/name-font-generator/</code></td>
+  <td><span class="kw-primary">name fonts</span></td>
+  <td class="kw-fellows"><span class="tag">username fonts</span> <span class="tag">display name fonts</span></td>
+  <td class="num">469</td>
+  <td class="num">13%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Names &amp; usernames</td>
+</tr>
+<tr>
+  <td><code>/about/</code></td>
+  <td><span class="kw-primary">about fancifytext</span></td>
+  <td class="kw-fellows"><span class="tag">about fancify text</span> <span class="tag">who made fancifytext</span></td>
+  <td class="num">322</td>
+  <td class="num">1%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Trust pages</td>
+</tr>
+<tr>
+  <td><code>/contact/</code></td>
+  <td><span class="kw-primary">contact fancifytext</span></td>
+  <td class="kw-fellows"><span class="tag">fancifytext contact</span> <span class="tag">fancy text support</span></td>
+  <td class="num">111</td>
+  <td class="num">5%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Trust pages</td>
+</tr>
+<tr>
+  <td><code>/search/</code></td>
+  <td><span class="kw-primary">search fancifytext tools</span></td>
+  <td class="kw-fellows"><span class="tag">fancy text tools list</span></td>
+  <td class="num">&mdash;</td>
+  <td class="num">&mdash;</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Trust pages</td>
+</tr>
+<tr>
+  <td><code>/guides/discord-colored-text-not-working/</code></td>
+  <td><span class="kw-primary">discord colored text not working</span></td>
+  <td class="kw-fellows"><span class="tag">discord color text not working</span> <span class="tag">discord ansi not showing</span></td>
+  <td class="num">425</td>
+  <td class="num">7%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/do-fancy-fonts-break-screen-readers/</code></td>
+  <td><span class="kw-primary">do fancy fonts break screen readers</span></td>
+  <td class="kw-fellows"><span class="tag">unicode text accessibility</span> <span class="tag">is unicode bold accessible</span> <span class="tag">zalgo text accessibility</span> <span class="tag">screen reader fancy text</span></td>
+  <td class="num">1375</td>
+  <td class="num">5%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/facebook-name-fonts/</code></td>
+  <td><span class="kw-primary">how to change facebook name font</span></td>
+  <td class="kw-fellows"><span class="tag">facebook name fonts</span> <span class="tag">change facebook font</span> <span class="tag">facebook stylish name</span></td>
+  <td class="num">419</td>
+  <td class="num">13%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/fancy-text-shows-boxes/</code></td>
+  <td><span class="kw-primary">fancy text shows as boxes</span></td>
+  <td class="kw-fellows"><span class="tag">unicode tofu boxes</span> <span class="tag">fancy font not showing</span></td>
+  <td class="num">351</td>
+  <td class="num">31%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/how-unicode-fancy-fonts-work/</code></td>
+  <td><span class="kw-primary">how unicode fancy fonts work</span></td>
+  <td class="kw-fellows"><span class="tag">unicode fonts copy paste</span> <span class="tag">why fancy text shows boxes</span> <span class="tag">mathematical alphanumeric symbols</span></td>
+  <td class="num">565</td>
+  <td class="num">7%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/instagram-bio-fonts/</code></td>
+  <td><span class="kw-primary">how to change instagram bio font</span></td>
+  <td class="kw-fellows"><span class="tag">instagram bio font</span> <span class="tag">change instagram font</span> <span class="tag">instagram fonts for bio</span></td>
+  <td class="num">378</td>
+  <td class="num">9%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/linkedin-formatting-not-working/</code></td>
+  <td><span class="kw-primary">linkedin formatting not working</span></td>
+  <td class="kw-fellows"><span class="tag">linkedin bold not working</span> <span class="tag">linkedin line breaks not working</span> <span class="tag">linkedin invalid characters headline</span> <span class="tag">linkedin post spacing</span></td>
+  <td class="num">1276</td>
+  <td class="num">6%</td>
+  <td><span class="pill pill-p1">P1</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/roblox-fancy-text/</code></td>
+  <td><span class="kw-primary">roblox fancy text</span></td>
+  <td class="kw-fellows"><span class="tag">roblox font generator</span> <span class="tag">roblox stylish name</span></td>
+  <td class="num">375</td>
+  <td class="num">31%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/snapchat-name-fonts/</code></td>
+  <td><span class="kw-primary">snapchat name fonts</span></td>
+  <td class="kw-fellows"><span class="tag">snapchat fancy name</span> <span class="tag">change snapchat font</span></td>
+  <td class="num">325</td>
+  <td class="num">31%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+<tr>
+  <td><code>/guides/whatsapp-stylish-text/</code></td>
+  <td><span class="kw-primary">whatsapp stylish text</span></td>
+  <td class="kw-fellows"><span class="tag">whatsapp stylish fonts</span> <span class="tag">whatsapp fancy text</span> <span class="tag">whatsapp bold italic strike</span></td>
+  <td class="num">401</td>
+  <td class="num">6%</td>
+  <td><span class="pill pill-p2">P2</span></td>
+  <td>Guides</td>
+</tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="cannibal">
+  <h2>3. Keyword cannibalisation</h2>
+  <div class="verdict ok">
+    <div><strong>No primary-keyword collisions.</strong>
+    <p>All 79 live pages carry 79 distinct primary keywords &mdash; a
+    one-to-one mapping with zero duplicates. Titles and meta descriptions are also
+    100% unique across the site (0 duplicates of either).</p></div>
+  </div>
+  <p>Three keywords appear as a secondary term on one page while being the primary
+  term of another. That is intentional hub-and-spoke support rather than
+  cannibalisation, but they are the pairs to watch in Search Console if rankings
+  ever start flip-flopping:</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Keyword</th><th>Owns it (primary)</th><th>Supports it (secondary)</th></tr></thead>
+    <tbody>
+      <tr><td>whatsapp stylish text</td><td><code>/guides/whatsapp-stylish-text/</code></td><td><code>/whatsapp-fonts/</code></td></tr>
+      <tr><td>snapchat name fonts</td><td><code>/guides/snapchat-name-fonts/</code></td><td><code>/snapchat-font-generator/</code></td></tr>
+      <tr><td>roblox font generator</td><td><code>/roblox-font-generator/</code></td><td><code>/guides/roblox-fancy-text/</code></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Internal linking backs this up: every indexable page carries
+  between 2 and 6 curated related links (average 4.9), so no
+  page is orphaned and link equity flows toward the P0 pages.</p>
+</section>
+
+<section id="unique">
+  <h2>4. Is the content unique?</h2>
+  <p class="lead">Yes &mdash; measurably. I extracted the <code>&lt;main&gt;</code> prose from every
+  built HTML page, reduced it to ASCII words (so the Unicode glyph grids can't
+  inflate the score), broke it into overlapping 5-word shingles, and compared
+  every page against every other page.</p>
+
+  <div class="cards">
+    <div class="card"><b>1,830</b><small>page pairs compared</small></div>
+    <div class="card"><b>30.8%</b><small>highest overlap found</small></div>
+    <div class="card"><b>2</b><small>pairs above 30%</small></div>
+    <div class="card"><b>0</b><small>pairs above 35%</small></div>
+    <div class="card"><b>593</b><small>average words per page</small></div>
+    <div class="card"><b>2,159</b><small>longest page</small></div>
+  </div>
+
+  <p>For context: near-duplicate detection systems typically flag pages above
+  roughly 70&ndash;80% shingle overlap. Your worst pair sits at
+  30.8%, which is normal shared vocabulary for two articles on
+  related subjects, not duplication.</p>
+
+  <h3>Most similar indexable page pairs</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Page A</th><th>Page B</th><th class="num">Prose overlap</th><th>Assessment</th></tr></thead>
+    <tbody>
+<tr>
+  <td><code>/guides/fancy-text-shows-boxes</code></td>
+  <td><code>/guides/roblox-fancy-text</code></td>
+  <td class="num">30.8%</td>
+  <td><span class="warn">Watch</span></td>
+</tr>
+<tr>
+  <td><code>/guides/fancy-text-shows-boxes</code></td>
+  <td><code>/guides/snapchat-name-fonts</code></td>
+  <td class="num">30.7%</td>
+  <td><span class="warn">Watch</span></td>
+</tr>
+<tr>
+  <td><code>/guides/roblox-fancy-text</code></td>
+  <td><code>/guides/snapchat-name-fonts</code></td>
+  <td class="num">27.9%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/cool-text-generator</code></td>
+  <td><code>/</code></td>
+  <td class="num">22.4%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/lenny-face</code></td>
+  <td><code>/shrug-emoticon</code></td>
+  <td class="num">22.0%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/cry-kaomojis</code></td>
+  <td><code>/shrug-emoticon</code></td>
+  <td class="num">19.4%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/cry-kaomojis</code></td>
+  <td><code>/lenny-face</code></td>
+  <td class="num">19.3%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/mirror-text-generator</code></td>
+  <td><code>/upside-down-text-generator</code></td>
+  <td class="num">19.1%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/cute-kaomojis</code></td>
+  <td><code>/heart-kaomojis</code></td>
+  <td class="num">18.0%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/instagram-font-generator</code></td>
+  <td><code>/tiktok-font-generator</code></td>
+  <td class="num">17.7%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/cry-kaomojis</code></td>
+  <td><code>/heart-kaomojis</code></td>
+  <td class="num">17.0%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+<tr>
+  <td><code>/heart-kaomojis</code></td>
+  <td><code>/lenny-face</code></td>
+  <td class="num">15.6%</td>
+  <td><span class="good">Fine</span></td>
+</tr>
+    </tbody>
+  </table></div>
+  <p class="note">The top three pairs are all short troubleshooting guides
+  (&ldquo;shows boxes&rdquo;, &ldquo;Roblox&rdquo;, &ldquo;Snapchat names&rdquo;) that
+  necessarily share the same explanation of why Unicode fails on a platform. They
+  are distinct enough today; if you expand any of them, add
+  platform-specific detail rather than repeating the shared Unicode explanation.</p>
+
+  <h3>Word count &amp; thin-content check</h3>
+  <p>Median indexable page: <strong>434 words</strong>. Range
+  17&ndash;2,159. The pages below 400 words are the
+  ones most exposed to a &ldquo;thin content&rdquo; judgement &mdash; not urgent,
+  but they are where added depth would pay off most:</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Page</th><th class="num">Words</th></tr></thead>
+    <tbody>
+      <tr><td><code>/glitch-text-generator</code></td><td class="num">288</td></tr>
+      <tr><td><code>/strikethrough-text-generator</code></td><td class="num">295</td></tr>
+      <tr><td><code>/terms</code></td><td class="num">301</td></tr>
+      <tr><td><code>/upside-down-text-generator</code></td><td class="num">304</td></tr>
+      <tr><td><code>/about</code></td><td class="num">322</td></tr>
+      <tr><td><code>/heart-kaomojis</code></td><td class="num">325</td></tr>
+      <tr><td><code>/guides/snapchat-name-fonts</code></td><td class="num">325</td></tr>
+      <tr><td><code>/snapchat-font-generator</code></td><td class="num">331</td></tr>
+      <tr><td><code>/cute-kaomojis</code></td><td class="num">345</td></tr>
+      <tr><td><code>/cry-kaomojis</code></td><td class="num">347</td></tr>
+      <tr><td><code>/shrug-emoticon</code></td><td class="num">347</td></tr>
+      <tr><td><code>/guides/fancy-text-shows-boxes</code></td><td class="num">351</td></tr>
+      <tr><td><code>/lenny-face</code></td><td class="num">352</td></tr>
+      <tr><td><code>/binary-text-generator</code></td><td class="num">359</td></tr>
+      <tr><td><code>/whatsapp-fonts</code></td><td class="num">359</td></tr>
+      <tr><td><code>/guides/roblox-fancy-text</code></td><td class="num">375</td></tr>
+      <tr><td><code>/facebook-font-generator</code></td><td class="num">376</td></tr>
+      <tr><td><code>/guides/instagram-bio-fonts</code></td><td class="num">378</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Structured data</h3>
+  <p>Every indexable page ships JSON-LD. Coverage across the site:
+  BreadcrumbList on 59 pages,
+  FAQPage on 56,
+  HowTo on 51,
+  WebApplication on 46,
+  and Article on 10 guide pages.</p>
+</section>
+
+<section id="responsive">
+  <h2>5. Is the site responsive?</h2>
+  <p class="lead">Yes. I loaded 18 representative routes at 5 viewport widths in real
+  Chrome and measured <code>documentElement.scrollWidth</code> against the viewport,
+  plus the bounding box of every visible element, looking for anything poking past
+  the right edge.</p>
+
+  <div class="verdict ok">
+    <div><strong>90 of 90 measurements clean.</strong>
+    <p>No horizontal scrollbar, no overflowing element, and no clipped content at
+    any width from 320px up to 1920px. 0 JavaScript console errors.</p></div>
+  </div>
+
+  <div class="tblwrap"><table>
+    <thead><tr><th>Route</th><th class="num">mobile 320</th><th class="num">mobile 390</th><th class="num">tablet 768</th><th class="num">laptop 1280</th><th class="num">desktop 1920</th></tr></thead>
+    <tbody>
+<tr><td><code>/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/linkedin-text-formatter/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/chatgpt-to-linkedin/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/unformat-text/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/cursive-text-generator/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/bold-text-generator/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/cool-symbols/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/kaomoji/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/instagram-font-generator/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/case-converter/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/text-decorator/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/invisible-character/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/big-text-generator/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/guides/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/guides/linkedin-formatting-not-working/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/guides/do-fancy-fonts-break-screen-readers/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/about/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+<tr><td><code>/contact/</code></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td><td class="num"><span class="good">OK</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Why it holds up</h3>
+  <ul class="tight">
+    <li>The shell is fluid by default: <code>width: min(1120px, calc(100% - 2rem))</code>,
+    so there is no fixed pixel width to overflow.</li>
+    <li>Grids use <code>repeat(auto-fill, minmax(...))</code> and
+    <code>minmax(0, 1fr)</code> rather than fixed columns, so tracks shrink instead
+    of forcing a scrollbar.</li>
+    <li>Toolbars and chip rows are <code>flex-wrap: wrap</code>, which is why the
+    LinkedIn formatter's 11-button toolbar reflows to two rows at 390px instead of
+    clipping.</li>
+    <li>Long unbroken strings are handled with <code>overflow-wrap: anywhere</code> /
+    <code>word-break</code> in 20 places &mdash; essential when users paste
+    Unicode with no spaces.</li>
+    <li>Navigation switches to a hamburger below 720px; the desktop nav is hidden
+    rather than squeezed.</li>
+    <li>Headings use <code>clamp()</code> so type scales with the viewport instead
+    of stepping at breakpoints.</li>
+  </ul>
+  <p class="note">Breakpoints in use: 520px, 640px, 720px, 800px, 900px, plus a
+  <code>prefers-reduced-motion</code> block that disables the entrance animations.</p>
+</section>
+
+<section id="design">
+  <h2>6. Is the design OK?</h2>
+  <p class="lead">Mostly yes. The visual system is coherent and the implementation is
+  careful. One genuine accessibility defect and a few smaller items are worth your
+  time.</p>
+
+  <h3>What is working</h3>
+  <ul class="tight">
+    <li><strong>Disciplined palette.</strong> 391 CSS custom properties driving a
+    white canvas, charcoal ink, and orange reserved for action. Body text is
+    15.1:1 contrast; secondary text 6.7:1. Both comfortably clear AA.</li>
+    <li><strong>Zero layout shift.</strong> CLS is exactly 0 on all 8 pages measured,
+    which is unusual and worth protecting.</li>
+    <li><strong>Consistent components.</strong> Chips, copy buttons, tool stages, and
+    preview panels are reused across every tool, so the new LinkedIn pages look
+    native rather than bolted on.</li>
+    <li><strong>Accessibility basics are in place.</strong> A working skip link, one
+    <code>&lt;h1&gt;</code> per page, correct header/nav/main/footer landmarks,
+    <code>lang="en"</code>, a visible 2px focus ring on every control, and
+    <strong>zero</strong> unnamed buttons or links and zero unlabelled form inputs
+    across the 12 pages audited.</li>
+    <li><strong>No images to go wrong.</strong> The site renders zero
+    <code>&lt;img&gt;</code> elements &mdash; everything is text and Unicode &mdash;
+    so there is no missing-alt-text debt and nothing to lazy-load.</li>
+  </ul>
+
+  <h3>The one real defect: homepage hero contrast</h3>
+  <div class="verdict bad">
+    <div><strong>Small text on the orange hero fails WCAG AA.</strong>
+    <p>The hero background is <code>#ff5e1f</code>. Pure white on that is only
+    3.06:1, and the hero's text is semi-transparent white, which makes it worse.
+    The <code>&lt;h1&gt;</code> itself is fine (large text only needs 3:1), but
+    everything smaller in the hero fails.</p></div>
+  </div>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Page</th><th>Text</th><th class="num">Size</th><th class="num">Measured</th><th class="num">Needs</th></tr></thead>
+    <tbody>
+<tr>
+  <td><code>/</code></td>
+  <td>Free Unicode fonts</td>
+  <td class="num">11.5px bold</td>
+  <td class="num">2.38:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Type once, then copy bold, cursive, bubble, and aesthet</td>
+  <td class="num">16.8px</td>
+  <td class="num">2.61:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Browse styles</td>
+  <td class="num">15.2px</td>
+  <td class="num">3.06:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Cursive / Script</td>
+  <td class="num">12.2px</td>
+  <td class="num">3.17:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Bold</td>
+  <td class="num">12.2px</td>
+  <td class="num">3.63:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Bubble</td>
+  <td class="num">12.2px</td>
+  <td class="num">3.63:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Bold Cursive</td>
+  <td class="num">12.2px</td>
+  <td class="num">3.63:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Sans Bold</td>
+  <td class="num">12.2px</td>
+  <td class="num">3.63:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Italic</td>
+  <td class="num">12.2px</td>
+  <td class="num">3.63:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+<tr>
+  <td><code>/</code></td>
+  <td>Cursive / Script</td>
+  <td class="num">11.5px bold</td>
+  <td class="num">4.03:1</td>
+  <td class="num">4.5:1</td>
+</tr>
+    </tbody>
+  </table></div>
+  <p>Two ways to fix it, in order of how much they disturb the brand:</p>
+  <ul class="tight">
+    <li><strong>Least disruptive:</strong> keep <code>#ff5e1f</code> as the hero
+    background but make the lead text fully opaque white and raise it to 18.66px
+    bold, which qualifies as large text at the 3:1 threshold. The eyebrow and the
+    specimen chips would still need darkening.</li>
+    <li><strong>Cleanest:</strong> darken the hero background to your existing
+    <code>--accent-deep</code> (<code>#c2410c</code>). White text on that measures
+    5.18:1 and every element in the hero passes at any size, with no markup
+    changes. It does make the hero noticeably deeper orange, so it is your call
+    as a brand decision &mdash; I did not change it unilaterally.</li>
+  </ul>
+
+  <h3>Smaller design notes</h3>
+  <ul class="tight">
+    <li><strong>Very small label text.</strong> Seven labels render between 10.9px
+    and 11.8px (the support badges &ldquo;Works everywhere&rdquo;, &ldquo;Mixed
+    support&rdquo;, and the eyebrow text). They pass contrast on white, but 11px is
+    below what is comfortable on a phone. Consider a 12px floor.</li>
+    <li><strong>Footer and nav link targets.</strong> Vertical link lists are about
+    21px tall. Inline links in prose are exempt from the 24px target-size guideline,
+    but these block-level list links technically are not. Adding
+    <code>padding-block: .3rem</code> to footer column links would resolve it.</li>
+    <li><strong>Input and panel borders.</strong> <code>--line</code>
+    (<code>#e5e5e5</code>) is 1.26:1 against white and <code>--line-strong</code>
+    (<code>#d1d1d1</code>) is 1.53:1. WCAG 1.4.11 asks for 3:1 on the visible
+    boundary of a control. Panel dividers are fine as-is; the borders on
+    <em>textareas and buttons</em> are the ones worth darkening, since that boundary
+    is the only thing marking them as interactive.</li>
+  </ul>
+
+  <h3>Colour token reference</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Pair</th><th class="num">Ratio</th><th>Requirement</th><th>Result</th></tr></thead>
+    <tbody>
+<tr>
+  <td>body text</td>
+  <td class="num">15.13:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>muted text on white</td>
+  <td class="num">6.69:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>muted text on grey panel</td>
+  <td class="num">6.19:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>ink on grey panel</td>
+  <td class="num">14:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>accent as text on white</td>
+  <td class="num">3.06:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="warn">Large text only</span></td>
+</tr>
+<tr>
+  <td>accent as text on accent-soft</td>
+  <td class="num">2.82:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="bad">Fail</span></td>
+</tr>
+<tr>
+  <td>accent-deep as text on white</td>
+  <td class="num">5.18:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>accent-hot as text on white</td>
+  <td class="num">3.4:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="warn">Large text only</span></td>
+</tr>
+<tr>
+  <td>danger text on white</td>
+  <td class="num">6.57:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>footer ink on footer bg</td>
+  <td class="num">14:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>border line vs white (non-text 3:1)</td>
+  <td class="num">1.26:1</td>
+  <td>3:1 (UI/graphics)</td>
+  <td><span class="bad">Fail</span></td>
+</tr>
+<tr>
+  <td>strong line vs white (non-text 3:1)</td>
+  <td class="num">1.53:1</td>
+  <td>3:1 (UI/graphics)</td>
+  <td><span class="bad">Fail</span></td>
+</tr>
+<tr>
+  <td>accent border vs white (non-text 3:1)</td>
+  <td class="num">3.06:1</td>
+  <td>3:1 (UI/graphics)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>white on --accent-deep (primary button)</td>
+  <td class="num">5.18:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>white on --accent-deep hover #9a3412</td>
+  <td class="num">7.31:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+<tr>
+  <td>white on --accent (if ever used as button bg)</td>
+  <td class="num">3.06:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="warn">Large text only</span></td>
+</tr>
+<tr>
+  <td>white on --ink (skip link)</td>
+  <td class="num">15.13:1</td>
+  <td>4.5:1 (AA body)</td>
+  <td><span class="good">Pass</span></td>
+</tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="perf">
+  <h2>7. Performance &amp; page weight</h2>
+  <p class="lead">Measured on a throttle-free local production server, so treat the
+  timings as a floor rather than a field prediction. The useful numbers here are the
+  transfer sizes, request counts, DOM size, and CLS &mdash; those hold regardless of
+  network.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Route</th><th class="num">Requests</th><th class="num">Transfer</th><th class="num">DOM nodes</th><th class="num">FCP</th><th class="num">CLS</th></tr></thead>
+    <tbody>
+<tr>
+  <td><code>/</code></td>
+  <td class="num">17</td>
+  <td class="num">228 KB</td>
+  <td class="num">1,072</td>
+  <td class="num">144 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+<tr>
+  <td><code>/linkedin-text-formatter/</code></td>
+  <td class="num">18</td>
+  <td class="num">240 KB</td>
+  <td class="num">450</td>
+  <td class="num">80 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+<tr>
+  <td><code>/chatgpt-to-linkedin/</code></td>
+  <td class="num">17</td>
+  <td class="num">228 KB</td>
+  <td class="num">347</td>
+  <td class="num">68 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+<tr>
+  <td><code>/unformat-text/</code></td>
+  <td class="num">18</td>
+  <td class="num">235 KB</td>
+  <td class="num">284</td>
+  <td class="num">68 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+<tr>
+  <td><code>/cursive-text-generator/</code></td>
+  <td class="num">16</td>
+  <td class="num">224 KB</td>
+  <td class="num">523</td>
+  <td class="num">64 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+<tr>
+  <td><code>/cool-symbols/</code></td>
+  <td class="num">17</td>
+  <td class="num">223 KB</td>
+  <td class="num">1,291</td>
+  <td class="num">72 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+<tr>
+  <td><code>/kaomoji/</code></td>
+  <td class="num">18</td>
+  <td class="num">236 KB</td>
+  <td class="num">438</td>
+  <td class="num">68 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+<tr>
+  <td><code>/guides/</code></td>
+  <td class="num">51</td>
+  <td class="num">388 KB</td>
+  <td class="num">152</td>
+  <td class="num">84 ms</td>
+  <td class="num"><span class="good">0</span></td>
+</tr>
+    </tbody>
+  </table></div>
+  <ul class="tight">
+    <li>Every tool page ships in roughly 225&ndash;240 KB compressed with 16&ndash;18
+    requests, one stylesheet, and no images. That is lean for the amount of
+    interactivity.</li>
+    <li>CLS is 0 everywhere. The Google font is loaded with
+    <code>display: optional</code>, which is what prevents a late font swap from
+    shifting the layout.</li>
+    <li><code>/guides/</code> is the outlier at 51 requests / 388 KB because
+    Next.js prefetches every guide route linked on that page. It is a deliberate
+    trade (instant navigation) but worth knowing if you add many more guides.</li>
+    <li>DOM size is comfortable: the heaviest page,
+    <code>/cool-symbols/</code>, is 1,291 nodes, well inside Lighthouse's
+    1,500-node guidance.</li>
+  </ul>
+</section>
+
+<section id="fixed">
+  <h2>8. Fixed while auditing</h2>
+  <p>Three defects surfaced during measurement and are already fixed and committed:</p>
+  <ul class="tight">
+    <li><strong>Heading-level skips on the three new pages.</strong>
+    <code>/linkedin-text-formatter/</code>, <code>/chatgpt-to-linkedin/</code>, and
+    <code>/unformat-text/</code> jumped from <code>&lt;h1&gt;</code> straight to
+    <code>&lt;h3&gt;</code>, which breaks screen-reader document navigation and
+    muddies the outline Google reads. Promoted to <code>&lt;h2&gt;</code>
+    (and the nested &ldquo;Section dividers&rdquo; heading from
+    <code>&lt;h4&gt;</code> to <code>&lt;h3&gt;</code>). All 12 audited pages now
+    report zero heading skips. Appearance is unchanged because those headings
+    carry explicit font sizing.</li>
+    <li><strong>Active nav link contrast.</strong> The current-page nav pill used
+    <code>--accent</code> on <code>--accent-soft</code> &mdash; 2.82:1, below AA.
+    Switched to <code>--accent-deep</code> for 4.79:1.</li>
+    <li><strong>Checkbox touch targets.</strong> The option checkboxes on the AI
+    and unformat tools rendered at the browser default 13&times;13px. Bumped to
+    1.15rem. Their labels were already clickable, so this is comfort rather than a
+    functional fix.</li>
+  </ul>
+  <p class="note">Verified after the changes: production build compiles with all 151
+  routes prerendered, <code>sitemap.xml</code> still at 61 URLs, ESLint clean,
+  <code>check:unicode</code> clean across 67 styles, and <code>check:text</code>
+  clean across 16 exact round trips, 3 case-insensitive round trips, 8 preserved
+  scripts, and both Markdown modes.</p>
+</section>
+
+<section id="todo">
+  <h2>9. Recommended next actions</h2>
+  <p class="lead">In the order I would do them.</p>
+  <ol>
+    <li><strong>Decide on the hero contrast fix.</strong> The only genuine
+    accessibility failure left, and it is on your highest-traffic page. Needs a
+    brand call from you (section 6).</li>
+    <li><strong>Regenerate <code>public/llms.txt</code> from the page registry at
+    build time.</strong> It currently lists 17 URLs against 61 indexable pages, so
+    AI crawlers see about a quarter of the site. Wiring it into the same prebuild
+    step that already writes <code>sitemap.xml</code> means it can never drift
+    again &mdash; this is a small, self-contained change.</li>
+    <li><strong>Shorten 26 over-long titles.</strong> Google truncates around 60
+    characters. The worst offenders are
+    <code>/guides/linkedin-formatting-not-working/</code> at 77 and
+    <code>/cool-text-generator/</code> at 73. The
+    <code>&nbsp;| FancifyText</code> suffix is what pushes most of them over;
+    dropping it on the longest titles is the cheapest win.</li>
+    <li><strong>Trim 8 meta descriptions over 160 characters</strong>, including the
+    three new pages (<code>/linkedin-text-formatter/</code> is 214).</li>
+    <li><strong>Deepen the thinnest indexable pages</strong> listed in section 4,
+    starting with <code>/glitch-text-generator/</code> at 288 words.</li>
+    <li><strong>Raise the small-label floor to 12px</strong> and darken control
+    borders to clear 3:1 (section 6).</li>
+  </ol>
+  <p>Beyond fixes, the roadmap gaps identified in the earlier competitive research
+  are still open: a standalone <code>/ai-text-cleaner/</code> page, commodity
+  utilities (word counter, character counter, text repeater, remove line breaks), a
+  standalone LinkedIn symbol library, an <code>/answers/</code> Q&amp;A surface,
+  &ldquo;X vs Y&rdquo; and <code>*-alternative</code> comparison pages, a
+  <code>/how-we-test/</code> trust page, and an alt-codes plus Unicode-inspector
+  section.</p>
+</section>
+
+<section id="method">
+  <h2>10. How this was measured</h2>
+  <ul class="tight">
+    <li><strong>Page counts and keywords</strong> were read from
+    <code>src/data/pages/registry.ts</code> and
+    <code>src/lib/seo/sitemap-xml.ts</code> by bundling the real TypeScript with
+    esbuild and calling the same functions the sitemap generator uses &mdash; so
+    these are the shipping values, not a hand transcription.</li>
+    <li><strong>Uniqueness</strong> compared the <code>&lt;main&gt;</code> element of
+    every built HTML file. Text was lowercased and reduced to ASCII words of 2+
+    characters (this deliberately discards the Unicode glyph grids, which would
+    otherwise make every style page look similar), then split into overlapping
+    5-word shingles and compared with Jaccard similarity across all
+    1,830 indexable page pairs.</li>
+    <li><strong>Responsiveness, targets, and contrast</strong> were measured in
+    headless Chrome 
+    against the production server, reading computed styles and bounding boxes from
+    the live DOM at each viewport.</li>
+    <li><strong>Contrast caveat:</strong> the automated walker resolves
+    <code>background-color</code> only, so elements sitting on the dark
+    <em>gradient</em> preview panels initially reported false failures. Those were
+    verified against the CSS (<code>#1a1a1a</code> to <code>#111111</code>, roughly
+    16:1 with near-white text) and excluded. Only genuine failures are listed in
+    section 6.</li>
+    <li><strong>Not covered:</strong> no real-device or field testing, no throttled
+    Lighthouse run, and no manual screen-reader pass. The timings in section 7 come
+    from a local server with no network throttling and should not be read as field
+    Core Web Vitals.</li>
+  </ul>
+</section>
+
+<footer class="rep">
+  FancifyText site audit &mdash; generated 2026-09-19 from the production build.
+</footer>
+
+</div>
+</body>
+</html>
