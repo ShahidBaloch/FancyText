@@ -9,8 +9,12 @@ export type KaomojiList = {
   h1: string;
   fellowKeywords: string[];
   faces: string[];
-  /** Meanings / when to use — SEO density H2 body. */
+  /** Meanings / when to use — unique body per emotion. */
   meanings: string;
+  meaningsHeading?: string;
+  howToHeading?: string;
+  howToSteps?: string[];
+  mobileNote?: string;
   faq: { question: string; answer: string }[];
 };
 
@@ -42,24 +46,13 @@ function list(
       `Use ${emotion} kaomojis when you want a quick ${emotion} reaction in chat without sending a sticker. They work in Discord, Instagram captions, TikTok comments, and WhatsApp because they are plain Unicode text. Pick a face that matches the tone—mild for bios, stronger for memes—and keep messages short so the emoticon stays readable.`,
     faq: [
       {
-        question: `What are ${emotion} kaomojis?`,
-        answer: `${label} kaomojis are Japanese-style text emoticons that show a ${emotion} mood using punctuation and symbols. Tap any face below to copy it.`,
+        question: `What are these ${emotion} faces?`,
+        answer: `Punctuation emoticons for a ${emotion} mood. Tap a face to copy it as plain text—no sticker pack.`,
       },
       {
-        question: `Can I copy ${emotion} kaomoji for Discord?`,
-        answer: `Yes. Copy a ${emotion} kaomoji and paste it into Discord messages, nicknames, or channel topics where Unicode is allowed.`,
-      },
-      {
-        question: `Do ${emotion} kaomojis work on Instagram and TikTok?`,
-        answer: `Most apps accept kaomoji in captions and bios. If a face shows as boxes, try a shorter or simpler emoticon from the list.`,
-      },
-      {
-        question: `How many ${emotion} kaomojis can I use?`,
-        answer: `As many as you want—everything on this page is free to copy and paste. Mix faces in chats, bios, and comments.`,
-      },
-      {
-        question: `When should I use ${emotion} kaomoji?`,
-        answer: `Use them for quick tone in DMs, comments, and bios when an emoji sticker feels too heavy—or when you want a classic Japanese text-face look.`,
+        question: "Will they paste into Discord or Instagram?",
+        answer:
+          "Usually. If a face shows as boxes, pick a shorter one from higher in the list.",
       },
     ],
   };
@@ -930,6 +923,10 @@ for (const entry of KAOMOJI_LISTS) {
   entry.description = unique.description;
   entry.meanings = unique.meanings;
   entry.faq = unique.faq;
+  if (unique.meaningsHeading) entry.meaningsHeading = unique.meaningsHeading;
+  if (unique.howToHeading) entry.howToHeading = unique.howToHeading;
+  if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
+  if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
 }
 
 export const SPECIAL_KAOMOJI: KaomojiList[] = [

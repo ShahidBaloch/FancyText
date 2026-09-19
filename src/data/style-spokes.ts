@@ -9,9 +9,13 @@ export type StyleSpokeConfig = {
   secondaryStyleId?: string;
   sampleInput: string;
   examples: string[];
+  howToHeading?: string;
   howToSteps: string[];
+  usesHeading?: string;
   uses: string[];
+  compatHeading?: string;
   compatibilityNotes: string[];
+  examplesHeading?: string;
   /** Named variants for SEO H2 (serif / sans / squared…). */
   variants?: { name: string; styleId: string; blurb: string }[];
   /** Show a multi-row style gallery below the primary tool. */
@@ -79,11 +83,13 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         blurb: "Letters in squares—short names and tags only.",
       },
     ],
+    howToHeading: "Make a word look bold without a bold button",
     howToSteps: [
-      "Type or paste your words into the box above.",
-      "Pick a bold style chip — preview updates instantly.",
-      "Tap Copy, or scroll to More looks to compare and copy another variant.",
+      "Type the word you want heavier.",
+      "Tap a bold chip. Sans bold is the safer fallback if a glyph boxes out.",
+      "Copy, then paste into a bio or nick. Discord messages can use **markdown** instead—this Unicode is for fields with no formatting.",
     ],
+    usesHeading: "Fields that cannot do real bold",
     uses: [
       "Discord nicknames and server titles",
       "Instagram and TikTok bios",
@@ -91,6 +97,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       "Captions where you want emphasis without real bold formatting",
       "Gaming tags and profile CTAs",
     ],
+    compatHeading: "What usually survives paste",
     compatibilityNotes: [
       "Bold Unicode works in most modern apps and browsers.",
       "Some older devices may show boxes for rare characters—try sans bold as a fallback.",
@@ -100,42 +107,22 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       {
         question: "What is a bold text generator?",
         answer:
-          "A bold text generator converts normal letters into Unicode bold characters you can copy and paste. It is not a downloadable font—the bold look travels with the text.",
+          "A bold text generator swaps letters for Mathematical Bold Unicode. The weight travels with the text. Discord chats can use **markdown** instead; this is for bios and nicks with no bold button.",
       },
       {
-        question: "Is this the same as a bold font generator?",
+        question: "Sans bold or mathematical bold?",
         answer:
-          "Yes. People search for both bold text generator and bold font generator for the same job: make text look bold in apps that do not offer formatting.",
+          "Mathematical bold looks a bit more serif. Sans bold is cleaner and often renders more reliably on phones. Start there if you saw boxes.",
       },
       {
-        question: "Can I copy bold fonts for Discord?",
+        question: "Will Instagram show it in a bio?",
         answer:
-          "Discord supports many Unicode bold styles. Copy from the preview and paste into your nickname, channel name, or about-me text.",
+          "Usually. There is no bold button in the bio field, so Unicode is the workaround. Keep the @username plain.",
       },
       {
-        question: "How do I make text bold on Instagram?",
+        question: "Does this hurt search?",
         answer:
-          "Instagram bios and captions do not have a bold button. Generate bold Unicode here, copy it, and paste into your bio or caption field.",
-      },
-      {
-        question: "Why does bold text look like boxes on my phone?",
-        answer:
-          "Your device font may not include every Unicode symbol. Try sans bold or shorten the text if a character fails to render.",
-      },
-      {
-        question: "What is the difference between bold and sans bold?",
-        answer:
-          "Mathematical bold has a serif-leaning look. Sans bold uses a cleaner sans-serif Unicode set and often renders more reliably on phones.",
-      },
-      {
-        question: "Can I use bold text in WhatsApp?",
-        answer:
-          "Yes. Paste Unicode bold into status or messages. WhatsApp also supports *markdown bold* in chats—Unicode is better when you need the style outside markdown fields.",
-      },
-      {
-        question: "Does bold Unicode hurt SEO?",
-        answer:
-          "Search engines prefer plain text for keywords. Use bold fancy text for display flair and keep important searchable words in normal letters when you can.",
+          "In-app search prefers ordinary letters. Style a display line; keep keywords in normal type.",
       },
     ],
   }),
@@ -165,11 +152,13 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         blurb: "Handwritten look—different Unicode block from italic.",
       },
     ],
+    howToHeading: "Slant a quote when the app has no italic",
     howToSteps: [
-      "Enter the phrase you want in italic Unicode.",
-      "Copy the slanted preview output.",
-      "Paste into bios, chats, or captions anywhere italic formatting is not built in.",
+      "Type the quote or soft bio line.",
+      "Copy the italic preview. Cursive is a different, more handwritten Unicode set—do not mix them up.",
+      "Paste into a bio or caption. Long italic strings clip in username fields.",
     ],
+    usesHeading: "Quotes and soft emphasis",
     uses: [
       "Quotes and aesthetic captions",
       "Soft emphasis in Discord or Instagram bios",
@@ -183,32 +172,22 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       {
         question: "What is an italic text generator?",
         answer:
-          "It turns plain text into Unicode italic letters that look slanted when pasted—no font install required.",
+          "It turns plain letters into Unicode italic so a quote can look slanted in apps with no italic button. Cursive/script is a different, more handwritten Unicode set.",
       },
       {
-        question: "Can I use italic text on Instagram?",
+        question: "Is italic the same as cursive?",
         answer:
-          "Yes. Paste italic Unicode into your bio or captions. It works because Instagram reads the characters, not app-level italic styling.",
+          "No. Italic is slanted mathematical letters. Cursive/script is a different Unicode block with more handwritten curves. Use the cursive generator for script names.",
       },
       {
-        question: "Is italic text the same as cursive?",
+        question: "Will Instagram keep the slant?",
         answer:
-          "No. Italic uses slanted mathematical letters. Cursive/script uses a different Unicode set with more handwritten curves.",
-      },
-      {
-        question: "Does italic Unicode work in Discord?",
-        answer:
-          "Usually yes for nicknames and messages. If a character fails, try bold italic or a shorter phrase.",
-      },
-      {
-        question: "Is this an italics generator or italic font maker?",
-        answer:
-          "Yes—those searches point to the same Unicode italic converter for copy and paste.",
+          "Usually in bios and captions. It works because Instagram reads the characters, not an italic toggle.",
       },
       {
         question: "Can I combine italic with bold?",
         answer:
-          "Use the bold italic chip for both weight and slant in one string.",
+          "Use the bold-italic chip for both weight and slant in one string.",
       },
     ],
   }),
@@ -228,11 +207,14 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         blurb: "Boxy alternative when you want a logo-like tag.",
       },
     ],
+    howToHeading: "Circle each letter",
     howToSteps: [
-      "Type your word or phrase.",
-      "See circled bubble letters in the preview.",
-      "Copy and paste into Discord, Instagram, or games that allow Unicode nicknames.",
+      "Type a short word. Circled letters eat width fast.",
+      "Copy the bubble row, or squared if you want boxes instead of circles.",
+      "Paste into a nick or bio and check it still fits.",
     ],
+    usesHeading: "Short playful tags",
+    examplesHeading: "Circled samples",
     uses: [
       "Playful Discord and Roblox-style usernames",
       "Fun Instagram or TikTok bios",
@@ -248,34 +230,29 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     },
     faq: [
       {
+        question: "What is a bubble text generator?",
+        answer:
+          "A bubble text generator makes Unicode enclosed alphanumerics—letters and digits inside circles. Not a rounded font file.",
+      },
+      {
         question: "What is bubble text?",
         answer:
-          "Bubble text uses Unicode enclosed alphanumerics—letters and numbers inside circles—so you can copy and paste a fun rounded look.",
+          "Bubble text is those circled letters and numbers. Same tool as the bubble text generator on this page.",
       },
       {
-        question: "Can I copy bubble letters for Discord?",
+        question: "Do numbers work?",
         answer:
-          "Yes. Bubble text is popular for Discord display names and server titles when the platform allows the characters.",
+          "Digits 0–9 map to circled number characters where the device font includes them.",
       },
       {
-        question: "Do bubble fonts include numbers?",
+        question: "Cute fonts vs this page?",
         answer:
-          "Yes. Digits 0–9 map to circled number characters where supported.",
+          "This generator is circled letters only. Cute fonts add squared, hearts, and parenthesized kawaii extras. Aesthetic fonts are soft fullwidth and script.",
       },
       {
-        question: "Why are some bubble letters missing?",
+        question: "Why is a letter missing a circle?",
         answer:
-          "Not every letter has a perfect circled Unicode twin on all devices. Keep names short and test on your target app.",
-      },
-        {
-          question: "Is bubble text the same as cute fonts or aesthetic fonts?",
-          answer:
-            "No. This generator is circled letters only. Cute fonts add squared, hearts, and parenthesized kawaii styles. Aesthetic fonts are soft fullwidth and script—not bubbles.",
-        },
-      {
-        question: "Can I use bubble fonts in WhatsApp status?",
-        answer:
-          "Often yes for short status lines. Test on your phone—very long bubble strings can look cramped.",
+          "Not every letter has a perfect circled twin on every device. Keep names short and test on the app you care about.",
       },
     ],
   }),
@@ -286,6 +263,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     {
       sampleInput: "crossed out",
       examples: ["crossed out", "old price", "spoiler text", "done task"],
+      howToHeading: "Draw a line through each letter",
       howToSteps: [
         "Type the text you want crossed out.",
         "The generator adds a Unicode combining strikethrough mark to each character.",
@@ -302,9 +280,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       ],
       faq: [
       {
-        question: "How does strikethrough text work?",
+        question: "What is a strikethrough text generator?",
         answer:
-          "The tool adds a Unicode combining long stroke overlay to each letter. The base letter stays readable with a line through it.",
+          "A strikethrough text generator adds a Unicode combining long stroke overlay to each letter. The base letter stays readable with a line through it.",
       },
       {
         question: "Can I strikethrough text on Instagram?",
@@ -338,16 +316,19 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         "photography",
         "link in bio",
       ],
+      howToHeading: "Turn letters into short capitals",
       howToSteps: [
         "Type your text—capitals and lowercase both come out as small capitals.",
         "Check the preview for the letter x, which Unicode has no small-capital form for.",
         "Copy and paste into a bio, display name, or caption.",
       ],
+      usesHeading: "Quiet labels, not tiny superscript",
       uses: [
         "Quiet section labels in a bio, where full caps would feel like shouting",
         "Display names that need emphasis without looking aggressive",
         "Menu-style or editorial captions",
       ],
+      compatHeading: "The letter x problem, and other gaps",
       compatibilityNotes: [
         "There is no small capital X in Unicode, so x stays a normal lowercase x. In a word like “box” the mismatch is visible—that is the font, not a bug in the tool.",
         "Q uses ǫ (o with ogonek) as a stand-in. A true small capital Q exists but was only added in Unicode 11, so it is still missing on many older phones.",
@@ -360,6 +341,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         body: "Small caps replace letters with short-capital Unicode (ꜱᴍᴀʟʟ ᴄᴀᴘꜱ). They stay roughly normal x-height. The small text generator makes compact superscript-style bios. The superscript & subscript generator raises or lowers characters for math and footnotes. Use this page only when you want small capitals.",
       },
       faq: [
+        {
+          question: "What is a small caps generator?",
+          answer:
+            "A small caps generator turns letters into short-capital Unicode (ꜱᴍᴀʟʟ ᴄᴀᴘꜱ) at normal reading size. It is not tiny superscript bios and not math subscripts.",
+        },
         {
           question: "Why is the letter x not in small caps?",
           answer:
@@ -402,6 +388,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         "terminal",
         "loading...",
       ],
+      howToHeading: "Get typewriter letters (not a code block)",
       howToSteps: [
         "Type your text, including numbers—monospace covers digits as well as letters.",
         "Copy the preview.",
@@ -419,6 +406,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         "This is not a code block. If you want real monospaced code on a platform that supports it, use that platform's code formatting instead—it stays searchable and copyable.",
       ],
       faq: [
+        {
+          question: "What is a monospace text generator?",
+          answer:
+            "A monospace text generator swaps letters for fixed-width Unicode so a bio or display name can look typewritten. It is not a code block.",
+        },
         {
           question: "Is this the same as a code block?",
           answer:
@@ -450,11 +442,13 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       secondaryStyleId: "subscript",
       sampleInput: "H2O",
       examples: ["H2O", "x2", "E=mc2", "footnote"],
+      howToHeading: "Raise or lower characters for H₂O and x²",
       howToSteps: [
         "Type text with letters and numbers (e.g. H2O or x2).",
         "Copy the superscript preview for raised text, or use the subscript row below for lowered text.",
         "Paste into notes, math captions, or footnote-style social posts.",
       ],
+      usesHeading: "Math and footnotes, not tiny bios",
       uses: [
         "Chemistry-style notation (H₂O) in captions",
         "Math exponents and footnote markers",
@@ -495,6 +489,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
   spoke("upside-down-text-generator", "upside-down", ["upside-down"], {
     sampleInput: "flip me",
     examples: ["flip me", "hello", "lol", "reverse"],
+    howToHeading: "Flip the letters upside down",
     howToSteps: [
       "Type the phrase you want flipped.",
       "The generator reverses character order and maps to upside-down Unicode.",
@@ -525,16 +520,12 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         answer:
           "Unicode only provides upside-down shapes for a subset of Latin letters and symbols. Unmapped characters stay as-is.",
       },
-      {
-        question: "Is this an upside down text generator or flip text generator?",
-        answer:
-          "Both terms describe the same tool—people search either phrase for reversed, inverted text.",
-      },
     ],
   }),
   spoke("glitch-text-generator", "glitch", ["glitch"], {
     sampleInput: "glitch",
     examples: ["glitch", "cursed", "zalgo", "error"],
+    howToHeading: "Stack combining marks (keep it short)",
     howToSteps: [
       "Enter the text you want to distort.",
       "Preview the Zalgo-style glitch output with combining marks.",
@@ -551,9 +542,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     ],
     faq: [
       {
-        question: "What is glitch text / Zalgo text?",
+        question: "What is a glitch text generator?",
         answer:
-          "Glitch or Zalgo text stacks Unicode combining diacritical marks above and below letters to create a corrupted, creepy effect.",
+          "A glitch text generator stacks Unicode combining diacritical marks above and below letters to create a corrupted Zalgo / cursed effect.",
       },
       {
         question: "Is a glitch text generator safe to use?",
@@ -593,11 +584,14 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         blurb: "Short, even-height letters—more readable than tiny superscript.",
       },
     ],
+    howToHeading: "Shrink a bio line, not a math formula",
     howToSteps: [
       "Type a short word or bio line.",
       "Copy the tiny row for superscript-style small text, or small caps if you need it more readable.",
       "Paste into a bio, nickname, or caption. Keep it short—tiny letters are hard to read in long sentences.",
     ],
+    usesHeading: "Compact tags, with a readable fallback",
+    examplesHeading: "Tiny samples",
     uses: [
       "Compact Instagram and TikTok bio lines",
       "Tiny Discord nicknames and tags",
@@ -615,7 +609,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       {
         question: "What is a small text generator?",
         answer:
-          "It turns normal letters into tiny Unicode (mostly superscript) so you can paste compact text into bios and usernames. It is not a smaller installed font.",
+          "A small text generator turns normal letters into tiny Unicode (mostly superscript) so you can paste compact text into bios and usernames. It is not a smaller installed font.",
       },
       {
         question: "Is small text the same as superscript or small caps?",
@@ -650,6 +644,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         blurb: "Flips and rotates letters. Different from a simple reverse.",
       },
     ],
+    howToHeading: "Reverse the letter order",
     howToSteps: [
       "Type the word you want reversed.",
       "Copy the mirror row for backwards order, or upside-down if you want flipped glyphs too.",
@@ -668,7 +663,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       {
         question: "What is a mirror text generator?",
         answer:
-          "It reverses the order of your characters so the word reads backwards. That is different from upside-down text, which also swaps in flipped Unicode letters.",
+          "A mirror text generator reverses the order of your characters so the word reads backwards. That is different from upside-down text, which also swaps in flipped Unicode letters.",
       },
       {
         question: "Is mirror text the same as upside down text?",
@@ -707,6 +702,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
           blurb: "Heavier blackletter for short display names.",
         },
       ],
+      howToHeading: "Map letters to blackletter Unicode",
       howToSteps: [
         "Type a short name or title.",
         "Copy fraktur for a classic gothic look, or bold old English for extra weight.",
@@ -728,9 +724,9 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
             "It maps your letters to Unicode Fraktur (blackletter) characters that look like gothic / medieval type. You copy them—no font file to install.",
         },
         {
-          question: "Is old English the same as gothic or fraktur?",
+          question: "Is old English the same as gothic or Fraktur?",
           answer:
-            "In fancy-text tools, yes. People search old English, gothic font, and fraktur for this blackletter Unicode set.",
+            "On this site, yes: Unicode blackletter. It is not a medieval TTF you install, and it is not mathematical bold.",
         },
         {
           question: "Can I use old English fonts on Discord?",
@@ -749,6 +745,7 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     sampleInput: "Hello",
     examples: ["Hello", "Code", "Hack", "UTF-8"],
     showGallery: true,
+    howToHeading: "Encode as UTF-8 bits (or Morse)",
     howToSteps: [
       "Type plain text in the box.",
       "Copy Binary for UTF-8 bit groups, or Morse for dit-dah sequences.",

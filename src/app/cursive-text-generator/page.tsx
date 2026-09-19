@@ -183,7 +183,7 @@ export default function CursiveHubPage() {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="compat-heading">
-        <h2 id="compat-heading">Compatibility notes</h2>
+        <h2 id="compat-heading">Boxes, handles, and screen readers</h2>
         <ul>
           <li>
             Script is widely supported on current iPhone, Android, Windows, and

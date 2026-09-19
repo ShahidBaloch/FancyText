@@ -37,14 +37,9 @@ const FAQ = [
       "Proportional fonts squeeze spaces. Copy the code-block version and paste that into Discord or Reddit so the letters stay on a grid. On mobile, preview in landscape if a long word overflows.",
   },
   {
-    question: "Will this work in an Instagram bio?",
+    question: "Will this fit in an Instagram bio?",
     answer:
       "Almost never. Instagram bios are 150 characters, collapse extra spaces, and do not render as a fixed-width grid. Use the Instagram font generator for a single stylish line instead.",
-  },
-  {
-    question: "Does this run in my browser?",
-    answer:
-      "Yes. Letters are mapped client-side. Nothing you type is uploaded as part of generating the banner.",
   },
 ];
 

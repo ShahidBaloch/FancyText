@@ -63,7 +63,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cursive text generator",
     title: "Cursive Text Generator — Script Fonts Copy & Paste | FancifyText",
     description:
-      "Type a name or phrase into cursive Unicode. Copy elegant script words plus the full A–Z alphabet—no font download.",
+      "Cursive text generator. Type a name or phrase into cursive Unicode. Copy elegant script words plus the full A–Z alphabet—no font download.",
     fellowKeywords: fellows(
       "elegant cursive fonts copy and paste",
       "cursive copy and paste fonts",
@@ -80,7 +80,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "bold text generator",
     title: "Bold Text Generator — Bold Fonts Copy & Paste | FancifyText",
     description:
-      "Make bold Unicode text instantly. Copy and paste bold fonts for Discord, Instagram, and bios.",
+      "Bold text generator. Make bold Unicode text instantly. Copy and paste bold fonts for Discord, Instagram, and bios.",
     fellowKeywords: fellows(
       "bold font generator",
       "bold text font",
@@ -97,7 +97,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "italic text generator",
     title: "Italic Text Generator — Slanted Fonts Copy & Paste | FancifyText",
     description:
-      "Convert text to italic Unicode fonts in one click. Copy slanted letters for quotes, captions, and bios.",
+      "Italic text generator. Convert text to italic Unicode fonts in one click. Copy slanted letters for quotes, captions, and bios.",
     fellowKeywords: fellows("italic font generator"),
     navLabel: "Italic",
   },
@@ -109,7 +109,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "bubble text generator",
     title: "Bubble Text Generator — Circled Letters Copy & Paste | FancifyText",
     description:
-      "Generate circled bubble letters and numbers only. Cute fonts mix bubble with kawaii extras; this tool is the circled-letter converter.",
+      "Bubble text generator. Generate circled bubble letters and numbers only. Cute fonts mix bubble with kawaii extras; this tool is the circled-letter converter.",
     fellowKeywords: fellows("bubble font generator"),
     navLabel: "Bubble",
   },
@@ -121,7 +121,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "small caps generator",
     title: "Small Caps Generator — ꜱᴍᴀʟʟ ᴄᴀᴘꜱ Copy & Paste | FancifyText",
     description:
-      "Turn text into small capitals (short-cap Unicode), not tiny superscript bios and not math subscripts. Includes why the letter x has no small-caps form.",
+      "Small caps generator. Turn text into small capitals (short-cap Unicode), not tiny superscript bios and not math subscripts. Includes why the letter x has no small-caps form.",
     fellowKeywords: fellows("small caps text", "small capital letters"),
     navLabel: "Small Caps",
   },
@@ -133,7 +133,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "monospace text generator",
     title: "Monospace Text Generator — Typewriter Text | FancifyText",
     description:
-      "Fixed-width Unicode letters and digits for bios and names. Includes what Discord does to them and when to use a real code block.",
+      "Monospace text generator. Fixed-width Unicode letters and digits for bios and names. Includes what Discord does to them and when to use a real code block.",
     fellowKeywords: fellows("typewriter font generator", "monospace font copy paste"),
     navLabel: "Monospace",
   },
@@ -145,7 +145,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "strikethrough text generator",
     title: "Strikethrough Text Generator — Cross Out Text | FancifyText",
     description:
-      "Add strikethrough to any text with Unicode combining marks. Copy crossed-out text for jokes and bios.",
+      "Strikethrough text generator. Add strikethrough to any text with Unicode combining marks. Copy crossed-out text for jokes and bios.",
     fellowKeywords: fellows("strikethrough font"),
   },
   {
@@ -156,7 +156,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "superscript and subscript generator",
     title: "Superscript & Subscript Generator — Math & Footnotes | FancifyText",
     description:
-      "Raise or lower characters for math, chemistry-style notes, and footnotes (H₂O, x²). This is not a tiny-bio or small-caps tool.",
+      "Superscript and subscript generator. Raise or lower characters for math, chemistry-style notes, and footnotes (H₂O, x²). This is not a tiny-bio or small-caps tool.",
     fellowKeywords: fellows("superscript generator", "subscript generator"),
   },
   {
@@ -167,7 +167,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "upside down text",
     title: "Upside Down Text Generator — Flip Text Copy & Paste | FancifyText",
     description:
-      "Flip your text upside down with Unicode. Copy reversed, inverted text for memes and novelty bios.",
+      "Upside down text. Flip your text upside down with Unicode. Copy reversed, inverted text for memes and novelty bios.",
     fellowKeywords: fellows("upside down text generator"),
   },
   {
@@ -178,7 +178,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "glitch text generator",
     title: "Glitch Text Generator — Zalgo Cursed Text | FancifyText",
     description:
-      "Create glitchy Zalgo-style cursed text. Copy distorted combining-mark effects for horror aesthetics and usernames.",
+      "Glitch text generator. Create glitchy Zalgo-style cursed text. Copy distorted combining-mark effects for horror aesthetics and usernames.",
     fellowKeywords: fellows("zalgo text"),
   },
   {
@@ -205,7 +205,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "aesthetic fonts",
     title: "Aesthetic Fonts — Soft Wide & Script Unicode | FancifyText",
     description:
-      "Aesthetic Unicode fonts: soft fullwidth, script, and delicate small caps. This page is not cute bubble/kawaii, not stylish bold/glitch, and not cool lookalikes.",
+      "Aesthetic fonts. Aesthetic Unicode fonts: soft fullwidth, script, and delicate small caps. This page is not cute bubble/kawaii, not stylish bold/glitch, and not cool lookalikes.",
     fellowKeywords: fellows(
       "font generator aesthetic",
       "aesthetic font generator",
@@ -220,7 +220,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cute fonts copy and paste",
     title: "Cute Fonts Copy and Paste — Bubble & Kawaii Unicode | FancifyText",
     description:
-      "Copy cute kawaii fonts: bubble letters, squared caps, hearts, and parenthesized glyphs. Not aesthetic fullwidth, not stylish bold, and not cool lookalikes.",
+      "Cute fonts copy and paste. Copy cute kawaii fonts: bubble letters, squared caps, hearts, and parenthesized glyphs. Not aesthetic fullwidth, not stylish bold, and not cool lookalikes.",
     fellowKeywords: fellows("cute font generator", "kawaii fonts"),
   },
   {
@@ -231,7 +231,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "name fonts",
     title: "Name Font Generator — Username-Safe Unicode Fonts | FancifyText",
     description:
-      "Turn a name or username into copy-ready Unicode fonts. Compare sans bold, script, and small caps that survive most username filters—not cool lookalikes.",
+      "Name fonts. Turn a name or username into copy-ready Unicode fonts. Compare sans bold, script, and small caps that survive most username filters—not cool lookalikes.",
     fellowKeywords: fellows("username fonts", "display name fonts"),
   },
   {
@@ -242,7 +242,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "stylish text generator",
     title: "Stylish Text Generator — Bold & Graphic Unicode | FancifyText",
     description:
-      "Generate stylish text with bold, italic, glitch, and graphic Unicode. High-contrast—not cute bubble, not aesthetic fullwidth, and not cool lookalikes.",
+      "Stylish text generator. Generate stylish text with bold, italic, glitch, and graphic Unicode. High-contrast—not cute bubble, not aesthetic fullwidth, and not cool lookalikes.",
     fellowKeywords: fellows("stylish fonts", "create stylish text"),
   },
   {
@@ -253,7 +253,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cool text generator",
     title: "Cool Text Generator — Japanese, Squared & Letterlike Styles | FancifyText",
     description:
-      "Generate cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, squared, and letterlike styles. Copy and paste cool fonts for Discord, bios, and gaming names — not TTF downloads.",
+      "Cool text generator. Generate cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, squared, and letterlike styles. Copy and paste cool fonts for Discord, bios, and gaming names — not TTF downloads.",
     fellowKeywords: fellows(
       "cool fonts copy paste",
       "cool font generator",
@@ -272,7 +272,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "discord colored text generator",
     title: "Discord Color Text Generator — ANSI Copy & Paste | FancifyText",
     description:
-      "Make Discord colored text with ANSI code blocks. Copy red, blue, green, and more for messages and announcements.",
+      "Discord colored text generator. Make Discord colored text with ANSI code blocks. Copy red, blue, green, and more for messages and announcements.",
     fellowKeywords: fellows(
       "discord text color",
       "discord color text",
@@ -288,7 +288,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "discord font generator",
     title: "Discord Font Generator — Fancy Fonts Copy & Paste | FancifyText",
     description:
-      "Generate Discord fonts and nicknames with Unicode. Copy bold, script, bubble, and monospace styles.",
+      "Discord font generator. Generate Discord fonts and nicknames with Unicode. Copy bold, script, bubble, and monospace styles.",
     fellowKeywords: fellows(
       "discord font copy and paste",
       "discord text generator",
@@ -304,7 +304,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "tiktok font generator",
     title: "TikTok Font Generator — Profile & Caption Fonts | FancifyText",
     description:
-      "Create TikTok profile and caption fonts with aesthetic Unicode text. Copy and paste into your profile or posts.",
+      "TikTok font generator. Create TikTok profile and caption fonts with aesthetic Unicode text. Copy and paste into your profile or posts.",
     fellowKeywords: fellows("tiktok bio fonts", "tiktok font name"),
   },
   {
@@ -315,7 +315,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "instagram font generator",
     title: "Instagram Font Generator — Aesthetic Bio Font Changer | FancifyText",
     description:
-      "Change Instagram bio text with fancy Unicode fonts. Copy script, aesthetic, and bold styles instantly.",
+      "Instagram font generator. Change Instagram bio text with fancy Unicode fonts. Copy script, aesthetic, and bold styles instantly.",
     fellowKeywords: fellows(
       "instagram font changer",
       "instagram fonts copy and paste",
@@ -331,7 +331,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "html text generator",
     title: "HTML Text Generator — Rich Text Snippets | FancifyText",
     description:
-      "Generate HTML and rich text snippets—bold, color spans, headings, and pre blocks to copy and paste.",
+      "HTML text generator. Generate HTML and rich text snippets—bold, color spans, headings, and pre blocks to copy and paste.",
     fellowKeywords: fellows(
       "rich text generator",
       "colored text copy and paste",
@@ -361,7 +361,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "social media bio generator",
     title: "Social Media Bio Generator — Multi-Platform Bio Fonts | FancifyText",
     description:
-      "Build a multi-line social bio with Instagram, TikTok, X, and Discord character counts. Style each line in Unicode and copy the stacked result.",
+      "Social media bio generator. Build a multi-line social bio with Instagram, TikTok, X, and Discord character counts. Style each line in Unicode and copy the stacked result.",
     fellowKeywords: fellows(
       "bio font generator",
       "social bio generator",
@@ -376,7 +376,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "twitter font generator",
     title: "X / Twitter Font Generator — Display Name & Bio | FancifyText",
     description:
-      "Style an X (Twitter) display name and 160-character bio with Unicode fonts. Copy short, readable styles that survive the profile fields.",
+      "Twitter font generator. Style an X (Twitter) display name and 160-character bio with Unicode fonts. Copy short, readable styles that survive the profile fields.",
     fellowKeywords: fellows(
       "x font generator",
       "twitter fonts copy and paste",
@@ -391,7 +391,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "roblox font generator",
     title: "Roblox Font Generator — Username & Display Name | FancifyText",
     description:
-      "Preview Unicode styles for Roblox display names. See which fonts survive filters, plus a path to Roblox rich text tags.",
+      "Roblox font generator. Preview Unicode styles for Roblox display names. See which fonts survive filters, plus a path to Roblox rich text tags.",
     fellowKeywords: fellows(
       "roblox fonts copy and paste",
       "roblox name fonts",
@@ -406,7 +406,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "snapchat font generator",
     title: "Snapchat Font Generator — Display Name Styles | FancifyText",
     description:
-      "Copy Snapchat display-name fonts with bubble, bold, and script Unicode. Keep names short so they fit the Snapchat profile field.",
+      "Snapchat font generator. Copy Snapchat display-name fonts with bubble, bold, and script Unicode. Keep names short so they fit the Snapchat profile field.",
     fellowKeywords: fellows(
       "snapchat fonts copy and paste",
       "snapchat stylish text",
@@ -421,7 +421,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "facebook font generator",
     title: "Facebook Font Generator — Display Name Styles | FancifyText",
     description:
-      "Copy Facebook display-name fonts with bold, cursive, and small-caps Unicode. Keep the @username in plain letters so people can still find you.",
+      "Facebook font generator. Copy Facebook display-name fonts with bold, cursive, and small-caps Unicode. Keep the @username in plain letters so people can still find you.",
     fellowKeywords: fellows(
       "facebook fonts copy and paste",
       "facebook stylish text",
@@ -436,7 +436,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "small text generator",
     title: "Small Text Generator — Tiny Letters for Bios | FancifyText",
     description:
-      "Make small Unicode text for compact bios and tags (tiny superscript with small-caps fallback). Not a chemistry H₂O subscript tool and not a small-caps converter.",
+      "Small text generator. Make small Unicode text for compact bios and tags (tiny superscript with small-caps fallback). Not a chemistry H₂O subscript tool and not a small-caps converter.",
     fellowKeywords: fellows(
       "tiny text generator",
       "small text copy and paste",
@@ -451,7 +451,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "big text generator",
     title: "Big Text Generator — Copy Huge ASCII Letters | FancifyText",
     description:
-      "Turn short text into large ASCII / block letters you can copy and paste. Banner art for Discord, comments, and titles—not a Unicode bio font.",
+      "Big text generator. Turn short text into large ASCII / block letters you can copy and paste. Banner art for Discord, comments, and titles—not a Unicode bio font.",
     fellowKeywords: fellows(
       "ascii art text",
       "large text copy paste",
@@ -468,7 +468,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "mirror text generator",
     title: "Mirror Text Generator — Reverse Text Copy & Paste | FancifyText",
     description:
-      "Reverse your words into mirror-order text. Compare simple backwards letters with upside-down Unicode for memes and novelty bios.",
+      "Mirror text generator. Reverse your words into mirror-order text. Compare simple backwards letters with upside-down Unicode for memes and novelty bios.",
     fellowKeywords: fellows(
       "backwards text generator",
       "reverse text generator",
@@ -483,7 +483,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "old english text generator",
     title: "Old English Text Generator — Gothic Fraktur Fonts | FancifyText",
     description:
-      "Generate old English / gothic Unicode (Fraktur). Copy blackletter names for bios and clan tags—not the same as mathematical bold.",
+      "Old English text generator. Generate old English / gothic Unicode (Fraktur). Copy blackletter names for bios and clan tags—not the same as mathematical bold.",
     fellowKeywords: fellows(
       "gothic font generator",
       "old english font copy paste",
@@ -498,7 +498,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cool symbols copy and paste",
     title: "Cool Symbols Copy and Paste — Stars, Arrows & Marks | FancifyText",
     description:
-      "Copy cool Unicode symbols: stars, hearts, arrows, checks, and separators. A symbol list—not letter fonts and not kaomoji faces.",
+      "Cool symbols copy and paste. Copy cool Unicode symbols: stars, hearts, arrows, checks, and separators. A symbol list—not letter fonts and not kaomoji faces.",
     fellowKeywords: fellows(
       "cool symbols",
       "text symbols copy paste",
@@ -514,7 +514,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "case converter",
     title: "Case Converter — Sentence, Title, Upper & Lower | FancifyText",
     description:
-      "Convert text between sentence case, title case, capitalized, upper, lower, alternating, and inverse case. Plain readable text with a live word and character count.",
+      "Case converter. Convert text between sentence case, title case, capitalized, upper, lower, alternating, and inverse case. Plain readable text with a live word and character count.",
     fellowKeywords: fellows(
       "convert case",
       "title case converter",
@@ -531,7 +531,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "invisible character",
     title: "Invisible Character — Blank Text Copy & Paste | FancifyText",
     description:
-      "Copy invisible and blank characters that actually survive pasting. Compare blank glyphs against zero-width controls, with the right one for bios, names, and empty messages.",
+      "Invisible character. Copy invisible and blank characters that actually survive pasting. Compare blank glyphs against zero-width controls, with the right one for bios, names, and empty messages.",
     fellowKeywords: fellows(
       "blank text copy paste",
       "invisible text",
@@ -547,7 +547,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "text decorator",
     title: "Text Decorator — Wrap Words in Hearts & Frames | FancifyText",
     description:
-      "Decorate a word with hearts, stars, flowers, or brackets around it. Copy wrapped text for bios—this is not a per-letter font changer.",
+      "Text decorator. Decorate a word with hearts, stars, flowers, or brackets around it. Copy wrapped text for bios—this is not a per-letter font changer.",
     fellowKeywords: fellows(
       "text decorator copy paste",
       "fancy text symbols around name",
@@ -629,7 +629,8 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "cute kaomoji",
     title: "Cute Kaomojis Copy and Paste | FancifyText",
-    description: "Copy cute kaomoji and kawaii text faces for bios and chats.",
+    description:
+      "Copy cute kaomoji and kawaii text faces for bios and chats.",
     fellowKeywords: fellows("kawaii kaomoji", "cute text faces"),
   },
   {
@@ -659,7 +660,8 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "heart kaomoji",
     title: "Heart Kaomojis Copy and Paste | FancifyText",
-    description: "Copy heart kaomoji and love text faces for messages.",
+    description:
+      "Copy heart kaomoji and love text faces for messages.",
     fellowKeywords: fellows("love kaomoji", "heart text face"),
   },
   {
@@ -834,7 +836,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "about fancifytext",
     title: "About FancifyText — Unicode Fancy Text Tools",
     description:
-      "Who runs FancifyText, how the Unicode fancy text generator works, and how we keep these free copy-and-paste tools accurate.",
+      "About FancifyText. Who runs FancifyText, how the Unicode fancy text generator works, and how we keep these free copy-and-paste tools accurate.",
     fellowKeywords: fellows("about fancify text", "who made fancifytext"),
     navLabel: "About",
   },
@@ -858,7 +860,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "discord colored text not working",
     title: "Discord Colored Text Not Working — Fixes | FancifyText",
     description:
-      "Why Discord ANSI colors fail (missing code block, mobile client, paste stripped) and how to fix them with a fresh ```ansi copy.",
+      "Discord colored text not working? Why Discord ANSI colors fail (missing code block, mobile client, paste stripped) and how to fix them with a fresh ```ansi copy.",
     fellowKeywords: fellows(
       "discord color text not working",
       "discord ansi not showing",
@@ -872,7 +874,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "how to change instagram bio font",
     title: "How to Change Your Instagram Bio Font | FancifyText",
     description:
-      "Instagram has no font picker. This guide shows how to paste Unicode bio fonts, stay inside 150 characters, and keep the bio readable.",
+      "How to change Instagram bio font. Instagram has no font picker. This guide shows how to paste Unicode bio fonts, stay inside 150 characters, and keep the bio readable.",
     fellowKeywords: fellows(
       "instagram bio font",
       "change instagram font",
@@ -887,7 +889,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "how unicode fancy fonts work",
     title: "How Unicode Fancy Fonts Work | FancifyText",
     description:
-      "Fancy social fonts are look-alike Unicode characters, not installed typefaces. Learn the blocks we map, why boxes appear, and how that affects search.",
+      "How Unicode fancy fonts work. Fancy social fonts are look-alike Unicode characters, not installed typefaces. Learn the blocks we map, why boxes appear, and how that affects search.",
     fellowKeywords: fellows(
       "unicode fonts copy paste",
       "why fancy text shows boxes",
@@ -902,7 +904,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "how to change facebook name font",
     title: "How to Change Your Facebook Name Font | FancifyText",
     description:
-      "Facebook has no name font picker. Paste Unicode into the display name, keep the username plain, and stay inside Facebook’s name rules.",
+      "How to change Facebook name font. Facebook has no name font picker. Paste Unicode into the display name, keep the username plain, and stay inside Facebook’s name rules.",
     fellowKeywords: fellows(
       "facebook name fonts",
       "change facebook font",
@@ -917,7 +919,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "whatsapp stylish text",
     title: "WhatsApp Stylish Text vs Built-in Formatting | FancifyText",
     description:
-      "When to use WhatsApp’s *bold* markdown and when to paste Unicode stylish text in status, group names, and chats.",
+      "WhatsApp stylish text. When to use WhatsApp’s *bold* markdown and when to paste Unicode stylish text in status, group names, and chats.",
     fellowKeywords: fellows(
       "whatsapp stylish fonts",
       "whatsapp fancy text",
@@ -932,7 +934,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "binary text generator",
     title: "Binary Text Generator — Text to Binary Copy & Paste | FancifyText",
     description:
-      "Convert text to UTF-8 binary (and Morse). Copy geeky encoded text for Discord, homework, and bios.",
+      "Binary text generator. Convert text to UTF-8 binary (and Morse). Copy geeky encoded text for Discord, homework, and bios.",
     fellowKeywords: fellows("text to binary", "binary code generator", "morse code generator"),
     navLabel: "Binary",
   },
@@ -944,7 +946,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "roblox fancy text",
     title: "Roblox Fancy Text & Rich Text Guide | FancifyText",
     description:
-      "How to use Unicode fancy text and limited rich-text tags in Roblox names, bios, and UI—plus what gets filtered.",
+      "Roblox fancy text. How to use Unicode fancy text and limited rich-text tags in Roblox names, bios, and UI—plus what gets filtered.",
     fellowKeywords: fellows("roblox font generator", "roblox stylish name"),
   },
   {
@@ -955,7 +957,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "fancy text shows as boxes",
     title: "Why Fancy Text Shows as Boxes (and Fixes) | FancifyText",
     description:
-      "Empty tofu boxes mean a missing glyph. Learn which Unicode styles are safest on iOS, Android, and Windows.",
+      "Fancy text shows as boxes. Empty tofu boxes mean a missing glyph. Learn which Unicode styles are safest on iOS, Android, and Windows.",
     fellowKeywords: fellows("unicode tofu boxes", "fancy font not showing"),
   },
   {
@@ -966,7 +968,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "do fancy fonts break screen readers",
     title: "Do Fancy Fonts Break Screen Readers? (2026) | FancifyText",
     description:
-      "NVDA 2025.1 now reads Unicode bold and cursive as plain words by default. What still breaks, what to do instead.",
+      "Do fancy fonts break screen readers? NVDA 2025.1 now reads Unicode bold and cursive as plain words by default. What still breaks, what to do instead.",
     fellowKeywords: fellows(
       "unicode text accessibility",
       "is unicode bold accessible",
@@ -982,7 +984,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "snapchat name fonts",
     title: "Snapchat Name Fonts Copy and Paste | FancifyText",
     description:
-      "Snapchat has no font picker. Paste Unicode into display names carefully—filters reject many symbols.",
+      "Snapchat name fonts. Snapchat has no font picker. Paste Unicode into display names carefully—filters reject many symbols.",
     fellowKeywords: fellows("snapchat fancy name", "change snapchat font"),
   },
   {
@@ -993,7 +995,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "search fancifytext tools",
     title: "Search Fancy Text Tools | FancifyText",
     description:
-      "Find FancifyText generators by keyword—bold, cursive, Discord, Instagram, kaomoji, and more.",
+      "Search FancifyText tools. Find FancifyText generators by keyword—bold, cursive, Discord, Instagram, kaomoji, and more.",
     fellowKeywords: fellows("fancy text tools list"),
   },
 ];

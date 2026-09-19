@@ -54,54 +54,30 @@ export function CursiveLetterView({
     letterCase === "capital"
       ? [
           {
-            question: `What is cursive capital ${upper}?`,
-            answer: `Cursive capital ${upper} is the Unicode script letter ${capital}. It looks handwritten and can be copied into Instagram, Discord, TikTok, docs, and messages that support fancy Unicode fonts.`,
+            question: `What character is this cursive ${upper}?`,
+            answer: `${capital} is Mathematical Script capital ${upper}—a different code point from a normal ${upper}. Copy the glyph here. For a whole name, use the cursive generator instead of stitching letters.`,
           },
           {
-            question: `How to form cursive ${upper} neatly?`,
-            answer: `On paper, start with a smooth entry stroke, keep the ${upper} loop balanced, and exit into the next letter. Online, skip handwriting practice—copy ${capital} from this page and paste it where you need a cursive ${upper}.`,
+            question: `Will ${capital} paste into Instagram or Discord?`,
+            answer: `Usually in bios, nicknames, and captions. Username fields are pickier. A box means the device font is missing that glyph.`,
           },
           {
-            question: `Where to use cursive ${upper} fonts?`,
-            answer: `Use cursive capital ${upper} in display names, bios, titles, worksheets, invitations, and aesthetic captions. Pair it with small cursive letters for a full fancy name.`,
-          },
-          {
-            question: `Can I copy cursive ${upper} fonts online?`,
-            answer: `Yes. Tap Copy under the large glyph to copy ${capital} instantly. No app install or font download is required.`,
-          },
-          {
-            question: `Is cursive ${upper} the same as print ${upper}?`,
-            answer: `No. Print ${upper} is a normal Latin letter. Cursive ${upper} (${capital}) is a different Unicode character that only looks like a script font.`,
-          },
-          {
-            question: `How do I type small ${upper} in cursive?`,
-            answer: `Copy ${small} on this page, or open the cursive text generator to convert a whole word or name at once.`,
+            question: `How do I get a full cursive word?`,
+            answer: `Type it on the cursive text generator and copy Cursive or Bold Cursive. Building a name from this A–Z grid is slower and easy to mix up.`,
           },
         ]
       : [
           {
-            question: `What is ${letter} in cursive?`,
-            answer: `${upper} in cursive is the Unicode script letter ${small}. Searchers looking for “${letter} in cursive” usually want this copy-paste glyph for names and bios.`,
+            question: `What is this small cursive ${letter}?`,
+            answer: `${small} is Mathematical Script small ${letter}, not a handwriting font. Copy it here; convert a whole word on the cursive generator.`,
           },
           {
-            question: `How to write ${letter} in cursive neatly?`,
-            answer: `On paper, keep the ${letter} curve smooth and connected. Digitally, copy ${small} from this page—it is already a cursive-style character.`,
+            question: `Capital or small?`,
+            answer: `They are different characters: ${capital} vs ${small}. Use the matching page for the size you need, or type the full name on the hub.`,
           },
           {
-            question: `Where can I use small cursive ${upper}?`,
-            answer: `Paste ${small} into Instagram bios, Discord nicknames, TikTok captions, notes, and anywhere Unicode fancy text is allowed.`,
-          },
-          {
-            question: `Can I copy ${letter} in cursive online for free?`,
-            answer: `Yes. Use the Copy button to grab ${small}. Everything runs in your browser.`,
-          },
-          {
-            question: `Is ${letter} in cursive the same as capital cursive ${upper}?`,
-            answer: `They are related but different characters: small ${small} vs capital ${capital}. Use the matching page for the size you need.`,
-          },
-          {
-            question: `How do I make a full name in cursive?`,
-            answer: `Open the cursive text generator, type your name, and copy Cursive / Script or Bold Cursive. That is faster and more accurate than combining letters from the A–Z grid.`,
+            question: `Can I practice handwriting from this glyph?`,
+            answer: `It is a shape reference, but letters will not join like calligraphy on paper. For bios, paste ${small} as-is.`,
           },
         ];
 
@@ -209,31 +185,30 @@ export function CursiveLetterView({
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="worksheet-heading">
-        <h2 id="worksheet-heading">Cursive worksheet tips for {upper}</h2>
+        <h2 id="worksheet-heading">One glyph, not a joined alphabet</h2>
         <ol>
-          <li>Study the Unicode glyph {primary} as your model for {kw}.</li>
           <li>
-            Practice the entry and exit strokes so {upper} connects smoothly to
-            neighboring letters.
+            Use {primary} as a shape model for {kw} if you are practicing on
+            paper. Letters will not connect the way a calligraphy font does.
           </li>
           <li>
-            For digital use, copy {primary} and paste it into your name, bio, or
-            caption—no special keyboard needed.
-          </li>
-          <li>
-            Mix capital {capital} with small cursive letters for a polished
-            fancy signature.
+            For a digital name or bio, skip this grid and type the whole word on
+            the cursive generator.
           </li>
         </ol>
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="uses-heading">
-        <h2 id="uses-heading">Where to use cursive {upper}</h2>
+        <h2 id="uses-heading">A single letter is rarely the whole job</h2>
         <ul>
-          <li>Instagram and TikTok bios and display names</li>
-          <li>Discord nicknames and channel topics</li>
-          <li>School worksheets and handwriting practice sheets</li>
-          <li>Invitations, aesthetic quotes, and username flair</li>
+          <li>
+            Worksheets and monograms—copy {primary} from the button above.
+          </li>
+          <li>
+            Names, bios, and Discord nicks—{" "}
+            <Link href="/cursive-text-generator/">convert the whole word</Link>
+            .
+          </li>
         </ul>
       </section>
 

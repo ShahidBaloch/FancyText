@@ -34,7 +34,10 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
           page={page}
           faq={config.faq}
           crumbName={h1}
-          howTo={{ name: `How to use ${shortName.toLowerCase()}`, steps: config.howToSteps }}
+          howTo={{
+            name: `How to use ${h1.toLowerCase()}`,
+            steps: config.howToSteps,
+          }}
         />
       ) : null}
 
@@ -47,7 +50,7 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
 
       <PageHero
         h1={h1}
-        lead={page?.description ?? "Copy and paste Unicode fancy text instantly."}
+        lead={page?.description ?? "Unicode letters you can copy into a bio or nickname."}
       />
 
       <StyleSpokeTool
@@ -78,12 +81,14 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
       ) : null}
 
       <section className="seo-section" aria-labelledby="examples-heading">
-        <h2 id="examples-heading">Examples for bios & nicknames</h2>
+        <h2 id="examples-heading">
+          {config.examplesHeading ?? "Try a short sample"}
+        </h2>
         <SampleCopyList samples={config.examples} styleId={config.styleId} />
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
-        <h2 id="how-heading">How to use</h2>
+        <h2 id="how-heading">{`How to use ${h1.toLowerCase()}`}</h2>
         <ol>
           {config.howToSteps.map((step) => (
             <li key={step}>{step}</li>
@@ -92,7 +97,7 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="uses-heading">
-        <h2 id="uses-heading">Where it works</h2>
+        <h2 id="uses-heading">{config.usesHeading ?? "Good places to paste it"}</h2>
         <ul>
           {config.uses.map((use) => (
             <li key={use}>{use}</li>
@@ -101,7 +106,9 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="compat-heading">
-        <h2 id="compat-heading">Platform compatibility</h2>
+        <h2 id="compat-heading">
+          {config.compatHeading ?? "What breaks, and what usually does not"}
+        </h2>
         <ul>
           {config.compatibilityNotes.map((note) => (
             <li key={note}>{note}</li>
