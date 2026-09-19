@@ -1,6 +1,7 @@
 import Script from "next/script";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+const GA_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-C2GKTBXQ4D";
 
 /** Loads GA4 only when NEXT_PUBLIC_GA_MEASUREMENT_ID is set (e.g. on Vercel). */
 export function GoogleAnalytics() {
