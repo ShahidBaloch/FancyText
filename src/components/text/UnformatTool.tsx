@@ -138,7 +138,7 @@ export function UnformatTool({ initialText = SAMPLE }: UnformatToolProps) {
 
       {result.findings.length ? (
         <div className="li-warnings">
-          <h3 className="li-symbol-heading">What we found</h3>
+          <h2 className="li-symbol-heading">What we found</h2>
           <ul className="li-findings">
             {result.findings.map((finding) => (
               <li key={finding.label}>

@@ -279,7 +279,7 @@ export function AiToLinkedIn({ initialText = SAMPLE }: AiToLinkedInProps) {
 
       {warnings.length ? (
         <div className="li-warnings">
-          <h3 className="li-symbol-heading">What this conversion changed</h3>
+          <h2 className="li-symbol-heading">What this conversion changed</h2>
           <ul>
             {warnings.map((warning) => (
               <li key={warning.label}>
@@ -292,7 +292,7 @@ export function AiToLinkedIn({ initialText = SAMPLE }: AiToLinkedInProps) {
 
       {findings.length ? (
         <div className="li-warnings">
-          <h3 className="li-symbol-heading">Punctuation tidied</h3>
+          <h2 className="li-symbol-heading">Punctuation tidied</h2>
           <ul className="li-findings">
             {findings.map((finding) => (
               <li key={finding.label}>
