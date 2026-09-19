@@ -273,11 +273,18 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         "Joke posts and meme captions",
         "Showing old vs new text in bios",
         "Light spoiler or “done” styling in messages",
+        "Sale prices with the old amount visibly crossed out",
       ],
       compatibilityNotes: [
         "Combining marks depend on app support—works in many modern messengers.",
         "Very dense strikethrough on long paragraphs can look cluttered on small screens.",
+        "Discord messages have native ~~markdown~~ strikethrough; Unicode strikethrough is for nicknames and apps without markdown.",
+        "Underline uses a separate combining mark in the second chip—do not stack both on the same word unless you want a messy overlay.",
       ],
+      difference: {
+        heading: "Unicode strikethrough, not Discord markdown",
+        body: "This tool draws a line through each letter with combining marks, so it works anywhere Unicode paste is allowed—including display names. Discord chat already supports ~~strikethrough~~ markdown; use that in messages and this generator when you need crossed-out text outside markdown fields.",
+      },
       faq: [
       {
         question: "What is a strikethrough text generator?",
@@ -298,6 +305,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         question: "Does strikethrough work on Discord?",
         answer:
           "Discord has its own ~~markdown~~ strikethrough in messages. Unicode strikethrough is still useful for nicknames and platforms without markdown.",
+      },
+      {
+        question: "Can I underline instead of cross out?",
+        answer:
+          "Yes. Switch to the underline chip to add a combining underline mark. It uses the same paste-anywhere Unicode approach as strikethrough.",
       },
     ],
     },
@@ -499,11 +511,18 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       "Funny messages and meme captions",
       "Reverse jokes in Discord or WhatsApp",
       "Novelty social bios",
+      "Puzzle captions where readers turn their phone upside down",
     ],
     compatibilityNotes: [
       "Not every letter has a perfect upside-down mirror.",
       "Punctuation may flip oddly—that is normal for Unicode flip tools.",
+      "This page rotates glyphs and reverses order. The mirror text generator only reverses letter order without rotating shapes.",
+      "Long flipped strings can be hard to read on narrow screens—keep jokes to one short line.",
     ],
+    difference: {
+      heading: "Upside-down glyphs, not just backwards spelling",
+      body: "Upside-down text maps letters to inverted Unicode symbols and reverses the string so it reads flipped. The mirror text generator only reverses order (hello → olleh) without rotating each character. Use this URL for “flip text upside down”; use mirror when you only want backwards spelling.",
+    },
     faq: [
       {
         question: "What is upside down text?",
@@ -520,6 +539,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         answer:
           "Unicode only provides upside-down shapes for a subset of Latin letters and symbols. Unmapped characters stay as-is.",
       },
+      {
+        question: "Upside down vs mirror text?",
+        answer:
+          "Upside-down flips glyph shapes and reverses order. Mirror text only reverses order with normal letters. Both are on this site as separate tools when you need one effect without the other.",
+      },
     ],
   }),
   spoke("glitch-text-generator", "glitch", ["glitch"], {
@@ -535,11 +559,18 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       "Horror / creepypasta aesthetic usernames",
       "Meme and glitch-art captions",
       "Novelty Discord nicknames (where allowed)",
+      "Short horror-game or ARG-style status lines",
     ],
     compatibilityNotes: [
       "Heavy glitch text can break layout in some apps—use shorter strings.",
       "Screen readers may struggle with dense combining marks; avoid for important info.",
+      "This is not the stylish text generator: that page mixes bold, italic, and glitch in a gallery. Here every character is mark-heavy Zalgo output.",
+      "Platforms with strict moderation may reject extreme nicknames—test a short version before committing.",
     ],
+    difference: {
+      heading: "Zalgo combining marks, not a bold font swap",
+      body: "Glitch text stacks Unicode combining diacritical marks above and below each letter. Stylish text and bold generators replace letters with mathematical alphanumeric symbols. If you want readable bold with a glitch option in one gallery, use stylish text; use this page when the whole string should look corrupted.",
+    },
     faq: [
       {
         question: "What is a glitch text generator?",
@@ -560,6 +591,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         question: "Why does glitch text look broken on mobile?",
         answer:
           "Many combining marks in one character cell can overflow line height on small screens. Reduce length for better readability.",
+      },
+      {
+        question: "Glitch vs stylish text?",
+        answer:
+          "Stylish text is a multi-style gallery (bold, italic, glitch as one chip). This generator applies Zalgo-style marks to the whole input by default—better when every letter should look cursed.",
       },
     ],
   }),
@@ -658,7 +694,13 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
     compatibilityNotes: [
       "Reverse text is plain letters, so it works almost everywhere.",
       "Upside-down uses special Unicode and may box out on older phones.",
+      "Pick mirror when you only need backwards spelling; pick upside-down when the joke depends on rotated glyphs.",
+      "Very long reversed sentences are still readable but annoying—one or two words land best in usernames.",
     ],
+    difference: {
+      heading: "Backwards order with an upside-down option in the gallery",
+      body: "Mirror text reverses character order using normal letters (hello → olleh). The dedicated upside-down text generator rotates glyphs and reverses the string. This page is the hub for both: copy the mirror row for simple reverse, or the upside-down row when you want flipped shapes.",
+    },
     faq: [
       {
         question: "What is a mirror text generator?",
