@@ -7,38 +7,86 @@ Contact: hello@fancifytext.com
 
 ## What this site does
 
-FancifyText converts normal letters into Unicode look-alike “fonts” (bold, cursive, bubble, aesthetic, and more) that users copy and paste into Instagram, Discord, TikTok, WhatsApp, and similar apps. It does **not** install TTF/OTF font files.
+FancifyText converts normal letters into Unicode look-alike “fonts” (bold, cursive, bubble, aesthetic, and more) that users copy and paste into Instagram, Discord, TikTok, WhatsApp, LinkedIn, and similar apps. It does **not** install TTF/OTF font files.
 
 ## Primary tools
 
-- / — Fancy text generator (hub)
-- /copy-paste-fonts/ — Full style gallery
-- /cursive-text-generator/ — Script / cursive
-- /bold-text-generator/ — Bold Unicode
-- /discord-color-text/ — Discord ANSI colors
-- /discord-font-generator/ — Discord nicknames
-- /instagram-font-generator/ — Instagram bio fonts
-- /social-media-bio-generator/ — Multi-platform bio builder with limits
-- /kaomoji/ — Japanese emoticons by emotion
-- /cool-symbols/ — Symbol copy grid
-- /text-decorator/ — Frame / wrap text
-- /binary-text-generator/ — Text to binary / Morse
-- /search/ — Site tool search
+- / — Home — Free fancy text generator
+- /big-text-generator/ — Big Text — Big text generator
+- /binary-text-generator/ — Binary — Binary text generator
+- /bold-text-generator/ — Bold — Bold text generator
+- /bubble-text-generator/ — Bubble — Bubble text generator
+- /case-converter/ — case converter — Convert sentence, title, upper, lower, alternating, and inverse case
+- /cool-symbols/ — Symbols — Cool symbols copy and paste
+- /copy-paste-fonts/ — Copy & Paste — Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII
+- /cursive-text-generator/ — Cursive — Cursive text generator
+- /glitch-text-generator/ — glitch text generator — Glitch text generator
+- /invisible-character/ — invisible character — Copy invisible and blank characters that survive pasting
+- /italic-text-generator/ — Italic — Italic text generator
+- /mirror-text-generator/ — mirror text generator — Mirror text generator
+- /monospace-text-generator/ — Monospace — Monospace text generator
+- /old-english-text-generator/ — old english text generator — Old English text generator
+- /small-caps-text-generator/ — Small Caps — Small caps generator
+- /small-text-generator/ — small text generator — Small Unicode text for compact bios (tiny superscript with small-caps fallback)
+- /strikethrough-text-generator/ — strikethrough text generator — Strikethrough text generator
+- /superscript-subscript-generator/ — superscript and subscript generator — Superscript and subscript generator
+- /text-decorator/ — text decorator — Text decorator
+- /unformat-text/ — convert fancy text to normal — Paste styled Unicode and get plain letters: bold, script, bubble, fullwidth, small caps, and Zalgo decoded
+- /upside-down-text-generator/ — upside down text — Upside down text
+
+## Collections & name fonts
+
+- /aesthetic-fonts/ — aesthetic fonts — Aesthetic fonts
+- /cool-text-generator/ — Cool Text — Cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, and squared styles
+- /cute-fonts/ — cute fonts copy and paste — Cute fonts copy and paste
+- /name-font-generator/ — name fonts — Name fonts
+- /stylish-text-generator/ — stylish text generator — Stylish text generator
+
+## Platform & LinkedIn tools
+
+- /chatgpt-to-linkedin/ — chatgpt to linkedin formatter — Paste Markdown from ChatGPT, Claude, or Gemini
+- /discord-color-text/ — discord colored text generator — Discord colored text generator
+- /discord-font-generator/ — Discord — Discord font generator
+- /facebook-font-generator/ — facebook font generator — Facebook font generator
+- /html-text-generator/ — html text generator — HTML text generator
+- /instagram-font-generator/ — Instagram — Instagram font generator
+- /linkedin-text-formatter/ — LinkedIn — Bold and italic for LinkedIn posts, with a feed preview, “see more” fold, and field limits
+- /roblox-font-generator/ — roblox font generator — Roblox font generator
+- /snapchat-font-generator/ — snapchat font generator — Snapchat font generator
+- /social-media-bio-generator/ — social media bio generator — Social media bio generator
+- /tiktok-font-generator/ — tiktok font generator — TikTok font generator
+- /twitter-font-generator/ — twitter font generator — Twitter font generator
+- /whatsapp-fonts/ — whatsapp fonts — Generate WhatsApp fonts for status, group names, and chats
+
+## Kaomoji & emoticons
+
+- /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji and crying text faces
+- /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji and kawaii text faces for bios and chats
+- /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji and love text faces for messages
+- /kaomoji/ — Kaomoji — Free kaomoji copy and paste
+- /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) and variants
+- /shrug-emoticon/ — shrug emoticon — Copy the shrug emoticon ¯\_(ツ)_/¯ and variants
 
 ## Guides
 
-- /guides/how-unicode-fancy-fonts-work/
-- /guides/instagram-bio-fonts/
-- /guides/discord-colored-text-not-working/
-- /guides/whatsapp-stylish-text/
-- /guides/facebook-name-fonts/
-- /guides/roblox-fancy-text/
-- /guides/fancy-text-shows-boxes/
-- /guides/snapchat-name-fonts/
+- /guides/discord-colored-text-not-working/ — discord colored text not working — Discord colored text not working
+- /guides/do-fancy-fonts-break-screen-readers/ — do fancy fonts break screen readers — Do fancy fonts break screen readers
+- /guides/facebook-name-fonts/ — how to change facebook name font — How to change Facebook name font
+- /guides/fancy-text-shows-boxes/ — fancy text shows as boxes — Fancy text shows as boxes
+- /guides/how-unicode-fancy-fonts-work/ — how unicode fancy fonts work — How Unicode fancy fonts work
+- /guides/instagram-bio-fonts/ — how to change instagram bio font — How to change Instagram bio font
+- /guides/linkedin-formatting-not-working/ — linkedin formatting not working — Why bold fails in a LinkedIn headline, why blank lines vanish on mobile, and why pasted text loses its spacing
+- /guides/roblox-fancy-text/ — roblox fancy text — Roblox fancy text
+- /guides/snapchat-name-fonts/ — snapchat name fonts — Snapchat name fonts
+- /guides/whatsapp-stylish-text/ — whatsapp stylish text — WhatsApp stylish text
+
+## Trust & search
+
+- /about/ — About — About FancifyText
+- /contact/ — Contact — Contact FancifyText by email (hello@fancifytext
+- /search/ — search fancifytext tools — Search FancifyText tools
 
 ## Policies
 
-- /about/
-- /contact/
-- /privacy/
-- /terms/
+- /privacy/ — Privacy policy
+- /terms/ — Terms of use

@@ -8,6 +8,8 @@
   --muted: #5c5c5c;
   --line: #e5e5e5;
   --line-strong: #d1d1d1;
+  /** Visible control boundary on white (~3.1:1 vs #fff for WCAG 1.4.11). */
+  --control-line: #949494;
   --panel: #ffffff;
   --panel-solid: #ffffff;
   --accent: #ff5e1f;
@@ -303,7 +305,7 @@ a {
   gap: 1.75rem;
   padding: 1.75rem 1.35rem 1.5rem;
   border-radius: var(--radius-lg);
-  background: var(--accent);
+  background: var(--accent-deep);
   color: #fff;
   isolation: isolate;
 }
@@ -361,11 +363,11 @@ a {
 
 .home-brand {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
+  color: #fff;
 }
 
 .home-title {
@@ -381,7 +383,7 @@ a {
 .home-lead {
   margin: 0.85rem 0 0;
   max-width: 34rem;
-  color: rgba(255, 255, 255, 0.86);
+  color: #fff;
   font-size: 1.05rem;
   line-height: 1.55;
 }
@@ -493,11 +495,11 @@ a {
 
 .home-specimen-label {
   margin: 0 0 0.55rem;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .home-specimen-text {
@@ -633,7 +635,7 @@ a {
 .field-label {
   display: block;
   margin-bottom: 0.45rem;
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -643,7 +645,7 @@ a {
 .text-input {
   width: 100%;
   resize: vertical;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--control-line);
   border-radius: 10px;
   background: var(--panel-solid);
   color: var(--ink);
@@ -674,7 +676,7 @@ a {
 }
 
 .style-chip {
-  border: 1px solid var(--line);
+  border: 1px solid var(--control-line);
   background: var(--panel-solid);
   color: var(--ink);
   border-radius: 999px;
@@ -1070,7 +1072,7 @@ a.use-card:hover {
 .gallery-cat {
   display: block;
   margin-top: 0.15rem;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -1107,8 +1109,8 @@ a.use-card:hover {
   margin-right: 0.3rem;
   padding: 0.12rem 0.45rem;
   border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  font-size: 0.68rem;
+  border: 1px solid var(--control-line);
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--muted);
@@ -2455,7 +2457,7 @@ a.use-card:hover {
   min-width: 2.35rem;
   min-height: 2.35rem;
   padding: 0 0.5rem;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--control-line);
   border-radius: 8px;
   background: var(--panel);
   color: var(--ink);
