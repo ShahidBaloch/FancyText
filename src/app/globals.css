@@ -284,8 +284,9 @@ a {
   background: var(--bg-deep);
 }
 
+/* --accent on --accent-soft is only 2.82:1; --accent-deep clears AA at 4.79:1. */
 .nav-link.is-active {
-  color: var(--accent);
+  color: var(--accent-deep);
   background: var(--accent-soft);
 }
 
@@ -2705,7 +2706,10 @@ a.use-card:hover {
 }
 
 .li-check input {
-  margin-top: 0.2rem;
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.12rem;
   accent-color: var(--accent);
 }
 

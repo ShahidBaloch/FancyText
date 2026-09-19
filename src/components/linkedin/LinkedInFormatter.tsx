@@ -271,7 +271,7 @@ export function LinkedInFormatter({
       </div>
 
       <div className="li-preview-head">
-        <h3 className="li-preview-title">Feed preview</h3>
+        <h2 className="li-preview-title">Feed preview</h2>
         <div className="li-device" role="group" aria-label="Preview width">
           {(["desktop", "mobile"] as const).map((value) => (
             <button
@@ -384,7 +384,7 @@ export function LinkedInFormatter({
             </li>
           ))}
         </ul>
-        <h4 className="li-symbol-heading">Section dividers</h4>
+        <h3 className="li-symbol-heading">Section dividers</h3>
         <ul className="li-symbol-grid">
           {DIVIDER_LINES.map((divider) => (
             <li key={divider.label}>
