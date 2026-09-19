@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "check:unicode": "node scripts/check-unicode.mjs",
+    "check:text": "node scripts/check-text-pipeline.mjs",
     "check:sitemap": "node scripts/write-sitemap.mjs"
   },
   "dependencies": {

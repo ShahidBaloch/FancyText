@@ -414,6 +414,58 @@ export const PAGES: PageEntry[] = [
     ),
   },
   {
+    phase: 7,
+    priority: "P0",
+    url: "/linkedin-text-formatter/",
+    group: "E_Platform",
+    primaryKeyword: "linkedin text formatter",
+    title: "LinkedIn Text Formatter — Bold & Italic for Posts | FancifyText",
+    description:
+      "Select words and make them bold or italic for LinkedIn posts, with a feed preview that shows the “see more” fold and every field limit. Hand formatting — paste AI Markdown into the ChatGPT to LinkedIn tool instead.",
+    fellowKeywords: fellows(
+      "linkedin bold text",
+      "linkedin font generator",
+      "linkedin post formatter",
+      "bold text for linkedin",
+      "linkedin italic text",
+    ),
+    navLabel: "LinkedIn",
+  },
+  {
+    phase: 7,
+    priority: "P0",
+    url: "/chatgpt-to-linkedin/",
+    group: "E_Platform",
+    primaryKeyword: "chatgpt to linkedin formatter",
+    title: "ChatGPT to LinkedIn Formatter — Markdown to Post | FancifyText",
+    description:
+      "Paste Markdown from ChatGPT, Claude, or Gemini and get LinkedIn-ready text: **bold** and ## headings converted, bullets fixed, em dashes tidied. Not a post writer and not the hand formatter.",
+    fellowKeywords: fellows(
+      "markdown to linkedin",
+      "convert chatgpt text to linkedin post",
+      "paste chatgpt into linkedin",
+      "markdown not working on linkedin",
+      "ai text formatter for linkedin",
+    ),
+  },
+  {
+    phase: 7,
+    priority: "P1",
+    url: "/unformat-text/",
+    group: "D_Style_Other",
+    primaryKeyword: "convert fancy text to normal",
+    title: "Convert Fancy Text to Normal — Unicode to Plain Text | FancifyText",
+    description:
+      "Paste styled Unicode and get plain letters back: bold, script, bubble, fullwidth, small caps, and Zalgo marks all decoded. The reverse of a font generator — not a case converter.",
+    fellowKeywords: fellows(
+      "unicode to text converter",
+      "remove fancy font from text",
+      "unformat text",
+      "fancy text to normal text",
+      "strip unicode styling",
+    ),
+  },
+  {
     phase: 6,
     priority: "P2",
     url: "/facebook-font-generator/",
@@ -988,6 +1040,22 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows("snapchat fancy name", "change snapchat font"),
   },
   {
+    phase: 7,
+    priority: "P1",
+    url: "/guides/linkedin-formatting-not-working/",
+    group: "I_Guides",
+    primaryKeyword: "linkedin formatting not working",
+    title: "LinkedIn Formatting Not Working — Bold, Line Breaks & Headlines | FancifyText",
+    description:
+      "Why bold fails in a LinkedIn headline, why blank lines vanish on mobile, and why pasted text loses its spacing — with the fix for each.",
+    fellowKeywords: fellows(
+      "linkedin bold not working",
+      "linkedin line breaks not working",
+      "linkedin invalid characters headline",
+      "linkedin post spacing",
+    ),
+  },
+  {
     phase: 6,
     priority: "P2",
     url: "/search/",
@@ -1001,7 +1069,7 @@ export const PAGES: PageEntry[] = [
 ];
 
 /** Highest build phase with live routes (bump as phases ship). */
-export const LIVE_MAX_PHASE = 6;
+export const LIVE_MAX_PHASE = 7;
 
 export function getPageByUrl(url: string): PageEntry | undefined {
   return PAGES.find((p) => p.url === url);
@@ -1032,20 +1100,51 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/copy-paste-fonts/",
     "/bold-text-generator/",
     "/cursive-text-generator/",
+    "/linkedin-text-formatter/",
     "/discord-color-text/",
     "/instagram-font-generator/",
     "/cool-text-generator/",
-    "/big-text-generator/",
-    "/cool-symbols/",
+    "/unformat-text/",
   ],
   "/bold-text-generator/": [
     "/",
     "/copy-paste-fonts/",
     "/italic-text-generator/",
+    "/linkedin-text-formatter/",
     "/discord-font-generator/",
     "/instagram-font-generator/",
     "/whatsapp-fonts/",
-    "/old-english-text-generator/",
+  ],
+  "/linkedin-text-formatter/": [
+    "/chatgpt-to-linkedin/",
+    "/guides/linkedin-formatting-not-working/",
+    "/bold-text-generator/",
+    "/unformat-text/",
+    "/social-media-bio-generator/",
+    "/guides/do-fancy-fonts-break-screen-readers/",
+  ],
+  "/chatgpt-to-linkedin/": [
+    "/linkedin-text-formatter/",
+    "/guides/linkedin-formatting-not-working/",
+    "/unformat-text/",
+    "/html-text-generator/",
+    "/case-converter/",
+    "/guides/how-unicode-fancy-fonts-work/",
+  ],
+  "/unformat-text/": [
+    "/case-converter/",
+    "/linkedin-text-formatter/",
+    "/chatgpt-to-linkedin/",
+    "/guides/how-unicode-fancy-fonts-work/",
+    "/guides/do-fancy-fonts-break-screen-readers/",
+    "/",
+  ],
+  "/guides/linkedin-formatting-not-working/": [
+    "/linkedin-text-formatter/",
+    "/chatgpt-to-linkedin/",
+    "/unformat-text/",
+    "/invisible-character/",
+    "/guides/do-fancy-fonts-break-screen-readers/",
   ],
   "/italic-text-generator/": [
     "/bold-text-generator/",
@@ -1126,12 +1225,12 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/case-converter/": [
     "/",
+    "/unformat-text/",
     "/small-text-generator/",
     "/big-text-generator/",
     "/bold-text-generator/",
     "/guides/how-unicode-fancy-fonts-work/",
-    "/copy-paste-fonts/",
-    "/binary-text-generator/",
+    "/chatgpt-to-linkedin/",
   ],
   "/binary-text-generator/": [
     "/big-text-generator/",
@@ -1162,6 +1261,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/",
     "/copy-paste-fonts/",
     "/guides/do-fancy-fonts-break-screen-readers/",
+    "/unformat-text/",
     "/bold-text-generator/",
   ],
   "/guides/facebook-name-fonts/": [
@@ -1223,6 +1323,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/social-media-bio-generator/": [
     "/instagram-font-generator/",
     "/tiktok-font-generator/",
+    "/linkedin-text-formatter/",
     "/aesthetic-fonts/",
     "/whatsapp-fonts/",
   ],
@@ -1303,11 +1404,11 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/html-text-generator/": [
     "/bold-text-generator/",
+    "/chatgpt-to-linkedin/",
     "/superscript-subscript-generator/",
     "/copy-paste-fonts/",
     "/roblox-font-generator/",
     "/big-text-generator/",
-    "/",
   ],
   "/twitter-font-generator/": [
     "/social-media-bio-generator/",
@@ -1342,7 +1443,8 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/guides/do-fancy-fonts-break-screen-readers/": [
     "/guides/how-unicode-fancy-fonts-work/",
     "/guides/fancy-text-shows-boxes/",
-    "/bold-text-generator/",
+    "/unformat-text/",
+    "/linkedin-text-formatter/",
     "/glitch-text-generator/",
   ],
 };
@@ -1570,7 +1672,7 @@ const FOOTER_URLS = [
   "/aesthetic-fonts/",
   "/cute-fonts/",
   "/cool-text-generator/",
-  "/kaomoji/",
+  "/unformat-text/",
 ];
 
 export function getFooterPages(): PageEntry[] {
@@ -1580,6 +1682,8 @@ export function getFooterPages(): PageEntry[] {
 }
 
 const EXPLORE_URLS = [
+  "/linkedin-text-formatter/",
+  "/chatgpt-to-linkedin/",
   "/instagram-font-generator/",
   "/tiktok-font-generator/",
   "/twitter-font-generator/",
@@ -1592,6 +1696,7 @@ const EXPLORE_URLS = [
   "/name-font-generator/",
   "/cool-text-generator/",
   "/html-text-generator/",
+  "/unformat-text/",
   "/binary-text-generator/",
   "/invisible-character/",
   "/case-converter/",
@@ -1609,6 +1714,7 @@ const NAV_URLS = [
   "/cursive-text-generator/",
   "/bold-text-generator/",
   "/copy-paste-fonts/",
+  "/linkedin-text-formatter/",
   "/cool-text-generator/",
   "/instagram-font-generator/",
   "/discord-font-generator/",
@@ -1644,7 +1750,7 @@ export const SITE_URL = resolveSiteUrl();
  * quarterly / yearly). Do not set it to "today" on every deploy — that makes
  * every URL look freshly updated and creates false churn in GSC.
  */
-export const CONTENT_UPDATED_AT = "2026-09-16";
+export const CONTENT_UPDATED_AT = "2026-09-19";
 
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);

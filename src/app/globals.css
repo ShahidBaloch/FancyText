@@ -2434,6 +2434,397 @@ a.use-card:hover {
   margin-top: 0.5rem;
 }
 
+/* ——— LinkedIn / paste-pipeline tools ——— */
+.li-tool {
+  display: block;
+}
+
+.li-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-deep);
+}
+
+.li-tool-btn {
+  min-width: 2.35rem;
+  min-height: 2.35rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 0.16s var(--ease-out),
+    background 0.16s var(--ease-out);
+}
+
+.li-tool-btn--wide {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.li-tool-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.li-toolbar-divider {
+  width: 1px;
+  align-self: stretch;
+  margin-inline: 0.2rem;
+  background: var(--line-strong);
+}
+
+.li-hint {
+  margin: 0.55rem 0 0.9rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.li-area {
+  min-height: 9rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.li-output {
+  background: var(--bg-deep);
+}
+
+.li-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+.li-stats dd.is-over {
+  color: var(--danger);
+}
+
+.li-note {
+  margin: 0.7rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.li-note.is-warning {
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid var(--danger);
+  border-radius: 0 8px 8px 0;
+  background: color-mix(in srgb, var(--danger) 6%, white);
+  color: var(--ink);
+}
+
+.li-note code {
+  padding: 0.05rem 0.3rem;
+  border-radius: 4px;
+  background: var(--bg-deep);
+  font-size: 0.85em;
+}
+
+.li-note a {
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.li-callout {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: start;
+  margin: 1rem 0 0;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--bg-deep);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.li-callout.is-warning {
+  border-left-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 6%, white);
+}
+
+.li-callout span {
+  color: var(--muted);
+}
+
+.li-preview-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.li-preview-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.li-device {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.li-preview {
+  margin-top: 0.7rem;
+}
+
+.li-preview-card {
+  max-width: 34rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+}
+
+/* The mobile fold is a narrower column, not just a different character count. */
+.li-preview.is-mobile .li-preview-card {
+  max-width: 22rem;
+}
+
+.li-preview-author {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.li-preview-author b {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.li-preview-author small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.li-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.li-preview-body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.li-seemore {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.li-seemore::before {
+  content: " ";
+}
+
+/* Folded text stays visible but clearly demoted — it is what a reader has to
+   click for, and hiding it entirely would make the preview less useful. */
+.li-folded {
+  opacity: 0.4;
+}
+
+.li-copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.1rem;
+}
+
+.li-count {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.li-count.is-over {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.li-options {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.li-option {
+  min-width: 0;
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.li-option legend {
+  padding-inline: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.li-option .preset-chips {
+  margin: 0;
+}
+
+.li-check {
+  display: flex;
+  align-items: start;
+  gap: 0.5rem;
+  padding-block: 0.25rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.li-check input {
+  margin-top: 0.2rem;
+  accent-color: var(--accent);
+}
+
+.li-drawer {
+  margin-top: 1.2rem;
+  padding: 0.2rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.li-drawer summary {
+  padding: 0.8rem 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.li-drawer[open] summary {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0.8rem;
+}
+
+.li-drawer > *:last-child {
+  margin-bottom: 0.9rem;
+}
+
+.li-symbol-heading {
+  margin: 1.1rem 0 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.li-symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.li-symbol {
+  display: grid;
+  gap: 0.2rem;
+  width: 100%;
+  height: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.16s var(--ease-out),
+    transform 0.16s var(--ease-out);
+}
+
+.li-symbol:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.li-symbol-char {
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.li-symbol-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.li-symbol .gallery-support {
+  justify-self: start;
+}
+
+.gallery-support[data-reliability="good"] {
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, white);
+}
+
+.gallery-support[data-reliability="risky"] {
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 8%, white);
+  border-color: color-mix(in srgb, var(--danger) 30%, white);
+}
+
+.li-warnings {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-deep);
+}
+
+.li-warnings ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.89rem;
+  line-height: 1.6;
+}
+
+.li-warnings li::marker {
+  color: var(--accent);
+}
+
+.li-findings {
+  list-style: none;
+  padding-left: 0;
+}
+
 @media (max-width: 900px) {
   .footer-shell {
     grid-template-columns: 1fr 1fr;
