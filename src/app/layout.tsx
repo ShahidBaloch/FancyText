@@ -14,7 +14,8 @@ const sora = Sora({
   preload: true,
 });
 
-const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+const gscVerification =
+  process.env.NEXT_PUBLIC_GSC_VERIFICATION || "google991fcccf4c181387";
 
 const isPreview = process.env.VERCEL_ENV === "preview";
 
