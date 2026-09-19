@@ -43,7 +43,10 @@ export function graphemeCount(value: string): number {
   const seg = getSegmenter();
   if (!seg) return Array.from(value).length;
   let count = 0;
-  for (const _ of seg.segment(value)) count += 1;
+  // Intl.Segmenter has no length, so the segments have to be walked.
+  for (const segment of seg.segment(value)) {
+    if (segment) count += 1;
+  }
   return count;
 }
 

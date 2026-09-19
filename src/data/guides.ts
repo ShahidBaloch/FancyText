@@ -392,6 +392,97 @@ export const GUIDES: GuideConfig[] = [
     ],
   },
   {
+    slug: "linkedin-formatting-not-working",
+    h1: "LinkedIn formatting not working",
+    datePublished: "2026-09-19",
+    dateModified: "2026-09-19",
+    howToSteps: [
+      "Work out which of the three failures you have: styled characters rejected, blank lines collapsing, or Markdown showing up literally.",
+      "For a rejected headline or About section, strip the styling — those fields validate their characters and no workaround makes them accept it.",
+      "For collapsing spacing, paste on desktop and use a single blank line between paragraphs rather than several.",
+    ],
+    sections: [
+      {
+        heading: "Three different problems get called the same thing",
+        body: [
+          "“LinkedIn formatting not working” covers three unrelated failures, and the fix for one makes the others worse. Identify yours first.",
+          "Styled characters are rejected outright, with a save error. That is field validation and it is deliberate.",
+          "Your spacing disappears — the post looked right in the composer and arrives as a wall of text. That is line-break handling, and it differs between desktop and mobile.",
+          "Asterisks and hash symbols appear literally in the feed. That is Markdown, and LinkedIn has never supported it.",
+        ],
+      },
+      {
+        heading: "Why the headline refuses styled characters",
+        body: [
+          "The headline field validates what you type and rejects the mathematical alphabet with an “invalid characters” error. No amount of retrying or switching styles gets past it, because it is a rule rather than a rendering problem.",
+          "Practitioners have reported the same block extending to the About summary, with existing styled text being converted back. LinkedIn has not published anything confirming that, so treat it as likely rather than certain — and test your own profile while logged out before relying on it.",
+          "This is worth being relaxed about. The headline is the single most valuable plain-text field you own: it appears in search results, connection requests, and every comment you leave, and only the first 60 to 70 characters are visible in most of those places. Styled characters would have made it unmatchable in search anyway.",
+          "Posts and comments are a different matter. Those accept styled characters and always have.",
+        ],
+      },
+      {
+        heading: "Why your line breaks vanish",
+        body: [
+          "The desktop composer keeps a single blank line between paragraphs reliably. Beyond that, behaviour varies: the mobile app frequently discards extra blank lines, and comments do not support blank lines at all — a paragraph break you type in a comment will close up.",
+          "Pasting is the usual trigger. Text copied from Google Docs, Notion, Word, or the iOS Notes app carries its own paragraph markers, and LinkedIn does not always translate them into the breaks it would have created itself. Pasting into a plain-text editor first, then copying again, strips the markers and fixes most cases.",
+          "Use one blank line, not three. Runs of blank lines are the first thing to be collapsed, so a post built on double and triple gaps is the most fragile kind.",
+          "The workaround people reach for is an invisible character: put a zero-width or blank character on the otherwise-empty line so the line is no longer empty and survives. It works, but it is worth knowing the cost — a screen reader may announce the character, and it counts against your 3,000. Our invisible character tool explains which blank characters actually survive a paste.",
+          "There is also a long-running bug in the About section where your own formatting looks correct to you and renders as a single block to visitors. If the spacing is right in your editor and wrong for everyone else, check it in a logged-out browser window before rewriting it.",
+        ],
+      },
+      {
+        heading: "Why Markdown appears literally",
+        body: [
+          "LinkedIn does not read Markdown in posts, comments, headlines, or the About section. The only place with genuine rich text is the article editor, which has its own toolbar.",
+          "This catches people out most often with AI-drafted posts. ChatGPT, Claude, and Gemini reply in Markdown, and the chat window renders it — so you see bold text, not the asterisks producing it. The text on your clipboard still contains them, and LinkedIn prints them.",
+          "The same applies to hyphen bullets. A line starting with “- ” stays a line starting with a hyphen; LinkedIn will not turn it into a list. Real lists in the feed are literal bullet characters such as •.",
+          "Our ChatGPT to LinkedIn formatter converts a Markdown draft in one paste, and tells you what it had to change — tables and code blocks lose the most.",
+        ],
+      },
+      {
+        heading: "Fixes that do not work",
+        body: [
+          "Retrying the headline. The validation is not intermittent.",
+          "Switching to a different styled alphabet. Fraktur and double-struck are rejected the same way, and they are also the two most likely to render as empty boxes on Android when they are accepted.",
+          "Pasting HTML. There is nowhere in a LinkedIn post that interprets tags.",
+          "Trusting the composer preview. The composer is not the feed. Mobile truncates earlier and treats spacing differently, which is why our formatter shows a desktop and a mobile fold separately.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Why does LinkedIn say my headline has invalid characters?",
+        answer:
+          "Because it contains styled Unicode. The headline field validates its characters and rejects the mathematical bold and italic alphabets that work in posts. Convert the headline back to ordinary letters and it will save — and it will start matching searches again, which matters more.",
+      },
+      {
+        question: "Why do my LinkedIn line breaks disappear?",
+        answer:
+          "Blank lines are handled inconsistently: desktop keeps a single blank line, the mobile app often discards extra ones, and comments do not support them at all. Pasting from Google Docs or Notion makes it worse because those carry their own paragraph markers. Paste through a plain-text editor and use one blank line rather than several.",
+      },
+      {
+        question: "Does bold text work in LinkedIn posts?",
+        answer:
+          "Yes, in posts and comments, as long as it is Unicode styled characters rather than real formatting. There is no bold button — you generate the characters elsewhere and paste them in. It is the headline and, apparently, the About section that refuse them.",
+      },
+      {
+        question: "Does Markdown work on LinkedIn?",
+        answer:
+          "No. Asterisks, underscores, and hash symbols appear exactly as typed in posts, comments, headlines, and the About section. Only the article editor has real rich text, and it uses its own toolbar rather than Markdown.",
+      },
+      {
+        question: "Should I use an invisible character to force blank lines?",
+        answer:
+          "It works, but weigh it up. The character counts toward your 3,000, some screen readers announce it, and if LinkedIn changes how it handles the field the post is left with stray characters in it. One ordinary blank line between paragraphs is more robust and is what LinkedIn preserves most reliably.",
+      },
+      {
+        question: "Why does my post look fine in the composer but wrong in the feed?",
+        answer:
+          "The composer is not a preview of the feed. The feed collapses long posts after roughly 210 characters on desktop and 140 on mobile, and the mobile app handles spacing differently. Check your opening against a fold-aware preview rather than the composer.",
+      },
+    ],
+  },
+  {
     slug: "do-fancy-fonts-break-screen-readers",
     h1: "Do fancy fonts break screen readers?",
     datePublished: "2026-09-15",
@@ -406,7 +497,7 @@ export const GUIDES: GuideConfig[] = [
         heading: "The short answer: less than they used to, but it depends on the reader",
         body: [
           "Almost every guide on this topic says the same thing: a screen reader hears “MATHEMATICAL BOLD SMALL H, MATHEMATICAL BOLD SMALL I” when you write 𝐡𝐢. That was true for years. It is no longer true everywhere, and the pages still repeating it have not been updated.",
-          "NVDA—the most widely used screen reader on Windows—turned Unicode normalization on by default for speech in version 2025.1. With it on, 𝐡𝐞𝐥𝐥𝐨, 𝒽𝑒𝓁𝓁𝑜 and 𝗵𝗲𝗹𝗹𝗼 are all simply spoken as “hello”. The setting lives under Speech in NVDA’s settings dialog and can be switched off.",
+          "NVDA—the most widely used screen reader on Windows—turned Unicode normalization on by default for speech in version 2025.1, having added it as an option in 2024.3. With it on, 𝐡𝐞𝐥𝐥𝐨, 𝒽𝑒𝓁𝓁𝑜 and 𝗵𝗲𝗹𝗹𝗼 are all simply spoken as “hello”. The setting lives under Speech in NVDA’s settings dialog and can be switched off. Version 2026.2 widened the same handling to negative squared, negative circled, and regional indicator characters.",
           "So the honest answer in 2026 is: it depends on which reader, which version, and which output. That is less satisfying than a blanket warning, but a blanket warning would send you to the wrong decision half the time.",
         ],
       },
@@ -422,7 +513,7 @@ export const GUIDES: GuideConfig[] = [
         heading: "Where it still breaks",
         body: [
           "Braille displays. NVDA enabled normalization for speech, but left it off by default for braille output. A braille reader can still get an unreadable line where a speech user gets clean text—and braille users are exactly the people least likely to have a sighted person nearby to explain it.",
-          "Other screen readers. VoiceOver on macOS and iOS, TalkBack on Android, and JAWS do not share NVDA’s default. Behaviour ranges from reading the formal character name, to spelling letters out, to skipping characters entirely. Do not assume NVDA’s fix is universal.",
+          "Other screen readers. VoiceOver on macOS and iOS, TalkBack on Android, JAWS, and Windows Narrator do not share NVDA’s default. In one widely shared test of a single styled LinkedIn headline, NVDA read it as ordinary words, JAWS read it one character at a time, and Narrator substituted a percent sign. Same text, three outcomes — so “screen readers handle this now” is as wrong as the old blanket warning was.",
           "Combining-mark styles. Normalization does not rescue these. Strikethrough, underline, and especially zalgo work by stacking extra marks on top of ordinary letters, and those marks have no plain equivalent to fall back to. A reader may announce every single one. Zalgo is the genuinely hostile case and always has been.",
           "Superscript and subscript. Here normalization actively costs you meaning: ⁱ becomes “i” and ₙ becomes “n”, so x² and x₂ can both flatten to “x2”. Fine for a bio, bad for anything where the position was the point.",
           "Search, mentions, and autocorrect. This is not accessibility, but it lands on the same people. Styled letters do not match plain-text search, @-mentions often fail, and spellcheck gives up. A name nobody can find or tag is its own kind of inaccessible.",
@@ -476,6 +567,11 @@ export const GUIDES: GuideConfig[] = [
         question: "Does this affect SEO too?",
         answer:
           "Yes. Search engines index the actual code points, so a heading written in Unicode cursive is not the same string as the plain word. Keep headings and body copy in ordinary letters and reserve styled text for visual accents.",
+      },
+      {
+        question: "Is bold text on LinkedIn accessible?",
+        answer:
+          "It is the most-argued case in this whole debate, because LinkedIn gives you no alternative — the post composer has no bold button, so Unicode substitution is the only mechanism available. A bold opening line is a reasonable trade-off. A post styled end to end is not, and LinkedIn's own accessibility documentation says nothing about Unicode styling either way. The practical compromise is to bold the hook and leave the body, keywords, and hashtags in ordinary letters.",
       },
     ],
   },
