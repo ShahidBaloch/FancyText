@@ -9,11 +9,7 @@ import {
 } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { pageMetadata } from "@/lib/seo/metadata";
-import {
-  CONTACT_EMAIL,
-  SITE_OPERATOR,
-  SITE_SAME_AS,
-} from "@/data/contact";
+import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
 import { SITE_NAME, SITE_URL, getPageByUrl } from "@/data/pages/registry";
 
 const page = getPageByUrl("/about/")!;
@@ -34,12 +30,6 @@ export default function AboutPage() {
             sameAs: SITE_SAME_AS,
           }),
           foundingDate: "2026",
-          founder: {
-            "@type": "Person",
-            name: SITE_OPERATOR.name,
-            url: SITE_OPERATOR.website,
-            sameAs: SITE_SAME_AS,
-          },
           knowsAbout: [
             "Unicode fancy text",
             "copy and paste fonts",
@@ -77,26 +67,12 @@ export default function AboutPage() {
       <div className="seo-section seo-prose">
         <h2>Who runs this site</h2>
         <p>
-          {SITE_NAME} is an independent utility site created and maintained by{" "}
-          <a href={SITE_OPERATOR.website} rel="me">
-            {SITE_OPERATOR.name}
-          </a>
-          , a software engineer based in {SITE_OPERATOR.location}. There is no
-          parent media company and no paid “font pack.” The generators run in
-          your browser: we convert letters to Unicode look-alikes so you can
-          copy and paste them into Instagram, Discord, TikTok, WhatsApp, and
-          other apps that accept special characters.
-        </p>
-        <p>
-          You can also verify the publisher through{" "}
-          <a href={SITE_SAME_AS[0]} rel="me noopener noreferrer">
-            GitHub
-          </a>
-          {" "}and{" "}
-          <a href={SITE_SAME_AS[1]} rel="me noopener noreferrer">
-            LinkedIn
-          </a>
-          .
+          {SITE_NAME} is an independent utility site operated as a focused
+          FancyText product. There is no parent media company and no paid “font
+          pack.” The generators run in your browser: we convert letters to
+          Unicode look-alikes so you can copy and paste them into Instagram,
+          Discord, TikTok, WhatsApp, and other apps that accept special
+          characters.
         </p>
 
         <h2>How the tools work</h2>

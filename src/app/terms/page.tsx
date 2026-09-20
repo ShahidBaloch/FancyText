@@ -132,8 +132,6 @@ export default function TermsPage() {
           {" · "}
           <Link href="/privacy/">Privacy Policy</Link>
           {" · "}
-          <Link href="/about/">About</Link>
-          {" · "}
           <Link href="/contact/">Contact</Link>
         </p>
       </div>
