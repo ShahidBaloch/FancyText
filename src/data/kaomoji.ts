@@ -1127,3 +1127,47 @@ export function getHubShowcase(): { emotion: string; href: string; sample: strin
     sample: k.faces[0] ?? "",
   }));
 }
+
+/** Mixed popular faces for the hub so visitors can copy without leaving. */
+export function getHubFaces(limit = 72): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const page of ALL_KAOMOJI_PAGES) {
+    for (const face of page.faces.slice(0, 4)) {
+      if (seen.has(face)) continue;
+      seen.add(face);
+      out.push(face);
+      if (out.length >= limit) return out;
+    }
+  }
+  return out;
+}
+
+export type HubMoodCopySet = {
+  slug: string;
+  h1: string;
+  faces: string[];
+};
+
+/** Longer copy-now sets for the moods people actually search. */
+export function getHubMoodCopySets(perList = 12): HubMoodCopySet[] {
+  const slugs = [
+    "cute-kaomojis",
+    "cry-kaomojis",
+    "heart-kaomojis",
+    "funny-kaomojis",
+    "lenny-face",
+    "shrug-emoticon",
+  ];
+  const sets: HubMoodCopySet[] = [];
+  for (const slug of slugs) {
+    const list = getKaomojiList(slug);
+    if (!list) continue;
+    sets.push({
+      slug: list.slug,
+      h1: list.h1,
+      faces: list.faces.slice(0, perList),
+    });
+  }
+  return sets;
+}

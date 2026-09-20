@@ -1,3 +1,4 @@
+import { HelpSections } from "@/components/seo/HelpSections";
 import { BackToTool } from "@/components/seo/BackToTool";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
@@ -157,6 +158,10 @@ export function PlatformView({ config }: PlatformViewProps) {
           ))}
         </ul>
       </section>
+
+      {config.extraSections?.length ? (
+        <HelpSections sections={config.extraSections} />
+      ) : null}
 
       {page ? (
         <FellowKeywords keywords={page.fellowKeywords} currentUrl={url} />

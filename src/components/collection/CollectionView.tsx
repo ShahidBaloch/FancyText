@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HelpSections } from "@/components/seo/HelpSections";
 import { BackToTool } from "@/components/seo/BackToTool";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
@@ -169,6 +170,10 @@ export function CollectionView({ config }: CollectionViewProps) {
           ))}
         </ul>
       </section>
+
+      {config.extraSections?.length ? (
+        <HelpSections sections={config.extraSections} />
+      ) : null}
 
       {page ? (
         <FellowKeywords keywords={page.fellowKeywords} currentUrl={url} />

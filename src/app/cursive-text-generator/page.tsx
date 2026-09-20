@@ -66,6 +66,11 @@ const faqItems = [
     answer:
       "It can. Screen readers and search engines may not treat script letters as normal A–Z. Keep official @usernames and anything people need to find in plain text; use cursive for display names, captions, and decoration.",
   },
+  {
+    question: "Can I make names in cursive or generate script letters?",
+    answer:
+      "Yes. Type the name in the box on this page and copy Cursive / Script. That is the names-in-cursive generator. For a single glyph, use the alphabet rows below—the script letter generator for A–Z without installing a font.",
+  },
 ];
 
 export default function CursiveHubPage() {
