@@ -115,14 +115,26 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
 
       <PageHero h1={config.h1} lead={config.description} />
 
-      {!kaomojiPathIsIndexable(config.slug) ? (
+      {kaomojiPathIsIndexable(config.slug) ? (
         <p className="seo-lead">
-          This emotion list stays available for old links. The canonical kaomoji
-          copy-and-paste index is the{" "}
-          <Link href="/kaomoji/">kaomoji hub</Link>
-          , with featured cute, cry, heart, Lenny, and shrug lists.
+          Canonical <strong>{config.primaryKeyword}</strong> list—every face for
+          this mood lives here. The{" "}
+          <Link href="/kaomoji/">kaomoji hub</Link> mixes moods for general
+          kaomoji search; bookmark this URL when you only want {config.emotion}{" "}
+          faces.
         </p>
-      ) : null}
+      ) : (
+        <p className="seo-lead">
+          This emotion list stays available for old links and is not indexed in
+          search. For general kaomoji, use the{" "}
+          <Link href="/kaomoji/">kaomoji hub</Link>. Indexed mood pages:{" "}
+          <Link href="/cute-kaomojis/">cute</Link>,{" "}
+          <Link href="/cry-kaomojis/">cry</Link>,{" "}
+          <Link href="/heart-kaomojis/">heart</Link>,{" "}
+          <Link href="/lenny-face/">Lenny</Link>,{" "}
+          <Link href="/shrug-emoticon/">shrug</Link>.
+        </p>
+      )}
 
       <div className="tool-stage" id="tool">
         <p className="field-label">
@@ -248,8 +260,9 @@ export function KaomojiHubView() {
       <section className="seo-section" aria-labelledby="emotions-heading">
         <h2 id="emotions-heading">Start with a mood</h2>
         <p className="seo-lead">
-          Cute, cry, and heart are the main lists. Lenny and shrug have their
-          own pages because people search those faces by name.
+          Each card opens the indexed list for that mood (cute, cry, heart,
+          Lenny, shrug). This hub is for general kaomoji search—do not duplicate
+          those full lists here.
         </p>
         <ul className="kaomoji-emotion-grid">
           {featuredShowcase.map((item) => (

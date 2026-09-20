@@ -396,6 +396,15 @@ export const COLLECTIONS: CollectionConfig[] = [
         heading: "Graphic and loud, not cute or aesthetic",
         body: "Stylish text is bold, italic, monospace, strikethrough, and glitch. It is not cute bubble/kawaii, not soft fullwidth aesthetic, and not cool lookalike alphabets. Open cute fonts, aesthetic fonts, or the cool text generator when that is the modifier you meant.",
       },
+      extraSections: [
+        {
+          id: "stylish-not-home-or-bold",
+          heading: "Stylish text—not the homepage or bold-only tool",
+          paragraphs: [
+            "The homepage is the all-styles fancy text generator. The bold text generator is for mathematical bold only. This collection is high-contrast graphic styles (glitch, strikethrough, monospace mixes)—bookmark it when that is the job.",
+          ],
+        },
+      ],
       faq: [
         {
           question: "What is a stylish text generator?",

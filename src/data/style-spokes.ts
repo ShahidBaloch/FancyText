@@ -123,6 +123,13 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
           "Style a short word, not a whole paragraph—screen readers and search prefer ordinary text.",
         ],
       },
+      {
+        id: "bold-not-home-or-stylish",
+        heading: "Bold-only—not the homepage or stylish text",
+        paragraphs: [
+          "The homepage fancy text generator previews every style at once. This page is bold-focused (plus related weights). The stylish text generator is for glitch, strikethrough, and graphic mixes—not pure bold bios.",
+        ],
+      },
     ],
     faq: [
       {

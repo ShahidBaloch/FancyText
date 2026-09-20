@@ -1132,14 +1132,27 @@ export function getHubShowcase(): { emotion: string; href: string; sample: strin
 export function getHubFaces(limit = 72): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
-  for (const page of ALL_KAOMOJI_PAGES) {
-    for (const face of page.faces.slice(0, 4)) {
-      if (seen.has(face)) continue;
-      seen.add(face);
-      out.push(face);
-      if (out.length >= limit) return out;
+
+  const pushFrom = (pages: KaomojiList[], maxPerList: number) => {
+    for (const page of pages) {
+      for (const face of page.faces.slice(0, maxPerList)) {
+        if (seen.has(face)) continue;
+        seen.add(face);
+        out.push(face);
+        if (out.length >= limit) return;
+      }
     }
-  }
+  };
+
+  const tail = ALL_KAOMOJI_PAGES.filter((k) => !INDEXABLE_KAOMOJI_SLUGS.has(k.slug));
+  const featured = ALL_KAOMOJI_PAGES.filter((k) =>
+    INDEXABLE_KAOMOJI_SLUGS.has(k.slug),
+  );
+
+  // Prefer noindex / tail lists so the hub does not mirror indexed mood pages.
+  pushFrom(tail, 4);
+  if (out.length < limit) pushFrom(featured, 2);
+
   return out;
 }
 

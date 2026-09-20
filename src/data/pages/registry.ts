@@ -372,7 +372,6 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows(
       "whatsapp font style",
       "fancy text for whatsapp",
-      "whatsapp stylish text",
     ),
   },
   {
@@ -435,7 +434,6 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows(
       "snapchat fonts copy and paste",
       "snapchat stylish text",
-      "snapchat name fonts",
       "font for snapchat",
       "fonts on snapchat",
     ),
@@ -504,7 +502,6 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows(
       "facebook fonts copy and paste",
       "facebook stylish text",
-      "facebook name fonts",
     ),
   },
   {
@@ -1008,6 +1005,7 @@ export const PAGES: PageEntry[] = [
       "whatsapp stylish fonts",
       "whatsapp fancy text",
       "whatsapp bold italic strike",
+      "whatsapp markdown vs unicode",
     ),
   },
   {
@@ -1031,7 +1029,11 @@ export const PAGES: PageEntry[] = [
     title: "Roblox Fancy Text & Rich Text Guide | FancifyText",
     description:
       "Roblox fancy text. How to use Unicode fancy text and limited rich-text tags in Roblox names, bios, and UI—plus what gets filtered.",
-    fellowKeywords: fellows("roblox font generator", "roblox stylish name"),
+    fellowKeywords: fellows(
+      "roblox rich text tags",
+      "roblox display name filter",
+      "roblox unicode name",
+    ),
   },
   {
     phase: 6,
@@ -1069,7 +1071,11 @@ export const PAGES: PageEntry[] = [
     title: "Snapchat Name Fonts Copy and Paste | FancifyText",
     description:
       "Snapchat name fonts. Snapchat has no font picker. Paste Unicode into display names carefully—filters reject many symbols.",
-    fellowKeywords: fellows("snapchat fancy name", "change snapchat font"),
+    fellowKeywords: fellows(
+      "snapchat fancy name",
+      "change snapchat font",
+      "snapchat display name unicode",
+    ),
   },
   {
     phase: 7,

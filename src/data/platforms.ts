@@ -73,6 +73,20 @@ export const PLATFORMS: PlatformConfig[] = [
       "Emphasis inside a code block, not in a display name",
     ],
     colorCodes: true,
+    extraSections: [
+      {
+        id: "discord-color-not-fonts",
+        heading: "Colored messages, not Discord fonts",
+        paragraphs: [
+          "This page is ANSI color inside a ```ansi code block—colored chat messages only. It does not change your display name, nickname, or about-me. For Unicode nicknames (bold, script, bubble), open the Discord font generator instead.",
+        ],
+        bullets: [
+          "Use color text for announcements, rules, and welcome messages.",
+          "Use the font generator for display names and about-me Unicode.",
+          "Nitro is not required for either trick, but they apply to different fields.",
+        ],
+      },
+    ],
     faq: [
       {
         question: "What is a Discord colored text generator?",
@@ -170,7 +184,7 @@ export const PLATFORMS: PlatformConfig[] = [
         heading: "Discord fonts are not a Nitro pack",
         paragraphs: [
           "These rows are Unicode look-alike letters. Anyone can paste them into a display name or nickname—Nitro is not required, and no bot has to run. Discord still draws them in its own typeface; you are changing the characters, not installing a font file.",
-          "Colored chat is a different trick: ANSI codes inside a ```ansi message block. Use the Discord color text tool for announcements. Use this page for names, about-me, and fancy font Discord nicknames.",
+          "Colored chat is a different page: ANSI codes inside a ```ansi message block on the Discord color text generator. Never mix the two—color blocks fail in nicknames, and Unicode fonts do not paint message text.",
         ],
       },
       {
