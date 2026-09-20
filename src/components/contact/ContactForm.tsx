@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { contactConfig } from "@/data/contact";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -88,6 +89,7 @@ export function ContactForm() {
           type="email"
           name="email"
           autoComplete="email"
+          maxLength={200}
           className="text-input"
           placeholder="you@email.com"
         />
@@ -113,6 +115,11 @@ export function ContactForm() {
           autoComplete="off"
         />
       </div>
+
+      <p className="contact-privacy-note">
+        We use your details only to reply to this query. See our{" "}
+        <Link href="/privacy/">Privacy Policy</Link>.
+      </p>
 
       <button
         type="submit"

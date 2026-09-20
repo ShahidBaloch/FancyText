@@ -14,6 +14,8 @@ const GUIDES = [
   { href: "/guides/fancy-text-shows-boxes/", label: "Why fancy text shows boxes" },
   { href: "/guides/roblox-fancy-text/", label: "Roblox fancy text" },
   { href: "/guides/snapchat-name-fonts/", label: "Snapchat name fonts" },
+  { href: "/guides/do-fancy-fonts-break-screen-readers/", label: "Fancy text & screen readers" },
+  { href: "/guides/linkedin-formatting-not-working/", label: "LinkedIn formatting fixes" },
 ];
 
 const LEGAL = [
