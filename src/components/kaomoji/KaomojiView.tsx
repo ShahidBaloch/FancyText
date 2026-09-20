@@ -34,6 +34,16 @@ const hubFaq = [
       "顔文字: face characters. They are punctuation emoticons from Japanese chat culture, not emoji stickers. This hub is the index; cute, cry, and heart are the main mood pages, plus Lenny and shrug.",
   },
   {
+    question: "Kaomoji or kaomojis — which is correct?",
+    answer:
+      "Both work in English. “Kaomoji” is the usual singular; “kaomojis” is the common plural when people want a list of faces. This page is the copy-and-paste hub for either search.",
+  },
+  {
+    question: "Is it kamoji, kaemoji, or kao emoji?",
+    answer:
+      "The standard spelling is kaomoji (face + character). Kamoji, kaemoji, komoji, and “kao emoji” are frequent typos—same Japanese text faces, same tap-to-copy tool here.",
+  },
+  {
     question: "Is this different from emoji?",
     answer:
       "Yes. Kaomoji are letters and symbols you can copy as text. Emoji are picture characters. You can mix both in one message.",
@@ -241,11 +251,17 @@ export function KaomojiHubView() {
       <section className="seo-section seo-prose" aria-labelledby="what-heading">
         <h2 id="what-heading">What are kaomoji?</h2>
         <p>
-          Kaomoji are Japanese emoticons built from Unicode characters. Unlike
-          emoji stickers, they are plain text—so they paste into Discord,
-          Instagram bios, TikTok captions, WhatsApp, and email. Bookmark this
-          hub for “Japanese emoticons” in general. Open a mood list only when
-          you already know the feeling.
+          Kaomoji (kaomojis) are Japanese emoticons built from Unicode
+          characters—also called text faces or Japanese emoticons. Unlike emoji
+          stickers, they are plain text, so they paste into Discord, Instagram
+          bios, TikTok captions, WhatsApp, and email. Bookmark this hub when
+          you want many kaomoji in one place; open cute, cry, or heart when you
+          already know the mood.
+        </p>
+        <p>
+          Searches often misspell the word (kamoji, kaemoji, komoji, kao emoji).
+          The correct term is kaomoji; every face on this page is still the same
+          copy-and-paste text.
         </p>
       </section>
 

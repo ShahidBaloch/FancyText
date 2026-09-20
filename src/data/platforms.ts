@@ -161,6 +161,16 @@ export const PLATFORMS: PlatformConfig[] = [
           "It converts plain text into Unicode letters you paste into Discord display names, nicknames, and about-me. No bot or Nitro required. The @username stays lowercase ASCII.",
       },
       {
+        question: "Where do I get Discord fonts to copy and paste?",
+        answer:
+          "Type here, pick a row (bold, script, bubble, monospace), and copy. Paste into Display name, Server nickname, or About me—not the @username field. That is what people mean by Discord fonts or font for Discord.",
+      },
+      {
+        question: "Can I use fancy font on Discord without Nitro?",
+        answer:
+          "Yes for Unicode nicknames and about-me text. Fancy letters are plain characters, not a Discord font pack. Colored chat needs the separate ANSI color tool, not this page.",
+      },
+      {
         question: "Can I change my Discord username to fancy letters?",
         answer:
           "No. Discord usernames are lowercase ASCII. Paste Unicode into the display name or a server nickname instead. No bot or Nitro needed for that.",
