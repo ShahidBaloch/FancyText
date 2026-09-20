@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import { CONTACT_EMAIL } from "@/data/contact";
 
 type ContactBody = {
+  name?: string;
   email?: string;
   message?: string;
   website?: string;
@@ -45,17 +46,18 @@ export async function POST(req: Request) {
       return Response.json({ ok: true });
     }
 
+    const name = String(body.name ?? "").trim();
     const email = String(body.email ?? "").trim();
     const message = String(body.message ?? "").trim();
 
-    if (!email || !message) {
+    if (!name || !email || !message) {
       return Response.json(
-        { ok: false, error: "Email and query are required." },
+        { ok: false, error: "Name, email, and query are required." },
         { status: 400 },
       );
     }
 
-    if (email.length > 200 || message.length > 5000) {
+    if (name.length > 120 || email.length > 200 || message.length > 5000) {
       return Response.json({ ok: false, error: "Message is too long." }, { status: 400 });
     }
 
@@ -94,11 +96,21 @@ export async function POST(req: Request) {
       from: `"FancifyText Contact" <${from}>`,
       replyTo: email,
       to,
-      subject: `New FancifyText query from ${email}`,
+      subject: `New FancifyText Message from ${name}`,
+      text: [
+        "New FancifyText Contact Form Submission",
+        "",
+        `Name: ${name}`,
+        `Email: ${email}`,
+        "",
+        "Message:",
+        message,
+      ].join("\n"),
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2>New FancifyText Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Query:</strong></p>
+        <p><strong>Message:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
     });

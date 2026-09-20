@@ -17,6 +17,7 @@ export function ContactForm() {
     const form = event.currentTarget;
     const data = new FormData(form);
     const payload = {
+      name: String(data.get("name") ?? "").trim(),
       email: String(data.get("email") ?? "").trim(),
       message: String(data.get("message") ?? "").trim(),
       website: String(data.get("website") ?? "").trim(),
@@ -72,6 +73,19 @@ export function ContactForm() {
         <a href={`mailto:${contactConfig.email}`}>{contactConfig.email}</a>
         . We typically reply within one business day.
       </p>
+
+      <label className="contact-label">
+        Name
+        <input
+          required
+          type="text"
+          name="name"
+          autoComplete="name"
+          maxLength={120}
+          className="text-input"
+          placeholder="Your name"
+        />
+      </label>
 
       <label className="contact-label">
         Email
