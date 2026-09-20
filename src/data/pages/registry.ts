@@ -69,6 +69,8 @@ export const PAGES: PageEntry[] = [
       "cursive copy and paste fonts",
       "cursive alphabet",
       "script font generator",
+      "names in cursive generator",
+      "script letter generator",
     ),
     navLabel: "Cursive",
   },
@@ -80,12 +82,15 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "bold text generator",
     title: "Bold Text Generator — Bold Fonts Copy & Paste | FancifyText",
     description:
-      "Bold text generator. Make bold Unicode text instantly. Copy and paste bold fonts for Discord, Instagram, and bios.",
+      "Bold text generator. Make bold Unicode text instantly—bold text copy and paste for Discord, Instagram, and bios. Same tool people search as bold font generator or bold font style.",
     fellowKeywords: fellows(
       "bold font generator",
       "bold text font",
       "text bold",
       "bolded text",
+      "bold text copy and paste",
+      "bold copy paste",
+      "bold font style",
     ),
     navLabel: "Bold",
   },
@@ -122,7 +127,11 @@ export const PAGES: PageEntry[] = [
     title: "Small Caps Generator — ꜱᴍᴀʟʟ ᴄᴀᴘꜱ Copy & Paste | FancifyText",
     description:
       "Small caps generator. Turn text into small capitals (short-cap Unicode), not tiny superscript bios and not math subscripts. Includes why the letter x has no small-caps form.",
-    fellowKeywords: fellows("small caps text", "small capital letters"),
+    fellowKeywords: fellows(
+      "small caps text",
+      "small capital letters",
+      "small caps fonts generator",
+    ),
     navLabel: "Small Caps",
   },
   {
@@ -221,7 +230,14 @@ export const PAGES: PageEntry[] = [
     title: "Cute Fonts Copy and Paste — Bubble & Kawaii Unicode",
     description:
       "Cute fonts copy and paste. Copy cute kawaii fonts: bubble letters, squared caps, hearts, and parenthesized glyphs. Not aesthetic fullwidth, not stylish bold, and not cool lookalikes.",
-    fellowKeywords: fellows("cute font generator", "kawaii fonts"),
+    fellowKeywords: fellows(
+      "cute font generator",
+      "kawaii fonts",
+      "kawaii fonts copy and paste",
+      "cute kawaii fonts copy and paste",
+      "kawaii letters copy and paste",
+      "kawaii writing copy and paste",
+    ),
   },
   {
     phase: 3,
@@ -286,13 +302,18 @@ export const PAGES: PageEntry[] = [
     url: "/discord-font-generator/",
     group: "E_Platform",
     primaryKeyword: "discord font generator",
-    title: "Discord Font Generator — Fancy Fonts Copy & Paste",
+    title: "Discord Font Generator — Discord Fonts Copy & Paste",
     description:
-      "Discord font generator. Generate Discord fonts and nicknames with Unicode. Copy bold, script, bubble, and monospace styles.",
+      "Discord font generator for display names, nicknames, and about-me. Copy Discord fonts—bold, script, bubble, monospace—and fancy font for Discord without Nitro.",
     fellowKeywords: fellows(
       "discord font copy and paste",
       "discord text generator",
       "cute discord fonts",
+      "discord fonts",
+      "font for discord",
+      "font generator discord",
+      "fancy font discord",
+      "discordfonts",
     ),
     navLabel: "Discord",
   },
@@ -315,11 +336,12 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "instagram font generator",
     title: "Instagram Font Generator — Aesthetic Bio Font Changer",
     description:
-      "Instagram font generator. Change Instagram bio text with fancy Unicode fonts. Copy script, aesthetic, and bold styles instantly.",
+      "Instagram font generator. Change Instagram bio text and captions with fancy Unicode—Instagram font text in script, aesthetic, and bold styles you copy and paste.",
     fellowKeywords: fellows(
       "instagram font changer",
       "instagram fonts copy and paste",
       "instagram text generator",
+      "instagram font text",
     ),
     navLabel: "Instagram",
   },
@@ -350,7 +372,6 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows(
       "whatsapp font style",
       "fancy text for whatsapp",
-      "whatsapp stylish text",
     ),
   },
   {
@@ -381,6 +402,7 @@ export const PAGES: PageEntry[] = [
       "x font generator",
       "twitter fonts copy and paste",
       "twitter bio fonts",
+      "twitter fonts generator",
     ),
   },
   {
@@ -396,6 +418,8 @@ export const PAGES: PageEntry[] = [
       "roblox fonts copy and paste",
       "roblox name fonts",
       "roblox stylish text",
+      "roblox rich text generator",
+      "roblox friendly font",
     ),
   },
   {
@@ -410,7 +434,8 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows(
       "snapchat fonts copy and paste",
       "snapchat stylish text",
-      "snapchat name fonts",
+      "font for snapchat",
+      "fonts on snapchat",
     ),
   },
   {
@@ -477,7 +502,6 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows(
       "facebook fonts copy and paste",
       "facebook stylish text",
-      "facebook name fonts",
     ),
   },
   {
@@ -540,6 +564,7 @@ export const PAGES: PageEntry[] = [
       "gothic font generator",
       "old english font copy paste",
       "fraktur text generator",
+      "old fonts generator",
     ),
   },
   {
@@ -612,13 +637,16 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji/",
     group: "F_Kaomoji",
     primaryKeyword: "kaomoji",
-    title: "Kaomoji Copy and Paste — Japanese Emoticons | FancifyText",
+    title: "Kaomoji Copy and Paste — Free Kaomojis & Text Faces | FancifyText",
     description:
-      "Free kaomoji copy and paste. The canonical Japanese emoticon hub—cute, cry, and heart lists plus Lenny and shrug—with every face in one index.",
+      "Free kaomoji and kaomojis copy and paste. Japanese text faces for Discord and chat—tap to copy from one hub plus cute, cry, heart, Lenny, and shrug lists.",
     fellowKeywords: fellows(
       "japanese emoticons",
       "text faces",
       "kaomoji copy and paste",
+      "kaomojis",
+      "kamoji",
+      "kao emoji",
     ),
     navLabel: "Kaomoji",
   },
@@ -977,6 +1005,7 @@ export const PAGES: PageEntry[] = [
       "whatsapp stylish fonts",
       "whatsapp fancy text",
       "whatsapp bold italic strike",
+      "whatsapp markdown vs unicode",
     ),
   },
   {
@@ -1000,7 +1029,11 @@ export const PAGES: PageEntry[] = [
     title: "Roblox Fancy Text & Rich Text Guide | FancifyText",
     description:
       "Roblox fancy text. How to use Unicode fancy text and limited rich-text tags in Roblox names, bios, and UI—plus what gets filtered.",
-    fellowKeywords: fellows("roblox font generator", "roblox stylish name"),
+    fellowKeywords: fellows(
+      "roblox rich text tags",
+      "roblox display name filter",
+      "roblox unicode name",
+    ),
   },
   {
     phase: 6,
@@ -1038,7 +1071,11 @@ export const PAGES: PageEntry[] = [
     title: "Snapchat Name Fonts Copy and Paste | FancifyText",
     description:
       "Snapchat name fonts. Snapchat has no font picker. Paste Unicode into display names carefully—filters reject many symbols.",
-    fellowKeywords: fellows("snapchat fancy name", "change snapchat font"),
+    fellowKeywords: fellows(
+      "snapchat fancy name",
+      "change snapchat font",
+      "snapchat display name unicode",
+    ),
   },
   {
     phase: 7,
@@ -1751,7 +1788,7 @@ export const SITE_URL = resolveSiteUrl();
  * quarterly / yearly). Do not set it to "today" on every deploy — that makes
  * every URL look freshly updated and creates false churn in GSC.
  */
-export const CONTENT_UPDATED_AT = "2026-09-19";
+export const CONTENT_UPDATED_AT = "2026-09-20";
 
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);

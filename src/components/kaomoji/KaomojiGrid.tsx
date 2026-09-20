@@ -4,9 +4,10 @@ import { useCopyFeedback } from "@/lib/copy";
 
 type KaomojiGridProps = {
   faces: string[];
+  idPrefix?: string;
 };
 
-export function KaomojiGrid({ faces }: KaomojiGridProps) {
+export function KaomojiGrid({ faces, idPrefix = "k" }: KaomojiGridProps) {
   const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
 
   return (
@@ -18,7 +19,7 @@ export function KaomojiGrid({ faces }: KaomojiGridProps) {
       ) : null}
       <ul className="kaomoji-grid">
         {faces.map((face, index) => {
-          const id = `k-${index}`;
+          const id = `${idPrefix}-${index}`;
           return (
             <li key={`${face}-${index}`}>
               <button

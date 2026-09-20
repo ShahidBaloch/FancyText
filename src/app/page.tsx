@@ -214,6 +214,30 @@ export default function HomePage() {
         </p>
       </section>
 
+      <section className="seo-section seo-prose" aria-labelledby="scope-heading">
+        <h2 id="scope-heading">Homepage vs a dedicated generator</h2>
+        <p>
+          This URL is the <strong>fancy text generator</strong>—type once, preview
+          every live style. It is not the same page as a single-style tool. Open
+          a dedicated generator when you already know the modifier you want.
+        </p>
+        <ul>
+          <li>
+            <Link href="/bold-text-generator/">Bold text generator</Link> — bold
+            Unicode only, not glitch or the full homepage gallery.
+          </li>
+          <li>
+            <Link href="/stylish-text-generator/">Stylish text generator</Link> —
+            graphic / glitch / strikethrough set, not soft aesthetic or cute
+            bubble.
+          </li>
+          <li>
+            <Link href="/copy-paste-fonts/">Copy and paste fonts</Link> — catalog
+            of collections, not the live all-styles converter on this page.
+          </li>
+        </ul>
+      </section>
+
       <section className="seo-section seo-prose" aria-labelledby="practices-heading">
         <h2 id="practices-heading">A few honest limits</h2>
         <ul>

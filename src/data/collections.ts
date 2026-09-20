@@ -27,6 +27,12 @@ export type CollectionConfig = {
   howToName?: string;
   /** Unique positioning vs overlapping collections. */
   difference?: { heading: string; body: string };
+  extraSections?: {
+    id: string;
+    heading: string;
+    paragraphs?: string[];
+    bullets?: string[];
+  }[];
   faq: { question: string; answer: string }[];
 };
 
@@ -262,6 +268,20 @@ export const COLLECTIONS: CollectionConfig[] = [
         heading: "Kawaii extras, not aesthetic fullwidth",
         body: "Cute fonts here are circled bubble letters, squared caps, heart letters, and parenthesized glyphs. Soft wide script lives on aesthetic fonts. Cool lookalikes live on the cool text generator. High-contrast bold and glitch live on stylish text. Circled letters as a dedicated converter live on the bubble text generator.",
       },
+      extraSections: [
+        {
+          id: "kawaii-writing",
+          heading: "Kawaii fonts, letters, and writing to copy",
+          paragraphs: [
+            "Cute kawaii fonts copy and paste as Unicode—bubble, squared, hearts, and parenthesized glyphs. That is different from kaomoji (punctuation faces such as (´・ω・`)). Use this page when you want kawaii letters or kawaii writing for a name. Open the kaomoji hub when you want a face, not a font.",
+          ],
+          bullets: [
+            "Keep the word short: circled letters get wide fast in Discord nicks and Instagram bios.",
+            "If a circle boxes out, try squared caps or a shorter bubble word.",
+            "Leave @usernames in plain letters so people can still find you.",
+          ],
+        },
+      ],
       faq: [
         {
           question: "What are cute fonts copy and paste?",
@@ -282,6 +302,11 @@ export const COLLECTIONS: CollectionConfig[] = [
           question: "Is this the same as the bubble generator?",
           answer:
             "The bubble generator is circled A–Z only. This collection mixes bubble with other kawaii extras. Open bubble if you just want circles.",
+        },
+        {
+          question: "Is this kawaii writing or kaomoji?",
+          answer:
+            "This page is kawaii letters (bubble, hearts, squared). Kaomoji are Japanese text faces you copy from the kaomoji hub. You can mix a cute font name with a kaomoji in the same bio.",
         },
       ],
     },
@@ -371,6 +396,15 @@ export const COLLECTIONS: CollectionConfig[] = [
         heading: "Graphic and loud, not cute or aesthetic",
         body: "Stylish text is bold, italic, monospace, strikethrough, and glitch. It is not cute bubble/kawaii, not soft fullwidth aesthetic, and not cool lookalike alphabets. Open cute fonts, aesthetic fonts, or the cool text generator when that is the modifier you meant.",
       },
+      extraSections: [
+        {
+          id: "stylish-not-home-or-bold",
+          heading: "Stylish text—not the homepage or bold-only tool",
+          paragraphs: [
+            "The homepage is the all-styles fancy text generator. The bold text generator is for mathematical bold only. This collection is high-contrast graphic styles (glitch, strikethrough, monospace mixes)—bookmark it when that is the job.",
+          ],
+        },
+      ],
       faq: [
         {
           question: "What is a stylish text generator?",

@@ -46,7 +46,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 
 - /chatgpt-to-linkedin/ — chatgpt to linkedin formatter — Paste Markdown from ChatGPT, Claude, or Gemini
 - /discord-color-text/ — discord colored text generator — Discord colored text generator
-- /discord-font-generator/ — Discord — Discord font generator
+- /discord-font-generator/ — Discord — Discord font generator for display names, nicknames, and about-me
 - /facebook-font-generator/ — facebook font generator — Facebook font generator
 - /html-text-generator/ — html text generator — HTML text generator
 - /instagram-font-generator/ — Instagram — Instagram font generator
@@ -63,7 +63,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji and crying text faces
 - /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji and kawaii text faces for bios and chats
 - /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji and love text faces for messages
-- /kaomoji/ — Kaomoji — Free kaomoji copy and paste
+- /kaomoji/ — Kaomoji — Free kaomoji and kaomojis copy and paste
 - /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) and variants
 - /shrug-emoticon/ — shrug emoticon — Copy the shrug emoticon ¯\_(ツ)_/¯ and variants
 

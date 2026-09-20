@@ -7,10 +7,14 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { KaomojiGrid } from "@/components/kaomoji/KaomojiGrid";
+import { KaomojiMeaningTable } from "@/components/kaomoji/KaomojiMeaningTable";
 import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
+  KAOMOJI_MEANINGS,
   SPECIAL_KAOMOJI,
+  getHubFaces,
+  getHubMoodCopySets,
   getHubShowcase,
   getTailKaomojiLists,
   kaomojiPathIsIndexable,
@@ -34,6 +38,16 @@ const hubFaq = [
       "顔文字: face characters. They are punctuation emoticons from Japanese chat culture, not emoji stickers. This hub is the index; cute, cry, and heart are the main mood pages, plus Lenny and shrug.",
   },
   {
+    question: "Kaomoji or kaomojis — which is correct?",
+    answer:
+      "Both work in English. “Kaomoji” is the usual singular; “kaomojis” is the common plural when people want a list of faces. This page is the copy-and-paste hub for either search.",
+  },
+  {
+    question: "Is it kamoji, kaemoji, or kao emoji?",
+    answer:
+      "The standard spelling is kaomoji (face + character). Kamoji, kaemoji, komoji, and “kao emoji” are frequent typos—same Japanese text faces, same tap-to-copy tool here.",
+  },
+  {
     question: "Is this different from emoji?",
     answer:
       "Yes. Kaomoji are letters and symbols you can copy as text. Emoji are picture characters. You can mix both in one message.",
@@ -47,6 +61,26 @@ const hubFaq = [
     question: "Which lists should I bookmark?",
     answer:
       "This hub, then cute, cry, heart, Lenny, and shrug. Other emotion URLs stay up for old links but this page is the one to share.",
+  },
+  {
+    question: "Are there kaomoji GIFs?",
+    answer:
+      "Kaomoji are text, not GIFs. Discord and Instagram have their own GIF/sticker pickers if you want motion. Copy a face here when you need something that pastes into any chat, bio, or email.",
+  },
+  {
+    question: "What does ¯\\_(ツ)_/¯ or ( ͡° ͜ʖ ͡°) mean?",
+    answer:
+      "¯\\_(ツ)_/¯ is the shrug: “I don’t know” or “whatever.” ( ͡° ͜ʖ ͡°) is Lenny face—knowing or suggestive. The meanings table above covers the faces people search by name.",
+  },
+  {
+    question: "Can I put kaomoji in a Discord nickname?",
+    answer:
+      "Short faces often save. Long table-flips and stacked combining marks get rejected. Keep the @username plain and try a one-line face from the cute or heart lists.",
+  },
+  {
+    question: "Do kaomoji work on Instagram and TikTok?",
+    answer:
+      "Yes in bios, captions, and comments. Usernames stay lowercase ASCII. Very long faces can hit the bio character limit—pick a shorter one.",
   },
 ];
 
@@ -88,20 +122,32 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
 
       <PageHero h1={config.h1} lead={config.description} />
 
-      {!kaomojiPathIsIndexable(config.slug) ? (
+      {kaomojiPathIsIndexable(config.slug) ? (
         <p className="seo-lead">
-          This emotion list stays available for old links. The canonical kaomoji
-          copy-and-paste index is the{" "}
-          <Link href="/kaomoji/">kaomoji hub</Link>
-          , with featured cute, cry, heart, Lenny, and shrug lists.
+          Canonical <strong>{config.primaryKeyword}</strong> list—every face for
+          this mood lives here. The{" "}
+          <Link href="/kaomoji/">kaomoji hub</Link> mixes moods for general
+          kaomoji search; bookmark this URL when you only want {config.emotion}{" "}
+          faces.
         </p>
-      ) : null}
+      ) : (
+        <p className="seo-lead">
+          This emotion list stays available for old links and is not indexed in
+          search. For general kaomoji, use the{" "}
+          <Link href="/kaomoji/">kaomoji hub</Link>. Indexed mood pages:{" "}
+          <Link href="/cute-kaomojis/">cute</Link>,{" "}
+          <Link href="/cry-kaomojis/">cry</Link>,{" "}
+          <Link href="/heart-kaomojis/">heart</Link>,{" "}
+          <Link href="/lenny-face/">Lenny</Link>,{" "}
+          <Link href="/shrug-emoticon/">shrug</Link>.
+        </p>
+      )}
 
       <div className="tool-stage" id="tool">
         <p className="field-label">
           {config.faces.length} faces — tap to copy
         </p>
-        <KaomojiGrid faces={config.faces} />
+        <KaomojiGrid faces={config.faces} idPrefix={config.slug} />
       </div>
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
@@ -130,6 +176,19 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
           {config.mobileNote ??
             "Open this page in Safari or Chrome, tap a face, switch to the chat app, and paste. No keyboard pack is required—these are ordinary Unicode characters."}
         </p>
+      </section>
+
+      <section className="seo-section seo-prose" aria-labelledby="paste-heading">
+        <h2 id="paste-heading">Where these faces work</h2>
+        <ul>
+          <li>Discord messages and about-me: yes. Nicknames: keep to one short line.</li>
+          <li>Instagram and TikTok bios, captions, and comments: yes. Usernames stay plain.</li>
+          <li>WhatsApp chats, status, and group names: usually yes.</li>
+          <li>
+            Need a cute letter style instead of a face? Open{" "}
+            <Link href="/cute-fonts/">kawaii fonts copy and paste</Link>.
+          </li>
+        </ul>
       </section>
 
       <section className="seo-section" aria-labelledby="more-heading">
@@ -162,10 +221,8 @@ export function KaomojiHubView() {
     INDEXABLE_KAOMOJI_SLUGS.has(item.href.replace(/^\/|\/$/g, "")),
   );
   const tailLists = getTailKaomojiLists();
-  const samples = ALL_KAOMOJI_PAGES.flatMap((k) => k.faces.slice(0, 2)).slice(
-    0,
-    40,
-  );
+  const samples = getHubFaces(72);
+  const moodCopySets = getHubMoodCopySets(12);
 
   return (
     <div className="site-shell">
@@ -201,15 +258,18 @@ export function KaomojiHubView() {
       />
 
       <div className="tool-stage" id="tool">
-        <p className="field-label">Popular faces — tap to copy</p>
-        <KaomojiGrid faces={samples} />
+        <p className="field-label">
+          {samples.length} popular faces — tap to copy
+        </p>
+        <KaomojiGrid faces={samples} idPrefix="hub" />
       </div>
 
       <section className="seo-section" aria-labelledby="emotions-heading">
         <h2 id="emotions-heading">Start with a mood</h2>
         <p className="seo-lead">
-          Cute, cry, and heart are the main lists. Lenny and shrug have their
-          own pages because people search those faces by name.
+          Each card opens the indexed list for that mood (cute, cry, heart,
+          Lenny, shrug). This hub is for general kaomoji search—do not duplicate
+          those full lists here.
         </p>
         <ul className="kaomoji-emotion-grid">
           {featuredShowcase.map((item) => (
@@ -238,14 +298,88 @@ export function KaomojiHubView() {
         </ul>
       </section>
 
+      {moodCopySets.map((set) => (
+        <section
+          key={set.slug}
+          className="seo-section"
+          aria-labelledby={`mood-copy-${set.slug}`}
+        >
+          <h2 id={`mood-copy-${set.slug}`}>{set.h1}</h2>
+          <p className="seo-lead">
+            Tap a face to copy it as plain text.{" "}
+            <Link href={`/${set.slug}/`}>See the full {set.h1.toLowerCase()} list</Link>
+            .
+          </p>
+          <KaomojiGrid faces={set.faces} idPrefix={set.slug} />
+        </section>
+      ))}
+
       <section className="seo-section seo-prose" aria-labelledby="what-heading">
         <h2 id="what-heading">What are kaomoji?</h2>
         <p>
-          Kaomoji are Japanese emoticons built from Unicode characters. Unlike
-          emoji stickers, they are plain text—so they paste into Discord,
-          Instagram bios, TikTok captions, WhatsApp, and email. Bookmark this
-          hub for “Japanese emoticons” in general. Open a mood list only when
-          you already know the feeling.
+          Kaomoji (kaomojis) are Japanese emoticons built from Unicode
+          characters—also called text faces or Japanese emoticons. Unlike emoji
+          stickers, they are plain text, so they paste into Discord, Instagram
+          bios, TikTok captions, WhatsApp, and email. Bookmark this hub when
+          you want many kaomoji in one place; open cute, cry, or heart when you
+          already know the mood.
+        </p>
+        <p>
+          The word is often typed as kamoji, kaemoji, kaoemoji, komoji, kaomojis,
+          or “kao emoji.” The correct spelling is <strong>kaomoji</strong>, from
+          顔 (kao, face) and 文字 (moji, character). Whichever spelling brought
+          you here, the faces below are the same copy-and-paste text.
+        </p>
+      </section>
+
+      <section className="seo-section" aria-labelledby="meanings-heading">
+        <h2 id="meanings-heading">Famous kaomoji and what they mean</h2>
+        <p className="seo-lead">
+          The faces people look up by name. Tone matters more than the
+          characters—a shrug softens a non-answer, a table flip is a joke.
+        </p>
+        <KaomojiMeaningTable rows={KAOMOJI_MEANINGS} />
+      </section>
+
+      <section className="seo-section seo-prose" aria-labelledby="where-heading">
+        <h2 id="where-heading">Where kaomoji paste cleanly</h2>
+        <p>
+          Because they are ordinary characters, most chat apps keep them. Long
+          table-flips and stacked combining marks fail first—especially in
+          nicknames.
+        </p>
+        <ul>
+          <li>
+            <Link href="/discord-font-generator/">Discord</Link> messages and
+            about-me: yes. Nicknames: keep to one short line. The @username
+            stays plain.
+          </li>
+          <li>
+            Instagram bios, captions, and comments: yes. The @handle cannot use
+            them.
+          </li>
+          <li>TikTok bios and comments: yes, if they fit the short bio limit.</li>
+          <li>WhatsApp chats, status, and group names: usually yes.</li>
+          <li>
+            Mix a face with{" "}
+            <Link href="/cute-fonts/">cute kawaii fonts</Link> in a bio, but
+            do not style the kaomoji itself—those characters are already the
+            look.
+          </li>
+        </ul>
+      </section>
+
+      <section className="seo-section seo-prose" aria-labelledby="gifs-heading">
+        <h2 id="gifs-heading">Kaomoji vs emoji vs GIFs</h2>
+        <p>
+          Kaomoji are punctuation faces such as (╯°□°)╯︵ ┻━┻. Emoji are picture
+          characters from a phone’s emoji keyboard. GIFs and stickers are
+          images. This page copies text only—so the face survives in email,
+          code comments, and apps that block image stickers.
+        </p>
+        <p>
+          Want motion? Use Discord’s GIF picker or Instagram stickers. Want a
+          face that always pastes? Stay here.
         </p>
       </section>
 
@@ -253,16 +387,22 @@ export function KaomojiHubView() {
         <h2 id="how-hub-heading">How to copy kaomoji</h2>
         <ol>
           <li>Tap a face above, or open cute / cry / heart if you want a longer list.</li>
-          <li>The clipboard gets ordinary text—no sticker pack.</li>
-          <li>Paste in any app that accepts Unicode. If it boxes out, try a shorter face.</li>
+          <li>The clipboard gets ordinary text—no sticker pack or font download.</li>
+          <li>Switch to Discord, Instagram, TikTok, or WhatsApp and paste.</li>
+          <li>If you see empty boxes, pick a shorter face higher in the list.</li>
         </ol>
+        <p>
+          On a phone, open this page in Safari or Chrome, tap a face, then
+          long-press Paste in the chat app. No extra keyboard is required.
+        </p>
       </section>
 
       <section className="seo-section" aria-labelledby="lists-heading">
-        <h2 id="lists-heading">Other moods (old links)</h2>
+        <h2 id="lists-heading">More mood lists</h2>
         <p className="seo-lead">
-          Extra emotion URLs stay live so old bookmarks do not 404. Prefer this
-          hub plus cute, cry, heart, Lenny, and shrug when you share a page.
+          Angry, cat, hug, and the rest stay live so you can browse a full
+          emotion without mixing it into the hub. Cute, cry, heart, Lenny, and
+          shrug are the lists worth sharing.
         </p>
         <ul className="taxonomy-links">
           {tailLists.map((k) => (

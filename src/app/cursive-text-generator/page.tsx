@@ -66,6 +66,11 @@ const faqItems = [
     answer:
       "It can. Screen readers and search engines may not treat script letters as normal A–Z. Keep official @usernames and anything people need to find in plain text; use cursive for display names, captions, and decoration.",
   },
+  {
+    question: "Can I make names in cursive or generate script letters?",
+    answer:
+      "Yes. Type the name in the box on this page and copy Cursive / Script. That is the names-in-cursive generator. For a single glyph, use the alphabet rows below—the script letter generator for A–Z without installing a font.",
+  },
 ];
 
 export default function CursiveHubPage() {
@@ -178,6 +183,29 @@ export default function CursiveHubPage() {
           <li>
             School worksheets, invitations, and aesthetic quotes where you need
             a cursive model without installing a typeface.
+          </li>
+        </ul>
+      </section>
+
+      <section className="seo-section seo-prose" aria-labelledby="names-heading">
+        <h2 id="names-heading">Names in cursive, and single script letters</h2>
+        <p>
+          For a full name, type it once above and copy Cursive / Script—that is
+          what a “names in cursive generator” does. Because these are characters
+          and not a joined calligraphy font, letters sit side by side rather than
+          linking, so short names read best.
+        </p>
+        <ul>
+          <li>
+            Need one glyph for a worksheet or monogram? Copy it from the
+            alphabet rows above—the script letter generator for A–Z.
+          </li>
+          <li>
+            Mixing cases (𝒜𝓁𝑒𝓍) usually looks better than all-caps script, which
+            can be hard to read at small sizes.
+          </li>
+          <li>
+            Keep the login @username plain; style the display name instead.
           </li>
         </ul>
       </section>

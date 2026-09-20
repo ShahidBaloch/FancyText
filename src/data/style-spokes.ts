@@ -22,6 +22,12 @@ export type StyleSpokeConfig = {
   showGallery?: boolean;
   /** Unique positioning vs overlapping style tools. */
   difference?: { heading: string; body: string };
+  extraSections?: {
+    id: string;
+    heading: string;
+    paragraphs?: string[];
+    bullets?: string[];
+  }[];
   faq: { question: string; answer: string }[];
 };
 
@@ -103,6 +109,28 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
       "Some older devices may show boxes for rare characters—try sans bold as a fallback.",
       "Username fields may reject squared or fraktur symbols—test before locking a handle.",
     ],
+    extraSections: [
+      {
+        id: "bold-copy-paste",
+        heading: "Bold copy and paste, not a font download",
+        paragraphs: [
+          "A bold text generator (also searched as bold font generator or bold font style) swaps each letter for Mathematical Bold Unicode. You copy the result and paste it. Nothing installs, and Discord / Instagram still draw the characters in their own typeface.",
+          "In a Discord message you can type **bold** markdown instead. Use this Unicode when the field has no bold button: nicknames, Instagram bios, group names, and captions.",
+        ],
+        bullets: [
+          "Sans bold is the safest fallback if a glyph boxes out.",
+          "Keep @usernames in plain letters so people can find you.",
+          "Style a short word, not a whole paragraph—screen readers and search prefer ordinary text.",
+        ],
+      },
+      {
+        id: "bold-not-home-or-stylish",
+        heading: "Bold-only—not the homepage or stylish text",
+        paragraphs: [
+          "The homepage fancy text generator previews every style at once. This page is bold-focused (plus related weights). The stylish text generator is for glitch, strikethrough, and graphic mixes—not pure bold bios.",
+        ],
+      },
+    ],
     faq: [
       {
         question: "What is a bold text generator?",
@@ -123,6 +151,11 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         question: "Does this hurt search?",
         answer:
           "In-app search prefers ordinary letters. Style a display line; keep keywords in normal type.",
+      },
+      {
+        question: "Is this the same as bold copy paste or a bold font generator?",
+        answer:
+          "Yes—same tool. Bold copy paste, bold font generator, and bold font style all mean Unicode letters you copy. There is no TTF to download.",
       },
     ],
   }),
@@ -352,6 +385,20 @@ export const STYLE_SPOKES: StyleSpokeConfig[] = [
         heading: "Small caps are short capitals, not tiny bios",
         body: "Small caps replace letters with short-capital Unicode (ꜱᴍᴀʟʟ ᴄᴀᴘꜱ). They stay roughly normal x-height. The small text generator makes compact superscript-style bios. The superscript & subscript generator raises or lowers characters for math and footnotes. Use this page only when you want small capitals.",
       },
+      extraSections: [
+        {
+          id: "small-caps-how",
+          heading: "How a small caps fonts generator works",
+          paragraphs: [
+            "This small caps fonts generator maps A–Z to phonetic small-capital letters. It is copy and paste—not a downloadable small-caps typeface. Words with x will always look slightly uneven because Unicode has no small capital X.",
+          ],
+          bullets: [
+            "Good for quiet bio labels and display names that should not shout.",
+            "Not tiny superscript bios and not math H₂O subscripts.",
+            "Usernames still want plain letters; paste small caps in the display name instead.",
+          ],
+        },
+      ],
       faq: [
         {
           question: "What is a small caps generator?",

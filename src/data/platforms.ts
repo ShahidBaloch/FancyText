@@ -34,6 +34,12 @@ export type PlatformConfig = {
   fieldsLead?: string;
   /** Per-field Unicode support, rendered as the "Where fonts work" table. */
   fields?: PlatformField[];
+  extraSections?: {
+    id: string;
+    heading: string;
+    paragraphs?: string[];
+    bullets?: string[];
+  }[];
   faq: { question: string; answer: string }[];
 };
 
@@ -67,6 +73,20 @@ export const PLATFORMS: PlatformConfig[] = [
       "Emphasis inside a code block, not in a display name",
     ],
     colorCodes: true,
+    extraSections: [
+      {
+        id: "discord-color-not-fonts",
+        heading: "Colored messages, not Discord fonts",
+        paragraphs: [
+          "This page is ANSI color inside a ```ansi code block—colored chat messages only. It does not change your display name, nickname, or about-me. For Unicode nicknames (bold, script, bubble), open the Discord font generator instead.",
+        ],
+        bullets: [
+          "Use color text for announcements, rules, and welcome messages.",
+          "Use the font generator for display names and about-me Unicode.",
+          "Nitro is not required for either trick, but they apply to different fields.",
+        ],
+      },
+    ],
     faq: [
       {
         question: "What is a Discord colored text generator?",
@@ -110,20 +130,24 @@ export const PLATFORMS: PlatformConfig[] = [
       "bubble",
       "small-caps",
       "double-struck",
+      "italic",
+      "hearts",
     ],
     initialText: "Discord",
     presets: ["Discord", "Server Name", "Nickname", "Cool Status"],
     howToHeading: "How to use Discord fonts",
     howToSteps: [
       "Type the nickname, channel title, or about-me line.",
-      "Prefer sans bold, bubble, or script for nicknames. Cherokee and Japanese lookalikes are on the cool text generator.",
+      "Prefer sans bold, bubble, or script for nicknames. Heart letters are the cute option; Cherokee and Japanese lookalikes are on the cool text generator.",
       "Copy a row and paste into Display name, Server nickname, or About me—never the @username field.",
+      "If Discord rejects the name, shorten it or switch to sans bold / monospace and try again.",
     ],
     usesHeading: "Fields that can take Unicode",
     uses: [
       "Display names and per-server nicknames (32 characters). Keep the @username plain.",
       "Server names and channel titles when the characters save",
       "About-me text—Discord also has real **bold** markdown there, which is easier on screen readers",
+      "Channel topics and forum tags when a short styled word still reads in the sidebar",
     ],
     fieldsHeading: "Display name vs @username vs about me",
     fieldsLead:
@@ -154,11 +178,55 @@ export const PLATFORMS: PlatformConfig[] = [
         note: "Accepts Unicode styles, but Discord also supports real **bold** and *italic* markdown here, which stays readable to screen readers.",
       },
     ],
+    extraSections: [
+      {
+        id: "discord-fonts-not-nitro",
+        heading: "Discord fonts are not a Nitro pack",
+        paragraphs: [
+          "These rows are Unicode look-alike letters. Anyone can paste them into a display name or nickname—Nitro is not required, and no bot has to run. Discord still draws them in its own typeface; you are changing the characters, not installing a font file.",
+          "Colored chat is a different page: ANSI codes inside a ```ansi message block on the Discord color text generator. Never mix the two—color blocks fail in nicknames, and Unicode fonts do not paint message text.",
+        ],
+      },
+      {
+        id: "discord-fonts-tips",
+        heading: "What usually saves vs what Discord rejects",
+        bullets: [
+          "Sans bold, bubble, small caps, and short script names save most often.",
+          "Heart letters and cute circled text can fail nickname filters—try a shorter word.",
+          "Glitch / Zalgo and long combining marks almost never belong in a nick.",
+          "If a phone shows empty boxes, switch to sans bold or monospace on this page.",
+          "Keep the login username in plain lowercase so friends can still find and mention you.",
+        ],
+      },
+      {
+        id: "discord-fonts-fields",
+        heading: "Copy once, paste in the right Discord field",
+        paragraphs: [
+          "Most “Discord font not working” reports are a field problem, not a character problem. Display name, server nickname, about-me, server name, and channel topic accept Unicode. The @username never does.",
+        ],
+        bullets: [
+          "User Settings → Profile → Display name for the global styled name.",
+          "Right-click a server → Change Nickname to style one community only.",
+          "About me (190 characters) also supports real **bold** markdown, which screen readers read normally.",
+          "Want colored chat instead of styled names? That is the ANSI color tool.",
+        ],
+      },
+    ],
     faq: [
       {
         question: "What is a Discord font generator?",
         answer:
           "It converts plain text into Unicode letters you paste into Discord display names, nicknames, and about-me. No bot or Nitro required. The @username stays lowercase ASCII.",
+      },
+      {
+        question: "Where do I get Discord fonts to copy and paste?",
+        answer:
+          "Type here, pick a row (bold, script, bubble, monospace), and copy. Paste into Display name, Server nickname, or About me—not the @username field. That is what people mean by Discord fonts or font for Discord.",
+      },
+      {
+        question: "Can I use fancy font on Discord without Nitro?",
+        answer:
+          "Yes for Unicode nicknames and about-me text. Fancy letters are plain characters, not a Discord font pack. Colored chat needs the separate ANSI color tool, not this page.",
       },
       {
         question: "Can I change my Discord username to fancy letters?",
@@ -316,6 +384,21 @@ export const PLATFORMS: PlatformConfig[] = [
         unicode: "yes",
         limit: null,
         note: "Styled text works, but keep hashtags and keywords in plain letters or they stop matching searches.",
+      },
+    ],
+    extraSections: [
+      {
+        id: "instagram-font-text",
+        heading: "Instagram font text without a font picker",
+        paragraphs: [
+          "Instagram never installs a typeface from this site. The letters you copy are Unicode look-alikes, so they show up in the bio and display name using Instagram’s own font. That is what people mean by Instagram font text or an Instagram font changer.",
+          "Leave hashtags, your @handle, and the words people search in plain letters. Style one short line for flair so the bio still reads on a phone.",
+        ],
+        bullets: [
+          "Bios: 150 characters, including fancy letters.",
+          "Display name: 30 characters, and Instagram limits how often you can change it.",
+          "Usernames: lowercase ASCII only—never paste styled text there.",
+        ],
       },
     ],
     faq: [
@@ -570,6 +653,20 @@ export const PLATFORMS: PlatformConfig[] = [
         note: "Styled text posts fine, but it is excluded from search results because it no longer matches the plain words people type.",
       },
     ],
+    extraSections: [
+      {
+        id: "twitter-fonts-generator",
+        heading: "Twitter fonts generator for names, not tweets",
+        paragraphs: [
+          "X (Twitter) has no font picker. This Twitter fonts generator makes Unicode for the 50-character display name and 160-character bio. Posts can take the same letters, but search will not match them—keep tweet copy in normal type.",
+        ],
+        bullets: [
+          "Sans bold, bold, italic, and short script names survive most often.",
+          "The @handle is 15 characters of letters, numbers, and underscores only.",
+          "Check X’s own counter after you paste; fancy letters still count.",
+        ],
+      },
+    ],
     faq: [
       {
         question: "What is a Twitter font generator?",
@@ -618,6 +715,43 @@ export const PLATFORMS: PlatformConfig[] = [
       "Display names after you confirm Roblox does not strip the characters",
       "Experience titles you type yourself",
       "A jump to HTML-like tags for supported Roblox UI (that is markup, not this Unicode)",
+    ],
+    fieldsHeading: "Roblox username vs display name vs chat",
+    fieldsLead:
+      "Roblox filters novelty letters aggressively. Always paste in the app and check that the name saves before you tell anyone the new look.",
+    fields: [
+      {
+        name: "Display name",
+        unicode: "filtered",
+        limit: 20,
+        note: "Looser than the account username, but still strips many symbols. Sans bold and small caps fail less often.",
+      },
+      {
+        name: "Account username",
+        unicode: "no",
+        limit: 20,
+        note: "Login handle. Fancy letters almost never save here—keep it plain.",
+      },
+      {
+        name: "Chat",
+        unicode: "filtered",
+        limit: null,
+        note: "Stricter than display names. If chat strips the style, keep fancy text on the profile only.",
+      },
+    ],
+    extraSections: [
+      {
+        id: "roblox-unicode-vs-rich",
+        heading: "Roblox fonts vs Roblox rich text",
+        paragraphs: [
+          "This page previews Unicode letters you paste into a display name. That is not the same as Roblox rich text tags such as <b> or <font> in experience UI. If you searched for a Roblox rich text generator or a Roblox friendly font, use Unicode here for names, and the HTML text generator for tag snippets.",
+        ],
+        bullets: [
+          "Start with sans bold, small caps, or monospace—those survive filters more often than bubble or glitch.",
+          "Always test in Roblox after copying. A preview that looks fine here can still bounce in the app.",
+          "Account usernames stay plain so friends can still search for you.",
+        ],
+      },
     ],
     faq: [
       {
@@ -780,6 +914,20 @@ export const PLATFORMS: PlatformConfig[] = [
         unicode: "filtered",
         limit: null,
         note: "Some captions keep Unicode; others flatten to the default font. Test a short line on your device.",
+      },
+    ],
+    extraSections: [
+      {
+        id: "snapchat-fonts-how",
+        heading: "Fonts on Snapchat without a font picker",
+        paragraphs: [
+          "Snapchat does not let you pick a typeface. A font for Snapchat is Unicode you paste into the display name. Filters reject a long list of symbols, so save often and fall back to sans bold or bubble if the name will not stick.",
+        ],
+        bullets: [
+          "Keep the login username plain—friends still find you by that handle.",
+          "Two or three words is enough; long script names fail more often.",
+          "Story captions sometimes flatten styled text to the default font. Test on your phone.",
+        ],
       },
     ],
     faq: [
