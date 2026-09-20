@@ -24,7 +24,7 @@ export function ContactForm() {
     };
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -68,12 +68,6 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="contact-form" aria-labelledby="contact-query">
-      <p className="seo-lead">
-        Prefer email? Write to{" "}
-        <a href={`mailto:${contactConfig.email}`}>{contactConfig.email}</a>
-        . We typically reply within one business day.
-      </p>
-
       <label className="contact-label">
         Name
         <input

@@ -891,6 +891,7 @@ export const PAGES: PageEntry[] = [
       "About FancifyText. Who runs FancifyText, how the Unicode fancy text generator works, and how we keep these free copy-and-paste tools accurate.",
     fellowKeywords: fellows("about fancify text", "who made fancifytext"),
     navLabel: "About",
+    updated: "2026-09-20",
   },
   {
     phase: 6,
@@ -903,6 +904,7 @@ export const PAGES: PageEntry[] = [
       "Contact FancifyText by email (hello@fancifytext.com) or a short query form. We typically reply within one business day.",
     fellowKeywords: fellows("fancifytext contact", "fancy text support"),
     navLabel: "Contact",
+    updated: "2026-09-20",
   },
   {
     phase: 6,

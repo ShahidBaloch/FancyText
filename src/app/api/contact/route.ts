@@ -66,6 +66,7 @@ export async function POST(req: Request) {
       return Response.json({ ok: false, error: "Invalid email." }, { status: 400 });
     }
 
+    const subjectName = name.replace(/[\r\n]+/g, " ");
     const host = process.env.SMTP_HOST;
     const port = Number(process.env.SMTP_PORT || 587);
     const user = process.env.SMTP_USER;
@@ -96,27 +97,28 @@ export async function POST(req: Request) {
       from: `"FancifyText Contact" <${from}>`,
       replyTo: email,
       to,
-      subject: `New FancifyText Message from ${name}`,
+      subject: `New FancifyText Query from ${subjectName}`,
       text: [
         "New FancifyText Contact Form Submission",
         "",
         `Name: ${name}`,
         `Email: ${email}`,
         "",
-        "Message:",
+        "Query:",
         message,
       ].join("\n"),
       html: `
         <h2>New FancifyText Contact Form Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Message:</strong></p>
+        <p><strong>Query:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
     });
 
     return Response.json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error("Failed to send FancyText contact email:", error);
     return Response.json(
       { ok: false, error: "Something went wrong." },
       { status: 500 },
