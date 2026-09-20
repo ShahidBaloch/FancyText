@@ -103,7 +103,7 @@ export function ContactForm() {
           rows={7}
           maxLength={5000}
           className="text-input"
-          placeholder="A bug, a question about a tool, or a privacy note…"
+          placeholder="Write your question or message…"
         />
       </label>
 
