@@ -1149,16 +1149,13 @@ export type HubMoodCopySet = {
   faces: string[];
 };
 
-/** Longer copy-now sets for the moods people actually search. */
+/**
+ * Extra copy grids on the hub only for moods that stay noindex.
+ * Indexable lists (cute, cry, heart, Lenny, shrug) link out via cards so
+ * they do not compete with their own URLs in search.
+ */
 export function getHubMoodCopySets(perList = 12): HubMoodCopySet[] {
-  const slugs = [
-    "cute-kaomojis",
-    "cry-kaomojis",
-    "heart-kaomojis",
-    "funny-kaomojis",
-    "lenny-face",
-    "shrug-emoticon",
-  ];
+  const slugs = ["funny-kaomojis"];
   const sets: HubMoodCopySet[] = [];
   for (const slug of slugs) {
     const list = getKaomojiList(slug);
