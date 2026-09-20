@@ -1,5 +1,5 @@
 export const SITE_SAME_AS: string[] = [
-  // Add public profiles when they exist, e.g. GitHub / X / Discord support.
+  // Add public brand profiles only when they exist.
   // Kept empty-safe: Organization schema omits sameAs when length is 0.
 ];
 

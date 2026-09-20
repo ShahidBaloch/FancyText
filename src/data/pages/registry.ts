@@ -903,6 +903,7 @@ export const PAGES: PageEntry[] = [
       "Contact FancifyText by email (hello@fancifytext.com) or a short query form. We typically reply within one business day.",
     fellowKeywords: fellows("fancifytext contact", "fancy text support"),
     navLabel: "Contact",
+    updated: "2026-09-20",
   },
   {
     phase: 6,

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { contactConfig } from "@/data/contact";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -17,13 +18,14 @@ export function ContactForm() {
     const form = event.currentTarget;
     const data = new FormData(form);
     const payload = {
+      name: String(data.get("name") ?? "").trim(),
       email: String(data.get("email") ?? "").trim(),
       message: String(data.get("message") ?? "").trim(),
       website: String(data.get("website") ?? "").trim(),
     };
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -67,11 +69,18 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="contact-form" aria-labelledby="contact-query">
-      <p className="seo-lead">
-        Prefer email? Write to{" "}
-        <a href={`mailto:${contactConfig.email}`}>{contactConfig.email}</a>
-        . We typically reply within one business day.
-      </p>
+      <label className="contact-label">
+        Name
+        <input
+          required
+          type="text"
+          name="name"
+          autoComplete="name"
+          maxLength={120}
+          className="text-input"
+          placeholder="Your name"
+        />
+      </label>
 
       <label className="contact-label">
         Email
@@ -80,6 +89,7 @@ export function ContactForm() {
           type="email"
           name="email"
           autoComplete="email"
+          maxLength={200}
           className="text-input"
           placeholder="you@email.com"
         />
@@ -105,6 +115,11 @@ export function ContactForm() {
           autoComplete="off"
         />
       </div>
+
+      <p className="contact-privacy-note">
+        We use your details only to reply to this query. See our{" "}
+        <Link href="/privacy/">Privacy Policy</Link>.
+      </p>
 
       <button
         type="submit"

@@ -2324,6 +2324,18 @@ a.use-card:hover {
   min-width: 10rem;
 }
 
+.contact-privacy-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.contact-privacy-note a {
+  color: var(--accent-deep);
+  font-weight: 650;
+}
+
 .contact-form-row {
   display: grid;
   gap: 1.1rem;
