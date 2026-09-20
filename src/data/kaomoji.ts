@@ -1156,6 +1156,108 @@ export function getHubFaces(limit = 72): string[] {
   return out;
 }
 
+export type KaomojiMeaning = {
+  face: string;
+  name: string;
+  meaning: string;
+};
+
+/**
+ * The faces people actually search by name, with what each one signals.
+ * Hub-only content: mood pages explain their own set in `meanings`.
+ */
+export const KAOMOJI_MEANINGS: KaomojiMeaning[] = [
+  {
+    face: "¯\\_(ツ)_/¯",
+    name: "Shrug",
+    meaning:
+      "“I don’t know” or “whatever.” Softens a non-answer without sounding rude.",
+  },
+  {
+    face: "( ͡° ͜ʖ ͡°)",
+    name: "Lenny face",
+    meaning:
+      "Knowing, suggestive, or mischievous. Reads as a nudge—keep it out of work chats.",
+  },
+  {
+    face: "(╯°□°）╯︵ ┻━┻",
+    name: "Table flip",
+    meaning:
+      "Comic rage or giving up. Long, so it fails most nickname fields—use it in messages.",
+  },
+  {
+    face: "┬─┬ノ( º _ ºノ)",
+    name: "Table unflip",
+    meaning:
+      "The calm reply to a table flip: “put it back.” Usually sent as a follow-up joke.",
+  },
+  {
+    face: "ಠ_ಠ",
+    name: "Look of disapproval",
+    meaning:
+      "Skeptical staring. Short enough for nicknames and reads as deadpan judgment.",
+  },
+  {
+    face: "(づ｡◕‿‿◕｡)づ",
+    name: "Hug",
+    meaning:
+      "Offering comfort or affection. Common reply to bad news in friend servers.",
+  },
+  {
+    face: "(◕‿◕)",
+    name: "Cute smile",
+    meaning:
+      "Plain friendly warmth. The safest kaomoji for bios because it is short and widely supported.",
+  },
+  {
+    face: "(T_T)",
+    name: "Crying",
+    meaning:
+      "Sad or overwhelmed. Doubles as playful “I’m dying” when the tone is light.",
+  },
+  {
+    face: "(ノ_<。)",
+    name: "Wiping tears",
+    meaning: "Softer crying—disappointed rather than devastated.",
+  },
+  {
+    face: "(*≧ω≦*)",
+    name: "Excited / squealing",
+    meaning: "Hype and delight. Fits fandom replies and good-news reactions.",
+  },
+  {
+    face: "(¬‿¬)",
+    name: "Smug",
+    meaning: "Teasing confidence—“told you so” without typing it.",
+  },
+  {
+    face: "(⁄ ⁄•⁄ω⁄•⁄ ⁄)",
+    name: "Blushing / shy",
+    meaning: "Flustered or embarrassed. Popular in flirty and soft-aesthetic bios.",
+  },
+  {
+    face: "ʕ•ᴥ•ʔ",
+    name: "Bear",
+    meaning:
+      "Cozy animal face. The ʕ ʔ are ears and ᴥ is the snout—widely copied for cute names.",
+  },
+  {
+    face: "(=^･ω･^=)",
+    name: "Cat",
+    meaning: "Playful feline. Works as a signature in chats and group titles.",
+  },
+  {
+    face: "(*・ω・)ﻭ",
+    name: "Thumbs up / cheer",
+    meaning: "Encouragement—“you got this.” Reads friendlier than a plain 👍.",
+  },
+  {
+    face: "(；一_一)",
+    name: "Unimpressed",
+    meaning: "Tired resignation. Good for “again?” moments without complaining.",
+  },
+];
+
 export type HubMoodCopySet = {
   slug: string;
   h1: string;

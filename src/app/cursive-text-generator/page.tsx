@@ -187,6 +187,29 @@ export default function CursiveHubPage() {
         </ul>
       </section>
 
+      <section className="seo-section seo-prose" aria-labelledby="names-heading">
+        <h2 id="names-heading">Names in cursive, and single script letters</h2>
+        <p>
+          For a full name, type it once above and copy Cursive / Script—that is
+          what a “names in cursive generator” does. Because these are characters
+          and not a joined calligraphy font, letters sit side by side rather than
+          linking, so short names read best.
+        </p>
+        <ul>
+          <li>
+            Need one glyph for a worksheet or monogram? Copy it from the
+            alphabet rows above—the script letter generator for A–Z.
+          </li>
+          <li>
+            Mixing cases (𝒜𝓁𝑒𝓍) usually looks better than all-caps script, which
+            can be hard to read at small sizes.
+          </li>
+          <li>
+            Keep the login @username plain; style the display name instead.
+          </li>
+        </ul>
+      </section>
+
       <section className="seo-section seo-prose" aria-labelledby="compat-heading">
         <h2 id="compat-heading">Boxes, handles, and screen readers</h2>
         <ul>

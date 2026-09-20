@@ -198,6 +198,19 @@ export const PLATFORMS: PlatformConfig[] = [
           "Keep the login username in plain lowercase so friends can still find and mention you.",
         ],
       },
+      {
+        id: "discord-fonts-fields",
+        heading: "Copy once, paste in the right Discord field",
+        paragraphs: [
+          "Most “Discord font not working” reports are a field problem, not a character problem. Display name, server nickname, about-me, server name, and channel topic accept Unicode. The @username never does.",
+        ],
+        bullets: [
+          "User Settings → Profile → Display name for the global styled name.",
+          "Right-click a server → Change Nickname to style one community only.",
+          "About me (190 characters) also supports real **bold** markdown, which screen readers read normally.",
+          "Want colored chat instead of styled names? That is the ANSI color tool.",
+        ],
+      },
     ],
     faq: [
       {

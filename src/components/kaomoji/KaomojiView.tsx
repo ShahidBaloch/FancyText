@@ -7,9 +7,11 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { KaomojiGrid } from "@/components/kaomoji/KaomojiGrid";
+import { KaomojiMeaningTable } from "@/components/kaomoji/KaomojiMeaningTable";
 import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
+  KAOMOJI_MEANINGS,
   SPECIAL_KAOMOJI,
   getHubFaces,
   getHubMoodCopySets,
@@ -64,6 +66,11 @@ const hubFaq = [
     question: "Are there kaomoji GIFs?",
     answer:
       "Kaomoji are text, not GIFs. Discord and Instagram have their own GIF/sticker pickers if you want motion. Copy a face here when you need something that pastes into any chat, bio, or email.",
+  },
+  {
+    question: "What does ¯\\_(ツ)_/¯ or ( ͡° ͜ʖ ͡°) mean?",
+    answer:
+      "¯\\_(ツ)_/¯ is the shrug: “I don’t know” or “whatever.” ( ͡° ͜ʖ ͡°) is Lenny face—knowing or suggestive. The meanings table above covers the faces people search by name.",
   },
   {
     question: "Can I put kaomoji in a Discord nickname?",
@@ -318,10 +325,20 @@ export function KaomojiHubView() {
           already know the mood.
         </p>
         <p>
-          Searches often misspell the word (kamoji, kaemoji, komoji, kao emoji).
-          The correct term is kaomoji; every face on this page is still the same
-          copy-and-paste text.
+          The word is often typed as kamoji, kaemoji, kaoemoji, komoji, kaomojis,
+          or “kao emoji.” The correct spelling is <strong>kaomoji</strong>, from
+          顔 (kao, face) and 文字 (moji, character). Whichever spelling brought
+          you here, the faces below are the same copy-and-paste text.
         </p>
+      </section>
+
+      <section className="seo-section" aria-labelledby="meanings-heading">
+        <h2 id="meanings-heading">Famous kaomoji and what they mean</h2>
+        <p className="seo-lead">
+          The faces people look up by name. Tone matters more than the
+          characters—a shrug softens a non-answer, a table flip is a joke.
+        </p>
+        <KaomojiMeaningTable rows={KAOMOJI_MEANINGS} />
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="where-heading">

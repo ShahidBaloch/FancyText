@@ -2401,6 +2401,37 @@ a.use-card:hover {
   color: inherit;
 }
 
+.kaomoji-meaning-table {
+  width: 100%;
+  min-width: 34rem;
+}
+
+.kaomoji-meaning-face {
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.kaomoji-meaning-copy {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-solid);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.kaomoji-meaning-copy:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
 .kaomoji-emotion-grid {
   list-style: none;
   margin: 0;
