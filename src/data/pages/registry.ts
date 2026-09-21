@@ -905,7 +905,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "shrug emoticon",
     title: "Shrug Emoticon Copy and Paste ¯\\_(ツ)_/¯ | FancifyText",
     description:
-      "Copy the shrug emoticon ¯\\_(ツ)_/¯ and variants. Free idk text faces.",
+      "Copy shrug emoticon ¯\\_(ツ)_/¯ and idk text faces for chat. Tap to copy—works in Discord, Instagram, and email.",
     fellowKeywords: fellows("shrug face", "shrug emoji text"),
   },
   {
