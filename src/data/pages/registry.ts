@@ -1204,6 +1204,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/small-caps-text-generator/": [
     "/small-text-generator/",
     "/superscript-subscript-generator/",
+    "/monospace-text-generator/",
     "/aesthetic-fonts/",
     "/instagram-font-generator/",
     "/name-font-generator/",
@@ -1272,6 +1273,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/binary-text-generator/": [
     "/big-text-generator/",
+    "/monospace-text-generator/",
     "/html-text-generator/",
     "/copy-paste-fonts/",
     "/",
