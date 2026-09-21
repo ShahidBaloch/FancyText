@@ -36,14 +36,18 @@ export function KaomojiGrid({
       >
         {faces.map((face, index) => {
           const id = `${idPrefix}-${index}`;
+          const longLine = face.length > 44;
+          const ariaLabel = longLine
+            ? `Copy line ${index + 1} to clipboard`
+            : `Copy kaomoji ${face}`;
           return (
             <li key={`${face}-${index}`}>
               <button
                 type="button"
                 className="kaomoji-btn"
-                onClick={() => copy(id, face)}
+                onClick={() => copy(id, face, ariaLabel)}
                 title={`Copy ${face}`}
-                aria-label={`Copy kaomoji ${face}`}
+                aria-label={ariaLabel}
               >
                 <span className="kaomoji-face">{face}</span>
                 <span className="kaomoji-copy">

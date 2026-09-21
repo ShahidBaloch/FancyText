@@ -1690,32 +1690,17 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
     {
       question: "What are kaomoji?",
       answer:
-        "顔文字 (kaomoji): face characters made from punctuation and letters. They paste as plain text in Discord, Instagram, TikTok, and email—not picture emoji.",
+        "顔文字 (kaomoji): face characters made from punctuation and letters. “Kaomojis” is the usual English plural. They paste as plain text—not picture emoji or GIF stickers.",
     },
     {
-      question: "Kaomoji or kaomojis — which is correct?",
+      question: "What if I misspelled kaomoji (kamoji, kaomiji, kaemoji)?",
       answer:
-        "Both work in English. “Kaomoji” is the usual singular; “kaomojis” is the common plural for lists like this one.",
-    },
-    {
-      question: "Is kamoji the same as kaomoji?",
-      answer:
-        "Yes—kamoji is a frequent misspelling. The correct word is kaomoji (顔 + 文字). The copy-paste faces on this page are the same either way.",
-    },
-    {
-      question: "What about kaomiji, kaimoji, or kaemoji?",
-      answer:
-        "Those are keyboard typos for kaomoji. If your search looked like kaomiji, kaimoji, kaoemoji, or komoji, you still want Japanese-style text faces—use the grid above.",
-    },
-    {
-      question: "Is it kamoji, kaemoji, or kao emoji?",
-      answer:
-        "The standard spelling is kaomoji (face + character). Kamoji, kaemoji, komoji, and “kao emoji” are frequent typos—the faces are the same tap-to-copy text here.",
+        "Same faces—see the spelling list above (kamoji, kaomiji, kaimoji, komoji, and others). The correct word is kaomoji (顔 + 文字).",
     },
     {
       question: "How is kaomoji different from emoji?",
       answer:
-        "Emoji are picture characters from a keyboard palette. Kaomoji are typed symbols you highlight and copy—like a font made of punctuation.",
+        "Emoji are colorful picture characters from a keyboard. Kaomoji are punctuation faces you copy as text. For motion, use GIF pickers; for copy-paste Unicode, use this page.",
     },
     {
       question: "Why do my kaomoji show as empty boxes?",
@@ -1723,34 +1708,14 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
         "The app font lacks a rare symbol. Copy a shorter face from the top of a list—(T_T), (◕‿◕), and ¯\\_(ツ)_/¯ use common characters.",
     },
     {
-      question: "Can I use kaomoji in a Discord nickname?",
+      question: "Discord, Instagram, and TikTok—where do kaomoji work?",
       answer:
-        "Often yes if the face is one short line. Long table-flips and dense combining marks get rejected—try cute or heart lists for safe nicknames.",
+        "Messages, bios, captions, and comments: yes. Discord nicknames: keep one short line. @handles and usernames stay plain ASCII—put faces in the bio body.",
     },
     {
-      question: "Do kaomoji work on Instagram and TikTok?",
+      question: "Which kaomoji lists should I bookmark?",
       answer:
-        "Yes in bios, captions, and comments. Usernames stay lowercase ASCII; put kaomoji in the bio body instead.",
-    },
-    {
-      question: "Are kaomoji GIFs or stickers?",
-      answer:
-        "No—they are text. Use Discord or Instagram GIF pickers if you want motion; use this page when you need copy-paste Unicode.",
-    },
-    {
-      question: "What does ¯\\_(ツ)_/¯ or ( ͡° ͜ʖ ͡°) mean?",
-      answer:
-        "Shrug = “idk / whatever.” Lenny = knowing or mischievous smirk. The meanings table lists other famous faces by name.",
-    },
-    {
-      question: "Which kaomoji lists are best to bookmark?",
-      answer:
-        "This hub for mixed search; cute, cry, heart, Lenny, and shrug for moods; hand, star, Carrd dividers, and mini dot art for layout topics. Other emotion URLs stay online for old links but are not indexed.",
-    },
-    {
-      question: "Carrd kaomojis — do I paste a whole template?",
-      answer:
-        "No—copy one divider line at a time between your own text sections. Styled names belong on font generators; faces belong on mood lists.",
+        "This hub for mixed samples; cute, cry, heart, Lenny, shrug for moods; hand, star, Carrd dividers, dot art for layouts. Use the keyword finder above. Carrd lines are one divider at a time—not full site templates. Famous names (Lenny, shrug) are in the meanings table below.",
     },
   ],
 };

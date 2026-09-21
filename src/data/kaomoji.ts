@@ -1213,25 +1213,25 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "／(≧ω≦)＼",
     "／(≧∀≦)＼",
     "(\\(●●)ノ",
-    "(\\(◕ x ◕)/)",
-    "(\\(◕ω◕)/)",
-    "(\\(◕‿◕)/)",
-    "(\\(◕∀◕)/)",
-    "(\\(◕▽◕)/)",
-    "(\\(◕∇◕)/)",
-    "(\\(◕ω◕)ゞ",
-    "(\\(◕‿◕)ゞ",
+    "(\\(≧∇≦)/)",
+    "(\\(≧ω≦)/)",
+    "(\\(≧∀≦)/)",
+    "／(◕ x ◕)＼",
+    "／(◕ω◕)＼",
+    "／(◕‿◕)＼",
+    "／(◕∀◕)＼",
+    "(\\(・x・)/)",
+    "(\\(・ω・)/)",
+    "(\\(・∀・)/)",
+    "／(・×・)／",
+    "／(・ω・)／",
+    "(\\(≧∇≦)ゞ",
+    "(\\(≧ω≦)ゞ",
+    "U・ェ・U",
+    "U・∀・U",
+    "／(≧ヘ≦)＼",
+    "(\\(◕ᴥ◕)/)",
     "(\\(◕∀◕)ゞ",
-    "(\\(◕▽◕)ゞ",
-    "(\\(◕∇◕)ゞ",
-    "(\\(◕ω◕)ノ",
-    "(\\(◕‿◕)ノ",
-    "(\\(◕∀◕)ノ",
-    "(\\(◕▽◕)ノ",
-    "(\\(◕∇◕)ノ",
-    "(\\(◕ω◕)/",
-    "(\\(◕‿◕)/",
-    "(\\(◕∀◕)/",
   ]),
 ];
 
@@ -1467,6 +1467,62 @@ export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
 
 export function isKaomojiTopicSpoke(slug: string): boolean {
   return KAOMOJI_TOPIC_SPOKE_SLUGS.has(slug);
+}
+
+export type KaomojiHubJump = {
+  label: string;
+  href: string;
+  keywords: string[];
+  /** Noindex browse list — shown in hub finder, not sitemap. */
+  browseOnly?: boolean;
+};
+
+/** Keyword → list links for the hub filter (client-side, no API). */
+export function getKaomojiHubJumps(): KaomojiHubJump[] {
+  const jumps: KaomojiHubJump[] = [];
+
+  for (const slug of INDEXABLE_KAOMOJI_SLUGS) {
+    const page = getKaomojiList(slug);
+    if (!page) continue;
+    jumps.push({
+      label: page.h1,
+      href: `/${page.slug}/`,
+      keywords: [
+        page.primaryKeyword,
+        page.emotion,
+        page.slug.replace(/-/g, " "),
+        ...page.fellowKeywords,
+      ].map((k) => k.toLowerCase()),
+    });
+  }
+
+  const browseSlugs = [
+    "cat-kaomojis",
+    "bunny-kaomojis",
+    "music-kaomojis",
+    "sleep-kaomojis",
+    "happy-kaomojis",
+    "wink-kaomojis",
+    "angry-kaomojis",
+    "sad-kaomojis",
+  ] as const;
+  for (const slug of browseSlugs) {
+    const page = getKaomojiList(slug);
+    if (!page) continue;
+    jumps.push({
+      label: page.h1,
+      href: `/${page.slug}/`,
+      browseOnly: true,
+      keywords: [
+        page.primaryKeyword,
+        page.emotion,
+        page.slug.replace(/-/g, " "),
+        ...page.fellowKeywords,
+      ].map((k) => k.toLowerCase()),
+    });
+  }
+
+  return jumps;
 }
 
 /**

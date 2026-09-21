@@ -8,6 +8,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { KaomojiGrid } from "@/components/kaomoji/KaomojiGrid";
+import { KaomojiHubJumpFilter } from "@/components/kaomoji/KaomojiHubJumpFilter";
 import { KaomojiMeaningTable } from "@/components/kaomoji/KaomojiMeaningTable";
 import { KaomojiSituationTable } from "@/components/kaomoji/KaomojiSituationTable";
 import {
@@ -22,6 +23,7 @@ import {
   getHubFaces,
   getHubMoodCopySets,
   getHubShowcase,
+  getKaomojiHubJumps,
   getKaomojiCatalogStats,
   getKaomojiList,
   getTailKaomojiLists,
@@ -150,23 +152,12 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         </p>
       ) : (
         <p className="seo-lead">
-          This emotion list stays available for old links and is not indexed in
-          search. For general kaomoji, use the{" "}
-          <Link href="/kaomoji/">kaomoji hub</Link>. Indexed pages:{" "}
-          {[...INDEXABLE_KAOMOJI_SLUGS]
-            .map((slug) => getKaomojiList(slug))
-            .filter((k): k is KaomojiList => Boolean(k))
-            .map((k, i) => (
-              <span key={k.slug}>
-                {i > 0 ? ", " : null}
-                <Link href={`/${k.slug}/`}>
-                  {k.emotion === "lenny" || k.emotion === "shrug"
-                    ? k.h1
-                    : k.emotion}
-                </Link>
-              </span>
-            ))}
-          .
+          This list is for browsing and old links—it is not indexed in Google
+          search. Start from the{" "}
+          <Link href="/kaomoji/">kaomoji hub</Link> and use{" "}
+          <Link href="/kaomoji/#hub-jump-heading">Find a list by keyword</Link>{" "}
+          for indexed cute, cry, heart, hand, star, Carrd, dot art, Lenny, and
+          shrug pages.
         </p>
       )}
 
@@ -397,6 +388,10 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
       </section>
 
       <p className="seo-lead">{serp.introBelowHero}</p>
+
+      {hubSlug === "kaomoji" ? (
+        <KaomojiHubJumpFilter jumps={getKaomojiHubJumps()} />
+      ) : null}
 
       <section
         className="seo-section seo-prose"
