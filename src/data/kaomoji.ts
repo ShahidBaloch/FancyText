@@ -1,5 +1,6 @@
 import {
   KAOMOJI_HUB,
+  KAOMOJI_HUB_AESTHETIC_SAMPLES,
   KAOMOJI_HUB_SERP,
   KAOMOJI_HUB_SLUGS,
   KAOMOJI_UNIQUE_COPY,
@@ -11,6 +12,7 @@ import {
 
 export {
   KAOMOJI_HUB,
+  KAOMOJI_HUB_AESTHETIC_SAMPLES,
   KAOMOJI_HUB_SERP,
   KAOMOJI_HUB_SLUGS,
   getKaomojiHubSerp,
@@ -53,6 +55,7 @@ function list(
   fellows: string[] = [],
   meanings?: string,
   description?: string,
+  h1?: string,
 ): KaomojiList {
   const label = emotion.charAt(0).toUpperCase() + emotion.slice(1);
   return {
@@ -63,7 +66,7 @@ function list(
     description:
       description ??
       `Copy ${emotion} kaomoji and Japanese emoticons. Free ${emotion} text faces for Discord, Instagram, and chat.`,
-    h1: `${label} Kaomojis`,
+    h1: h1 ?? `${label} Kaomojis`,
     fellowKeywords: fellows.length
       ? fellows
       : [`${emotion} kaomoji`, `kaomoji ${emotion}`, `${emotion} text face`],
@@ -942,6 +945,294 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "(￣ヘ￣)ゞ",
     ],
   ),
+  list(
+    "hand-kaomojis",
+    "hand",
+    "hand kaomoji",
+    [
+      "ヽ(・∀・)ﾉ",
+      "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+      "＼(^o^)／",
+      "＼(＾▽＾)／",
+      "ヾ(＾∇＾)/",
+      "(ノ°▽°)ノ",
+      "ヽ(´▽`)/",
+      "ヾ(´∀｀)/",
+      "(ﾉ≧∀≦)ﾉ",
+      "＼(≥▽≤)／",
+      "ヽ(；▽；)ノ",
+      "(ノ；▽；)ノ",
+      "ヽ(；´Д｀)ノ",
+      "(ノ｀Д´)ノ",
+      "┗(＾0＾)┓",
+      "┏(＾0＾)┛",
+      "(ノ^o^)ノ",
+      "＼( ^o^ )／",
+      "(ﾉ>ω<)ﾉ",
+      "ヾ(´∀｀*)ﾉ",
+      "ヽ(*´▽)ノ",
+      "( ﾟ▽ﾟ)/",
+      "╭( ･∀･)つ",
+      "(っ◔◡◔)っ",
+      "(づ｡◕‿◕｡)づ",
+      "☜(ﾟヮﾟ☜)",
+      "(☞ﾟ∀ﾟ)☞",
+      "ヾ(•ω•`)o",
+      "ヽ(≧∀≦)ﾉ",
+      "(ﾉ*･ω･)ﾉ",
+    ],
+  ),
+  list(
+    "star-kaomojis",
+    "star",
+    "star kaomoji",
+    [
+      "☆(｡◕‿◕｡)☆",
+      "⋆｡°✩",
+      "✩₊˚.⋆",
+      "˚ ༘ ⋆｡˚",
+      "★(ﾉ◕ヮ◕)ﾉ",
+      "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+      "☆ﾟ.*･｡ﾟ",
+      "⋆⭒˚.⋆",
+      "｡･:*:･ﾟ★",
+      "☆.*･｡ﾟ",
+      "✧･ﾟ: *✧",
+      "⋆ ˚｡⋆୨୧˚",
+      "°.✩┈───┈✩.°",
+      "✩ ⋆ ˚｡",
+      "(★^O^★)",
+      "☆(>_<)☆",
+      "⋆｡‧˚ʚɞ˚‧｡⋆",
+      "★~(◡﹏◕✿)",
+      "✩˚｡⋆｡˚✩",
+      "☆(°▽°*)",
+      "✧*｡(｡◕‿◕｡)✧",
+      "(★‿★)",
+      "⋆｡°✩˚",
+      "★☆★",
+      "✩♡✩",
+      "⋆ ˚｡⋆｡˚ ☾ ˚｡⋆",
+      "★~☆~★",
+      "✩°｡ ⋆",
+      "⋆｡˚☁︎˚｡⋆",
+      "☆ミ",
+      "･:*:･ﾟ★",
+    ],
+  ),
+  list(
+    "kaomoji-dot-art",
+    "dot art",
+    "dot art kaomoji",
+    [
+      "(•ᴗ•)",
+      "(•̀ᴗ•́)و",
+      "(◠‿◠)",
+      "( ˘ ³˘)♥",
+      "⊂(◉‿◉)つ",
+      "(づ｡◕‿◕｡)づ",
+      "(っ˘ω˘)っ",
+      "(ノ◕ヮ◕)ノ",
+      "┬─┬ノ( º _ ºノ)",
+      "(╯✧▽✧)╯",
+      "ヽ(≧Д≦)ノ",
+      "(づ￣ ³￣)づ",
+      "( ˘▽˘)っ",
+      "◕‿◕",
+      "•ᴥ•",
+      "ʕ•ᴥ•ʔ",
+      "(='X'=)",
+      "(=^･^=)",
+      "(=^ェ^=)",
+      "(=^‥^=)",
+      "(^._.^)ﾉ",
+      "(^人^)",
+      "(^・ω・^)",
+      "(^ω^)",
+      "(^◕ᴥ◕^)",
+      "(ᵔᴥᵔ)",
+      "(◕ᴥ◕)",
+      "(◕‿◕)",
+      "( ･ω･)ﾉ",
+      "(^>^)",
+      "(^u^)",
+    ],
+    [],
+    undefined,
+    undefined,
+    "Kaomoji Dot Art (Mini ASCII)",
+  ),
+  list(
+    "carrd-kaomojis",
+    "carrd",
+    "carrd kaomojis",
+    [
+      "· · ─ ·✶· ─ · ·",
+      "───── ⋆ ⋆ ⋆ ─────",
+      "┈┈┈───━━━───┈┈┈",
+      "₊˚⊹♡⊹˚₊",
+      "♡ ─── ♡ ─── ♡",
+      "═══════",
+      "╭───────────╮",
+      "╰───────────╯",
+      "· · · ୨୧ · · ·",
+      "°。°。°。°。°。",
+      "⊹ ࣪ ˖ ⊹ ࣪ ˖",
+      "୨୧ ┈┈┈ ୨୧",
+      "─ · · ─ · ─ · · ─",
+      "❀ ─── ❀ ─── ❀",
+      "╭───♡ · ♡───╮",
+      "‧₊˚ ✩ ‧₊˚",
+      "♡ ｡˚ ✧ ˚｡ ♡",
+      "─── ･ ｡ﾟ☆: *. ☆ .*:･ﾟ ───",
+      "‧₊˚ ♡ ‧₊˚",
+      "✩°｡⋆",
+      "♡ ⊹ ˖ ♡ ⊹ ˖ ♡",
+      "╭────── · · ── ♡ ── · · ──────╮",
+      "˚ ༘♡ ⋆｡˚",
+      "· · ─────── · ·",
+      "▰▱▰▱▰▱▰",
+      "╰┈➤",
+      "◜◡◝",
+      "┈┈┈┈┈┈┈┈┈",
+      "╭┄┄┄┄╮",
+      "╰┄┄┄┄╯",
+      "· · ──────── · ·",
+      "▬▬▬▬▬▬▬▬",
+    ],
+    [],
+    undefined,
+    undefined,
+    "Carrd Kaomoji Bio Dividers",
+  ),
+  list("happy-kaomojis", "happy", "happy kaomoji", [
+    "(＾▽＾)",
+    "(≧▽≦)",
+    "(＾∀＾)",
+    "(≧∀≦)",
+    "(´▽｀)",
+    "(＾ω＾)",
+    "(≧ω≦)",
+    "(*^▽^*)",
+    "(＾∇＾)",
+    "(≧∇≦)",
+    "(´∀｀)",
+    "(＾◇＾)",
+    "(≧◇≦)",
+    "(*≧▽≦*)",
+    "(＾∀＾*)",
+    "(≧∀≦*)",
+    "ヽ(≧∀≦)ﾉ",
+    "(＾▽＾*)",
+    "(*´∀｀*)",
+    "(≧▽≦)/",
+    "ヾ(≧∀≦)ﾉ",
+    "(＾ω＾*)",
+    "(*≧ω≦*)",
+    "(≧∪≦)",
+    "(＾∪＾)",
+    "(≧ヘ≦)",
+    "(*≧ヘ≦*)",
+    "(＾ヘ＾)",
+    "(≧□≦)",
+    "(*≧□≦*)",
+  ]),
+  list("sleep-kaomojis", "sleep", "sleep kaomoji", [
+    "(－_－) zzZ",
+    "(－.－)...zzz",
+    "(－ω－) zzZ",
+    "(－.-) zZ",
+    "(－o－) zzZ",
+    "(ᵕ≀　≀ᵕ) zzz",
+    "(-_-) zZz",
+    "(∪｡∪) zzz",
+    "(－_－)…zzzZZ",
+    "(－.－) zzZ",
+    "(－ω－)...zzz",
+    "(－_－) Zzz",
+    "(－.-)...zzz",
+    "(－o－)...zzz",
+    "(－_－) zzZ…",
+    "(－.－) zzz",
+    "(－ω－) zZ",
+    "(－_－) zZ",
+    "(－.-) Zzz",
+    "(－o－) zZ",
+    "(－_－)...zzz",
+    "(－.－)…zzz",
+    "(－ω－) Zzz",
+    "(－_－) Zzz",
+    "(－.-) zzz",
+    "(－o－) Zzz",
+    "(－_－)…Zzz",
+    "(－.－) Zzz",
+    "(－ω－)…zzz",
+    "(－_－) zzZzz",
+  ]),
+  list("wink-kaomojis", "wink", "wink kaomoji", [
+    "(^_-)",
+    "(^_~)",
+    "(^ω~)",
+    "(^ω^)",
+    "(^u^)",
+    "(^‿^)",
+    "(^◡^)",
+    "(^∀^)",
+    "(^▽^)",
+    "(^∇^)",
+    "(^◇^)",
+    "(^ω^)♪",
+    "(^_-)☆",
+    "(^_~)♡",
+    "(^ω~)♪",
+    "(^‿^)ノ",
+    "(^◡^)ノ",
+    "(^∀^)ノ",
+    "(^▽^)ノ",
+    "(^∇^)ノ",
+    "(^◇^)ノ",
+    "(^_-)ノ",
+    "(^_~)ノ",
+    "(^ω^)ノ",
+    "(^u^)ノ",
+    "(^‿^)☆",
+    "(^◡^)♡",
+    "(^∀^)♪",
+    "(^▽^)✧",
+    "(^∇^)～",
+  ]),
+  list("bunny-kaomojis", "bunny", "bunny kaomoji", [
+    "／( ・×・)＼",
+    "／(≧ x ≦)＼",
+    "(=\\(=^･^=)/=)",
+    "(\\(=^･^=)/)",
+    "U・x・U",
+    "（・⊖・）",
+    "／(；･ω･)／",
+    "／(≧▽≦)＼",
+    "／(≧ω≦)＼",
+    "／(≧∀≦)＼",
+    "(\\(●●)ノ",
+    "(\\(≧∇≦)/)",
+    "(\\(≧ω≦)/)",
+    "(\\(≧∀≦)/)",
+    "／(◕ x ◕)＼",
+    "／(◕ω◕)＼",
+    "／(◕‿◕)＼",
+    "／(◕∀◕)＼",
+    "(\\(・x・)/)",
+    "(\\(・ω・)/)",
+    "(\\(・∀・)/)",
+    "／(・×・)／",
+    "／(・ω・)／",
+    "(\\(≧∇≦)ゞ",
+    "(\\(≧ω≦)ゞ",
+    "U・ェ・U",
+    "U・∀・U",
+    "／(≧ヘ≦)＼",
+    "(\\(◕ᴥ◕)/)",
+    "(\\(◕∀◕)ゞ",
+  ]),
 ];
 
 for (const entry of KAOMOJI_LISTS) {
@@ -1126,7 +1417,8 @@ for (const entry of SPECIAL_KAOMOJI) {
 }
 
 export function kaomojiOgSubtitle(slug: string): string | undefined {
-  if (isKaomojiHubSlug(slug)) return getKaomojiHubSerp(slug).ogSubtitle;
+  if (isKaomojiHubSlug(slug))
+    return getKaomojiHubSerpForMetadata(slug).ogSubtitle;
   const list = getKaomojiList(slug);
   return list?.ogSubtitle;
 }
@@ -1148,8 +1440,10 @@ export const KAOMOJI_SLUGS = ALL_KAOMOJI_PAGES.map((k) => k.slug);
 
 /**
  * Canonical kaomoji URLs that stay indexable.
- * Hub + Lenny + Shrug + top emotions (cute, cry, heart). There is no happy list.
- * Remaining emotion URLs stay live for old links but are noindex + sitemap-dropped.
+ * Hub + core moods (cute, cry, heart) + Lenny/shrug + topic spokes (hand, star,
+ * mini dot art, Carrd dividers). Each spoke owns a distinct primary keyword so
+ * it does not compete with the hub or with cute/heart lists. Other emotion URLs
+ * stay live for old links but are noindex + sitemap-dropped.
  */
 export const INDEXABLE_KAOMOJI_SLUGS = new Set([
   "cute-kaomojis",
@@ -1157,7 +1451,98 @@ export const INDEXABLE_KAOMOJI_SLUGS = new Set([
   "heart-kaomojis",
   "lenny-face",
   "shrug-emoticon",
+  "hand-kaomojis",
+  "star-kaomojis",
+  "kaomoji-dot-art",
+  "carrd-kaomojis",
 ]);
+
+/** Layout / body-part lists—distinct from mood animals (cat, bear) and cute/heart. */
+export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
+  "hand-kaomojis",
+  "star-kaomojis",
+  "kaomoji-dot-art",
+  "carrd-kaomojis",
+]);
+
+export function isKaomojiTopicSpoke(slug: string): boolean {
+  return KAOMOJI_TOPIC_SPOKE_SLUGS.has(slug);
+}
+
+export type KaomojiHubJump = {
+  label: string;
+  href: string;
+  keywords: string[];
+  /** Noindex browse list — shown in hub finder, not sitemap. */
+  browseOnly?: boolean;
+};
+
+/** Extra hub-filter terms (competitor / long-tail queries). */
+const HUB_JUMP_EXTRA_KEYWORDS: Record<string, string[]> = {
+  "heart-kaomojis": ["love", "love kaomoji", "hearts", "romance", "couple"],
+  "cute-kaomojis": ["kawaii", "cute face", "blush"],
+  "cry-kaomojis": ["crying", "tears", "sad cry"],
+  "cat-kaomojis": [
+    "cute cat",
+    "cute cat kaomoji",
+    "kitty",
+    "neko",
+    "kawaii cat",
+    "cat face",
+  ],
+  "bunny-kaomojis": ["cute bunny", "rabbit"],
+  "kiss-kaomojis": ["love", "smooch"],
+};
+
+/** Keyword → list links for the hub filter (client-side, no API). */
+export function getKaomojiHubJumps(): KaomojiHubJump[] {
+  const jumps: KaomojiHubJump[] = [];
+
+  for (const slug of INDEXABLE_KAOMOJI_SLUGS) {
+    const page = getKaomojiList(slug);
+    if (!page) continue;
+    jumps.push({
+      label: page.h1,
+      href: `/${page.slug}/`,
+      keywords: [
+        page.primaryKeyword,
+        page.emotion,
+        page.slug.replace(/-/g, " "),
+        ...page.fellowKeywords,
+        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
+      ].map((k) => k.toLowerCase()),
+    });
+  }
+
+  const browseSlugs = [
+    "cat-kaomojis",
+    "bunny-kaomojis",
+    "music-kaomojis",
+    "sleep-kaomojis",
+    "happy-kaomojis",
+    "wink-kaomojis",
+    "angry-kaomojis",
+    "sad-kaomojis",
+  ] as const;
+  for (const slug of browseSlugs) {
+    const page = getKaomojiList(slug);
+    if (!page) continue;
+    jumps.push({
+      label: page.h1,
+      href: `/${page.slug}/`,
+      browseOnly: true,
+      keywords: [
+        page.primaryKeyword,
+        page.emotion,
+        page.slug.replace(/-/g, " "),
+        ...page.fellowKeywords,
+        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
+      ].map((k) => k.toLowerCase()),
+    });
+  }
+
+  return jumps;
+}
 
 /**
  * Indexable kaomoji URLs — one search hub (/kaomoji/) plus mood/Lenny/shrug spokes.
@@ -1213,6 +1598,28 @@ export function getKaomojiCatalogStats(): {
     for (const face of page.faces) seen.add(face);
   }
   return { uniqueFaces: seen.size, listCount: ALL_KAOMOJI_PAGES.length };
+}
+
+/** Rounded face count for SERP titles (853 unique → "850+"). */
+export function getKaomojiCatalogPublicClaim(): string {
+  const { uniqueFaces } = getKaomojiCatalogStats();
+  return `${Math.floor(uniqueFaces / 10) * 10}+`;
+}
+
+function withCatalogClaim(text: string, claim: string): string {
+  return text.replace(/\d+\+/g, claim);
+}
+
+/** Hub SERP with live catalog count substituted into title/description. */
+export function getKaomojiHubSerpForMetadata(slug: KaomojiHubSlug) {
+  const bundle = getKaomojiHubSerp(slug);
+  const claim = getKaomojiCatalogPublicClaim();
+  return {
+    ...bundle,
+    title: withCatalogClaim(bundle.title, claim),
+    description: withCatalogClaim(bundle.description, claim),
+    ogSubtitle: withCatalogClaim(bundle.ogSubtitle, claim),
+  };
 }
 
 export function getFeaturedKaomojiLists(): KaomojiList[] {
