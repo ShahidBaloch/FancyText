@@ -19,6 +19,7 @@ import {
   getKaomojiHubSerp,
   getKaomojiList,
   isKaomojiHubSlug,
+  kaomojiHubCanonicalPath,
   kaomojiPathIsIndexable,
 } from "@/data/kaomoji";
 import {
@@ -63,11 +64,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const serp = getKaomojiHubSerp(slug);
     const page = getPageByUrl(`/${slug}/`);
     if (page) {
-      return pageMetadata({
-        ...page,
-        title: serp.title,
-        description: serp.description,
-      });
+      return pageMetadata(
+        {
+          ...page,
+          title: serp.title,
+          description: serp.description,
+        },
+        { canonicalPath: kaomojiHubCanonicalPath(slug) },
+      );
     }
   }
 

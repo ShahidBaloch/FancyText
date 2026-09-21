@@ -1159,11 +1159,60 @@ export const INDEXABLE_KAOMOJI_SLUGS = new Set([
   "shrug-emoticon",
 ]);
 
+/**
+ * Indexable kaomoji URLs — one search hub (/kaomoji/) plus mood/Lenny/shrug spokes.
+ * /kamoji/ and /kaomojis/ stay live for users but are noindex + canonical to the hub.
+ */
 export function kaomojiPathIsIndexable(urlOrSlug: string): boolean {
   const slug = urlOrSlug.replace(/^\/|\/$/g, "");
-  if (isKaomojiHubSlug(slug)) return true;
+  if (slug === "kaomoji") return true;
+  if (slug === "kamoji" || slug === "kaomojis") return false;
   if (!KAOMOJI_BY_SLUG[slug]) return true;
   return INDEXABLE_KAOMOJI_SLUGS.has(slug);
+}
+
+export function kaomojiHubCanonicalPath(slug: string): string | undefined {
+  if (slug === "kamoji" || slug === "kaomojis") return "/kaomoji/";
+  return undefined;
+}
+
+/** Picture emoji for users who expected the phone keyboard — tap to copy like kaomoji. */
+export const POPULAR_CHAT_EMOJI = [
+  "😀",
+  "😂",
+  "❤️",
+  "🔥",
+  "✨",
+  "👍",
+  "🎉",
+  "😭",
+  "🥺",
+  "💀",
+  "🙏",
+  "😊",
+  "🥰",
+  "💕",
+  "⭐",
+  "✅",
+  "❌",
+  "👀",
+  "🫡",
+  "😎",
+  "🤔",
+  "😡",
+  "🎵",
+  "💯",
+];
+
+export function getKaomojiCatalogStats(): {
+  uniqueFaces: number;
+  listCount: number;
+} {
+  const seen = new Set<string>();
+  for (const page of ALL_KAOMOJI_PAGES) {
+    for (const face of page.faces) seen.add(face);
+  }
+  return { uniqueFaces: seen.size, listCount: ALL_KAOMOJI_PAGES.length };
 }
 
 export function getFeaturedKaomojiLists(): KaomojiList[] {
@@ -1186,7 +1235,7 @@ export function getHubShowcase(): { emotion: string; href: string; sample: strin
 }
 
 /** Mixed popular faces for the hub so visitors can copy without leaving. */
-export function getHubFaces(limit = 72): string[] {
+export function getHubFaces(limit = 96): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
 

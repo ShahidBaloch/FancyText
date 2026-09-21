@@ -14,7 +14,6 @@ import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
   KAOMOJI_HUB,
-  KAOMOJI_HUB_SLUGS,
   KAOMOJI_MEANINGS,
   getKaomojiHubSerp,
   type KaomojiHubSlug,
@@ -22,8 +21,10 @@ import {
   getHubFaces,
   getHubMoodCopySets,
   getHubShowcase,
+  getKaomojiCatalogStats,
   getTailKaomojiLists,
   kaomojiPathIsIndexable,
+  POPULAR_CHAT_EMOJI,
   type KaomojiList,
   type KaomojiProseSection,
 } from "@/data/kaomoji";
@@ -123,9 +124,14 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         </p>
       )}
 
+      <p className="seo-lead">
+        <Link href="#tool">Jump to faces</Link> · {config.faces.length} in this
+        list · tap any row to copy plain text
+      </p>
+
       <div className="tool-stage" id="tool">
         <p className="field-label">
-          {config.faces.length} faces — tap to copy
+          {config.faces.length} {config.emotion} kaomoji — tap to copy
         </p>
         <KaomojiGrid faces={config.faces} idPrefix={config.slug} />
       </div>
@@ -220,8 +226,9 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
     INDEXABLE_KAOMOJI_SLUGS.has(item.href.replace(/^\/|\/$/g, "")),
   );
   const tailLists = getTailKaomojiLists();
-  const samples = getHubFaces(72);
-  const moodCopySets = getHubMoodCopySets(12);
+  const catalog = getKaomojiCatalogStats();
+  const samples = getHubFaces(96);
+  const moodCopySets = getHubMoodCopySets(8);
   const hubFaq = [
     ...(serp.leadFaq ? [serp.leadFaq] : []),
     ...KAOMOJI_HUB.faq,
@@ -235,10 +242,11 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
         <PageJsonLd
           page={{
             ...page,
+            url: hubSlug === "kaomoji" ? page.url : "/kaomoji/",
             title: serp.title,
             description: serp.description,
           }}
-          faq={hubFaq}
+          faq={hubSlug === "kaomoji" ? hubFaq : hubFaq.slice(0, 6)}
           crumbName={serp.h1}
           howTo={{
             name: `How to ${serp.primaryKeyword} copy paste`,
@@ -269,28 +277,43 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
 
       <PageHero h1={serp.h1} lead={serp.heroLead} />
 
+      {hubSlug !== "kaomoji" ? (
+        <p className="seo-lead" role="note">
+          <strong>Main search page:</strong>{" "}
+          <Link href="/kaomoji/">Kaomoji copy paste</Link> — same{" "}
+          {catalog.uniqueFaces}+ text faces, one indexed hub (this URL is a
+          spelling helper, not a duplicate listing).
+        </p>
+      ) : null}
+
+      <p className="seo-lead">
+        <Link href="#tool">Jump to copy grid</Link> · {catalog.uniqueFaces}{" "}
+        unique text faces across {catalog.listCount} mood lists · Free · No
+        signup
+      </p>
+
       <div className="tool-stage" id="tool">
         <p className="field-label">
-          {samples.length} kaomojis — free copy paste, tap any face
+          {samples.length} kaomoji on this page · {catalog.uniqueFaces} total in
+          the library — tap to copy
         </p>
         <KaomojiGrid faces={samples} idPrefix="hub" />
       </div>
 
-      <p className="seo-lead">{serp.introBelowHero}</p>
-
-      {hubSlug !== "kaomoji" ? (
+      <section className="seo-section" aria-labelledby="emoji-picker-heading">
+        <h2 id="emoji-picker-heading">Popular emoji (picture characters)</h2>
         <p className="seo-lead">
-          Standard spelling:{" "}
-          <Link href="/kaomoji/">kaomoji copy paste</Link>
-          {hubSlug === "kamoji" ? " (you typed kamoji)" : ""}.
-          {hubSlug === "kaomojis" ? (
-            <>
-              {" "}
-              Singular: <Link href="/kaomoji/">kaomoji</Link>.
-            </>
-          ) : null}
+          Not the same as kaomoji—these are standard emoji. Tap to copy, then
+          paste like any other character.
         </p>
-      ) : null}
+        <KaomojiGrid faces={POPULAR_CHAT_EMOJI} idPrefix="emoji" />
+        <p className="seo-prose">
+          Need stars, hearts, or arrows without a face? See{" "}
+          <Link href="/cool-symbols/">cool symbols copy and paste</Link>.
+        </p>
+      </section>
+
+      <p className="seo-lead">{serp.introBelowHero}</p>
 
       <section
         className="seo-section seo-prose"
@@ -310,17 +333,10 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
           ))}
         </ul>
         <p>
-          Copy-paste hubs:{" "}
-          {KAOMOJI_HUB_SLUGS.map((s, i) => (
-            <span key={s}>
-              {i > 0 ? " · " : null}
-              {s === hubSlug ? (
-                <strong>{s}</strong>
-              ) : (
-                <Link href={`/${s}/`}>{s}</Link>
-              )}
-            </span>
-          ))}
+          Spelling helpers (same tool,{" "}
+          <Link href="/kaomoji/">canonical kaomoji page</Link>):{" "}
+          <Link href="/kamoji/">kamoji</Link> ·{" "}
+          <Link href="/kaomojis/">kaomojis</Link>
         </p>
       </section>
 

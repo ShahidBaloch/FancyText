@@ -1185,6 +1185,19 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       ],
     },
     {
+      id: "emoji-vs-kaomoji",
+      heading: "Kaomoji vs picture emoji vs symbols",
+      paragraphs: [
+        "Picture emoji (😀 🔥 ❤️) come from your phone’s emoji keyboard—one character, full color. Kaomoji are text faces built from punctuation (｡◕‿◕｡)—they paste anywhere Unicode works, including places that block colorful emoji.",
+        "If you wanted a single emoji to copy, use the emoji row on this page. If you wanted a Japanese-style emoticon, use the kaomoji grid. For stars, arrows, and decorative symbols—not faces—open the cool symbols list.",
+      ],
+      bullets: [
+        "Emoji — colorful, one glyph, best for SMS and social apps",
+        "Kaomoji — text face, best for Discord, bios, and memes",
+        "Symbols — ♡ ★ → decorative marks, not expressions",
+      ],
+    },
+    {
       id: "japanese-vs-western",
       heading: "Kaomoji vs Western emoticons",
       paragraphs: [

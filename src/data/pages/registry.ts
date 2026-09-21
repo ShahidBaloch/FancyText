@@ -663,6 +663,7 @@ export const PAGES: PageEntry[] = [
     title: KAOMOJI_HUB_VARIANTS.kamoji.title,
     description: KAOMOJI_HUB_VARIANTS.kamoji.description,
     fellowKeywords: fellows("kaomoji", "kamoji copy paste", "kaomoji copy paste"),
+    index: false,
   },
   {
     phase: 5,
@@ -677,6 +678,7 @@ export const PAGES: PageEntry[] = [
       "kaomoji",
       "kaomoji copy paste",
     ),
+    index: false,
   },
   {
     phase: 5,
