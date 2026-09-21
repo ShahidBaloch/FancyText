@@ -5,6 +5,7 @@ import {
   type PageEntry,
 } from "@/data/pages/registry";
 import { kaomojiPathIsIndexable } from "@/data/kaomoji";
+import { LETTERS, letterUrl } from "@/lib/fonts/cursive";
 
 export { CONTENT_UPDATED_AT };
 
@@ -62,16 +63,9 @@ function toAbsoluteUrl(path: string): string | null {
   }
 }
 
-function isLetterPath(url: string): boolean {
-  return (
-    url.includes("/cursive-capital-") || url.includes("/cursive-small-")
-  );
-}
-
 function isIndexablePage(page: PageEntry): boolean {
   if (page.index === false) return false;
   if (!kaomojiPathIsIndexable(page.url)) return false;
-  if (isLetterPath(page.url)) return false;
   return true;
 }
 
@@ -101,8 +95,8 @@ function fallbackEntries(): SitemapEntry[] {
 
 /**
  * Indexable URL set for /sitemap.xml.
- * Cursive letter pages and thin kaomoji emotion tails stay live for old links
- * but are noindex + omitted here (same pattern as the cursive hub).
+ * Cursive letter spokes are included at lower priority than /cursive-text-generator/.
+ * Thin kaomoji emotion tails stay live for old links but are noindex + omitted here.
  *
  * lastmod comes from PageEntry.updated or CONTENT_UPDATED_AT — never build time.
  * Bump CONTENT_UPDATED_AT only when intentionally publishing changes; after GSC
@@ -132,6 +126,20 @@ export function getSitemapEntries(): SitemapEntry[] {
             ? 0.45
             : 0.85;
       push(entryFor(page.url, changeFrequency, priority, lastModified));
+    }
+
+    const letterLastmod = toSitemapLastmod(CONTENT_UPDATED_AT);
+    for (const letter of LETTERS) {
+      for (const letterCase of ["capital", "small"] as const) {
+        push(
+          entryFor(
+            letterUrl(letter, letterCase),
+            "monthly",
+            0.55,
+            letterLastmod,
+          ),
+        );
+      }
     }
 
     const legalLastmod = toSitemapLastmod(CONTENT_UPDATED_AT);
@@ -203,11 +211,14 @@ export function assertSitemapInvariants(xml: string, entries: SitemapEntry[]): v
   if (!locs.includes(`${SITE_ORIGIN}/`)) {
     throw new Error("sitemap missing homepage");
   }
-  const leakedLetters = locs.filter(
+  const letterLocs = locs.filter(
     (loc) => loc.includes("/cursive-capital-") || loc.includes("/cursive-small-"),
   );
-  if (leakedLetters.length) {
-    throw new Error(`sitemap includes noindex letter URLs: ${leakedLetters.join(", ")}`);
+  const expectedLetterCount = LETTERS.length * 2;
+  if (letterLocs.length !== expectedLetterCount) {
+    throw new Error(
+      `sitemap must include ${expectedLetterCount} cursive letter URLs, found ${letterLocs.length}`,
+    );
   }
   const leakedKaomoji = locs.filter((loc) => {
     try {
