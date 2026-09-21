@@ -9,6 +9,7 @@ import {
   webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import { LetterGrid } from "@/components/seo/LetterGrid";
+import { LetterStyleGrid } from "@/components/cursive/LetterStyleGrid";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { CopyButton } from "@/components/tool/CopyButton";
@@ -170,7 +171,7 @@ export function CursiveLetterView({
         <h2 id="examples-heading">Example words with cursive {upper}</h2>
         <ul className="sample-list">
           {LETTER_EXAMPLES[letter].map((word) => {
-            const styled = transform(word, letterCase === "capital" ? "cursive" : "cursive");
+            const styled = transform(word, "cursive");
             return (
               <li key={word} className="sample-row">
                 <span className="sample-plain">{word}</span>
@@ -183,6 +184,8 @@ export function CursiveLetterView({
           })}
         </ul>
       </section>
+
+      <LetterStyleGrid letter={letter} />
 
       <section className="seo-section seo-prose" aria-labelledby="worksheet-heading">
         <h2 id="worksheet-heading">One glyph, not a joined alphabet</h2>

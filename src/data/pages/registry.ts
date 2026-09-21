@@ -1204,6 +1204,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   "/small-caps-text-generator/": [
     "/small-text-generator/",
     "/superscript-subscript-generator/",
+    "/monospace-text-generator/",
     "/aesthetic-fonts/",
     "/instagram-font-generator/",
     "/name-font-generator/",
@@ -1272,6 +1273,7 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/binary-text-generator/": [
     "/big-text-generator/",
+    "/monospace-text-generator/",
     "/html-text-generator/",
     "/copy-paste-fonts/",
     "/",
@@ -1788,7 +1790,7 @@ export const SITE_URL = resolveSiteUrl();
  * quarterly / yearly). Do not set it to "today" on every deploy — that makes
  * every URL look freshly updated and creates false churn in GSC.
  */
-export const CONTENT_UPDATED_AT = "2026-09-20";
+export const CONTENT_UPDATED_AT = "2026-09-21";
 
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);

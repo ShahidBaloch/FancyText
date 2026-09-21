@@ -40,7 +40,7 @@ export function pageMetadata(page: PageEntry): Metadata {
 
 /**
  * Shared metadata for every cursive capital + small letter page.
- * Pages stay live for old links / UX but must not be indexed.
+ * Long-tail spokes (e.g. “s in cursive”); hub stays canonical for generator intent.
  */
 export function cursiveLetterMetadata(
   letter: Letter,
@@ -52,7 +52,6 @@ export function cursiveLetterMetadata(
   return {
     title: { absolute: title },
     description,
-    robots: { index: false, follow: true },
     alternates: { canonical },
     openGraph: {
       title,

@@ -44,7 +44,7 @@ const faqItems = [
   {
     question: "How do I make a name or whole word in cursive?",
     answer:
-      "Use this page. Type the name once, then copy Cursive / Script or Bold Cursive. Single-letter pages exist for old links, but this generator is the tool for words, signatures, and bios.",
+      "Use this page. Type the name once, then copy Cursive / Script or Bold Cursive. Single-letter pages cover one glyph each; this generator is the tool for words, signatures, and bios.",
   },
   {
     question: "Can I copy the whole cursive alphabet?",
