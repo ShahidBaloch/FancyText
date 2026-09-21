@@ -14,6 +14,7 @@ import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
   KAOMOJI_HUB,
+  KAOMOJI_HUB_AESTHETIC_SAMPLES,
   KAOMOJI_MEANINGS,
   getKaomojiHubSerp,
   type KaomojiHubSlug,
@@ -22,6 +23,7 @@ import {
   getHubMoodCopySets,
   getHubShowcase,
   getKaomojiCatalogStats,
+  getKaomojiList,
   getTailKaomojiLists,
   kaomojiPathIsIndexable,
   POPULAR_CHAT_EMOJI,
@@ -115,12 +117,21 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         <p className="seo-lead">
           This emotion list stays available for old links and is not indexed in
           search. For general kaomoji, use the{" "}
-          <Link href="/kaomoji/">kaomoji hub</Link>. Indexed mood pages:{" "}
-          <Link href="/cute-kaomojis/">cute</Link>,{" "}
-          <Link href="/cry-kaomojis/">cry</Link>,{" "}
-          <Link href="/heart-kaomojis/">heart</Link>,{" "}
-          <Link href="/lenny-face/">Lenny</Link>,{" "}
-          <Link href="/shrug-emoticon/">shrug</Link>.
+          <Link href="/kaomoji/">kaomoji hub</Link>. Indexed pages:{" "}
+          {[...INDEXABLE_KAOMOJI_SLUGS]
+            .map((slug) => getKaomojiList(slug))
+            .filter((k): k is KaomojiList => Boolean(k))
+            .map((k, i) => (
+              <span key={k.slug}>
+                {i > 0 ? ", " : null}
+                <Link href={`/${k.slug}/`}>
+                  {k.emotion === "lenny" || k.emotion === "shrug"
+                    ? k.h1
+                    : k.emotion}
+                </Link>
+              </span>
+            ))}
+          .
         </p>
       )}
 
@@ -344,12 +355,41 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
         </p>
       </section>
 
-      <section className="seo-section" aria-labelledby="emotions-heading">
-        <h2 id="emotions-heading">Start with a mood</h2>
+      <section
+        className="seo-section"
+        aria-labelledby="aesthetic-samples-heading"
+      >
+        <h2 id="aesthetic-samples-heading">Bio dividers &amp; layout strings</h2>
         <p className="seo-lead">
-          Each card opens the indexed list for that mood (cute, cry, heart,
-          Lenny, shrug). This hub is for general kaomoji search—do not duplicate
-          those full lists here.
+          Tap a sample line to copy. Full Carrd-style dividers and star strings
+          live on their own pages so this hub stays a general kaomoji grid—not a
+          duplicate layout gallery.
+        </p>
+        <KaomojiGrid
+          faces={KAOMOJI_HUB_AESTHETIC_SAMPLES.map((row) => row.line)}
+          idPrefix="aesthetic-sample"
+        />
+        <ul className="taxonomy-links">
+          {KAOMOJI_HUB_AESTHETIC_SAMPLES.map((row) => (
+            <li key={`${row.href}-${row.label}`}>
+              <Link href={row.href}>{row.label}</Link>
+            </li>
+          ))}
+        </ul>
+        <p className="seo-prose">
+          Styled words:{" "}
+          <Link href="/aesthetic-fonts/">aesthetic fonts</Link> · lone symbols:{" "}
+          <Link href="/cool-symbols/">cool symbols</Link> · bio ideas:{" "}
+          <Link href="/social-media-bio-generator/">social media bio generator</Link>
+        </p>
+      </section>
+
+      <section className="seo-section" aria-labelledby="emotions-heading">
+        <h2 id="emotions-heading">Start with a mood or topic</h2>
+        <p className="seo-lead">
+          Cards open indexed lists only (cute, cry, heart, hand, star, Carrd,
+          dot art, Lenny, shrug). This hub shows a mixed sample—not the full
+          inventory for each topic.
         </p>
         <ul className="kaomoji-emotion-grid">
           {featuredShowcase.map((item) => (

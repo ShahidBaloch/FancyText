@@ -1053,7 +1053,234 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       },
     ],
   },
+  "hand-kaomojis": {
+    title: "Hand Kaomoji Copy Paste — Wave & Raise Arms | FancifyText",
+    ogSubtitle: "(ﾉ◕ヮ◕)ﾉ hand kaomoji — tap to copy for hype & greetings",
+    description:
+      "Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.",
+    canonicalLead:
+      "Hand kaomoji are faces with visible arms—waves, cheers, and reach-outs. They are not hug lists (cuddle arms) and not star dividers. The kaomoji hub mixes moods; this page is only arm-forward reactions.",
+    meaningsHeading: "Arms that read as action",
+    meanings:
+      "Hand kaomoji use raised punctuation arms to signal hype, greeting, surrender, or presentation. They work when a static smile feels too quiet—game wins, welcome messages, and “look at this” moments.",
+    whereHeading: "Where hand kaomoji paste",
+    whereBullets: [
+      "Discord announcements: one arm-up face after plain text; skip long stacks in nicknames.",
+      "Instagram captions: pair a single ＼(^o^)／ with your sentence—not a wall of arms.",
+      "TikTok comments: short arm faces survive mobile fonts better than dense ASCII blocks.",
+    ],
+    faq: [
+      {
+        question: "What is a hand kaomoji?",
+        answer:
+          "A Japanese-style text face with visible arms—often (ﾉ◕ヮ◕)ﾉ or ＼(^o^)／—used for waves, cheers, or presenting something.",
+      },
+      {
+        question: "Hand kaomoji vs hug kaomoji?",
+        answer:
+          "Hand lists focus on raised arms and hype. Hug lists use wrap-around arms for comfort. Pick hand for greetings; hug for sympathy.",
+      },
+      {
+        question: "Best hand kaomoji for Discord?",
+        answer:
+          "Short lines like (ﾉ◕ヮ◕)ﾉ or ＼(^o^)／ paste cleanly in messages. Test nicknames on your phone—some clients truncate arm marks.",
+      },
+      {
+        question: "Is this the same as the kaomoji hub?",
+        answer:
+          "The hub is for general browsing. This URL is the full hand/arm set so search engines and bookmarks land on one topic.",
+      },
+    ],
+  },
+  "star-kaomojis": {
+    title: "Star Kaomoji Copy Paste — ☆ Aesthetic Sparkle | FancifyText",
+    ogSubtitle: "⋆｡°✩ star kaomoji — galaxy-style text for bios",
+    description:
+      "Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.",
+    canonicalLead:
+      "Star kaomoji mix sparkle marks (★ ⋆ ✩) with optional faces. They are not heart kaomoji (love mouths) and not plain symbol lists. Use heart lists for ♡ inside a face; use this page for galaxy/coquette-style lines.",
+    meaningsHeading: "Sparkle lines vs love hearts",
+    meanings:
+      "These entries decorate a bio or caption with stars—sometimes wrapping a cute face, sometimes standing alone as a divider. They target aesthetic and y2k-style layouts without turning into full ASCII posters.",
+    whereHeading: "Where star kaomoji work",
+    whereBullets: [
+      "Link-in-bio pages: one sparkle line between sections; pair with the Carrd divider list for layout ideas.",
+      "Discord about-me: keep one star line—member lists truncate quickly.",
+      "For arrows and checks without stars, use the cool symbols page instead.",
+    ],
+    faq: [
+      {
+        question: "What are star kaomoji?",
+        answer:
+          "Text lines that combine star characters (★ ☆ ⋆ ✩) with optional kaomoji faces—popular for aesthetic and galaxy-themed bios.",
+      },
+      {
+        question: "Star kaomoji vs heart kaomoji?",
+        answer:
+          "Heart lists emphasize ♡ and love mouths. Star lists emphasize sparkle and night-sky decoration. You can use both in one bio, but bookmark separate pages for each mood.",
+      },
+      {
+        question: "Do star characters show on iPhone?",
+        answer:
+          "Common stars paste fine. Rare moon or ornamental glyphs may box out—copy a shorter line from the top of the list.",
+      },
+      {
+        question: "Is this a font generator?",
+        answer:
+          "No—ready-made lines to copy. For styled letters, use aesthetic fonts; for lone ★ symbols, use cool symbols.",
+      },
+    ],
+  },
+  "kaomoji-dot-art": {
+    title: "Kaomoji Dot Art Copy Paste — Mini ASCII Faces | FancifyText",
+    ogSubtitle: "Compact dot-style kaomoji — tap to copy (no huge posters)",
+    description:
+      "Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.",
+    canonicalLead:
+      "This list is mini dot-style and one-line ASCII faces—not multi-page text posters. For giant block ASCII, use a dedicated ASCII art tool; here every row stays short so mobile copy stays fast.",
+    meaningsHeading: "Small art that still counts as kaomoji",
+    meanings:
+      "Dot art kaomoji use bullet-like eyes (•) and simple mouths so the face reads even at small sizes. They suit memes, quick reactions, and comments where a full-width table-flip would wrap awkwardly.",
+    extraSections: [
+      {
+        id: "not-block-art",
+        heading: "Why we skip huge ASCII blocks",
+        paragraphs: [
+          "Large dot-art posters slow down phones, break in nicknames, and are hard to edit after paste. This page curates short faces only—same expressive intent, less layout risk.",
+          "If you need a tall ASCII drawing, generate it elsewhere and paste once; keep kaomoji pages focused on copy-friendly lines.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is kaomoji dot art?",
+        answer:
+          "Small text faces built with dot-like eyes (•) and simple ASCII—one line each, meant for chat and captions.",
+      },
+      {
+        question: "Dot art vs emoji?",
+        answer:
+          "Dot art is plain Unicode you copy from this page. Emoji are colorful picture characters from your keyboard.",
+      },
+      {
+        question: "Will dot art paste in Discord code blocks?",
+        answer:
+          "Yes as text, but monospace may change spacing. Paste in normal messages for the intended look.",
+      },
+      {
+        question: "Where are the big ASCII drawings?",
+        answer:
+          "Not on this page by design—large posters hurt mobile performance. Use short faces here; use big text tools for banners.",
+      },
+    ],
+  },
+  "carrd-kaomojis": {
+    title: "Carrd Kaomojis Copy Paste — Bio Dividers & Lines | FancifyText",
+    ogSubtitle: "Carrd-style bio dividers — ⋆ lines to copy for link pages",
+    description:
+      "Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.",
+    canonicalLead:
+      "Carrd kaomojis here means divider lines and spacing strings for link-in-bio pages—not full site templates. Combine one divider with your words; use the social media bio generator for styled text, not for these Unicode lines.",
+    meaningsHeading: "Dividers, not full page layouts",
+    meanings:
+      "Each row is a horizontal accent—stars, dashes, or soft coquette-style marks—meant to sit between sections on Carrd, Linktree-style pages, or long Discord about-me blocks. They are decorative text, not faces, though some rows include ♡ or ⋆.",
+    whereHeading: "How to use these on Carrd or bios",
+    whereBullets: [
+      "Paste one divider between two text blocks—avoid stacking five lines; mobile readers scroll past.",
+      "Keep link titles in plain letters; put dividers above or below, not inside URLs.",
+      "For star-heavy lines, also see star kaomoji; for faces, open cute or hand lists.",
+    ],
+    faq: [
+      {
+        question: "What are Carrd kaomojis?",
+        answer:
+          "Copy-paste divider lines and aesthetic strings people use on Carrd and similar one-page bios—not animated stickers.",
+      },
+      {
+        question: "Carrd kaomojis vs cute kaomoji?",
+        answer:
+          "Cute lists are facial expressions. Carrd lists are layout dividers. Use both: divider here, one face from cute or heart lists.",
+      },
+      {
+        question: "Do I need a Carrd account?",
+        answer:
+          "No—this page only copies text. Paste into any bio field that accepts Unicode.",
+      },
+      {
+        question: "Can I combine dividers with fancy fonts?",
+        answer:
+          "Yes. Generate styled words on aesthetic or cute fonts, then paste a plain divider line between sections.",
+      },
+    ],
+  },
+  "happy-kaomojis": {
+    description:
+      "Happy kaomoji. Copy cheerful text faces for good news, sunny replies, and upbeat group chats.",
+    meanings:
+      "Happy faces use wide smiles and lifted eyes—lighter than excited hype and softer than proud smugness. Good for congratulations, Friday messages, and friendly check-ins.",
+    faq: [
+      {
+        question: "Happy vs excited kaomoji?",
+        answer:
+          "Happy is general cheer. Excited faces amp energy for wins and announcements. Both are noindex lists—use cute or funny indexed pages for SEO bookmarks.",
+      },
+      {
+        question: "Happy vs cute kaomoji?",
+        answer:
+          "Cute emphasizes blush and kawaii round eyes. Happy emphasizes open smiles. Cute list is indexed for search; this list is for browsing only.",
+      },
+    ],
+  },
+  "sleep-kaomojis": {
+    description:
+      "Sleep kaomoji. Copy sleepy zzZ faces for late-night chats, tired jokes, and goodnight messages.",
+    meanings:
+      "Sleep faces add zzZ or closed-eye lines. Keep them to one per message so the tired joke reads clearly.",
+    faq: [
+      {
+        question: "Sleep kaomoji vs sad kaomoji?",
+        answer:
+          "Sleep is tired or goodnight humor. Sad faces carry disappointment or grief. Different tone.",
+      },
+    ],
+  },
+  "wink-kaomojis": {
+    description:
+      "Wink kaomoji. Copy playful wink text faces for teasing friends and light flirtation in chat.",
+    meanings:
+      "Wink faces asymmetry the eyes—(^_-) style marks. Use sparingly in professional spaces; great for friends-only threads.",
+    faq: [
+      {
+        question: "Wink vs shy kaomoji?",
+        answer:
+          "Wink is playful tease. Shy faces hide behind blush. Shy list covers embarrassment; wink covers joking tone.",
+      },
+    ],
+  },
+  "bunny-kaomojis": {
+    description:
+      "Bunny kaomoji. Copy rabbit-ear text faces for spring vibes, pet jokes, and soft kawaii replies.",
+    meanings:
+      "Bunny faces emphasize long ears or rabbit silhouettes—not the same as cat whiskers. For indexed feline faces, use cat kaomojis; this list stays browse-only to avoid competing with cat/cute URLs.",
+    faq: [
+      {
+        question: "Bunny vs cat kaomoji?",
+        answer:
+          "Bunny lists focus on rabbit ears and hop motifs. Cat lists use whisker mouths like (=^･ω･^=). Pick the animal that matches the joke.",
+      },
+    ],
+  },
 };
+
+/** Hub-only aesthetic samples — links out to full topic lists (no duplicate grids). */
+export const KAOMOJI_HUB_AESTHETIC_SAMPLES = [
+  { line: "· · ─ ·✶· ─ · ·", href: "/carrd-kaomojis/", label: "Carrd bio dividers" },
+  { line: "⋆ ˚｡⋆୨୧˚", href: "/star-kaomojis/", label: "Star kaomoji" },
+  { line: "☆(｡◕‿◕｡)☆", href: "/star-kaomojis/", label: "Star + face combo" },
+  { line: "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧", href: "/hand-kaomojis/", label: "Hand kaomoji" },
+  { line: "(•ᴗ•)", href: "/kaomoji-dot-art/", label: "Mini dot art" },
+  { line: "♡ ─── ♡ ─── ♡", href: "/carrd-kaomojis/", label: "Soft bio separator" },
+] as const;
 
 /** Indexable kaomoji hub URL slugs (typo landings + main). */
 export type KaomojiHubSlug = "kaomoji" | "kamoji" | "kaomojis";
@@ -1074,16 +1301,16 @@ export type KaomojiHubSerpBundle = {
 /** Hub SERP bundles — registry titles/descriptions should match each URL. */
 export const KAOMOJI_HUB_VARIANTS: Record<KaomojiHubSlug, KaomojiHubSerpBundle> = {
   kaomoji: {
-    title: "Kaomoji Copy Paste — 70+ Free Kaomojis (｡◕‿◕｡) | FancifyText",
+    title: "Kaomoji Copy Paste — 700+ Free Kaomojis (｡◕‿◕｡) | FancifyText",
     description:
-      "Kaomoji copy paste in 1 tap—70+ free kaomojis & text faces (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ for Discord & Instagram. No app · No login.",
+      "Kaomoji copy paste in 1 tap—700+ curated text faces (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ for Discord & Instagram. No app · No login.",
     heroLead:
       "Tap a face → instant copy paste for Discord, Instagram, TikTok, or chat. Free kaomoji—no download.",
     ogSubtitle:
-      "Kaomoji copy paste · (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ · 70+ free kaomojis",
+      "Kaomoji copy paste · (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ · 700+ curated faces",
     h1: "Kaomoji Copy Paste",
     introBelowHero:
-      "Japanese text faces (often typed kamoji, kaomiji, or kaomojis) as plain Unicode—not emoji stickers. Full mood lists: cute, cry, heart, Lenny, shrug.",
+      "Japanese text faces (often typed kamoji, kaomiji, or kaomojis) as plain Unicode—not emoji stickers. Indexed topic pages: cute, cry, heart, hand, star, Carrd dividers, mini dot art, Lenny, shrug.",
     breadcrumbLabel: "Kaomoji",
     primaryKeyword: "kaomoji",
     leadFaq: {
@@ -1095,7 +1322,7 @@ export const KAOMOJI_HUB_VARIANTS: Record<KaomojiHubSlug, KaomojiHubSerpBundle> 
   kamoji: {
     title: "Kamoji Copy Paste — Kaomoji Text Faces (｡◕‿◕｡) | FancifyText",
     description:
-      "Kamoji copy paste = kaomoji. Tap 70+ free text faces (｡◕‿◕｡) (T_T) for Discord & Instagram. Common misspelling—same Japanese emoticons.",
+      "Kamoji copy paste = kaomoji. Tap 700+ curated text faces (｡◕‿◕｡) (T_T) for Discord & Instagram. Common misspelling—same Japanese emoticons.",
     heroLead:
       "You typed kamoji—this is kaomoji copy paste. Tap a face, paste in Discord or Instagram. Free, no account.",
     ogSubtitle: "Kamoji → kaomoji · tap (｡◕‿◕｡) to copy paste",
@@ -1113,10 +1340,10 @@ export const KAOMOJI_HUB_VARIANTS: Record<KaomojiHubSlug, KaomojiHubSerpBundle> 
   kaomojis: {
     title: "Kaomojis Copy Paste — Free Kaomoji List (｡◕‿◕｡) | FancifyText",
     description:
-      "Kaomojis copy paste: 70+ free kaomoji text faces. Tap (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ for Discord. Plural kaomojis = this copy-paste list.",
+      "Kaomojis copy paste: 700+ curated kaomoji text faces. Tap (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ for Discord. Plural kaomojis = this copy-paste list.",
     heroLead:
       "Kaomojis copy paste—tap any Japanese text face in the grid, then paste in Discord, Instagram, or chat. Free list, no login.",
-    ogSubtitle: "Kaomojis copy paste · 70+ kaomoji text faces",
+    ogSubtitle: "Kaomojis copy paste · 700+ kaomoji text faces",
     h1: "Kaomojis Copy Paste",
     introBelowHero:
       "Kaomojis is the English plural of kaomoji. This page is the full copy-paste list of Japanese-style text faces; singular kaomoji uses the same characters.",
@@ -1219,6 +1446,20 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
         "That history is why kaomoji beat GIF stickers in bios and usernames: there is nothing to upload, and the face stays editable like ordinary letters.",
       ],
     },
+    {
+      id: "topic-spokes",
+      heading: "Hand, star, Carrd, and dot-art lists",
+      paragraphs: [
+        "Some searches are not moods—they are layouts or body parts. Hand kaomoji collect arm-up cheers. Star kaomoji collect sparkle lines for aesthetic bios. Carrd kaomojis are divider strings for link-in-bio pages. Kaomoji dot art keeps mini one-line ASCII faces without huge posters that slow phones.",
+        "Each topic has its own URL so this hub stays the general kaomoji copy-paste page. Open the topic list when you know the layout you need; stay here when you want a mixed sample grid.",
+      ],
+      bullets: [
+        "Hand kaomoji — waves and hype arms",
+        "Star kaomoji — ★ ⋆ ✩ aesthetic lines",
+        "Carrd kaomojis — bio dividers between sections",
+        "Kaomoji dot art — compact (•ᴗ•)-style faces",
+      ],
+    },
   ],
   situations: [
     {
@@ -1276,6 +1517,20 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       href: "/thank-you-kaomojis/",
       linkLabel: "Thank-you kaomojis",
       hint: "Bow face; common after favors in servers.",
+    },
+    {
+      situation: "Link-in-bio section break",
+      face: "· · ─ ·✶· ─ · ·",
+      href: "/carrd-kaomojis/",
+      linkLabel: "Carrd kaomojis",
+      hint: "Divider line; one between text blocks.",
+    },
+    {
+      situation: "Hype or hello with arms up",
+      face: "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+      href: "/hand-kaomojis/",
+      linkLabel: "Hand kaomojis",
+      hint: "Arm-forward cheer; not a hug.",
     },
   ],
   faq: [
@@ -1342,7 +1597,12 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
     {
       question: "Which kaomoji lists are best to bookmark?",
       answer:
-        "This hub for mixed search, plus cute, cry, heart, Lenny, and shrug when you know the mood. Other emotion URLs stay online for old links.",
+        "This hub for mixed search; cute, cry, heart, Lenny, and shrug for moods; hand, star, Carrd dividers, and mini dot art for layout topics. Other emotion URLs stay online for old links but are not indexed.",
+    },
+    {
+      question: "Carrd kaomojis — do I paste a whole template?",
+      answer:
+        "No—copy one divider line at a time between your own text sections. Styled names belong on font generators; faces belong on mood lists.",
     },
   ],
 };
