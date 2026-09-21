@@ -306,7 +306,11 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
           Not the same as kaomoji—these are standard emoji. Tap to copy, then
           paste like any other character.
         </p>
-        <KaomojiGrid faces={POPULAR_CHAT_EMOJI} idPrefix="emoji" />
+        <KaomojiGrid
+          faces={POPULAR_CHAT_EMOJI}
+          idPrefix="emoji"
+          variant="emoji"
+        />
         <p className="seo-prose">
           Need stars, hearts, or arrows without a face? See{" "}
           <Link href="/cool-symbols/">cool symbols copy and paste</Link>.

@@ -19,7 +19,7 @@ export function KaomojiSituationTable({ rows }: KaomojiSituationTableProps) {
         </p>
       ) : null}
       <div className="codes-table-wrap">
-        <table className="codes-table kaomoji-meaning-table">
+        <table className="codes-table kaomoji-meaning-table kaomoji-responsive-table">
           <thead>
             <tr>
               <th>Situation</th>
@@ -33,16 +33,18 @@ export function KaomojiSituationTable({ rows }: KaomojiSituationTableProps) {
               const id = `situation-${row.situation}`;
               return (
                 <tr key={row.situation}>
-                  <td>
+                  <td data-label="Situation">
                     {row.situation}
                     <br />
                     <small>{row.hint}</small>
                   </td>
-                  <td className="kaomoji-meaning-face">{row.face}</td>
-                  <td>
+                  <td className="kaomoji-meaning-face" data-label="Face">
+                    {row.face}
+                  </td>
+                  <td data-label="List">
                     <Link href={row.href}>{row.linkLabel}</Link>
                   </td>
-                  <td>
+                  <td data-label="Copy">
                     <button
                       type="button"
                       className="kaomoji-meaning-copy"
