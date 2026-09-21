@@ -3,6 +3,7 @@ import { BackToTool } from "@/components/seo/BackToTool";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
+import { JsonLd, itemListJsonLd } from "@/components/seo/JsonLd";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
@@ -13,8 +14,10 @@ import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
   KAOMOJI_HUB,
-  KAOMOJI_HUB_SERP,
+  KAOMOJI_HUB_SLUGS,
   KAOMOJI_MEANINGS,
+  getKaomojiHubSerp,
+  type KaomojiHubSlug,
   SPECIAL_KAOMOJI,
   getHubFaces,
   getHubMoodCopySets,
@@ -203,9 +206,15 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
   );
 }
 
-export function KaomojiHubView() {
-  const page = getPageByUrl("/kaomoji/");
-  const related = getTopicalRelated("/kaomoji/", 6);
+type KaomojiHubViewProps = {
+  hubSlug?: KaomojiHubSlug;
+};
+
+export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
+  const serp = getKaomojiHubSerp(hubSlug);
+  const hubUrl = `/${hubSlug}/`;
+  const page = getPageByUrl(hubUrl);
+  const related = getTopicalRelated(hubUrl, 6);
   const showcase = getHubShowcase();
   const featuredShowcase = showcase.filter((item) =>
     INDEXABLE_KAOMOJI_SLUGS.has(item.href.replace(/^\/|\/$/g, "")),
@@ -213,6 +222,12 @@ export function KaomojiHubView() {
   const tailLists = getTailKaomojiLists();
   const samples = getHubFaces(72);
   const moodCopySets = getHubMoodCopySets(12);
+  const hubFaq = [
+    ...(serp.leadFaq ? [serp.leadFaq] : []),
+    ...KAOMOJI_HUB.faq,
+  ];
+  const absoluteHubUrl = new URL(hubUrl, SITE_URL).toString();
+  const itemListFaces = samples.slice(0, 12);
 
   return (
     <div className="site-shell">
@@ -220,30 +235,39 @@ export function KaomojiHubView() {
         <PageJsonLd
           page={{
             ...page,
-            title: KAOMOJI_HUB_SERP.title,
-            description: KAOMOJI_HUB_SERP.description,
+            title: serp.title,
+            description: serp.description,
           }}
-          faq={KAOMOJI_HUB.faq}
-          crumbName={KAOMOJI_HUB_SERP.h1}
+          faq={hubFaq}
+          crumbName={serp.h1}
           howTo={{
-            name: "How to copy kaomoji",
+            name: `How to ${serp.primaryKeyword} copy paste`,
             steps: [
-              "Tap a face above, or open cute / cry / heart for a longer list.",
-              "The clipboard gets ordinary text—no sticker pack.",
-              "Paste in any app that accepts Unicode. If it boxes out, try a shorter face.",
+              "Tap a face in the grid—it copies as plain text instantly.",
+              "Open Discord, Instagram, TikTok, or chat and paste.",
+              "If characters box out, pick a shorter face higher in the list.",
             ],
           }}
+        />
+      ) : null}
+      {itemListFaces.length ? (
+        <JsonLd
+          data={itemListJsonLd({
+            name: `${serp.primaryKeyword} copy paste list`,
+            url: absoluteHubUrl,
+            items: itemListFaces,
+          })}
         />
       ) : null}
 
       <Breadcrumbs
         items={[
           { name: SITE_NAME, href: "/" },
-          { name: "Kaomoji" },
+          { name: serp.breadcrumbLabel },
         ]}
       />
 
-      <PageHero h1={KAOMOJI_HUB_SERP.h1} lead={KAOMOJI_HUB_SERP.heroLead} />
+      <PageHero h1={serp.h1} lead={serp.heroLead} />
 
       <div className="tool-stage" id="tool">
         <p className="field-label">
@@ -252,7 +276,21 @@ export function KaomojiHubView() {
         <KaomojiGrid faces={samples} idPrefix="hub" />
       </div>
 
-      <p className="seo-lead">{KAOMOJI_HUB.introBelowHero}</p>
+      <p className="seo-lead">{serp.introBelowHero}</p>
+
+      {hubSlug !== "kaomoji" ? (
+        <p className="seo-lead">
+          Standard spelling:{" "}
+          <Link href="/kaomoji/">kaomoji copy paste</Link>
+          {hubSlug === "kamoji" ? " (you typed kamoji)" : ""}.
+          {hubSlug === "kaomojis" ? (
+            <>
+              {" "}
+              Singular: <Link href="/kaomoji/">kaomoji</Link>.
+            </>
+          ) : null}
+        </p>
+      ) : null}
 
       <section
         className="seo-section seo-prose"
@@ -271,6 +309,19 @@ export function KaomojiHubView() {
             </li>
           ))}
         </ul>
+        <p>
+          Copy-paste hubs:{" "}
+          {KAOMOJI_HUB_SLUGS.map((s, i) => (
+            <span key={s}>
+              {i > 0 ? " · " : null}
+              {s === hubSlug ? (
+                <strong>{s}</strong>
+              ) : (
+                <Link href={`/${s}/`}>{s}</Link>
+              )}
+            </span>
+          ))}
+        </p>
       </section>
 
       <section className="seo-section" aria-labelledby="emotions-heading">
@@ -440,11 +491,11 @@ export function KaomojiHubView() {
       </section>
 
       {page ? (
-        <FellowKeywords keywords={page.fellowKeywords} currentUrl="/kaomoji/" />
+        <FellowKeywords keywords={page.fellowKeywords} currentUrl={hubUrl} />
       ) : null}
 
       <BackToTool />
-      <FaqSection items={KAOMOJI_HUB.faq} accordion />
+      <FaqSection items={hubFaq} accordion />
       <RelatedTools pages={related} />
     </div>
   );

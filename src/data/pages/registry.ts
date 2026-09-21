@@ -1,4 +1,4 @@
-import { KAOMOJI_HUB_SERP } from "@/data/kaomoji-copy";
+import { KAOMOJI_HUB_VARIANTS } from "@/data/kaomoji-copy";
 
 export type PageGroup =
   | "A_Hub"
@@ -639,8 +639,8 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji/",
     group: "F_Kaomoji",
     primaryKeyword: "kaomoji",
-    title: KAOMOJI_HUB_SERP.title,
-    description: KAOMOJI_HUB_SERP.description,
+    title: KAOMOJI_HUB_VARIANTS.kaomoji.title,
+    description: KAOMOJI_HUB_VARIANTS.kaomoji.description,
     fellowKeywords: fellows(
       "kaomoji copy paste",
       "kaomojis",
@@ -653,6 +653,30 @@ export const PAGES: PageEntry[] = [
       "kao emoji",
     ),
     navLabel: "Kaomoji",
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/kamoji/",
+    group: "F_Kaomoji",
+    primaryKeyword: "kamoji",
+    title: KAOMOJI_HUB_VARIANTS.kamoji.title,
+    description: KAOMOJI_HUB_VARIANTS.kamoji.description,
+    fellowKeywords: fellows("kaomoji", "kamoji copy paste", "kaomoji copy paste"),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "kaomojis",
+    title: KAOMOJI_HUB_VARIANTS.kaomojis.title,
+    description: KAOMOJI_HUB_VARIANTS.kaomojis.description,
+    fellowKeywords: fellows(
+      "kaomojis copy paste",
+      "kaomoji",
+      "kaomoji copy paste",
+    ),
   },
   {
     phase: 5,

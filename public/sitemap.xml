@@ -241,6 +241,18 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://fancifytext.com/kamoji/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://fancifytext.com/kaomojis/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://fancifytext.com/cry-kaomojis/</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>

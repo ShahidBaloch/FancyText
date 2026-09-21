@@ -15,8 +15,8 @@ export const contentType = "image/png";
 export const alt = "FancifyText";
 
 function ogTitle(slug: string): string {
-  if (slug === "kaomoji") {
-    const page = getPageByUrl("/kaomoji/");
+  if (slug === "kaomoji" || slug === "kamoji" || slug === "kaomojis") {
+    const page = getPageByUrl(`/${slug}/`);
     return titleFromRegistryTitle(page?.title ?? "Kaomoji copy and paste");
   }
 

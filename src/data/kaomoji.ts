@@ -1,12 +1,26 @@
 import {
   KAOMOJI_HUB,
   KAOMOJI_HUB_SERP,
+  KAOMOJI_HUB_SLUGS,
   KAOMOJI_UNIQUE_COPY,
+  getKaomojiHubSerp,
+  isKaomojiHubSlug,
+  type KaomojiHubSlug,
   type KaomojiProseSection,
 } from "@/data/kaomoji-copy";
 
-export { KAOMOJI_HUB, KAOMOJI_HUB_SERP };
-export type { KaomojiProseSection, KaomojiSituationRow } from "@/data/kaomoji-copy";
+export {
+  KAOMOJI_HUB,
+  KAOMOJI_HUB_SERP,
+  KAOMOJI_HUB_SLUGS,
+  getKaomojiHubSerp,
+  isKaomojiHubSlug,
+};
+export type {
+  KaomojiHubSlug,
+  KaomojiProseSection,
+  KaomojiSituationRow,
+} from "@/data/kaomoji-copy";
 
 export type KaomojiList = {
   slug: string;
@@ -1112,7 +1126,7 @@ for (const entry of SPECIAL_KAOMOJI) {
 }
 
 export function kaomojiOgSubtitle(slug: string): string | undefined {
-  if (slug === "kaomoji") return KAOMOJI_HUB_SERP.ogSubtitle;
+  if (isKaomojiHubSlug(slug)) return getKaomojiHubSerp(slug).ogSubtitle;
   const list = getKaomojiList(slug);
   return list?.ogSubtitle;
 }
@@ -1147,7 +1161,7 @@ export const INDEXABLE_KAOMOJI_SLUGS = new Set([
 
 export function kaomojiPathIsIndexable(urlOrSlug: string): boolean {
   const slug = urlOrSlug.replace(/^\/|\/$/g, "");
-  if (slug === "kaomoji") return true;
+  if (isKaomojiHubSlug(slug)) return true;
   if (!KAOMOJI_BY_SLUG[slug]) return true;
   return INDEXABLE_KAOMOJI_SLUGS.has(slug);
 }
