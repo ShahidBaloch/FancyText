@@ -16,7 +16,7 @@ import {
   KAOMOJI_HUB,
   KAOMOJI_HUB_AESTHETIC_SAMPLES,
   KAOMOJI_MEANINGS,
-  getKaomojiHubSerp,
+  getKaomojiHubSerpForMetadata,
   type KaomojiHubSlug,
   SPECIAL_KAOMOJI,
   getHubFaces,
@@ -296,7 +296,7 @@ type KaomojiHubViewProps = {
 };
 
 export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
-  const serp = getKaomojiHubSerp(hubSlug);
+  const serp = getKaomojiHubSerpForMetadata(hubSlug);
   const hubUrl = `/${hubSlug}/`;
   const page = getPageByUrl(hubUrl);
   const related = getTopicalRelated(hubUrl, 6);

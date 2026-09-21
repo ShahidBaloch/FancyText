@@ -1351,6 +1351,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         answer:
           "Short (－_－) zzZ lines paste reliably. Long zzZ strings may wrap on mobile.",
       },
+      {
+        question: "Why is this list not in Google search?",
+        answer:
+          "FancifyText indexes cry and cute for main moods; sleep stays a browse helper so it does not compete with those URLs.",
+      },
     ],
   },
   "wink-kaomojis": {
@@ -1375,6 +1380,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Wink kaomoji vs kiss kaomoji?",
         answer:
           "Kiss lists use hearts or puckered mouths. Wink lists signal “just kidding” or flirt—pick the mood that matches.",
+      },
+      {
+        question: "Can I use a wink kaomoji at work?",
+        answer:
+          "Stick to mild (^‿^) style faces in professional threads; save (^_-)/(^ω~) for friends who know your tone.",
       },
     ],
   },

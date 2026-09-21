@@ -16,7 +16,7 @@ import {
 import {
   KAOMOJI_HUB_SLUGS,
   KAOMOJI_SLUGS,
-  getKaomojiHubSerp,
+  getKaomojiHubSerpForMetadata,
   getKaomojiList,
   isKaomojiHubSlug,
   kaomojiHubCanonicalPath,
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!slug) return {};
 
   if (isKaomojiHubSlug(slug)) {
-    const serp = getKaomojiHubSerp(slug);
+    const serp = getKaomojiHubSerpForMetadata(slug);
     const page = getPageByUrl(`/${slug}/`);
     if (page) {
       return pageMetadata(

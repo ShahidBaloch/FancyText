@@ -924,7 +924,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "hand kaomoji",
     title: "Hand Kaomoji Copy Paste — Wave & Raise Arms | FancifyText",
     description:
-      "Copy hand kaomoji—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype. Tap to copy; plain Unicode.",
+      "Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.",
     fellowKeywords: fellows("wave kaomoji", "arm up text face"),
   },
   {
@@ -935,7 +935,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "star kaomoji",
     title: "Star Kaomoji Copy Paste — ☆ Aesthetic Sparkle | FancifyText",
     description:
-      "Copy star kaomoji & sparkle lines—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic bios. Tap to copy; not emoji stickers.",
+      "Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.",
     fellowKeywords: fellows("stars kaomoji aesthetic", "galaxy kaomoji"),
   },
   {
@@ -946,7 +946,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "dot art kaomoji",
     title: "Kaomoji Dot Art Copy Paste — Mini ASCII Faces | FancifyText",
     description:
-      "Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) for chat. One-line art; tap to copy. Free.",
+      "Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.",
     fellowKeywords: fellows("ascii kaomoji", "mini text art kaomoji"),
   },
   {
@@ -957,7 +957,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "carrd kaomojis",
     title: "Carrd Kaomojis Copy Paste — Bio Dividers | FancifyText",
     description:
-      "Copy Carrd kaomojis—bio divider lines & ⋆ separators for link-in-bio pages. Tap to copy; Unicode text.",
+      "Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.",
     fellowKeywords: fellows("carrd bio dividers", "aesthetic bio lines"),
   },
   {

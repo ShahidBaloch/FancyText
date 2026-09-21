@@ -1417,7 +1417,8 @@ for (const entry of SPECIAL_KAOMOJI) {
 }
 
 export function kaomojiOgSubtitle(slug: string): string | undefined {
-  if (isKaomojiHubSlug(slug)) return getKaomojiHubSerp(slug).ogSubtitle;
+  if (isKaomojiHubSlug(slug))
+    return getKaomojiHubSerpForMetadata(slug).ogSubtitle;
   const list = getKaomojiList(slug);
   return list?.ogSubtitle;
 }
@@ -1522,6 +1523,28 @@ export function getKaomojiCatalogStats(): {
     for (const face of page.faces) seen.add(face);
   }
   return { uniqueFaces: seen.size, listCount: ALL_KAOMOJI_PAGES.length };
+}
+
+/** Rounded face count for SERP titles (853 unique → "850+"). */
+export function getKaomojiCatalogPublicClaim(): string {
+  const { uniqueFaces } = getKaomojiCatalogStats();
+  return `${Math.floor(uniqueFaces / 10) * 10}+`;
+}
+
+function withCatalogClaim(text: string, claim: string): string {
+  return text.replace(/\d+\+/g, claim);
+}
+
+/** Hub SERP with live catalog count substituted into title/description. */
+export function getKaomojiHubSerpForMetadata(slug: KaomojiHubSlug) {
+  const bundle = getKaomojiHubSerp(slug);
+  const claim = getKaomojiCatalogPublicClaim();
+  return {
+    ...bundle,
+    title: withCatalogClaim(bundle.title, claim),
+    description: withCatalogClaim(bundle.description, claim),
+    ogSubtitle: withCatalogClaim(bundle.ogSubtitle, claim),
+  };
 }
 
 export function getFeaturedKaomojiLists(): KaomojiList[] {
