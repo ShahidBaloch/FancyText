@@ -14,7 +14,8 @@ export function KaomojiGrid({
   idPrefix = "k",
   variant = "default",
 }: KaomojiGridProps) {
-  const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
+  const { copiedId, errorId, errorMessage, announcement, copy } =
+    useCopyFeedback();
 
   return (
     <div>
@@ -23,6 +24,9 @@ export function KaomojiGrid({
           {errorMessage}
         </p>
       ) : null}
+      <p className="sr-only" role="status" aria-live="polite">
+        {announcement}
+      </p>
       <ul
         className={
           variant === "emoji"
