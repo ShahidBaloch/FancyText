@@ -1,4 +1,11 @@
-import { KAOMOJI_UNIQUE_COPY } from "@/data/kaomoji-copy";
+import {
+  KAOMOJI_HUB,
+  KAOMOJI_UNIQUE_COPY,
+  type KaomojiProseSection,
+} from "@/data/kaomoji-copy";
+
+export { KAOMOJI_HUB };
+export type { KaomojiProseSection, KaomojiSituationRow } from "@/data/kaomoji-copy";
 
 export type KaomojiList = {
   slug: string;
@@ -15,6 +22,7 @@ export type KaomojiList = {
   howToHeading?: string;
   howToSteps?: string[];
   mobileNote?: string;
+  extraSections?: KaomojiProseSection[];
   faq: { question: string; answer: string }[];
 };
 
@@ -927,6 +935,7 @@ for (const entry of KAOMOJI_LISTS) {
   if (unique.howToHeading) entry.howToHeading = unique.howToHeading;
   if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
   if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
+  if (unique.extraSections) entry.extraSections = unique.extraSections;
 }
 
 export const SPECIAL_KAOMOJI: KaomojiList[] = [
@@ -1073,6 +1082,19 @@ export const SPECIAL_KAOMOJI: KaomojiList[] = [
     ],
   },
 ];
+
+for (const entry of SPECIAL_KAOMOJI) {
+  const unique = KAOMOJI_UNIQUE_COPY[entry.slug];
+  if (!unique) continue;
+  entry.description = unique.description;
+  entry.meanings = unique.meanings;
+  entry.faq = unique.faq;
+  if (unique.meaningsHeading) entry.meaningsHeading = unique.meaningsHeading;
+  if (unique.howToHeading) entry.howToHeading = unique.howToHeading;
+  if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
+  if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
+  if (unique.extraSections) entry.extraSections = unique.extraSections;
+}
 
 export const ALL_KAOMOJI_PAGES: KaomojiList[] = [
   ...KAOMOJI_LISTS,
@@ -1256,6 +1278,48 @@ export const KAOMOJI_MEANINGS: KaomojiMeaning[] = [
     name: "Unimpressed",
     meaning: "Tired resignation. Good for “again?” moments without complaining.",
   },
+  {
+    face: "m(_ _)m",
+    name: "Thank-you bow",
+    meaning:
+      "Polite gratitude—the text version of a small bow. Common after help in Discord or forums.",
+  },
+  {
+    face: "(╥_╥)",
+    name: "Tearing up",
+    meaning:
+      "Crying with visible tears. Dramatic but still short enough for most chats.",
+  },
+  {
+    face: "(・・？)",
+    name: "Confused",
+    meaning:
+      "Puzzled “huh?”—tilted eyes and a question mark. Lighter than a full shocked mouth.",
+  },
+  {
+    face: "(♡ω♡)",
+    name: "Heart eyes",
+    meaning:
+      "Love or excitement with hearts in the face. Softer than kiss marks for public comments.",
+  },
+  {
+    face: "┐(´д｀)┌",
+    name: "Arms-up shrug",
+    meaning:
+      "Japanese-style shrug—hands raised instead of ¯\\_(ツ)_/¯. Same “idk” energy, different look.",
+  },
+  {
+    face: "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+    name: "Sparkle hype",
+    meaning:
+      "Celebration or fandom excitement. Long—use in messages, not nicknames.",
+  },
+  {
+    face: "(｡•́︿•̀｡)",
+    name: "Quiet sad",
+    meaning:
+      "Disappointed or pouty without big tears. Between cute and sad lists.",
+  },
 ];
 
 export type HubMoodCopySet = {
@@ -1270,7 +1334,7 @@ export type HubMoodCopySet = {
  * they do not compete with their own URLs in search.
  */
 export function getHubMoodCopySets(perList = 12): HubMoodCopySet[] {
-  const slugs = ["funny-kaomojis"];
+  const slugs = ["funny-kaomojis", "cat-kaomojis", "angry-kaomojis", "thank-you-kaomojis"];
   const sets: HubMoodCopySet[] = [];
   for (const slug of slugs) {
     const list = getKaomojiList(slug);

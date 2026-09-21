@@ -637,9 +637,9 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji/",
     group: "F_Kaomoji",
     primaryKeyword: "kaomoji",
-    title: "Kaomoji Copy and Paste — Free Kaomojis & Text Faces | FancifyText",
+    title: "Kaomoji Copy and Paste — (｡◕‿◕｡) Text Faces & Kaomojis | FancifyText",
     description:
-      "Free kaomoji and kaomojis copy and paste. Japanese text faces for Discord and chat—tap to copy from one hub plus cute, cry, heart, Lenny, and shrug lists.",
+      "Tap to copy kaomoji (kamoji) text faces—(｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ and 70+ more. Free Japanese emoticons for Discord, Instagram, and chat. Cute, cry, heart, Lenny & shrug lists.",
     fellowKeywords: fellows(
       "japanese emoticons",
       "text faces",
@@ -697,9 +697,9 @@ export const PAGES: PageEntry[] = [
     url: "/cry-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cry kaomoji",
-    title: "Cry Kaomojis Copy and Paste | FancifyText",
+    title: "Cry Kaomojis Copy and Paste — (T_T) Crying Text Faces | FancifyText",
     description:
-      "Copy cry kaomoji and crying text faces. Free sad Japanese emoticons.",
+      "Copy cry kaomoji and tearful faces—(T_T), (╥_╥), and dramatic crying text for Discord and chat. Tap any face to copy.",
     fellowKeywords: fellows("crying kaomoji", "kaomoji cry"),
   },
   {
@@ -708,9 +708,9 @@ export const PAGES: PageEntry[] = [
     url: "/cute-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cute kaomoji",
-    title: "Cute Kaomojis Copy and Paste | FancifyText",
+    title: "Cute Kaomojis Copy and Paste — (｡◕‿◕｡) Kawaii Faces | FancifyText",
     description:
-      "Copy cute kaomoji and kawaii text faces for bios and chats.",
+      "Copy cute kaomoji and kawaii text faces—(｡◕‿◕｡) and blush emoticons for Discord bios, Instagram, and soft chats. Tap to copy.",
     fellowKeywords: fellows("kawaii kaomoji", "cute text faces"),
   },
   {
@@ -739,9 +739,9 @@ export const PAGES: PageEntry[] = [
     url: "/heart-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "heart kaomoji",
-    title: "Heart Kaomojis Copy and Paste | FancifyText",
+    title: "Heart Kaomojis Copy and Paste — ♡ Love Text Faces | FancifyText",
     description:
-      "Copy heart kaomoji and love text faces for messages.",
+      "Copy heart kaomoji with ♡ built in—for DMs, couple Discord, and sweet bios. Tap any love text face to copy.",
     fellowKeywords: fellows("love kaomoji", "heart text face"),
   },
   {
@@ -894,7 +894,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "lenny face",
     title: "Lenny Face Copy and Paste ( ͡° ͜ʖ ͡°) | FancifyText",
     description:
-      "Copy Lenny face ( ͡° ͜ʖ ͡°) and variants. Free emoticon for Discord and Reddit.",
+      "Copy Lenny face ( ͡° ͜ʖ ͡°) and variants for Discord, Reddit, and memes. Tap to copy the classic knowing text face.",
     fellowKeywords: fellows("lenny face copy paste", "lenny emoticon"),
   },
   {

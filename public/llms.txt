@@ -60,10 +60,10 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 
 ## Kaomoji & emoticons
 
-- /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji and crying text faces
-- /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji and kawaii text faces for bios and chats
-- /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji and love text faces for messages
-- /kaomoji/ — Kaomoji — Free kaomoji and kaomojis copy and paste
+- /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji and tearful faces
+- /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji and kawaii text faces
+- /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji with ♡ built in
+- /kaomoji/ — Kaomoji — Tap to copy kaomoji (kamoji) text faces
 - /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) and variants
 - /shrug-emoticon/ — shrug emoticon — Copy the shrug emoticon ¯\_(ツ)_/¯ and variants
 

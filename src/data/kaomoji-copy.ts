@@ -1,3 +1,11 @@
+/** Extra on-page sections for mood lists (indexed pages get richer prose). */
+export type KaomojiProseSection = {
+  id: string;
+  heading: string;
+  paragraphs: string[];
+  bullets?: string[];
+};
+
 /** Unique meta + meanings + FAQ overlays for kaomoji lists (slug → copy). */
 export type KaomojiUniqueCopy = {
   description: string;
@@ -6,6 +14,22 @@ export type KaomojiUniqueCopy = {
   howToHeading?: string;
   howToSteps?: string[];
   mobileNote?: string;
+  extraSections?: KaomojiProseSection[];
+  faq: { question: string; answer: string }[];
+};
+
+export type KaomojiSituationRow = {
+  situation: string;
+  face: string;
+  href: string;
+  linkLabel: string;
+  hint: string;
+};
+
+export type KaomojiHubContent = {
+  introBelowHero: string;
+  sections: KaomojiProseSection[];
+  situations: KaomojiSituationRow[];
   faq: { question: string; answer: string }[];
 };
 
@@ -144,10 +168,32 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   },
   "cry-kaomojis": {
     description:
-      "Copy cry kaomoji and tearful text faces. Free crying Japanese emoticons for sad or dramatic chat moments.",
+      "Copy cry kaomoji and tearful faces—(T_T), (╥_╥), and dramatic crying text for Discord and chat. Tap to copy; no sticker pack.",
     meaningsHeading: "Tears vs a quiet frown",
     meanings:
       "Cry kaomojis show falling tears or sob lines. Use them for over-the-top apology memes and dramatic reactions. Prefer sad kaomojis when you want melancholy without the waterworks.",
+    extraSections: [
+      {
+        id: "cry-vs-sad",
+        heading: "Cry kaomoji vs sad kaomoji",
+        paragraphs: [
+          "Cry faces show waterworks—T_T, ╥, or visible drip marks. Sad faces droop without pouring tears. Use cry when the joke is dramatic (“I failed the boss again”); use sad when the mood is quiet disappointment.",
+          "In support chats, one short (T_T) next to an apology reads sincere without sounding performative. Stack three crying faces and it starts to look like spam in notification previews.",
+        ],
+      },
+      {
+        id: "compatible-cry",
+        heading: "Crying faces that survive mobile",
+        paragraphs: [
+          "Punctuation-heavy cries copy cleanly because they use symbols every phone font already has. Ornate fullwidth tear stacks look impressive on desktop but are the first to box out on older Android.",
+        ],
+        bullets: [
+          "(T_T) and (╥_╥) — safest for comments and bios",
+          "(；ω；) — soft sob; common in anime-flavored chats",
+          "(╯︵╰,) — curled defeat; meme tone, not grief",
+        ],
+      },
+    ],
     howToHeading: "Copy a crying face",
     howToSteps: [
       "Pick a face with visible tears, not just a downturned mouth.",
@@ -186,10 +232,32 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   },
   "cute-kaomojis": {
     description:
-      "Copy cute kaomoji and kawaii text faces for bios, nicknames, and soft Discord vibes.",
+      "Copy cute kaomoji and kawaii text faces—(｡◕‿◕｡) and blush faces for Discord bios, Instagram, and soft chats. Tap any face to copy.",
     meaningsHeading: "Kawaii faces, not animal ears",
     meanings:
       "Cute kaomojis prioritize blush (///), round eyes, and gentle mouths. They are people-shaped, not cat/bear/dog. Keep them short so the details stay readable on a phone bio.",
+    extraSections: [
+      {
+        id: "discord-bio",
+        heading: "Best cute kaomoji for Discord bios",
+        paragraphs: [
+          "Discord about-me and nicknames truncate fast. A single compact face like (｡◕‿◕｡) or (⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄) reads as kawaii without eating the whole line. Put plain words first, then one face at the end so mobile still shows your message.",
+          "Avoid table-flips and long combining stacks in nicknames—the client may reject them. Messages and topics tolerate longer faces; bios and display names should stay under one screen width.",
+        ],
+        bullets: [
+          "(｡◕‿◕｡) — friendly default; works almost everywhere",
+          "(◕‿◕) — even shorter; good when the bio is already full",
+          "(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄) — heavy blush; test on your phone first",
+        ],
+      },
+      {
+        id: "pair-fonts",
+        heading: "Cute kaomoji with styled names",
+        paragraphs: [
+          "Kaomoji are emoticons, not letter fonts. For a decorated username, generate bubble or script letters on the cute fonts page, then paste one kaomoji beside the name—not inside every character.",
+        ],
+      },
+    ],
     howToHeading: "Copy a blush or round-eye face",
     howToSteps: [
       "Skip animal-ear lists—those are cat, bear, and dog pages.",
@@ -294,10 +362,32 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   },
   "heart-kaomojis": {
     description:
-      "Heart kaomoji. Copy heart and love kaomoji for sweet messages, couple chats, and affectionate bios.",
+      "Copy heart kaomoji and love text faces with ♡ built in—for DMs, couple Discord, and sweet bios. Tap any face to copy.",
     meaningsHeading: "Affection in punctuation",
     meanings:
       "Heart kaomojis weave ♡ or similar marks into a face. Use them in DMs, thank-you notes, and soft bios. Kiss lists are flirty; hug lists are comfort. Mix only if the message is clearly friendly or romantic.",
+    extraSections: [
+      {
+        id: "heart-bio",
+        heading: "Heart kaomoji in Instagram and TikTok bios",
+        paragraphs: [
+          "One heart face plus a short line beats a wall of ♡ characters. Instagram caps bios at 150 characters; TikTok is tighter. Pick a face where the heart is obvious at a glance—readers should not have to squint at combining marks.",
+          "Handles stay plain ASCII; hearts live in the bio body, captions, and comments only.",
+        ],
+      },
+      {
+        id: "heart-tone",
+        heading: "Hearts vs hugs vs kisses",
+        paragraphs: [
+          "Heart kaomoji signal general affection—thanks, pride in a friend, soft couple energy. Kiss faces add smooch marks for flirting. Hug faces stretch arms for comfort after bad news. Matching tone to relationship avoids awkward group-chat reads.",
+        ],
+        bullets: [
+          "Heart — thank-yous, anniversaries, wholesome hype",
+          "Hug — support when someone shares rough news",
+          "Kiss — DMs and couple nicknames; lighter in public threads",
+        ],
+      },
+    ],
     howToHeading: "Copy a face that includes a heart",
     howToSteps: [
       "Pick a face with ♡ or heart arms, not a lone emoji.",
@@ -763,6 +853,92 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       },
     ],
   },
+  "lenny-face": {
+    description:
+      "Copy Lenny face ( ͡° ͜ʖ ͡°) and variants for Discord, Reddit, and memes. Tap to copy the classic knowing text face.",
+    meanings:
+      "Lenny face is the raised-eyebrow smirk of text chat—knowing, sarcastic, or suggestive depending on context. It spread from forums into Discord and Reddit because it is plain Unicode, not a custom emote. One Lenny per message keeps the joke; stacking them reads as spam.",
+    extraSections: [
+      {
+        id: "lenny-tone",
+        heading: "When Lenny face lands (and when it does not)",
+        paragraphs: [
+          "Use Lenny after a punchline, a mild roast, or an obvious in-joke. Skip it in work Slack, support tickets, and first messages to strangers—it is easy to misread as hostile or creepy.",
+          "If a client shows broken boxes, copy a shorter variant from the top of the list; the classic ( ͡° ͜ʖ ͡°) uses common Latin symbols.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is the Lenny face?",
+        answer:
+          "The Lenny face is ( ͡° ͜ʖ ͡°)—a text emoticon for knowing humor, sarcasm, or mischief. It is not an emoji sticker.",
+      },
+      {
+        question: "How do I copy Lenny face on mobile?",
+        answer:
+          "Tap any variant below. Safari and Chrome copy plain Unicode; paste into Discord, Instagram, or Reddit.",
+      },
+      {
+        question: "Does Lenny face work on Discord?",
+        answer:
+          "Yes in messages and topics. Nicknames may reject dense combining marks—test a one-line face.",
+      },
+      {
+        question: "Lenny face vs kaomoji?",
+        answer:
+          "Lenny is one famous Western-leaning emoticon. Kaomoji is the wider Japanese style (cute, cry, animal ears). Both paste as text.",
+      },
+      {
+        question: "Is Lenny face appropriate everywhere?",
+        answer:
+          "No. Keep it to casual memes and friend servers. Professional or public-facing accounts should use words instead.",
+      },
+    ],
+  },
+  "shrug-emoticon": {
+    description:
+      "Copy shrug emoticon ¯\\_(ツ)_/¯ and idk text faces for chat. Tap to copy—works in Discord, Instagram, and email.",
+    meanings:
+      "The shrug emoticon softens “I don’t know” so you do not sound dismissive. Western chats use ¯\\_(ツ)_/¯; Japanese-style shrugs use raised-arm faces like ┐(´д｀)┌ on the same page. Pick one line—repeating shrugs in a nickname looks like noise.",
+    extraSections: [
+      {
+        id: "shrug-vs-emoji",
+        heading: "Shrug text vs 🤷 emoji",
+        paragraphs: [
+          "The shrug emoji is a single picture character from the phone keyboard. ¯\\_(ツ)_/¯ is built from slash, underscore, and ツ—so it survives in plain-text email, code comments, and apps that strip custom emoji.",
+          "Both mean uncertainty. Text shrugs feel more meme-native in Discord and Reddit; the emoji reads cleaner in SMS to people who never use kaomoji.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What does ¯\\_(ツ)_/¯ mean?",
+        answer:
+          "“I don’t know,” “whatever,” or “not sure”—a light non-answer that keeps tone friendly.",
+      },
+      {
+        question: "How do I type shrug face?",
+        answer:
+          "Fastest: tap ¯\\_(ツ)_/¯ here and paste. Manual typing is error-prone because of backslashes and underscores.",
+      },
+      {
+        question: "Does the shrug emoticon work on Discord?",
+        answer:
+          "Yes in messages, statuses, and most nicknames. It is shorter than a table-flip face.",
+      },
+      {
+        question: "Shrug vs confused kaomoji?",
+        answer:
+          "Shrug = uncertainty or indifference. Confused faces = “huh?” with puzzled eyes. Use shrug for idk; use confused when something makes no sense.",
+      },
+      {
+        question: "Can I use shrug in a work chat?",
+        answer:
+          "A single shrug after a joke is usually fine. Avoid it when you owe a clear yes/no answer.",
+      },
+    ],
+  },
   "proud-kaomojis": {
     description:
       "Proud kaomoji. Copy proud and smug kaomoji for flex moments, wins, and playful arrogance in chat.",
@@ -796,4 +972,159 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       },
     ],
   },
+};
+
+/** Hub-only prose, situation picker, and FAQ (merged in KaomojiHubView). */
+export const KAOMOJI_HUB: KaomojiHubContent = {
+  introBelowHero:
+    "Kaomoji (often mistyped kamoji or kaemoji) are Japanese text faces built from keyboard symbols—not emoji stickers. Tap any face in the grid to copy it, then paste into Discord, Instagram, TikTok, WhatsApp, or email. For a full mood list, open cute, cry, or heart; Lenny and shrug have their own copy pages.",
+  sections: [
+    {
+      id: "anatomy",
+      heading: "How to read a kaomoji",
+      paragraphs: [
+        "Most kaomoji read left to right like a tiny portrait. Parentheses or special brackets frame the face. Characters in the middle are usually eyes; a mouth sits below (ω, ▽, ‿, or a line). Extra marks on the sides are arms—table-flip arms, hug arms, or raised shoulders for a shrug.",
+        "Vertical Japanese-style faces use fewer parentheses and more punctuation stacked in one column. Once you spot the eyes, the rest is tone: wide eyes shock, downturned lines sad, blush slashes shy.",
+      ],
+    },
+    {
+      id: "japanese-vs-western",
+      heading: "Kaomoji vs Western emoticons",
+      paragraphs: [
+        "Western emoticons like :) or :D usually turn sideways and stay minimal. Kaomoji often face upright, use fullwidth punctuation, and add arms or props (┻━┻ tables, ♪ notes, ♡ hearts). Both are plain text; kaomoji just carry more expression per character.",
+        "Lenny ( ͡° ͜ʖ ͡°) and shrug ¯\\_(ツ)_/¯ sit in between—famous text faces that are not quite emoji but not always “kawaii” either. This hub groups them with Japanese-style lists so you can copy any mood from one place.",
+      ],
+      bullets: [
+        ":) — quick smile; no arms",
+        "(｡◕‿◕｡) — upright cute kaomoji",
+        "¯\\_(ツ)_/¯ — shrug “idk”",
+        "( ͡° ͜ʖ ͡°) — Lenny smirk",
+      ],
+    },
+    {
+      id: "pick-mood",
+      heading: "Not sure which list to open?",
+      paragraphs: [
+        "Search engines send many people to this hub with a general “kaomoji” query. Use the mood cards when you already know the vibe. Use the tables below when you know the situation but not the spelling.",
+      ],
+    },
+    {
+      id: "history",
+      heading: "Why kaomoji spread outside Japan",
+      paragraphs: [
+        "They grew up in Japanese bulletin boards and mobile mail where picture emoji were limited. ASCII artists competed to express sarcasm, grief, and excitement in one line. Global anime fandom, gaming chats, and Discord carried the same faces west—still as Unicode text, still copy-paste friendly.",
+        "That history is why kaomoji beat GIF stickers in bios and usernames: there is nothing to upload, and the face stays editable like ordinary letters.",
+      ],
+    },
+  ],
+  situations: [
+    {
+      situation: "Discord bio or about-me",
+      face: "(｡◕‿◕｡)",
+      href: "/cute-kaomojis/",
+      linkLabel: "Cute kaomojis",
+      hint: "One short face; words first, kaomoji last.",
+    },
+    {
+      situation: "Dramatic apology or meme fail",
+      face: "(T_T)",
+      href: "/cry-kaomojis/",
+      linkLabel: "Cry kaomojis",
+      hint: "Visible tears; keep to one face per message.",
+    },
+    {
+      situation: "Sweet DM or couple chat",
+      face: "(♡ω♡)",
+      href: "/heart-kaomojis/",
+      linkLabel: "Heart kaomojis",
+      hint: "Hearts in the face, not a lone ♡ emoji.",
+    },
+    {
+      situation: "“I don’t know” / whatever",
+      face: "¯\\_(ツ)_/¯",
+      href: "/shrug-emoticon/",
+      linkLabel: "Shrug emoticon",
+      hint: "Softer than leaving a question on read.",
+    },
+    {
+      situation: "Knowing meme reply",
+      face: "( ͡° ͜ʖ ͡°)",
+      href: "/lenny-face/",
+      linkLabel: "Lenny face",
+      hint: "Friends-only humor; skip work chats.",
+    },
+    {
+      situation: "Cozy animal nickname",
+      face: "ʕ•ᴥ•ʔ",
+      href: "/bear-kaomojis/",
+      linkLabel: "Bear kaomojis",
+      hint: "Round ears + snout; very copy-friendly.",
+    },
+    {
+      situation: "Comfort after bad news",
+      face: "(づ｡◕‿‿◕｡)づ",
+      href: "/hug-kaomojis/",
+      linkLabel: "Hug kaomojis",
+      hint: "Arms-out hug; warmer than a heart alone.",
+    },
+    {
+      situation: "Polite thanks",
+      face: "m(_ _)m",
+      href: "/thank-you-kaomojis/",
+      linkLabel: "Thank-you kaomojis",
+      hint: "Bow face; common after favors in servers.",
+    },
+  ],
+  faq: [
+    {
+      question: "What are kaomoji?",
+      answer:
+        "顔文字 (kaomoji): face characters made from punctuation and letters. They paste as plain text in Discord, Instagram, TikTok, and email—not picture emoji.",
+    },
+    {
+      question: "Kaomoji or kaomojis — which is correct?",
+      answer:
+        "Both work in English. “Kaomoji” is the usual singular; “kaomojis” is the common plural for lists like this one.",
+    },
+    {
+      question: "Is it kamoji, kaemoji, or kao emoji?",
+      answer:
+        "The standard spelling is kaomoji (face + character). Kamoji, kaemoji, komoji, and “kao emoji” are frequent typos—the faces are the same tap-to-copy text here.",
+    },
+    {
+      question: "How is kaomoji different from emoji?",
+      answer:
+        "Emoji are picture characters from a keyboard palette. Kaomoji are typed symbols you highlight and copy—like a font made of punctuation.",
+    },
+    {
+      question: "Why do my kaomoji show as empty boxes?",
+      answer:
+        "The app font lacks a rare symbol. Copy a shorter face from the top of a list—(T_T), (◕‿◕), and ¯\\_(ツ)_/¯ use common characters.",
+    },
+    {
+      question: "Can I use kaomoji in a Discord nickname?",
+      answer:
+        "Often yes if the face is one short line. Long table-flips and dense combining marks get rejected—try cute or heart lists for safe nicknames.",
+    },
+    {
+      question: "Do kaomoji work on Instagram and TikTok?",
+      answer:
+        "Yes in bios, captions, and comments. Usernames stay lowercase ASCII; put kaomoji in the bio body instead.",
+    },
+    {
+      question: "Are kaomoji GIFs or stickers?",
+      answer:
+        "No—they are text. Use Discord or Instagram GIF pickers if you want motion; use this page when you need copy-paste Unicode.",
+    },
+    {
+      question: "What does ¯\\_(ツ)_/¯ or ( ͡° ͜ʖ ͡°) mean?",
+      answer:
+        "Shrug = “idk / whatever.” Lenny = knowing or mischievous smirk. The meanings table lists other famous faces by name.",
+    },
+    {
+      question: "Which kaomoji lists are best to bookmark?",
+      answer:
+        "This hub for mixed search, plus cute, cry, heart, Lenny, and shrug when you know the mood. Other emotion URLs stay online for old links.",
+    },
+  ],
 };

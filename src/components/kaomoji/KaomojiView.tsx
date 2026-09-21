@@ -8,9 +8,11 @@ import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { KaomojiGrid } from "@/components/kaomoji/KaomojiGrid";
 import { KaomojiMeaningTable } from "@/components/kaomoji/KaomojiMeaningTable";
+import { KaomojiSituationTable } from "@/components/kaomoji/KaomojiSituationTable";
 import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
+  KAOMOJI_HUB,
   KAOMOJI_MEANINGS,
   SPECIAL_KAOMOJI,
   getHubFaces,
@@ -19,6 +21,7 @@ import {
   getTailKaomojiLists,
   kaomojiPathIsIndexable,
   type KaomojiList,
+  type KaomojiProseSection,
 } from "@/data/kaomoji";
 import {
   SITE_NAME,
@@ -31,58 +34,31 @@ type KaomojiListViewProps = {
   config: KaomojiList;
 };
 
-const hubFaq = [
-  {
-    question: "What are kaomoji?",
-    answer:
-      "顔文字: face characters. They are punctuation emoticons from Japanese chat culture, not emoji stickers. This hub is the index; cute, cry, and heart are the main mood pages, plus Lenny and shrug.",
-  },
-  {
-    question: "Kaomoji or kaomojis — which is correct?",
-    answer:
-      "Both work in English. “Kaomoji” is the usual singular; “kaomojis” is the common plural when people want a list of faces. This page is the copy-and-paste hub for either search.",
-  },
-  {
-    question: "Is it kamoji, kaemoji, or kao emoji?",
-    answer:
-      "The standard spelling is kaomoji (face + character). Kamoji, kaemoji, komoji, and “kao emoji” are frequent typos—same Japanese text faces, same tap-to-copy tool here.",
-  },
-  {
-    question: "Is this different from emoji?",
-    answer:
-      "Yes. Kaomoji are letters and symbols you can copy as text. Emoji are picture characters. You can mix both in one message.",
-  },
-  {
-    question: "Will Discord keep a table-flip face?",
-    answer:
-      "Messages and topics usually yes. Long combining-mark stacks fail nickname filters—trim to one line.",
-  },
-  {
-    question: "Which lists should I bookmark?",
-    answer:
-      "This hub, then cute, cry, heart, Lenny, and shrug. Other emotion URLs stay up for old links but this page is the one to share.",
-  },
-  {
-    question: "Are there kaomoji GIFs?",
-    answer:
-      "Kaomoji are text, not GIFs. Discord and Instagram have their own GIF/sticker pickers if you want motion. Copy a face here when you need something that pastes into any chat, bio, or email.",
-  },
-  {
-    question: "What does ¯\\_(ツ)_/¯ or ( ͡° ͜ʖ ͡°) mean?",
-    answer:
-      "¯\\_(ツ)_/¯ is the shrug: “I don’t know” or “whatever.” ( ͡° ͜ʖ ͡°) is Lenny face—knowing or suggestive. The meanings table above covers the faces people search by name.",
-  },
-  {
-    question: "Can I put kaomoji in a Discord nickname?",
-    answer:
-      "Short faces often save. Long table-flips and stacked combining marks get rejected. Keep the @username plain and try a one-line face from the cute or heart lists.",
-  },
-  {
-    question: "Do kaomoji work on Instagram and TikTok?",
-    answer:
-      "Yes in bios, captions, and comments. Usernames stay lowercase ASCII. Very long faces can hit the bio character limit—pick a shorter one.",
-  },
-];
+function KaomojiProseSections({ sections }: { sections: KaomojiProseSection[] }) {
+  return (
+    <>
+      {sections.map((section) => (
+        <section
+          key={section.id}
+          className="seo-section seo-prose"
+          aria-labelledby={`${section.id}-heading`}
+        >
+          <h2 id={`${section.id}-heading`}>{section.heading}</h2>
+          {section.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+          ))}
+          {section.bullets?.length ? (
+            <ul>
+              {section.bullets.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          ) : null}
+        </section>
+      ))}
+    </>
+  );
+}
 
 export function KaomojiListView({ config }: KaomojiListViewProps) {
   const url = `/${config.slug}/`;
@@ -170,6 +146,10 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         <p>{config.meanings}</p>
       </section>
 
+      {config.extraSections?.length ? (
+        <KaomojiProseSections sections={config.extraSections} />
+      ) : null}
+
       <section className="seo-section seo-prose" aria-labelledby="mobile-heading">
         <h2 id="mobile-heading">On a phone</h2>
         <p>
@@ -229,7 +209,7 @@ export function KaomojiHubView() {
       {page ? (
         <PageJsonLd
           page={page}
-          faq={hubFaq}
+          faq={KAOMOJI_HUB.faq}
           crumbName="Kaomoji"
           howTo={{
             name: "How to copy kaomoji",
@@ -256,6 +236,8 @@ export function KaomojiHubView() {
           "Japanese text faces. Copy a mood, paste it in chat."
         }
       />
+
+      <p className="seo-lead">{KAOMOJI_HUB.introBelowHero}</p>
 
       <div className="tool-stage" id="tool">
         <p className="field-label">
@@ -298,6 +280,36 @@ export function KaomojiHubView() {
         </ul>
       </section>
 
+      <section className="seo-section" aria-labelledby="situations-heading">
+        <h2 id="situations-heading">Pick a kaomoji by situation</h2>
+        <p className="seo-lead">
+          Not sure which mood list to open? Copy a proven face for Discord bios,
+          apologies, love notes, shrugs, and more—then jump to the full list if
+          you want variants.
+        </p>
+        <KaomojiSituationTable rows={KAOMOJI_HUB.situations} />
+      </section>
+
+      {KAOMOJI_HUB.sections.map((section) => (
+        <section
+          key={section.id}
+          className="seo-section seo-prose"
+          aria-labelledby={`hub-${section.id}-heading`}
+        >
+          <h2 id={`hub-${section.id}-heading`}>{section.heading}</h2>
+          {section.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+          ))}
+          {section.bullets?.length ? (
+            <ul>
+              {section.bullets.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          ) : null}
+        </section>
+      ))}
+
       {moodCopySets.map((set) => (
         <section
           key={set.slug}
@@ -313,24 +325,6 @@ export function KaomojiHubView() {
           <KaomojiGrid faces={set.faces} idPrefix={set.slug} />
         </section>
       ))}
-
-      <section className="seo-section seo-prose" aria-labelledby="what-heading">
-        <h2 id="what-heading">What are kaomoji?</h2>
-        <p>
-          Kaomoji (kaomojis) are Japanese emoticons built from Unicode
-          characters—also called text faces or Japanese emoticons. Unlike emoji
-          stickers, they are plain text, so they paste into Discord, Instagram
-          bios, TikTok captions, WhatsApp, and email. Bookmark this hub when
-          you want many kaomoji in one place; open cute, cry, or heart when you
-          already know the mood.
-        </p>
-        <p>
-          The word is often typed as kamoji, kaemoji, kaoemoji, komoji, kaomojis,
-          or “kao emoji.” The correct spelling is <strong>kaomoji</strong>, from
-          顔 (kao, face) and 文字 (moji, character). Whichever spelling brought
-          you here, the faces below are the same copy-and-paste text.
-        </p>
-      </section>
 
       <section className="seo-section" aria-labelledby="meanings-heading">
         <h2 id="meanings-heading">Famous kaomoji and what they mean</h2>
@@ -418,7 +412,7 @@ export function KaomojiHubView() {
       ) : null}
 
       <BackToTool />
-      <FaqSection items={hubFaq} accordion />
+      <FaqSection items={KAOMOJI_HUB.faq} accordion />
       <RelatedTools pages={related} />
     </div>
   );
