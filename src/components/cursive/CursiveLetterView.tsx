@@ -170,7 +170,7 @@ export function CursiveLetterView({
         <h2 id="examples-heading">Example words with cursive {upper}</h2>
         <ul className="sample-list">
           {LETTER_EXAMPLES[letter].map((word) => {
-            const styled = transform(word, letterCase === "capital" ? "cursive" : "cursive");
+            const styled = transform(word, "cursive");
             return (
               <li key={word} className="sample-row">
                 <span className="sample-plain">{word}</span>
