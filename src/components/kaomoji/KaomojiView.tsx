@@ -243,35 +243,35 @@ export function KaomojiHubView() {
         ]}
       />
 
-      <PageHero
-        h1={KAOMOJI_HUB_SERP.h1}
-        lead={KAOMOJI_HUB_SERP.description}
-      />
+      <PageHero h1={KAOMOJI_HUB_SERP.h1} lead={KAOMOJI_HUB_SERP.heroLead} />
+
+      <div className="tool-stage" id="tool">
+        <p className="field-label">
+          {samples.length} kaomojis — free copy paste, tap any face
+        </p>
+        <KaomojiGrid faces={samples} idPrefix="hub" />
+      </div>
 
       <p className="seo-lead">{KAOMOJI_HUB.introBelowHero}</p>
 
       <section
         className="seo-section seo-prose"
-        aria-labelledby={`hub-${KAOMOJI_HUB.editorial.id}-heading`}
+        aria-labelledby="spelling-heading"
       >
-        <h2 id={`hub-${KAOMOJI_HUB.editorial.id}-heading`}>
-          {KAOMOJI_HUB.editorial.heading}
-        </h2>
-        {KAOMOJI_HUB.editorial.paragraphs.map((paragraph) => (
-          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-        ))}
+        <h2 id="spelling-heading">Kamoji, kaomiji, and other typos</h2>
         <p>
-          Details: <Link href="/privacy/">Privacy</Link> ·{" "}
-          <Link href="/terms/">Terms</Link>
+          People often type <strong>kaomoji</strong> with a missing letter or
+          swapped vowel. The correct spelling is kaomoji (Japanese 顔文字).
+          Whatever you typed, the faces are the same tap-to-copy text:
         </p>
+        <ul>
+          {KAOMOJI_HUB.commonMisspellings.map((row) => (
+            <li key={row.typo}>
+              <strong>{row.typo}</strong> — {row.note}
+            </li>
+          ))}
+        </ul>
       </section>
-
-      <div className="tool-stage" id="tool">
-        <p className="field-label">
-          {samples.length} popular faces — free, tap any one to copy
-        </p>
-        <KaomojiGrid faces={samples} idPrefix="hub" />
-      </div>
 
       <section className="seo-section" aria-labelledby="emotions-heading">
         <h2 id="emotions-heading">Start with a mood</h2>
@@ -315,6 +315,22 @@ export function KaomojiHubView() {
           you want variants.
         </p>
         <KaomojiSituationTable rows={KAOMOJI_HUB.situations} />
+      </section>
+
+      <section
+        className="seo-section seo-prose"
+        aria-labelledby={`hub-${KAOMOJI_HUB.editorial.id}-heading`}
+      >
+        <h2 id={`hub-${KAOMOJI_HUB.editorial.id}-heading`}>
+          {KAOMOJI_HUB.editorial.heading}
+        </h2>
+        {KAOMOJI_HUB.editorial.paragraphs.map((paragraph) => (
+          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+        ))}
+        <p>
+          Details: <Link href="/privacy/">Privacy</Link> ·{" "}
+          <Link href="/terms/">Terms</Link>
+        </p>
       </section>
 
       {KAOMOJI_HUB.sections.map((section) => (

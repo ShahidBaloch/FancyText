@@ -34,11 +34,19 @@ export type KaomojiSituationRow = {
   hint: string;
 };
 
+export type KaomojiMisspelling = {
+  /** How people often type the word in search. */
+  typo: string;
+  note: string;
+};
+
 export type KaomojiHubContent = {
   introBelowHero: string;
   editorial: KaomojiProseSection;
   /** Unique teaser under hub preview grids (slug without leading slash). */
   moodPreviewLeads: Record<string, string>;
+  /** Top Search Console typos—same tool, helpful spelling section (not keyword stuffing). */
+  commonMisspellings: KaomojiMisspelling[];
   sections: KaomojiProseSection[];
   situations: KaomojiSituationRow[];
   faq: { question: string; answer: string }[];
@@ -1050,17 +1058,21 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
 /** Hub-only prose, situation picker, and FAQ (merged in KaomojiHubView). */
 /** Hub SERP fields (registry should stay in sync). */
 export const KAOMOJI_HUB_SERP = {
-  title: "Kaomoji Copy and Paste — 70+ Text Faces Free | FancifyText",
+  /** Matches GSC: kaomoji, kaomoji copy paste, kaomojis (plural). */
+  title: "Kaomoji Copy Paste — Free Kaomojis (｡◕‿◕｡) | FancifyText",
   description:
-    "Copy kaomoji free—tap (｡◕‿◕｡), (T_T), ¯\\_(ツ)_/¯ & 70+ Japanese text faces. Discord, Instagram & chat. No app. (Kamoji typo OK.)",
+    "Kaomoji copy paste: 70+ free kaomojis & text faces. Tap (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ for Discord & Instagram. Kamoji, kaomiji & kaimoji = same tool.",
+  /** On-page hero (meta description is SERP-tuned separately). */
+  heroLead:
+    "Free kaomoji copy paste—tap a Japanese text face below, then paste in Discord, Instagram, TikTok, or chat. No app or account.",
   ogSubtitle:
-    "(｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ — 70+ kaomoji. Tap to copy for Discord & Instagram",
-  h1: "Kaomoji Copy and Paste",
+    "Kaomoji copy paste — (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ · 70+ free kaomojis",
+  h1: "Kaomoji Copy Paste",
 };
 
 export const KAOMOJI_HUB: KaomojiHubContent = {
   introBelowHero:
-    "Kaomoji (often mistyped kamoji or kaemoji) are Japanese-style text faces made from keyboard symbols—not picture emoji. The grid below is a mixed starter set; cute, cry, and heart pages hold full mood lists, and Lenny and shrug have dedicated URLs when you search a famous name.",
+    "Kaomoji (often typed as kamoji, kaomiji, kaimoji, or kaomojis) are Japanese-style text faces from keyboard symbols—not picture emoji. The grid above is a mixed starter set; cute, cry, and heart pages hold full mood lists, and Lenny and shrug have their own URLs when you search by name.",
   editorial: {
     id: "editorial",
     heading: "How FancifyText builds these lists",
@@ -1069,6 +1081,18 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       "FancifyText is free to use. If advertising is enabled on the site, it is described in our privacy policy and is never placed between a generator field and its first copy control—kaomoji pages use tap-to-copy grids only.",
     ],
   },
+  commonMisspellings: [
+    { typo: "kamoji", note: "Missing one “o”—same Japanese text faces as kaomoji." },
+    { typo: "kaomojis", note: "Plural; this page is a free kaomoji copy-paste list." },
+    { typo: "kaomiji", note: "Transposed letters—still means 顔文字-style text emoticons." },
+    { typo: "kaimoji", note: "Common typo; copy the faces here, not a different tool." },
+    { typo: "kaoemoji", note: "Mixed “kao” + emoji—kaomoji are text, not picture emoji." },
+    { typo: "kaemoji", note: "Missing “m”—same tap-to-copy Unicode faces." },
+    { typo: "komoji", note: "Wrong first letter; correct word is kaomoji (face + character)." },
+    { typo: "koamoji", note: "Extra vowel swap—faces below are what you wanted." },
+    { typo: "kao emoji", note: "Two words; standard spelling is kaomoji as one word." },
+    { typo: "kaomoji copy paste", note: "Exact intent—tap any face in the grid to copy." },
+  ],
   moodPreviewLeads: {
     "funny-kaomojis":
       "Laugh and meme reactions—preview only; the funny list has the full lol set for roasting threads.",
@@ -1171,6 +1195,11 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
   ],
   faq: [
     {
+      question: "What is kaomoji copy paste?",
+      answer:
+        "Copy paste means you tap a text face here and paste it into Discord, Instagram, or chat—no typing the symbols yourself. Every face is plain Unicode, not a sticker download.",
+    },
+    {
       question: "What are kaomoji?",
       answer:
         "顔文字 (kaomoji): face characters made from punctuation and letters. They paste as plain text in Discord, Instagram, TikTok, and email—not picture emoji.",
@@ -1179,6 +1208,16 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       question: "Kaomoji or kaomojis — which is correct?",
       answer:
         "Both work in English. “Kaomoji” is the usual singular; “kaomojis” is the common plural for lists like this one.",
+    },
+    {
+      question: "Is kamoji the same as kaomoji?",
+      answer:
+        "Yes—kamoji is a frequent misspelling. The correct word is kaomoji (顔 + 文字). The copy-paste faces on this page are the same either way.",
+    },
+    {
+      question: "What about kaomiji, kaimoji, or kaemoji?",
+      answer:
+        "Those are keyboard typos for kaomoji. If your search looked like kaomiji, kaimoji, kaoemoji, or komoji, you still want Japanese-style text faces—use the grid above.",
     },
     {
       question: "Is it kamoji, kaemoji, or kao emoji?",

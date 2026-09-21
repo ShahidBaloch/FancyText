@@ -63,7 +63,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji free
 - /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji free
 - /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji with ♡ built in
-- /kaomoji/ — Kaomoji — Copy kaomoji free
+- /kaomoji/ — Kaomoji — Kaomoji copy paste: 70+ free kaomojis & text faces
 - /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) free
 - /shrug-emoticon/ — shrug emoticon — Copy shrug ¯\_(ツ)_/¯ free
 
