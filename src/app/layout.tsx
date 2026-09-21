@@ -19,6 +19,12 @@ const gscVerification =
 
 const isPreview = process.env.VERCEL_ENV === "preview";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL || "https://fancifytext.com"),
   title: {

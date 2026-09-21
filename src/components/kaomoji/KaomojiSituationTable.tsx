@@ -1,13 +1,14 @@
 "use client";
 
-import type { KaomojiMeaning } from "@/data/kaomoji";
+import Link from "next/link";
+import type { KaomojiSituationRow } from "@/data/kaomoji";
 import { useCopyFeedback } from "@/lib/copy";
 
-type KaomojiMeaningTableProps = {
-  rows: KaomojiMeaning[];
+type KaomojiSituationTableProps = {
+  rows: KaomojiSituationRow[];
 };
 
-export function KaomojiMeaningTable({ rows }: KaomojiMeaningTableProps) {
+export function KaomojiSituationTable({ rows }: KaomojiSituationTableProps) {
   const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
 
   return (
@@ -21,27 +22,33 @@ export function KaomojiMeaningTable({ rows }: KaomojiMeaningTableProps) {
         <table className="codes-table kaomoji-meaning-table kaomoji-responsive-table">
           <thead>
             <tr>
-              <th>Face</th>
-              <th>Name</th>
-              <th>What it means</th>
+              <th>Situation</th>
+              <th>Try this face</th>
+              <th>Full list</th>
               <th>Copy</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row) => {
-              const id = `meaning-${row.name}`;
+              const id = `situation-${row.situation}`;
               return (
-                <tr key={row.name}>
+                <tr key={row.situation}>
+                  <td data-label="Situation">
+                    {row.situation}
+                    <br />
+                    <small>{row.hint}</small>
+                  </td>
                   <td className="kaomoji-meaning-face" data-label="Face">
                     {row.face}
                   </td>
-                  <td data-label="Name">{row.name}</td>
-                  <td data-label="Meaning">{row.meaning}</td>
+                  <td data-label="List">
+                    <Link href={row.href}>{row.linkLabel}</Link>
+                  </td>
                   <td data-label="Copy">
                     <button
                       type="button"
                       className="kaomoji-meaning-copy"
-                      onClick={() => copy(id, row.face, row.name)}
+                      onClick={() => copy(id, row.face, row.situation)}
                     >
                       {copiedId === id
                         ? "Copied!"

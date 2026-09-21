@@ -196,6 +196,26 @@ export function webSiteJsonLd(opts: {
   };
 }
 
+/** Sample list for rich results (face strings as list item names). */
+export function itemListJsonLd(opts: {
+  name: string;
+  url: string;
+  items: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: opts.name,
+    url: opts.url,
+    numberOfItems: opts.items.length,
+    itemListElement: opts.items.map((face, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: face,
+    })),
+  };
+}
+
 export function howToJsonLd(opts: {
   name: string;
   description: string;

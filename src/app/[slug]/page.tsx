@@ -14,8 +14,12 @@ import {
   getCollectionPage,
 } from "@/data/collections";
 import {
+  KAOMOJI_HUB_SLUGS,
   KAOMOJI_SLUGS,
+  getKaomojiHubSerp,
   getKaomojiList,
+  isKaomojiHubSlug,
+  kaomojiHubCanonicalPath,
   kaomojiPathIsIndexable,
 } from "@/data/kaomoji";
 import {
@@ -46,7 +50,9 @@ export async function generateStaticParams() {
   const spokes = STYLE_SPOKE_SLUGS.map((slug) => ({ slug }));
   const collections = COLLECTION_SLUGS.map((slug) => ({ slug }));
   const platforms = PLATFORM_SLUGS.map((slug) => ({ slug }));
-  const kaomoji = ["kaomoji", ...KAOMOJI_SLUGS].map((slug) => ({ slug }));
+  const kaomoji = [...KAOMOJI_HUB_SLUGS, ...KAOMOJI_SLUGS].map((slug) => ({
+    slug,
+  }));
   return [...cursive, ...spokes, ...collections, ...platforms, ...kaomoji];
 }
 
@@ -54,9 +60,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   if (!slug) return {};
 
-  if (slug === "kaomoji") {
-    const page = getPageByUrl("/kaomoji/");
-    if (page) return pageMetadata(page);
+  if (isKaomojiHubSlug(slug)) {
+    const serp = getKaomojiHubSerp(slug);
+    const page = getPageByUrl(`/${slug}/`);
+    if (page) {
+      return pageMetadata(
+        {
+          ...page,
+          title: serp.title,
+          description: serp.description,
+        },
+        { canonicalPath: kaomojiHubCanonicalPath(slug) },
+      );
+    }
   }
 
   const kaomoji = getKaomojiList(slug);
@@ -120,8 +136,8 @@ export default async function SlugPage({ params }: Props) {
   const { slug } = await params;
   if (!slug) notFound();
 
-  if (slug === "kaomoji") {
-    return <KaomojiHubView />;
+  if (isKaomojiHubSlug(slug)) {
+    return <KaomojiHubView hubSlug={slug} />;
   }
 
   const kaomoji = getKaomojiList(slug);

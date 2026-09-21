@@ -1,4 +1,26 @@
-import { KAOMOJI_UNIQUE_COPY } from "@/data/kaomoji-copy";
+import {
+  KAOMOJI_HUB,
+  KAOMOJI_HUB_SERP,
+  KAOMOJI_HUB_SLUGS,
+  KAOMOJI_UNIQUE_COPY,
+  getKaomojiHubSerp,
+  isKaomojiHubSlug,
+  type KaomojiHubSlug,
+  type KaomojiProseSection,
+} from "@/data/kaomoji-copy";
+
+export {
+  KAOMOJI_HUB,
+  KAOMOJI_HUB_SERP,
+  KAOMOJI_HUB_SLUGS,
+  getKaomojiHubSerp,
+  isKaomojiHubSlug,
+};
+export type {
+  KaomojiHubSlug,
+  KaomojiProseSection,
+  KaomojiSituationRow,
+} from "@/data/kaomoji-copy";
 
 export type KaomojiList = {
   slug: string;
@@ -15,6 +37,11 @@ export type KaomojiList = {
   howToHeading?: string;
   howToSteps?: string[];
   mobileNote?: string;
+  canonicalLead?: string;
+  ogSubtitle?: string;
+  whereHeading?: string;
+  whereBullets?: string[];
+  extraSections?: KaomojiProseSection[];
   faq: { question: string; answer: string }[];
 };
 
@@ -920,13 +947,19 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
 for (const entry of KAOMOJI_LISTS) {
   const unique = KAOMOJI_UNIQUE_COPY[entry.slug];
   if (!unique) continue;
+  if (unique.title) entry.title = unique.title;
   entry.description = unique.description;
   entry.meanings = unique.meanings;
   entry.faq = unique.faq;
+  if (unique.ogSubtitle) entry.ogSubtitle = unique.ogSubtitle;
   if (unique.meaningsHeading) entry.meaningsHeading = unique.meaningsHeading;
   if (unique.howToHeading) entry.howToHeading = unique.howToHeading;
   if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
   if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
+  if (unique.extraSections) entry.extraSections = unique.extraSections;
+  if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
+  if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
+  if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
 }
 
 export const SPECIAL_KAOMOJI: KaomojiList[] = [
@@ -940,7 +973,7 @@ export const SPECIAL_KAOMOJI: KaomojiList[] = [
     h1: "Lenny Face",
     fellowKeywords: ["lenny face copy paste", "lenny emoticon", "( ͡° ͜ʖ ͡°)"],
     meanings:
-      "Use Lenny face when you want a knowing, sarcastic, or mischievous tone. It is common on Reddit, Discord, and forums. Keep it for jokes—avoid overusing it in professional messages.",
+      "Use Lenny face when you want dry humor or a knowing meme beat. It is common on Reddit, Discord, and forums. Keep it for jokes—avoid overusing it in professional messages.",
     faces: [
       "( ͡° ͜ʖ ͡°)",
       "( ͡~ ͜ʖ ͡°)",
@@ -1074,6 +1107,30 @@ export const SPECIAL_KAOMOJI: KaomojiList[] = [
   },
 ];
 
+for (const entry of SPECIAL_KAOMOJI) {
+  const unique = KAOMOJI_UNIQUE_COPY[entry.slug];
+  if (!unique) continue;
+  if (unique.title) entry.title = unique.title;
+  entry.description = unique.description;
+  entry.meanings = unique.meanings;
+  entry.faq = unique.faq;
+  if (unique.ogSubtitle) entry.ogSubtitle = unique.ogSubtitle;
+  if (unique.meaningsHeading) entry.meaningsHeading = unique.meaningsHeading;
+  if (unique.howToHeading) entry.howToHeading = unique.howToHeading;
+  if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
+  if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
+  if (unique.extraSections) entry.extraSections = unique.extraSections;
+  if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
+  if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
+  if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
+}
+
+export function kaomojiOgSubtitle(slug: string): string | undefined {
+  if (isKaomojiHubSlug(slug)) return getKaomojiHubSerp(slug).ogSubtitle;
+  const list = getKaomojiList(slug);
+  return list?.ogSubtitle;
+}
+
 export const ALL_KAOMOJI_PAGES: KaomojiList[] = [
   ...KAOMOJI_LISTS,
   ...SPECIAL_KAOMOJI,
@@ -1102,11 +1159,60 @@ export const INDEXABLE_KAOMOJI_SLUGS = new Set([
   "shrug-emoticon",
 ]);
 
+/**
+ * Indexable kaomoji URLs — one search hub (/kaomoji/) plus mood/Lenny/shrug spokes.
+ * /kamoji/ and /kaomojis/ stay live for users but are noindex + canonical to the hub.
+ */
 export function kaomojiPathIsIndexable(urlOrSlug: string): boolean {
   const slug = urlOrSlug.replace(/^\/|\/$/g, "");
   if (slug === "kaomoji") return true;
+  if (slug === "kamoji" || slug === "kaomojis") return false;
   if (!KAOMOJI_BY_SLUG[slug]) return true;
   return INDEXABLE_KAOMOJI_SLUGS.has(slug);
+}
+
+export function kaomojiHubCanonicalPath(slug: string): string | undefined {
+  if (slug === "kamoji" || slug === "kaomojis") return "/kaomoji/";
+  return undefined;
+}
+
+/** Picture emoji for users who expected the phone keyboard — tap to copy like kaomoji. */
+export const POPULAR_CHAT_EMOJI = [
+  "😀",
+  "😂",
+  "❤️",
+  "🔥",
+  "✨",
+  "👍",
+  "🎉",
+  "😭",
+  "🥺",
+  "💀",
+  "🙏",
+  "😊",
+  "🥰",
+  "💕",
+  "⭐",
+  "✅",
+  "❌",
+  "👀",
+  "🫡",
+  "😎",
+  "🤔",
+  "😡",
+  "🎵",
+  "💯",
+];
+
+export function getKaomojiCatalogStats(): {
+  uniqueFaces: number;
+  listCount: number;
+} {
+  const seen = new Set<string>();
+  for (const page of ALL_KAOMOJI_PAGES) {
+    for (const face of page.faces) seen.add(face);
+  }
+  return { uniqueFaces: seen.size, listCount: ALL_KAOMOJI_PAGES.length };
 }
 
 export function getFeaturedKaomojiLists(): KaomojiList[] {
@@ -1129,7 +1235,7 @@ export function getHubShowcase(): { emotion: string; href: string; sample: strin
 }
 
 /** Mixed popular faces for the hub so visitors can copy without leaving. */
-export function getHubFaces(limit = 72): string[] {
+export function getHubFaces(limit = 96): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
 
@@ -1177,7 +1283,7 @@ export const KAOMOJI_MEANINGS: KaomojiMeaning[] = [
     face: "( ͡° ͜ʖ ͡°)",
     name: "Lenny face",
     meaning:
-      "Knowing, suggestive, or mischievous. Reads as a nudge—keep it out of work chats.",
+      "Knowing smirk for memes and dry humor. Keep it in casual chats—not work messages.",
   },
   {
     face: "(╯°□°）╯︵ ┻━┻",
@@ -1256,6 +1362,48 @@ export const KAOMOJI_MEANINGS: KaomojiMeaning[] = [
     name: "Unimpressed",
     meaning: "Tired resignation. Good for “again?” moments without complaining.",
   },
+  {
+    face: "m(_ _)m",
+    name: "Thank-you bow",
+    meaning:
+      "Polite gratitude—the text version of a small bow. Common after help in Discord or forums.",
+  },
+  {
+    face: "(╥_╥)",
+    name: "Tearing up",
+    meaning:
+      "Crying with visible tears. Dramatic but still short enough for most chats.",
+  },
+  {
+    face: "(・・？)",
+    name: "Confused",
+    meaning:
+      "Puzzled “huh?”—tilted eyes and a question mark. Lighter than a full shocked mouth.",
+  },
+  {
+    face: "(♡ω♡)",
+    name: "Heart eyes",
+    meaning:
+      "Love or excitement with hearts in the face. Softer than kiss marks for public comments.",
+  },
+  {
+    face: "┐(´д｀)┌",
+    name: "Arms-up shrug",
+    meaning:
+      "Japanese-style shrug—hands raised instead of ¯\\_(ツ)_/¯. Same “idk” energy, different look.",
+  },
+  {
+    face: "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+    name: "Sparkle hype",
+    meaning:
+      "Celebration or fandom excitement. Long—use in messages, not nicknames.",
+  },
+  {
+    face: "(｡•́︿•̀｡)",
+    name: "Quiet sad",
+    meaning:
+      "Disappointed or pouty without big tears. Between cute and sad lists.",
+  },
 ];
 
 export type HubMoodCopySet = {
@@ -1270,7 +1418,7 @@ export type HubMoodCopySet = {
  * they do not compete with their own URLs in search.
  */
 export function getHubMoodCopySets(perList = 12): HubMoodCopySet[] {
-  const slugs = ["funny-kaomojis"];
+  const slugs = ["funny-kaomojis", "cat-kaomojis", "angry-kaomojis", "thank-you-kaomojis"];
   const sets: HubMoodCopySet[] = [];
   for (const slug of slugs) {
     const list = getKaomojiList(slug);

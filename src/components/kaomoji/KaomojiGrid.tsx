@@ -5,9 +5,15 @@ import { useCopyFeedback } from "@/lib/copy";
 type KaomojiGridProps = {
   faces: string[];
   idPrefix?: string;
+  /** Tighter grid for single-glyph emoji on phones. */
+  variant?: "default" | "emoji";
 };
 
-export function KaomojiGrid({ faces, idPrefix = "k" }: KaomojiGridProps) {
+export function KaomojiGrid({
+  faces,
+  idPrefix = "k",
+  variant = "default",
+}: KaomojiGridProps) {
   const { copiedId, errorId, errorMessage, copy } = useCopyFeedback();
 
   return (
@@ -17,7 +23,13 @@ export function KaomojiGrid({ faces, idPrefix = "k" }: KaomojiGridProps) {
           {errorMessage}
         </p>
       ) : null}
-      <ul className="kaomoji-grid">
+      <ul
+        className={
+          variant === "emoji"
+            ? "kaomoji-grid kaomoji-grid--emoji"
+            : "kaomoji-grid"
+        }
+      >
         {faces.map((face, index) => {
           const id = `${idPrefix}-${index}`;
           return (

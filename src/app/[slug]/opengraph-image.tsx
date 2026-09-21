@@ -1,4 +1,4 @@
-import { getKaomojiList } from "@/data/kaomoji";
+import { getKaomojiList, kaomojiOgSubtitle } from "@/data/kaomoji";
 import { getCollectionPage } from "@/data/collections";
 import { getPlatformPage } from "@/data/platforms";
 import { getPageByUrl } from "@/data/pages/registry";
@@ -15,8 +15,8 @@ export const contentType = "image/png";
 export const alt = "FancifyText";
 
 function ogTitle(slug: string): string {
-  if (slug === "kaomoji") {
-    const page = getPageByUrl("/kaomoji/");
+  if (slug === "kaomoji" || slug === "kamoji" || slug === "kaomojis") {
+    const page = getPageByUrl(`/${slug}/`);
     return titleFromRegistryTitle(page?.title ?? "Kaomoji copy and paste");
   }
 
@@ -44,5 +44,8 @@ export default async function OpenGraphImage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return renderOgImage({ title: ogTitle(slug) });
+  return renderOgImage({
+    title: ogTitle(slug),
+    subtitle: kaomojiOgSubtitle(slug),
+  });
 }

@@ -13,19 +13,29 @@ import {
  * Page metadata without hardcoding og:image / twitter:image.
  * File-based `opengraph-image.tsx` (and twitter) route handlers supply images.
  */
-export function pageMetadata(page: PageEntry): Metadata {
-  const canonical = new URL(page.url, SITE_URL).toString();
+type PageMetadataOptions = {
+  /** Consolidate duplicate hubs (e.g. /kamoji/ → /kaomoji/). */
+  canonicalPath?: string;
+};
+
+export function pageMetadata(
+  page: PageEntry,
+  opts?: PageMetadataOptions,
+): Metadata {
+  const canonicalPath = opts?.canonicalPath ?? page.url;
+  const canonical = new URL(canonicalPath, SITE_URL).toString();
+  const pageUrl = new URL(page.url, SITE_URL).toString();
+  const indexable =
+    page.index !== false && kaomojiPathIsIndexable(page.url);
   return {
     title: { absolute: page.title },
     description: page.description,
-    ...(page.index === false || !kaomojiPathIsIndexable(page.url)
-      ? { robots: { index: false, follow: true } }
-      : {}),
+    ...(indexable ? {} : { robots: { index: false, follow: true } }),
     alternates: { canonical },
     openGraph: {
       title: page.title,
       description: page.description,
-      url: canonical,
+      url: pageUrl,
       siteName: SITE_NAME,
       type: "website",
       locale: "en_US",
