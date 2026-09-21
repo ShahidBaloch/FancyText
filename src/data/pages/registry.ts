@@ -708,8 +708,13 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "cat kaomoji",
     title: "Cat Kaomojis Copy and Paste | FancifyText",
-    description: "Copy cat kaomoji and kitty text faces. Free feline Japanese emoticons.",
-    fellowKeywords: fellows("cat face emoticon", "kitty kaomoji"),
+    description:
+      "Copy cute cat kaomoji—(=^･ω･^=) kitty & neko text faces for Discord and pet bios. Tap to copy; animal ears, not generic blush cute.",
+    fellowKeywords: fellows(
+      "cute cat kaomoji",
+      "kitty kaomoji",
+      "neko kaomoji",
+    ),
   },
   {
     phase: 5,

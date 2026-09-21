@@ -1477,6 +1477,23 @@ export type KaomojiHubJump = {
   browseOnly?: boolean;
 };
 
+/** Extra hub-filter terms (competitor / long-tail queries). */
+const HUB_JUMP_EXTRA_KEYWORDS: Record<string, string[]> = {
+  "heart-kaomojis": ["love", "love kaomoji", "hearts", "romance", "couple"],
+  "cute-kaomojis": ["kawaii", "cute face", "blush"],
+  "cry-kaomojis": ["crying", "tears", "sad cry"],
+  "cat-kaomojis": [
+    "cute cat",
+    "cute cat kaomoji",
+    "kitty",
+    "neko",
+    "kawaii cat",
+    "cat face",
+  ],
+  "bunny-kaomojis": ["cute bunny", "rabbit"],
+  "kiss-kaomojis": ["love", "smooch"],
+};
+
 /** Keyword → list links for the hub filter (client-side, no API). */
 export function getKaomojiHubJumps(): KaomojiHubJump[] {
   const jumps: KaomojiHubJump[] = [];
@@ -1492,6 +1509,7 @@ export function getKaomojiHubJumps(): KaomojiHubJump[] {
         page.emotion,
         page.slug.replace(/-/g, " "),
         ...page.fellowKeywords,
+        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
       ].map((k) => k.toLowerCase()),
     });
   }
@@ -1518,6 +1536,7 @@ export function getKaomojiHubJumps(): KaomojiHubJump[] {
         page.emotion,
         page.slug.replace(/-/g, " "),
         ...page.fellowKeywords,
+        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
       ].map((k) => k.toLowerCase()),
     });
   }

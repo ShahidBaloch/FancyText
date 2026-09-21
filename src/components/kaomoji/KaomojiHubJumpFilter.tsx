@@ -24,7 +24,7 @@ export function KaomojiHubJumpFilter({ jumps }: KaomojiHubJumpFilterProps) {
     <section className="seo-section" aria-labelledby="hub-jump-heading">
       <h2 id="hub-jump-heading">Find a list by keyword</h2>
       <p className="seo-lead">
-        Type a mood or topic—cute, cry, Carrd, star, cat, sleep—and jump to the
+        Type a mood or topic—cute, love, cute cat, cry, Carrd, star—and jump to
         full copy-paste list. This filters page links only; it does not search
         every face in the library.
       </p>
@@ -37,7 +37,7 @@ export function KaomojiHubJumpFilter({ jumps }: KaomojiHubJumpFilterProps) {
           type="search"
           name="kaomoji-list-search"
           className="text-input"
-          placeholder="e.g. carrd, hand, cute, bunny"
+          placeholder="e.g. love, cute cat, carrd, hand"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           autoComplete="off"

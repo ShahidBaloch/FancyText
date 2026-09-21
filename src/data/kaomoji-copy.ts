@@ -128,7 +128,9 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   },
   "cat-kaomojis": {
     description:
-      "Cat kaomoji. Find Japanese cat emoticons (=^･ω･^=) and kitty text faces. Copy feline kaomojis for Discord, TikTok, and bios.",
+      "Copy cute cat kaomoji—(=^･ω･^=) kitty & neko text faces for Discord, TikTok, and pet bios. Tap to copy; animal ears, not generic blush cute.",
+    canonicalLead:
+      "Cute cat kaomoji means ears and whiskers—(=^･ω･^=), not round blush faces. For love/hearts in the expression, use heart kaomojis; for people-shaped kawaii without ears, use cute kaomojis (indexed for search).",
     meanings:
       "Cat kaomojis lean on pointed ears and ^ω^ eyes for playful or aloof energy. Great for pet accounts, kawaii bios, and sarcastic “meh” reactions. Shorter faces render more reliably on mobile than dense ear stacks.",
     faq: [
@@ -151,6 +153,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Cat vs cute kaomoji?",
         answer:
           "Cat faces are animal-shaped. Cute kaomojis are generic kawaii blushes and round eyes without ears.",
+      },
+      {
+        question: "Cute cat kaomoji vs love kaomoji?",
+        answer:
+          "This list is cute cats (kitty ears). Heart kaomojis add ♡ and love mouths for romance. Pair one cat face in a pet bio and a heart face in a DM—not both in one nickname.",
       },
       {
         question: "Can I copy cat kaomoji for Discord emotes?",
@@ -339,6 +346,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Can I spam cute faces in a Discord nickname?",
         answer:
           "One face is enough. Extra kaomoji get truncated in the member list and look noisy.",
+      },
+      {
+        question: "Cute cat kaomoji—this page or cat list?",
+        answer:
+          "Animal ears and neko faces live on cat kaomojis (browse list). This indexed page is people-shaped kawaii like (｡◕‿◕｡)—no whiskers.",
       },
     ],
   },
@@ -1651,6 +1663,13 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       href: "/bear-kaomojis/",
       linkLabel: "Bear kaomojis",
       hint: "Round ears + snout; very copy-friendly.",
+    },
+    {
+      situation: "Cute cat / kitty bio",
+      face: "(=^･ω･^=)",
+      href: "/cat-kaomojis/",
+      linkLabel: "Cat kaomojis",
+      hint: "Whiskers & ears; not the indexed cute blush list.",
     },
     {
       situation: "Comfort after bad news",
