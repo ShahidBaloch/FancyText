@@ -64,8 +64,8 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji and kawaii text faces
 - /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji with ♡ built in
 - /kaomoji/ — Kaomoji — Tap to copy kaomoji (kamoji) text faces
-- /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) and variants
-- /shrug-emoticon/ — shrug emoticon — Copy the shrug emoticon ¯\_(ツ)_/¯ and variants
+- /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) and variants for Discord, Reddit, and memes
+- /shrug-emoticon/ — shrug emoticon — Copy shrug emoticon ¯\_(ツ)_/¯ and idk text faces for chat
 
 ## Guides
 

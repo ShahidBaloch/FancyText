@@ -22,6 +22,9 @@ export type KaomojiList = {
   howToHeading?: string;
   howToSteps?: string[];
   mobileNote?: string;
+  canonicalLead?: string;
+  whereHeading?: string;
+  whereBullets?: string[];
   extraSections?: KaomojiProseSection[];
   faq: { question: string; answer: string }[];
 };
@@ -936,6 +939,9 @@ for (const entry of KAOMOJI_LISTS) {
   if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
   if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
   if (unique.extraSections) entry.extraSections = unique.extraSections;
+  if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
+  if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
+  if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
 }
 
 export const SPECIAL_KAOMOJI: KaomojiList[] = [
@@ -949,7 +955,7 @@ export const SPECIAL_KAOMOJI: KaomojiList[] = [
     h1: "Lenny Face",
     fellowKeywords: ["lenny face copy paste", "lenny emoticon", "( ͡° ͜ʖ ͡°)"],
     meanings:
-      "Use Lenny face when you want a knowing, sarcastic, or mischievous tone. It is common on Reddit, Discord, and forums. Keep it for jokes—avoid overusing it in professional messages.",
+      "Use Lenny face when you want dry humor or a knowing meme beat. It is common on Reddit, Discord, and forums. Keep it for jokes—avoid overusing it in professional messages.",
     faces: [
       "( ͡° ͜ʖ ͡°)",
       "( ͡~ ͜ʖ ͡°)",
@@ -1094,6 +1100,9 @@ for (const entry of SPECIAL_KAOMOJI) {
   if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
   if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
   if (unique.extraSections) entry.extraSections = unique.extraSections;
+  if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
+  if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
+  if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
 }
 
 export const ALL_KAOMOJI_PAGES: KaomojiList[] = [
@@ -1199,7 +1208,7 @@ export const KAOMOJI_MEANINGS: KaomojiMeaning[] = [
     face: "( ͡° ͜ʖ ͡°)",
     name: "Lenny face",
     meaning:
-      "Knowing, suggestive, or mischievous. Reads as a nudge—keep it out of work chats.",
+      "Knowing smirk for memes and dry humor. Keep it in casual chats—not work messages.",
   },
   {
     face: "(╯°□°）╯︵ ┻━┻",
