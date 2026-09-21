@@ -8,7 +8,11 @@ export type KaomojiProseSection = {
 
 /** Unique meta + meanings + FAQ overlays for kaomoji lists (slug → copy). */
 export type KaomojiUniqueCopy = {
+  /** SERP title override (keyword + hook + | FancifyText). */
+  title?: string;
   description: string;
+  /** Open Graph / Twitter subtitle (sample faces + CTA). */
+  ogSubtitle?: string;
   /** Visible lead under the hero—must not repeat the meta description verbatim. */
   canonicalLead?: string;
   meanings: string;
@@ -181,8 +185,10 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     ],
   },
   "cry-kaomojis": {
+    title: "Cry Kaomoji Copy Paste — (T_T) Crying Faces | FancifyText",
+    ogSubtitle: "(T_T) (╥_╥) + more cry kaomoji — tap to copy for Discord & chat",
     description:
-      "Copy cry kaomoji and tearful faces—(T_T), (╥_╥), and dramatic crying text for Discord and chat. Tap to copy; no sticker pack.",
+      "Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.",
     canonicalLead:
       "This is the dedicated crying set—faces with visible tears for memes, apologies, and dramatic reactions. Quiet down moods without waterworks are on the sad kaomoji list; the hub only shows a small cry sample.",
     whereHeading: "Where crying text faces fit",
@@ -254,8 +260,10 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     ],
   },
   "cute-kaomojis": {
+    title: "Cute Kaomoji Copy Paste — (｡◕‿◕｡) Kawaii | FancifyText",
+    ogSubtitle: "(｡◕‿◕｡) kawaii kaomoji — tap to copy for Discord bios & Instagram",
     description:
-      "Copy cute kaomoji and kawaii text faces—(｡◕‿◕｡) and blush faces for Discord bios, Instagram, and soft chats. Tap any face to copy.",
+      "Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.",
     canonicalLead:
       "Every kawaii face on this page is curated for short bios and soft replies—round eyes and blush, not animal-ear mascots (those live on the cat and bear lists). The mixed kaomoji hub is for browsing; this URL is the full cute set.",
     whereHeading: "Where cute kaomoji work best",
@@ -393,8 +401,10 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     ],
   },
   "heart-kaomojis": {
+    title: "Heart Kaomoji Copy Paste — ♡ Love Text Faces | FancifyText",
+    ogSubtitle: "♡ heart kaomoji — tap to copy for DMs, bios & couple Discord",
     description:
-      "Copy heart kaomoji and love text faces with ♡ built in—for DMs, couple Discord, and sweet bios. Tap any face to copy.",
+      "Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.",
     canonicalLead:
       "Hearts here are woven into the face—not a lone ♡ emoji. Use this list for affectionate DMs, thank-yous, and couple bios; flirty smooch marks are on kiss kaomojis, comfort arms on hug kaomojis.",
     whereHeading: "Where heart kaomoji land well",
@@ -895,8 +905,10 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     ],
   },
   "lenny-face": {
+    title: "Lenny Face Copy Paste — ( ͡° ͜ʖ ͡°) | FancifyText",
+    ogSubtitle: "( ͡° ͜ʖ ͡°) Lenny face variants — tap to copy for Discord & Reddit",
     description:
-      "Copy Lenny face ( ͡° ͜ʖ ͡°) and variants for Discord, Reddit, and memes. Tap to copy the classic knowing text face.",
+      "Copy Lenny face ( ͡° ͜ʖ ͡°) free—meme text emoticons for Discord and Reddit. Tap any variant; plain Unicode, no login.",
     canonicalLead:
       "Lenny is a single famous emoticon family—not a full kaomoji mood list. Variants below are plain Unicode for memes and friend chats; the kaomoji hub links here when you search by name.",
     whereHeading: "Where Lenny face is appropriate",
@@ -947,8 +959,10 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     ],
   },
   "shrug-emoticon": {
+    title: "Shrug Emoticon Copy Paste — ¯\\_(ツ)_/¯ | FancifyText",
+    ogSubtitle: "¯\\_(ツ)_/¯ idk shrug — tap to copy for Discord, chat & email",
     description:
-      "Copy shrug emoticon ¯\\_(ツ)_/¯ and idk text faces for chat. Tap to copy—works in Discord, Instagram, and email.",
+      "Copy shrug ¯\\_(ツ)_/¯ free—idk text faces for Discord, Instagram & email. Tap to copy; works where emoji keyboards fail.",
     canonicalLead:
       "Western shrug ¯\\_(ツ)_/¯ and raised-arm Japanese-style shrugs share this page. Use it when you mean “not sure” or “whatever” without sounding cold—confused kaomoji are for “huh?” moments instead.",
     whereHeading: "Where shrug text faces work",
@@ -1034,6 +1048,16 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
 };
 
 /** Hub-only prose, situation picker, and FAQ (merged in KaomojiHubView). */
+/** Hub SERP fields (registry should stay in sync). */
+export const KAOMOJI_HUB_SERP = {
+  title: "Kaomoji Copy and Paste — 70+ Text Faces Free | FancifyText",
+  description:
+    "Copy kaomoji free—tap (｡◕‿◕｡), (T_T), ¯\\_(ツ)_/¯ & 70+ Japanese text faces. Discord, Instagram & chat. No app. (Kamoji typo OK.)",
+  ogSubtitle:
+    "(｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ — 70+ kaomoji. Tap to copy for Discord & Instagram",
+  h1: "Kaomoji Copy and Paste",
+};
+
 export const KAOMOJI_HUB: KaomojiHubContent = {
   introBelowHero:
     "Kaomoji (often mistyped kamoji or kaemoji) are Japanese-style text faces made from keyboard symbols—not picture emoji. The grid below is a mixed starter set; cute, cry, and heart pages hold full mood lists, and Lenny and shrug have dedicated URLs when you search a famous name.",

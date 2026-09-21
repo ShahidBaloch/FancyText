@@ -13,6 +13,7 @@ import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
   KAOMOJI_HUB,
+  KAOMOJI_HUB_SERP,
   KAOMOJI_MEANINGS,
   SPECIAL_KAOMOJI,
   getHubFaces,
@@ -77,7 +78,7 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
     <div className="site-shell">
       {page ? (
         <PageJsonLd
-          page={page}
+          page={{ ...page, title: config.title, description: config.description }}
           faq={config.faq}
           crumbName={config.h1}
           crumbs={[
@@ -217,9 +218,13 @@ export function KaomojiHubView() {
     <div className="site-shell">
       {page ? (
         <PageJsonLd
-          page={page}
+          page={{
+            ...page,
+            title: KAOMOJI_HUB_SERP.title,
+            description: KAOMOJI_HUB_SERP.description,
+          }}
           faq={KAOMOJI_HUB.faq}
-          crumbName="Kaomoji"
+          crumbName={KAOMOJI_HUB_SERP.h1}
           howTo={{
             name: "How to copy kaomoji",
             steps: [
@@ -239,11 +244,8 @@ export function KaomojiHubView() {
       />
 
       <PageHero
-        h1="Kaomoji"
-        lead={
-          page?.description ??
-          "Japanese text faces. Copy a mood, paste it in chat."
-        }
+        h1={KAOMOJI_HUB_SERP.h1}
+        lead={KAOMOJI_HUB_SERP.description}
       />
 
       <p className="seo-lead">{KAOMOJI_HUB.introBelowHero}</p>
@@ -266,7 +268,7 @@ export function KaomojiHubView() {
 
       <div className="tool-stage" id="tool">
         <p className="field-label">
-          {samples.length} popular faces — tap to copy
+          {samples.length} popular faces — free, tap any one to copy
         </p>
         <KaomojiGrid faces={samples} idPrefix="hub" />
       </div>

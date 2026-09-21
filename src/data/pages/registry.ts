@@ -1,3 +1,5 @@
+import { KAOMOJI_HUB_SERP } from "@/data/kaomoji-copy";
+
 export type PageGroup =
   | "A_Hub"
   | "B_Cursive"
@@ -637,9 +639,8 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji/",
     group: "F_Kaomoji",
     primaryKeyword: "kaomoji",
-    title: "Kaomoji Copy and Paste — (｡◕‿◕｡) Text Faces & Kaomojis | FancifyText",
-    description:
-      "Tap to copy kaomoji (kamoji) text faces—(｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ and 70+ more. Free Japanese emoticons for Discord, Instagram, and chat. Cute, cry, heart, Lenny & shrug lists.",
+    title: KAOMOJI_HUB_SERP.title,
+    description: KAOMOJI_HUB_SERP.description,
     fellowKeywords: fellows(
       "japanese emoticons",
       "text faces",
@@ -697,9 +698,9 @@ export const PAGES: PageEntry[] = [
     url: "/cry-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cry kaomoji",
-    title: "Cry Kaomojis Copy and Paste — (T_T) Crying Text Faces | FancifyText",
+    title: "Cry Kaomoji Copy Paste — (T_T) Crying Faces | FancifyText",
     description:
-      "Copy cry kaomoji and tearful faces—(T_T), (╥_╥), and dramatic crying text for Discord and chat. Tap any face to copy.",
+      "Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.",
     fellowKeywords: fellows("crying kaomoji", "kaomoji cry"),
   },
   {
@@ -708,9 +709,9 @@ export const PAGES: PageEntry[] = [
     url: "/cute-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cute kaomoji",
-    title: "Cute Kaomojis Copy and Paste — (｡◕‿◕｡) Kawaii Faces | FancifyText",
+    title: "Cute Kaomoji Copy Paste — (｡◕‿◕｡) Kawaii | FancifyText",
     description:
-      "Copy cute kaomoji and kawaii text faces—(｡◕‿◕｡) and blush emoticons for Discord bios, Instagram, and soft chats. Tap to copy.",
+      "Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.",
     fellowKeywords: fellows("kawaii kaomoji", "cute text faces"),
   },
   {
@@ -739,9 +740,9 @@ export const PAGES: PageEntry[] = [
     url: "/heart-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "heart kaomoji",
-    title: "Heart Kaomojis Copy and Paste — ♡ Love Text Faces | FancifyText",
+    title: "Heart Kaomoji Copy Paste — ♡ Love Text Faces | FancifyText",
     description:
-      "Copy heart kaomoji with ♡ built in—for DMs, couple Discord, and sweet bios. Tap any love text face to copy.",
+      "Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.",
     fellowKeywords: fellows("love kaomoji", "heart text face"),
   },
   {
@@ -892,9 +893,9 @@ export const PAGES: PageEntry[] = [
     url: "/lenny-face/",
     group: "F_Kaomoji",
     primaryKeyword: "lenny face",
-    title: "Lenny Face Copy and Paste ( ͡° ͜ʖ ͡°) | FancifyText",
+    title: "Lenny Face Copy Paste — ( ͡° ͜ʖ ͡°) | FancifyText",
     description:
-      "Copy Lenny face ( ͡° ͜ʖ ͡°) and variants for Discord, Reddit, and memes. Tap to copy the classic knowing text face.",
+      "Copy Lenny face ( ͡° ͜ʖ ͡°) free—meme text emoticons for Discord and Reddit. Tap any variant; plain Unicode, no login.",
     fellowKeywords: fellows("lenny face copy paste", "lenny emoticon"),
   },
   {
@@ -903,9 +904,9 @@ export const PAGES: PageEntry[] = [
     url: "/shrug-emoticon/",
     group: "F_Kaomoji",
     primaryKeyword: "shrug emoticon",
-    title: "Shrug Emoticon Copy and Paste ¯\\_(ツ)_/¯ | FancifyText",
+    title: "Shrug Emoticon Copy Paste — ¯\\_(ツ)_/¯ | FancifyText",
     description:
-      "Copy shrug emoticon ¯\\_(ツ)_/¯ and idk text faces for chat. Tap to copy—works in Discord, Instagram, and email.",
+      "Copy shrug ¯\\_(ツ)_/¯ free—idk text faces for Discord, Instagram & email. Tap to copy; works where emoji keyboards fail.",
     fellowKeywords: fellows("shrug face", "shrug emoji text"),
   },
   {
@@ -1790,7 +1791,7 @@ export const SITE_URL = resolveSiteUrl();
  * quarterly / yearly). Do not set it to "today" on every deploy — that makes
  * every URL look freshly updated and creates false churn in GSC.
  */
-export const CONTENT_UPDATED_AT = "2026-09-21";
+export const CONTENT_UPDATED_AT = "2026-09-22";
 
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);

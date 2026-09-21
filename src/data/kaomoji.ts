@@ -1,10 +1,11 @@
 import {
   KAOMOJI_HUB,
+  KAOMOJI_HUB_SERP,
   KAOMOJI_UNIQUE_COPY,
   type KaomojiProseSection,
 } from "@/data/kaomoji-copy";
 
-export { KAOMOJI_HUB };
+export { KAOMOJI_HUB, KAOMOJI_HUB_SERP };
 export type { KaomojiProseSection, KaomojiSituationRow } from "@/data/kaomoji-copy";
 
 export type KaomojiList = {
@@ -23,6 +24,7 @@ export type KaomojiList = {
   howToSteps?: string[];
   mobileNote?: string;
   canonicalLead?: string;
+  ogSubtitle?: string;
   whereHeading?: string;
   whereBullets?: string[];
   extraSections?: KaomojiProseSection[];
@@ -931,9 +933,11 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
 for (const entry of KAOMOJI_LISTS) {
   const unique = KAOMOJI_UNIQUE_COPY[entry.slug];
   if (!unique) continue;
+  if (unique.title) entry.title = unique.title;
   entry.description = unique.description;
   entry.meanings = unique.meanings;
   entry.faq = unique.faq;
+  if (unique.ogSubtitle) entry.ogSubtitle = unique.ogSubtitle;
   if (unique.meaningsHeading) entry.meaningsHeading = unique.meaningsHeading;
   if (unique.howToHeading) entry.howToHeading = unique.howToHeading;
   if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
@@ -1092,9 +1096,11 @@ export const SPECIAL_KAOMOJI: KaomojiList[] = [
 for (const entry of SPECIAL_KAOMOJI) {
   const unique = KAOMOJI_UNIQUE_COPY[entry.slug];
   if (!unique) continue;
+  if (unique.title) entry.title = unique.title;
   entry.description = unique.description;
   entry.meanings = unique.meanings;
   entry.faq = unique.faq;
+  if (unique.ogSubtitle) entry.ogSubtitle = unique.ogSubtitle;
   if (unique.meaningsHeading) entry.meaningsHeading = unique.meaningsHeading;
   if (unique.howToHeading) entry.howToHeading = unique.howToHeading;
   if (unique.howToSteps) entry.howToSteps = unique.howToSteps;
@@ -1103,6 +1109,12 @@ for (const entry of SPECIAL_KAOMOJI) {
   if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
   if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
   if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
+}
+
+export function kaomojiOgSubtitle(slug: string): string | undefined {
+  if (slug === "kaomoji") return KAOMOJI_HUB_SERP.ogSubtitle;
+  const list = getKaomojiList(slug);
+  return list?.ogSubtitle;
 }
 
 export const ALL_KAOMOJI_PAGES: KaomojiList[] = [
