@@ -8,7 +8,7 @@
   --muted: #5c5c5c;
   --line: #e5e5e5;
   --line-strong: #d1d1d1;
-  /** Visible control boundary on white (~3.1:1 vs #fff for WCAG 1.4.11). */
+  /** Visible control boundary on white  (~3.1:1 vs #fff for WCAG 1.4.11). */
   --control-line: #949494;
   --panel: #ffffff;
   --panel-solid: #ffffff;
