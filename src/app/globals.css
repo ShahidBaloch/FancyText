@@ -1865,6 +1865,12 @@ a.use-card:hover {
   border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
 }
 
+.letter-styles-more {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .sample-plain {
   color: var(--muted);
   font-size: 0.92rem;
