@@ -8,6 +8,8 @@ export type CollectionConfig = {
   styleIds: string[];
   initialText: string;
   presets?: string[];
+  /** Show live gallery before hub cards (competitor-style “fonts first”). */
+  contentOrder?: "gallery-first" | "cards-first";
   howToSteps: string[];
   uses: string[];
   taxonomy?: { label: string; href: string }[];
@@ -58,14 +60,15 @@ export const COLLECTIONS: CollectionConfig[] = [
       "fraktur",
     ],
     {
-      initialText: "Copy Paste Fonts",
-      presets: ["Instagram Bio", "Discord Name", "username", "Aesthetic"],
-      galleryHeading: "A few sample fonts to copy here",
+      initialText: "copy paste",
+      presets: ["copy paste", "Instagram Bio", "Discord Name", "username"],
+      contentOrder: "gallery-first",
+      galleryHeading: "Copy and paste fonts — live preview",
       galleryLead:
-        "Short classic set so you can grab one style without leaving. The homepage converter still has every live row. Cherokee / Japanese / fat lookalikes are on the cool text page—not in this sample.",
-      hubHeading: "Start with a collection, not a second giant gallery",
+        "Type or pick a preset, then copy bold, cursive, italic, or bubble Unicode—font copy and paste without installing anything. This sample grid is the fast path; the homepage has every style with search. Cherokee / Japanese lookalikes stay on cool text.",
+      hubHeading: "Font collections (when you know the vibe)",
       hubLead:
-        "Each card opens a filtered page with its own job. This URL is a catalog. If you want to type one phrase into every style, go home.",
+        "Each card opens a filtered page. Bookmark this hub for “fonts copy paste” browsing; use the grid above when you want copy paste fonts immediately.",
       howToHeading: "How to pick a collection",
       howToName: "How to pick a copy-and-paste font collection",
       howToSteps: [
@@ -191,6 +194,31 @@ export const COLLECTIONS: CollectionConfig[] = [
           question: "Which card should I open first?",
           answer:
             "Vibe → aesthetic, cute, or stylish. Clan-tag lookalikes → cool text. Script alphabet → cursive. A social app’s name or bio → that platform generator. Huge letters → big text.",
+        },
+        {
+          question: "Font copy and paste — is this the right page?",
+          answer:
+            "Yes. Copy and paste fonts, font copy and paste, and fonts copy paste all mean Unicode you copy from a preview. Use the live grid at the top, or open a collection card for a filtered set.",
+        },
+        {
+          question: "Fonts copy and paste vs fancy text generator?",
+          answer:
+            "Same Unicode trick. Home is the full converter with every row. This URL is the catalog plus a classic sample grid for people who searched “copy paste fonts” and want one-tap copies.",
+        },
+      ],
+      extraSections: [
+        {
+          id: "copy-paste-phrases",
+          heading: "Common searches that land here",
+          paragraphs: [
+            "People type copy and paste fonts, font copy and paste, fonts copy paste, copy paste fonts, and fonts copy and paste for the same workflow: preview styled letters, tap Copy, paste into Instagram, Discord, TikTok, or WhatsApp.",
+            "Nothing here downloads a TTF. If an app shows boxes, switch to bold, sans bold, or bubble in the grid—those glyphs survive more filters than Fraktur or fullwidth.",
+          ],
+          bullets: [
+            "copy and paste fonts → live grid + collections below",
+            "font copy and paste → same tool; try preset “copy paste”",
+            "cool fonts copy paste → cool text generator (lookalikes)",
+          ],
         },
       ],
     },

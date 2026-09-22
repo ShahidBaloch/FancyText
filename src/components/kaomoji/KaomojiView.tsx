@@ -42,6 +42,21 @@ import {
 } from "@/data/pages/registry";
 import { getSerpSpecimen } from "@/lib/seo/specimens";
 
+const PICTURE_EMOJI_PAGE: Record<string, { href: string; label: string }> = {
+  "heart-kaomojis": {
+    href: "/heart-emoji/",
+    label: "heart emoji copy and paste (❤️ 💕)",
+  },
+  "star-kaomojis": {
+    href: "/star-emoji/",
+    label: "star emoji copy and paste (⭐ 🌟)",
+  },
+  "cat-kaomojis": {
+    href: "/cat-emoji/",
+    label: "cat emoji copy and paste (🐱 😺)",
+  },
+};
+
 type KaomojiListViewProps = {
   config: KaomojiList;
 };
@@ -146,6 +161,15 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         lead={config.description}
         specimenPath={getSerpSpecimen(url) ? url : undefined}
       />
+
+      {PICTURE_EMOJI_PAGE[config.slug] ? (
+        <p className="seo-lead" role="note">
+          Wanted picture emoji, not text faces?{" "}
+          <Link href={PICTURE_EMOJI_PAGE[config.slug].href}>
+            {PICTURE_EMOJI_PAGE[config.slug].label}
+          </Link>
+        </p>
+      ) : null}
 
       {config.canonicalLead ? (
         <p className="seo-lead">{config.canonicalLead}</p>
