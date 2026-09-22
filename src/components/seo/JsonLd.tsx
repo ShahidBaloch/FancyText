@@ -196,22 +196,37 @@ export function webSiteJsonLd(opts: {
   };
 }
 
+/** One-line label for ItemList schema (multiline art uses first row + ellipsis). */
+export function itemListNameForFace(face: string, index: number): string {
+  if (!face.includes("\n")) return face.slice(0, 200);
+  const first =
+    face
+      .split("\n")
+      .map((line) => line.trim())
+      .find(Boolean) ?? "Multiline text art";
+  return `Multiline kaomoji ${index + 1}: ${first}`.slice(0, 200);
+}
+
 /** Sample list for rich results (face strings as list item names). */
 export function itemListJsonLd(opts: {
   name: string;
   url: string;
   items: string[];
+  /** Full grid size when only a sample is listed in itemListElement. */
+  numberOfItems?: number;
+  itemName?: (face: string, index: number) => string;
 }) {
+  const label = opts.itemName ?? ((face: string) => face.slice(0, 200));
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: opts.name,
     url: opts.url,
-    numberOfItems: opts.items.length,
+    numberOfItems: opts.numberOfItems ?? opts.items.length,
     itemListElement: opts.items.map((face, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: face,
+      name: label(face, index),
     })),
   };
 }

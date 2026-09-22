@@ -2129,16 +2129,23 @@ a.use-card:hover {
   min-height: auto;
   align-items: stretch;
   padding: 0.65rem 0.45rem;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .kaomoji-face--multiline {
   white-space: pre-wrap;
-  word-break: normal;
-  font-size: 0.68rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-size: clamp(0.65rem, 0.6rem + 0.35vw, 0.78rem);
   line-height: 1.22;
   text-align: left;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
 }
 
@@ -3054,6 +3061,12 @@ a.use-card:hover {
   }
 }
 
+@media (max-width: 900px) {
+  .kaomoji-grid--multiline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* ——— Kaomoji: mobile-first copy UX (most traffic is phone) ——— */
 @media (max-width: 640px) {
   .kaomoji-grid {
@@ -3070,7 +3083,8 @@ a.use-card:hover {
   }
 
   .kaomoji-face--multiline {
-    font-size: clamp(0.62rem, 2.8vw, 0.75rem);
+    font-size: clamp(0.64rem, 3.1vw, 0.82rem);
+    line-height: 1.25;
   }
 
   .kaomoji-btn--multiline {

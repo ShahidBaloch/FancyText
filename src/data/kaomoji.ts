@@ -1677,11 +1677,51 @@ export function getKaomojiCatalogStats(): {
 /** Rounded face count for SERP titles (853 unique → "850+"). */
 export function getKaomojiCatalogPublicClaim(): string {
   const { uniqueFaces } = getKaomojiCatalogStats();
-  return `${Math.floor(uniqueFaces / 10) * 10}+`;
+  return publicFaceCountClaim(uniqueFaces);
+}
+
+export function publicFaceCountClaim(count: number): string {
+  if (count >= 1000) return `${Math.floor(count / 100) * 100}+`;
+  if (count >= 100) return `${Math.floor(count / 10) * 10}+`;
+  return `${count}`;
 }
 
 function withCatalogClaim(text: string, claim: string): string {
   return text.replace(/\d+\+/g, claim);
+}
+
+/** Google SERP + social snippets for a kaomoji list (live grid size on catalog hubs). */
+export function getKaomojiListSerpForMetadata(slug: string): {
+  title: string;
+  description: string;
+  socialDescription: string;
+} | null {
+  const list = getKaomojiList(slug);
+  if (!list) return null;
+  const claim = publicFaceCountClaim(list.faces.length);
+  let description = list.description;
+  const title = list.title;
+
+  if (KAOMOJI_FULL_CATALOG_SLUGS.has(slug)) {
+    description = withCatalogClaim(description, claim);
+    if (!/\d+\+/.test(description)) {
+      const extra = ` ${claim} tap-to-copy blocks.`;
+      description =
+        description.length + extra.length <= 320
+          ? `${description}${extra}`
+          : description;
+    }
+  }
+
+  const subtitle = list.ogSubtitle ?? kaomojiOgSubtitle(slug);
+  let socialDescription = subtitle
+    ? withCatalogClaim(subtitle, claim)
+    : description;
+  if (KAOMOJI_FULL_CATALOG_SLUGS.has(slug) && !/\d+\+/.test(socialDescription)) {
+    socialDescription = `${socialDescription} · ${claim} blocks`.slice(0, 200);
+  }
+
+  return { title, description, socialDescription };
 }
 
 /** Hub SERP with live catalog count substituted into title/description. */

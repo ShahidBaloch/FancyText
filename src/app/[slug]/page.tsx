@@ -18,6 +18,7 @@ import {
   KAOMOJI_SLUGS,
   getKaomojiHubSerpForMetadata,
   getKaomojiList,
+  getKaomojiListSerpForMetadata,
   isKaomojiHubSlug,
   kaomojiHubCanonicalPath,
   kaomojiPathIsIndexable,
@@ -79,23 +80,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (kaomoji) {
     const page = getPageByUrl(`/${slug}/`);
     const noindex = !kaomojiPathIsIndexable(slug);
+    const serp = getKaomojiListSerpForMetadata(slug);
+    const title = serp?.title ?? kaomoji.title;
+    const description = serp?.description ?? kaomoji.description;
+    const socialDescription = serp?.socialDescription ?? description;
     if (page) {
-      return pageMetadata({
-        ...page,
-        title: kaomoji.title,
-        description: kaomoji.description,
-        ...(noindex ? { index: false } : {}),
-      });
+      return pageMetadata(
+        {
+          ...page,
+          title,
+          description,
+          ...(noindex ? { index: false } : {}),
+        },
+        { socialDescription },
+      );
     }
     const canonical = new URL(`/${slug}/`, SITE_URL).toString();
     return {
-      title: { absolute: kaomoji.title },
-      description: kaomoji.description,
+      title: { absolute: title },
+      description,
       ...(noindex ? { robots: { index: false, follow: true } } : {}),
       alternates: { canonical },
       openGraph: {
-        title: kaomoji.title,
-        description: kaomoji.description,
+        title,
+        description: socialDescription,
         url: canonical,
         siteName: SITE_NAME,
         type: "website",
@@ -103,8 +111,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
-        title: kaomoji.title,
-        description: kaomoji.description,
+        title,
+        description: socialDescription,
       },
     };
   }

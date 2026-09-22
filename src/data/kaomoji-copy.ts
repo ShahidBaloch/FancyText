@@ -56,6 +56,8 @@ export type KaomojiHubContent = {
 
 export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   "angry-kaomojis": {
+    ogSubtitle:
+      "Angry multiline stacks + table-flip one-liners — tap to copy with line breaks",
     description:
       "Copy angry kaomoji—multiline table-flip stacks (╯°□°）╯︵ + ┻━┻), mad one-liners like (ノಠ益ಠ)ノ, and rage ASCII for Discord and memes.",
     catalogNote:
@@ -1336,6 +1338,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     ],
   },
   "happy-kaomojis": {
+    ogSubtitle:
+      "Happy multiline ♪/☆ cheer blocks + smile one-liners — line breaks copy",
     description:
       "Copy happy kaomoji—multiline ♪/☆ cheer blocks and one-line smiles for good news, sunny replies, and upbeat chats.",
     canonicalLead:

@@ -3,7 +3,11 @@ import { BackToTool } from "@/components/seo/BackToTool";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
-import { JsonLd, itemListJsonLd } from "@/components/seo/JsonLd";
+import {
+  JsonLd,
+  itemListJsonLd,
+  itemListNameForFace,
+} from "@/components/seo/JsonLd";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
@@ -27,6 +31,7 @@ import {
   getKaomojiHubJumps,
   getKaomojiCatalogStats,
   getKaomojiList,
+  getKaomojiListSerpForMetadata,
   getTailKaomojiLists,
   isKaomojiTopicSpoke,
   kaomojiPathIsIndexable,
@@ -100,12 +105,18 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
     "Paste in a chat. If it boxes out, pick a shorter face higher in the list.",
   ];
   const listJsonItems = config.faces.slice(0, 12);
+  const multilineList = config.faces.some((f) => f.includes("\n"));
+  const serpMeta = getKaomojiListSerpForMetadata(config.slug);
 
   return (
     <div className="site-shell">
       {page ? (
         <PageJsonLd
-          page={{ ...page, title: config.title, description: config.description }}
+          page={{
+            ...page,
+            title: serpMeta?.title ?? config.title,
+            description: serpMeta?.description ?? config.description,
+          }}
           faq={config.faq}
           crumbName={config.h1}
           howTo={
@@ -129,6 +140,8 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
             name: `${config.primaryKeyword} copy paste list`,
             url: new URL(url, SITE_URL).toString(),
             items: listJsonItems,
+            numberOfItems: config.faces.length,
+            itemName: multilineList ? itemListNameForFace : undefined,
           })}
         />
       ) : null}

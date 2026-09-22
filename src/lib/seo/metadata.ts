@@ -16,6 +16,8 @@ import {
 type PageMetadataOptions = {
   /** Consolidate duplicate hubs (e.g. /kamoji/ → /kaomoji/). */
   canonicalPath?: string;
+  /** OG/Twitter snippet; defaults to meta description (SERP uses `description`). */
+  socialDescription?: string;
 };
 
 export function pageMetadata(
@@ -25,6 +27,7 @@ export function pageMetadata(
   const canonicalPath = opts?.canonicalPath ?? page.url;
   const canonical = new URL(canonicalPath, SITE_URL).toString();
   const pageUrl = new URL(page.url, SITE_URL).toString();
+  const socialDescription = opts?.socialDescription ?? page.description;
   const indexable =
     page.index !== false && kaomojiPathIsIndexable(page.url);
   return {
@@ -34,7 +37,7 @@ export function pageMetadata(
     alternates: { canonical },
     openGraph: {
       title: page.title,
-      description: page.description,
+      description: socialDescription,
       url: pageUrl,
       siteName: SITE_NAME,
       type: "website",
@@ -43,7 +46,7 @@ export function pageMetadata(
     twitter: {
       card: "summary_large_image",
       title: page.title,
-      description: page.description,
+      description: socialDescription,
     },
   };
 }
