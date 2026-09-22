@@ -14,13 +14,16 @@ End-of-sprint checks so new landings stay indexable, linked, and SERP-visible.
 ## Pre-release commands
 
 ```bash
-npm run check:seo    # registry + specimens + topical related keys
+npm run check:seo    # plumbing + cannibalization + sitemap + llms
 npm run check:sitemap
 npm run check:llms
+npm run check:cannibalization
 npm run build
 ```
 
-`check:seo` runs `check-seo-plumbing.mjs` plus sitemap + llms generation.
+`check:seo` runs plumbing, duplicate primaryKeyword guard, sitemap, and llms generation.
+
+See **`docs/seo-production-audit.md`** for GSC, AdSense review, and intent matrix before production.
 
 ## Related docs
 
