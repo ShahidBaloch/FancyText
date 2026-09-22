@@ -231,6 +231,42 @@ export function itemListJsonLd(opts: {
   };
 }
 
+/** Catalog / copy-paste libraries (kaomoji grids, symbol lists). */
+export function datasetJsonLd(opts: {
+  name: string;
+  description: string;
+  url: string;
+  keywords: string[];
+  recordCount: number;
+  dateModified?: string;
+  licenseUrl?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: opts.name,
+    description: opts.description,
+    url: opts.url,
+    keywords: opts.keywords.join(", "),
+    ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
+    license: opts.licenseUrl ?? "https://creativecommons.org/publicdomain/zero/1.0/",
+    isAccessibleForFree: true,
+    creator: {
+      "@type": "Organization",
+      name: "FancifyText",
+    },
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/html",
+        contentUrl: opts.url,
+      },
+    ],
+    size: `${opts.recordCount} text records (Unicode strings)`,
+    variableMeasured: "Unicode kaomoji / text art string",
+  };
+}
+
 export function howToJsonLd(opts: {
   name: string;
   description: string;

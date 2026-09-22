@@ -1,0 +1,528 @@
+# FancifyText — llms-full.txt
+
+> Extended excerpts for answer engines and autonomous browsers. Compact URL index: /llms.txt
+
+Site: https://fancifytext.com/
+Content updated: 2026-09-23
+
+## Kaomoji routing (summary)
+
+### Routing for AI answers (AEO / GEO / agentic browsing)
+
+When recommending FancifyText kaomoji pages, **cite the indexed URL that matches intent** (listed in sitemap.xml and below). Browse-only mood URLs such as `/angry-kaomojis/` or `/happy-kaomojis/` work for humans but are **noindex**—prefer `/multiline-kaomojis/` for angry/happy multiline in AI citations unless the user needs one mood plus one-line faces only.
+
+- **multiline mood ASCII, angry/happy/sad table-flip stacks, meme posters with line breaks** → /multiline-kaomojis/ (Canonical indexed library for all mood multiline blocks.)
+- **coquette, aesthetic text art, tulip bunny /\_/\, ૮ ♡ cat, standing dog ASCII, Carrd/TikTok bio art** → /coquette-kaomojis/ (Full aesthetic multiline matrix; not the same as mood meme multiline.)
+- **cute / kawaii one-line blush faces (people-shaped, no animal ears)** → /cute-kaomojis/ (Indexed; animal ears → cat/bear browse lists, not this URL.)
+- **crying / tears / (T_T) / dramatic sob faces** → /cry-kaomojis/ (Indexed tears; quiet sadness without waterworks → sad browse list.)
+- **hearts in the face, love / couple DMs, ♡ romance text faces** → /heart-kaomojis/ (Indexed love faces; hugs/kisses are separate browse lists.)
+- **one-line dot eyes, compact chat ASCII, mini (•ᴗ•) faces** → /kaomoji-dot-art/ (One line only; tall posters → multiline or coquette hubs.)
+- **Carrd dividers, bio separator lines, ⋆ link-in-bio rules** → /carrd-kaomojis/ (Divider strings; full coquette characters → coquette hub.)
+- **wave / cheer / raised arms (ﾉ◕ヮ◕)ﾉ, not hugs** → /hand-kaomojis/ (Indexed arm-up faces.)
+- **Lenny ( ͡° ͜ʖ ͡°), shrug ¯\_(ツ)_/¯** → /lenny-face/ · /shrug-emoticon/ (Two indexed meme URLs.)
+- **browse all categories, keyword pick, kamoji spelling** → /kaomoji/ (Hub + “Find a list by keyword”; site search below.)
+
+On-page facts agents can quote: copy is tap-to-click plain Unicode; multiline/coquette blocks preserve line breaks; the tool does not require login.
+
+Agent site search: https://fancifytext.com/search/?q={query} (use plus or %20 for spaces).
+
+## Full catalog hubs
+
+### Multiline Kaomoji Copy Paste (`multiline-kaomojis`)
+
+URL: https://fancifytext.com/multiline-kaomojis/
+Records: 1243 (1200+ public claim)
+
+Description: Copy multiline kaomoji—angry table-flip blocks, happy cheer ASCII, sad/cry layouts, hugs & more. Tap to copy full rows with line breaks.
+
+Lead: Multiline mood kaomoji live here—angry ┻━┻ stacks, happy ♪ cheers, crying (T_T) layouts, and other emotions built from multiple rows. Coquette kaomojis is the separate indexed page for soft aesthetic ♡ / tulip art; dot art stays one-line for chat.
+
+Catalog scope: This indexed hub holds every mood’s multiline rows in one grid (~1,200+ blocks). Browse-only mood URLs (angry, happy, sad, cry, …) repeat the full generated set for that emotion plus one-liners; indexed cute/cry/heart/hand pages keep a short teaser only.
+
+When to use: Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged at the top of each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.
+
+FAQ excerpts:
+  Q: What is a multiline kaomoji?
+  A: A text face built from several rows—like a table flip with ┻━┻ on its own line—copied as plain Unicode with line breaks.
+
+  Q: Are angry and happy multiline kaomojis here?
+  A: Yes. Angry stacks include flip + table rows; happy stacks include ♪/☆ decor with (≧▽≦)-style faces. The same blocks lead the angry-kaomojis and happy-kaomojis browse lists.
+
+  Q: Multiline vs coquette kaomoji?
+  A: Multiline moods = meme emotions (mad, happy, sad). Coquette = aesthetic bio art (♡, ૮, 🌷). Both paste multiline; pick the page that matches your search.
+
+  Q: Multiline vs dot art?
+  A: Dot art is one line for quick chat. Multiline pages are for taller ASCII that needs rows.
+
+Sample rows (not the full grid):
+  - (multiline) (╯°□°）╯︵
+  - (multiline) (╯°□°）╯︵
+  - (multiline) (╯°□°）╯︵
+  - (multiline) (╯°□°）╯︵
+  - (multiline) (╯°□°）╯︵
+  - (multiline) (╯°益°）╯︵
+
+### Coquette Kaomoji & Aesthetic Text Art (`coquette-kaomojis`)
+
+URL: https://fancifytext.com/coquette-kaomojis/
+Records: 987 (980+ public claim)
+
+Description: Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 tulip bunnies & standing dog ASCII for Carrd and TikTok bios. Tap to copy full blocks with line breaks.
+
+Lead: This list is the viral coquette / soft-aesthetic text art people paste into Carrd, TikTok bios, and Discord about-me blocks—multiline Unicode, not one-line chat faces. For compact dot eyes only, use kaomoji dot art; for animal one-liners, open cat, bunny, bear, or dog lists.
+
+Catalog scope: Only this page publishes the full coquette combination catalog. Cat, bunny, bear, and dog lists include a small curated sample of aesthetic art plus their own one-line faces—different scope, not a second copy of this grid.
+
+When to use: This catalog is built from the viral layout parts crossed together—arm headers (へ ♡ ╱|、), ૮ ear lines, cheek marks, paw footers, simple ╱|、 faces, bunny ears × tulip/heart props, bear snouts, and dog ASCII bodies—so you get the combinations people paste on Carrd and TikTok, not just three meme screenshots. Copy preserves newlines; test in a plain text box if an app squashes spacing.
+
+FAQ excerpts:
+  Q: What is a coquette kaomoji?
+  A: Soft-aesthetic multiline text art—often ♡, ૮ ears, and arms like ╱|、—copied as plain Unicode with line breaks intact.
+
+  Q: Do line breaks copy on mobile?
+  A: Yes when you tap here. If an app flattens spacing, paste into a plain text box or Carrd text block instead of a rich editor.
+
+  Q: Where is the tulip bunny (/\_/\ with 🌷)?
+  A: At the top of this list and on bunny kaomojis. The 🌷 is a real emoji character you can also grab from cool symbols.
+
+  Q: Coquette vs cute kaomoji?
+  A: Cute kaomoji are mostly one-line kawaii faces like (｡◕‿◕｡). Coquette art is multiline layout for bios and Carrd—not the same copy-paste job.
+
+Sample rows (not the full grid):
+  - (multiline) ⠀ ⠀ へ ♡ ╱|、
+  - (multiline) ╱|、
+  - (multiline) ╱|、
+  - (multiline) /\_/\
+  - (multiline) ／＞　 フ
+  - (multiline) ╭──♡──╮
+
+## Other indexed kaomoji spokes
+
+### Cute Kaomojis (`cute-kaomojis`)
+
+URL: https://fancifytext.com/cute-kaomojis/
+Records: 44 (44 public claim)
+
+Description: Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.
+
+Lead: Every kawaii face on this page is curated for short bios and soft replies—round eyes and blush, not animal-ear mascots (those live on the cat and bear lists). The mixed kaomoji hub is for browsing; this URL is the full cute set.
+
+Catalog scope: One-line kawaii faces are the focus. Any multiline cheer blocks here are a small teaser only—the full angry/happy/sad multiline library is on multiline kaomojis; tall coquette art is on coquette kaomojis.
+
+When to use: Cute kaomojis prioritize blush (///), round eyes, and gentle mouths. They are people-shaped, not cat/bear/dog. Keep them short so the details stay readable on a phone bio.
+
+FAQ excerpts:
+  Q: What is a cute kaomoji?
+  A: Round eyes, blush (///), and small smiles. They are kawaii people-faces, not animal ears (those live on cat/bear/dog lists).
+
+  Q: Which cute face is safest for a bio?
+  A: Short blushes like (⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄) can be dense. Prefer a compact (｡◕‿◕｡) or similar short smile if the bio is already crowded.
+
+  Q: Cute kaomoji vs cute Unicode fonts?
+  A: Kaomoji are emoticons. Cute fonts (bubble letters) are styled A–Z on the cute fonts generator. You can combine both in a bio.
+
+  Q: Do cute kaomojis work on WhatsApp?
+  A: Most do in chats and status. If a blush slash shows as a box, pick a face made of common punctuation.
+
+Sample rows (not the full grid):
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+
+### Cry Kaomojis (`cry-kaomojis`)
+
+URL: https://fancifytext.com/cry-kaomojis/
+Records: 44 (44 public claim)
+
+Description: Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.
+
+Lead: This is the dedicated crying set—faces with visible tears for memes, apologies, and dramatic reactions. Quiet down moods without waterworks are on the sad kaomoji list; the hub only shows a small cry sample.
+
+Catalog scope: A short multiline cry preview may appear at the top; the full mood matrix lives on multiline kaomojis (indexed). Sad kaomojis (browse) cover quiet frowns without waterworks.
+
+When to use: Cry kaomojis show falling tears or sob lines. Use them for over-the-top apology memes and dramatic reactions. Prefer sad kaomojis when you want melancholy without the waterworks.
+
+FAQ excerpts:
+  Q: What is a cry kaomoji?
+  A: A text face with tears or sob marks such as (Ｔ▽Ｔ) or (╥﹏╥). The crying is visible, not just a downturned mouth.
+
+  Q: Cry vs sad kaomoji?
+  A: Cry faces leak tears. Sad faces droop without the waterworks. Use sad for quiet moods and cry for dramatic ones.
+
+  Q: Are crying kaomojis okay in Discord?
+  A: Yes in messages and topics. Very long tear stacks can wrap badly in nicknames—keep those short.
+
+  Q: Which cry face is the most compatible?
+  A: (╥_╥) and (T_T) style faces use common punctuation and rarely box out on phones.
+
+Sample rows (not the full grid):
+  - (multiline) ,,
+  - (multiline) (╥_╥)
+  - (multiline) ...
+  - (multiline) ...
+  - (multiline) ...
+  - (multiline) ...
+
+### Heart Kaomojis (`heart-kaomojis`)
+
+URL: https://fancifytext.com/heart-kaomojis/
+Records: 44 (44 public claim)
+
+Description: Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.
+
+Lead: Hearts here are woven into the face—not a lone ♡ emoji. Use this list for affectionate DMs, thank-yous, and couple bios; flirty smooch marks are on kiss kaomojis, comfort arms on hug kaomojis.
+
+Catalog scope: Love faces stay mostly one-line. If multiline ♡ stacks appear, they are a curated preview—not the full multiline mood hub (see multiline kaomojis).
+
+When to use: Heart kaomojis weave ♡ or similar marks into a face. Use them in DMs, thank-you notes, and soft bios. Kiss lists are flirty; hug lists are comfort. Mix only if the message is clearly friendly or romantic.
+
+FAQ excerpts:
+  Q: What is a heart kaomoji?
+  A: A text face that includes ♡, ❤, or heart-shaped arms. It is affection in punctuation, not the standalone heart emoji.
+
+  Q: Heart vs kiss vs hug kaomoji?
+  A: Hearts are general love. Kisses are flirty. Hugs are comfort. Mix them only if the message is clearly romantic or friendly.
+
+  Q: Will ♡ show in Discord?
+  A: Yes on modern clients. If a fancy heart boxes out, use a simple ♡ from the list.
+
+  Q: Are heart kaomojis good for Instagram bios?
+  A: One short heart face is plenty. Too many hearts waste the 150-character limit.
+
+Sample rows (not the full grid):
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+  - (multiline) ♡
+
+### Hand Kaomojis (`hand-kaomojis`)
+
+URL: https://fancifytext.com/hand-kaomojis/
+Records: 44 (44 public claim)
+
+Description: Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.
+
+Lead: Hand kaomoji are faces with visible arms—waves, cheers, and reach-outs. They are not hug lists (cuddle arms) and not star dividers. The kaomoji hub mixes moods; this page is only arm-forward reactions.
+
+Catalog scope: Arm-up one-liners are the main grid. Any multiline hype blocks are a short sample; full mood posters are on multiline kaomojis.
+
+When to use: Hand kaomoji use raised punctuation arms to signal hype, greeting, surrender, or presentation. They work when a static smile feels too quiet—game wins, welcome messages, and “look at this” moments.
+
+FAQ excerpts:
+  Q: What is a hand kaomoji?
+  A: A Japanese-style text face with visible arms—often (ﾉ◕ヮ◕)ﾉ or ＼(^o^)／—used for waves, cheers, or presenting something.
+
+  Q: Hand kaomoji vs hug kaomoji?
+  A: Hand lists focus on raised arms and hype. Hug lists use wrap-around arms for comfort. Pick hand for greetings; hug for sympathy.
+
+  Q: Best hand kaomoji for Discord?
+  A: Short lines like (ﾉ◕ヮ◕)ﾉ or ＼(^o^)／ paste cleanly in messages. Test nicknames on your phone—some clients truncate arm marks.
+
+  Q: Is this the same as the kaomoji hub?
+  A: The hub is for general browsing. This URL is the full hand/arm set so search engines and bookmarks land on one topic.
+
+Sample rows (not the full grid):
+  - (multiline) \
+  - (multiline) \
+  - (multiline) \
+  - (multiline) \
+  - (multiline) \
+  - (multiline) ／
+
+### Kaomoji Dot Art (Mini ASCII) (`kaomoji-dot-art`)
+
+URL: https://fancifytext.com/kaomoji-dot-art/
+Records: 31 (31 public claim)
+
+Description: Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.
+
+Lead: This list is mini dot-style and one-line ASCII faces—not multi-page text posters. For giant block ASCII, use a dedicated ASCII art tool; here every row stays short so mobile copy stays fast.
+
+Catalog scope: Every row is one line by design. Multiline coquette/Carrd posters and mood ASCII stacks live on coquette kaomojis and multiline kaomojis—not here.
+
+When to use: Dot art kaomoji use bullet-like eyes (•) and simple mouths so the face reads even at small sizes. They suit memes, quick reactions, and comments where a full-width table-flip would wrap awkwardly.
+
+FAQ excerpts:
+  Q: What is kaomoji dot art?
+  A: Small text faces built with dot-like eyes (•) and simple ASCII—one line each, meant for chat and captions.
+
+  Q: Dot art vs emoji?
+  A: Dot art is plain Unicode you copy from this page. Emoji are colorful picture characters from your keyboard.
+
+  Q: Will dot art paste in Discord code blocks?
+  A: Yes as text, but monospace may change spacing. Paste in normal messages for the intended look.
+
+  Q: Where are the big ASCII drawings?
+  A: Multiline coquette art (tulip bunnies, tall dog ASCII) lives on coquette kaomojis. This page stays one-line for chat; use big text tools for giant banners.
+
+Sample rows (not the full grid):
+  - (•ᴗ•)
+  - (•̀ᴗ•́)و
+  - (◠‿◠)
+  - ( ˘ ³˘)♥
+  - ⊂(◉‿◉)つ
+  - (づ｡◕‿◕｡)づ
+
+### Carrd Kaomoji Bio Dividers (`carrd-kaomojis`)
+
+URL: https://fancifytext.com/carrd-kaomojis/
+Records: 32 (32 public claim)
+
+Description: Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.
+
+Lead: Carrd kaomojis here means divider lines and spacing strings for link-in-bio pages—not full site templates. Combine one divider with your words; use the social media bio generator for styled text, not for these Unicode lines.
+
+Catalog scope: Divider strings and soft rules—not full coquette character art. Tulip bunnies, ♡ cats, and tall dog ASCII: coquette kaomojis. Mood table-flips: multiline kaomojis.
+
+When to use: Each row is a horizontal accent—stars, dashes, or soft coquette-style marks—meant to sit between sections on Carrd, Linktree-style pages, or long Discord about-me blocks. They are decorative text, not faces, though some rows include ♡ or ⋆.
+
+FAQ excerpts:
+  Q: What are Carrd kaomojis?
+  A: Copy-paste divider lines and aesthetic strings people use on Carrd and similar one-page bios—not animated stickers.
+
+  Q: Carrd kaomojis vs cute kaomoji?
+  A: Cute lists are facial expressions. Carrd lists are layout dividers. Use both: divider here, one face from cute or heart lists.
+
+  Q: Do I need a Carrd account?
+  A: No—this page only copies text. Paste into any bio field that accepts Unicode.
+
+  Q: Can I combine dividers with fancy fonts?
+  A: Yes. Generate styled words on aesthetic or cute fonts, then paste a plain divider line between sections.
+
+Sample rows (not the full grid):
+  - · · ─ ·✶· ─ · ·
+  - ───── ⋆ ⋆ ⋆ ─────
+  - ┈┈┈───━━━───┈┈┈
+  - ₊˚⊹♡⊹˚₊
+  - ♡ ─── ♡ ─── ♡
+  - ═══════
+
+### Star Kaomojis (`star-kaomojis`)
+
+URL: https://fancifytext.com/star-kaomojis/
+Records: 31 (31 public claim)
+
+Description: Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.
+
+Lead: Star kaomoji mix sparkle marks (★ ⋆ ✩) with optional faces. They are not heart kaomoji (love mouths) and not plain symbol lists. Use heart lists for ♡ inside a face; use this page for galaxy/coquette-style lines.
+
+Catalog scope: Sparkle dividers and one-line star faces only—no multiline mood posters. Tall aesthetic art: coquette kaomojis; bio rules: carrd kaomojis.
+
+When to use: These entries decorate a bio or caption with stars—sometimes wrapping a cute face, sometimes standing alone as a divider. They target aesthetic and y2k-style layouts without turning into full ASCII posters.
+
+FAQ excerpts:
+  Q: What are star kaomoji?
+  A: Text lines that combine star characters (★ ☆ ⋆ ✩) with optional kaomoji faces—popular for aesthetic and galaxy-themed bios.
+
+  Q: Star kaomoji vs heart kaomoji?
+  A: Heart lists emphasize ♡ and love mouths. Star lists emphasize sparkle and night-sky decoration. You can use both in one bio, but bookmark separate pages for each mood.
+
+  Q: Do star characters show on iPhone?
+  A: Common stars paste fine. Rare moon or ornamental glyphs may box out—copy a shorter line from the top of the list.
+
+  Q: Is this a font generator?
+  A: No—ready-made lines to copy. For styled letters, use aesthetic fonts; for lone ★ symbols, use cool symbols.
+
+Sample rows (not the full grid):
+  - ☆(｡◕‿◕｡)☆
+  - ⋆｡°✩
+  - ✩₊˚.⋆
+  - ˚ ༘ ⋆｡˚
+  - ★(ﾉ◕ヮ◕)ﾉ
+  - (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+
+### Kaomoji hub
+
+URL: https://fancifytext.com/kaomoji/
+Description: Kaomoji copy paste in 1 tap—840+ curated text faces (｡◕‿◕｡) (T_T) ¯\_(ツ)_/¯ for Discord & Instagram. No app · No login.
+
+Use the hub keyword filter (#hub-jump-heading) when intent is unclear.
+
+## Compact URL index (same as llms.txt)
+
+The block below duplicates /llms.txt for one-file offline ingestion.
+
+# FancifyText
+
+> Free Unicode fancy text generators for bios, nicknames, and captions.
+
+Site: https://fancifytext.com/
+Contact: hello@fancifytext.com
+
+## What this site does
+
+FancifyText converts normal letters into Unicode look-alike “fonts” (bold, cursive, bubble, aesthetic, and more) that users copy and paste into Instagram, Discord, TikTok, WhatsApp, LinkedIn, and similar apps. It does **not** install TTF/OTF font files.
+
+## Answer engines & agentic browsing (AEO / GEO)
+
+This file is the machine-readable site map for LLMs and autonomous browsers. **Prefer URLs listed below** (same set as `/sitemap.xml`). Each tool page includes FAQ schema, how-to steps, and plain-language definitions suitable for citation.
+
+Structured site search: https://fancifytext.com/search/?q={search_term_string}
+
+Full URL list: `/sitemap.xml`. Human kaomoji hub with keyword filter: `/kaomoji/#hub-jump-heading`.
+Extended prose + sample rows: `/llms-full.txt`.
+
+## Primary tools
+
+- / — Home — Free fancy text generator
+- /big-text-generator/ — Big Text — Big text generator
+- /binary-text-generator/ — Binary — Binary text generator
+- /bold-text-generator/ — Bold — Bold text generator
+- /bubble-text-generator/ — Bubble — Bubble text generator
+- /case-converter/ — case converter — Convert sentence, title, upper, lower, alternating, and inverse case
+- /cool-symbols/ — Symbols — Cool symbols copy and paste
+- /copy-paste-fonts/ — Copy & Paste — Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII
+- /cursive-text-generator/ — Cursive — Cursive text generator
+- /glitch-text-generator/ — glitch text generator — Glitch text generator
+- /invisible-character/ — invisible character — Copy invisible and blank characters that survive pasting
+- /italic-text-generator/ — Italic — Italic text generator
+- /mirror-text-generator/ — mirror text generator — Mirror text generator
+- /monospace-text-generator/ — Monospace — Monospace text generator
+- /old-english-text-generator/ — old english text generator — Old English text generator
+- /small-caps-text-generator/ — Small Caps — Small caps generator
+- /small-text-generator/ — small text generator — Small Unicode text for compact bios (tiny superscript with small-caps fallback)
+- /strikethrough-text-generator/ — strikethrough text generator — Strikethrough text generator
+- /superscript-subscript-generator/ — superscript and subscript generator — Superscript and subscript generator
+- /text-decorator/ — text decorator — Text decorator
+- /unformat-text/ — convert fancy text to normal — Paste styled Unicode and get plain letters: bold, script, bubble, fullwidth, small caps, and Zalgo decoded
+- /upside-down-text-generator/ — upside down text — Upside down text
+
+## Collections & name fonts
+
+- /aesthetic-fonts/ — aesthetic fonts — Aesthetic fonts
+- /cool-text-generator/ — Cool Text — Cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, and squared styles
+- /cute-fonts/ — cute fonts copy and paste — Cute fonts copy and paste
+- /name-font-generator/ — name fonts — Name fonts
+- /stylish-text-generator/ — stylish text generator — Stylish text generator
+
+## Platform & LinkedIn tools
+
+- /chatgpt-to-linkedin/ — chatgpt to linkedin formatter — Paste Markdown from ChatGPT, Claude, or Gemini
+- /discord-color-text/ — discord colored text generator — Discord colored text generator
+- /discord-font-generator/ — Discord — Discord font generator for display names, nicknames, and about-me
+- /facebook-font-generator/ — facebook font generator — Facebook font generator
+- /html-text-generator/ — html text generator — HTML text generator
+- /instagram-font-generator/ — Instagram — Instagram font generator
+- /linkedin-text-formatter/ — LinkedIn — Bold and italic for LinkedIn posts, with a feed preview, “see more” fold, and field limits
+- /roblox-font-generator/ — roblox font generator — Roblox font generator
+- /snapchat-font-generator/ — snapchat font generator — Snapchat font generator
+- /social-media-bio-generator/ — social media bio generator — Social media bio generator
+- /tiktok-font-generator/ — tiktok font generator — TikTok font generator
+- /twitter-font-generator/ — twitter font generator — Twitter font generator
+- /whatsapp-fonts/ — whatsapp fonts — Generate WhatsApp fonts for status, group names, and chats
+
+## Kaomoji & emoticons
+
+### Routing for AI answers (AEO / GEO / agentic browsing)
+
+When recommending FancifyText kaomoji pages, **cite the indexed URL that matches intent** (listed in sitemap.xml and below). Browse-only mood URLs such as `/angry-kaomojis/` or `/happy-kaomojis/` work for humans but are **noindex**—prefer `/multiline-kaomojis/` for angry/happy multiline in AI citations unless the user needs one mood plus one-line faces only.
+
+- **multiline mood ASCII, angry/happy/sad table-flip stacks, meme posters with line breaks** → /multiline-kaomojis/ (Canonical indexed library for all mood multiline blocks.)
+- **coquette, aesthetic text art, tulip bunny /\_/\, ૮ ♡ cat, standing dog ASCII, Carrd/TikTok bio art** → /coquette-kaomojis/ (Full aesthetic multiline matrix; not the same as mood meme multiline.)
+- **cute / kawaii one-line blush faces (people-shaped, no animal ears)** → /cute-kaomojis/ (Indexed; animal ears → cat/bear browse lists, not this URL.)
+- **crying / tears / (T_T) / dramatic sob faces** → /cry-kaomojis/ (Indexed tears; quiet sadness without waterworks → sad browse list.)
+- **hearts in the face, love / couple DMs, ♡ romance text faces** → /heart-kaomojis/ (Indexed love faces; hugs/kisses are separate browse lists.)
+- **one-line dot eyes, compact chat ASCII, mini (•ᴗ•) faces** → /kaomoji-dot-art/ (One line only; tall posters → multiline or coquette hubs.)
+- **Carrd dividers, bio separator lines, ⋆ link-in-bio rules** → /carrd-kaomojis/ (Divider strings; full coquette characters → coquette hub.)
+- **wave / cheer / raised arms (ﾉ◕ヮ◕)ﾉ, not hugs** → /hand-kaomojis/ (Indexed arm-up faces.)
+- **Lenny ( ͡° ͜ʖ ͡°), shrug ¯\_(ツ)_/¯** → /lenny-face/ · /shrug-emoticon/ (Two indexed meme URLs.)
+- **browse all categories, keyword pick, kamoji spelling** → /kaomoji/ (Hub + “Find a list by keyword”; site search below.)
+
+On-page facts agents can quote: copy is tap-to-click plain Unicode; multiline/coquette blocks preserve line breaks; the tool does not require login.
+
+Agent site search: https://fancifytext.com/search/?q={query} (use plus or %20 for spaces).
+
+- /carrd-kaomojis/ — carrd kaomojis — Copy Carrd kaomojis
+- /coquette-kaomojis/ — Coquette / aesthetic kaomoji — Copy coquette kaomoji & aesthetic multiline text art
+- /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji free
+- /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji free
+- /hand-kaomojis/ — hand kaomoji — Copy hand kaomoji free
+- /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji with ♡ built in
+- /kaomoji-dot-art/ — dot art kaomoji — Copy kaomoji dot art
+- /kaomoji/ — Kaomoji — Kaomoji copy paste in 1 tap
+- /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) free
+- /multiline-kaomojis/ — Multiline mood kaomoji — Copy multiline kaomoji
+- /shrug-emoticon/ — shrug emoticon — Copy shrug ¯\_(ツ)_/¯ free
+- /star-kaomojis/ — star kaomoji — Copy star kaomoji & sparkle text
+
+## Guides
+
+- /guides/discord-colored-text-not-working/ — discord colored text not working — Discord colored text not working
+- /guides/do-fancy-fonts-break-screen-readers/ — do fancy fonts break screen readers — Do fancy fonts break screen readers
+- /guides/facebook-name-fonts/ — how to change facebook name font — How to change Facebook name font
+- /guides/fancy-text-shows-boxes/ — fancy text shows as boxes — Fancy text shows as boxes
+- /guides/how-unicode-fancy-fonts-work/ — how unicode fancy fonts work — How Unicode fancy fonts work
+- /guides/instagram-bio-fonts/ — how to change instagram bio font — How to change Instagram bio font
+- /guides/linkedin-formatting-not-working/ — linkedin formatting not working — Why bold fails in a LinkedIn headline, why blank lines vanish on mobile, and why pasted text loses its spacing
+- /guides/roblox-fancy-text/ — roblox fancy text — Roblox fancy text
+- /guides/snapchat-name-fonts/ — snapchat name fonts — Snapchat name fonts
+- /guides/whatsapp-stylish-text/ — whatsapp stylish text — WhatsApp stylish text
+
+## Trust & search
+
+- /about/ — About — About FancifyText
+- /contact/ — Contact — Contact FancifyText by email (hello@fancifytext
+- /search/ — search fancifytext tools — Search FancifyText tools
+
+## Policies
+
+- /privacy/ — Privacy policy
+- /terms/ — Terms of use
+
+- /cursive-capital-a/ — /cursive-capital-a/
+- /cursive-capital-b/ — /cursive-capital-b/
+- /cursive-capital-c/ — /cursive-capital-c/
+- /cursive-capital-d/ — /cursive-capital-d/
+- /cursive-capital-e/ — /cursive-capital-e/
+- /cursive-capital-f/ — /cursive-capital-f/
+- /cursive-capital-g/ — /cursive-capital-g/
+- /cursive-capital-h/ — /cursive-capital-h/
+- /cursive-capital-i/ — /cursive-capital-i/
+- /cursive-capital-j/ — /cursive-capital-j/
+- /cursive-capital-k/ — /cursive-capital-k/
+- /cursive-capital-l/ — /cursive-capital-l/
+- /cursive-capital-m/ — /cursive-capital-m/
+- /cursive-capital-n/ — /cursive-capital-n/
+- /cursive-capital-o/ — /cursive-capital-o/
+- /cursive-capital-p/ — /cursive-capital-p/
+- /cursive-capital-q/ — /cursive-capital-q/
+- /cursive-capital-r/ — /cursive-capital-r/
+- /cursive-capital-s/ — /cursive-capital-s/
+- /cursive-capital-t/ — /cursive-capital-t/
+- /cursive-capital-u/ — /cursive-capital-u/
+- /cursive-capital-v/ — /cursive-capital-v/
+- /cursive-capital-w/ — /cursive-capital-w/
+- /cursive-capital-x/ — /cursive-capital-x/
+- /cursive-capital-y/ — /cursive-capital-y/
+- /cursive-capital-z/ — /cursive-capital-z/
+- /cursive-small-a/ — /cursive-small-a/
+- /cursive-small-b/ — /cursive-small-b/
+- /cursive-small-c/ — /cursive-small-c/
+- /cursive-small-d/ — /cursive-small-d/
+- /cursive-small-e/ — /cursive-small-e/
+- /cursive-small-f/ — /cursive-small-f/
+- /cursive-small-g/ — /cursive-small-g/
+- /cursive-small-h/ — /cursive-small-h/
+- /cursive-small-i/ — /cursive-small-i/
+- /cursive-small-j/ — /cursive-small-j/
+- /cursive-small-k/ — /cursive-small-k/
+- /cursive-small-l/ — /cursive-small-l/
+- /cursive-small-m/ — /cursive-small-m/
+- /cursive-small-n/ — /cursive-small-n/
+- /cursive-small-o/ — /cursive-small-o/
+- /cursive-small-p/ — /cursive-small-p/
+- /cursive-small-q/ — /cursive-small-q/
+- /cursive-small-r/ — /cursive-small-r/
+- /cursive-small-s/ — /cursive-small-s/
+- /cursive-small-t/ — /cursive-small-t/
+- /cursive-small-u/ — /cursive-small-u/
+- /cursive-small-v/ — /cursive-small-v/
+- /cursive-small-w/ — /cursive-small-w/
+- /cursive-small-x/ — /cursive-small-x/
+- /cursive-small-y/ — /cursive-small-y/
+- /cursive-small-z/ — /cursive-small-z/

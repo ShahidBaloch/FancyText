@@ -57,6 +57,18 @@ if (!llmsPublic.includes("Routing for AI answers")) {
   );
   process.exit(1);
 }
+if (!llmsPublic.includes("llms-full.txt")) {
+  console.error("public/llms.txt should link to /llms-full.txt");
+  process.exit(1);
+}
+
+const fullPublic = await readFile(join(root, "public/llms-full.txt"), "utf8");
+if (!fullPublic.includes("FAQ excerpts:")) {
+  console.error(
+    "public/llms-full.txt is stale — run npm run check:llms before deploy.",
+  );
+  process.exit(1);
+}
 
 await rm(dir, { recursive: true, force: true });
 console.log("AEO / GEO / agentic llms.txt checks OK.");

@@ -1,6 +1,12 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import { useCopyFeedback } from "@/lib/copy";
+
+/** Above this count, SSR/hydration only render an initial window + load-more. */
+const LARGE_GRID_THRESHOLD = 200;
+const INITIAL_VISIBLE = 96;
+const LOAD_MORE_STEP = 120;
 
 type KaomojiGridProps = {
   faces: string[];
@@ -16,7 +22,17 @@ export function KaomojiGrid({
 }: KaomojiGridProps) {
   const { copiedId, errorId, errorMessage, announcement, copy } =
     useCopyFeedback();
+  const isLarge = faces.length > LARGE_GRID_THRESHOLD;
+  const [visibleCount, setVisibleCount] = useState(() =>
+    isLarge ? INITIAL_VISIBLE : faces.length,
+  );
+
+  const visibleFaces = useMemo(
+    () => faces.slice(0, visibleCount),
+    [faces, visibleCount],
+  );
   const hasMultiline = faces.some((face) => face.includes("\n"));
+  const remaining = faces.length - visibleFaces.length;
 
   return (
     <div>
@@ -28,6 +44,12 @@ export function KaomojiGrid({
       <p className="sr-only" role="status" aria-live="polite">
         {announcement}
       </p>
+      {isLarge ? (
+        <p className="seo-lead kaomoji-grid__progress">
+          Showing {visibleFaces.length} of {faces.length} — load more to keep
+          the page fast on mobile. Every row still copies the full string.
+        </p>
+      ) : null}
       <ul
         className={
           variant === "emoji"
@@ -37,7 +59,7 @@ export function KaomojiGrid({
               : "kaomoji-grid"
         }
       >
-        {faces.map((face, index) => {
+        {visibleFaces.map((face, index) => {
           const id = `${idPrefix}-${index}`;
           const multiline = face.includes("\n");
           const longLine = face.length > 44;
@@ -81,6 +103,22 @@ export function KaomojiGrid({
           );
         })}
       </ul>
+      {remaining > 0 ? (
+        <p className="kaomoji-grid__more-wrap">
+          <button
+            type="button"
+            className="kaomoji-grid__more"
+            onClick={() =>
+              setVisibleCount((n) =>
+                Math.min(n + LOAD_MORE_STEP, faces.length),
+              )
+            }
+          >
+            Load {Math.min(LOAD_MORE_STEP, remaining)} more ({remaining}{" "}
+            remaining)
+          </button>
+        </p>
+      ) : null}
     </div>
   );
 }

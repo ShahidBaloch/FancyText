@@ -2156,6 +2156,34 @@ a.use-card:hover {
   color: var(--muted);
 }
 
+.kaomoji-grid__progress {
+  margin: 0 0 0.65rem;
+  font-size: 0.92rem;
+}
+
+.kaomoji-grid__more-wrap {
+  margin: 0.85rem 0 0;
+  text-align: center;
+}
+
+.kaomoji-grid__more {
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-solid);
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.kaomoji-grid__more:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
 .symbol-grid {
   list-style: none;
   margin: 0.75rem 0 0;

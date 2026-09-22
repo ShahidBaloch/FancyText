@@ -39,7 +39,10 @@ export const metadata: Metadata = {
       "x-default": SITE_URL,
     },
     types: {
-      "text/plain": [{ url: "/llms.txt", title: "LLMs.txt site guide" }],
+      "text/plain": [
+        { url: "/llms.txt", title: "LLMs.txt site guide" },
+        { url: "/llms-full.txt", title: "LLMs-full extended excerpts" },
+      ],
     },
   },
   ...(isPreview ? { robots: { index: false, follow: false } } : {}),

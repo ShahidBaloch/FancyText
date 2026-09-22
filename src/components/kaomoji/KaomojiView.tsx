@@ -5,6 +5,7 @@ import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import {
   JsonLd,
+  datasetJsonLd,
   itemListJsonLd,
   itemListNameForFace,
 } from "@/components/seo/JsonLd";
@@ -42,11 +43,13 @@ import {
   type KaomojiProseSection,
 } from "@/data/kaomoji";
 import {
+  CONTENT_UPDATED_AT,
   SITE_NAME,
   SITE_URL,
   getPageByUrl,
   getTopicalRelated,
 } from "@/data/pages/registry";
+import { KAOMOJI_FULL_CATALOG_SLUGS } from "@/data/kaomoji-catalog-policy";
 
 type KaomojiListViewProps = {
   config: KaomojiList;
@@ -143,6 +146,21 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
             items: listJsonItems,
             numberOfItems: config.faces.length,
             itemName: multilineList ? itemListNameForFace : undefined,
+          })}
+        />
+      ) : null}
+      {indexable && KAOMOJI_FULL_CATALOG_SLUGS.has(config.slug) ? (
+        <JsonLd
+          data={datasetJsonLd({
+            name: `${config.h1} copy-paste library`,
+            description: serpMeta?.description ?? config.description,
+            url: new URL(url, SITE_URL).toString(),
+            keywords: [
+              config.primaryKeyword,
+              ...config.fellowKeywords,
+            ],
+            recordCount: config.faces.length,
+            dateModified: CONTENT_UPDATED_AT,
           })}
         />
       ) : null}
@@ -316,8 +334,8 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
   );
   const tailLists = getTailKaomojiLists();
   const catalog = getKaomojiCatalogStats();
-  const samples = getHubFaces(96);
-  const moodCopySets = getHubMoodCopySets(8);
+  const samples = getHubFaces(72);
+  const moodCopySets = getHubMoodCopySets(6);
   const hubFaq = [
     ...(serp.leadFaq ? [serp.leadFaq] : []),
     ...KAOMOJI_HUB.faq,
@@ -353,6 +371,19 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
             name: `${serp.primaryKeyword} copy paste list`,
             url: absoluteHubUrl,
             items: itemListFaces,
+            numberOfItems: catalog.uniqueFaces,
+          })}
+        />
+      ) : null}
+      {hubSlug === "kaomoji" ? (
+        <JsonLd
+          data={datasetJsonLd({
+            name: "FancifyText kaomoji library",
+            description: serp.description,
+            url: absoluteHubUrl,
+            keywords: ["kaomoji", "japanese emoticon", "text face", "copy paste"],
+            recordCount: catalog.uniqueFaces,
+            dateModified: CONTENT_UPDATED_AT,
           })}
         />
       ) : null}

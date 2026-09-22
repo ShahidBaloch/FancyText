@@ -94,6 +94,7 @@ export function renderLlmsTxt(): string {
     `Structured site search: ${SITE_URL.replace(/\/$/, "")}/search/?q={search_term_string}`,
     "",
     "Full URL list: `/sitemap.xml`. Human kaomoji hub with keyword filter: `/kaomoji/#hub-jump-heading`.",
+    "Extended prose + sample rows: `/llms-full.txt`.",
     "",
   ];
 
