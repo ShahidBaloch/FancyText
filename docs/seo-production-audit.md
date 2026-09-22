@@ -70,7 +70,9 @@ Follow **`docs/seo-adsense-gate.md`** and run **`npm run check:ads`**.
 | P0 URLs + specimens + topical links | `npm run check:seo` |
 | Duplicate primary keywords | `npm run check:cannibalization` |
 | AdSense loader / placement policy | `npm run check:ads` (also in `check:seo`) |
-| SERP specimens on P0 | `SERP_SPECIMEN_REQUIRED_PATHS` in `required-indexable.ts` |
+| SERP specimens on P0 + indexable kaomoji moods | `SERP_SPECIMEN_REQUIRED_PATHS` in `required-indexable.ts` (hero `serp-specimen` + meta prefix) |
+| Meta / JSON-LD description match | `pageMetadata()` and `PageJsonLd` both use `descriptionWithSerpSpecimen()` |
+| Duplicate snippets after specimen prefix | `check:content-uniqueness` (effective description pass) |
 | lastmod honesty | Only `CONTENT_UPDATED_AT` or `PageEntry.updated` — not build time |
 
 ---

@@ -37,6 +37,7 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 - `/emoji-combos/` — glyph strip (G1)
 - `/text-art/` — glyph strip (G3)
 - `/kaomoji/`, `/lenny-face/` — glyph strip (G6–G7)
+- Indexed kaomoji moods (hub spokes): `/cute-kaomojis/`, `/cry-kaomojis/`, `/heart-kaomojis/`, `/hand-kaomojis/`, `/star-kaomojis/`, `/kaomoji-dot-art/`, `/carrd-kaomojis/`, `/shrug-emoticon/` — glyph strip (same registry as `SITEMAP_REQUIRED_REGISTRY_PATHS` kaomoji URLs minus hub duplicates)
 
 ## Cursive pillar (Task 6 / B3)
 

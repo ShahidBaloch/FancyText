@@ -7,6 +7,7 @@ import {
   letterTitle,
   letterUrl,
 } from "@/lib/fonts/cursive";
+import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
 
 function normalizeText(text: string): string {
   return text
@@ -115,6 +116,44 @@ export function runContentUniquenessCheck(): void {
     if (urls.length <= 1) continue;
     throw new Error(
       `Duplicate indexable title (${urls.length} URLs): ${urls.join(", ")} — rewrite titles while keeping target keywords`,
+    );
+  }
+
+  /** GSC-facing descriptions include SERP specimen prefix from pageMetadata(). */
+  const byEffectiveDescription = new Map<string, string[]>();
+
+  for (const page of getLivePages()) {
+    if (!isIndexablePage(page)) continue;
+    const meta = effectiveRegistryMeta(page);
+    const effective = descriptionWithSerpSpecimen(meta.url, meta.description);
+    const key = normalizeText(effective);
+    if (key.length < 40) continue;
+    const list = byEffectiveDescription.get(key) ?? [];
+    list.push(meta.url);
+    byEffectiveDescription.set(key, list);
+  }
+
+  for (const letter of LETTERS) {
+    for (const letterCase of ["capital", "small"] as const) {
+      const path = letterUrl(letter, letterCase);
+      const page = getPageByUrl(path);
+      if (page?.index === false) continue;
+      const effective = descriptionWithSerpSpecimen(
+        path,
+        letterDescription(letter, letterCase),
+      );
+      const key = normalizeText(effective);
+      if (key.length < 40) continue;
+      const list = byEffectiveDescription.get(key) ?? [];
+      list.push(path);
+      byEffectiveDescription.set(key, list);
+    }
+  }
+
+  for (const [, urls] of byEffectiveDescription) {
+    if (urls.length <= 1) continue;
+    throw new Error(
+      `Duplicate indexable effective meta description (${urls.length} URLs): ${urls.join(", ")} — adjust SERP metaLine or page description; do not change primaryKeyword`,
     );
   }
 }

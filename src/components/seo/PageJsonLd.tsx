@@ -8,6 +8,7 @@ import {
   webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
+import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
 
 type CrumbItem = { name: string; url: string };
 
@@ -34,6 +35,8 @@ export function PageJsonLd({
   dateModified,
 }: PageJsonLdProps) {
   const absoluteUrl = new URL(page.url, SITE_URL).toString();
+  /** Match `<meta name="description">` / OG (GSC snippet consistency). */
+  const description = descriptionWithSerpSpecimen(page.url, page.description);
   const name = crumbName ?? page.primaryKeyword;
   const displayName = page.title.split("|")[0].trim();
   const breadcrumbItems =
@@ -47,7 +50,7 @@ export function PageJsonLd({
     kind === "article"
       ? articleJsonLd({
           headline: displayName,
-          description: page.description,
+          description,
           url: absoluteUrl,
           siteName: SITE_NAME,
           siteUrl: SITE_URL,
@@ -57,14 +60,14 @@ export function PageJsonLd({
       : kind === "page"
         ? webPageJsonLd({
             name: displayName,
-            description: page.description,
+            description,
             url: absoluteUrl,
             siteName: SITE_NAME,
             siteUrl: SITE_URL,
           })
         : webApplicationJsonLd({
             name: displayName,
-            description: page.description,
+            description,
             url: absoluteUrl,
           });
 
@@ -76,7 +79,7 @@ export function PageJsonLd({
         <JsonLd
           data={howToJsonLd({
             name: howTo.name,
-            description: page.description,
+            description,
             url: absoluteUrl,
             steps: howTo.steps,
           })}

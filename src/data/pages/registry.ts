@@ -845,6 +845,7 @@ export const PAGES: PageEntry[] = [
     url: "/cry-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cry kaomoji",
+    updated: "2026-09-22",
     title: "Cry Kaomoji Copy Paste — (T_T) Crying Faces | FancifyText",
     description:
       "Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.",
@@ -1042,6 +1043,7 @@ export const PAGES: PageEntry[] = [
     url: "/hand-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "hand kaomoji",
+    updated: "2026-09-22",
     title: "Hand Kaomoji Copy Paste — Wave & Raise Arms | FancifyText",
     description:
       "Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.",
@@ -1077,6 +1079,7 @@ export const PAGES: PageEntry[] = [
     url: "/carrd-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "carrd kaomojis",
+    updated: "2026-09-22",
     title: "Carrd Kaomojis Copy Paste — Bio Dividers | FancifyText",
     description:
       "Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.",

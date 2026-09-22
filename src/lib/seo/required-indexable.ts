@@ -52,7 +52,15 @@ export const SERP_SPECIMEN_REQUIRED_PATHS = [
   "/star-emoji/",
   "/cat-emoji/",
   "/kaomoji/",
+  "/cute-kaomojis/",
+  "/cry-kaomojis/",
+  "/heart-kaomojis/",
+  "/hand-kaomojis/",
+  "/star-kaomojis/",
+  "/kaomoji-dot-art/",
+  "/carrd-kaomojis/",
   "/lenny-face/",
+  "/shrug-emoticon/",
 ] as const;
 
 /** Indexed kaomoji moods should have curated RelatedTools neighbors. */
