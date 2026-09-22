@@ -44,6 +44,10 @@ export type KaomojiList = {
   whereHeading?: string;
   whereBullets?: string[];
   extraSections?: KaomojiProseSection[];
+  emojiPicker?: string[];
+  emojiPickerHeading?: string;
+  emojiPickerLead?: string;
+  emojiPickerMore?: { href: string; label: string };
   faq: { question: string; answer: string }[];
 };
 
@@ -1251,6 +1255,10 @@ for (const entry of KAOMOJI_LISTS) {
   if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
   if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
   if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
+  if (unique.emojiPicker) entry.emojiPicker = unique.emojiPicker;
+  if (unique.emojiPickerHeading) entry.emojiPickerHeading = unique.emojiPickerHeading;
+  if (unique.emojiPickerLead) entry.emojiPickerLead = unique.emojiPickerLead;
+  if (unique.emojiPickerMore) entry.emojiPickerMore = unique.emojiPickerMore;
 }
 
 export const SPECIAL_KAOMOJI: KaomojiList[] = [
@@ -1414,6 +1422,10 @@ for (const entry of SPECIAL_KAOMOJI) {
   if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
   if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
   if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
+  if (unique.emojiPicker) entry.emojiPicker = unique.emojiPicker;
+  if (unique.emojiPickerHeading) entry.emojiPickerHeading = unique.emojiPickerHeading;
+  if (unique.emojiPickerLead) entry.emojiPickerLead = unique.emojiPickerLead;
+  if (unique.emojiPickerMore) entry.emojiPickerMore = unique.emojiPickerMore;
 }
 
 export function kaomojiOgSubtitle(slug: string): string | undefined {

@@ -23,6 +23,11 @@ export type KaomojiUniqueCopy = {
   whereHeading?: string;
   whereBullets?: string[];
   extraSections?: KaomojiProseSection[];
+  /** Picture emoji or combo strings when SERP expects keyboard emoji, not kaomoji. */
+  emojiPicker?: string[];
+  emojiPickerHeading?: string;
+  emojiPickerLead?: string;
+  emojiPickerMore?: { href: string; label: string };
   faq: { question: string; answer: string }[];
 };
 
@@ -312,7 +317,31 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
           "Kaomoji are emoticons, not letter fonts. For a decorated username, generate bubble or script letters on the cute fonts page, then paste one kaomoji beside the name—not inside every character.",
         ],
       },
+      {
+        id: "cute-combos",
+        heading: "Cute emoji combos vs kawaii kaomoji",
+        paragraphs: [
+          "Emoji combos stack picture characters (🌸✨💕) for bios—great when you want color without typing a face. Kaomoji stay punctuation emoticons like (｡◕‿◕｡). Many “cute” searches want both: one blush face plus a short combo line from the emoji combos page.",
+        ],
+      },
     ],
+    emojiPickerHeading: "Cute emoji combos (picture characters)",
+    emojiPickerLead:
+      "Not kaomoji—these are tap-to-copy emoji strings for kawaii bios. Pair one row with a single (｡◕‿◕｡) face above.",
+    emojiPicker: [
+      "🌸✨💕",
+      "🐰🎀🩷",
+      "🧸☁️💗",
+      "🍓🎀✨",
+      "🐱💖🌙",
+      "☁️🫧💞",
+      "🎀🌷🩵",
+      "🦋💜✨",
+    ],
+    emojiPickerMore: {
+      href: "/emoji-combos/",
+      label: "Full cute & aesthetic emoji combos list",
+    },
     howToHeading: "Copy a blush or round-eye face",
     howToSteps: [
       "Skip animal-ear lists—those are cat, bear, and dog pages.",
@@ -351,6 +380,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Cute cat kaomoji—this page or cat list?",
         answer:
           "Animal ears and neko faces live on cat kaomojis (browse list). This indexed page is people-shaped kawaii like (｡◕‿◕｡)—no whiskers.",
+      },
+      {
+        question: "Cute emoji combos vs cute kaomoji?",
+        answer:
+          "Combos are picture emoji strings (🌸✨💕). Kaomoji are text faces (｡◕‿◕｡). Use combos for color stacks; use this grid for Japanese-style blush faces.",
       },
     ],
   },
@@ -458,7 +492,35 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
           "Kiss — DMs and couple nicknames; lighter in public threads",
         ],
       },
+      {
+        id: "heart-emoji-page",
+        heading: "Heart emoji vs heart kaomoji",
+        paragraphs: [
+          "Searches for “heart emoji” usually mean colorful picture hearts (❤️ 💕 🥰)—not punctuation faces. This page is ♡ woven into text emoticons. When you need the phone-keyboard set, use the heart emoji copy page below the grid; keep kaomoji for Discord-style love faces.",
+        ],
+      },
     ],
+    emojiPickerHeading: "Heart emoji copy and paste",
+    emojiPickerLead:
+      "Picture hearts—not kaomoji. Tap ❤️ or 💕 when you wanted emoji keyboard characters instead of (♡‿♡) text faces.",
+    emojiPicker: [
+      "❤️",
+      "💕",
+      "💖",
+      "💗",
+      "💓",
+      "💞",
+      "💘",
+      "🥰",
+      "😍",
+      "💝",
+      "♥️",
+      "🫶",
+    ],
+    emojiPickerMore: {
+      href: "/heart-emoji/",
+      label: "Full heart emoji list & bio combos",
+    },
     howToHeading: "Copy a face that includes a heart",
     howToSteps: [
       "Pick a face with ♡ or heart arms, not a lone emoji.",
@@ -492,6 +554,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Can I copy heart kaomoji for WhatsApp status?",
         answer:
           "Yes. Paste a single face plus a short line so status text stays readable.",
+      },
+      {
+        question: "Heart emoji or heart kaomoji for Instagram?",
+        answer:
+          "Heart emoji (❤️ 🥰) are colorful one-tap characters—see the heart emoji grid on this page. Heart kaomoji are text faces with ♡ inside—better for Discord meme tone.",
       },
     ],
   },
@@ -952,6 +1019,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     ],
     faq: [
       {
+        question: "Lenny face copy and paste — how?",
+        answer:
+          "Tap ( ͡° ͜ʖ ͡°) or any variant in the grid. The full emoticon copies as plain Unicode—paste into Discord, Reddit, Instagram, or memes without typing the symbols.",
+      },
+      {
         question: "What is the Lenny face?",
         answer:
           "The Lenny face is ( ͡° ͜ʖ ͡°)—a text emoticon for knowing humor, sarcasm, or mischief. It is not an emoji sticker.",
@@ -1004,6 +1076,10 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         ],
       },
     ],
+    emojiPickerHeading: "Shrug emoji (🤷)",
+    emojiPickerLead:
+      "If you wanted the phone keyboard shrug—not ¯\\_(ツ)_/¯ text—tap 🤷 below.",
+    emojiPicker: ["🤷", "🤷‍♂️", "🤷‍♀️", "🤷🏻", "🤷🏼", "🤷🏽", "🤷🏾", "🤷🏿"],
     faq: [
       {
         question: "What does ¯\\_(ツ)_/¯ mean?",
@@ -1155,7 +1231,35 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
           "Keep one theme per bio. Mixing galaxy stars, hearts, and three different dividers looks cluttered in mobile previews.",
         ],
       },
+      {
+        id: "star-emoji-page",
+        heading: "Star emoji vs sparkle kaomoji",
+        paragraphs: [
+          "“Star emoji” searches usually mean ⭐ 🌟 ✨ picture characters. Star kaomoji here are text lines with ★ ⋆ ✩—sometimes wrapping a face. Use the star emoji grid below when you want keyboard sparkle emoji; stay on this list for galaxy-style text dividers.",
+        ],
+      },
     ],
+    emojiPickerHeading: "Star emoji copy and paste",
+    emojiPickerLead:
+      "Picture stars and sparkles—not text-art kaomoji. Tap ⭐ or ✨ when SERP meant emoji, not ☆(｡◕‿◕｡)☆ lines.",
+    emojiPicker: [
+      "⭐",
+      "🌟",
+      "✨",
+      "💫",
+      "🌠",
+      "⚡",
+      "🌙",
+      "🌌",
+      "⭐️",
+      "✨💫✨",
+      "⭐✨⭐",
+      "🌟💫🌟",
+    ],
+    emojiPickerMore: {
+      href: "/star-emoji/",
+      label: "Full star emoji list & sparkle combos",
+    },
     faq: [
       {
         question: "What are star kaomoji?",
@@ -1182,6 +1286,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         answer:
           "Yes. This list targets galaxy and soft aesthetic dividers. Carrd kaomojis focuses on horizontal rules between sections.",
       },
+      {
+        question: "Star emoji copy paste vs star kaomoji?",
+        answer:
+          "Star emoji are colorful glyphs (⭐ ✨). Star kaomoji are Unicode text lines with stars and optional faces. Use the emoji grid for picture stars; use the main grid for aesthetic text dividers.",
+      },
     ],
   },
   "kaomoji-dot-art": {
@@ -1201,6 +1310,13 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         paragraphs: [
           "Large dot-art posters slow down phones, break in nicknames, and are hard to edit after paste. This page curates short faces only—same expressive intent, less layout risk.",
           "If you need a tall ASCII drawing, generate it elsewhere and paste once; keep kaomoji pages focused on copy-friendly lines.",
+        ],
+      },
+      {
+        id: "text-art-hub",
+        heading: "Mini dot art vs full text art pages",
+        paragraphs: [
+          "Kaomoji dot art means one-line faces like (•ᴗ•)—fast tap-to-copy for chat. The text art page collects larger copy-paste ASCII strings and decorative blocks when you need a poster-style layout. Start here for reactions; open text art when the SERP showed multi-line drawings.",
         ],
       },
     ],
@@ -1241,6 +1357,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Dot art kaomoji vs ascii art memes?",
         answer:
           "This page curates faces that still read as expressions. Giant copypasta blocks belong in meme threads, not tap-to-copy tool grids.",
+      },
+      {
+        question: "Kaomoji dot art vs text art copy paste?",
+        answer:
+          "Dot art here is mini one-line faces only. The text art page is for bigger ASCII layouts and decorative copy-paste strings—not the same as (•ᴗ•) reactions.",
       },
     ],
   },
@@ -1470,7 +1591,7 @@ export const KAOMOJI_HUB_VARIANTS: Record<KaomojiHubSlug, KaomojiHubSerpBundle> 
       "Kaomoji copy paste · (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ · 840+ curated faces",
     h1: "Kaomoji Copy Paste",
     introBelowHero:
-      "Japanese text faces (often typed kamoji, kaomiji, or kaomojis) as plain Unicode—not emoji stickers. Indexed topic pages: cute, cry, heart, hand, star, Carrd dividers, mini dot art, Lenny, shrug.",
+      "Japanese text faces (often typed kamoji, kaomiji, or kaomojis) as plain Unicode—not emoji stickers. Indexed moods: cute, cry, heart, hand, star, Carrd dividers, mini dot art, Lenny, shrug. For picture emoji stacks try emoji combos; for ❤️/⭐ keyboard hearts and stars see heart emoji and star emoji; for larger ASCII layouts see text art.",
     breadcrumbLabel: "Kaomoji",
     primaryKeyword: "kaomoji",
     leadFaq: {
@@ -1576,12 +1697,13 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       heading: "Kaomoji vs picture emoji vs symbols",
       paragraphs: [
         "Picture emoji (😀 🔥 ❤️) come from your phone’s emoji keyboard—one character, full color. Kaomoji are text faces built from punctuation (｡◕‿◕｡)—they paste anywhere Unicode works, including places that block colorful emoji.",
-        "If you wanted a single emoji to copy, use the emoji row on this page. If you wanted a Japanese-style emoticon, use the kaomoji grid. For stars, arrows, and decorative symbols—not faces—open the cool symbols list.",
+        "If you wanted a single emoji to copy, use the emoji row on this page—or heart emoji, star emoji, and emoji combos for focused lists. If you wanted a Japanese-style emoticon, use the kaomoji grid. For stars, arrows, and decorative symbols—not faces—open cute symbols or cool symbols. Multi-line ASCII posters live on text art; mini faces stay on kaomoji dot art.",
       ],
       bullets: [
         "Emoji — colorful, one glyph, best for SMS and social apps",
         "Kaomoji — text face, best for Discord, bios, and memes",
         "Symbols — ♡ ★ → decorative marks, not expressions",
+        "Text art — larger ASCII copy-paste blocks, not one-line kaomoji",
       ],
     },
     {
@@ -1699,6 +1821,34 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       linkLabel: "Hand kaomojis",
       hint: "Arm-forward cheer; not a hug.",
     },
+    {
+      situation: "Colorful bio stack (not a text face)",
+      face: "🌸✨💕",
+      href: "/emoji-combos/",
+      linkLabel: "Emoji combos",
+      hint: "Picture emoji strings; pair with one kaomoji max.",
+    },
+    {
+      situation: "Picture heart for captions",
+      face: "❤️",
+      href: "/heart-emoji/",
+      linkLabel: "Heart emoji",
+      hint: "Keyboard hearts—not ♡ inside a kaomoji face.",
+    },
+    {
+      situation: "Sparkle star emoji",
+      face: "✨",
+      href: "/star-emoji/",
+      linkLabel: "Star emoji",
+      hint: "⭐ 🌟 ✨ glyphs; not ☆ text dividers.",
+    },
+    {
+      situation: "Bigger ASCII copy-paste art",
+      face: "(•ᴗ•)",
+      href: "/text-art/",
+      linkLabel: "Text art",
+      hint: "Posters & blocks; dot art stays one line.",
+    },
   ],
   faq: [
     {
@@ -1734,7 +1884,7 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
     {
       question: "Which kaomoji lists should I bookmark?",
       answer:
-        "This hub for mixed samples; cute, cry, heart, Lenny, shrug for moods; hand, star, Carrd dividers, dot art for layouts. Use the keyword finder above. Carrd lines are one divider at a time—not full site templates. Famous names (Lenny, shrug) are in the meanings table below.",
+        "This hub for mixed samples; cute, cry, heart, Lenny, shrug for moods; hand, star, Carrd dividers, dot art for layouts. Picture emoji: emoji combos, heart emoji, star emoji. Larger ASCII: text art. Use the keyword finder above. Carrd lines are one divider at a time—not full site templates.",
     },
   ],
 };
