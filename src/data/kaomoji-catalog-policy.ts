@@ -1,7 +1,9 @@
 /**
  * Catalog scope for Google-friendly kaomoji pages:
- * - One full programmatic library per topic (canonical URL).
- * - Mood/animal URLs get curated highlights + their one-line set (unique page purpose).
+ * - Full multiline matrix: /multiline-kaomojis/ only (indexed).
+ * - Full coquette matrix: /coquette-kaomojis/ only (indexed).
+ * - Indexed moods (cute, cry, heart, hand): small multiline teaser + one-liners.
+ * - Browse-only moods (angry, happy, …): entire generated multiline set for that mood.
  */
 
 /** Slugs that may ship the full multiline or coquette matrix. */

@@ -9,6 +9,7 @@ import { KAOMOJI_FULL_CATALOG_SLUGS } from "@/data/kaomoji-catalog-policy";
 import {
   MULTILINE_KAOMOJI_HUB_FACES,
   getMultilineHighlightsForSlug,
+  getMultilineKaomojiForSlug,
 } from "@/data/multiline-kaomoji-faces";
 import {
   KAOMOJI_SEARCH_INTENT_BY_SLUG,
@@ -1304,14 +1305,6 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
 ];
 
 for (const entry of KAOMOJI_LISTS) {
-  if (KAOMOJI_FULL_CATALOG_SLUGS.has(entry.slug)) continue;
-  const multiline = getMultilineHighlightsForSlug(entry.slug);
-  if (multiline.length) {
-    entry.faces = mergeKaomojiFaces(multiline, entry.faces);
-  }
-}
-
-for (const entry of KAOMOJI_LISTS) {
   const unique = KAOMOJI_UNIQUE_COPY[entry.slug];
   if (!unique) continue;
   if (unique.title) entry.title = unique.title;
@@ -1545,6 +1538,17 @@ export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
   "coquette-kaomojis",
   "multiline-kaomojis",
 ]);
+
+/** Apply multiline rows: full set on browse moods; teaser only on indexed lists. */
+for (const entry of KAOMOJI_LISTS) {
+  if (KAOMOJI_FULL_CATALOG_SLUGS.has(entry.slug)) continue;
+  const generated = getMultilineKaomojiForSlug(entry.slug);
+  if (!generated.length) continue;
+  const multiline = INDEXABLE_KAOMOJI_SLUGS.has(entry.slug)
+    ? getMultilineHighlightsForSlug(entry.slug)
+    : generated;
+  entry.faces = mergeKaomojiFaces(multiline, entry.faces);
+}
 
 export function isKaomojiTopicSpoke(slug: string): boolean {
   return KAOMOJI_TOPIC_SPOKE_SLUGS.has(slug);

@@ -59,7 +59,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     description:
       "Copy angry kaomoji—multiline table-flip stacks (╯°□°）╯︵ + ┻━┻), mad one-liners like (ノಠ益ಠ)ノ, and rage ASCII for Discord and memes.",
     catalogNote:
-      "Top rows are curated multiline rage blocks; the rest are classic one-line mad faces. Every multiline combination lives on multiline kaomojis—this page targets angry mood specifically.",
+      "This browse page includes the full generated multiline angry set (~140 stacks) plus classic one-line mad faces. All moods combined: multiline kaomojis (indexed).",
     whereHeading: "Where mad kaomoji fit",
     whereBullets: [
       "Meme replies and game rage threads—not formal support tickets.",
@@ -88,7 +88,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       {
         question: "Where is the full multiline angry set?",
         answer:
-          "On multiline kaomojis (indexed). This angry list keeps a short preview so the page stays focused on mad one-liners and meme flips people expect on an angry URL.",
+          "At the top of this angry list (~140 multiline stacks) plus one-line mad faces below. Every mood combined in one grid: multiline kaomojis (indexed).",
       },
       {
         question: "Angry vs evil kaomoji — what’s the difference?",
@@ -1327,7 +1327,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     canonicalLead:
       "Happy kaomoji lead with multiline sparkle cheers, then one-line smiles. Indexed multiline mood hub: multiline kaomojis. Kawaii blush smiles: cute kaomojis.",
     catalogNote:
-      "Multiline cheer blocks here are a curated sample—not the full happy matrix. Use multiline kaomojis when you need every generated happy stack.",
+      "This browse page includes the full generated multiline happy set (~380+ stacks) plus one-line smiles. Every mood in one hub: multiline kaomojis (indexed).",
     meaningsHeading: "Cheer without hype",
     meanings:
       "Happy faces use wide smiles and lifted eyes—lighter than excited hype and softer than proud smugness. Good for congratulations, Friday messages, and friendly check-ins.",
@@ -1421,7 +1421,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     canonicalLead:
       "Multiline mood kaomoji live here—angry ┻━┻ stacks, happy ♪ cheers, crying (T_T) layouts, and other emotions built from multiple rows. Coquette kaomojis is the separate indexed page for soft aesthetic ♡ / tulip art; dot art stays one-line for chat.",
     catalogNote:
-      "This is the only URL with the full multiline mood matrix. Angry, happy, and other emotion pages show a short curated preview plus one-line faces so each page has a distinct purpose in search.",
+      "This indexed hub holds every mood’s multiline rows in one grid (~1,200+ blocks). Browse-only mood URLs (angry, happy, sad, cry, …) repeat the full generated set for that emotion plus one-liners; indexed cute/cry/heart/hand pages keep a short teaser only.",
     meaningsHeading: "Mood posters vs one-line faces",
     meanings:
       "Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged at the top of each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.",
@@ -1449,7 +1449,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         id: "helpful-content",
         heading: "Why this page is useful (not duplicate spam)",
         paragraphs: [
-          "Google’s helpful-content guidance favors pages with a clear primary purpose. This hub exists so people searching multiline angry or happy kaomoji get one canonical library. Mood-specific URLs repeat only a small editorial preview so they do not mirror this entire grid.",
+          "Google’s helpful-content guidance favors pages with a clear primary purpose. This hub is the canonical all-moods library for broad multiline searches. Mood-specific browse URLs focus on one emotion (full multiline for that mood + prose/FAQ for angry vs happy intent). Indexed cute/cry/heart/hand lists stay one-line-first with a small multiline teaser—not a second copy of this hub.",
           "Prose, FAQs, and when-to-use notes on each URL are written for that mood or layout—not copy-pasted across every kaomoji list.",
         ],
       },
