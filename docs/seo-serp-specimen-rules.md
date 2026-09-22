@@ -37,4 +37,9 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 - `/text-art/` — glyph strip (G3)
 - `/kaomoji/`, `/lenny-face/` — glyph strip (G6–G7)
 
+## Cursive pillar (Task 6 / B3)
+
+- `/cursive-text-generator/` — `font-rotate` (`Your Name` × cursive, bold-cursive, italic) in `SERP_SPECIMENS`.
+- `/cursive-capital-*` and `/cursive-small-*` — dynamic `glyph-strip` via `buildCursiveLetterSpecimen()` inside `getSerpSpecimen()` (capital, small, bold glyphs + keyword meta line). Wire `PageHero specimenPath={letterUrl(...)}` on `CursiveLetterView`; metadata uses `descriptionWithSerpSpecimen()` in `cursiveLetterMetadata()`.
+
 Add new landings by extending `SERP_SPECIMENS` and `PageHero specimenPath`.

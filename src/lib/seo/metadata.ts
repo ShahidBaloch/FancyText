@@ -59,8 +59,12 @@ export function cursiveLetterMetadata(
   letterCase: LetterCase,
 ): Metadata {
   const title = letterTitle(letter, letterCase);
-  const description = letterDescription(letter, letterCase);
-  const canonical = new URL(letterUrl(letter, letterCase), SITE_URL).toString();
+  const path = letterUrl(letter, letterCase);
+  const description = descriptionWithSerpSpecimen(
+    path,
+    letterDescription(letter, letterCase),
+  );
+  const canonical = new URL(path, SITE_URL).toString();
   return {
     title: { absolute: title },
     description,

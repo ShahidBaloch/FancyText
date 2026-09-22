@@ -63,12 +63,14 @@ export const PAGES: PageEntry[] = [
     url: "/cursive-text-generator/",
     group: "B_Cursive",
     primaryKeyword: "cursive text generator",
+    updated: "2026-09-22",
     title: "Cursive Text Generator — Script Fonts Copy & Paste",
     description:
       "Cursive text generator. Type a name or phrase into cursive Unicode. Copy elegant script words plus the full A–Z alphabet—no font download.",
     fellowKeywords: fellows(
       "elegant cursive fonts copy and paste",
       "cursive copy and paste fonts",
+      "cursive letters copy and paste",
       "cursive alphabet",
       "script font generator",
       "names in cursive generator",
