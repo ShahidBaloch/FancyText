@@ -23,6 +23,12 @@ Inspect route sizes in `.next/diagnostics/route-bundle-stats.json` if tuning fur
 4. Third-party scripts: **GA + AdSense** use `next/script` with `lazyOnload` only.
 5. Home hero specimen: pass **precomputed** showcase strings from the server; never import `lib/fonts/styles.ts` from decorative client components.
 
+## PageSpeed (pagespeed.web.dev)
+
+- Homepage gallery is capped to **12 popular styles**; full 67+ grid lives on `/copy-paste-fonts/` (smaller DOM, faster mobile).
+- Run Lighthouse mobile on production after deploy; target **100** performance with field + lab (CrUX may lag deploy by ~28 days).
+- Font: Sora uses `display: optional` and **no preload** so LCP text paints immediately with fallback metrics.
+
 ## User experience
 
 - Placeholders reserve space while tool chunks load (reduced layout shift).

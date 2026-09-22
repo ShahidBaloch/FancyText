@@ -82,6 +82,11 @@ html {
 
 .skip-link:focus,
 .skip-link:focus-visible {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
@@ -275,7 +280,10 @@ a {
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--muted);
-  padding: 0.42rem 0.7rem;
+  padding: 0.55rem 0.85rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
   border-radius: 999px;
   white-space: nowrap;
   transition:
@@ -299,7 +307,27 @@ a {
   padding: 1.5rem 0 4.5rem;
 }
 
+/* Below-fold sections: skip layout work until near viewport (PageSpeed / LCP). */
+.seo-section--below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
 /* ——— Home hero ——— */
+/* System stack for hero LCP — Sora applies sitewide after optional load. */
+.home-brand,
+.home-title,
+.home-lead {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
 .home-hero {
   position: relative;
   overflow: hidden;
@@ -814,7 +842,9 @@ a {
   background: var(--panel-solid);
   color: var(--ink);
   border-radius: 999px;
-  padding: 0.42rem 0.85rem;
+  padding: 0.55rem 0.95rem;
+  min-height: 2.75rem;
+  touch-action: manipulation;
   font: inherit;
   font-size: 0.86rem;
   font-weight: 600;
@@ -910,7 +940,10 @@ a {
   background: color-mix(in srgb, #fff 12%, transparent);
   color: inherit;
   border-radius: 999px;
-  padding: 0.38rem 0.9rem;
+  padding: 0.5rem 1rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  touch-action: manipulation;
   font: inherit;
   font-size: 0.8rem;
   font-weight: 600;

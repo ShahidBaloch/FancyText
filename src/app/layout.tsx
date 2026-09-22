@@ -10,9 +10,11 @@ import "./globals.css";
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600"],
+  /** Optional + no preload: hero LCP paints with fallback first (PageSpeed mobile). */
   display: "optional",
-  preload: true,
+  preload: false,
+  adjustFontFallback: true,
 });
 
 const gscVerification =

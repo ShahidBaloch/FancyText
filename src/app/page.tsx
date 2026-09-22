@@ -11,6 +11,7 @@ import {
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
+import { HomePlaygroundMount } from "@/components/tool/HomePlaygroundMount";
 import { StyleGalleryFallback } from "@/components/tool/StyleGalleryFallback";
 import { ToolStagePlaceholder } from "@/components/tool/ToolStagePlaceholder";
 import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
@@ -34,7 +35,7 @@ const HomePlayground = dynamic(
       <>
         <ToolStagePlaceholder />
         <section className="seo-section" aria-labelledby="gallery-heading">
-          <h2 id="gallery-heading">All Unicode styles in one gallery</h2>
+          <h2 id="gallery-heading">Popular Unicode styles</h2>
           <StyleGalleryFallback />
         </section>
       </>
@@ -53,7 +54,7 @@ const faqItems = [
   {
     question: "Is this the same page as copy and paste fonts?",
     answer:
-      "No. This homepage is the live converter: type once, preview every style. Copy and paste fonts is a catalog of collections (aesthetic, cute, cursive, cool lookalikes, platforms, big ASCII). Stay here to try styles. Open the catalog when you already know the vibe.",
+      "No. This homepage is the live converter: type once, preview popular styles and open the full gallery via copy and paste fonts when you want every lookalike. That catalog lists aesthetic, cute, cursive, cool, platform, and big ASCII collections.",
   },
   {
     question: "Why do some styles become empty boxes?",
@@ -118,7 +119,9 @@ export default function HomePage() {
         }}
       />
       <HomeHero />
-      <HomePlayground />
+      <HomePlaygroundMount>
+        <HomePlayground />
+      </HomePlaygroundMount>
 
       <section className="seo-section" aria-labelledby="how-heading">
         <h2 id="how-heading">How to use the fancy text generator</h2>
