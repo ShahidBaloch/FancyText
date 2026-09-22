@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdPlacement } from "@/components/ads/AdPlacement";
 import {
   getExplorePages,
   getFooterPages,
@@ -98,6 +99,9 @@ export function SiteFooter() {
             </Link>
           ))}
         </nav>
+
+        {/* AdSense: footer-only slot — never between generator input and first Copy. */}
+        <AdPlacement zone="site-footer" className="ad-placement ad-placement--footer" />
 
         <p className="footer-copy">
           © {new Date().getFullYear()} {SITE_NAME}

@@ -1,3 +1,11 @@
+import {
+  boldCursiveGlyph,
+  cursiveGlyph,
+  letterPrimaryKeyword,
+  parseCursiveSlug,
+  type Letter,
+  type LetterCase,
+} from "@/lib/fonts/cursive";
 import { STYLES, transform } from "@/lib/fonts/styles";
 
 /** How a URL shows intent-matched samples in hero + social previews. */
@@ -28,6 +36,8 @@ const FONT_HOME_STYLE_IDS = [
 
 const FONT_COPY_STYLE_IDS = ["bold", "cursive", "italic", "bubble"] as const;
 
+const CURSIVE_HUB_STYLE_IDS = ["cursive", "bold-cursive", "italic"] as const;
+
 function fontMetaLine(phrase: string, styleIds: readonly string[]): string {
   return styleIds
     .map((id) => transform(phrase, id))
@@ -52,6 +62,14 @@ export const SERP_SPECIMENS: Record<string, SerpSpecimenConfig> = {
     metaLine: fontMetaLine("copy paste", FONT_COPY_STYLE_IDS),
     ogSubtitle:
       "𝐜𝐨𝐩𝐲 𝓹𝓪𝓼𝓽𝓮 · 𝓬𝓾𝓻𝓼𝓲𝓿𝓮 · 𝒊𝒕𝒂𝒍𝒊𝒸 — Unicode font collections",
+  },
+  "/cursive-text-generator/": {
+    kind: "font-rotate",
+    phrase: "Your Name",
+    styleIds: [...CURSIVE_HUB_STYLE_IDS],
+    metaLine: fontMetaLine("Your Name", CURSIVE_HUB_STYLE_IDS),
+    ogSubtitle:
+      "𝓨𝓸𝓾𝓻 𝓝𝓪𝓶𝓮 · 𝒃𝒐𝒍𝒅 𝒄𝒖𝒓𝒔𝒊𝒗𝒆 · 𝑖𝑡𝑎𝑙𝑖𝑐 — script Unicode copy & paste",
   },
   "/cool-symbols/": {
     kind: "glyph-strip",
@@ -130,8 +148,53 @@ export function normalizeSpecimenPath(path: string): string {
   return path.endsWith("/") ? path : `${path}/`;
 }
 
+function uniqueGlyphs(glyphs: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const g of glyphs) {
+    if (seen.has(g)) continue;
+    seen.add(g);
+    out.push(g);
+  }
+  return out;
+}
+
+/** Long-tail cursive letter spokes (52 URLs) — not stored in SERP_SPECIMENS. */
+export function buildCursiveLetterSpecimen(
+  letter: Letter,
+  letterCase: LetterCase,
+): SerpSpecimenConfig {
+  const upper = letter.toUpperCase();
+  const primary = cursiveGlyph(letter, letterCase);
+  const capital = cursiveGlyph(letter, "capital");
+  const small = cursiveGlyph(letter, "small");
+  const bold = boldCursiveGlyph(letter, letterCase);
+  const other = letterCase === "capital" ? small : capital;
+  const glyphs = uniqueGlyphs([primary, other, bold]);
+  const kw = letterPrimaryKeyword(letter, letterCase);
+  const metaLine = `${glyphs.join(" ")} — ${kw} copy paste`;
+  return {
+    kind: "glyph-strip",
+    glyphs,
+    stripLabel:
+      letterCase === "capital"
+        ? `Cursive ${upper} — capital, small & bold Unicode`
+        : `${upper} in cursive — small, capital & bold Unicode`,
+    metaLine,
+    ogSubtitle: `${primary} ${bold} — ${kw} copy & paste`,
+  };
+}
+
 export function getSerpSpecimen(path: string): SerpSpecimenConfig | undefined {
-  return SERP_SPECIMENS[normalizeSpecimenPath(path)];
+  const normalized = normalizeSpecimenPath(path);
+  const staticSpec = SERP_SPECIMENS[normalized];
+  if (staticSpec) return staticSpec;
+  const slug = normalized.slice(1, -1);
+  const parsed = parseCursiveSlug(slug);
+  if (parsed) {
+    return buildCursiveLetterSpecimen(parsed.letter, parsed.letterCase);
+  }
+  return undefined;
 }
 
 export function getSerpSpecimenForSlug(slug: string): SerpSpecimenConfig | undefined {
@@ -178,4 +241,9 @@ export const HOME_FONT_SHOWCASE = buildFontRotateShowcase(
 export const COPY_PASTE_FONT_SHOWCASE = buildFontRotateShowcase(
   SERP_SPECIMENS["/copy-paste-fonts/"]!.phrase!,
   SERP_SPECIMENS["/copy-paste-fonts/"]!.styleIds!,
+);
+
+export const CURSIVE_HUB_FONT_SHOWCASE = buildFontRotateShowcase(
+  SERP_SPECIMENS["/cursive-text-generator/"]!.phrase!,
+  SERP_SPECIMENS["/cursive-text-generator/"]!.styleIds!,
 );

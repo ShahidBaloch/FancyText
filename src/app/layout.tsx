@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
+import { AdSenseProvider } from "@/components/ads/AdSenseProvider";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           first Copy control.
         */}
         <GoogleAnalytics />
+        <AdSenseProvider />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

@@ -42,6 +42,7 @@ export const SITEMAP_REQUIRED_PATHS = [
 export const SERP_SPECIMEN_REQUIRED_PATHS = [
   "/",
   "/copy-paste-fonts/",
+  "/cursive-text-generator/",
   "/cool-symbols/",
   "/cute-symbols/",
   "/aesthetic-symbols/",

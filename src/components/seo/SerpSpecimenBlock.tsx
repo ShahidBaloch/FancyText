@@ -1,5 +1,6 @@
 import {
   COPY_PASTE_FONT_SHOWCASE,
+  CURSIVE_HUB_FONT_SHOWCASE,
   HOME_FONT_SHOWCASE,
   buildFontRotateShowcase,
   getSerpSpecimen,
@@ -17,6 +18,7 @@ type SerpSpecimenBlockProps = {
 function fontShowcaseForPath(path: string, config: SerpSpecimenConfig) {
   if (path === "/") return HOME_FONT_SHOWCASE;
   if (path === "/copy-paste-fonts/") return COPY_PASTE_FONT_SHOWCASE;
+  if (path === "/cursive-text-generator/") return CURSIVE_HUB_FONT_SHOWCASE;
   if (config.phrase && config.styleIds?.length) {
     return buildFontRotateShowcase(config.phrase, config.styleIds);
   }

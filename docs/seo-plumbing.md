@@ -14,7 +14,8 @@ End-of-sprint checks so new landings stay indexable, linked, and SERP-visible.
 ## Pre-release commands
 
 ```bash
-npm run check:seo    # plumbing + cannibalization + sitemap + llms
+npm run check:seo    # plumbing + cannibalization + ads gate + sitemap + llms
+npm run check:ads
 npm run check:sitemap
 npm run check:llms
 npm run check:cannibalization

@@ -69,6 +69,7 @@ Follow **`docs/seo-adsense-gate.md`** and run **`npm run check:ads`**.
 | llms.txt matches sitemap | `npm run check:llms` |
 | P0 URLs + specimens + topical links | `npm run check:seo` |
 | Duplicate primary keywords | `npm run check:cannibalization` |
+| AdSense loader / placement policy | `npm run check:ads` (also in `check:seo`) |
 | SERP specimens on P0 | `SERP_SPECIMEN_REQUIRED_PATHS` in `required-indexable.ts` |
 | lastmod honesty | Only `CONTENT_UPDATED_AT` or `PageEntry.updated` — not build time |
 

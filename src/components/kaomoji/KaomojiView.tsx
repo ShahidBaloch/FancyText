@@ -25,7 +25,6 @@ import {
   getHubShowcase,
   getKaomojiHubJumps,
   getKaomojiCatalogStats,
-  getKaomojiList,
   getTailKaomojiLists,
   isKaomojiTopicSpoke,
   kaomojiPathIsIndexable,
@@ -201,6 +200,37 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         </p>
         <KaomojiGrid faces={config.faces} idPrefix={config.slug} />
       </div>
+
+      {config.emojiPicker?.length ? (
+        <section
+          className="seo-section"
+          aria-labelledby={`${config.slug}-emoji-picker`}
+        >
+          <h2 id={`${config.slug}-emoji-picker`}>
+            {config.emojiPickerHeading ?? "Picture emoji (not text faces)"}
+          </h2>
+          {config.emojiPickerLead ? (
+            <p className="seo-lead">{config.emojiPickerLead}</p>
+          ) : (
+            <p className="seo-lead">
+              Standard emoji from your phone keyboard—tap to copy, then paste like
+              any other character. These are not kaomoji punctuation faces.
+            </p>
+          )}
+          <KaomojiGrid
+            faces={config.emojiPicker}
+            idPrefix={`${config.slug}-emoji`}
+            variant="emoji"
+          />
+          {config.emojiPickerMore ? (
+            <p className="seo-prose">
+              <Link href={config.emojiPickerMore.href}>
+                {config.emojiPickerMore.label}
+              </Link>
+            </p>
+          ) : null}
+        </section>
+      ) : null}
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
         <h2 id="how-heading">{config.howToHeading ?? "Copy a face"}</h2>
@@ -416,10 +446,13 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
         />
         <p className="seo-prose">
           Need color emoji strings? See{" "}
-          <Link href="/emoji-combos/">emoji combos</Link>. Need stars, hearts,
-          or arrows without a face? See{" "}
+          <Link href="/emoji-combos/">emoji combos</Link>,{" "}
+          <Link href="/heart-emoji/">heart emoji</Link>, or{" "}
+          <Link href="/star-emoji/">star emoji</Link>. Need stars, hearts, or
+          arrows without a face? See{" "}
           <Link href="/cute-symbols/">cute symbols</Link> or{" "}
-          <Link href="/cool-symbols/">cool symbols</Link>.
+          <Link href="/cool-symbols/">cool symbols</Link>. For multi-line ASCII,
+          see <Link href="/text-art/">text art</Link>.
         </p>
       </section>
 

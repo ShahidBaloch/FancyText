@@ -32,6 +32,7 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 
 - `/` — font rotate (G9)
 - `/copy-paste-fonts/` — font rotate (G5)
+- `/cursive-text-generator/` — font rotate (cursive hub)
 - `/cool-symbols/`, `/cute-symbols/`, `/aesthetic-symbols/` — glyph strip (G2, G8)
 - `/emoji-combos/` — glyph strip (G1)
 - `/text-art/` — glyph strip (G3)

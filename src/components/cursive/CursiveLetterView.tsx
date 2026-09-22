@@ -114,7 +114,11 @@ export function CursiveLetterView({
         ]}
       />
 
-      <PageHero h1={h1} lead={letterDescription(letter, letterCase)} />
+      <PageHero
+        h1={h1}
+        lead={letterDescription(letter, letterCase)}
+        specimenPath={letterUrl(letter, letterCase)}
+      />
 
       <div className="tool-stage letter-stage" id="tool">
         <div className="glyph-hero">
