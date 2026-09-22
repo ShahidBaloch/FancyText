@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { kaomojiPathIsIndexable } from "@/data/kaomoji";
 import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
+import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
 import {
   letterDescription,
   letterTitle,
@@ -25,16 +26,17 @@ export function pageMetadata(
   const canonicalPath = opts?.canonicalPath ?? page.url;
   const canonical = new URL(canonicalPath, SITE_URL).toString();
   const pageUrl = new URL(page.url, SITE_URL).toString();
+  const description = descriptionWithSerpSpecimen(page.url, page.description);
   const indexable =
     page.index !== false && kaomojiPathIsIndexable(page.url);
   return {
     title: { absolute: page.title },
-    description: page.description,
+    description,
     ...(indexable ? {} : { robots: { index: false, follow: true } }),
     alternates: { canonical },
     openGraph: {
       title: page.title,
-      description: page.description,
+      description,
       url: pageUrl,
       siteName: SITE_NAME,
       type: "website",
@@ -43,7 +45,7 @@ export function pageMetadata(
     twitter: {
       card: "summary_large_image",
       title: page.title,
-      description: page.description,
+      description,
     },
   };
 }

@@ -580,6 +580,9 @@ export const PAGES: PageEntry[] = [
       "Cool symbols copy and paste. Copy cool Unicode symbols: stars, hearts, arrows, checks, and separators. A symbol list—not letter fonts and not kaomoji faces.",
     fellowKeywords: fellows(
       "cool symbols",
+      "copy and paste symbols",
+      "symbols copy and paste",
+      "cute symbols",
       "text symbols copy paste",
       "special symbols copy and paste",
     ),
@@ -1963,7 +1966,7 @@ export const SITE_URL = resolveSiteUrl();
  * quarterly / yearly). Do not set it to "today" on every deploy — that makes
  * every URL look freshly updated and creates false churn in GSC.
  */
-export const CONTENT_UPDATED_AT = "2026-09-23";
+export const CONTENT_UPDATED_AT = "2026-09-22";
 
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);

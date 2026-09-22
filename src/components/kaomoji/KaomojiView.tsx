@@ -40,6 +40,7 @@ import {
   getPageByUrl,
   getTopicalRelated,
 } from "@/data/pages/registry";
+import { getSerpSpecimen } from "@/lib/seo/specimens";
 
 type KaomojiListViewProps = {
   config: KaomojiList;
@@ -140,7 +141,11 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         ]}
       />
 
-      <PageHero h1={config.h1} lead={config.description} />
+      <PageHero
+        h1={config.h1}
+        lead={config.description}
+        specimenPath={getSerpSpecimen(url) ? url : undefined}
+      />
 
       {config.canonicalLead ? (
         <p className="seo-lead">{config.canonicalLead}</p>
@@ -345,7 +350,11 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
         ]}
       />
 
-      <PageHero h1={serp.h1} lead={serp.heroLead} />
+      <PageHero
+        h1={serp.h1}
+        lead={serp.heroLead}
+        specimenPath="/kaomoji/"
+      />
 
       {hubSlug !== "kaomoji" ? (
         <p className="seo-lead" role="note">
