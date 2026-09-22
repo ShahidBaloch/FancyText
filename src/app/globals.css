@@ -1575,6 +1575,17 @@ a.use-card:hover {
 }
 
 /* ——— Footer ——— */
+.ad-placement {
+  margin: 1.25rem 0 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ad-placement--footer {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
 .site-footer {
   margin-top: auto;
   border-top: 1px solid var(--line);
@@ -3326,6 +3337,20 @@ a.use-card:hover {
 
   .codes-table-wrap {
     overflow-x: visible;
+  }
+}
+
+@media (max-width: 360px) {
+  .kaomoji-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kaomoji-grid--emoji {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .symbol-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

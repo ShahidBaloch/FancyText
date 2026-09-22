@@ -13,6 +13,9 @@
  *
  * Related: /privacy/ discloses advertising partners and the Google partners
  * data-use link. Footer already links Privacy sitewide.
+ *
+ * Enable checklist: docs/seo-adsense-gate.md — set ADS_CONSENT_READY only after
+ * CMP verification; run `npm run check:ads`.
  */
 
 export const CMP_REQUIRED_REGIONS = ["EEA", "UK", "CH"] as const;

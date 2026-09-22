@@ -63,12 +63,14 @@ export const PAGES: PageEntry[] = [
     url: "/cursive-text-generator/",
     group: "B_Cursive",
     primaryKeyword: "cursive text generator",
+    updated: "2026-09-22",
     title: "Cursive Text Generator — Script Fonts Copy & Paste",
     description:
       "Cursive text generator. Type a name or phrase into cursive Unicode. Copy elegant script words plus the full A–Z alphabet—no font download.",
     fellowKeywords: fellows(
       "elegant cursive fonts copy and paste",
       "cursive copy and paste fonts",
+      "cursive letters copy and paste",
       "cursive alphabet",
       "script font generator",
       "names in cursive generator",
@@ -749,6 +751,7 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji/",
     group: "F_Kaomoji",
     primaryKeyword: "kaomoji",
+    updated: "2026-09-22",
     title: KAOMOJI_HUB_VARIANTS.kaomoji.title,
     description: KAOMOJI_HUB_VARIANTS.kaomoji.description,
     fellowKeywords: fellows(
@@ -853,10 +856,11 @@ export const PAGES: PageEntry[] = [
     url: "/cute-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cute kaomoji",
+    updated: "2026-09-22",
     title: "Cute Kaomoji Copy Paste — (｡◕‿◕｡) Kawaii | FancifyText",
     description:
       "Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.",
-    fellowKeywords: fellows("kawaii kaomoji", "cute text faces"),
+    fellowKeywords: fellows("kawaii kaomoji", "cute text faces", "cute emoji combos"),
   },
   {
     phase: 5,
@@ -884,6 +888,7 @@ export const PAGES: PageEntry[] = [
     url: "/heart-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "heart kaomoji",
+    updated: "2026-09-22",
     title: "Heart Kaomoji Copy Paste — ♡ Love Text Faces | FancifyText",
     description:
       "Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.",
@@ -1048,6 +1053,7 @@ export const PAGES: PageEntry[] = [
     url: "/star-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "star kaomoji",
+    updated: "2026-09-22",
     title: "Star Kaomoji Copy Paste — ☆ Aesthetic Sparkle | FancifyText",
     description:
       "Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.",
@@ -1059,6 +1065,7 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji-dot-art/",
     group: "F_Kaomoji",
     primaryKeyword: "dot art kaomoji",
+    updated: "2026-09-22",
     title: "Kaomoji Dot Art Copy Paste — Mini ASCII Faces | FancifyText",
     description:
       "Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.",
@@ -1121,6 +1128,7 @@ export const PAGES: PageEntry[] = [
     url: "/lenny-face/",
     group: "F_Kaomoji",
     primaryKeyword: "lenny face",
+    updated: "2026-09-22",
     title: "Lenny Face Copy Paste — ( ͡° ͜ʖ ͡°) | FancifyText",
     description:
       "Copy Lenny face ( ͡° ͜ʖ ͡°) free—meme text emoticons for Discord and Reddit. Tap any variant; plain Unicode, no login.",
@@ -1132,6 +1140,7 @@ export const PAGES: PageEntry[] = [
     url: "/shrug-emoticon/",
     group: "F_Kaomoji",
     primaryKeyword: "shrug emoticon",
+    updated: "2026-09-22",
     title: "Shrug Emoticon Copy Paste — ¯\\_(ツ)_/¯ | FancifyText",
     description:
       "Copy shrug ¯\\_(ツ)_/¯ free—idk text faces for Discord, Instagram & email. Tap to copy; works where emoji keyboards fail.",
