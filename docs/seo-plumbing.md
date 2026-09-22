@@ -25,7 +25,7 @@ npm run build
 
 `check:seo` runs plumbing, duplicate primaryKeyword guard, **content-uniqueness** (including effective meta after SERP specimens), ads gate, sitemap, and llms generation.
 
-GitHub Actions (`.github/workflows/ci.yml`) runs `npm run lint`, `npm run check:seo`, and `npm run build` on every pull request and on pushes to `main`.
+GitHub Actions (`.github/workflows/ci.yml`) runs `npm run lint`, `npm run check:seo`, `npm run build`, and `npm run check:serp-specimen-html` (SSR must contain `serp-specimen` / `home-specimen` on required URLs) on every pull request and on pushes to `main`.
 
 See **`docs/seo-production-audit.md`** for GSC, AdSense review, and intent matrix before production.
 
