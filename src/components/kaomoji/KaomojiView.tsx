@@ -25,7 +25,6 @@ import {
   getHubShowcase,
   getKaomojiHubJumps,
   getKaomojiCatalogStats,
-  getKaomojiList,
   getTailKaomojiLists,
   isKaomojiTopicSpoke,
   kaomojiPathIsIndexable,

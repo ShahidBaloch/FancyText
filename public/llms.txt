@@ -36,7 +36,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /unformat-text/ — convert fancy text to normal — Paste styled Unicode and get plain letters: bold, script, bubble, fullwidth, small caps, and Zalgo decoded
 - /upside-down-text-generator/ — upside down text — Upside down text
 
-## Collections & name fonts
+## Emoji & symbol copy-paste
 
 - /aesthetic-fonts/ — aesthetic fonts — Aesthetic fonts
 - /cat-emoji/ — cat emoji — Cat emoji copy and paste
@@ -44,9 +44,13 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /cute-fonts/ — cute fonts copy and paste — Cute fonts copy and paste
 - /emoji-combos/ — Emoji combos — Emoji combos copy and paste
 - /heart-emoji/ — heart emoji — Heart emoji copy and paste
-- /name-font-generator/ — name fonts — Name fonts
 - /star-emoji/ — star emoji — Star emoji copy and paste
 - /stylish-text-generator/ — stylish text generator — Stylish text generator
+- /text-art/ — Text art — Text art copy and paste
+
+## Collections & name fonts
+
+- /name-font-generator/ — name fonts — Name fonts
 
 ## Platform & LinkedIn tools
 
@@ -76,7 +80,6 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) free
 - /shrug-emoticon/ — shrug emoticon — Copy shrug ¯\_(ツ)_/¯ free
 - /star-kaomojis/ — star kaomoji — Copy star kaomoji & sparkle text
-- /text-art/ — Text art — Text art copy and paste
 
 ## Guides
 

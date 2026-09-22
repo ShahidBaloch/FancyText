@@ -1374,12 +1374,12 @@ export function getRelatedPages(
 const TOPICAL_RELATED: Record<string, string[]> = {
   "/": [
     "/copy-paste-fonts/",
+    "/emoji-combos/",
+    "/kaomoji/",
     "/bold-text-generator/",
     "/cursive-text-generator/",
     "/linkedin-text-formatter/",
-    "/discord-color-text/",
-    "/instagram-font-generator/",
-    "/cool-text-generator/",
+    "/cool-symbols/",
     "/unformat-text/",
   ],
   "/bold-text-generator/": [
@@ -1529,11 +1529,44 @@ const TOPICAL_RELATED: Record<string, string[]> = {
   ],
   "/copy-paste-fonts/": [
     "/",
+    "/emoji-combos/",
+    "/cute-symbols/",
+    "/aesthetic-symbols/",
     "/bold-text-generator/",
     "/cursive-text-generator/",
     "/aesthetic-fonts/",
     "/cute-fonts/",
-    "/cool-text-generator/",
+  ],
+  "/heart-kaomojis/": [
+    "/heart-emoji/",
+    "/kiss-kaomojis/",
+    "/hug-kaomojis/",
+    "/emoji-combos/",
+    "/cute-kaomojis/",
+    "/kaomoji/",
+  ],
+  "/star-kaomojis/": [
+    "/star-emoji/",
+    "/carrd-kaomojis/",
+    "/aesthetic-symbols/",
+    "/emoji-combos/",
+    "/cool-symbols/",
+    "/kaomoji/",
+  ],
+  "/cute-kaomojis/": [
+    "/emoji-combos/",
+    "/cute-symbols/",
+    "/cute-fonts/",
+    "/cat-emoji/",
+    "/heart-kaomojis/",
+    "/kaomoji/",
+  ],
+  "/kaomoji-dot-art/": [
+    "/text-art/",
+    "/lenny-face/",
+    "/funny-kaomojis/",
+    "/cute-kaomojis/",
+    "/kaomoji/",
   ],
   "/text-art/": [
     "/kaomoji/",
@@ -2011,6 +2044,11 @@ function pagesFromUrls(urls: string[], currentUrl: string, limit: number): PageE
     .map((u) => getPageByUrl(u))
     .filter((p): p is PageEntry => Boolean(p && p.url !== currentUrl))
     .slice(0, limit);
+}
+
+/** Keys present in TOPICAL_RELATED (for SEO plumbing checks). */
+export function getTopicalRelatedUrlKeys(): string[] {
+  return Object.keys(TOPICAL_RELATED);
 }
 
 export function getTopicalRelated(

@@ -25,7 +25,6 @@ export function pageMetadata(
 ): Metadata {
   const canonicalPath = opts?.canonicalPath ?? page.url;
   const canonical = new URL(canonicalPath, SITE_URL).toString();
-  const pageUrl = new URL(page.url, SITE_URL).toString();
   const description = descriptionWithSerpSpecimen(page.url, page.description);
   const indexable =
     page.index !== false && kaomojiPathIsIndexable(page.url);
@@ -37,7 +36,7 @@ export function pageMetadata(
     openGraph: {
       title: page.title,
       description,
-      url: pageUrl,
+      url: canonical,
       siteName: SITE_NAME,
       type: "website",
       locale: "en_US",

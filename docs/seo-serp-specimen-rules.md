@@ -32,6 +32,7 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 
 - `/` — font rotate (G9)
 - `/copy-paste-fonts/` — font rotate (G5)
+- `/cursive-text-generator/` — font rotate (cursive hub)
 - `/cool-symbols/`, `/cute-symbols/`, `/aesthetic-symbols/` — glyph strip (G2, G8)
 - `/emoji-combos/` — glyph strip (G1)
 - `/text-art/` — glyph strip (G3)
@@ -44,4 +45,4 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 
 Add new landings by extending `SERP_SPECIMENS` and `PageHero specimenPath`.
 
-Before release, run the mobile checklist in `docs/seo-responsive-qa.md` (Task 7).
+Before release, run `npm run check:seo` (see `docs/seo-plumbing.md`) and the mobile checklist in `docs/seo-responsive-qa.md` (Task 7).

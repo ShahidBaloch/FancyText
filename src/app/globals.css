@@ -1563,6 +1563,17 @@ a.use-card:hover {
   line-height: 1.45;
 }
 
+.ad-placement {
+  margin: 1.25rem 0 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ad-placement--footer {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
 /* ——— Footer ——— */
 .ad-placement {
   margin: 1.25rem 0 0;

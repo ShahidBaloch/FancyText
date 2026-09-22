@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
+import { AdSenseProvider } from "@/components/ads/AdSenseProvider";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { AdSenseProvider } from "@/components/ads/AdSenseProvider";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
 import "./globals.css";
