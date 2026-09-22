@@ -9,7 +9,7 @@ import { RelatedTools } from "@/components/seo/RelatedTools";
 import { BioBuilder } from "@/components/tool/BioBuilder";
 import { DiscordColorTool } from "@/components/tool/DiscordColorTool";
 import { HtmlRichTool } from "@/components/tool/HtmlRichTool";
-import { StyleGallery } from "@/components/tool/StyleGallery";
+import { StyleGalleryLazy } from "@/components/tool/load-style-gallery";
 import { FIELD_UNICODE_LABELS, type PlatformConfig } from "@/data/platforms";
 import { SITE_NAME, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 import { DISCORD_COLOR_CODES } from "@/lib/discord/ansi";
@@ -64,7 +64,7 @@ export function PlatformView({ config }: PlatformViewProps) {
         ) : config.toolType === "bio-builder" ? (
           <BioBuilder initialText={config.initialText} />
         ) : (
-          <StyleGallery
+          <StyleGalleryLazy
             initialText={config.initialText}
             styleIds={config.styleIds}
             presets={config.presets}

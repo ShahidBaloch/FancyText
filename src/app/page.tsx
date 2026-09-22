@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
 import { FaqSection } from "@/components/seo/FaqSection";
@@ -10,7 +11,8 @@ import {
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
-import { HomePlayground } from "@/components/tool/HomePlayground";
+import { StyleGalleryFallback } from "@/components/tool/StyleGalleryFallback";
+import { ToolStagePlaceholder } from "@/components/tool/ToolStagePlaceholder";
 import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
 import {
   SITE_NAME,
@@ -21,6 +23,24 @@ import {
 import { pageMetadata } from "@/lib/seo/metadata";
 
 const page = getPageByUrl("/")!;
+
+const HomePlayground = dynamic(
+  () =>
+    import("@/components/tool/HomePlayground").then((m) => ({
+      default: m.HomePlayground,
+    })),
+  {
+    loading: () => (
+      <>
+        <ToolStagePlaceholder />
+        <section className="seo-section" aria-labelledby="gallery-heading">
+          <h2 id="gallery-heading">Popular Unicode styles</h2>
+          <StyleGalleryFallback />
+        </section>
+      </>
+    ),
+  },
+);
 
 export const metadata = pageMetadata(page);
 
@@ -33,7 +53,7 @@ const faqItems = [
   {
     question: "Is this the same page as copy and paste fonts?",
     answer:
-      "No. This homepage is the live converter: type once, preview every style. Copy and paste fonts is a catalog of collections (aesthetic, cute, cursive, cool lookalikes, platforms, big ASCII). Stay here to try styles. Open the catalog when you already know the vibe.",
+      "No. This homepage is the live converter: type once, preview popular styles and open the full gallery via copy and paste fonts when you want every lookalike. That catalog lists aesthetic, cute, cursive, cool, platform, and big ASCII collections.",
   },
   {
     question: "Why do some styles become empty boxes?",
@@ -92,8 +112,8 @@ export default function HomePage() {
           name: "How to use the fancy text generator",
           steps: [
             "Type a name, bio line, or short caption in the box at the top.",
-            "Tap a style chip. This page shows the full set—cool lookalikes, cursive, bubble, and the rest.",
-            "Tap Copy, then paste into the app. Stay here if you want every style at once; collections live on copy and paste fonts.",
+            "Tap a style chip (cursive, bold, bubble, and more). The live preview shows popular styles; open copy and paste fonts for every lookalike.",
+            "Tap Copy, then paste into Instagram, Discord, TikTok, or WhatsApp. Need the full 67-style grid? Use copy and paste fonts.",
           ],
         }}
       />
@@ -119,8 +139,10 @@ export default function HomePage() {
             <div>
               <strong>Tap a style</strong>
               <p>
-                Cursive, bold, bubble, and the rest update live. Star a favorite
-                if you keep coming back to it.
+                Twelve high-traffic styles update live here. Star a favorite, or
+                open{" "}
+                <Link href="/copy-paste-fonts/">copy and paste fonts</Link> for
+                the full grid.
               </p>
             </div>
           </li>

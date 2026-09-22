@@ -2157,15 +2157,7 @@ export function getLivePages(): PageEntry[] {
   return PAGES.filter((p) => p.phase <= LIVE_MAX_PHASE);
 }
 
-export const SITE_NAME = "FancifyText";
-
-const DEFAULT_SITE_URL = "https://fancifytext.com";
-
-/**
- * Canonical site origin used in metadata, sitemap, and JSON-LD.
- * Prefer NEXT_PUBLIC_SITE_URL; otherwise always apex (never *.vercel.app).
- */
-export const SITE_URL = resolveSiteUrl();
+export { SITE_NAME, SITE_URL, resolveSiteUrl } from "@/data/site";
 
 /**
  * Publisher-bumped sitemap lastmod (YYYY-MM-DD).
@@ -2180,32 +2172,3 @@ export const CONTENT_UPDATED_AT = "2026-09-22";
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);
 
-function resolveSiteUrl(): string {
-  const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);
-  if (fromEnv && isUsableSiteOrigin(fromEnv)) return fromEnv;
-  return DEFAULT_SITE_URL;
-}
-
-function normalizeOrigin(raw: string | undefined): string | null {
-  const value = raw?.trim();
-  if (!value) return null;
-  try {
-    const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
-    return new URL(withProtocol).origin;
-  } catch {
-    return null;
-  }
-}
-
-/** Reject placeholder / junk values like "aaa" that break canonicals. */
-function isUsableSiteOrigin(origin: string): boolean {
-  try {
-    const { hostname } = new URL(origin);
-    if (!hostname.includes(".")) return false;
-    if (hostname === "localhost" || hostname === "aaa") return false;
-    if (hostname.endsWith(".vercel.app")) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}

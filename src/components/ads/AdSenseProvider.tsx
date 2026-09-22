@@ -1,5 +1,3 @@
-"use client";
-
 import Script from "next/script";
 import { ADSENSE_CLIENT_ID, canServeAdSense } from "@/lib/ads/config";
 

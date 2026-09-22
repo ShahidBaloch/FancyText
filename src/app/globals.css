@@ -82,6 +82,11 @@ html {
 
 .skip-link:focus,
 .skip-link:focus-visible {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
@@ -275,7 +280,10 @@ a {
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--muted);
-  padding: 0.42rem 0.7rem;
+  padding: 0.55rem 0.85rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
   border-radius: 999px;
   white-space: nowrap;
   transition:
@@ -299,7 +307,27 @@ a {
   padding: 1.5rem 0 4.5rem;
 }
 
+/* Below-fold sections: skip layout work until near viewport (PageSpeed / LCP). */
+.seo-section--below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
 /* ——— Home hero ——— */
+/* System stack for hero LCP — Sora applies sitewide after optional load. */
+.home-brand,
+.home-title,
+.home-lead {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
 .home-hero {
   position: relative;
   overflow: hidden;
@@ -716,6 +744,56 @@ a {
   scroll-margin-top: 5.5rem;
 }
 
+.tool-stage--loading {
+  min-height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-stage-loading-inner {
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.tool-stage-loading-bar {
+  display: block;
+  height: 0.35rem;
+  margin: 0 auto 1rem;
+  max-width: 12rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--line) 0%,
+    var(--accent-soft) 50%,
+    var(--line) 100%
+  );
+  background-size: 200% 100%;
+  animation: tool-stage-shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes tool-stage-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.gallery-loading {
+  min-height: 8rem;
+  padding: 1.25rem 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-stage-loading-bar {
+    animation: none;
+    background: var(--line);
+  }
+}
+
 .field-label {
   display: block;
   margin-bottom: 0.45rem;
@@ -764,7 +842,9 @@ a {
   background: var(--panel-solid);
   color: var(--ink);
   border-radius: 999px;
-  padding: 0.42rem 0.85rem;
+  padding: 0.55rem 0.95rem;
+  min-height: 2.75rem;
+  touch-action: manipulation;
   font: inherit;
   font-size: 0.86rem;
   font-weight: 600;
@@ -860,7 +940,10 @@ a {
   background: color-mix(in srgb, #fff 12%, transparent);
   color: inherit;
   border-radius: 999px;
-  padding: 0.38rem 0.9rem;
+  padding: 0.5rem 1rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  touch-action: manipulation;
   font: inherit;
   font-size: 0.8rem;
   font-weight: 600;

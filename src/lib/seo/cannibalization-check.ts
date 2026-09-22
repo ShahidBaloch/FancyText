@@ -1,7 +1,7 @@
 import {
   kaomojiHubCanonicalPath,
   kaomojiPathIsIndexable,
-} from "@/data/kaomoji";
+} from "@/data/kaomoji-index";
 import { getLivePages } from "@/data/pages/registry";
 
 function isIndexablePage(url: string, index?: boolean): boolean {

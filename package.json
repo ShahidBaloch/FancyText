@@ -13,8 +13,9 @@
     "check:sitemap": "node scripts/write-sitemap.mjs",
     "check:llms": "node scripts/write-llms.mjs",
     "check:ads": "node scripts/check-ads-gate.mjs",
-    "check:seo": "node scripts/check-seo-plumbing.mjs && node scripts/check-cannibalization.mjs && node scripts/check-ads-gate.mjs && node scripts/write-sitemap.mjs && node scripts/write-llms.mjs",
-    "check:cannibalization": "node scripts/check-cannibalization.mjs"
+    "check:seo": "node scripts/check-seo-plumbing.mjs && node scripts/check-cannibalization.mjs && node scripts/check-content-uniqueness.mjs && node scripts/check-ads-gate.mjs && node scripts/write-sitemap.mjs && node scripts/write-llms.mjs",
+    "check:cannibalization": "node scripts/check-cannibalization.mjs",
+    "check:content-uniqueness": "node scripts/check-content-uniqueness.mjs"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -23,10 +24,10 @@
     "react-dom": "19.2.8"
   },
   "browserslist": [
-    "chrome >= 111",
-    "edge >= 111",
-    "firefox >= 111",
-    "safari >= 16.4"
+    "chrome >= 120",
+    "edge >= 120",
+    "firefox >= 120",
+    "safari >= 17.2"
   ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -34,9 +35,11 @@
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chrome-launcher": "^1.2.1",
     "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "lighthouse": "^12.8.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
