@@ -16,6 +16,7 @@ import { KaomojiHubJumpFilter } from "@/components/kaomoji/KaomojiHubJumpFilter"
 import { KaomojiHubNav } from "@/components/kaomoji/KaomojiHubNav";
 import { KaomojiMeaningTable } from "@/components/kaomoji/KaomojiMeaningTable";
 import { KaomojiSituationTable } from "@/components/kaomoji/KaomojiSituationTable";
+import { KAOMOJI_AGENT_ROUTES } from "@/data/kaomoji-agent-guide";
 import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
@@ -411,6 +412,38 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
         <>
           <KaomojiHubNav />
           <KaomojiHubJumpFilter jumps={getKaomojiHubJumps()} />
+          <section
+            className="seo-section seo-prose"
+            aria-labelledby="agent-routing-heading"
+            id="agent-routing"
+          >
+            <h2 id="agent-routing-heading">
+              Which kaomoji page to use (search &amp; AI answers)
+            </h2>
+            <p>
+              One indexed URL per intent—pick the match below instead of
+              duplicate browse lists. Full machine-readable routing:{" "}
+              <Link href="/llms.txt">llms.txt</Link>.
+            </p>
+            <ul>
+              {KAOMOJI_AGENT_ROUTES.map((row) => (
+                <li key={row.citePaths.join("-")}>
+                  <strong>{row.intents}</strong> →{" "}
+                  {row.citePaths.map((path, i) => (
+                    <span key={path}>
+                      {i > 0 ? " · " : null}
+                      <Link href={path}>{path}</Link>
+                    </span>
+                  ))}{" "}
+                  — {row.note}
+                </li>
+              ))}
+            </ul>
+            <p>
+              Site search for agents:{" "}
+              <Link href="/search/">/search/?q=your+keywords</Link>
+            </p>
+          </section>
         </>
       ) : null}
 

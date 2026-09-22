@@ -21,6 +21,7 @@ const LEGAL = [
   { href: "/contact/", label: "Contact" },
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },
+  { href: "/llms.txt", label: "LLMs.txt" },
 ];
 
 const BRAND_WORDS: Record<string, string> = {

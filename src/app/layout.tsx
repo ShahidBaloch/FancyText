@@ -38,6 +38,9 @@ export const metadata: Metadata = {
       "en": SITE_URL,
       "x-default": SITE_URL,
     },
+    types: {
+      "text/plain": [{ url: "/llms.txt", title: "LLMs.txt site guide" }],
+    },
   },
   ...(isPreview ? { robots: { index: false, follow: false } } : {}),
   ...(gscVerification

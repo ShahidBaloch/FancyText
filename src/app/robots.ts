@@ -13,12 +13,20 @@ export default function robots(): MetadataRoute.Robots {
     };
   }
 
+  const publicAllow = { allow: "/" as const, disallow: ["/api/"] as string[] };
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/api/"],
-    },
+    rules: [
+      { userAgent: "*", ...publicAllow },
+      // Explicit allow for answer-engine / agentic fetchers (same policy as *).
+      { userAgent: "GPTBot", ...publicAllow },
+      { userAgent: "ChatGPT-User", ...publicAllow },
+      { userAgent: "OAI-SearchBot", ...publicAllow },
+      { userAgent: "ClaudeBot", ...publicAllow },
+      { userAgent: "anthropic-ai", ...publicAllow },
+      { userAgent: "PerplexityBot", ...publicAllow },
+      { userAgent: "Google-Extended", ...publicAllow },
+    ],
     sitemap: new URL("/sitemap.xml", SITE_URL).toString(),
+    host: new URL(SITE_URL).host,
   };
 }

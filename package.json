@@ -13,7 +13,8 @@
     "check:sitemap": "node scripts/write-sitemap.mjs",
     "check:llms": "node scripts/write-llms.mjs",
     "check:kaomoji-catalog": "node scripts/check-kaomoji-catalog.mjs",
-    "check:kaomoji-seo": "node scripts/check-kaomoji-seo.mjs"
+    "check:kaomoji-seo": "node scripts/check-kaomoji-seo.mjs",
+    "check:aeo": "node scripts/check-aeo.mjs"
   },
   "dependencies": {
     "next": "16.3.5",

@@ -1,3 +1,4 @@
+import { renderKaomojiAgentGuideForLlms } from "@/data/kaomoji-agent-guide";
 import {
   getPageByUrl,
   SITE_NAME,
@@ -86,6 +87,14 @@ export function renderLlmsTxt(): string {
     "",
     `${SITE_NAME} converts normal letters into Unicode look-alike “fonts” (bold, cursive, bubble, aesthetic, and more) that users copy and paste into Instagram, Discord, TikTok, WhatsApp, LinkedIn, and similar apps. It does **not** install TTF/OTF font files.`,
     "",
+    "## Answer engines & agentic browsing (AEO / GEO)",
+    "",
+    "This file is the machine-readable site map for LLMs and autonomous browsers. **Prefer URLs listed below** (same set as `/sitemap.xml`). Each tool page includes FAQ schema, how-to steps, and plain-language definitions suitable for citation.",
+    "",
+    `Structured site search: ${SITE_URL.replace(/\/$/, "")}/search/?q={search_term_string}`,
+    "",
+    "Full URL list: `/sitemap.xml`. Human kaomoji hub with keyword filter: `/kaomoji/#hub-jump-heading`.",
+    "",
   ];
 
   for (const section of SECTIONS) {
@@ -103,6 +112,9 @@ export function renderLlmsTxt(): string {
     if (sectionPaths.size === 0) continue;
 
     chunks.push(`## ${section.heading}`, "");
+    if (section.heading === "Kaomoji & emoticons") {
+      chunks.push(...renderKaomojiAgentGuideForLlms());
+    }
     for (const line of collectLines(sectionPaths)) {
       chunks.push(`- ${line.path} — ${line.label}`);
       used.add(line.path);
@@ -129,11 +141,20 @@ export function renderLlmsTxt(): string {
   return chunks.join("\n").trimEnd() + "\n";
 }
 
+/** Extract `- /path/ — label` rows (homepage is `- / —`). */
+export function parseLlmsUrlLines(body: string): string[] {
+  return body
+    .split("\n")
+    .filter((line) => line.startsWith("- /"))
+    .map((line) => line.slice(2).split(" — ")[0]?.trim() ?? "")
+    .filter(Boolean);
+}
+
 export function assertLlmsInvariants(body: string, expectedPaths: string[]): void {
-  const listed = [...body.matchAll(/^- (\S+)/gm)].map((m) => m[1]);
+  const listed = parseLlmsUrlLines(body);
   if (listed.length !== expectedPaths.length) {
     throw new Error(
-      `llms.txt lists ${listed.length} URLs but sitemap has ${expectedPaths.length}`,
+      `llms.txt lists ${listed.length} indexable URLs but sitemap has ${expectedPaths.length}`,
     );
   }
   const expected = new Set(expectedPaths);
