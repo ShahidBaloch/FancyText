@@ -1,8 +1,36 @@
 import {
+  COQUETTE_BEAR_HIGHLIGHTS,
+  COQUETTE_BUNNY_HIGHLIGHTS,
+  COQUETTE_CAT_HIGHLIGHTS,
+  COQUETTE_DOG_HIGHLIGHTS,
+  COQUETTE_KAOMOJI_FACES,
+} from "@/data/coquette-kaomoji-faces";
+import { KAOMOJI_FULL_CATALOG_SLUGS } from "@/data/kaomoji-catalog-policy";
+import {
   INDEXABLE_KAOMOJI_SLUGS,
   kaomojiHubCanonicalPath,
   kaomojiPathIsIndexable,
 } from "@/data/kaomoji-index";
+import {
+  MULTILINE_KAOMOJI_HUB_FACES,
+  getMultilineHighlightsForSlug,
+  getMultilineKaomojiForSlug,
+} from "@/data/multiline-kaomoji-faces";
+import {
+  KAOMOJI_SEARCH_INTENT_BY_SLUG,
+  getKaomojiSearchIntentsForSlug,
+} from "@/data/kaomoji-search-intent";
+
+function mergeKaomojiFaces(primary: string[], secondary: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const face of [...primary, ...secondary]) {
+    if (seen.has(face)) continue;
+    seen.add(face);
+    out.push(face);
+  }
+  return out;
+}
 import {
   KAOMOJI_HUB,
   KAOMOJI_HUB_AESTHETIC_SAMPLES,
@@ -51,6 +79,7 @@ export type KaomojiList = {
   howToSteps?: string[];
   mobileNote?: string;
   canonicalLead?: string;
+  catalogNote?: string;
   ogSubtitle?: string;
   whereHeading?: string;
   whereBullets?: string[];
@@ -145,7 +174,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "bear-kaomojis",
     "bear",
     "bear kaomoji",
-    [
+    mergeKaomojiFaces(COQUETTE_BEAR_HIGHLIGHTS, [
       "ʕ•ᴥ•ʔ",
       "ʕ·ᴥ·ʔ",
       "ʕ￫ᴥ￩ʔ",
@@ -176,13 +205,13 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "ʕᵔᴥᵔʔ♡",
       "ʕっ•ᴥ•ʔっ💕",
       "ʕ￫ᴥ￩ʔﾉ",
-    ],
+    ]),
   ),
   list(
     "cat-kaomojis",
     "cat",
     "cat kaomoji",
-    [
+    mergeKaomojiFaces(COQUETTE_CAT_HIGHLIGHTS, [
       "(=^･ω･^=)",
       "(=^･ｪ･^=)",
       "(^・ω・^ )",
@@ -213,7 +242,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "(=^ ◡ ^=)",
       "ฅ(⌯͒• ɪ •⌯͒)ฅ",
       "(=^･ω･^)y＝",
-    ],
+    ]),
   ),
   list(
     "confused-kaomojis",
@@ -853,7 +882,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "dog-kaomojis",
     "dog",
     "dog kaomoji",
-    [
+    mergeKaomojiFaces(COQUETTE_DOG_HIGHLIGHTS, [
       "U・ᴥ・U",
       "▼・ᴥ・▼",
       "U＾ェ＾U",
@@ -884,7 +913,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "U＾∀＾U",
       "▼ω▼",
       "U・ᴥ・*U",
-    ],
+    ]),
   ),
   list(
     "funny-kaomojis",
@@ -1216,7 +1245,46 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "(^▽^)✧",
     "(^∇^)～",
   ]),
-  list("bunny-kaomojis", "bunny", "bunny kaomoji", [
+  list(
+    "multiline-kaomojis",
+    "multiline",
+    "multiline kaomoji",
+    [...MULTILINE_KAOMOJI_HUB_FACES],
+    [
+      "multiline ascii kaomoji",
+      "multiline emoticon",
+      "angry multiline kaomoji",
+      "happy multiline kaomoji",
+      "ascii text face",
+    ],
+    "Multiline kaomoji stack rows—angry table-flip blocks, happy cheer ASCII, crying layouts, hugs, and more. Tap to copy with line breaks; coquette aesthetic art has its own page.",
+    "Copy multiline kaomoji—angry, happy, sad, cry & mood ASCII blocks with line breaks. Tap to copy for Discord bios and chat.",
+    "Multiline Kaomoji Copy Paste",
+  ),
+  list(
+    "coquette-kaomojis",
+    "coquette",
+    "coquette kaomoji",
+    [...COQUETTE_KAOMOJI_FACES],
+    [
+      "aesthetic kaomoji",
+      "coquette text art",
+      "multiline kaomoji",
+      "ascii kaomoji art",
+      "tulip bunny kaomoji",
+      "carrd aesthetic kaomoji",
+      "tiktok text art kaomoji",
+      "dog ascii kaomoji",
+    ],
+    "Coquette kaomoji are multiline Unicode text art—soft ♡ bears, ૮ cats, tulip bunnies, and standing dog ASCII like the viral Carrd/TikTok layouts. Tap a block to copy the full shape with line breaks intact.",
+    "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
+    "Coquette Kaomoji & Aesthetic Text Art",
+  ),
+  list(
+    "bunny-kaomojis",
+    "bunny",
+    "bunny kaomoji",
+    mergeKaomojiFaces(COQUETTE_BUNNY_HIGHLIGHTS, [
     "／( ・×・)＼",
     "／(≧ x ≦)＼",
     "(=\\(=^･^=)/=)",
@@ -1248,6 +1316,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "(\\(◕ᴥ◕)/)",
     "(\\(◕∀◕)ゞ",
   ]),
+  ),
 ];
 
 for (const entry of KAOMOJI_LISTS) {
@@ -1264,6 +1333,7 @@ for (const entry of KAOMOJI_LISTS) {
   if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
   if (unique.extraSections) entry.extraSections = unique.extraSections;
   if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
+  if (unique.catalogNote) entry.catalogNote = unique.catalogNote;
   if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
   if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
   if (unique.emojiPicker) entry.emojiPicker = unique.emojiPicker;
@@ -1474,7 +1544,20 @@ export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
   "star-kaomojis",
   "kaomoji-dot-art",
   "carrd-kaomojis",
+  "coquette-kaomojis",
+  "multiline-kaomojis",
 ]);
+
+/** Apply multiline rows: full set on browse moods; teaser only on indexed lists. */
+for (const entry of KAOMOJI_LISTS) {
+  if (KAOMOJI_FULL_CATALOG_SLUGS.has(entry.slug)) continue;
+  const generated = getMultilineKaomojiForSlug(entry.slug);
+  if (!generated.length) continue;
+  const multiline = INDEXABLE_KAOMOJI_SLUGS.has(entry.slug)
+    ? getMultilineHighlightsForSlug(entry.slug)
+    : generated;
+  entry.faces = mergeKaomojiFaces(multiline, entry.faces);
+}
 
 export function isKaomojiTopicSpoke(slug: string): boolean {
   return KAOMOJI_TOPIC_SPOKE_SLUGS.has(slug);
@@ -1488,21 +1571,12 @@ export type KaomojiHubJump = {
   browseOnly?: boolean;
 };
 
-/** Extra hub-filter terms (competitor / long-tail queries). */
-const HUB_JUMP_EXTRA_KEYWORDS: Record<string, string[]> = {
-  "heart-kaomojis": ["love", "love kaomoji", "hearts", "romance", "couple"],
-  "cute-kaomojis": ["kawaii", "cute face", "blush"],
-  "cry-kaomojis": ["crying", "tears", "sad cry"],
-  "cat-kaomojis": [
-    "cute cat",
-    "cute cat kaomoji",
-    "kitty",
-    "neko",
-    "kawaii cat",
-    "cat face",
-  ],
-  "bunny-kaomojis": ["cute bunny", "rabbit"],
-  "kiss-kaomojis": ["love", "smooch"],
+/** @deprecated inline extras — prefer kaomoji-search-intent.ts */
+const HUB_JUMP_LEGACY_EXTRAS: Record<string, string[]> = {
+  "heart-kaomojis": ["love", "hearts", "romance"],
+  "cute-kaomojis": ["cute face"],
+  "cry-kaomojis": ["crying", "tears"],
+  "kiss-kaomojis": ["smooch"],
 };
 
 /** Keyword → list links for the hub filter (client-side, no API). */
@@ -1520,21 +1594,18 @@ export function getKaomojiHubJumps(): KaomojiHubJump[] {
         page.emotion,
         page.slug.replace(/-/g, " "),
         ...page.fellowKeywords,
-        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
+        ...getKaomojiSearchIntentsForSlug(slug),
+        ...(HUB_JUMP_LEGACY_EXTRAS[slug] ?? []),
       ].map((k) => k.toLowerCase()),
     });
   }
 
-  const browseSlugs = [
-    "cat-kaomojis",
-    "bunny-kaomojis",
-    "music-kaomojis",
-    "sleep-kaomojis",
-    "happy-kaomojis",
-    "wink-kaomojis",
-    "angry-kaomojis",
-    "sad-kaomojis",
-  ] as const;
+  const browseSlugs = Object.keys(KAOMOJI_SEARCH_INTENT_BY_SLUG).filter(
+    (slug) =>
+      slug !== "kaomoji" &&
+      !INDEXABLE_KAOMOJI_SLUGS.has(slug) &&
+      Boolean(getKaomojiList(slug)),
+  );
   for (const slug of browseSlugs) {
     const page = getKaomojiList(slug);
     if (!page) continue;
@@ -1547,7 +1618,8 @@ export function getKaomojiHubJumps(): KaomojiHubJump[] {
         page.emotion,
         page.slug.replace(/-/g, " "),
         ...page.fellowKeywords,
-        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
+        ...getKaomojiSearchIntentsForSlug(slug),
+        ...(HUB_JUMP_LEGACY_EXTRAS[slug] ?? []),
       ].map((k) => k.toLowerCase()),
     });
   }
@@ -1597,11 +1669,51 @@ export function getKaomojiCatalogStats(): {
 /** Rounded face count for SERP titles (853 unique → "850+"). */
 export function getKaomojiCatalogPublicClaim(): string {
   const { uniqueFaces } = getKaomojiCatalogStats();
-  return `${Math.floor(uniqueFaces / 10) * 10}+`;
+  return publicFaceCountClaim(uniqueFaces);
+}
+
+export function publicFaceCountClaim(count: number): string {
+  if (count >= 1000) return `${Math.floor(count / 100) * 100}+`;
+  if (count >= 100) return `${Math.floor(count / 10) * 10}+`;
+  return `${count}`;
 }
 
 function withCatalogClaim(text: string, claim: string): string {
   return text.replace(/\d+\+/g, claim);
+}
+
+/** Google SERP + social snippets for a kaomoji list (live grid size on catalog hubs). */
+export function getKaomojiListSerpForMetadata(slug: string): {
+  title: string;
+  description: string;
+  socialDescription: string;
+} | null {
+  const list = getKaomojiList(slug);
+  if (!list) return null;
+  const claim = publicFaceCountClaim(list.faces.length);
+  let description = list.description;
+  const title = list.title;
+
+  if (KAOMOJI_FULL_CATALOG_SLUGS.has(slug)) {
+    description = withCatalogClaim(description, claim);
+    if (!/\d+\+/.test(description)) {
+      const extra = ` ${claim} tap-to-copy blocks.`;
+      description =
+        description.length + extra.length <= 320
+          ? `${description}${extra}`
+          : description;
+    }
+  }
+
+  const subtitle = list.ogSubtitle ?? kaomojiOgSubtitle(slug);
+  let socialDescription = subtitle
+    ? withCatalogClaim(subtitle, claim)
+    : description;
+  if (KAOMOJI_FULL_CATALOG_SLUGS.has(slug) && !/\d+\+/.test(socialDescription)) {
+    socialDescription = `${socialDescription} · ${claim} blocks`.slice(0, 200);
+  }
+
+  return { title, description, socialDescription };
 }
 
 /** Hub SERP with live catalog count substituted into title/description. */
@@ -1747,6 +1859,12 @@ export const KAOMOJI_MEANINGS: KaomojiMeaning[] = [
     name: "Bear",
     meaning:
       "Cozy animal face. The ʕ ʔ are ears and ᴥ is the snout—widely copied for cute names.",
+  },
+  {
+    face: "╱|、\n(˶ᵔ ᵕ ᵔ˶)\n|、˜〵\nじしˍ,)ノ",
+    name: "Coquette cat",
+    meaning:
+      "Soft multiline aesthetic cat—common on Carrd and TikTok bios. Full combo matrix on coquette kaomojis.",
   },
   {
     face: "(=^･ω･^=)",

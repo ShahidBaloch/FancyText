@@ -3,14 +3,21 @@ import { BackToTool } from "@/components/seo/BackToTool";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
-import { JsonLd, itemListJsonLd } from "@/components/seo/JsonLd";
+import {
+  JsonLd,
+  datasetJsonLd,
+  itemListJsonLd,
+  itemListNameForFace,
+} from "@/components/seo/JsonLd";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { KaomojiGrid } from "@/components/kaomoji/KaomojiGrid";
 import { KaomojiHubJumpFilter } from "@/components/kaomoji/KaomojiHubJumpFilter";
+import { KaomojiHubNav } from "@/components/kaomoji/KaomojiHubNav";
 import { KaomojiMeaningTable } from "@/components/kaomoji/KaomojiMeaningTable";
 import { KaomojiSituationTable } from "@/components/kaomoji/KaomojiSituationTable";
+import { KAOMOJI_AGENT_ROUTES } from "@/data/kaomoji-agent-guide";
 import {
   ALL_KAOMOJI_PAGES,
   INDEXABLE_KAOMOJI_SLUGS,
@@ -25,6 +32,7 @@ import {
   getHubShowcase,
   getKaomojiHubJumps,
   getKaomojiCatalogStats,
+  getKaomojiListSerpForMetadata,
   getTailKaomojiLists,
   isKaomojiTopicSpoke,
   kaomojiPathIsIndexable,
@@ -34,11 +42,13 @@ import {
   type KaomojiProseSection,
 } from "@/data/kaomoji";
 import {
+  CONTENT_UPDATED_AT,
   SITE_NAME,
   SITE_URL,
   getPageByUrl,
   getTopicalRelated,
 } from "@/data/pages/registry";
+import { KAOMOJI_FULL_CATALOG_SLUGS } from "@/data/kaomoji-catalog-policy";
 import { getSerpSpecimen } from "@/lib/seo/specimens";
 
 const PICTURE_EMOJI_PAGE: Record<string, { href: string; label: string }> = {
@@ -114,12 +124,18 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
     "Paste in a chat. If it boxes out, pick a shorter face higher in the list.",
   ];
   const listJsonItems = config.faces.slice(0, 12);
+  const multilineList = config.faces.some((f) => f.includes("\n"));
+  const serpMeta = getKaomojiListSerpForMetadata(config.slug);
 
   return (
     <div className="site-shell">
       {page ? (
         <PageJsonLd
-          page={{ ...page, title: config.title, description: config.description }}
+          page={{
+            ...page,
+            title: serpMeta?.title ?? config.title,
+            description: serpMeta?.description ?? config.description,
+          }}
           faq={config.faq}
           crumbName={config.h1}
           howTo={
@@ -143,6 +159,24 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
             name: `${config.primaryKeyword} copy paste list`,
             url: new URL(url, SITE_URL).toString(),
             items: listJsonItems,
+            numberOfItems: config.faces.length,
+            itemName: multilineList ? itemListNameForFace : undefined,
+          })}
+        />
+      ) : null}
+      {indexable && KAOMOJI_FULL_CATALOG_SLUGS.has(config.slug) ? (
+        <JsonLd
+          data={datasetJsonLd({
+            name: `${config.h1} copy-paste library`,
+            description: serpMeta?.description ?? config.description,
+            url: new URL(url, SITE_URL).toString(),
+            keywords: [
+              config.primaryKeyword,
+              ...config.fellowKeywords,
+            ],
+            recordCount: config.faces.length,
+            dateModified: CONTENT_UPDATED_AT,
+            licenseUrl: new URL("/terms/", SITE_URL).toString(),
           })}
         />
       ) : null}
@@ -184,10 +218,14 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
           search. Start from the{" "}
           <Link href="/kaomoji/">kaomoji hub</Link> and use{" "}
           <Link href="/kaomoji/#hub-jump-heading">Find a list by keyword</Link>{" "}
-          for indexed cute, cry, heart, hand, star, Carrd, dot art, Lenny, and
-          shrug pages.
+          for indexed cute, cry, heart, coquette, multiline, hand, star, Carrd,
+          dot art, Lenny, and shrug pages.
         </p>
       )}
+
+      {config.catalogNote ? (
+        <p className="seo-lead">{config.catalogNote}</p>
+      ) : null}
 
       <p className="seo-lead">
         <Link href="#tool">Jump to faces</Link> · {config.faces.length} in this
@@ -356,8 +394,8 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
   );
   const tailLists = getTailKaomojiLists();
   const catalog = getKaomojiCatalogStats();
-  const samples = getHubFaces(96);
-  const moodCopySets = getHubMoodCopySets(8);
+  const samples = getHubFaces(72);
+  const moodCopySets = getHubMoodCopySets(6);
   const hubFaq = [
     ...(serp.leadFaq ? [serp.leadFaq] : []),
     ...KAOMOJI_HUB.faq,
@@ -393,6 +431,20 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
             name: `${serp.primaryKeyword} copy paste list`,
             url: absoluteHubUrl,
             items: itemListFaces,
+            numberOfItems: catalog.uniqueFaces,
+          })}
+        />
+      ) : null}
+      {hubSlug === "kaomoji" ? (
+        <JsonLd
+          data={datasetJsonLd({
+            name: "FancifyText kaomoji library",
+            description: serp.description,
+            url: absoluteHubUrl,
+            keywords: ["kaomoji", "japanese emoticon", "text face", "copy paste"],
+            recordCount: catalog.uniqueFaces,
+            dateModified: CONTENT_UPDATED_AT,
+            licenseUrl: new URL("/terms/", SITE_URL).toString(),
           })}
         />
       ) : null}
@@ -459,7 +511,42 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
       <p className="seo-lead">{serp.introBelowHero}</p>
 
       {hubSlug === "kaomoji" ? (
-        <KaomojiHubJumpFilter jumps={getKaomojiHubJumps()} />
+        <>
+          <KaomojiHubNav />
+          <KaomojiHubJumpFilter jumps={getKaomojiHubJumps()} />
+          <section
+            className="seo-section seo-prose"
+            aria-labelledby="agent-routing-heading"
+            id="agent-routing"
+          >
+            <h2 id="agent-routing-heading">
+              Which kaomoji page to use (search &amp; AI answers)
+            </h2>
+            <p>
+              One indexed URL per intent—pick the match below instead of
+              duplicate browse lists. Full machine-readable routing:{" "}
+              <Link href="/llms.txt">llms.txt</Link>.
+            </p>
+            <ul>
+              {KAOMOJI_AGENT_ROUTES.map((row) => (
+                <li key={row.citePaths.join("-")}>
+                  <strong>{row.intents}</strong> →{" "}
+                  {row.citePaths.map((path, i) => (
+                    <span key={path}>
+                      {i > 0 ? " · " : null}
+                      <Link href={path}>{path}</Link>
+                    </span>
+                  ))}{" "}
+                  — {row.note}
+                </li>
+              ))}
+            </ul>
+            <p>
+              Site search for agents:{" "}
+              <Link href="/search/">/search/?q=your+keywords</Link>
+            </p>
+          </section>
+        </>
       ) : null}
 
       <section
@@ -519,12 +606,11 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
       <section className="seo-section" aria-labelledby="emotions-heading">
         <h2 id="emotions-heading">Start with a mood or topic</h2>
         <p className="seo-lead">
-          Cards open indexed lists only (cute, cry, heart, hand, star, Carrd,
-          dot art, Lenny, shrug). This hub shows a mixed sample—not the full
-          inventory for each topic. Need tears or love? Use{" "}
-          <Link href="/cry-kaomojis/">cry</Link> or{" "}
-          <Link href="/heart-kaomojis/">heart</Link> lists instead of duplicating
-          them here.
+          Cards link to indexed lists only—cute, cry, heart, multiline, coquette,
+          hand, star, Carrd, dot art, Lenny, shrug. Angry/happy/sad full grids
+          stay on browse URLs (menu above) so they do not compete in Google with{" "}
+          <Link href="/multiline-kaomojis/">multiline kaomojis</Link> or indexed
+          moods.
         </p>
         <ul className="kaomoji-emotion-grid">
           {featuredShowcase.map((item) => (
@@ -672,9 +758,9 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
       <section className="seo-section" aria-labelledby="lists-heading">
         <h2 id="lists-heading">More mood lists</h2>
         <p className="seo-lead">
-          Angry, cat, hug, and the rest stay live so you can browse a full
-          emotion without mixing it into the hub. Cute, cry, heart, Lenny, and
-          shrug are the lists worth sharing.
+          Browse-only lists (angry, happy, cat, hug, …) are linked from the hub
+          menu—not indexed in Google. Share indexed URLs from the menu’s first
+          three tabs when you want a stable search landing page.
         </p>
         <ul className="taxonomy-links">
           {tailLists.map((k) => (

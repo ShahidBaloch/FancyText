@@ -811,8 +811,13 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "bear kaomoji",
     title: "Bear Kaomojis Copy and Paste | FancifyText",
-    description: "Copy bear kaomoji faces like ʕ•ᴥ•ʔ. Free cute bear emoticons.",
-    fellowKeywords: fellows("bear face emoticon", "cute bear kaomoji"),
+    description:
+      "Copy bear kaomoji—ʕ•ᴥ•ʔ, coquette ♡ bear art & teddy text faces for Discord and soft bios.",
+    fellowKeywords: fellows(
+      "bear face emoticon",
+      "cute bear kaomoji",
+      "coquette bear kaomoji",
+    ),
   },
   {
     phase: 5,
@@ -822,11 +827,12 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cat kaomoji",
     title: "Cat Kaomojis Copy and Paste | FancifyText",
     description:
-      "Copy cute cat kaomoji—(=^･ω･^=) kitty & neko text faces for Discord and pet bios. Tap to copy; animal ears, not generic blush cute.",
+      "Copy cat kaomoji—coquette multiline cats, (=^･ω･^=) neko & kitty text faces for Discord and pet bios. Tap to copy; whiskers and ears, not generic blush cute.",
     fellowKeywords: fellows(
       "cute cat kaomoji",
       "kitty kaomoji",
       "neko kaomoji",
+      "coquette cat kaomoji",
     ),
   },
   {
@@ -1014,8 +1020,13 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "dog kaomoji",
     title: "Dog Kaomojis Copy and Paste | FancifyText",
-    description: "Copy dog kaomoji and puppy text faces.",
-    fellowKeywords: fellows("dog face emoticon", "puppy kaomoji"),
+    description:
+      "Copy dog kaomoji—standing dog ASCII art, puppy snouts & cute canine text faces for pet bios.",
+    fellowKeywords: fellows(
+      "dog face emoticon",
+      "puppy kaomoji",
+      "dog ascii kaomoji",
+    ),
   },
   {
     phase: 5,
@@ -1087,6 +1098,42 @@ export const PAGES: PageEntry[] = [
   },
   {
     phase: 5,
+    priority: "P1",
+    url: "/coquette-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "coquette kaomoji",
+    navLabel: "Coquette / aesthetic kaomoji",
+    title: "Coquette Kaomoji Copy Paste — Multiline Aesthetic Text Art | FancifyText",
+    description:
+      "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
+    fellowKeywords: fellows(
+      "aesthetic kaomoji",
+      "multiline ascii kaomoji",
+      "coquette text art",
+      "ascii kaomoji art",
+      "tulip bunny kaomoji",
+      "carrd aesthetic kaomoji",
+    ),
+  },
+  {
+    phase: 5,
+    priority: "P1",
+    url: "/multiline-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "multiline kaomoji",
+    navLabel: "Multiline mood kaomoji",
+    title: "Multiline Kaomoji Copy Paste — Angry, Happy & Mood ASCII | FancifyText",
+    description:
+      "Copy multiline kaomoji—angry table-flip blocks, happy cheer ASCII, sad/cry layouts & more. Tap to copy full rows with line breaks.",
+    fellowKeywords: fellows(
+      "multiline ascii kaomoji",
+      "angry multiline kaomoji",
+      "happy multiline kaomoji",
+      "multiline emoticon",
+    ),
+  },
+  {
+    phase: 5,
     priority: "P2",
     url: "/happy-kaomojis/",
     group: "F_Kaomoji",
@@ -1122,8 +1169,13 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "bunny kaomoji",
     title: "Bunny Kaomojis Copy and Paste | FancifyText",
-    description: "Copy bunny kaomoji and rabbit-ear text faces.",
-    fellowKeywords: fellows("rabbit kaomoji", "bunny text face"),
+    description:
+      "Copy bunny kaomoji—tulip 🌷 multiline bunnies, rabbit-ear & hop-bracket text faces.",
+    fellowKeywords: fellows(
+      "rabbit kaomoji",
+      "bunny text face",
+      "tulip bunny kaomoji",
+    ),
   },
   {
     phase: 5,
@@ -1173,6 +1225,30 @@ export const PAGES: PageEntry[] = [
     fellowKeywords: fellows("fancifytext contact", "fancy text support"),
     navLabel: "Contact",
     updated: "2026-09-20",
+  },
+  {
+    phase: 0,
+    priority: "P2",
+    url: "/privacy/",
+    group: "H_Trust",
+    primaryKeyword: "privacy policy",
+    title: "Privacy Policy | FancifyText",
+    description:
+      "How FancifyText handles privacy for this free Unicode fancy text tool, including analytics, Google Search Console, hosting, ads.txt, and future advertising partners.",
+    fellowKeywords: fellows("fancifytext privacy", "google ads privacy"),
+    updated: "2026-09-22",
+  },
+  {
+    phase: 0,
+    priority: "P2",
+    url: "/terms/",
+    group: "H_Trust",
+    primaryKeyword: "terms of use",
+    title: "Terms of Use | FancifyText",
+    description:
+      "Terms for using FancifyText, a free Unicode fancy text generator—acceptable use, publisher content standards, and limits of liability.",
+    fellowKeywords: fellows("fancifytext terms", "site terms of use"),
+    updated: "2026-09-22",
   },
   {
     phase: 6,
@@ -1868,12 +1944,14 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
     "/kaomoji/",
   ],
   "cat-kaomojis": [
+    "/coquette-kaomojis/",
     "/cute-kaomojis/",
     "/bear-kaomojis/",
     "/dog-kaomojis/",
     "/kaomoji/",
   ],
   "dog-kaomojis": [
+    "/coquette-kaomojis/",
     "/bear-kaomojis/",
     "/cat-kaomojis/",
     "/cute-kaomojis/",
@@ -1995,6 +2073,7 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
     "/kaomoji/",
   ],
   "kaomoji-dot-art": [
+    "/coquette-kaomojis/",
     "/funny-kaomojis/",
     "/cute-kaomojis/",
     "/kaomoji/",
@@ -2002,8 +2081,26 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
   ],
   "carrd-kaomojis": [
     "/star-kaomojis/",
+    "/coquette-kaomojis/",
     "/social-media-bio-generator/",
     "/aesthetic-fonts/",
+    "/cute-kaomojis/",
+    "/kaomoji/",
+  ],
+  "coquette-kaomojis": [
+    "/multiline-kaomojis/",
+    "/carrd-kaomojis/",
+    "/bunny-kaomojis/",
+    "/cat-kaomojis/",
+    "/dog-kaomojis/",
+    "/kaomoji-dot-art/",
+    "/kaomoji/",
+  ],
+  "multiline-kaomojis": [
+    "/coquette-kaomojis/",
+    "/angry-kaomojis/",
+    "/happy-kaomojis/",
+    "/cry-kaomojis/",
     "/cute-kaomojis/",
     "/kaomoji/",
   ],
@@ -2026,6 +2123,7 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
     "/kaomoji/",
   ],
   "bunny-kaomojis": [
+    "/coquette-kaomojis/",
     "/cat-kaomojis/",
     "/bear-kaomojis/",
     "/cute-kaomojis/",

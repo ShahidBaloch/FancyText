@@ -33,10 +33,12 @@ jobs:
       - name: SEO plumbing (cannibalization, content-uniqueness, ads, sitemap)
         run: npm run check:seo
 
+      - name: Kaomoji catalog, SEO, AEO, Google policy
+        run: npm run check:kaomoji-catalog && npm run check:kaomoji-seo && npm run check:aeo && npm run check:google-policy
+
       - name: Production build
         run: npm run build
         env:
-          # Next.js may read env at build time; keep CI deterministic.
           NEXT_TELEMETRY_DISABLED: "1"
 
       - name: SERP specimen in pre-rendered HTML

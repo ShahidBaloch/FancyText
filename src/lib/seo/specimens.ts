@@ -140,6 +140,20 @@ export const SERP_SPECIMENS: Record<string, SerpSpecimenConfig> = {
     metaLine: "· · ─ ·✶· ─ · · ⋆ — carrd kaomojis copy paste",
     ogSubtitle: "Bio dividers & ⋆ separators — tap to copy",
   },
+  "/coquette-kaomojis/": {
+    kind: "glyph-strip",
+    glyphs: ["♡", "🌷", "૮ ˶ᵔ ᵕ ᵔ˶ ა", "(｡♥‿♥｡)", "⋆｡°✩"],
+    stripLabel: "Coquette kaomoji — aesthetic multiline art",
+    metaLine: "♡ 🌷 coquette kaomoji — multiline aesthetic copy paste",
+    ogSubtitle: "♡ coquette multiline text art — tap to copy",
+  },
+  "/multiline-kaomojis/": {
+    kind: "glyph-strip",
+    glyphs: ["(ノಠ益ಠ)ノ", "(ﾉ◕ヮ◕)ﾉ", "(T_T)", "¯\\_(ツ)_/¯", "(｡◕‿◕｡)"],
+    stripLabel: "Multiline kaomoji — stacked ASCII blocks",
+    metaLine: "(ノಠ益ಠ)ノ (T_T) — multiline kaomoji copy paste",
+    ogSubtitle: "Angry, happy & mood multiline stacks — tap to copy",
+  },
   "/shrug-emoticon/": {
     kind: "glyph-strip",
     glyphs: ["¯\\_(ツ)_/¯", "┐(´д｀)┌", "╮(╯_╰)╭", "¯\\_(⊙_ʖ⊙)_/¯", "┐(´∀｀)┌"],

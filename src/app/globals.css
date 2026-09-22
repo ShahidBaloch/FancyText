@@ -2427,11 +2427,68 @@ a.use-card:hover {
   text-align: center;
 }
 
+.kaomoji-grid--multiline {
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  gap: 0.65rem;
+}
+
+.kaomoji-btn--multiline {
+  min-height: auto;
+  align-items: stretch;
+  padding: 0.65rem 0.45rem;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.kaomoji-face--multiline {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-size: clamp(0.65rem, 0.6rem + 0.35vw, 0.78rem);
+  line-height: 1.22;
+  text-align: left;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+}
+
 .kaomoji-copy {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.kaomoji-grid__progress {
+  margin: 0 0 0.65rem;
+  font-size: 0.92rem;
+}
+
+.kaomoji-grid__more-wrap {
+  margin: 0.85rem 0 0;
+  text-align: center;
+}
+
+.kaomoji-grid__more {
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-solid);
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.kaomoji-grid__more:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .symbol-grid {
@@ -2758,6 +2815,72 @@ a.use-card:hover {
 }
 
 .kaomoji-meaning-copy:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.kaomoji-hub-nav__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.kaomoji-hub-nav__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel-solid);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.kaomoji-hub-nav__tab.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.kaomoji-hub-nav__badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kaomoji-hub-nav__panel {
+  margin-top: 0.35rem;
+}
+
+.kaomoji-hub-nav__links {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.65rem;
+}
+
+.kaomoji-hub-nav__link {
+  display: inline-block;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--panel-solid);
+}
+
+.kaomoji-hub-nav__link:hover,
+.kaomoji-hub-nav__link.is-active {
   border-color: var(--accent);
   background: var(--accent-soft);
 }
@@ -3273,6 +3396,12 @@ a.use-card:hover {
   }
 }
 
+@media (max-width: 900px) {
+  .kaomoji-grid--multiline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* ——— Kaomoji: mobile-first copy UX (most traffic is phone) ——— */
 @media (max-width: 640px) {
   .text-input,
@@ -3287,6 +3416,19 @@ a.use-card:hover {
 
   .kaomoji-grid--emoji {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .kaomoji-grid--multiline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .kaomoji-face--multiline {
+    font-size: clamp(0.64rem, 3.1vw, 0.82rem);
+    line-height: 1.25;
+  }
+
+  .kaomoji-btn--multiline {
+    min-height: auto;
   }
 
   .symbol-grid {

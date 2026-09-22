@@ -26,6 +26,8 @@ export const SITEMAP_REQUIRED_REGISTRY_PATHS = [
   "/star-kaomojis/",
   "/kaomoji-dot-art/",
   "/carrd-kaomojis/",
+  "/coquette-kaomojis/",
+  "/multiline-kaomojis/",
   "/lenny-face/",
   "/shrug-emoticon/",
 ] as const;
@@ -59,6 +61,8 @@ export const SERP_SPECIMEN_REQUIRED_PATHS = [
   "/star-kaomojis/",
   "/kaomoji-dot-art/",
   "/carrd-kaomojis/",
+  "/coquette-kaomojis/",
+  "/multiline-kaomojis/",
   "/lenny-face/",
   "/shrug-emoticon/",
 ] as const;

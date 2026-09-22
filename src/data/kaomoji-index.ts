@@ -13,6 +13,8 @@ export const INDEXABLE_KAOMOJI_SLUGS = new Set([
   "star-kaomojis",
   "kaomoji-dot-art",
   "carrd-kaomojis",
+  "coquette-kaomojis",
+  "multiline-kaomojis",
 ]);
 
 function slugFromPath(urlOrSlug: string): string {
