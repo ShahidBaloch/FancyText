@@ -47,13 +47,17 @@ export function KaomojiHubJumpFilter({ jumps }: KaomojiHubJumpFilterProps) {
           enterKeyHint="search"
         />
       </div>
-      <ul className="taxonomy-links">
+      <ul className="hub-jump-list">
         {filtered.length ? (
           filtered.map((jump) => (
-            <li key={jump.href}>
-              <Link href={jump.href}>{jump.label}</Link>
+            <li key={jump.href} className="hub-jump-item">
+              <Link href={jump.href} className="hub-jump-link">
+                {jump.label}
+              </Link>
               {jump.browseOnly ? (
-                <span className="seo-lead"> — browse list (not in Google search)</span>
+                <span className="hub-jump-note">
+                  Browse list (not in Google search)
+                </span>
               ) : null}
             </li>
           ))
