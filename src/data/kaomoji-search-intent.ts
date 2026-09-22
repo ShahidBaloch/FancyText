@@ -168,6 +168,33 @@ export const KAOMOJI_SEARCH_INTENT_BY_SLUG: Record<string, readonly string[]> = 
     "fear kaomoji",
     "spooky kaomoji",
   ],
+  "confused-kaomojis": [
+    "confused kaomoji",
+    "puzzled text face",
+    "huh kaomoji",
+    "question mark face text",
+  ],
+  "evil-kaomojis": [
+    "evil kaomoji",
+    "mischievous text face",
+    "villain kaomoji",
+    "smirk ascii face",
+  ],
+  "thinking-kaomojis": [
+    "thinking kaomoji",
+    "hmm text face",
+    "pondering kaomoji",
+  ],
+  "proud-kaomojis": [
+    "proud kaomoji",
+    "smug text face",
+    "victory kaomoji",
+  ],
+  "drool-kaomojis": [
+    "drool kaomoji",
+    "hungry text face",
+    "food craving kaomoji",
+  ],
 };
 
 export function kaomojiSlugFromUrl(url: string): string | undefined {

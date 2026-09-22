@@ -125,6 +125,12 @@ try {
     if (kaomojiPathIsIndexable(p.slug)) {
       errors.push(`${p.slug}: browse list but kaomojiPathIsIndexable() is true`);
     }
+    const intents = KAOMOJI_SEARCH_INTENT_BY_SLUG[p.slug];
+    if (!intents?.length) {
+      errors.push(
+        `${p.slug}: browse/noindex list missing KAOMOJI_SEARCH_INTENT_BY_SLUG (hub filter + /search/)`,
+      );
+    }
   }
 
   const origin = new URL(getSitemapEntries()[0]?.url ?? "https://fancifytext.com/").origin;
