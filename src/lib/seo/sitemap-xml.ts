@@ -4,6 +4,7 @@ import {
   SITE_URL,
   type PageEntry,
 } from "@/data/pages/registry";
+import { SITEMAP_REQUIRED_PATHS } from "@/lib/seo/required-indexable";
 import { kaomojiPathIsIndexable } from "@/data/kaomoji";
 import { LETTERS, letterUrl } from "@/lib/fonts/cursive";
 
@@ -233,21 +234,7 @@ export function assertSitemapInvariants(xml: string, entries: SitemapEntry[]): v
       `sitemap includes noindex kaomoji tails: ${leakedKaomoji.join(", ")}`,
     );
   }
-  const required = [
-    "/kaomoji/",
-    "/cute-kaomojis/",
-    "/cry-kaomojis/",
-    "/heart-kaomojis/",
-    "/hand-kaomojis/",
-    "/star-kaomojis/",
-    "/kaomoji-dot-art/",
-    "/carrd-kaomojis/",
-    "/lenny-face/",
-    "/shrug-emoticon/",
-    "/privacy/",
-    "/terms/",
-  ];
-  for (const path of required) {
+  for (const path of SITEMAP_REQUIRED_PATHS) {
     const abs = `${SITE_ORIGIN}${path}`;
     if (!locs.includes(abs)) {
       throw new Error(`sitemap missing required URL ${abs}`);

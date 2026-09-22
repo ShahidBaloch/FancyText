@@ -292,6 +292,18 @@ export default function HomePage() {
             <Link href="/kaomoji/">Kaomoji</Link>
           </li>
           <li>
+            <Link href="/emoji-combos/">Emoji combos</Link>
+          </li>
+          <li>
+            <Link href="/text-art/">Text art</Link>
+          </li>
+          <li>
+            <Link href="/cute-symbols/">Cute symbols</Link>
+          </li>
+          <li>
+            <Link href="/heart-emoji/">Heart emoji</Link>
+          </li>
+          <li>
             <Link href="/social-media-bio-generator/">
               Social media bio generator
             </Link>

@@ -38,3 +38,5 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 - `/kaomoji/`, `/lenny-face/` — glyph strip (G6–G7)
 
 Add new landings by extending `SERP_SPECIMENS` and `PageHero specimenPath`.
+
+Before release, run `npm run check:seo` (see `docs/seo-plumbing.md`).
