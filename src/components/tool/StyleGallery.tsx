@@ -205,6 +205,8 @@ export function StyleGallery({
         </div>
       ) : null}
 
+      {/* AdSense: never insert units between inputs/presets/search above and gallery-list below. */}
+
       {enableCategoryFilter ? (
         <div className="preset-chips" role="group" aria-label="Filter styles">
           {filterChips.map((key) => (

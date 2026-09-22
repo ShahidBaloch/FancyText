@@ -1564,6 +1564,17 @@ a.use-card:hover {
 }
 
 /* ——— Footer ——— */
+.ad-placement {
+  margin: 1.25rem 0 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ad-placement--footer {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
 .site-footer {
   margin-top: auto;
   border-top: 1px solid var(--line);
