@@ -1,7 +1,9 @@
 /**
  * Multiline kaomoji / mini ASCII blocks by mood (angry, happy, sad, cry, etc.).
- * Cross-products of short layout parts — same tap-to-copy model as coquette art.
+ * Full matrix lives on /multiline-kaomojis/ only; other URLs get editorial highlights.
  */
+
+import { multilineHighlightLimitForSlug } from "@/data/kaomoji-catalog-policy";
 
 function dedupeFaces(faces: string[]): string[] {
   const seen = new Set<string>();
@@ -442,8 +444,58 @@ export const MULTILINE_KAOMOJI_BY_SLUG: Record<string, string[]> = Object.fromEn
   Object.entries(BUILDERS).map(([slug, fn]) => [slug, dedupeFaces(fn())]),
 );
 
+/** Hand-picked rows that should lead each mood list (unique, recognizable). */
+export const MULTILINE_EDITORIAL_PRIORITY: Record<string, readonly string[]> = {
+  "angry-kaomojis": [
+    "(╯°□°）╯︵\n┻━┻",
+    "(ノ`Д´)ノ\n  ┻━┻",
+    "ヽ(`⌒´メ)ノ\n┻━┻",
+    "  MAD\n(╬ Ò﹏Ó)",
+    "  ಠ_ಠ\n  ┻━┻",
+  ],
+  "happy-kaomojis": [
+    "  ♪\n(≧▽≦)\n  ／",
+    "  ☆\n＼(^o^)／\n  ☆",
+    "  ♡\n(＾▽＾)\n  ♪～",
+    "  \\   /\n(ﾉ◕ヮ◕)ﾉ\n  ／",
+  ],
+  "sad-kaomojis": [
+    "  ...\n(个_个)\n  \"\"\"",
+    "  ,,,\n(T_T)\n  ~~~",
+    "  ···\n(╥_╥)\n  ,,,",
+  ],
+  "cry-kaomojis": [
+    "  ,,\n(T_T)\n  \"\"\"",
+    "(╥_╥)\n  ~~~\n  ~~~",
+    "  ...\n(;ω;)\n  \"\"\"",
+  ],
+  "funny-kaomojis": [
+    "  lol\n(≧∀≦)",
+    "  wkwk\n¯\\_(ツ)_/¯",
+    "( ͡° ͜ʖ ͡°)\n  …\n┬─┬ノ( º _ ºノ)",
+  ],
+};
+
 export function getMultilineKaomojiForSlug(slug: string): string[] {
   return MULTILINE_KAOMOJI_BY_SLUG[slug] ?? [];
+}
+
+/** Curated subset for mood pages — avoids duplicating the full multiline hub in Google’s index. */
+export function getMultilineHighlightsForSlug(slug: string): string[] {
+  const all = MULTILINE_KAOMOJI_BY_SLUG[slug] ?? [];
+  if (!all.length) return [];
+  const limit = multilineHighlightLimitForSlug(slug);
+  const priority = MULTILINE_EDITORIAL_PRIORITY[slug] ?? [];
+  const out: string[] = [];
+  for (const face of priority) {
+    if (out.length >= limit) break;
+    out.push(face);
+  }
+  for (const face of all) {
+    if (out.length >= limit) break;
+    if (!out.includes(face)) out.push(face);
+  }
+  return dedupeFaces(out).slice(0, limit);
 }
 
 export const MULTILINE_KAOMOJI_HUB_FACES = dedupeFaces(

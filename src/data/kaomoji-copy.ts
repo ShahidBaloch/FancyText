@@ -15,6 +15,8 @@ export type KaomojiUniqueCopy = {
   ogSubtitle?: string;
   /** Visible lead under the hero—must not repeat the meta description verbatim. */
   canonicalLead?: string;
+  /** How this grid differs from full-catalog hub pages (unique intent for Google). */
+  catalogNote?: string;
   meanings: string;
   meaningsHeading?: string;
   howToHeading?: string;
@@ -56,6 +58,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   "angry-kaomojis": {
     description:
       "Copy angry kaomoji—multiline table-flip stacks (╯°□°）╯︵ + ┻━┻), mad one-liners like (ノಠ益ಠ)ノ, and rage ASCII for Discord and memes.",
+    catalogNote:
+      "Top rows are curated multiline rage blocks; the rest are classic one-line mad faces. Every multiline combination lives on multiline kaomojis—this page targets angry mood specifically.",
     whereHeading: "Where mad kaomoji fit",
     whereBullets: [
       "Meme replies and game rage threads—not formal support tickets.",
@@ -80,6 +84,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Can I put angry kaomoji in a Discord nickname?",
         answer:
           "Short faces usually work. Long combining-mark stacks can fail Discord’s nickname filter—trim to one line.",
+      },
+      {
+        question: "Where is the full multiline angry set?",
+        answer:
+          "On multiline kaomojis (indexed). This angry list keeps a short preview so the page stays focused on mad one-liners and meme flips people expect on an angry URL.",
       },
       {
         question: "Angry vs evil kaomoji — what’s the difference?",
@@ -128,9 +137,11 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   },
   "cat-kaomojis": {
     description:
-      "Copy cute cat kaomoji—(=^･ω･^=) kitty & neko text faces for Discord, TikTok, and pet bios. Tap to copy; animal ears, not generic blush cute.",
+      "Copy cat kaomoji—curated coquette cat samples, (=^･ω･^=) neko & kitty text faces for Discord, TikTok, and pet bios.",
     canonicalLead:
       "Cute cat kaomoji means ears and whiskers—(=^･ω･^=), not round blush faces. For love/hearts in the expression, use heart kaomojis; for people-shaped kawaii without ears, use cute kaomojis (indexed for search).",
+    catalogNote:
+      "A short coquette-style preview leads the grid; full aesthetic combinations live on coquette kaomojis. This page stays focused on neko/kitty emoticons.",
     meanings:
       "Cat kaomojis lean on pointed ears and ^ω^ eyes for playful or aloof energy. Great for pet accounts, kawaii bios, and sarcastic “meh” reactions. Shorter faces render more reliably on mobile than dense ear stacks.",
     faq: [
@@ -1315,6 +1326,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy happy kaomoji—multiline ♪/☆ cheer blocks and one-line smiles for good news, sunny replies, and upbeat chats.",
     canonicalLead:
       "Happy kaomoji lead with multiline sparkle cheers, then one-line smiles. Indexed multiline mood hub: multiline kaomojis. Kawaii blush smiles: cute kaomojis.",
+    catalogNote:
+      "Multiline cheer blocks here are a curated sample—not the full happy matrix. Use multiline kaomojis when you need every generated happy stack.",
     meaningsHeading: "Cheer without hype",
     meanings:
       "Happy faces use wide smiles and lifted eyes—lighter than excited hype and softer than proud smugness. Good for congratulations, Friday messages, and friendly check-ins.",
@@ -1407,6 +1420,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy multiline kaomoji—angry table-flip blocks, happy cheer ASCII, sad/cry layouts, hugs & more. Tap to copy full rows with line breaks.",
     canonicalLead:
       "Multiline mood kaomoji live here—angry ┻━┻ stacks, happy ♪ cheers, crying (T_T) layouts, and other emotions built from multiple rows. Coquette kaomojis is the separate indexed page for soft aesthetic ♡ / tulip art; dot art stays one-line for chat.",
+    catalogNote:
+      "This is the only URL with the full multiline mood matrix. Angry, happy, and other emotion pages show a short curated preview plus one-line faces so each page has a distinct purpose in search.",
     meaningsHeading: "Mood posters vs one-line faces",
     meanings:
       "Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged at the top of each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.",
@@ -1428,6 +1443,14 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         heading: "Multiline moods vs coquette art",
         paragraphs: [
           "This page cross-products mood layouts (rage banners, tears, cheers). Coquette kaomojis cross-products aesthetic ♡ cats, tulip bunnies, and Carrd-style art. Both are multiline; the search intent differs—meme mood vs soft aesthetic.",
+        ],
+      },
+      {
+        id: "helpful-content",
+        heading: "Why this page is useful (not duplicate spam)",
+        paragraphs: [
+          "Google’s helpful-content guidance favors pages with a clear primary purpose. This hub exists so people searching multiline angry or happy kaomoji get one canonical library. Mood-specific URLs repeat only a small editorial preview so they do not mirror this entire grid.",
+          "Prose, FAQs, and when-to-use notes on each URL are written for that mood or layout—not copy-pasted across every kaomoji list.",
         ],
       },
     ],
@@ -1461,6 +1484,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 tulip bunnies & standing dog ASCII for Carrd and TikTok bios. Tap to copy full blocks with line breaks.",
     canonicalLead:
       "This list is the viral coquette / soft-aesthetic text art people paste into Carrd, TikTok bios, and Discord about-me blocks—multiline Unicode, not one-line chat faces. For compact dot eyes only, use kaomoji dot art; for animal one-liners, open cat, bunny, bear, or dog lists.",
+    catalogNote:
+      "Only this page publishes the full coquette combination catalog. Cat, bunny, bear, and dog lists include a small curated sample of aesthetic art plus their own one-line faces—different scope, not a second copy of this grid.",
     meaningsHeading: "Multiline layout, not sticker emoji",
     meanings:
       "This catalog is built from the viral layout parts crossed together—arm headers (へ ♡ ╱|、), ૮ ear lines, cheek marks, paw footers, simple ╱|、 faces, bunny ears × tulip/heart props, bear snouts, and dog ASCII bodies—so you get the combinations people paste on Carrd and TikTok, not just three meme screenshots. Copy preserves newlines; test in a plain text box if an app squashes spacing.",
@@ -1539,7 +1564,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         heading: "What “all combinations” means here",
         paragraphs: [
           "Cat/coquette rows mix every listed arm header with each ૮ ear line, optional cheek row, and paw footer, plus every ╱|、 + face + leg trio. Bunny rows combine each ear style (/\\_/\\, hop brackets, and more) with every face mouth and every 🌷 or ♡ prop line. Dog rows pair compact ／＞ フ bodies with each classic snout finish.",
-          "Animal browse pages (cat, bunny, bear, dog) repeat the same generated sets so you can copy from the mood you searched—even when the full matrix lives here on coquette kaomojis.",
+          "Animal browse pages show a small curated sample of aesthetic art plus their own one-line faces—the full cross-product exists only on this URL.",
         ],
       },
       {
@@ -1549,13 +1574,22 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
           "Dot-art kaomoji stay on one line for chat speed. Coquette kaomoji are taller on purpose—the layout is the joke. Use this page when you want the full aesthetic poster; use dot art when you need a quick reaction line.",
         ],
       },
+      {
+        id: "helpful-content",
+        heading: "Unique content on this URL",
+        paragraphs: [
+          "Layout combinations are built from documented parts (arms, ears, props). The article text—Carrd paste tips, aesthetic FAQs, when-to-use notes—is written only for coquette search intent. Pet and mood kaomoji pages use different copy and smaller grids.",
+        ],
+      },
     ],
   },
   "bunny-kaomojis": {
     description:
-      "Bunny kaomoji copy and paste. Rabbit-ear text faces for spring vibes, pet jokes, and soft kawaii replies.",
+      "Copy bunny kaomoji—curated tulip 🌷 multiline samples and rabbit-ear hop-bracket text faces for spring and pet bios.",
     canonicalLead:
-      "Bunny kaomoji start with every generated tulip/heart multiline mix (ears × faces × 🌷/♡ props), then classic hop-bracket one-liners. Coquette kaomojis duplicates the same bunny matrix for aesthetic searches. Cat kaomojis cover feline coquette rows plus neko one-liners.",
+      "Bunny kaomoji lead with a curated tulip/heart multiline sample, then classic hop-bracket one-liners. Full aesthetic combinations: coquette kaomojis. Neko one-liners: cat kaomojis.",
+    catalogNote:
+      "This browse page is not a mirror of the coquette hub—only a short tulip-bunny preview plus rabbit-specific one-line faces.",
     meaningsHeading: "Rabbit ears vs cat whiskers",
     meanings:
       "Bunny faces emphasize long ears or rabbit silhouettes—not the same as cat whiskers. For indexed feline faces, use cat kaomojis; this list stays browse-only to avoid competing with cat/cute URLs.",
@@ -1924,6 +1958,11 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       question: "Where is aesthetic or coquette kaomoji?",
       answer:
         "Open coquette kaomojis (indexed)—multiline ♡ text art, tulip bunnies, and dog ASCII. Star and Carrd lists cover sparkle dividers; cute kaomoji covers one-line kawaii faces.",
+    },
+    {
+      question: "Why is there no angry or happy kaomoji page in Google?",
+      answer:
+        "Angry, happy, sad, and similar moods are browse-only links on this hub so they do not cannibalize multiline kaomojis (full multiline matrix) or indexed cute/cry/heart URLs. Use multiline kaomojis for stacked ASCII, or open angry/happy from the hub menu for copy-paste.",
     },
   ],
 };

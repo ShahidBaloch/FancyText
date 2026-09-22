@@ -9,6 +9,7 @@ import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { KaomojiGrid } from "@/components/kaomoji/KaomojiGrid";
 import { KaomojiHubJumpFilter } from "@/components/kaomoji/KaomojiHubJumpFilter";
+import { KaomojiHubNav } from "@/components/kaomoji/KaomojiHubNav";
 import { KaomojiMeaningTable } from "@/components/kaomoji/KaomojiMeaningTable";
 import { KaomojiSituationTable } from "@/components/kaomoji/KaomojiSituationTable";
 import {
@@ -156,10 +157,14 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
           search. Start from the{" "}
           <Link href="/kaomoji/">kaomoji hub</Link> and use{" "}
           <Link href="/kaomoji/#hub-jump-heading">Find a list by keyword</Link>{" "}
-          for indexed cute, cry, heart, hand, star, Carrd, dot art, Lenny, and
-          shrug pages.
+          for indexed cute, cry, heart, coquette, multiline, hand, star, Carrd,
+          dot art, Lenny, and shrug pages.
         </p>
       )}
+
+      {config.catalogNote ? (
+        <p className="seo-lead">{config.catalogNote}</p>
+      ) : null}
 
       <p className="seo-lead">
         <Link href="#tool">Jump to faces</Link> · {config.faces.length} in this
@@ -390,7 +395,10 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
       <p className="seo-lead">{serp.introBelowHero}</p>
 
       {hubSlug === "kaomoji" ? (
-        <KaomojiHubJumpFilter jumps={getKaomojiHubJumps()} />
+        <>
+          <KaomojiHubNav />
+          <KaomojiHubJumpFilter jumps={getKaomojiHubJumps()} />
+        </>
       ) : null}
 
       <section
@@ -450,12 +458,11 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
       <section className="seo-section" aria-labelledby="emotions-heading">
         <h2 id="emotions-heading">Start with a mood or topic</h2>
         <p className="seo-lead">
-          Cards open indexed lists only (cute, cry, heart, hand, star, Carrd,
-          dot art, Lenny, shrug). This hub shows a mixed sample—not the full
-          inventory for each topic. Need tears or love? Use{" "}
-          <Link href="/cry-kaomojis/">cry</Link> or{" "}
-          <Link href="/heart-kaomojis/">heart</Link> lists instead of duplicating
-          them here.
+          Cards link to indexed lists only—cute, cry, heart, multiline, coquette,
+          hand, star, Carrd, dot art, Lenny, shrug. Angry/happy/sad full grids
+          stay on browse URLs (menu above) so they do not compete in Google with{" "}
+          <Link href="/multiline-kaomojis/">multiline kaomojis</Link> or indexed
+          moods.
         </p>
         <ul className="kaomoji-emotion-grid">
           {featuredShowcase.map((item) => (
@@ -603,9 +610,9 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
       <section className="seo-section" aria-labelledby="lists-heading">
         <h2 id="lists-heading">More mood lists</h2>
         <p className="seo-lead">
-          Angry, cat, hug, and the rest stay live so you can browse a full
-          emotion without mixing it into the hub. Cute, cry, heart, Lenny, and
-          shrug are the lists worth sharing.
+          Browse-only lists (angry, happy, cat, hug, …) are linked from the hub
+          menu—not indexed in Google. Share indexed URLs from the menu’s first
+          three tabs when you want a stable search landing page.
         </p>
         <ul className="taxonomy-links">
           {tailLists.map((k) => (

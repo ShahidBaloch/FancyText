@@ -1,7 +1,10 @@
 /**
  * Coquette / aesthetic multiline text art — generated from layout parts so
  * common viral combinations (heads × faces × paws × props) are all present.
+ * Full catalog: /coquette-kaomojis/ only; animal pages use COQUETTE_*_HIGHLIGHTS.
  */
+
+import { COQUETTE_ANIMAL_HIGHLIGHT_LIMIT } from "@/data/kaomoji-catalog-policy";
 
 const FEET = "じしˍ,)ノ";
 
@@ -274,6 +277,28 @@ export const COQUETTE_CAT_ALL = dedupeFaces([
 export const COQUETTE_BEAR_ALL = dedupeFaces(buildBearCoquette());
 
 export const COQUETTE_DOG_ASCII = CANONICAL_COQUETTE_FACES[4];
+
+function coquetteHighlights(full: string[], extraCanonical: string[] = []): string[] {
+  return dedupeFaces([...extraCanonical, ...full]).slice(
+    0,
+    COQUETTE_ANIMAL_HIGHLIGHT_LIMIT,
+  );
+}
+
+/** Curated coquette rows on animal browse pages (full matrix stays on /coquette-kaomojis/). */
+export const COQUETTE_CAT_HIGHLIGHTS = coquetteHighlights(COQUETTE_CAT_ALL, [
+  ...CANONICAL_COQUETTE_FACES.slice(0, 3),
+]);
+
+export const COQUETTE_BEAR_HIGHLIGHTS = coquetteHighlights(COQUETTE_BEAR_ALL);
+
+export const COQUETTE_BUNNY_HIGHLIGHTS = coquetteHighlights(COQUETTE_BUNNY_ALL, [
+  COQUETTE_BUNNY_TULIP,
+]);
+
+export const COQUETTE_DOG_HIGHLIGHTS = coquetteHighlights(COQUETTE_DOG_ALL, [
+  CANONICAL_COQUETTE_FACES[4],
+]);
 
 export const COQUETTE_COMBO_STATS = {
   typeA: buildCoquetteTypeA().length,

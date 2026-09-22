@@ -1,13 +1,14 @@
 import {
-  COQUETTE_BEAR_ALL,
-  COQUETTE_BUNNY_ALL,
-  COQUETTE_CAT_ALL,
-  COQUETTE_DOG_ALL,
+  COQUETTE_BEAR_HIGHLIGHTS,
+  COQUETTE_BUNNY_HIGHLIGHTS,
+  COQUETTE_CAT_HIGHLIGHTS,
+  COQUETTE_DOG_HIGHLIGHTS,
   COQUETTE_KAOMOJI_FACES,
 } from "@/data/coquette-kaomoji-faces";
+import { KAOMOJI_FULL_CATALOG_SLUGS } from "@/data/kaomoji-catalog-policy";
 import {
   MULTILINE_KAOMOJI_HUB_FACES,
-  getMultilineKaomojiForSlug,
+  getMultilineHighlightsForSlug,
 } from "@/data/multiline-kaomoji-faces";
 import {
   KAOMOJI_SEARCH_INTENT_BY_SLUG,
@@ -66,6 +67,7 @@ export type KaomojiList = {
   howToSteps?: string[];
   mobileNote?: string;
   canonicalLead?: string;
+  catalogNote?: string;
   ogSubtitle?: string;
   whereHeading?: string;
   whereBullets?: string[];
@@ -156,7 +158,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "bear-kaomojis",
     "bear",
     "bear kaomoji",
-    mergeKaomojiFaces(COQUETTE_BEAR_ALL, [
+    mergeKaomojiFaces(COQUETTE_BEAR_HIGHLIGHTS, [
       "ʕ•ᴥ•ʔ",
       "ʕ·ᴥ·ʔ",
       "ʕ￫ᴥ￩ʔ",
@@ -193,7 +195,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "cat-kaomojis",
     "cat",
     "cat kaomoji",
-    mergeKaomojiFaces(COQUETTE_CAT_ALL, [
+    mergeKaomojiFaces(COQUETTE_CAT_HIGHLIGHTS, [
       "(=^･ω･^=)",
       "(=^･ｪ･^=)",
       "(^・ω・^ )",
@@ -864,7 +866,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "dog-kaomojis",
     "dog",
     "dog kaomoji",
-    mergeKaomojiFaces(COQUETTE_DOG_ALL, [
+    mergeKaomojiFaces(COQUETTE_DOG_HIGHLIGHTS, [
       "U・ᴥ・U",
       "▼・ᴥ・▼",
       "U＾ェ＾U",
@@ -1266,7 +1268,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "bunny-kaomojis",
     "bunny",
     "bunny kaomoji",
-    mergeKaomojiFaces(COQUETTE_BUNNY_ALL, [
+    mergeKaomojiFaces(COQUETTE_BUNNY_HIGHLIGHTS, [
     "／( ・×・)＼",
     "／(≧ x ≦)＼",
     "(=\\(=^･^=)/=)",
@@ -1302,7 +1304,8 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
 ];
 
 for (const entry of KAOMOJI_LISTS) {
-  const multiline = getMultilineKaomojiForSlug(entry.slug);
+  if (KAOMOJI_FULL_CATALOG_SLUGS.has(entry.slug)) continue;
+  const multiline = getMultilineHighlightsForSlug(entry.slug);
   if (multiline.length) {
     entry.faces = mergeKaomojiFaces(multiline, entry.faces);
   }
@@ -1322,6 +1325,7 @@ for (const entry of KAOMOJI_LISTS) {
   if (unique.mobileNote) entry.mobileNote = unique.mobileNote;
   if (unique.extraSections) entry.extraSections = unique.extraSections;
   if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
+  if (unique.catalogNote) entry.catalogNote = unique.catalogNote;
   if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
   if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
 }
