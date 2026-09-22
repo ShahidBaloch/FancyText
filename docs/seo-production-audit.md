@@ -1,6 +1,6 @@
 # Production audit — GSC, AdSense, SEO, user intent
 
-Use this after deploying the SEO task stack (PRs #20–#28). Run **`npm run check:seo`** on the release branch before go-live.
+Use this after deploying the SEO + perf stack (**PR #28**, **PR #29**). Run **`npm run check:seo`** on the release branch before go-live. One-page overview: **`docs/seo-serp-policy-checklist.md`**.
 
 ---
 

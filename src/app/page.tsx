@@ -11,7 +11,6 @@ import {
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
-import { HomePlaygroundMount } from "@/components/tool/HomePlaygroundMount";
 import { StyleGalleryFallback } from "@/components/tool/StyleGalleryFallback";
 import { ToolStagePlaceholder } from "@/components/tool/ToolStagePlaceholder";
 import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
@@ -113,15 +112,13 @@ export default function HomePage() {
           name: "How to use the fancy text generator",
           steps: [
             "Type a name, bio line, or short caption in the box at the top.",
-            "Tap a style chip. This page shows the full set—cool lookalikes, cursive, bubble, and the rest.",
-            "Tap Copy, then paste into the app. Stay here if you want every style at once; collections live on copy and paste fonts.",
+            "Tap a style chip (cursive, bold, bubble, and more). The live preview shows popular styles; open copy and paste fonts for every lookalike.",
+            "Tap Copy, then paste into Instagram, Discord, TikTok, or WhatsApp. Need the full 67-style grid? Use copy and paste fonts.",
           ],
         }}
       />
       <HomeHero />
-      <HomePlaygroundMount>
-        <HomePlayground />
-      </HomePlaygroundMount>
+      <HomePlayground />
 
       <section className="seo-section" aria-labelledby="how-heading">
         <h2 id="how-heading">How to use the fancy text generator</h2>
@@ -142,8 +139,10 @@ export default function HomePage() {
             <div>
               <strong>Tap a style</strong>
               <p>
-                Cursive, bold, bubble, and the rest update live. Star a favorite
-                if you keep coming back to it.
+                Twelve high-traffic styles update live here. Star a favorite, or
+                open{" "}
+                <Link href="/copy-paste-fonts/">copy and paste fonts</Link> for
+                the full grid.
               </p>
             </div>
           </li>

@@ -26,7 +26,8 @@ Inspect route sizes in `.next/diagnostics/route-bundle-stats.json` if tuning fur
 ## PageSpeed (pagespeed.web.dev)
 
 - Homepage gallery is capped to **12 popular styles**; full 67+ grid lives on `/copy-paste-fonts/` (smaller DOM, faster mobile).
-- Run Lighthouse mobile on production after deploy; target **100** performance with field + lab (CrUX may lag deploy by ~28 days).
+- **Lazy loading:** use `next/dynamic` to code-split `HomePlayground` / `StyleGallery` — do **not** idle-delay the primary converter (hurts intent + AdSense “working tool” signal).
+- Run Lighthouse mobile on production after deploy; target **≥99** performance lab (CrUX lags deploy ~28 days).
 - Font: Sora uses `display: optional` and **no preload** so LCP text paints immediately with fallback metrics.
 
 ## User experience
