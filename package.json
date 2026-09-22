@@ -17,6 +17,7 @@
     "check:aeo": "node scripts/check-aeo.mjs",
     "check:perf": "node scripts/check-perf.mjs",
     "check:google-policy": "node scripts/check-google-policy.mjs",
+    "check:gsc": "node scripts/check-gsc.mjs",
     "check:policy": "npm run check:sitemap && npm run check:llms && npm run check:kaomoji-catalog && npm run check:kaomoji-seo && npm run check:aeo && npm run check:google-policy"
   },
   "dependencies": {
