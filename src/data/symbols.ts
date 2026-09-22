@@ -65,6 +65,7 @@ export const SYMBOL_CATEGORIES: SymbolCategory[] = [
       "💞",
       "💓",
       "💝",
+      "🌷",
     ],
   },
   {

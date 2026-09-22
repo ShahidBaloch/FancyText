@@ -2120,6 +2120,28 @@ a.use-card:hover {
   text-align: center;
 }
 
+.kaomoji-grid--multiline {
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  gap: 0.65rem;
+}
+
+.kaomoji-btn--multiline {
+  min-height: auto;
+  align-items: stretch;
+  padding: 0.65rem 0.45rem;
+}
+
+.kaomoji-face--multiline {
+  white-space: pre-wrap;
+  word-break: normal;
+  font-size: 0.68rem;
+  line-height: 1.22;
+  text-align: left;
+  width: 100%;
+  overflow-x: auto;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+}
+
 .kaomoji-copy {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
@@ -2975,6 +2997,18 @@ a.use-card:hover {
 
   .kaomoji-grid--emoji {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .kaomoji-grid--multiline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .kaomoji-face--multiline {
+    font-size: clamp(0.62rem, 2.8vw, 0.75rem);
+  }
+
+  .kaomoji-btn--multiline {
+    min-height: auto;
   }
 
   .kaomoji-btn {

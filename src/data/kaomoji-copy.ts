@@ -1235,7 +1235,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       {
         question: "Where are the big ASCII drawings?",
         answer:
-          "Not on this page by design—large posters hurt mobile performance. Use short faces here; use big text tools for banners.",
+          "Multiline coquette art (tulip bunnies, tall dog ASCII) lives on coquette kaomojis. This page stays one-line for chat; use big text tools for giant banners.",
       },
       {
         question: "Dot art kaomoji vs ascii art memes?",
@@ -1400,11 +1400,71 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       },
     ],
   },
+  "coquette-kaomojis": {
+    title: "Coquette Kaomoji Copy Paste — Multiline Aesthetic Text Art | FancifyText",
+    ogSubtitle: "Coquette ♡ text art — multiline cats, bunnies & dog ASCII",
+    description:
+      "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 tulip bunnies & standing dog ASCII for Carrd and TikTok bios. Tap to copy full blocks with line breaks.",
+    canonicalLead:
+      "This list is the viral coquette / soft-aesthetic text art people paste into Carrd, TikTok bios, and Discord about-me blocks—multiline Unicode, not one-line chat faces. For compact dot eyes only, use kaomoji dot art; for animal one-liners, open cat, bunny, bear, or dog lists.",
+    meaningsHeading: "Multiline layout, not sticker emoji",
+    meanings:
+      "Coquette kaomoji stack several rows—arms (╱|、), Gujarati-style ૮ ears, ♡ hearts, tulip bunnies, and tall dog ASCII. Copy preserves newlines so the shape pastes the way you see it. Test on your phone: some apps shrink monospace art; Carrd text blocks usually keep spacing best.",
+    howToHeading: "Copy multiline coquette art",
+    howToSteps: [
+      "Pick a block that matches your vibe—cat/bear ♡, tulip bunny, or dog ASCII.",
+      "Tap once; the full multiline string copies with line breaks.",
+      "Paste into a plain text field (Carrd text, Discord about-me, bio). Avoid rich editors that strip spacing.",
+      "Need a shorter face? Scroll to one-line rows on cat/bunny lists or use kaomoji dot art.",
+    ],
+    whereHeading: "Where multiline art works best",
+    whereBullets: [
+      "Carrd and link-in-bio pages: paste into text elements, not image slots.",
+      "TikTok / Instagram bios: one art block plus plain words—character limits bite fast.",
+      "Discord about-me: monospace-friendly; keep one poster, not three stacked copies.",
+    ],
+    extraSections: [
+      {
+        id: "vs-dot-art",
+        heading: "Coquette art vs dot-art kaomoji",
+        paragraphs: [
+          "Dot-art kaomoji stay on one line for chat speed. Coquette kaomoji are taller on purpose—the layout is the joke. Use this page when you want the full aesthetic poster; use dot art when you need a quick reaction line.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is a coquette kaomoji?",
+        answer:
+          "Soft-aesthetic multiline text art—often ♡, ૮ ears, and arms like ╱|、—copied as plain Unicode with line breaks intact.",
+      },
+      {
+        question: "Do line breaks copy on mobile?",
+        answer:
+          "Yes when you tap here. If an app flattens spacing, paste into a plain text box or Carrd text block instead of a rich editor.",
+      },
+      {
+        question: "Where is the tulip bunny (/\\_/\\ with 🌷)?",
+        answer:
+          "At the top of this list and on bunny kaomojis. The 🌷 is a real emoji character you can also grab from cool symbols.",
+      },
+      {
+        question: "Coquette vs cute kaomoji?",
+        answer:
+          "Cute kaomoji are mostly one-line kawaii faces like (｡◕‿◕｡). Coquette art is multiline layout for bios and Carrd—not the same copy-paste job.",
+      },
+      {
+        question: "Is the standing dog ASCII here?",
+        answer:
+          "Yes—the tall ／＞ フ dog block is in this list and at the top of dog kaomojis for the same tap-to-copy shape.",
+      },
+    ],
+  },
   "bunny-kaomojis": {
     description:
       "Bunny kaomoji copy and paste. Rabbit-ear text faces for spring vibes, pet jokes, and soft kawaii replies.",
     canonicalLead:
-      "Bunny kaomoji highlight rabbit ears or hop brackets—not cat whiskers. Cat kaomojis cover feline faces; cute kaomojis is the indexed kawaii hub. This animal list stays browse-only to prevent SERP overlap.",
+      "Bunny kaomoji highlight rabbit ears or hop brackets—not cat whiskers. Multiline tulip bunnies (/\\_/\\ with 🌷) lead the list; full coquette sets live on coquette kaomojis. Cat kaomojis cover feline faces; cute kaomojis is the indexed kawaii hub.",
     meaningsHeading: "Rabbit ears vs cat whiskers",
     meanings:
       "Bunny faces emphasize long ears or rabbit silhouettes—not the same as cat whiskers. For indexed feline faces, use cat kaomojis; this list stays browse-only to avoid competing with cat/cute URLs.",
@@ -1440,6 +1500,11 @@ export const KAOMOJI_HUB_AESTHETIC_SAMPLES = [
   { line: "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧", href: "/hand-kaomojis/", label: "Hand kaomoji" },
   { line: "(•ᴗ•)", href: "/kaomoji-dot-art/", label: "Mini dot art" },
   { line: "♡ ─── ♡ ─── ♡", href: "/carrd-kaomojis/", label: "Soft bio separator" },
+  {
+    line: "/\\_/\\\n(˶ᵔ ᵕ ᵔ˶)\n/ >🌷<~♡",
+    href: "/coquette-kaomojis/",
+    label: "Coquette multiline art",
+  },
 ] as const;
 
 /** Indexable kaomoji hub URL slugs (typo landings + main). */
@@ -1608,15 +1673,16 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
     },
     {
       id: "topic-spokes",
-      heading: "Hand, star, Carrd, and dot-art lists",
+      heading: "Hand, star, Carrd, coquette, and dot-art lists",
       paragraphs: [
-        "Some searches are not moods—they are layouts or body parts. Hand kaomoji collect arm-up cheers. Star kaomoji collect sparkle lines for aesthetic bios. Carrd kaomojis are divider strings for link-in-bio pages. Kaomoji dot art keeps mini one-line ASCII faces without huge posters that slow phones.",
+        "Some searches are not moods—they are layouts or body parts. Hand kaomoji collect arm-up cheers. Star kaomoji collect sparkle lines for aesthetic bios. Carrd kaomojis are divider strings for link-in-bio pages. Coquette kaomojis collect multiline ♡ text art (cats, tulip bunnies, dog ASCII). Kaomoji dot art keeps mini one-line ASCII faces for fast chat.",
         "Each topic has its own URL so this hub stays the general kaomoji copy-paste page. Open the topic list when you know the layout you need; stay here when you want a mixed sample grid.",
       ],
       bullets: [
         "Hand kaomoji — waves and hype arms",
         "Star kaomoji — ★ ⋆ ✩ aesthetic lines",
         "Carrd kaomojis — bio dividers between sections",
+        "Coquette kaomojis — multiline aesthetic text art",
         "Kaomoji dot art — compact (•ᴗ•)-style faces",
       ],
     },

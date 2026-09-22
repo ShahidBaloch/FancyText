@@ -967,6 +967,21 @@ export const PAGES: PageEntry[] = [
   },
   {
     phase: 5,
+    priority: "P1",
+    url: "/coquette-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "coquette kaomoji",
+    title: "Coquette Kaomoji Copy Paste — Multiline Aesthetic Text Art | FancifyText",
+    description:
+      "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
+    fellowKeywords: fellows(
+      "aesthetic kaomoji",
+      "multiline ascii kaomoji",
+      "coquette text art",
+    ),
+  },
+  {
+    phase: 5,
     priority: "P2",
     url: "/happy-kaomojis/",
     group: "F_Kaomoji",
@@ -1659,12 +1674,14 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
     "/kaomoji/",
   ],
   "cat-kaomojis": [
+    "/coquette-kaomojis/",
     "/cute-kaomojis/",
     "/bear-kaomojis/",
     "/dog-kaomojis/",
     "/kaomoji/",
   ],
   "dog-kaomojis": [
+    "/coquette-kaomojis/",
     "/bear-kaomojis/",
     "/cat-kaomojis/",
     "/cute-kaomojis/",
@@ -1786,6 +1803,7 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
     "/kaomoji/",
   ],
   "kaomoji-dot-art": [
+    "/coquette-kaomojis/",
     "/funny-kaomojis/",
     "/cute-kaomojis/",
     "/kaomoji/",
@@ -1793,9 +1811,18 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
   ],
   "carrd-kaomojis": [
     "/star-kaomojis/",
+    "/coquette-kaomojis/",
     "/social-media-bio-generator/",
     "/aesthetic-fonts/",
     "/cute-kaomojis/",
+    "/kaomoji/",
+  ],
+  "coquette-kaomojis": [
+    "/carrd-kaomojis/",
+    "/bunny-kaomojis/",
+    "/cat-kaomojis/",
+    "/dog-kaomojis/",
+    "/kaomoji-dot-art/",
     "/kaomoji/",
   ],
   "happy-kaomojis": [
@@ -1817,6 +1844,7 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
     "/kaomoji/",
   ],
   "bunny-kaomojis": [
+    "/coquette-kaomojis/",
     "/cat-kaomojis/",
     "/bear-kaomojis/",
     "/cute-kaomojis/",

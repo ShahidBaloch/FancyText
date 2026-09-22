@@ -242,6 +242,7 @@ export function assertSitemapInvariants(xml: string, entries: SitemapEntry[]): v
     "/star-kaomojis/",
     "/kaomoji-dot-art/",
     "/carrd-kaomojis/",
+    "/coquette-kaomojis/",
     "/lenny-face/",
     "/shrug-emoticon/",
     "/privacy/",

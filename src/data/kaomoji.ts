@@ -1,4 +1,9 @@
 import {
+  COQUETTE_BUNNY_TULIP,
+  COQUETTE_DOG_ASCII,
+  COQUETTE_KAOMOJI_FACES,
+} from "@/data/coquette-kaomoji-faces";
+import {
   KAOMOJI_HUB,
   KAOMOJI_HUB_AESTHETIC_SAMPLES,
   KAOMOJI_HUB_SERP,
@@ -131,6 +136,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "bear",
     "bear kaomoji",
     [
+      `╱|、 ♡\n૮ ˶ᵔ ᵕ ᵔ˶ ა\n  じしˍ,)ノ`,
       "ʕ•ᴥ•ʔ",
       "ʕ·ᴥ·ʔ",
       "ʕ￫ᴥ￩ʔ",
@@ -168,6 +174,8 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "cat",
     "cat kaomoji",
     [
+      `╱|、\n(˶ᵔ ᵕ ᵔ˶)\n|、˜〵\nじしˍ,)ノ`,
+      `   へ ♡ ╱|、\n     ૮  -  ՛ )\n       じしˍ,)ノ`,
       "(=^･ω･^=)",
       "(=^･ｪ･^=)",
       "(^・ω・^ )",
@@ -839,6 +847,8 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "dog",
     "dog kaomoji",
     [
+      COQUETTE_DOG_ASCII,
+      "／＞　 フ\n|　　_　 _|\n／` ミ＿xノ\n(∪･ω･∪)",
       "U・ᴥ・U",
       "▼・ᴥ・▼",
       "U＾ェ＾U",
@@ -1201,7 +1211,25 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "(^▽^)✧",
     "(^∇^)～",
   ]),
+  list(
+    "coquette-kaomojis",
+    "coquette",
+    "coquette kaomoji",
+    [...COQUETTE_KAOMOJI_FACES],
+    [
+      "aesthetic kaomoji",
+      "coquette text art",
+      "multiline kaomoji",
+      "ascii animal kaomoji",
+      "cute text art copy paste",
+    ],
+    "Coquette kaomoji are multiline Unicode text art—soft ♡ bears, ૮ cats, tulip bunnies, and standing dog ASCII like the viral Carrd/TikTok layouts. Tap a block to copy the full shape with line breaks intact.",
+    "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
+    "Coquette Kaomoji & Aesthetic Text Art",
+  ),
   list("bunny-kaomojis", "bunny", "bunny kaomoji", [
+    COQUETTE_BUNNY_TULIP,
+    "/\\_/\\\n(˶ᵔ ᵕ ᵔ˶)\n( >♡< )",
     "／( ・×・)＼",
     "／(≧ x ≦)＼",
     "(=\\(=^･^=)/=)",
@@ -1455,6 +1483,7 @@ export const INDEXABLE_KAOMOJI_SLUGS = new Set([
   "star-kaomojis",
   "kaomoji-dot-art",
   "carrd-kaomojis",
+  "coquette-kaomojis",
 ]);
 
 /** Layout / body-part lists—distinct from mood animals (cat, bear) and cute/heart. */
@@ -1463,6 +1492,7 @@ export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
   "star-kaomojis",
   "kaomoji-dot-art",
   "carrd-kaomojis",
+  "coquette-kaomojis",
 ]);
 
 export function isKaomojiTopicSpoke(slug: string): boolean {
@@ -1490,7 +1520,14 @@ const HUB_JUMP_EXTRA_KEYWORDS: Record<string, string[]> = {
     "kawaii cat",
     "cat face",
   ],
-  "bunny-kaomojis": ["cute bunny", "rabbit"],
+  "bunny-kaomojis": ["cute bunny", "rabbit", "tulip bunny"],
+  "coquette-kaomojis": [
+    "coquette",
+    "aesthetic text art",
+    "multiline ascii",
+    "carrd aesthetic",
+    "૮ kaomoji",
+  ],
   "kiss-kaomojis": ["love", "smooch"],
 };
 
