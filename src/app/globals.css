@@ -664,7 +664,7 @@ a {
     var(--panel-solid) 0%,
     var(--accent-soft) 100%
   );
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 .serp-specimen-label {
@@ -687,9 +687,11 @@ a {
 
 .serp-specimen-glyphs {
   margin: 0;
+  max-width: 100%;
   font-size: clamp(1.25rem, 4.2vw, 1.85rem);
   line-height: 1.45;
   word-break: break-word;
+  overflow-wrap: anywhere;
   color: var(--ink);
   letter-spacing: 0.02em;
 }
@@ -3292,9 +3294,15 @@ a.use-card:hover {
     gap: 0.45rem;
   }
 
-  .serp-specimen-text {
+  .serp-specimen-text,
+  .serp-specimen-glyphs {
     overflow-wrap: anywhere;
     word-break: break-word;
+    hyphens: none;
+  }
+
+  .serp-specimen--strip {
+    padding: 0.85rem 0.75rem;
   }
 
   .kaomoji-btn {

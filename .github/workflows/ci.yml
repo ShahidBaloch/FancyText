@@ -38,3 +38,6 @@ jobs:
         env:
           # Next.js may read env at build time; keep CI deterministic.
           NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: SERP specimen in pre-rendered HTML
+        run: npm run check:serp-specimen-html

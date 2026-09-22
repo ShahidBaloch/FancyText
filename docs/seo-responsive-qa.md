@@ -33,3 +33,4 @@ Manual checks for SEO landing pages and copy tools. Run at **390×844** (iPhone-
 ## Last verified
 
 - **2026-09-22** — Cloud agent pass at 390×844 on `/kaomoji/`, `/emoji-combos/`, `/copy-paste-fonts/`, `/text-art/`, `/cursive-text-generator/` (no horizontal overflow). CSS hardening: `overflow-x: clip` on `html`, symbol grid breakpoints, hub jump layout.
+- **2026-09-22** — Kaomoji mood SERP strips: `overflow-wrap: anywhere` on `.serp-specimen-glyphs` (Carrd divider lines at 390px); `npm run check:serp-specimen-html` after build guards SSR `serp-specimen` / `home-specimen` markers on every `SERP_SPECIMEN_REQUIRED_PATHS` URL.
