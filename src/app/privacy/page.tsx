@@ -8,27 +8,16 @@ import {
 } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL, getPageByUrl } from "@/data/pages/registry";
+import { GOOGLE_ADS_PUBLISHER_ID } from "@/lib/ads/google-policy";
 import { pageMetadata } from "@/lib/seo/metadata";
 
-const title = "Privacy Policy | FancifyText";
-const description = `How ${SITE_NAME} handles privacy for this free Unicode fancy text tool, including analytics, hosting, and future advertising partners.`;
+const page = getPageByUrl("/privacy/")!;
 const absoluteUrl = new URL("/privacy/", SITE_URL).toString();
 const GOOGLE_PARTNER_SITES =
   "https://policies.google.com/technologies/partner-sites";
 
-export const metadata: Metadata = {
-  ...pageMetadata({
-    phase: 0,
-    priority: "P2",
-    url: "/privacy/",
-    group: "H_Trust",
-    primaryKeyword: "privacy policy",
-    title,
-    description,
-    fellowKeywords: [],
-  }),
-};
+export const metadata: Metadata = pageMetadata(page);
 
 export default function PrivacyPage() {
   return (
@@ -36,7 +25,7 @@ export default function PrivacyPage() {
       <JsonLd
         data={webPageJsonLd({
           name: "Privacy Policy",
-          description,
+          description: page.description,
           url: absoluteUrl,
           siteName: SITE_NAME,
           siteUrl: SITE_URL,
@@ -61,7 +50,7 @@ export default function PrivacyPage() {
 
       <div className="seo-section seo-prose legal-prose">
         <p>
-          <strong>Last updated:</strong> September 16, 2026
+          <strong>Last updated:</strong> September 22, 2026
         </p>
 
         <h2>Overview</h2>
@@ -101,6 +90,18 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
+        <h2>Google Search Console and indexing</h2>
+        <p>
+          We use <strong>Google Search Console</strong> to monitor how the site
+          appears in Google Search. We submit an honest <Link href="/sitemap.xml">sitemap.xml</Link>{" "}
+          (indexable URLs only), use canonical URLs and <code>noindex</code> on
+          duplicate or thin pages (for example spelling aliases and parameterized
+          search results), and avoid cloaking or misleading redirects. Machine-readable
+          site summaries for assistants live at{" "}
+          <Link href="/llms.txt">llms.txt</Link> and{" "}
+          <Link href="/llms-full.txt">llms-full.txt</Link>.
+        </p>
+
         <h2>Advertising and Google partners</h2>
         <p>
           {SITE_NAME} may display advertising from third-party partners,
@@ -108,6 +109,12 @@ export default function PrivacyPage() {
           advertising services), once ads are turned on. Ads are not required
           for the generators to work. We will not place ads between a text
           input and the first Copy control on a tool page.
+        </p>
+        <p>
+          Our <Link href="/ads.txt">ads.txt</Link> file lists authorized Google
+          sellers ({GOOGLE_ADS_PUBLISHER_ID}) for programmatic ads. Ad scripts are{" "}
+          <strong>not loaded</strong> on the live site until a certified consent
+          platform is configured (see below).
         </p>
         <p>
           Advertising partners, including Google, may use cookies, pixels or

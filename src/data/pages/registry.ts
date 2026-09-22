@@ -1105,6 +1105,30 @@ export const PAGES: PageEntry[] = [
     updated: "2026-09-20",
   },
   {
+    phase: 0,
+    priority: "P2",
+    url: "/privacy/",
+    group: "H_Trust",
+    primaryKeyword: "privacy policy",
+    title: "Privacy Policy | FancifyText",
+    description:
+      "How FancifyText handles privacy for this free Unicode fancy text tool, including analytics, Google Search Console, hosting, ads.txt, and future advertising partners.",
+    fellowKeywords: fellows("fancifytext privacy", "google ads privacy"),
+    updated: "2026-09-22",
+  },
+  {
+    phase: 0,
+    priority: "P2",
+    url: "/terms/",
+    group: "H_Trust",
+    primaryKeyword: "terms of use",
+    title: "Terms of Use | FancifyText",
+    description:
+      "Terms for using FancifyText, a free Unicode fancy text generator—acceptable use, publisher content standards, and limits of liability.",
+    fellowKeywords: fellows("fancifytext terms", "site terms of use"),
+    updated: "2026-09-22",
+  },
+  {
     phase: 6,
     priority: "P2",
     url: "/guides/discord-colored-text-not-working/",

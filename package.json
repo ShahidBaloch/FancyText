@@ -15,7 +15,8 @@
     "check:kaomoji-catalog": "node scripts/check-kaomoji-catalog.mjs",
     "check:kaomoji-seo": "node scripts/check-kaomoji-seo.mjs",
     "check:aeo": "node scripts/check-aeo.mjs",
-    "check:perf": "node scripts/check-perf.mjs"
+    "check:perf": "node scripts/check-perf.mjs",
+    "check:google-policy": "node scripts/check-google-policy.mjs"
   },
   "dependencies": {
     "next": "16.3.5",

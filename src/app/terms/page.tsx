@@ -8,25 +8,13 @@ import {
 } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL, getPageByUrl } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
 
-const title = "Terms of Use | FancifyText";
-const description = `Terms for using ${SITE_NAME}, a free Unicode fancy text generator.`;
+const page = getPageByUrl("/terms/")!;
 const absoluteUrl = new URL("/terms/", SITE_URL).toString();
 
-export const metadata: Metadata = {
-  ...pageMetadata({
-    phase: 0,
-    priority: "P2",
-    url: "/terms/",
-    group: "H_Trust",
-    primaryKeyword: "terms of use",
-    title,
-    description,
-    fellowKeywords: [],
-  }),
-};
+export const metadata: Metadata = pageMetadata(page);
 
 export default function TermsPage() {
   return (
@@ -34,7 +22,7 @@ export default function TermsPage() {
       <JsonLd
         data={webPageJsonLd({
           name: "Terms of Use",
-          description,
+          description: page.description,
           url: absoluteUrl,
           siteName: SITE_NAME,
           siteUrl: SITE_URL,
@@ -59,7 +47,7 @@ export default function TermsPage() {
 
       <div className="seo-section seo-prose legal-prose">
         <p>
-          <strong>Last updated:</strong> September 14, 2026
+          <strong>Last updated:</strong> September 22, 2026
         </p>
 
         <h2>The service</h2>
@@ -82,7 +70,21 @@ export default function TermsPage() {
             Do not attempt to break into, reverse engineer, or disrupt hosting
             infrastructure beyond normal use of the public website.
           </li>
+          <li>
+            Do not click ads artificially, encourage others to click ads, or
+            place misleading content next to ads if advertising is enabled.
+          </li>
         </ul>
+
+        <h2>Publisher content (Search &amp; ads programs)</h2>
+        <p>
+          Pages are built as original utilities with human-written explanations,
+          FAQs, and how-to steps—not auto-generated doorway pages. Kaomoji and
+          font lists are curated or programmatically composed from documented
+          parts; browse-only URLs are marked <code>noindex</code> so search
+          indexes one canonical page per topic. This aligns with Google Search
+          quality guidelines and AdSense publisher content policies.
+        </p>
 
         <h2>No warranties</h2>
         <p>

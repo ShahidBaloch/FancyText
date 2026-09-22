@@ -467,12 +467,9 @@ Agent site search: https://fancifytext.com/search/?q={query} (use plus or %20 fo
 
 - /about/ — About — About FancifyText
 - /contact/ — Contact — Contact FancifyText by email (hello@fancifytext
+- /privacy/ — privacy policy
 - /search/ — search fancifytext tools — Search FancifyText tools
-
-## Policies
-
-- /privacy/ — Privacy policy
-- /terms/ — Terms of use
+- /terms/ — terms of use — Terms for using FancifyText, a free Unicode fancy text generator
 
 - /cursive-capital-a/ — /cursive-capital-a/
 - /cursive-capital-b/ — /cursive-capital-b/

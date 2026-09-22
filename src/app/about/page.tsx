@@ -72,7 +72,19 @@ export default function AboutPage() {
           pack.” The generators run in your browser: we convert letters to
           Unicode look-alikes so you can copy and paste them into Instagram,
           Discord, TikTok, WhatsApp, and other apps that accept special
-          characters.
+          characters. Contact:{" "}
+          <Link href="/contact/">Contact page</Link> · Legal:{" "}
+          <Link href="/privacy/">Privacy</Link>,{" "}
+          <Link href="/terms/">Terms</Link>.
+        </p>
+
+        <h2>Search and advertising standards</h2>
+        <p>
+          We follow Google Search Console best practices (sitemap, canonical
+          URLs, no deceptive pages) and keep AdSense-related scripts off the
+          site until a certified consent platform is configured for regions that
+          require it. See the <Link href="/privacy/">Privacy Policy</Link> for
+          analytics, ads.txt, and partner disclosures.
         </p>
 
         <h2>How the tools work</h2>
