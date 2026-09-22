@@ -217,6 +217,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.",
     canonicalLead:
       "This is the dedicated crying set—faces with visible tears for memes, apologies, and dramatic reactions. Quiet down moods without waterworks are on the sad kaomoji list; the hub only shows a small cry sample.",
+    catalogNote:
+      "A short multiline cry preview may appear at the top; the full mood matrix lives on multiline kaomojis (indexed). Sad kaomojis (browse) cover quiet frowns without waterworks.",
     whereHeading: "Where crying text faces fit",
     whereBullets: [
       "Discord threads: one (T_T) or (╥_╥) next to words reads clearer than three faces in a row.",
@@ -292,6 +294,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.",
     canonicalLead:
       "Every kawaii face on this page is curated for short bios and soft replies—round eyes and blush, not animal-ear mascots (those live on the cat and bear lists). The mixed kaomoji hub is for browsing; this URL is the full cute set.",
+    catalogNote:
+      "One-line kawaii faces are the focus. Any multiline cheer blocks here are a small teaser only—the full angry/happy/sad multiline library is on multiline kaomojis; tall coquette art is on coquette kaomojis.",
     whereHeading: "Where cute kaomoji work best",
     whereBullets: [
       "Discord about-me: one blush face after plain words; skip long stacks in nicknames.",
@@ -438,6 +442,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.",
     canonicalLead:
       "Hearts here are woven into the face—not a lone ♡ emoji. Use this list for affectionate DMs, thank-yous, and couple bios; flirty smooch marks are on kiss kaomojis, comfort arms on hug kaomojis.",
+    catalogNote:
+      "Love faces stay mostly one-line. If multiline ♡ stacks appear, they are a curated preview—not the full multiline mood hub (see multiline kaomojis).",
     whereHeading: "Where heart kaomoji land well",
     whereBullets: [
       "Couple Discord: one heart face in a shared topic or status, not both nicknames filled with symbols.",
@@ -1083,6 +1089,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.",
     canonicalLead:
       "Hand kaomoji are faces with visible arms—waves, cheers, and reach-outs. They are not hug lists (cuddle arms) and not star dividers. The kaomoji hub mixes moods; this page is only arm-forward reactions.",
+    catalogNote:
+      "Arm-up one-liners are the main grid. Any multiline hype blocks are a short sample; full mood posters are on multiline kaomojis.",
     meaningsHeading: "Arms that read as action",
     meanings:
       "Hand kaomoji use raised punctuation arms to signal hype, greeting, surrender, or presentation. They work when a static smile feels too quiet—game wins, welcome messages, and “look at this” moments.",
@@ -1142,6 +1150,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.",
     canonicalLead:
       "Star kaomoji mix sparkle marks (★ ⋆ ✩) with optional faces. They are not heart kaomoji (love mouths) and not plain symbol lists. Use heart lists for ♡ inside a face; use this page for galaxy/coquette-style lines.",
+    catalogNote:
+      "Sparkle dividers and one-line star faces only—no multiline mood posters. Tall aesthetic art: coquette kaomojis; bio rules: carrd kaomojis.",
     meaningsHeading: "Sparkle lines vs love hearts",
     meanings:
       "These entries decorate a bio or caption with stars—sometimes wrapping a cute face, sometimes standing alone as a divider. They target aesthetic and y2k-style layouts without turning into full ASCII posters.",
@@ -1202,6 +1212,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.",
     canonicalLead:
       "This list is mini dot-style and one-line ASCII faces—not multi-page text posters. For giant block ASCII, use a dedicated ASCII art tool; here every row stays short so mobile copy stays fast.",
+    catalogNote:
+      "Every row is one line by design. Multiline coquette/Carrd posters and mood ASCII stacks live on coquette kaomojis and multiline kaomojis—not here.",
     meaningsHeading: "Small art that still counts as kaomoji",
     meanings:
       "Dot art kaomoji use bullet-like eyes (•) and simple mouths so the face reads even at small sizes. They suit memes, quick reactions, and comments where a full-width table-flip would wrap awkwardly.",
@@ -1262,6 +1274,8 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.",
     canonicalLead:
       "Carrd kaomojis here means divider lines and spacing strings for link-in-bio pages—not full site templates. Combine one divider with your words; use the social media bio generator for styled text, not for these Unicode lines.",
+    catalogNote:
+      "Divider strings and soft rules—not full coquette character art. Tulip bunnies, ♡ cats, and tall dog ASCII: coquette kaomojis. Mood table-flips: multiline kaomojis.",
     meaningsHeading: "Dividers, not full page layouts",
     meanings:
       "Each row is a horizontal accent—stars, dashes, or soft coquette-style marks—meant to sit between sections on Carrd, Linktree-style pages, or long Discord about-me blocks. They are decorative text, not faces, though some rows include ♡ or ⋆.",

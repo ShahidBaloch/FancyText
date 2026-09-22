@@ -59,7 +59,7 @@ export const KAOMOJI_HUB_NAV_GROUPS: readonly KaomojiHubNavGroup[] = [
     id: "browse-moods",
     heading: "More moods (browse)",
     description:
-      "Full angry/happy/sad grids for copy-paste—not separate Google landing pages (avoids competing with multiline kaomojis and indexed cute/cry).",
+      "Full mood grids (including multiline stacks) for copy-paste—noindex browse URLs so Google keeps one indexed multiline hub plus cute/cry/heart spokes.",
     indexable: false,
     slugs: [
       "angry-kaomojis",
