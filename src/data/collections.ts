@@ -178,7 +178,7 @@ export const COLLECTIONS: CollectionConfig[] = [
         {
           question: "Should I stay here or go to the homepage converter?",
           answer:
-            "Stay here if you want a catalog (aesthetic, cute, cool, platforms). Go home if you want to type one phrase and see every live style, including search and favorites.",
+            "Stay here if you want a catalog (aesthetic, cute, cool, platforms). Go home if you want to type one phrase and preview twelve popular styles with search and favorites—or open copy and paste fonts for the full grid.",
         },
         {
           question: "I searched “cool fonts copy paste.” Where do I go?",

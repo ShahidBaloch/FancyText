@@ -240,7 +240,9 @@ export default function HomePage() {
         <h2 id="scope-heading">Homepage vs a dedicated generator</h2>
         <p>
           This URL is the <strong>fancy text generator</strong>—type once, preview
-          every live style. It is not the same page as a single-style tool. Open
+          twelve popular styles live (67+ on{" "}
+          <Link href="/copy-paste-fonts/">copy and paste fonts</Link>). It is not
+          the same page as a single-style tool. Open
           a dedicated generator when you already know the modifier you want.
         </p>
         <ul>
