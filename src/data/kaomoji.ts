@@ -1,8 +1,21 @@
 import {
-  COQUETTE_BUNNY_TULIP,
-  COQUETTE_DOG_ASCII,
+  COQUETTE_BEAR_ALL,
+  COQUETTE_BUNNY_ALL,
+  COQUETTE_CAT_ALL,
+  COQUETTE_DOG_ALL,
   COQUETTE_KAOMOJI_FACES,
 } from "@/data/coquette-kaomoji-faces";
+
+function mergeKaomojiFaces(primary: string[], secondary: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const face of [...primary, ...secondary]) {
+    if (seen.has(face)) continue;
+    seen.add(face);
+    out.push(face);
+  }
+  return out;
+}
 import {
   KAOMOJI_HUB,
   KAOMOJI_HUB_AESTHETIC_SAMPLES,
@@ -135,8 +148,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "bear-kaomojis",
     "bear",
     "bear kaomoji",
-    [
-      `╱|、 ♡\n૮ ˶ᵔ ᵕ ᵔ˶ ა\n  じしˍ,)ノ`,
+    mergeKaomojiFaces(COQUETTE_BEAR_ALL, [
       "ʕ•ᴥ•ʔ",
       "ʕ·ᴥ·ʔ",
       "ʕ￫ᴥ￩ʔ",
@@ -167,15 +179,13 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "ʕᵔᴥᵔʔ♡",
       "ʕっ•ᴥ•ʔっ💕",
       "ʕ￫ᴥ￩ʔﾉ",
-    ],
+    ]),
   ),
   list(
     "cat-kaomojis",
     "cat",
     "cat kaomoji",
-    [
-      `╱|、\n(˶ᵔ ᵕ ᵔ˶)\n|、˜〵\nじしˍ,)ノ`,
-      `   へ ♡ ╱|、\n     ૮  -  ՛ )\n       じしˍ,)ノ`,
+    mergeKaomojiFaces(COQUETTE_CAT_ALL, [
       "(=^･ω･^=)",
       "(=^･ｪ･^=)",
       "(^・ω・^ )",
@@ -206,7 +216,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "(=^ ◡ ^=)",
       "ฅ(⌯͒• ɪ •⌯͒)ฅ",
       "(=^･ω･^)y＝",
-    ],
+    ]),
   ),
   list(
     "confused-kaomojis",
@@ -846,9 +856,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "dog-kaomojis",
     "dog",
     "dog kaomoji",
-    [
-      COQUETTE_DOG_ASCII,
-      "／＞　 フ\n|　　_　 _|\n／` ミ＿xノ\n(∪･ω･∪)",
+    mergeKaomojiFaces(COQUETTE_DOG_ALL, [
       "U・ᴥ・U",
       "▼・ᴥ・▼",
       "U＾ェ＾U",
@@ -879,7 +887,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "U＾∀＾U",
       "▼ω▼",
       "U・ᴥ・*U",
-    ],
+    ]),
   ),
   list(
     "funny-kaomojis",
@@ -1227,9 +1235,11 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
     "Coquette Kaomoji & Aesthetic Text Art",
   ),
-  list("bunny-kaomojis", "bunny", "bunny kaomoji", [
-    COQUETTE_BUNNY_TULIP,
-    "/\\_/\\\n(˶ᵔ ᵕ ᵔ˶)\n( >♡< )",
+  list(
+    "bunny-kaomojis",
+    "bunny",
+    "bunny kaomoji",
+    mergeKaomojiFaces(COQUETTE_BUNNY_ALL, [
     "／( ・×・)＼",
     "／(≧ x ≦)＼",
     "(=\\(=^･^=)/=)",
@@ -1261,6 +1271,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "(\\(◕ᴥ◕)/)",
     "(\\(◕∀◕)ゞ",
   ]),
+  ),
 ];
 
 for (const entry of KAOMOJI_LISTS) {

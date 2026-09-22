@@ -1409,7 +1409,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "This list is the viral coquette / soft-aesthetic text art people paste into Carrd, TikTok bios, and Discord about-me blocks—multiline Unicode, not one-line chat faces. For compact dot eyes only, use kaomoji dot art; for animal one-liners, open cat, bunny, bear, or dog lists.",
     meaningsHeading: "Multiline layout, not sticker emoji",
     meanings:
-      "Coquette kaomoji stack several rows—arms (╱|、), Gujarati-style ૮ ears, ♡ hearts, tulip bunnies, and tall dog ASCII. Copy preserves newlines so the shape pastes the way you see it. Test on your phone: some apps shrink monospace art; Carrd text blocks usually keep spacing best.",
+      "This catalog is built from the viral layout parts crossed together—arm headers (へ ♡ ╱|、), ૮ ear lines, cheek marks, paw footers, simple ╱|、 faces, bunny ears × tulip/heart props, bear snouts, and dog ASCII bodies—so you get the combinations people paste on Carrd and TikTok, not just three meme screenshots. Copy preserves newlines; test in a plain text box if an app squashes spacing.",
     howToHeading: "Copy multiline coquette art",
     howToSteps: [
       "Pick a block that matches your vibe—cat/bear ♡, tulip bunny, or dog ASCII.",
@@ -1424,6 +1424,14 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "Discord about-me: monospace-friendly; keep one poster, not three stacked copies.",
     ],
     extraSections: [
+      {
+        id: "combo-matrix",
+        heading: "What “all combinations” means here",
+        paragraphs: [
+          "Cat/coquette rows mix every listed arm header with each ૮ ear line, optional cheek row, and paw footer, plus every ╱|、 + face + leg trio. Bunny rows combine each ear style (/\\_/\\, hop brackets, and more) with every face mouth and every 🌷 or ♡ prop line. Dog rows pair compact ／＞ フ bodies with each classic snout finish.",
+          "Animal browse pages (cat, bunny, bear, dog) repeat the same generated sets so you can copy from the mood you searched—even when the full matrix lives here on coquette kaomojis.",
+        ],
+      },
       {
         id: "vs-dot-art",
         heading: "Coquette art vs dot-art kaomoji",
@@ -1458,13 +1466,18 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         answer:
           "Yes—the tall ／＞ フ dog block is in this list and at the top of dog kaomojis for the same tap-to-copy shape.",
       },
+      {
+        question: "Are all coquette combinations on one page?",
+        answer:
+          "Yes. This URL lists the full cross-product of the arm, face, paw, bunny prop, bear, and dog parts we track—canonical viral blocks first, then every generated mix.",
+      },
     ],
   },
   "bunny-kaomojis": {
     description:
       "Bunny kaomoji copy and paste. Rabbit-ear text faces for spring vibes, pet jokes, and soft kawaii replies.",
     canonicalLead:
-      "Bunny kaomoji highlight rabbit ears or hop brackets—not cat whiskers. Multiline tulip bunnies (/\\_/\\ with 🌷) lead the list; full coquette sets live on coquette kaomojis. Cat kaomojis cover feline faces; cute kaomojis is the indexed kawaii hub.",
+      "Bunny kaomoji start with every generated tulip/heart multiline mix (ears × faces × 🌷/♡ props), then classic hop-bracket one-liners. Coquette kaomojis duplicates the same bunny matrix for aesthetic searches. Cat kaomojis cover feline coquette rows plus neko one-liners.",
     meaningsHeading: "Rabbit ears vs cat whiskers",
     meanings:
       "Bunny faces emphasize long ears or rabbit silhouettes—not the same as cat whiskers. For indexed feline faces, use cat kaomojis; this list stays browse-only to avoid competing with cat/cute URLs.",
