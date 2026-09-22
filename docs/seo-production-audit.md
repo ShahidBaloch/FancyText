@@ -96,7 +96,12 @@ Misspellings (`/kamoji/`) → same faces, **canonical hub**, no sitemap entry �
 
 ---
 
-## 5. Deploy recommendation
+## 5. Performance
+
+- Pre-rendered static pages (SSG); tools code-split on home and collection pages.
+- See **`docs/seo-performance.md`** before adding client bundles or registry imports to layout.
+
+## 6. Deploy recommendation
 
 1. Merge **#20 → #28** (or equivalent release branch) to **`main`**.
 2. **`npm run check:seo`** + **`npm run build`** on CI.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { kaomojiPathIsIndexable } from "@/data/kaomoji";
-import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
+import { kaomojiPathIsIndexable } from "@/data/kaomoji-index";
+import type { PageEntry } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL } from "@/data/site";
 import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
 import {
   letterDescription,

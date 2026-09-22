@@ -7,7 +7,7 @@ import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
-import { StyleGallery } from "@/components/tool/StyleGallery";
+import { StyleGalleryLazy } from "@/components/tool/load-style-gallery";
 import type { CollectionConfig } from "@/data/collections";
 import { SITE_NAME, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 import { getSerpSpecimen } from "@/lib/seo/specimens";
@@ -61,7 +61,7 @@ export function CollectionView({ config }: CollectionViewProps) {
       <h2 id="sample-heading">{config.galleryHeading}</h2>
       {config.galleryLead ? <p className="seo-lead">{config.galleryLead}</p> : null}
       <div className="tool-stage" id="tool">
-        <StyleGallery
+        <StyleGalleryLazy
           initialText={config.initialText}
           styleIds={config.styleIds.length ? config.styleIds : undefined}
           presets={config.presets}
@@ -75,7 +75,7 @@ export function CollectionView({ config }: CollectionViewProps) {
     </section>
   ) : (
     <div className="tool-stage" id="tool">
-      <StyleGallery
+      <StyleGalleryLazy
         initialText={config.initialText}
         styleIds={config.styleIds.length ? config.styleIds : undefined}
         presets={config.presets}

@@ -1,8 +1,9 @@
-import { HomeHeroSpecimen } from "@/components/seo/HomeHeroSpecimen";
+import { HomeHeroFontRotate } from "@/components/seo/HomeHeroFontRotate";
+import { HOME_FONT_SHOWCASE } from "@/lib/seo/specimens";
 
 /**
- * Server-rendered hero. Only the rotating specimen is a client island, which
- * keeps the H1 and lead paragraph (the LCP element) out of the client bundle.
+ * Server-rendered hero. Rotating specimen is a tiny client island fed
+ * precomputed strings — keeps the style engine out of the hero bundle.
  */
 export function HomeHero() {
   return (
@@ -26,7 +27,7 @@ export function HomeHero() {
         </div>
       </div>
 
-      <HomeHeroSpecimen />
+      <HomeHeroFontRotate showcase={HOME_FONT_SHOWCASE} />
     </section>
   );
 }

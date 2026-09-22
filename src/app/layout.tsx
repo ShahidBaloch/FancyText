@@ -4,7 +4,7 @@ import { AdSenseProvider } from "@/components/ads/AdSenseProvider";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
-import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL } from "@/data/site";
 import "./globals.css";
 
 const sora = Sora({

@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
 import { FaqSection } from "@/components/seo/FaqSection";
@@ -10,7 +11,8 @@ import {
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { HomeHero } from "@/components/seo/HomeHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
-import { HomePlayground } from "@/components/tool/HomePlayground";
+import { StyleGalleryFallback } from "@/components/tool/StyleGalleryFallback";
+import { ToolStagePlaceholder } from "@/components/tool/ToolStagePlaceholder";
 import { CONTACT_EMAIL, SITE_SAME_AS } from "@/data/contact";
 import {
   SITE_NAME,
@@ -21,6 +23,24 @@ import {
 import { pageMetadata } from "@/lib/seo/metadata";
 
 const page = getPageByUrl("/")!;
+
+const HomePlayground = dynamic(
+  () =>
+    import("@/components/tool/HomePlayground").then((m) => ({
+      default: m.HomePlayground,
+    })),
+  {
+    loading: () => (
+      <>
+        <ToolStagePlaceholder />
+        <section className="seo-section" aria-labelledby="gallery-heading">
+          <h2 id="gallery-heading">All Unicode styles in one gallery</h2>
+          <StyleGalleryFallback />
+        </section>
+      </>
+    ),
+  },
+);
 
 export const metadata = pageMetadata(page);
 

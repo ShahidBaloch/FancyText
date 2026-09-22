@@ -716,6 +716,56 @@ a {
   scroll-margin-top: 5.5rem;
 }
 
+.tool-stage--loading {
+  min-height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-stage-loading-inner {
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.tool-stage-loading-bar {
+  display: block;
+  height: 0.35rem;
+  margin: 0 auto 1rem;
+  max-width: 12rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--line) 0%,
+    var(--accent-soft) 50%,
+    var(--line) 100%
+  );
+  background-size: 200% 100%;
+  animation: tool-stage-shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes tool-stage-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.gallery-loading {
+  min-height: 8rem;
+  padding: 1.25rem 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-stage-loading-bar {
+    animation: none;
+    background: var(--line);
+  }
+}
+
 .field-label {
   display: block;
   margin-bottom: 0.45rem;
