@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
@@ -7,11 +7,7 @@ import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { SymbolGrid } from "@/components/tool/SymbolGrid";
 import { SYMBOL_CATEGORIES, SYMBOL_FAQ } from "@/data/symbols";
-import {
-  SITE_NAME,
-  getPageByUrl,
-  getTopicalRelated,
-} from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 const page = getPageByUrl("/cool-symbols/")!;
 const related = getTopicalRelated("/cool-symbols/", 6);
@@ -34,7 +30,7 @@ export function CoolSymbolsView() {
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Cool symbols" },
         ]}
       />

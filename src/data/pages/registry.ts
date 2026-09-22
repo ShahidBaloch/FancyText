@@ -2234,8 +2234,12 @@ export function getExplorePages(): PageEntry[] {
   );
 }
 
+/**
+ * Top-nav money links only — do not include `/` (logo is Home; an extra
+ * "Home" link is the first item clipped by desktop `overflow-x` and looks
+ * like a stray mark between brand and Cursive).
+ */
 const NAV_URLS = [
-  "/",
   "/cursive-text-generator/",
   "/bold-text-generator/",
   "/copy-paste-fonts/",

@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageHero } from "@/components/seo/PageHero";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { BigTextTool } from "@/components/tool/BigTextTool";
-import {
-  SITE_NAME,
-  getPageByUrl,
-  getTopicalRelated,
-} from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 const page = getPageByUrl("/big-text-generator/")!;
 const related = getTopicalRelated("/big-text-generator/", 6);
@@ -60,7 +56,7 @@ export function BigTextView() {
         }}
       />
       <Breadcrumbs
-        items={[{ name: SITE_NAME, href: "/" }, { name: "Big text generator" }]}
+        items={[HOME_CRUMB, { name: "Big text generator" }]}
       />
       <PageHero h1="Big text generator" lead={page.description} />
 

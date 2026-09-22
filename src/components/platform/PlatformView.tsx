@@ -1,6 +1,6 @@
 import { HelpSections } from "@/components/seo/HelpSections";
 import { BackToTool } from "@/components/seo/BackToTool";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
@@ -11,7 +11,7 @@ import { DiscordColorTool } from "@/components/tool/DiscordColorTool";
 import { HtmlRichTool } from "@/components/tool/HtmlRichTool";
 import { StyleGalleryLazy } from "@/components/tool/load-style-gallery";
 import { FIELD_UNICODE_LABELS, type PlatformConfig } from "@/data/platforms";
-import { SITE_NAME, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 import { DISCORD_COLOR_CODES } from "@/lib/discord/ansi";
 
 type PlatformViewProps = {
@@ -46,7 +46,7 @@ export function PlatformView({ config }: PlatformViewProps) {
 
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: h1 },
         ]}
       />

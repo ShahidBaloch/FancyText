@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
@@ -8,7 +8,7 @@ import { RelatedTools } from "@/components/seo/RelatedTools";
 import { SymbolGrid } from "@/components/tool/SymbolGrid";
 import type { SymbolCategory } from "@/data/symbols";
 import type { PageEntry } from "@/data/pages/registry";
-import { SITE_NAME, getTopicalRelated } from "@/data/pages/registry";
+import { getTopicalRelated } from "@/data/pages/registry";
 
 type ProseBlock = {
   id: string;
@@ -51,7 +51,7 @@ export function SymbolCatalogView({
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: crumbLabel },
         ]}
       />

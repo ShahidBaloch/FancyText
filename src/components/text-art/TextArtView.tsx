@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
@@ -11,11 +11,7 @@ import {
   TEXT_ART_PIECES,
   TEXT_ART_PROSE,
 } from "@/data/text-art";
-import {
-  SITE_NAME,
-  getPageByUrl,
-  getTopicalRelated,
-} from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 const page = getPageByUrl("/text-art/")!;
 const related = getTopicalRelated("/text-art/", 6);
@@ -39,7 +35,7 @@ export function TextArtView() {
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Text art" },
         ]}
       />

@@ -7,6 +7,7 @@ import {
   webApplicationJsonLd,
   webPageJsonLd,
 } from "@/components/seo/JsonLd";
+import { homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
 import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
 
@@ -42,7 +43,7 @@ export function PageJsonLd({
   const breadcrumbItems =
     crumbs ??
     [
-      { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+      homeCrumbLd(SITE_URL),
       { name, url: absoluteUrl },
     ];
 

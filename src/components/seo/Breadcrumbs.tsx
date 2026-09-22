@@ -5,6 +5,18 @@ export type Crumb = {
   href?: string;
 };
 
+/**
+ * First crumb for visible trail + BreadcrumbList.
+ * Use "Home" (not the brand) — Google already shows sitename/favicon; brand as
+ * position-1 burns SERP pixels and duplicates the title/sitename row.
+ * Leaf crumbs should stay intent-matched (e.g. "Kaomoji", "Cute Kaomojis").
+ */
+export const HOME_CRUMB: Crumb = { name: "Home", href: "/" };
+
+export function homeCrumbLd(siteUrl: string): { name: string; url: string } {
+  return { name: "Home", url: new URL("/", siteUrl).toString() };
+}
+
 type BreadcrumbsProps = {
   items: Crumb[];
 };

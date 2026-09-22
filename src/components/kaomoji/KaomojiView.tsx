@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB, homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import {
@@ -147,7 +147,7 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
               : undefined
           }
           crumbs={[
-            { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+            homeCrumbLd(SITE_URL),
             { name: "Kaomoji", url: new URL("/kaomoji/", SITE_URL).toString() },
             { name: config.h1, url: new URL(url, SITE_URL).toString() },
           ]}
@@ -183,7 +183,7 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
 
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Kaomoji", href: "/kaomoji/" },
           { name: config.h1 },
         ]}
@@ -451,7 +451,7 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
 
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: serp.breadcrumbLabel },
         ]}
       />

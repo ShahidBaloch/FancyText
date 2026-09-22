@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageHero } from "@/components/seo/PageHero";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { CaseConverterTool } from "@/components/tool/CaseConverterTool";
-import {
-  SITE_NAME,
-  getPageByUrl,
-  getTopicalRelated,
-} from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 const page = getPageByUrl("/case-converter/")!;
 const related = getTopicalRelated("/case-converter/", 6);
@@ -65,7 +61,7 @@ export function CaseConverterView() {
         }}
       />
       <Breadcrumbs
-        items={[{ name: SITE_NAME, href: "/" }, { name: "Case converter" }]}
+        items={[HOME_CRUMB, { name: "Case converter" }]}
       />
       <PageHero h1="Case converter" lead={page.description} />
 

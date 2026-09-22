@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageHero } from "@/components/seo/PageHero";
@@ -11,11 +11,7 @@ import {
   INVISIBLE_FAQ,
   INVISIBLE_KIND_LABELS,
 } from "@/data/invisible";
-import {
-  SITE_NAME,
-  getPageByUrl,
-  getTopicalRelated,
-} from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 const page = getPageByUrl("/invisible-character/")!;
 const related = getTopicalRelated("/invisible-character/", 6);
@@ -37,7 +33,7 @@ export function InvisibleTextView() {
         }}
       />
       <Breadcrumbs
-        items={[{ name: SITE_NAME, href: "/" }, { name: "Invisible character" }]}
+        items={[HOME_CRUMB, { name: "Invisible character" }]}
       />
       <PageHero h1="Invisible character" lead={page.description} />
 

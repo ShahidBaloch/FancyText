@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageHero } from "@/components/seo/PageHero";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { AiToLinkedIn } from "@/components/linkedin/AiToLinkedIn";
-import {
-  SITE_NAME,
-  getPageByUrl,
-  getTopicalRelated,
-} from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 const URL = "/chatgpt-to-linkedin/";
 const page = getPageByUrl(URL)!;
@@ -79,7 +75,7 @@ export function AiToLinkedInView() {
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "ChatGPT to LinkedIn" },
         ]}
       />

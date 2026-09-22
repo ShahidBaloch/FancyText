@@ -43,15 +43,24 @@ function NavLinks({
 export function SiteNav({
   siteName,
   items,
+  mobileExtraItems = [],
 }: {
   siteName: string;
   items: NavItem[];
+  /** Prepended in the mobile drawer only (e.g. Home). */
+  mobileExtraItems?: NavItem[];
 }) {
   const pathname = normalizePath(usePathname() || "/");
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+
+  const mobileItems = [...mobileExtraItems, ...items].filter(
+    (item, index, all) =>
+      all.findIndex((other) => normalizePath(other.url) === normalizePath(item.url)) ===
+      index,
+  );
 
   // Adjust during render rather than in an effect: navigating (including via
   // browser back/forward) must close the drawer without a second paint.
@@ -142,7 +151,7 @@ export function SiteNav({
         <div ref={drawerRef} id={menuId} className="site-nav-drawer is-open">
           <nav className="site-nav site-nav--mobile" aria-label="Mobile">
             <NavLinks
-              items={items}
+              items={mobileItems}
               pathname={pathname}
               onNavigate={() => setOpen(false)}
             />

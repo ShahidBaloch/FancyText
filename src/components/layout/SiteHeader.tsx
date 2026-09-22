@@ -8,7 +8,15 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <SiteNav siteName={SITE_NAME} items={nav} />
+      {/*
+        Desktop omits Home (logo = home; Home was the first item clipped by
+        overflow-x). Mobile drawer keeps Home first for clear way-finding.
+      */}
+      <SiteNav
+        siteName={SITE_NAME}
+        items={nav}
+        mobileExtraItems={[{ url: "/", navLabel: "Home" }]}
+      />
     </header>
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BackToTool } from "@/components/seo/BackToTool";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB, homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import {
   JsonLd,
@@ -105,7 +105,7 @@ export function CursiveLetterView({
       <JsonLd data={faqPageJsonLd(absoluteUrl, faqItems)} />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          homeCrumbLd(SITE_URL),
           { name: "Cursive text generator", url: hubUrl },
           { name: h1, url: absoluteUrl },
         ])}
@@ -113,7 +113,7 @@ export function CursiveLetterView({
 
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Cursive text generator", href: "/cursive-text-generator/" },
           { name: h1 },
         ]}

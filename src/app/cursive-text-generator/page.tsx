@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CursiveAlphabet } from "@/components/cursive/CursiveAlphabet";
 import { BackToTool } from "@/components/seo/BackToTool";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
@@ -9,7 +9,7 @@ import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { SampleCopyList } from "@/components/tool/SampleCopyList";
 import { DualStylePreview } from "@/components/tool/TextTool";
-import { getPageByUrl, getTopicalRelated, SITE_NAME } from "@/data/pages/registry";
+import { getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 const page = getPageByUrl("/cursive-text-generator/")!;
@@ -89,7 +89,7 @@ export default function CursiveHubPage() {
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Cursive text generator" },
         ]}
       />

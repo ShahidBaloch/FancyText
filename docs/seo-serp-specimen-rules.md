@@ -26,6 +26,9 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 - **Intent first:** picture emoji queries need emoji strips; font queries need transformed letters; kaomoji queries need faces in the **snippet** (meta description / hero), not always in the title.
 - **When a face belongs in the title:** only for head queries where a *compact* specimen lifts CTR — hub `kaomoji`, cute, cry, heart (♡), Lenny, shrug. Skip wide/complex faces (hand, star stacks, multiline, coquette ASCII) — they truncate as `( ˶... )` and look broken.
 - **`| FancifyText`:** skip on kaomoji money titles. Google already shows sitename + favicon + URL; brand suffixes are the most common rewrite Google removes. Keep brand in `og:site_name`, header, and JSON-LD.
+- **Breadcrumbs:** first crumb is **Home** (`HOME_CRUMB` / `homeCrumbLd`), never the brand — sitename already appears in the SERP chrome. Leaf crumbs stay **intent-matched** (e.g. `Kaomoji`, `Cute Kaomojis`, not marketing fluff).
+- **Top nav:** money keywords only on desktop; logo = Home. Mobile drawer still lists **Home** first (`mobileExtraItems`) so the hamburger keeps clear way-finding.
+- **llms.txt:** keep `/llms.txt` + `/llms-full.txt` for answer engines (head `alternates` + Privacy). Do **not** put them under footer Legal — humans do not need an on-site LLM chat, and Legal is for trust pages.
 - **No self-made dots:** `descriptionWithSerpSpecimen()` must **never** append `…` / `...`. Write complete meta lines ≤ ~155 chars.
 - **One primary strip** above the H1 on inner pages; home keeps the two-column hero.
 - **Do not** duplicate the full meta line in the visible lead paragraph (hero lead stays human prose).

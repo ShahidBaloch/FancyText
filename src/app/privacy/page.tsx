@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB, homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -33,13 +33,13 @@ export default function PrivacyPage() {
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          homeCrumbLd(SITE_URL),
           { name: "Privacy Policy", url: absoluteUrl },
         ])}
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Privacy Policy" },
         ]}
       />

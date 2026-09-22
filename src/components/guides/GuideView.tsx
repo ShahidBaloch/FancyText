@@ -1,15 +1,10 @@
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB, homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import type { GuideConfig } from "@/data/guides";
-import {
-  SITE_NAME,
-  SITE_URL,
-  getPageByUrl,
-  getTopicalRelated,
-} from "@/data/pages/registry";
+import { SITE_URL, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
 
 type GuideViewProps = {
   config: GuideConfig;
@@ -32,7 +27,7 @@ export function GuideView({ config }: GuideViewProps) {
           datePublished={config.datePublished}
           dateModified={config.dateModified}
           crumbs={[
-            { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+            homeCrumbLd(SITE_URL),
             { name: config.h1, url: absoluteUrl },
           ]}
           howTo={{ name: config.h1, steps: config.howToSteps }}
@@ -41,7 +36,7 @@ export function GuideView({ config }: GuideViewProps) {
 
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: config.h1 },
         ]}
       />

@@ -17,13 +17,12 @@ const GUIDES = [
   { href: "/guides/snapchat-name-fonts/", label: "Snapchat name fonts" },
 ];
 
+/** Human legal/trust links only. Machine files stay at /llms.txt + head alternates — not Legal. */
 const LEGAL = [
   { href: "/about/", label: "About" },
   { href: "/contact/", label: "Contact" },
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },
-  { href: "/llms.txt", label: "LLMs.txt" },
-  { href: "/llms-full.txt", label: "LLMs-full" },
 ];
 
 const BRAND_WORDS: Record<string, string> = {

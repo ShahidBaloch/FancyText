@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB, homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import { JsonLd, breadcrumbJsonLd, organizationJsonLd, webPageJsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
@@ -43,13 +43,13 @@ export default function ContactPage() {
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          homeCrumbLd(SITE_URL),
           { name: "Contact", url: absoluteUrl },
         ])}
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Contact" },
         ]}
       />

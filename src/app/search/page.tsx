@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Breadcrumbs, HOME_CRUMB, homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -81,13 +81,13 @@ export default async function SearchPage({ searchParams }: Props) {
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: SITE_NAME, url: new URL("/", SITE_URL).toString() },
+          homeCrumbLd(SITE_URL),
           { name: "Search", url: absoluteUrl },
         ])}
       />
       <Breadcrumbs
         items={[
-          { name: SITE_NAME, href: "/" },
+          HOME_CRUMB,
           { name: "Search" },
         ]}
       />
