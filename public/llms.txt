@@ -61,7 +61,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 ## Kaomoji & emoticons
 
 - /carrd-kaomojis/ — carrd kaomojis — Copy Carrd kaomojis
-- /coquette-kaomojis/ — coquette kaomoji — Copy coquette kaomoji & aesthetic multiline text art
+- /coquette-kaomojis/ — Coquette / aesthetic kaomoji — Copy coquette kaomoji & aesthetic multiline text art
 - /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji free
 - /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji free
 - /hand-kaomojis/ — hand kaomoji — Copy hand kaomoji free

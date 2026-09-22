@@ -5,6 +5,10 @@ import {
   COQUETTE_DOG_ALL,
   COQUETTE_KAOMOJI_FACES,
 } from "@/data/coquette-kaomoji-faces";
+import {
+  KAOMOJI_SEARCH_INTENT_BY_SLUG,
+  getKaomojiSearchIntentsForSlug,
+} from "@/data/kaomoji-search-intent";
 
 function mergeKaomojiFaces(primary: string[], secondary: string[]): string[] {
   const seen = new Set<string>();
@@ -1228,8 +1232,11 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "aesthetic kaomoji",
       "coquette text art",
       "multiline kaomoji",
-      "ascii animal kaomoji",
-      "cute text art copy paste",
+      "ascii kaomoji art",
+      "tulip bunny kaomoji",
+      "carrd aesthetic kaomoji",
+      "tiktok text art kaomoji",
+      "dog ascii kaomoji",
     ],
     "Coquette kaomoji are multiline Unicode text art—soft ♡ bears, ૮ cats, tulip bunnies, and standing dog ASCII like the viral Carrd/TikTok layouts. Tap a block to copy the full shape with line breaks intact.",
     "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
@@ -1518,28 +1525,12 @@ export type KaomojiHubJump = {
   browseOnly?: boolean;
 };
 
-/** Extra hub-filter terms (competitor / long-tail queries). */
-const HUB_JUMP_EXTRA_KEYWORDS: Record<string, string[]> = {
-  "heart-kaomojis": ["love", "love kaomoji", "hearts", "romance", "couple"],
-  "cute-kaomojis": ["kawaii", "cute face", "blush"],
-  "cry-kaomojis": ["crying", "tears", "sad cry"],
-  "cat-kaomojis": [
-    "cute cat",
-    "cute cat kaomoji",
-    "kitty",
-    "neko",
-    "kawaii cat",
-    "cat face",
-  ],
-  "bunny-kaomojis": ["cute bunny", "rabbit", "tulip bunny"],
-  "coquette-kaomojis": [
-    "coquette",
-    "aesthetic text art",
-    "multiline ascii",
-    "carrd aesthetic",
-    "૮ kaomoji",
-  ],
-  "kiss-kaomojis": ["love", "smooch"],
+/** @deprecated inline extras — prefer kaomoji-search-intent.ts */
+const HUB_JUMP_LEGACY_EXTRAS: Record<string, string[]> = {
+  "heart-kaomojis": ["love", "hearts", "romance"],
+  "cute-kaomojis": ["cute face"],
+  "cry-kaomojis": ["crying", "tears"],
+  "kiss-kaomojis": ["smooch"],
 };
 
 /** Keyword → list links for the hub filter (client-side, no API). */
@@ -1557,21 +1548,18 @@ export function getKaomojiHubJumps(): KaomojiHubJump[] {
         page.emotion,
         page.slug.replace(/-/g, " "),
         ...page.fellowKeywords,
-        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
+        ...getKaomojiSearchIntentsForSlug(slug),
+        ...(HUB_JUMP_LEGACY_EXTRAS[slug] ?? []),
       ].map((k) => k.toLowerCase()),
     });
   }
 
-  const browseSlugs = [
-    "cat-kaomojis",
-    "bunny-kaomojis",
-    "music-kaomojis",
-    "sleep-kaomojis",
-    "happy-kaomojis",
-    "wink-kaomojis",
-    "angry-kaomojis",
-    "sad-kaomojis",
-  ] as const;
+  const browseSlugs = Object.keys(KAOMOJI_SEARCH_INTENT_BY_SLUG).filter(
+    (slug) =>
+      slug !== "kaomoji" &&
+      !INDEXABLE_KAOMOJI_SLUGS.has(slug) &&
+      Boolean(getKaomojiList(slug)),
+  );
   for (const slug of browseSlugs) {
     const page = getKaomojiList(slug);
     if (!page) continue;
@@ -1584,7 +1572,8 @@ export function getKaomojiHubJumps(): KaomojiHubJump[] {
         page.emotion,
         page.slug.replace(/-/g, " "),
         ...page.fellowKeywords,
-        ...(HUB_JUMP_EXTRA_KEYWORDS[slug] ?? []),
+        ...getKaomojiSearchIntentsForSlug(slug),
+        ...(HUB_JUMP_LEGACY_EXTRAS[slug] ?? []),
       ].map((k) => k.toLowerCase()),
     });
   }
@@ -1801,6 +1790,12 @@ export const KAOMOJI_MEANINGS: KaomojiMeaning[] = [
     name: "Bear",
     meaning:
       "Cozy animal face. The ʕ ʔ are ears and ᴥ is the snout—widely copied for cute names.",
+  },
+  {
+    face: "╱|、\n(˶ᵔ ᵕ ᵔ˶)\n|、˜〵\nじしˍ,)ノ",
+    name: "Coquette cat",
+    meaning:
+      "Soft multiline aesthetic cat—common on Carrd and TikTok bios. Full combo matrix on coquette kaomojis.",
   },
   {
     face: "(=^･ω･^=)",

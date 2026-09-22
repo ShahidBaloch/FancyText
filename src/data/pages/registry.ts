@@ -698,8 +698,13 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "bear kaomoji",
     title: "Bear Kaomojis Copy and Paste | FancifyText",
-    description: "Copy bear kaomoji faces like ʕ•ᴥ•ʔ. Free cute bear emoticons.",
-    fellowKeywords: fellows("bear face emoticon", "cute bear kaomoji"),
+    description:
+      "Copy bear kaomoji—ʕ•ᴥ•ʔ, coquette ♡ bear art & teddy text faces for Discord and soft bios.",
+    fellowKeywords: fellows(
+      "bear face emoticon",
+      "cute bear kaomoji",
+      "coquette bear kaomoji",
+    ),
   },
   {
     phase: 5,
@@ -709,11 +714,12 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "cat kaomoji",
     title: "Cat Kaomojis Copy and Paste | FancifyText",
     description:
-      "Copy cute cat kaomoji—(=^･ω･^=) kitty & neko text faces for Discord and pet bios. Tap to copy; animal ears, not generic blush cute.",
+      "Copy cat kaomoji—coquette multiline cats, (=^･ω･^=) neko & kitty text faces for Discord and pet bios. Tap to copy; whiskers and ears, not generic blush cute.",
     fellowKeywords: fellows(
       "cute cat kaomoji",
       "kitty kaomoji",
       "neko kaomoji",
+      "coquette cat kaomoji",
     ),
   },
   {
@@ -898,8 +904,13 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "dog kaomoji",
     title: "Dog Kaomojis Copy and Paste | FancifyText",
-    description: "Copy dog kaomoji and puppy text faces.",
-    fellowKeywords: fellows("dog face emoticon", "puppy kaomoji"),
+    description:
+      "Copy dog kaomoji—standing dog ASCII art, puppy snouts & cute canine text faces for pet bios.",
+    fellowKeywords: fellows(
+      "dog face emoticon",
+      "puppy kaomoji",
+      "dog ascii kaomoji",
+    ),
   },
   {
     phase: 5,
@@ -971,6 +982,7 @@ export const PAGES: PageEntry[] = [
     url: "/coquette-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "coquette kaomoji",
+    navLabel: "Coquette / aesthetic kaomoji",
     title: "Coquette Kaomoji Copy Paste — Multiline Aesthetic Text Art | FancifyText",
     description:
       "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
@@ -978,6 +990,9 @@ export const PAGES: PageEntry[] = [
       "aesthetic kaomoji",
       "multiline ascii kaomoji",
       "coquette text art",
+      "ascii kaomoji art",
+      "tulip bunny kaomoji",
+      "carrd aesthetic kaomoji",
     ),
   },
   {
@@ -1017,8 +1032,13 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "bunny kaomoji",
     title: "Bunny Kaomojis Copy and Paste | FancifyText",
-    description: "Copy bunny kaomoji and rabbit-ear text faces.",
-    fellowKeywords: fellows("rabbit kaomoji", "bunny text face"),
+    description:
+      "Copy bunny kaomoji—tulip 🌷 multiline bunnies, rabbit-ear & hop-bracket text faces.",
+    fellowKeywords: fellows(
+      "rabbit kaomoji",
+      "bunny text face",
+      "tulip bunny kaomoji",
+    ),
   },
   {
     phase: 5,

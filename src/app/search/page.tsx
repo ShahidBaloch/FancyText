@@ -7,6 +7,7 @@ import {
 } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/seo/PageHero";
 import { ToolSearch, type SearchEntry } from "@/components/tool/ToolSearch";
+import { getKaomojiSearchIntentsForUrl } from "@/data/kaomoji-search-intent";
 import {
   SITE_NAME,
   SITE_URL,
@@ -27,6 +28,7 @@ const SEARCH_ENTRIES: SearchEntry[] = getLivePages().map((entry) => ({
     entry.title,
     entry.description,
     ...entry.fellowKeywords,
+    ...getKaomojiSearchIntentsForUrl(entry.url),
     entry.url,
   ]
     .join(" ")
