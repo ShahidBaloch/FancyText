@@ -12,8 +12,8 @@ const LOAD_MORE_STEP = 120;
 type KaomojiGridProps = {
   faces: string[];
   idPrefix?: string;
-  /** Tighter grid for single-glyph emoji on phones. */
-  variant?: "default" | "emoji";
+  /** Tighter grid for single-glyph emoji on phones; monospace for ASCII art. */
+  variant?: "default" | "emoji" | "text-art";
 };
 
 export function KaomojiGrid({
@@ -67,9 +67,11 @@ export function KaomojiGrid({
         className={
           variant === "emoji"
             ? "kaomoji-grid kaomoji-grid--emoji"
-            : hasMultiline
-              ? "kaomoji-grid kaomoji-grid--multiline"
-              : "kaomoji-grid"
+            : variant === "text-art"
+              ? "kaomoji-grid kaomoji-grid--text-art"
+              : hasMultiline
+                ? "kaomoji-grid kaomoji-grid--multiline"
+                : "kaomoji-grid"
         }
       >
         {visibleFaces.map((face, index) => {

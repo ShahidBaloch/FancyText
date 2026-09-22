@@ -3,7 +3,7 @@
 > Extended excerpts for answer engines and autonomous browsers. Compact URL index: /llms.txt
 
 Site: https://fancifytext.com/
-Content updated: 2026-09-23
+Content updated: 2026-09-22
 
 ## Kaomoji routing (summary)
 
@@ -370,14 +370,16 @@ Extended prose + sample rows: `/llms-full.txt`.
 ## Primary tools
 
 - / — Home — Free fancy text generator
+- /aesthetic-symbols/ — aesthetic symbols — Aesthetic symbols copy and paste
 - /big-text-generator/ — Big Text — Big text generator
 - /binary-text-generator/ — Binary — Binary text generator
 - /bold-text-generator/ — Bold — Bold text generator
 - /bubble-text-generator/ — Bubble — Bubble text generator
 - /case-converter/ — case converter — Convert sentence, title, upper, lower, alternating, and inverse case
 - /cool-symbols/ — Symbols — Cool symbols copy and paste
-- /copy-paste-fonts/ — Copy & Paste — Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII
+- /copy-paste-fonts/ — Copy & Paste — Copy and paste fonts with a live preview
 - /cursive-text-generator/ — Cursive — Cursive text generator
+- /cute-symbols/ — cute symbols — Cute symbols copy and paste
 - /glitch-text-generator/ — glitch text generator — Glitch text generator
 - /invisible-character/ — invisible character — Copy invisible and blank characters that survive pasting
 - /italic-text-generator/ — Italic — Italic text generator
@@ -392,13 +394,21 @@ Extended prose + sample rows: `/llms-full.txt`.
 - /unformat-text/ — convert fancy text to normal — Paste styled Unicode and get plain letters: bold, script, bubble, fullwidth, small caps, and Zalgo decoded
 - /upside-down-text-generator/ — upside down text — Upside down text
 
-## Collections & name fonts
+## Emoji & symbol copy-paste
 
 - /aesthetic-fonts/ — aesthetic fonts — Aesthetic fonts
+- /cat-emoji/ — cat emoji — Cat emoji copy and paste
 - /cool-text-generator/ — Cool Text — Cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, and squared styles
 - /cute-fonts/ — cute fonts copy and paste — Cute fonts copy and paste
-- /name-font-generator/ — name fonts — Name fonts
+- /emoji-combos/ — Emoji combos — Emoji combos copy and paste
+- /heart-emoji/ — heart emoji — Heart emoji copy and paste
+- /star-emoji/ — star emoji — Star emoji copy and paste
 - /stylish-text-generator/ — stylish text generator — Stylish text generator
+- /text-art/ — Text art — Text art copy and paste
+
+## Collections & name fonts
+
+- /name-font-generator/ — name fonts — Name fonts
 
 ## Platform & LinkedIn tools
 

@@ -35,10 +35,12 @@ const forbiddenAdPatterns = [
 ];
 const files = await walk(join(root, "src"));
 for (const file of files) {
+  const rel = file.replace(root, "").replace(/\\/g, "/");
+  if (rel.startsWith("/src/components/ads/")) continue;
   const text = await readFile(file, "utf8");
   for (const re of forbiddenAdPatterns) {
     if (re.test(text)) {
-      errors.push(`Forbidden ad loader pattern in ${file.replace(root, "")}: ${re}`);
+      errors.push(`Forbidden ad loader pattern in ${rel}: ${re}`);
     }
   }
 }
@@ -148,5 +150,5 @@ if (errors.length) {
 }
 
 console.log(
-  "Google Search Console + AdSense policy checks OK (no live ad scripts; ads.txt + trust pages + sitemap + privacy disclosures).",
+  "Google Search Console + AdSense policy checks OK (ads loader isolated under components/ads; ads.txt + trust pages + sitemap + privacy disclosures).",
 );

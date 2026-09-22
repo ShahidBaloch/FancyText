@@ -21,6 +21,16 @@ const SECTIONS: { heading: string; groups: PageGroup[]; extraPaths?: string[] }[
     groups: ["A_Hub", "C_CopyPaste", "B_Cursive", "D_Bold", "D_Style_Other"],
   },
   {
+    heading: "Emoji & symbol copy-paste",
+    groups: ["G_Aesthetic_Cute"],
+    extraPaths: [
+      "/cute-symbols/",
+      "/aesthetic-symbols/",
+      "/cool-symbols/",
+      "/text-art/",
+    ],
+  },
+  {
     heading: "Collections & name fonts",
     groups: ["G_Aesthetic_Cute", "G_Name"],
   },

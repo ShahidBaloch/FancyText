@@ -20,9 +20,6 @@ export function KaomojiHubJumpFilter({ jumps }: KaomojiHubJumpFilterProps) {
     });
   }, [jumps, query]);
 
-  const indexedJumps = filtered.filter((j) => !j.browseOnly);
-  const browseJumps = filtered.filter((j) => j.browseOnly);
-
   return (
     <section className="seo-section" aria-labelledby="hub-jump-heading">
       <h2 id="hub-jump-heading">Find a list by keyword</h2>
@@ -50,43 +47,30 @@ export function KaomojiHubJumpFilter({ jumps }: KaomojiHubJumpFilterProps) {
           enterKeyHint="search"
         />
       </div>
-      {filtered.length ? (
-        <>
-          {indexedJumps.length ? (
-            <>
-              <h3 className="field-label">Indexed lists (search pages)</h3>
-              <ul className="taxonomy-links">
-                {indexedJumps.map((jump) => (
-                  <li key={jump.href}>
-                    <Link href={jump.href}>{jump.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
-          {browseJumps.length ? (
-            <>
-              <h3 className="field-label">Browse-only (no Google landing page)</h3>
-              <ul className="taxonomy-links">
-                {browseJumps.map((jump) => (
-                  <li key={jump.href}>
-                    <Link href={jump.href}>{jump.label}</Link>
-                    <span className="seo-lead"> — navigation only</span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
-        </>
-      ) : (
-        <p className="seo-lead">
-          No list matched. Try{" "}
-          <Link href="/multiline-kaomojis/">multiline</Link>,{" "}
-          <Link href="/coquette-kaomojis/">coquette</Link>,{" "}
-          <Link href="/cute-kaomojis/">cute</Link>, or{" "}
-          <Link href="/angry-kaomojis/">angry (browse)</Link>.
-        </p>
-      )}
+      <ul className="hub-jump-list">
+        {filtered.length ? (
+          filtered.map((jump) => (
+            <li key={jump.href} className="hub-jump-item">
+              <Link href={jump.href} className="hub-jump-link">
+                {jump.label}
+              </Link>
+              {jump.browseOnly ? (
+                <span className="hub-jump-note">
+                  Browse list (not in Google search)
+                </span>
+              ) : null}
+            </li>
+          ))
+        ) : (
+          <li>
+            No list matched. Try{" "}
+            <Link href="/multiline-kaomojis/">multiline</Link>,{" "}
+            <Link href="/coquette-kaomojis/">coquette</Link>,{" "}
+            <Link href="/cute-kaomojis/">cute</Link>, or{" "}
+            <Link href="/angry-kaomojis/">angry (browse)</Link>.
+          </li>
+        )}
+      </ul>
     </section>
   );
 }

@@ -14,6 +14,7 @@ import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { CopyButton } from "@/components/tool/CopyButton";
 import { SITE_NAME, SITE_URL, getTopicalRelated } from "@/data/pages/registry";
+import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
 import {
   boldCursiveGlyph,
   cursiveGlyph,
@@ -85,13 +86,17 @@ export function CursiveLetterView({
   const related = getTopicalRelated(letterUrl(letter, letterCase), 6);
   const absoluteUrl = new URL(letterUrl(letter, letterCase), SITE_URL).toString();
   const hubUrl = new URL("/cursive-text-generator/", SITE_URL).toString();
+  const metaDescription = descriptionWithSerpSpecimen(
+    letterUrl(letter, letterCase),
+    letterDescription(letter, letterCase),
+  );
 
   return (
     <div className="site-shell">
       <JsonLd
         data={webPageJsonLd({
           name: h1,
-          description: letterDescription(letter, letterCase),
+          description: metaDescription,
           url: absoluteUrl,
           siteName: SITE_NAME,
           siteUrl: SITE_URL,
@@ -114,7 +119,11 @@ export function CursiveLetterView({
         ]}
       />
 
-      <PageHero h1={h1} lead={letterDescription(letter, letterCase)} />
+      <PageHero
+        h1={h1}
+        lead={letterDescription(letter, letterCase)}
+        specimenPath={letterUrl(letter, letterCase)}
+      />
 
       <div className="tool-stage letter-stage" id="tool">
         <div className="glyph-hero">

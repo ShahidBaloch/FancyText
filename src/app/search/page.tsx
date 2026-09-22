@@ -52,8 +52,17 @@ export async function generateMetadata({
   searchParams,
 }: Props): Promise<Metadata> {
   const base = pageMetadata(page);
+  const canonical = new URL("/search/", SITE_URL).toString();
   if (!readQuery((await searchParams).q)) return base;
-  return { ...base, robots: { index: false, follow: true } };
+  return {
+    ...base,
+    robots: { index: false, follow: true },
+    alternates: { canonical },
+    openGraph: {
+      ...base.openGraph,
+      url: canonical,
+    },
+  };
 }
 
 export default async function SearchPage({ searchParams }: Props) {

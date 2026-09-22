@@ -57,7 +57,7 @@ export function useCopyFeedback(resetMs = 1400) {
       // Button labels stay static so the accessible name does not churn; this
       // is the only success signal a screen reader gets.
       setAnnouncement(`Copied ${label ?? id} to clipboard`);
-      void import("@/components/seo/GoogleAnalytics").then((m) =>
+      void import("@/lib/analytics/track-event").then((m) =>
         m.trackEvent("copy_fancy_text", { style_id: id }),
       );
       window.setTimeout(

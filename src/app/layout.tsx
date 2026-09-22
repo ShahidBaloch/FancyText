@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
+import { AdSenseProvider } from "@/components/ads/AdSenseProvider";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
-import { SITE_NAME, SITE_URL } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL } from "@/data/site";
 import "./globals.css";
 
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600"],
+  /** Optional + no preload: hero LCP paints with fallback first (PageSpeed mobile). */
   display: "optional",
-  preload: true,
+  preload: false,
+  adjustFontFallback: true,
 });
 
 const gscVerification =
@@ -66,6 +69,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           first Copy control.
         */}
         <GoogleAnalytics />
+        <AdSenseProvider />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

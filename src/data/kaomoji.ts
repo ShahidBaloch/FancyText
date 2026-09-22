@@ -7,6 +7,11 @@ import {
 } from "@/data/coquette-kaomoji-faces";
 import { KAOMOJI_FULL_CATALOG_SLUGS } from "@/data/kaomoji-catalog-policy";
 import {
+  INDEXABLE_KAOMOJI_SLUGS,
+  kaomojiHubCanonicalPath,
+  kaomojiPathIsIndexable,
+} from "@/data/kaomoji-index";
+import {
   MULTILINE_KAOMOJI_HUB_FACES,
   getMultilineHighlightsForSlug,
   getMultilineKaomojiForSlug,
@@ -37,6 +42,12 @@ import {
   type KaomojiHubSlug,
   type KaomojiProseSection,
 } from "@/data/kaomoji-copy";
+
+export {
+  INDEXABLE_KAOMOJI_SLUGS,
+  kaomojiHubCanonicalPath,
+  kaomojiPathIsIndexable,
+};
 
 export {
   KAOMOJI_HUB,
@@ -73,6 +84,10 @@ export type KaomojiList = {
   whereHeading?: string;
   whereBullets?: string[];
   extraSections?: KaomojiProseSection[];
+  emojiPicker?: string[];
+  emojiPickerHeading?: string;
+  emojiPickerLead?: string;
+  emojiPickerMore?: { href: string; label: string };
   faq: { question: string; answer: string }[];
 };
 
@@ -1321,6 +1336,10 @@ for (const entry of KAOMOJI_LISTS) {
   if (unique.catalogNote) entry.catalogNote = unique.catalogNote;
   if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
   if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
+  if (unique.emojiPicker) entry.emojiPicker = unique.emojiPicker;
+  if (unique.emojiPickerHeading) entry.emojiPickerHeading = unique.emojiPickerHeading;
+  if (unique.emojiPickerLead) entry.emojiPickerLead = unique.emojiPickerLead;
+  if (unique.emojiPickerMore) entry.emojiPickerMore = unique.emojiPickerMore;
 }
 
 export const SPECIAL_KAOMOJI: KaomojiList[] = [
@@ -1484,6 +1503,10 @@ for (const entry of SPECIAL_KAOMOJI) {
   if (unique.canonicalLead) entry.canonicalLead = unique.canonicalLead;
   if (unique.whereHeading) entry.whereHeading = unique.whereHeading;
   if (unique.whereBullets) entry.whereBullets = unique.whereBullets;
+  if (unique.emojiPicker) entry.emojiPicker = unique.emojiPicker;
+  if (unique.emojiPickerHeading) entry.emojiPickerHeading = unique.emojiPickerHeading;
+  if (unique.emojiPickerLead) entry.emojiPickerLead = unique.emojiPickerLead;
+  if (unique.emojiPickerMore) entry.emojiPickerMore = unique.emojiPickerMore;
 }
 
 export function kaomojiOgSubtitle(slug: string): string | undefined {
@@ -1515,20 +1538,6 @@ export const KAOMOJI_SLUGS = ALL_KAOMOJI_PAGES.map((k) => k.slug);
  * it does not compete with the hub or with cute/heart lists. Other emotion URLs
  * stay live for old links but are noindex + sitemap-dropped.
  */
-export const INDEXABLE_KAOMOJI_SLUGS = new Set([
-  "cute-kaomojis",
-  "cry-kaomojis",
-  "heart-kaomojis",
-  "lenny-face",
-  "shrug-emoticon",
-  "hand-kaomojis",
-  "star-kaomojis",
-  "kaomoji-dot-art",
-  "carrd-kaomojis",
-  "coquette-kaomojis",
-  "multiline-kaomojis",
-]);
-
 /** Layout / body-part lists—distinct from mood animals (cat, bear) and cute/heart. */
 export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
   "hand-kaomojis",
@@ -1616,23 +1625,6 @@ export function getKaomojiHubJumps(): KaomojiHubJump[] {
   }
 
   return jumps;
-}
-
-/**
- * Indexable kaomoji URLs — one search hub (/kaomoji/) plus mood/Lenny/shrug spokes.
- * /kamoji/ and /kaomojis/ stay live for users but are noindex + canonical to the hub.
- */
-export function kaomojiPathIsIndexable(urlOrSlug: string): boolean {
-  const slug = urlOrSlug.replace(/^\/|\/$/g, "");
-  if (slug === "kaomoji") return true;
-  if (slug === "kamoji" || slug === "kaomojis") return false;
-  if (!KAOMOJI_BY_SLUG[slug]) return true;
-  return INDEXABLE_KAOMOJI_SLUGS.has(slug);
-}
-
-export function kaomojiHubCanonicalPath(slug: string): string | undefined {
-  if (slug === "kamoji" || slug === "kaomojis") return "/kaomoji/";
-  return undefined;
 }
 
 /** Picture emoji for users who expected the phone keyboard — tap to copy like kaomoji. */

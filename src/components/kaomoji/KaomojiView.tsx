@@ -49,6 +49,22 @@ import {
   getTopicalRelated,
 } from "@/data/pages/registry";
 import { KAOMOJI_FULL_CATALOG_SLUGS } from "@/data/kaomoji-catalog-policy";
+import { getSerpSpecimen } from "@/lib/seo/specimens";
+
+const PICTURE_EMOJI_PAGE: Record<string, { href: string; label: string }> = {
+  "heart-kaomojis": {
+    href: "/heart-emoji/",
+    label: "heart emoji copy and paste (❤️ 💕)",
+  },
+  "star-kaomojis": {
+    href: "/star-emoji/",
+    label: "star emoji copy and paste (⭐ 🌟)",
+  },
+  "cat-kaomojis": {
+    href: "/cat-emoji/",
+    label: "cat emoji copy and paste (🐱 😺)",
+  },
+};
 
 type KaomojiListViewProps = {
   config: KaomojiList;
@@ -173,7 +189,20 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         ]}
       />
 
-      <PageHero h1={config.h1} lead={config.description} />
+      <PageHero
+        h1={config.h1}
+        lead={config.description}
+        specimenPath={getSerpSpecimen(url) ? url : undefined}
+      />
+
+      {PICTURE_EMOJI_PAGE[config.slug] ? (
+        <p className="seo-lead" role="note">
+          Wanted picture emoji, not text faces?{" "}
+          <Link href={PICTURE_EMOJI_PAGE[config.slug].href}>
+            {PICTURE_EMOJI_PAGE[config.slug].label}
+          </Link>
+        </p>
+      ) : null}
 
       {config.canonicalLead ? (
         <p className="seo-lead">{config.canonicalLead}</p>
@@ -209,6 +238,37 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
         </p>
         <KaomojiGrid faces={config.faces} idPrefix={config.slug} />
       </div>
+
+      {config.emojiPicker?.length ? (
+        <section
+          className="seo-section"
+          aria-labelledby={`${config.slug}-emoji-picker`}
+        >
+          <h2 id={`${config.slug}-emoji-picker`}>
+            {config.emojiPickerHeading ?? "Picture emoji (not text faces)"}
+          </h2>
+          {config.emojiPickerLead ? (
+            <p className="seo-lead">{config.emojiPickerLead}</p>
+          ) : (
+            <p className="seo-lead">
+              Standard emoji from your phone keyboard—tap to copy, then paste like
+              any other character. These are not kaomoji punctuation faces.
+            </p>
+          )}
+          <KaomojiGrid
+            faces={config.emojiPicker}
+            idPrefix={`${config.slug}-emoji`}
+            variant="emoji"
+          />
+          {config.emojiPickerMore ? (
+            <p className="seo-prose">
+              <Link href={config.emojiPickerMore.href}>
+                {config.emojiPickerMore.label}
+              </Link>
+            </p>
+          ) : null}
+        </section>
+      ) : null}
 
       <section className="seo-section seo-prose" aria-labelledby="how-heading">
         <h2 id="how-heading">{config.howToHeading ?? "Copy a face"}</h2>
@@ -396,7 +456,11 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
         ]}
       />
 
-      <PageHero h1={serp.h1} lead={serp.heroLead} />
+      <PageHero
+        h1={serp.h1}
+        lead={serp.heroLead}
+        specimenPath="/kaomoji/"
+      />
 
       {hubSlug !== "kaomoji" ? (
         <p className="seo-lead" role="note">
@@ -433,8 +497,14 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
           variant="emoji"
         />
         <p className="seo-prose">
-          Need stars, hearts, or arrows without a face? See{" "}
-          <Link href="/cool-symbols/">cool symbols copy and paste</Link>.
+          Need color emoji strings? See{" "}
+          <Link href="/emoji-combos/">emoji combos</Link>,{" "}
+          <Link href="/heart-emoji/">heart emoji</Link>, or{" "}
+          <Link href="/star-emoji/">star emoji</Link>. Need stars, hearts, or
+          arrows without a face? See{" "}
+          <Link href="/cute-symbols/">cute symbols</Link> or{" "}
+          <Link href="/cool-symbols/">cool symbols</Link>. For multi-line ASCII,
+          see <Link href="/text-art/">text art</Link>.
         </p>
       </section>
 

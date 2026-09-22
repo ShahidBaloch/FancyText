@@ -63,12 +63,14 @@ export const PAGES: PageEntry[] = [
     url: "/cursive-text-generator/",
     group: "B_Cursive",
     primaryKeyword: "cursive text generator",
+    updated: "2026-09-22",
     title: "Cursive Text Generator — Script Fonts Copy & Paste",
     description:
       "Cursive text generator. Type a name or phrase into cursive Unicode. Copy elegant script words plus the full A–Z alphabet—no font download.",
     fellowKeywords: fellows(
       "elegant cursive fonts copy and paste",
       "cursive copy and paste fonts",
+      "cursive letters copy and paste",
       "cursive alphabet",
       "script font generator",
       "names in cursive generator",
@@ -200,11 +202,13 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "copy and paste fonts",
     title: "Copy and Paste Fonts — Unicode Font Collections",
     description:
-      "Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII. Unicode styles—not a second full gallery.",
+      "Copy and paste fonts with a live preview—bold, cursive, bubble, and script Unicode to copy into bios. Font copy and paste collections plus the full homepage converter.",
     fellowKeywords: fellows(
       "font copy and paste",
       "fonts copy paste",
       "copy paste fonts",
+      "fonts copy and paste",
+      "copy and paste font",
     ),
     navLabel: "Copy & Paste",
   },
@@ -580,10 +584,118 @@ export const PAGES: PageEntry[] = [
       "Cool symbols copy and paste. Copy cool Unicode symbols: stars, hearts, arrows, checks, and separators. A symbol list—not letter fonts and not kaomoji faces.",
     fellowKeywords: fellows(
       "cool symbols",
+      "copy and paste symbols",
+      "symbols copy and paste",
+      "cute symbols",
       "text symbols copy paste",
       "special symbols copy and paste",
     ),
     navLabel: "Symbols",
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/emoji-combos/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "emoji combos",
+    title: "Emoji Combos Copy and Paste — Cute & Aesthetic Strings",
+    description:
+      "Emoji combos copy and paste. Tap ready-made cute, aesthetic, and funny emoji strings for Discord and Instagram bios—not kaomoji text faces or Unicode fonts.",
+    fellowKeywords: fellows(
+      "emoji combo",
+      "cute emoji combos",
+      "aesthetic emoji combos",
+      "emojis combined",
+      "funny emoji combos",
+    ),
+    navLabel: "Emoji combos",
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/text-art/",
+    group: "F_Kaomoji",
+    primaryKeyword: "text art",
+    title: "Text Art Copy and Paste — ASCII Faces & Dividers",
+    description:
+      "Text art copy and paste. Curated ASCII and Unicode art—faces, dividers, and mini scenes for chat. Tap to copy; not big FIGlet banners.",
+    fellowKeywords: fellows(
+      "text art copy and paste",
+      "ascii art copy paste",
+      "text art copy paste",
+    ),
+    navLabel: "Text art",
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/heart-emoji/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "heart emoji",
+    title: "Heart Emoji Copy and Paste — ❤️ 💕 Tap to Copy",
+    description:
+      "Heart emoji copy and paste. Tap ❤️ 💕 🥰 and more picture hearts for Instagram and Discord—not heart kaomoji text faces.",
+    fellowKeywords: fellows(
+      "heart copy and paste",
+      "heart emoji copy paste",
+      "heart symbol copy paste",
+    ),
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/star-emoji/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "star emoji",
+    title: "Star Emoji Copy and Paste — ⭐ 🌟 ✨",
+    description:
+      "Star emoji copy and paste. Tap ⭐ 🌟 ✨ and sparkle emoji for bios and captions—not star kaomoji text art.",
+    fellowKeywords: fellows("star copy and paste", "star emoji copy paste"),
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/cat-emoji/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "cat emoji",
+    title: "Cat Emoji Copy and Paste — 🐱 😺 🐾",
+    description:
+      "Cat emoji copy and paste. Tap 🐱 😺 🐾 and kitty emoji for pet bios and chat—not cat kaomoji faces like (=^･ω･^=).",
+    fellowKeywords: fellows(
+      "cat copy and paste",
+      "cat emojis",
+      "kitty emoji",
+    ),
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/cute-symbols/",
+    group: "C_CopyPaste",
+    primaryKeyword: "cute symbols",
+    title: "Cute Symbols Copy and Paste — Hearts, Stars & Dividers",
+    description:
+      "Cute symbols copy and paste. Hearts, stars, flowers, and kawaii dividers for bios—single marks, not bubble letter fonts.",
+    fellowKeywords: fellows(
+      "cute symbols copy and paste",
+      "cute symbol",
+      "copy and paste symbols",
+      "symbols copy and paste",
+    ),
+  },
+  {
+    phase: 6,
+    priority: "P1",
+    url: "/aesthetic-symbols/",
+    group: "C_CopyPaste",
+    primaryKeyword: "aesthetic symbols",
+    title: "Aesthetic Symbols Copy and Paste — Dividers & Stars",
+    description:
+      "Aesthetic symbols copy and paste. Minimal dividers, moons, stars, and brackets for soft bios—not aesthetic fullwidth fonts.",
+    fellowKeywords: fellows(
+      "aesthetic symbols copy and paste",
+      "aesthetic copy and paste",
+    ),
   },
   {
     phase: 6,
@@ -639,6 +751,7 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji/",
     group: "F_Kaomoji",
     primaryKeyword: "kaomoji",
+    updated: "2026-09-22",
     title: KAOMOJI_HUB_VARIANTS.kaomoji.title,
     description: KAOMOJI_HUB_VARIANTS.kaomoji.description,
     fellowKeywords: fellows(
@@ -738,6 +851,7 @@ export const PAGES: PageEntry[] = [
     url: "/cry-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cry kaomoji",
+    updated: "2026-09-22",
     title: "Cry Kaomoji Copy Paste — (T_T) Crying Faces | FancifyText",
     description:
       "Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.",
@@ -749,10 +863,11 @@ export const PAGES: PageEntry[] = [
     url: "/cute-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "cute kaomoji",
+    updated: "2026-09-22",
     title: "Cute Kaomoji Copy Paste — (｡◕‿◕｡) Kawaii | FancifyText",
     description:
       "Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.",
-    fellowKeywords: fellows("kawaii kaomoji", "cute text faces"),
+    fellowKeywords: fellows("kawaii kaomoji", "cute text faces", "cute emoji combos"),
   },
   {
     phase: 5,
@@ -780,6 +895,7 @@ export const PAGES: PageEntry[] = [
     url: "/heart-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "heart kaomoji",
+    updated: "2026-09-22",
     title: "Heart Kaomoji Copy Paste — ♡ Love Text Faces | FancifyText",
     description:
       "Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.",
@@ -938,6 +1054,7 @@ export const PAGES: PageEntry[] = [
     url: "/hand-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "hand kaomoji",
+    updated: "2026-09-22",
     title: "Hand Kaomoji Copy Paste — Wave & Raise Arms | FancifyText",
     description:
       "Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.",
@@ -949,6 +1066,7 @@ export const PAGES: PageEntry[] = [
     url: "/star-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "star kaomoji",
+    updated: "2026-09-22",
     title: "Star Kaomoji Copy Paste — ☆ Aesthetic Sparkle | FancifyText",
     description:
       "Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.",
@@ -960,6 +1078,7 @@ export const PAGES: PageEntry[] = [
     url: "/kaomoji-dot-art/",
     group: "F_Kaomoji",
     primaryKeyword: "dot art kaomoji",
+    updated: "2026-09-22",
     title: "Kaomoji Dot Art Copy Paste — Mini ASCII Faces | FancifyText",
     description:
       "Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.",
@@ -971,6 +1090,7 @@ export const PAGES: PageEntry[] = [
     url: "/carrd-kaomojis/",
     group: "F_Kaomoji",
     primaryKeyword: "carrd kaomojis",
+    updated: "2026-09-22",
     title: "Carrd Kaomojis Copy Paste — Bio Dividers | FancifyText",
     description:
       "Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.",
@@ -1063,6 +1183,7 @@ export const PAGES: PageEntry[] = [
     url: "/lenny-face/",
     group: "F_Kaomoji",
     primaryKeyword: "lenny face",
+    updated: "2026-09-22",
     title: "Lenny Face Copy Paste — ( ͡° ͜ʖ ͡°) | FancifyText",
     description:
       "Copy Lenny face ( ͡° ͜ʖ ͡°) free—meme text emoticons for Discord and Reddit. Tap any variant; plain Unicode, no login.",
@@ -1074,6 +1195,7 @@ export const PAGES: PageEntry[] = [
     url: "/shrug-emoticon/",
     group: "F_Kaomoji",
     primaryKeyword: "shrug emoticon",
+    updated: "2026-09-22",
     title: "Shrug Emoticon Copy Paste — ¯\\_(ツ)_/¯ | FancifyText",
     description:
       "Copy shrug ¯\\_(ツ)_/¯ free—idk text faces for Discord, Instagram & email. Tap to copy; works where emoji keyboards fail.",
@@ -1331,12 +1453,12 @@ export function getRelatedPages(
 const TOPICAL_RELATED: Record<string, string[]> = {
   "/": [
     "/copy-paste-fonts/",
+    "/emoji-combos/",
+    "/kaomoji/",
     "/bold-text-generator/",
     "/cursive-text-generator/",
     "/linkedin-text-formatter/",
-    "/discord-color-text/",
-    "/instagram-font-generator/",
-    "/cool-text-generator/",
+    "/cool-symbols/",
     "/unformat-text/",
   ],
   "/bold-text-generator/": [
@@ -1445,10 +1567,108 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/copy-paste-fonts/",
   ],
   "/cool-symbols/": [
+    "/cute-symbols/",
+    "/aesthetic-symbols/",
+    "/emoji-combos/",
     "/text-decorator/",
     "/kaomoji/",
     "/copy-paste-fonts/",
+  ],
+  "/emoji-combos/": [
+    "/heart-emoji/",
+    "/star-emoji/",
+    "/cat-emoji/",
+    "/cute-symbols/",
+    "/kaomoji/",
     "/cute-fonts/",
+  ],
+  "/heart-emoji/": [
+    "/heart-kaomojis/",
+    "/emoji-combos/",
+    "/cute-symbols/",
+    "/cute-fonts/",
+    "/text-decorator/",
+    "/",
+  ],
+  "/star-emoji/": [
+    "/star-kaomojis/",
+    "/emoji-combos/",
+    "/aesthetic-symbols/",
+    "/cute-symbols/",
+    "/carrd-kaomojis/",
+    "/",
+  ],
+  "/cat-emoji/": [
+    "/cat-kaomojis/",
+    "/emoji-combos/",
+    "/cute-kaomojis/",
+    "/bear-kaomojis/",
+    "/kaomoji/",
+    "/",
+  ],
+  "/copy-paste-fonts/": [
+    "/",
+    "/emoji-combos/",
+    "/cute-symbols/",
+    "/aesthetic-symbols/",
+    "/bold-text-generator/",
+    "/cursive-text-generator/",
+    "/aesthetic-fonts/",
+    "/cute-fonts/",
+  ],
+  "/heart-kaomojis/": [
+    "/heart-emoji/",
+    "/kiss-kaomojis/",
+    "/hug-kaomojis/",
+    "/emoji-combos/",
+    "/cute-kaomojis/",
+    "/kaomoji/",
+  ],
+  "/star-kaomojis/": [
+    "/star-emoji/",
+    "/carrd-kaomojis/",
+    "/aesthetic-symbols/",
+    "/emoji-combos/",
+    "/cool-symbols/",
+    "/kaomoji/",
+  ],
+  "/cute-kaomojis/": [
+    "/emoji-combos/",
+    "/cute-symbols/",
+    "/cute-fonts/",
+    "/cat-emoji/",
+    "/heart-kaomojis/",
+    "/kaomoji/",
+  ],
+  "/kaomoji-dot-art/": [
+    "/text-art/",
+    "/lenny-face/",
+    "/funny-kaomojis/",
+    "/cute-kaomojis/",
+    "/kaomoji/",
+  ],
+  "/text-art/": [
+    "/kaomoji/",
+    "/kaomoji-dot-art/",
+    "/emoji-combos/",
+    "/big-text-generator/",
+    "/lenny-face/",
+    "/",
+  ],
+  "/cute-symbols/": [
+    "/emoji-combos/",
+    "/aesthetic-symbols/",
+    "/cool-symbols/",
+    "/cute-fonts/",
+    "/kaomoji/",
+    "/text-art/",
+  ],
+  "/aesthetic-symbols/": [
+    "/aesthetic-fonts/",
+    "/cute-symbols/",
+    "/emoji-combos/",
+    "/carrd-kaomojis/",
+    "/cool-symbols/",
     "/",
   ],
   "/text-decorator/": [
@@ -1520,17 +1740,6 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/discord-font-generator/",
     "/copy-paste-fonts/",
   ],
-  "/copy-paste-fonts/": [
-    "/",
-    "/cool-text-generator/",
-    "/aesthetic-fonts/",
-    "/cute-fonts/",
-    "/cursive-text-generator/",
-    "/instagram-font-generator/",
-    "/big-text-generator/",
-    "/stylish-text-generator/",
-    "/name-font-generator/",
-  ],
   "/cursive-text-generator/": [
     "/",
     "/bold-text-generator/",
@@ -1563,13 +1772,13 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/whatsapp-fonts/",
   ],
   "/kaomoji/": [
+    "/emoji-combos/",
+    "/text-art/",
     "/cute-kaomojis/",
     "/hand-kaomojis/",
     "/carrd-kaomojis/",
     "/star-kaomojis/",
     "/lenny-face/",
-    "/shrug-emoticon/",
-    "/social-media-bio-generator/",
   ],
   "/aesthetic-fonts/": [
     "/copy-paste-fonts/",
@@ -1938,6 +2147,11 @@ function pagesFromUrls(urls: string[], currentUrl: string, limit: number): PageE
     .slice(0, limit);
 }
 
+/** Keys present in TOPICAL_RELATED (for SEO plumbing checks). */
+export function getTopicalRelatedUrlKeys(): string[] {
+  return Object.keys(TOPICAL_RELATED);
+}
+
 export function getTopicalRelated(
   currentUrl: string,
   limit = 6,
@@ -2030,6 +2244,7 @@ const NAV_URLS = [
   "/instagram-font-generator/",
   "/discord-font-generator/",
   "/cool-symbols/",
+  "/emoji-combos/",
   "/kaomoji/",
 ] as const;
 
@@ -2043,15 +2258,7 @@ export function getLivePages(): PageEntry[] {
   return PAGES.filter((p) => p.phase <= LIVE_MAX_PHASE);
 }
 
-export const SITE_NAME = "FancifyText";
-
-const DEFAULT_SITE_URL = "https://fancifytext.com";
-
-/**
- * Canonical site origin used in metadata, sitemap, and JSON-LD.
- * Prefer NEXT_PUBLIC_SITE_URL; otherwise always apex (never *.vercel.app).
- */
-export const SITE_URL = resolveSiteUrl();
+export { SITE_NAME, SITE_URL, resolveSiteUrl } from "@/data/site";
 
 /**
  * Publisher-bumped sitemap lastmod (YYYY-MM-DD).
@@ -2061,37 +2268,8 @@ export const SITE_URL = resolveSiteUrl();
  * quarterly / yearly). Do not set it to "today" on every deploy — that makes
  * every URL look freshly updated and creates false churn in GSC.
  */
-export const CONTENT_UPDATED_AT = "2026-09-23";
+export const CONTENT_UPDATED_AT = "2026-09-22";
 
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);
 
-function resolveSiteUrl(): string {
-  const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);
-  if (fromEnv && isUsableSiteOrigin(fromEnv)) return fromEnv;
-  return DEFAULT_SITE_URL;
-}
-
-function normalizeOrigin(raw: string | undefined): string | null {
-  const value = raw?.trim();
-  if (!value) return null;
-  try {
-    const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
-    return new URL(withProtocol).origin;
-  } catch {
-    return null;
-  }
-}
-
-/** Reject placeholder / junk values like "aaa" that break canonicals. */
-function isUsableSiteOrigin(origin: string): boolean {
-  try {
-    const { hostname } = new URL(origin);
-    if (!hostname.includes(".")) return false;
-    if (hostname === "localhost" || hostname === "aaa") return false;
-    if (hostname.endsWith(".vercel.app")) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}

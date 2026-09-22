@@ -53,11 +53,11 @@ git push -u origin main
    - `/sitemap.xml`
    - `/robots.txt`
    - Verified search bots (Googlebot, Bingbot)  
-   Without this, automated SEO tools may see a challenge page or HTTP 500 instead of the sitemap. `/sitemap.xml` is a **public static file** generated at build (`public/sitemap.xml`) so it does not go through Next.js’ metadata sitemap pipeline. It should return 200 with an indexable URL set (thin kaomoji emotion tails that stay noindex are omitted). lastmod is `CONTENT_UPDATED_AT` in `src/data/pages/registry.ts` — bump that date only when intentionally publishing changes; after GSC submit the site is meant for infrequent updates.
+   Without this, automated SEO tools may see a challenge page or HTTP 500 instead of the sitemap. `/sitemap.xml` is a **public static file** generated at build (`public/sitemap.xml`) so it does not go through Next.js’ metadata sitemap pipeline. It should return 200 with an indexable URL set (thin kaomoji emotion tails that stay noindex are omitted). lastmod is `CONTENT_UPDATED_AT` in `src/data/pages/registry.ts` — bump that date only when intentionally publishing changes; after GSC submit the site is meant for infrequent updates. Before deploy, run `npm run check:seo` (`docs/seo-plumbing.md`).
 
 ### CMP / ads (do not skip)
 
-Do **not** load AdSense or a consent banner until a **Google-certified CMP** with IAB TCF is fully configured for EEA/UK/CH. A no-op stub lives at `src/lib/ads/consent.ts`. Privacy (`/privacy/`) already discloses Google advertising partners and links to [How Google uses information from sites or apps that use our services](https://policies.google.com/technologies/partner-sites). Never place ads between a textarea and the first Copy control.
+Do **not** load AdSense or a consent banner until a **Google-certified CMP** with IAB TCF is fully configured for EEA/UK/CH. Gated loader: `src/components/ads/AdSenseProvider.tsx` + `src/lib/ads/consent.ts` (`ADS_CONSENT_READY` stays `false` until CMP is verified). Checklist: `docs/seo-adsense-gate.md`. Run `npm run check:ads` before go-live. Privacy (`/privacy/`) already discloses Google advertising partners and links to [How Google uses information from sites or apps that use our services](https://policies.google.com/technologies/partner-sites). Never place ads between a textarea and the first Copy control.
 
 Do not invent a GA4 measurement ID. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` only after a real GA4 property exists.
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { kaomojiPathIsIndexable } from "@/data/kaomoji";
-import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
+import { kaomojiPathIsIndexable } from "@/data/kaomoji-index";
+import type { PageEntry } from "@/data/pages/registry";
+import { SITE_NAME, SITE_URL } from "@/data/site";
+import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
 import {
   letterDescription,
   letterTitle,
@@ -27,12 +29,13 @@ export function pageMetadata(
   const canonicalPath = opts?.canonicalPath ?? page.url;
   const canonical = new URL(canonicalPath, SITE_URL).toString();
   const pageUrl = new URL(page.url, SITE_URL).toString();
-  const socialDescription = opts?.socialDescription ?? page.description;
+  const description = descriptionWithSerpSpecimen(page.url, page.description);
+  const socialDescription = opts?.socialDescription ?? description;
   const indexable =
     page.index !== false && kaomojiPathIsIndexable(page.url);
   return {
     title: { absolute: page.title },
-    description: page.description,
+    description,
     ...(indexable ? {} : { robots: { index: false, follow: true } }),
     alternates: { canonical },
     openGraph: {
@@ -60,8 +63,12 @@ export function cursiveLetterMetadata(
   letterCase: LetterCase,
 ): Metadata {
   const title = letterTitle(letter, letterCase);
-  const description = letterDescription(letter, letterCase);
-  const canonical = new URL(letterUrl(letter, letterCase), SITE_URL).toString();
+  const path = letterUrl(letter, letterCase);
+  const description = descriptionWithSerpSpecimen(
+    path,
+    letterDescription(letter, letterCase),
+  );
+  const canonical = new URL(path, SITE_URL).toString();
   return {
     title: { absolute: title },
     description,
