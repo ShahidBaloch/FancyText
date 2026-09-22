@@ -6,6 +6,10 @@ import {
   COQUETTE_KAOMOJI_FACES,
 } from "@/data/coquette-kaomoji-faces";
 import {
+  MULTILINE_KAOMOJI_HUB_FACES,
+  getMultilineKaomojiForSlug,
+} from "@/data/multiline-kaomoji-faces";
+import {
   KAOMOJI_SEARCH_INTENT_BY_SLUG,
   getKaomojiSearchIntentsForSlug,
 } from "@/data/kaomoji-search-intent";
@@ -1224,6 +1228,22 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "(^∇^)～",
   ]),
   list(
+    "multiline-kaomojis",
+    "multiline",
+    "multiline kaomoji",
+    [...MULTILINE_KAOMOJI_HUB_FACES],
+    [
+      "multiline ascii kaomoji",
+      "multiline emoticon",
+      "angry multiline kaomoji",
+      "happy multiline kaomoji",
+      "ascii text face",
+    ],
+    "Multiline kaomoji stack rows—angry table-flip blocks, happy cheer ASCII, crying layouts, hugs, and more. Tap to copy with line breaks; coquette aesthetic art has its own page.",
+    "Copy multiline kaomoji—angry, happy, sad, cry & mood ASCII blocks with line breaks. Tap to copy for Discord bios and chat.",
+    "Multiline Kaomoji Copy Paste",
+  ),
+  list(
     "coquette-kaomojis",
     "coquette",
     "coquette kaomoji",
@@ -1280,6 +1300,13 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
   ]),
   ),
 ];
+
+for (const entry of KAOMOJI_LISTS) {
+  const multiline = getMultilineKaomojiForSlug(entry.slug);
+  if (multiline.length) {
+    entry.faces = mergeKaomojiFaces(multiline, entry.faces);
+  }
+}
 
 for (const entry of KAOMOJI_LISTS) {
   const unique = KAOMOJI_UNIQUE_COPY[entry.slug];
@@ -1502,6 +1529,7 @@ export const INDEXABLE_KAOMOJI_SLUGS = new Set([
   "kaomoji-dot-art",
   "carrd-kaomojis",
   "coquette-kaomojis",
+  "multiline-kaomojis",
 ]);
 
 /** Layout / body-part lists—distinct from mood animals (cat, bear) and cute/heart. */
@@ -1511,6 +1539,7 @@ export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
   "kaomoji-dot-art",
   "carrd-kaomojis",
   "coquette-kaomojis",
+  "multiline-kaomojis",
 ]);
 
 export function isKaomojiTopicSpoke(slug: string): boolean {

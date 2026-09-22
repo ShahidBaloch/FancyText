@@ -997,6 +997,23 @@ export const PAGES: PageEntry[] = [
   },
   {
     phase: 5,
+    priority: "P1",
+    url: "/multiline-kaomojis/",
+    group: "F_Kaomoji",
+    primaryKeyword: "multiline kaomoji",
+    navLabel: "Multiline mood kaomoji",
+    title: "Multiline Kaomoji Copy Paste — Angry, Happy & Mood ASCII | FancifyText",
+    description:
+      "Copy multiline kaomoji—angry table-flip blocks, happy cheer ASCII, sad/cry layouts & more. Tap to copy full rows with line breaks.",
+    fellowKeywords: fellows(
+      "multiline ascii kaomoji",
+      "angry multiline kaomoji",
+      "happy multiline kaomoji",
+      "multiline emoticon",
+    ),
+  },
+  {
+    phase: 5,
     priority: "P2",
     url: "/happy-kaomojis/",
     group: "F_Kaomoji",
@@ -1838,11 +1855,20 @@ const KAOMOJI_FAMILIES: Record<string, string[]> = {
     "/kaomoji/",
   ],
   "coquette-kaomojis": [
+    "/multiline-kaomojis/",
     "/carrd-kaomojis/",
     "/bunny-kaomojis/",
     "/cat-kaomojis/",
     "/dog-kaomojis/",
     "/kaomoji-dot-art/",
+    "/kaomoji/",
+  ],
+  "multiline-kaomojis": [
+    "/coquette-kaomojis/",
+    "/angry-kaomojis/",
+    "/happy-kaomojis/",
+    "/cry-kaomojis/",
+    "/cute-kaomojis/",
     "/kaomoji/",
   ],
   "happy-kaomojis": [

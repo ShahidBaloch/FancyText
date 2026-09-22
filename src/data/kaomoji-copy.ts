@@ -55,7 +55,7 @@ export type KaomojiHubContent = {
 export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   "angry-kaomojis": {
     description:
-      "Copy furious angry kaomojis and mad text faces like (ノಠ益ಠ)ノ. Express rage and frustration in Discord, chats, and comments.",
+      "Copy angry kaomoji—multiline table-flip stacks (╯°□°）╯︵ + ┻━┻), mad one-liners like (ノಠ益ಠ)ノ, and rage ASCII for Discord and memes.",
     whereHeading: "Where mad kaomoji fit",
     whereBullets: [
       "Meme replies and game rage threads—not formal support tickets.",
@@ -1312,9 +1312,9 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
   },
   "happy-kaomojis": {
     description:
-      "Happy kaomoji copy and paste. Cheerful text faces for good news, sunny replies, and upbeat group chats—tap any row to copy.",
+      "Copy happy kaomoji—multiline ♪/☆ cheer blocks and one-line smiles for good news, sunny replies, and upbeat chats.",
     canonicalLead:
-      "Happy kaomoji emphasize open smiles rather than kawaii blush (cute list) or victory flex (proud list). This browse list is not indexed; for search-friendly kawaii smiles, use cute kaomojis.",
+      "Happy kaomoji lead with multiline sparkle cheers, then one-line smiles. Indexed multiline mood hub: multiline kaomojis. Kawaii blush smiles: cute kaomojis.",
     meaningsHeading: "Cheer without hype",
     meanings:
       "Happy faces use wide smiles and lifted eyes—lighter than excited hype and softer than proud smugness. Good for congratulations, Friday messages, and friendly check-ins.",
@@ -1397,6 +1397,60 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
         question: "Can I use a wink kaomoji at work?",
         answer:
           "Stick to mild (^‿^) style faces in professional threads; save (^_-)/(^ω~) for friends who know your tone.",
+      },
+    ],
+  },
+  "multiline-kaomojis": {
+    title: "Multiline Kaomoji Copy Paste — Angry, Happy & Mood ASCII | FancifyText",
+    ogSubtitle: "Multiline kaomoji — angry, happy, sad, cry & more (line breaks copy)",
+    description:
+      "Copy multiline kaomoji—angry table-flip blocks, happy cheer ASCII, sad/cry layouts, hugs & more. Tap to copy full rows with line breaks.",
+    canonicalLead:
+      "Multiline mood kaomoji live here—angry ┻━┻ stacks, happy ♪ cheers, crying (T_T) layouts, and other emotions built from multiple rows. Coquette kaomojis is the separate indexed page for soft aesthetic ♡ / tulip art; dot art stays one-line for chat.",
+    meaningsHeading: "Mood posters vs one-line faces",
+    meanings:
+      "Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged at the top of each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.",
+    howToHeading: "Copy multiline mood kaomoji",
+    howToSteps: [
+      "Pick a mood block—or open angry/happy/sad lists for the same rows plus one-line faces.",
+      "Tap once; line breaks copy to the clipboard.",
+      "Paste in Discord about-me, bios, or chat. Use monospace-friendly fields when possible.",
+    ],
+    whereHeading: "Where multiline moods work",
+    whereBullets: [
+      "Discord about-me and announcements: angry/happy posters read well in monospace.",
+      "Meme replies: table-flip stacks need more than one row—use multiline angry blocks.",
+      "Bios: one multiline block plus plain text; avoid stacking three posters.",
+    ],
+    extraSections: [
+      {
+        id: "vs-coquette",
+        heading: "Multiline moods vs coquette art",
+        paragraphs: [
+          "This page cross-products mood layouts (rage banners, tears, cheers). Coquette kaomojis cross-products aesthetic ♡ cats, tulip bunnies, and Carrd-style art. Both are multiline; the search intent differs—meme mood vs soft aesthetic.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is a multiline kaomoji?",
+        answer:
+          "A text face built from several rows—like a table flip with ┻━┻ on its own line—copied as plain Unicode with line breaks.",
+      },
+      {
+        question: "Are angry and happy multiline kaomojis here?",
+        answer:
+          "Yes. Angry stacks include flip + table rows; happy stacks include ♪/☆ decor with (≧▽≦)-style faces. The same blocks lead the angry-kaomojis and happy-kaomojis browse lists.",
+      },
+      {
+        question: "Multiline vs coquette kaomoji?",
+        answer:
+          "Multiline moods = meme emotions (mad, happy, sad). Coquette = aesthetic bio art (♡, ૮, 🌷). Both paste multiline; pick the page that matches your search.",
+      },
+      {
+        question: "Multiline vs dot art?",
+        answer:
+          "Dot art is one line for quick chat. Multiline pages are for taller ASCII that needs rows.",
       },
     ],
   },
@@ -1542,6 +1596,11 @@ export const KAOMOJI_HUB_AESTHETIC_SAMPLES = [
     href: "/coquette-kaomojis/",
     label: "Coquette multiline art",
   },
+  {
+    line: "(╯°□°）╯︵\n┻━┻",
+    href: "/multiline-kaomojis/",
+    label: "Multiline mood kaomoji",
+  },
 ] as const;
 
 /** Indexable kaomoji hub URL slugs (typo landings + main). */
@@ -1572,7 +1631,7 @@ export const KAOMOJI_HUB_VARIANTS: Record<KaomojiHubSlug, KaomojiHubSerpBundle> 
       "Kaomoji copy paste · (｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ · 840+ curated faces",
     h1: "Kaomoji Copy Paste",
     introBelowHero:
-      "Japanese text faces (often typed kamoji, kaomiji, or kaomojis) as plain Unicode—not emoji stickers. Indexed topics: cute, cry, heart, hand, star, Carrd dividers, coquette multiline art, mini dot art, Lenny, shrug.",
+      "Japanese text faces (often typed kamoji, kaomiji, or kaomojis) as plain Unicode—not emoji stickers. Indexed topics: cute, cry, heart, hand, star, Carrd dividers, coquette aesthetic art, multiline mood kaomoji, mini dot art, Lenny, shrug.",
     breadcrumbLabel: "Kaomoji",
     primaryKeyword: "kaomoji",
     leadFaq: {
@@ -1720,6 +1779,7 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
         "Star kaomoji — ★ ⋆ ✩ aesthetic lines",
         "Carrd kaomojis — bio dividers between sections",
         "Coquette kaomojis — multiline aesthetic text art",
+        "Multiline kaomojis — angry, happy, sad & mood ASCII rows",
         "Kaomoji dot art — compact (•ᴗ•)-style faces",
       ],
     },
@@ -1787,6 +1847,20 @@ export const KAOMOJI_HUB: KaomojiHubContent = {
       href: "/thank-you-kaomojis/",
       linkLabel: "Thank-you kaomojis",
       hint: "Bow face; common after favors in servers.",
+    },
+    {
+      situation: "Angry / table-flip meme (multiline)",
+      face: "(╯°□°）╯︵\n┻━┻",
+      href: "/multiline-kaomojis/",
+      linkLabel: "Multiline kaomojis",
+      hint: "Rage posters + same rows on angry kaomojis.",
+    },
+    {
+      situation: "Happy cheer (multiline)",
+      face: "  ♪\n(≧▽≦)\n  ／",
+      href: "/multiline-kaomojis/",
+      linkLabel: "Multiline kaomojis",
+      hint: "Sparkle cheers; happy kaomojis list has matching rows.",
     },
     {
       situation: "Coquette / Carrd aesthetic text art",
