@@ -29,7 +29,7 @@ export const GOOGLE_ADS_PUBLISHER_ID = "pub-1493183147218727";
  * Single gate for any future AdSense / GPT script loader.
  * Do not load ads when false (current production default).
  */
-export function mayLoadGoogleAds(_opts?: { regionCode?: string }): boolean {
+export function mayLoadGoogleAds(): boolean {
   if (!isCertifiedCmpConfigured()) return false;
   if (ADSENSE_REQUIRES_CERTIFIED_CMP && !ADS_CONSENT_READY) return false;
   return true;

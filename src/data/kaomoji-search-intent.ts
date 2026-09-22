@@ -151,6 +151,23 @@ export const KAOMOJI_SEARCH_INTENT_BY_SLUG: Record<string, readonly string[]> = 
   "thank-you-kaomojis": ["bow kaomoji", "thanks text face", "arigatou kaomoji"],
   "shy-kaomojis": ["blush shy kaomoji", "embarrassed text face"],
   "excited-kaomojis": ["hype kaomoji", "celebration text face"],
+  "shocked-kaomojis": [
+    "shocked kaomoji",
+    "jaw drop text face",
+    "omg kaomoji",
+    "surprised ascii face",
+  ],
+  "surprised-kaomojis": [
+    "surprised kaomoji",
+    "astonished text face",
+    "mild shock kaomoji",
+  ],
+  "scared-kaomojis": [
+    "scared kaomoji",
+    "frightened text face",
+    "fear kaomoji",
+    "spooky kaomoji",
+  ],
 };
 
 export function kaomojiSlugFromUrl(url: string): string | undefined {

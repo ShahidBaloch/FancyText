@@ -249,7 +249,7 @@ export function datasetJsonLd(opts: {
     url: opts.url,
     keywords: opts.keywords.join(", "),
     ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
-    license: opts.licenseUrl ?? "https://creativecommons.org/publicdomain/zero/1.0/",
+    ...(opts.licenseUrl ? { license: opts.licenseUrl } : {}),
     isAccessibleForFree: true,
     creator: {
       "@type": "Organization",

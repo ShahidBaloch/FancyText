@@ -79,6 +79,9 @@ export const KAOMOJI_HUB_NAV_GROUPS: readonly KaomojiHubNavGroup[] = [
       "proud-kaomojis",
       "thinking-kaomojis",
       "drool-kaomojis",
+      "shocked-kaomojis",
+      "surprised-kaomojis",
+      "scared-kaomojis",
     ],
   },
   {

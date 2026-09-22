@@ -32,7 +32,6 @@ import {
   getHubShowcase,
   getKaomojiHubJumps,
   getKaomojiCatalogStats,
-  getKaomojiList,
   getKaomojiListSerpForMetadata,
   getTailKaomojiLists,
   isKaomojiTopicSpoke,
@@ -161,6 +160,7 @@ export function KaomojiListView({ config }: KaomojiListViewProps) {
             ],
             recordCount: config.faces.length,
             dateModified: CONTENT_UPDATED_AT,
+            licenseUrl: new URL("/terms/", SITE_URL).toString(),
           })}
         />
       ) : null}
@@ -384,6 +384,7 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
             keywords: ["kaomoji", "japanese emoticon", "text face", "copy paste"],
             recordCount: catalog.uniqueFaces,
             dateModified: CONTENT_UPDATED_AT,
+            licenseUrl: new URL("/terms/", SITE_URL).toString(),
           })}
         />
       ) : null}

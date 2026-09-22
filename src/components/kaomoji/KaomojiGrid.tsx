@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import { useCopyFeedback } from "@/lib/copy";
 
 /** Above this count, SSR/hydration only render an initial window + load-more. */
-const LARGE_GRID_THRESHOLD = 200;
+export const KAOMOJI_LARGE_GRID_THRESHOLD = 200;
+const LARGE_GRID_THRESHOLD = KAOMOJI_LARGE_GRID_THRESHOLD;
 const INITIAL_VISIBLE = 96;
 const LOAD_MORE_STEP = 120;
 
@@ -33,9 +34,21 @@ export function KaomojiGrid({
   );
   const hasMultiline = faces.some((face) => face.includes("\n"));
   const remaining = faces.length - visibleFaces.length;
+  const termsHref = "/terms/";
 
   return (
     <div>
+      {isLarge ? (
+        <noscript>
+          <p className="seo-lead">
+            This list has {faces.length} copy-paste rows. Enable JavaScript to
+            load more than the first {INITIAL_VISIBLE}, or open{" "}
+            <a href="/llms-full.txt">llms-full.txt</a> for catalog excerpts. Use
+            of pasted text is subject to our{" "}
+            <a href={termsHref}>Terms of Use</a>.
+          </p>
+        </noscript>
+      ) : null}
       {errorMessage ? (
         <p className="copy-status" role="alert">
           {errorMessage}

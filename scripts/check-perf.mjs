@@ -44,9 +44,8 @@ async function fetchText(path) {
   return res.text();
 }
 
-let html;
 try {
-  html = await fetchText("/");
+  await fetchText("/");
 } catch (err) {
   console.warn(
     `check-perf: server not reachable at ${BASE} (${err.message}) — skipping budgets.`,
