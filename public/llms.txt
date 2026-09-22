@@ -12,6 +12,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 ## Primary tools
 
 - / — Home — Free fancy text generator
+- /aesthetic-symbols/ — aesthetic symbols — Aesthetic symbols copy and paste
 - /big-text-generator/ — Big Text — Big text generator
 - /binary-text-generator/ — Binary — Binary text generator
 - /bold-text-generator/ — Bold — Bold text generator
@@ -20,6 +21,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /cool-symbols/ — Symbols — Cool symbols copy and paste
 - /copy-paste-fonts/ — Copy & Paste — Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII
 - /cursive-text-generator/ — Cursive — Cursive text generator
+- /cute-symbols/ — cute symbols — Cute symbols copy and paste
 - /glitch-text-generator/ — glitch text generator — Glitch text generator
 - /invisible-character/ — invisible character — Copy invisible and blank characters that survive pasting
 - /italic-text-generator/ — Italic — Italic text generator
@@ -39,6 +41,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /aesthetic-fonts/ — aesthetic fonts — Aesthetic fonts
 - /cool-text-generator/ — Cool Text — Cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, and squared styles
 - /cute-fonts/ — cute fonts copy and paste — Cute fonts copy and paste
+- /emoji-combos/ — Emoji combos — Emoji combos copy and paste
 - /name-font-generator/ — name fonts — Name fonts
 - /stylish-text-generator/ — stylish text generator — Stylish text generator
 
@@ -70,6 +73,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) free
 - /shrug-emoticon/ — shrug emoticon — Copy shrug ¯\_(ツ)_/¯ free
 - /star-kaomojis/ — star kaomoji — Copy star kaomoji & sparkle text
+- /text-art/ — Text art — Text art copy and paste
 
 ## Guides
 

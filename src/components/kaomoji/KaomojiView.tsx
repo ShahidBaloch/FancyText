@@ -391,8 +391,11 @@ export function KaomojiHubView({ hubSlug = "kaomoji" }: KaomojiHubViewProps) {
           variant="emoji"
         />
         <p className="seo-prose">
-          Need stars, hearts, or arrows without a face? See{" "}
-          <Link href="/cool-symbols/">cool symbols copy and paste</Link>.
+          Need color emoji strings? See{" "}
+          <Link href="/emoji-combos/">emoji combos</Link>. Need stars, hearts,
+          or arrows without a face? See{" "}
+          <Link href="/cute-symbols/">cute symbols</Link> or{" "}
+          <Link href="/cool-symbols/">cool symbols</Link>.
         </p>
       </section>
 

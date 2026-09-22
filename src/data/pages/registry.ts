@@ -590,6 +590,70 @@ export const PAGES: PageEntry[] = [
   },
   {
     phase: 6,
+    priority: "P0",
+    url: "/emoji-combos/",
+    group: "G_Aesthetic_Cute",
+    primaryKeyword: "emoji combos",
+    title: "Emoji Combos Copy and Paste — Cute & Aesthetic Strings",
+    description:
+      "Emoji combos copy and paste. Tap ready-made cute, aesthetic, and funny emoji strings for Discord and Instagram bios—not kaomoji text faces or Unicode fonts.",
+    fellowKeywords: fellows(
+      "emoji combo",
+      "cute emoji combos",
+      "aesthetic emoji combos",
+      "emojis combined",
+      "funny emoji combos",
+    ),
+    navLabel: "Emoji combos",
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/text-art/",
+    group: "F_Kaomoji",
+    primaryKeyword: "text art",
+    title: "Text Art Copy and Paste — ASCII Faces & Dividers",
+    description:
+      "Text art copy and paste. Curated ASCII and Unicode art—faces, dividers, and mini scenes for chat. Tap to copy; not big FIGlet banners.",
+    fellowKeywords: fellows(
+      "text art copy and paste",
+      "ascii art copy paste",
+      "text art copy paste",
+    ),
+    navLabel: "Text art",
+  },
+  {
+    phase: 6,
+    priority: "P0",
+    url: "/cute-symbols/",
+    group: "C_CopyPaste",
+    primaryKeyword: "cute symbols",
+    title: "Cute Symbols Copy and Paste — Hearts, Stars & Dividers",
+    description:
+      "Cute symbols copy and paste. Hearts, stars, flowers, and kawaii dividers for bios—single marks, not bubble letter fonts.",
+    fellowKeywords: fellows(
+      "cute symbols copy and paste",
+      "cute symbol",
+      "copy and paste symbols",
+      "symbols copy and paste",
+    ),
+  },
+  {
+    phase: 6,
+    priority: "P1",
+    url: "/aesthetic-symbols/",
+    group: "C_CopyPaste",
+    primaryKeyword: "aesthetic symbols",
+    title: "Aesthetic Symbols Copy and Paste — Dividers & Stars",
+    description:
+      "Aesthetic symbols copy and paste. Minimal dividers, moons, stars, and brackets for soft bios—not aesthetic fullwidth fonts.",
+    fellowKeywords: fellows(
+      "aesthetic symbols copy and paste",
+      "aesthetic copy and paste",
+    ),
+  },
+  {
+    phase: 6,
     priority: "P1",
     url: "/case-converter/",
     group: "D_Style_Other",
@@ -1372,10 +1436,43 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/copy-paste-fonts/",
   ],
   "/cool-symbols/": [
+    "/cute-symbols/",
+    "/aesthetic-symbols/",
+    "/emoji-combos/",
     "/text-decorator/",
     "/kaomoji/",
     "/copy-paste-fonts/",
+  ],
+  "/emoji-combos/": [
+    "/cute-symbols/",
+    "/kaomoji/",
     "/cute-fonts/",
+    "/text-art/",
+    "/cool-symbols/",
+    "/",
+  ],
+  "/text-art/": [
+    "/kaomoji/",
+    "/kaomoji-dot-art/",
+    "/emoji-combos/",
+    "/big-text-generator/",
+    "/lenny-face/",
+    "/",
+  ],
+  "/cute-symbols/": [
+    "/emoji-combos/",
+    "/aesthetic-symbols/",
+    "/cool-symbols/",
+    "/cute-fonts/",
+    "/kaomoji/",
+    "/text-art/",
+  ],
+  "/aesthetic-symbols/": [
+    "/aesthetic-fonts/",
+    "/cute-symbols/",
+    "/emoji-combos/",
+    "/carrd-kaomojis/",
+    "/cool-symbols/",
     "/",
   ],
   "/text-decorator/": [
@@ -1490,13 +1587,13 @@ const TOPICAL_RELATED: Record<string, string[]> = {
     "/whatsapp-fonts/",
   ],
   "/kaomoji/": [
+    "/emoji-combos/",
+    "/text-art/",
     "/cute-kaomojis/",
     "/hand-kaomojis/",
     "/carrd-kaomojis/",
     "/star-kaomojis/",
     "/lenny-face/",
-    "/shrug-emoticon/",
-    "/social-media-bio-generator/",
   ],
   "/aesthetic-fonts/": [
     "/copy-paste-fonts/",
@@ -1935,6 +2032,7 @@ const NAV_URLS = [
   "/instagram-font-generator/",
   "/discord-font-generator/",
   "/cool-symbols/",
+  "/emoji-combos/",
   "/kaomoji/",
 ] as const;
 

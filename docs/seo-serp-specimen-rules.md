@@ -28,11 +28,13 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 - **Do not** duplicate the full meta line in the visible lead paragraph (hero lead stays human prose).
 - **AdSense:** specimens are decorative (`aria-hidden="true"`); real copy stays in sections and FAQ.
 
-## P0 paths (Task 2)
+## P0 paths (Tasks 2–3)
 
 - `/` — font rotate (G9)
 - `/copy-paste-fonts/` — font rotate (G5)
-- `/cool-symbols/` — glyph strip (G2 partial)
+- `/cool-symbols/`, `/cute-symbols/`, `/aesthetic-symbols/` — glyph strip (G2, G8)
+- `/emoji-combos/` — glyph strip (G1)
+- `/text-art/` — glyph strip (G3)
 - `/kaomoji/`, `/lenny-face/` — glyph strip (G6–G7)
 
-Task 3+ adds new paths (`/emoji-combos/`, `/text-art/`, etc.) using the same registry.
+Add new landings by extending `SERP_SPECIMENS` and `PageHero specimenPath`.

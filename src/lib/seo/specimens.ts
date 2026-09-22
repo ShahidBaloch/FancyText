@@ -74,6 +74,34 @@ export const SERP_SPECIMENS: Record<string, SerpSpecimenConfig> = {
     metaLine: "( ͡° ͜ʖ ͡°) — lenny face copy paste",
     ogSubtitle: "( ͡° ͜ʖ ͡°) Lenny variants — tap to copy",
   },
+  "/emoji-combos/": {
+    kind: "glyph-strip",
+    glyphs: ["🌸✨💕", "🐱🎀🐾", "🌙✨🌌", "💀😭🙏"],
+    stripLabel: "Emoji combos — tap a string to copy",
+    metaLine: "🌸✨💕 🐱🎀 — emoji combos copy and paste",
+    ogSubtitle: "🌸✨💕 cute & aesthetic emoji combos — tap to copy",
+  },
+  "/text-art/": {
+    kind: "glyph-strip",
+    glyphs: ["(=^･ω･^=)", "ʕ•ᴥ•ʔ", "¯\\_(ツ)_/¯", "☆(｡◕‿◕｡)☆"],
+    stripLabel: "Text art copy paste",
+    metaLine: "(=^･ω･^=) ☆(｡◕‿◕｡)☆ — text art copy and paste",
+    ogSubtitle: "ASCII faces & dividers — text art copy paste",
+  },
+  "/cute-symbols/": {
+    kind: "glyph-strip",
+    glyphs: ["♡", "☆", "✿", "🌸", "🎀", "✨"],
+    stripLabel: "Cute symbols copy and paste",
+    metaLine: "♡ ☆ ✿ 🌸 — cute symbols copy and paste",
+    ogSubtitle: "♡ ☆ ✿ cute symbols for bios — tap to copy",
+  },
+  "/aesthetic-symbols/": {
+    kind: "glyph-strip",
+    glyphs: ["⋆", "｡", "✧", "🌙", "───", "˚ ༘♡"],
+    stripLabel: "Aesthetic symbols copy and paste",
+    metaLine: "⋆｡°✩ ─── aesthetic symbols copy and paste",
+    ogSubtitle: "⋆ dividers & moon marks — aesthetic symbols",
+  },
 };
 
 export function normalizeSpecimenPath(path: string): string {
