@@ -13,8 +13,9 @@
     "check:sitemap": "node scripts/write-sitemap.mjs",
     "check:llms": "node scripts/write-llms.mjs",
     "check:ads": "node scripts/check-ads-gate.mjs",
-    "check:seo": "node scripts/check-seo-plumbing.mjs && node scripts/check-cannibalization.mjs && node scripts/check-ads-gate.mjs && node scripts/write-sitemap.mjs && node scripts/write-llms.mjs",
-    "check:cannibalization": "node scripts/check-cannibalization.mjs"
+    "check:seo": "node scripts/check-seo-plumbing.mjs && node scripts/check-cannibalization.mjs && node scripts/check-content-uniqueness.mjs && node scripts/check-ads-gate.mjs && node scripts/write-sitemap.mjs && node scripts/write-llms.mjs",
+    "check:cannibalization": "node scripts/check-cannibalization.mjs",
+    "check:content-uniqueness": "node scripts/check-content-uniqueness.mjs"
   },
   "dependencies": {
     "next": "16.3.5",

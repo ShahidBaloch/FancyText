@@ -19,6 +19,7 @@ npm run check:ads
 npm run check:sitemap
 npm run check:llms
 npm run check:cannibalization
+npm run check:content-uniqueness
 npm run build
 ```
 

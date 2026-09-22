@@ -23,7 +23,8 @@ Code cannot promise position #1–3; it can align with what winners show:
 | **One URL per intent** | Hub vs spoke copy; kaomoji vs emoji; cursive word vs letter |
 | **Internal links** | `TOPICAL_RELATED`, hubs, cross-links in prose |
 | **Technical** | Sitemap (124 URLs), honest `lastmod`, canonical + OG alignment, noindex tails |
-| **Cannibalization guard** | `npm run check:cannibalization` |
+| **Cannibalization guard** | `npm run check:cannibalization` (one indexable URL per `primaryKeyword`) |
+| **Unique meta copy** | `npm run check:content-uniqueness` — duplicate titles/descriptions blocked; **keywords stay fixed** |
 
 **After deploy (GSC):** apex property, sitemap once, URL Inspection on money pages, monitor Queries for URL swapping. See `docs/seo-production-audit.md`.
 
