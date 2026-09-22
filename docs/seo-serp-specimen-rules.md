@@ -43,3 +43,5 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 - `/cursive-capital-*` and `/cursive-small-*` — dynamic `glyph-strip` via `buildCursiveLetterSpecimen()` inside `getSerpSpecimen()` (capital, small, bold glyphs + keyword meta line). Wire `PageHero specimenPath={letterUrl(...)}` on `CursiveLetterView`; metadata uses `descriptionWithSerpSpecimen()` in `cursiveLetterMetadata()`.
 
 Add new landings by extending `SERP_SPECIMENS` and `PageHero specimenPath`.
+
+Before release, run the mobile checklist in `docs/seo-responsive-qa.md` (Task 7).
