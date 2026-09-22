@@ -91,8 +91,34 @@ try {
     if (t.length < 25 || t.length > 72) {
       errors.push(`${p.slug}: title length ${t.length} (want 25–72)`);
     }
-    if (d.length < 80 || d.length > 320) {
-      errors.push(`${p.slug}: description length ${d.length} (want 80–320)`);
+    if (d.length < 70 || d.length > 320) {
+      errors.push(`${p.slug}: description length ${d.length} (want 70–320)`);
+    }
+    if (/\u2026|\.{3}\s*$/.test(d) || d.includes("…")) {
+      errors.push(`${p.slug}: meta description must not use “…” (looks truncated on SERP)`);
+    }
+    if (/\|\s*FancifyText\s*$/i.test(t)) {
+      errors.push(
+        `${p.slug}: drop "| FancifyText" from title — Google already shows sitename; brand burns mobile pixels and often gets rewritten away`,
+      );
+    }
+    // Faces in titles only where they win CTR. Wide/complex faces belong in the meta description.
+    const FACE_IN_TITLE_SLUGS = new Set([
+      "cute-kaomojis",
+      "cry-kaomojis",
+      "heart-kaomojis",
+      "lenny-face",
+      "shrug-emoticon",
+    ]);
+    if (FACE_IN_TITLE_SLUGS.has(p.slug)) {
+      const faceEarly =
+        /\([^)]{1,28}\)/.test(t.slice(0, 42)) ||
+        /[♡¯ツ͡°ʖ]/.test(t.slice(0, 42));
+      if (!faceEarly) {
+        errors.push(
+          `${p.slug}: this query wins CTR with one compact specimen early in the title`,
+        );
+      }
     }
 
     const copy = KAOMOJI_UNIQUE_COPY[p.slug];

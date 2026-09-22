@@ -33,7 +33,7 @@ Agent site search: https://fancifytext.com/search/?q={query} (use plus or %20 fo
 URL: https://fancifytext.com/multiline-kaomojis/
 Records: 1243 (1200+ public claim)
 
-Description: Copy multiline kaomoji—angry table-flip blocks, happy cheer ASCII, sad/cry layouts, hugs & more. Tap to copy full rows with line breaks.
+Description: (ノಠ益ಠ)ノ (T_T) — multiline kaomoji copy paste. Angry, happy, sad & cry ASCII blocks. Tap to copy full rows.
 
 Lead: Multiline mood kaomoji live here—angry ┻━┻ stacks, happy ♪ cheers, crying (T_T) layouts, and other emotions built from multiple rows. Coquette kaomojis is the separate indexed page for soft aesthetic ♡ / tulip art; dot art stays one-line for chat.
 
@@ -67,7 +67,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/coquette-kaomojis/
 Records: 987 (980+ public claim)
 
-Description: Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 tulip bunnies & standing dog ASCII for Carrd and TikTok bios. Tap to copy full blocks with line breaks.
+Description: ♡ 🌷 (｡♥‿♥｡) — coquette kaomoji copy paste. Aesthetic multiline cats, bunnies & dog ASCII for Carrd & TikTok. Tap to copy.
 
 Lead: This list is the viral coquette / soft-aesthetic text art people paste into Carrd, TikTok bios, and Discord about-me blocks—multiline Unicode, not one-line chat faces. For compact dot eyes only, use kaomoji dot art; for animal one-liners, open cat, bunny, bear, or dog lists.
 
@@ -103,7 +103,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/cute-kaomojis/
 Records: 44 (44 public claim)
 
-Description: Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.
+Description: (｡◕‿◕｡) (◕‿◕) ʕ•ᴥ•ʔ — cute kaomoji copy paste. Kawaii & blush faces for Discord bios and Instagram. Tap to copy.
 
 Lead: Every kawaii face on this page is curated for short bios and soft replies—round eyes and blush, not animal-ear mascots (those live on the cat and bear lists). The mixed kaomoji hub is for browsing; this URL is the full cute set.
 
@@ -137,7 +137,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/cry-kaomojis/
 Records: 44 (44 public claim)
 
-Description: Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.
+Description: (T_T) (╥_╥) (｡•́︿•̀｡) — cry kaomoji copy paste. Tearful text faces for Discord & chat. Tap any face; no app.
 
 Lead: This is the dedicated crying set—faces with visible tears for memes, apologies, and dramatic reactions. Quiet down moods without waterworks are on the sad kaomoji list; the hub only shows a small cry sample.
 
@@ -171,7 +171,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/heart-kaomojis/
 Records: 44 (44 public claim)
 
-Description: Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.
+Description: (｡♥‿♥｡) ♡ — heart kaomoji copy paste. Love text faces for DMs, couple Discord & sweet bios. Tap to copy; no sticker pack.
 
 Lead: Hearts here are woven into the face—not a lone ♡ emoji. Use this list for affectionate DMs, thank-yous, and couple bios; flirty smooch marks are on kiss kaomojis, comfort arms on hug kaomojis.
 
@@ -205,7 +205,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/hand-kaomojis/
 Records: 44 (44 public claim)
 
-Description: Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.
+Description: (ﾉ◕ヮ◕)ﾉ ＼(^o^)／ — hand kaomoji copy paste. Wave & arm-up faces for Discord hype and hellos. Tap to copy.
 
 Lead: Hand kaomoji are faces with visible arms—waves, cheers, and reach-outs. They are not hug lists (cuddle arms) and not star dividers. The kaomoji hub mixes moods; this page is only arm-forward reactions.
 
@@ -239,7 +239,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/kaomoji-dot-art/
 Records: 31 (31 public claim)
 
-Description: Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.
+Description: (•ᴗ•) ʕ•ᴥ•ʔ — kaomoji dot art copy paste. Compact mini ASCII faces for chat. One-line only; tap to copy.
 
 Lead: This list is mini dot-style and one-line ASCII faces—not multi-page text posters. For giant block ASCII, use a dedicated ASCII art tool; here every row stays short so mobile copy stays fast.
 
@@ -273,7 +273,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/carrd-kaomojis/
 Records: 32 (32 public claim)
 
-Description: Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.
+Description: · · ─ ·✶· ─ · · ⋆ — Carrd kaomojis copy paste. Bio divider lines & soft aesthetic strings for link-in-bio. Tap to copy.
 
 Lead: Carrd kaomojis here means divider lines and spacing strings for link-in-bio pages—not full site templates. Combine one divider with your words; use the social media bio generator for styled text, not for these Unicode lines.
 
@@ -307,7 +307,7 @@ Sample rows (not the full grid):
 URL: https://fancifytext.com/star-kaomojis/
 Records: 31 (31 public claim)
 
-Description: Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.
+Description: ☆(｡◕‿◕｡)☆ ⋆｡°✩ — star kaomoji copy paste. Sparkle text for aesthetic Discord & Instagram bios. Tap to copy.
 
 Lead: Star kaomoji mix sparkle marks (★ ⋆ ✩) with optional faces. They are not heart kaomoji (love mouths) and not plain symbol lists. Use heart lists for ♡ inside a face; use this page for galaxy/coquette-style lines.
 
@@ -339,7 +339,7 @@ Sample rows (not the full grid):
 ### Kaomoji hub
 
 URL: https://fancifytext.com/kaomoji/
-Description: Kaomoji copy paste in 1 tap—840+ curated text faces (｡◕‿◕｡) (T_T) ¯\_(ツ)_/¯ for Discord & Instagram. No app · No login.
+Description: (｡◕‿◕｡) (T_T) ¯\_(ツ)_/¯ — free kaomoji copy paste. Tap 840+ Japanese text faces for Discord & Instagram. No app.
 
 Use the hub keyword filter (#hub-jump-heading) when intent is unclear.
 
@@ -447,18 +447,18 @@ On-page facts agents can quote: copy is tap-to-click plain Unicode; multiline/co
 
 Agent site search: https://fancifytext.com/search/?q={query} (use plus or %20 for spaces).
 
-- /carrd-kaomojis/ — carrd kaomojis — Copy Carrd kaomojis
-- /coquette-kaomojis/ — Coquette / aesthetic kaomoji — Copy coquette kaomoji & aesthetic multiline text art
-- /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji free
-- /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji free
-- /hand-kaomojis/ — hand kaomoji — Copy hand kaomoji free
-- /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji with ♡ built in
-- /kaomoji-dot-art/ — dot art kaomoji — Copy kaomoji dot art
-- /kaomoji/ — Kaomoji — Kaomoji copy paste in 1 tap
-- /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) free
-- /multiline-kaomojis/ — Multiline mood kaomoji — Copy multiline kaomoji
-- /shrug-emoticon/ — shrug emoticon — Copy shrug ¯\_(ツ)_/¯ free
-- /star-kaomojis/ — star kaomoji — Copy star kaomoji & sparkle text
+- /carrd-kaomojis/ — carrd kaomojis — · · ─ ·✶· ─ · · ⋆
+- /coquette-kaomojis/ — Coquette / aesthetic kaomoji — ♡ 🌷 (｡♥‿♥｡)
+- /cry-kaomojis/ — cry kaomoji — (T_T) (╥_╥) (｡•́︿•̀｡)
+- /cute-kaomojis/ — cute kaomoji — (｡◕‿◕｡) (◕‿◕) ʕ•ᴥ•ʔ
+- /hand-kaomojis/ — hand kaomoji — (ﾉ◕ヮ◕)ﾉ ＼(^o^)／
+- /heart-kaomojis/ — heart kaomoji — (｡♥‿♥｡) ♡
+- /kaomoji-dot-art/ — dot art kaomoji — (•ᴗ•) ʕ•ᴥ•ʔ
+- /kaomoji/ — Kaomoji — (｡◕‿◕｡) (T_T) ¯\_(ツ)_/¯
+- /lenny-face/ — lenny face — ( ͡° ͜ʖ ͡°)
+- /multiline-kaomojis/ — Multiline mood kaomoji — (ノಠ益ಠ)ノ (T_T)
+- /shrug-emoticon/ — shrug emoticon — ¯\_(ツ)_/¯
+- /star-kaomojis/ — star kaomoji — ☆(｡◕‿◕｡)☆ ⋆｡°✩
 
 ## Guides
 

@@ -98,18 +98,18 @@ On-page facts agents can quote: copy is tap-to-click plain Unicode; multiline/co
 
 Agent site search: https://fancifytext.com/search/?q={query} (use plus or %20 for spaces).
 
-- /carrd-kaomojis/ — carrd kaomojis — Copy Carrd kaomojis
-- /coquette-kaomojis/ — Coquette / aesthetic kaomoji — Copy coquette kaomoji & aesthetic multiline text art
-- /cry-kaomojis/ — cry kaomoji — Copy cry kaomoji free
-- /cute-kaomojis/ — cute kaomoji — Copy cute kaomoji free
-- /hand-kaomojis/ — hand kaomoji — Copy hand kaomoji free
-- /heart-kaomojis/ — heart kaomoji — Copy heart kaomoji with ♡ built in
-- /kaomoji-dot-art/ — dot art kaomoji — Copy kaomoji dot art
-- /kaomoji/ — Kaomoji — Kaomoji copy paste in 1 tap
-- /lenny-face/ — lenny face — Copy Lenny face ( ͡° ͜ʖ ͡°) free
-- /multiline-kaomojis/ — Multiline mood kaomoji — Copy multiline kaomoji
-- /shrug-emoticon/ — shrug emoticon — Copy shrug ¯\_(ツ)_/¯ free
-- /star-kaomojis/ — star kaomoji — Copy star kaomoji & sparkle text
+- /carrd-kaomojis/ — carrd kaomojis — · · ─ ·✶· ─ · · ⋆
+- /coquette-kaomojis/ — Coquette / aesthetic kaomoji — ♡ 🌷 (｡♥‿♥｡)
+- /cry-kaomojis/ — cry kaomoji — (T_T) (╥_╥) (｡•́︿•̀｡)
+- /cute-kaomojis/ — cute kaomoji — (｡◕‿◕｡) (◕‿◕) ʕ•ᴥ•ʔ
+- /hand-kaomojis/ — hand kaomoji — (ﾉ◕ヮ◕)ﾉ ＼(^o^)／
+- /heart-kaomojis/ — heart kaomoji — (｡♥‿♥｡) ♡
+- /kaomoji-dot-art/ — dot art kaomoji — (•ᴗ•) ʕ•ᴥ•ʔ
+- /kaomoji/ — Kaomoji — (｡◕‿◕｡) (T_T) ¯\_(ツ)_/¯
+- /lenny-face/ — lenny face — ( ͡° ͜ʖ ͡°)
+- /multiline-kaomojis/ — Multiline mood kaomoji — (ノಠ益ಠ)ノ (T_T)
+- /shrug-emoticon/ — shrug emoticon — ¯\_(ツ)_/¯
+- /star-kaomojis/ — star kaomoji — ☆(｡◕‿◕｡)☆ ⋆｡°✩
 
 ## Guides
 

@@ -852,9 +852,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "cry kaomoji",
     updated: "2026-09-22",
-    title: "Cry Kaomoji Copy Paste — (T_T) Crying Faces | FancifyText",
+    title: "Cry Kaomoji (T_T) Copy Paste — Crying Faces",
     description:
-      "Copy cry kaomoji free—(T_T), (╥_╥) & tearful text faces for Discord and chat. Tap any face; no app or login.",
+      "(T_T) (╥_╥) (｡•́︿•̀｡) — cry kaomoji copy paste. Tearful text faces for Discord & chat. Tap any face; no app.",
     fellowKeywords: fellows("crying kaomoji", "kaomoji cry"),
   },
   {
@@ -864,9 +864,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "cute kaomoji",
     updated: "2026-09-22",
-    title: "Cute Kaomoji Copy Paste — (｡◕‿◕｡) Kawaii | FancifyText",
+    title: "Cute Kaomoji (｡◕‿◕｡) Copy Paste — Kawaii",
     description:
-      "Copy cute kaomoji free—(｡◕‿◕｡) kawaii & blush text faces for Discord bios and Instagram. Tap to copy; works on mobile.",
+      "(｡◕‿◕｡) (◕‿◕) ʕ•ᴥ•ʔ — cute kaomoji copy paste. Kawaii & blush faces for Discord bios and Instagram. Tap to copy.",
     fellowKeywords: fellows("kawaii kaomoji", "cute text faces", "cute emoji combos"),
   },
   {
@@ -896,9 +896,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "heart kaomoji",
     updated: "2026-09-22",
-    title: "Heart Kaomoji Copy Paste — ♡ Love Text Faces | FancifyText",
+    title: "Heart Kaomoji ♡ Copy Paste — Love Text Faces",
     description:
-      "Copy heart kaomoji with ♡ built in—love text faces for DMs, couple Discord & sweet bios. Free tap-to-copy; no sticker pack.",
+      "(｡♥‿♥｡) ♡ — heart kaomoji copy paste. Love text faces for DMs, couple Discord & sweet bios. Tap to copy; no sticker pack.",
     fellowKeywords: fellows("love kaomoji", "heart text face"),
   },
   {
@@ -1055,9 +1055,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "hand kaomoji",
     updated: "2026-09-22",
-    title: "Hand Kaomoji Copy Paste — Wave & Raise Arms | FancifyText",
+    title: "Hand Kaomoji Copy Paste — Wave & Raise Arms",
     description:
-      "Copy hand kaomoji free—(ﾉ◕ヮ◕)ﾉ, ＼(^o^)／ & arm-up text faces for Discord hype and hellos. Tap to copy; plain Unicode.",
+      "(ﾉ◕ヮ◕)ﾉ ＼(^o^)／ — hand kaomoji copy paste. Wave & arm-up faces for Discord hype and hellos. Tap to copy.",
     fellowKeywords: fellows("wave kaomoji", "arm up text face"),
   },
   {
@@ -1067,9 +1067,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "star kaomoji",
     updated: "2026-09-22",
-    title: "Star Kaomoji Copy Paste — ☆ Aesthetic Sparkle | FancifyText",
+    title: "Star Kaomoji Copy Paste — Aesthetic Sparkle",
     description:
-      "Copy star kaomoji & sparkle text—☆(｡◕‿◕｡)☆, ⋆｡°✩ for aesthetic Discord & Instagram bios. Tap to copy; not picture emoji.",
+      "☆(｡◕‿◕｡)☆ ⋆｡°✩ — star kaomoji copy paste. Sparkle text for aesthetic Discord & Instagram bios. Tap to copy.",
     fellowKeywords: fellows("stars kaomoji aesthetic", "galaxy kaomoji"),
   },
   {
@@ -1079,9 +1079,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "dot art kaomoji",
     updated: "2026-09-22",
-    title: "Kaomoji Dot Art Copy Paste — Mini ASCII Faces | FancifyText",
+    title: "Kaomoji Dot Art Copy Paste — Mini ASCII Faces",
     description:
-      "Copy kaomoji dot art—compact mini ASCII faces like (•ᴗ•) & ʕ•ᴥ•ʔ for chat. One-line art only; tap to copy. Free, no login.",
+      "(•ᴗ•) ʕ•ᴥ•ʔ — kaomoji dot art copy paste. Compact mini ASCII faces for chat. One-line only; tap to copy.",
     fellowKeywords: fellows("ascii kaomoji", "mini text art kaomoji"),
   },
   {
@@ -1091,9 +1091,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "carrd kaomojis",
     updated: "2026-09-22",
-    title: "Carrd Kaomojis Copy Paste — Bio Dividers | FancifyText",
+    title: "Carrd Kaomojis Copy Paste — Bio Dividers & Lines",
     description:
-      "Copy Carrd kaomojis—bio divider lines, ⋆ separators & soft aesthetic strings for link-in-bio layouts. Tap to copy; pairs with plain text sections.",
+      "· · ─ ·✶· ─ · · ⋆ — Carrd kaomojis copy paste. Bio divider lines & soft aesthetic strings for link-in-bio. Tap to copy.",
     fellowKeywords: fellows("carrd bio dividers", "aesthetic bio lines"),
   },
   {
@@ -1103,9 +1103,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "coquette kaomoji",
     navLabel: "Coquette / aesthetic kaomoji",
-    title: "Coquette Kaomoji Copy Paste — Multiline Aesthetic Text Art | FancifyText",
+    title: "Coquette Kaomoji Copy Paste — Aesthetic Multiline Art",
     description:
-      "Copy coquette kaomoji & aesthetic multiline text art—૮ ♡ cats, 🌷 bunnies & dog ASCII for Carrd and TikTok bios. Tap to copy full blocks; line breaks included.",
+      "♡ 🌷 (｡♥‿♥｡) — coquette kaomoji copy paste. Aesthetic multiline cats, bunnies & dog ASCII for Carrd & TikTok. Tap to copy.",
     fellowKeywords: fellows(
       "aesthetic kaomoji",
       "multiline ascii kaomoji",
@@ -1122,9 +1122,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "multiline kaomoji",
     navLabel: "Multiline mood kaomoji",
-    title: "Multiline Kaomoji Copy Paste — Angry, Happy & Mood ASCII | FancifyText",
+    title: "Multiline Kaomoji Copy Paste — Angry, Happy & Mood ASCII",
     description:
-      "Copy multiline kaomoji—angry table-flip blocks, happy cheer ASCII, sad/cry layouts & more. Tap to copy full rows with line breaks.",
+      "(ノಠ益ಠ)ノ (T_T) — multiline kaomoji copy paste. Angry, happy, sad & cry ASCII blocks. Tap to copy full rows.",
     fellowKeywords: fellows(
       "multiline ascii kaomoji",
       "angry multiline kaomoji",
@@ -1184,9 +1184,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "lenny face",
     updated: "2026-09-22",
-    title: "Lenny Face Copy Paste — ( ͡° ͜ʖ ͡°) | FancifyText",
+    title: "Lenny Face ( ͡° ͜ʖ ͡°) Copy Paste",
     description:
-      "Copy Lenny face ( ͡° ͜ʖ ͡°) free—meme text emoticons for Discord and Reddit. Tap any variant; plain Unicode, no login.",
+      "( ͡° ͜ʖ ͡°) — Lenny face copy paste. Meme text emoticons for Discord and Reddit. Tap any variant; plain Unicode.",
     fellowKeywords: fellows("lenny face copy paste", "lenny emoticon"),
   },
   {
@@ -1196,9 +1196,9 @@ export const PAGES: PageEntry[] = [
     group: "F_Kaomoji",
     primaryKeyword: "shrug emoticon",
     updated: "2026-09-22",
-    title: "Shrug Emoticon Copy Paste — ¯\\_(ツ)_/¯ | FancifyText",
+    title: "Shrug Emoticon ¯\\_(ツ)_/¯ Copy Paste",
     description:
-      "Copy shrug ¯\\_(ツ)_/¯ free—idk text faces for Discord, Instagram & email. Tap to copy; works where emoji keyboards fail.",
+      "¯\\_(ツ)_/¯ — shrug emoticon copy paste. Idk text faces for Discord, Instagram & email. Tap to copy anywhere.",
     fellowKeywords: fellows("shrug face", "shrug emoji text"),
   },
   {

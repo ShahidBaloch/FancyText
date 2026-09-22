@@ -121,11 +121,15 @@ export function runContentUniquenessCheck(): void {
 
   /** GSC-facing descriptions include SERP specimen prefix from pageMetadata(). */
   const byEffectiveDescription = new Map<string, string[]>();
+  const ellipsisUrls: string[] = [];
 
   for (const page of getLivePages()) {
     if (!isIndexablePage(page)) continue;
     const meta = effectiveRegistryMeta(page);
     const effective = descriptionWithSerpSpecimen(meta.url, meta.description);
+    if (/\u2026|\.{3}\s*$/.test(effective) || effective.includes("…")) {
+      ellipsisUrls.push(meta.url);
+    }
     const key = normalizeText(effective);
     if (key.length < 40) continue;
     const list = byEffectiveDescription.get(key) ?? [];
@@ -142,12 +146,21 @@ export function runContentUniquenessCheck(): void {
         path,
         letterDescription(letter, letterCase),
       );
+      if (/\u2026|\.{3}\s*$/.test(effective) || effective.includes("…")) {
+        ellipsisUrls.push(path);
+      }
       const key = normalizeText(effective);
       if (key.length < 40) continue;
       const list = byEffectiveDescription.get(key) ?? [];
       list.push(path);
       byEffectiveDescription.set(key, list);
     }
+  }
+
+  if (ellipsisUrls.length) {
+    throw new Error(
+      `Effective meta description must not use “…” / “...” (looks truncated on SERP): ${ellipsisUrls.join(", ")}`,
+    );
   }
 
   for (const [, urls] of byEffectiveDescription) {

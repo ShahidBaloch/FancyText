@@ -82,49 +82,49 @@ export const SERP_SPECIMENS: Record<string, SerpSpecimenConfig> = {
     kind: "glyph-strip",
     glyphs: ["(｡◕‿◕｡)", "(T_T)", "¯\\_(ツ)_/¯", "(ノಠ益ಠ)ノ", "ʕ•ᴥ•ʔ"],
     stripLabel: "Kaomoji copy paste — text faces",
-    metaLine: "(｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ — kaomoji copy paste",
+    metaLine: "(｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯",
     ogSubtitle: "(｡◕‿◕｡) (T_T) ¯\\_(ツ)_/¯ · tap to copy kaomoji",
   },
   "/cute-kaomojis/": {
     kind: "glyph-strip",
     glyphs: ["(｡◕‿◕｡)", "(◕‿◕)", "(✿◠‿◠)", "ʕ•ᴥ•ʔ", "(≧◡≦)"],
     stripLabel: "Cute kaomoji — tap any face to copy",
-    metaLine: "(｡◕‿◕｡) (◕‿◕) ʕ•ᴥ•ʔ — cute kaomoji copy paste",
+    metaLine: "(｡◕‿◕｡) (◕‿◕) ʕ•ᴥ•ʔ",
     ogSubtitle: "(｡◕‿◕｡) kawaii text faces — tap to copy",
   },
   "/cry-kaomojis/": {
     kind: "glyph-strip",
     glyphs: ["(╥_╥)", "(T_T)", "(｡•́︿•̀｡)", "(つ﹏⊂)", "(；ω；)"],
     stripLabel: "Cry kaomoji — crying text faces",
-    metaLine: "(T_T) (╥_╥) (｡•́︿•̀｡) — cry kaomoji copy paste",
+    metaLine: "(T_T) (╥_╥) (｡•́︿•̀｡)",
     ogSubtitle: "(T_T) tearful faces — tap to copy",
   },
   "/heart-kaomojis/": {
     kind: "glyph-strip",
     glyphs: ["(｡♥‿♥｡)", "(♥ω♥*)", "♡(˃͈ દ ˂͈ ༶ )", "(´∀｀)♡", "ヽ(♡‿♡)ノ"],
     stripLabel: "Heart kaomoji — love text faces",
-    metaLine: "(｡♥‿♥｡) ♡ — heart kaomoji copy paste",
+    metaLine: "(｡♥‿♥｡) ♡",
     ogSubtitle: "(｡♥‿♥｡) love kaomoji — tap to copy",
   },
   "/hand-kaomojis/": {
     kind: "glyph-strip",
     glyphs: ["ヽ(・∀・)ﾉ", "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧", "＼(^o^)／", "(ノ°▽°)ノ", "ヾ(＾∇＾)/"],
     stripLabel: "Hand kaomoji — wave & arm-up faces",
-    metaLine: "(ﾉ◕ヮ◕)ﾉ ＼(^o^)／ — hand kaomoji copy paste",
+    metaLine: "(ﾉ◕ヮ◕)ﾉ ＼(^o^)／",
     ogSubtitle: "ヽ(・∀・)ﾉ wave faces — tap to copy",
   },
   "/star-kaomojis/": {
     kind: "glyph-strip",
     glyphs: ["☆(｡◕‿◕｡)☆", "⋆｡°✩", "✩₊˚.⋆", "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧", "(★^O^★)"],
     stripLabel: "Star kaomoji — sparkle text faces",
-    metaLine: "☆(｡◕‿◕｡)☆ ⋆｡°✩ — star kaomoji copy paste",
+    metaLine: "☆(｡◕‿◕｡)☆ ⋆｡°✩",
     ogSubtitle: "☆ aesthetic sparkle kaomoji — tap to copy",
   },
   "/kaomoji-dot-art/": {
     kind: "glyph-strip",
     glyphs: ["(•ᴗ•)", "(◠‿◠)", "ʕ•ᴥ•ʔ", "(づ｡◕‿◕｡)づ", "(ノ◕ヮ◕)ノ"],
     stripLabel: "Dot art kaomoji — mini ASCII faces",
-    metaLine: "(•ᴗ•) ʕ•ᴥ•ʔ — dot art kaomoji copy paste",
+    metaLine: "(•ᴗ•) ʕ•ᴥ•ʔ",
     ogSubtitle: "(•ᴗ•) compact mini faces — tap to copy",
   },
   "/carrd-kaomojis/": {
@@ -137,35 +137,35 @@ export const SERP_SPECIMENS: Record<string, SerpSpecimenConfig> = {
       "‧₊˚ ✩ ‧₊˚",
     ],
     stripLabel: "Carrd kaomojis — bio divider lines",
-    metaLine: "· · ─ ·✶· ─ · · ⋆ — carrd kaomojis copy paste",
+    metaLine: "· · ─ ·✶· ─ · · ⋆",
     ogSubtitle: "Bio dividers & ⋆ separators — tap to copy",
   },
   "/coquette-kaomojis/": {
     kind: "glyph-strip",
     glyphs: ["♡", "🌷", "૮ ˶ᵔ ᵕ ᵔ˶ ა", "(｡♥‿♥｡)", "⋆｡°✩"],
     stripLabel: "Coquette kaomoji — aesthetic multiline art",
-    metaLine: "♡ 🌷 coquette kaomoji — multiline aesthetic copy paste",
+    metaLine: "♡ 🌷 (｡♥‿♥｡)",
     ogSubtitle: "♡ coquette multiline text art — tap to copy",
   },
   "/multiline-kaomojis/": {
     kind: "glyph-strip",
     glyphs: ["(ノಠ益ಠ)ノ", "(ﾉ◕ヮ◕)ﾉ", "(T_T)", "¯\\_(ツ)_/¯", "(｡◕‿◕｡)"],
     stripLabel: "Multiline kaomoji — stacked ASCII blocks",
-    metaLine: "(ノಠ益ಠ)ノ (T_T) — multiline kaomoji copy paste",
+    metaLine: "(ノಠ益ಠ)ノ (T_T)",
     ogSubtitle: "Angry, happy & mood multiline stacks — tap to copy",
   },
   "/shrug-emoticon/": {
     kind: "glyph-strip",
     glyphs: ["¯\\_(ツ)_/¯", "┐(´д｀)┌", "╮(╯_╰)╭", "¯\\_(⊙_ʖ⊙)_/¯", "┐(´∀｀)┌"],
     stripLabel: "Shrug emoticon — tap to copy",
-    metaLine: "¯\\_(ツ)_/¯ — shrug emoticon copy paste",
+    metaLine: "¯\\_(ツ)_/¯",
     ogSubtitle: "¯\\_(ツ)_/¯ idk shrug — tap to copy",
   },
   "/lenny-face/": {
     kind: "glyph-strip",
     glyphs: ["( ͡° ͜ʖ ͡°)", "( ͡~ ͜ʖ ͡°)", "⌐■_■"],
     stripLabel: "Lenny face copy paste",
-    metaLine: "( ͡° ͜ʖ ͡°) — lenny face copy paste",
+    metaLine: "( ͡° ͜ʖ ͡°)",
     ogSubtitle: "( ͡° ͜ʖ ͡°) Lenny variants — tap to copy",
   },
   "/emoji-combos/": {
@@ -277,18 +277,72 @@ export function getSerpSpecimenForSlug(slug: string): SerpSpecimenConfig | undef
   return getSerpSpecimen(`/${slug}/`);
 }
 
-/** Merge registry description with specimen line when not already present. */
+/** Soft mobile SERP limit — wide Unicode faces eat pixel width faster than ASCII. */
+export const SERP_META_DESCRIPTION_MAX = 155;
+
+/** Strip trailing ellipsis / “…” so snippets never look cut off mid-thought. */
+export function stripTrailingEllipsis(text: string): string {
+  return text.replace(/(?:·\s*)?(?:\u2026|\.{3})\s*$/u, "").trimEnd();
+}
+
+/**
+ * Fit a meta description under `max` without appending “…” or “...”.
+ * Prefer a complete sentence, then a word boundary — never a mid-glyph cut + dots.
+ */
+export function fitMetaDescription(
+  text: string,
+  max = SERP_META_DESCRIPTION_MAX,
+): string {
+  const clean = stripTrailingEllipsis(text.trim());
+  if (clean.length <= max) return clean;
+
+  const cut = clean.slice(0, max);
+  const sentenceEnd = Math.max(
+    cut.lastIndexOf(". "),
+    cut.lastIndexOf("! "),
+    cut.lastIndexOf("? "),
+  );
+  if (sentenceEnd >= Math.floor(max * 0.55)) {
+    return cut.slice(0, sentenceEnd + 1).trimEnd();
+  }
+
+  const space = cut.lastIndexOf(" ");
+  if (space >= Math.floor(max * 0.55)) {
+    return cut.slice(0, space).trimEnd();
+  }
+
+  return cut.trimEnd();
+}
+
+function descriptionAlreadyShowsSpecimen(
+  description: string,
+  spec: SerpSpecimenConfig,
+): boolean {
+  if (description.includes(spec.metaLine)) return true;
+  const glyphs = spec.glyphs?.filter(Boolean) ?? [];
+  if (glyphs.length === 0) return false;
+  // One clear specimen face/glyph in the description is enough for SERP.
+  return glyphs.some((g) => description.includes(g));
+}
+
+/**
+ * Merge registry description with specimen line when not already present.
+ * Never append “…” — Google already truncates; our own dots make the
+ * result look broken next to competitors who show full faces.
+ */
 export function descriptionWithSerpSpecimen(
   path: string,
   description: string,
 ): string {
   const spec = getSerpSpecimen(path);
-  if (!spec?.metaLine) return description;
-  if (description.includes(spec.metaLine)) return description;
-  const max = 158;
-  const merged = `${spec.metaLine}. ${description}`;
-  if (merged.length <= max) return merged;
-  return `${spec.metaLine}. ${description}`.slice(0, max - 1).trimEnd() + "…";
+  const base = stripTrailingEllipsis(description);
+  if (!spec?.metaLine) return fitMetaDescription(base);
+
+  if (descriptionAlreadyShowsSpecimen(base, spec)) {
+    return fitMetaDescription(base);
+  }
+
+  return fitMetaDescription(`${spec.metaLine}. ${base}`);
 }
 
 export function ogSubtitleForPath(path: string, fallback?: string): string | undefined {

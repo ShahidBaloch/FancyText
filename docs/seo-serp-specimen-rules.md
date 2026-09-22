@@ -23,7 +23,10 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 
 ## Copy rules
 
-- **Intent first:** picture emoji queries eventually need emoji strips; font queries need transformed letters; kaomoji queries need `(｡◕‿◕｡)`-style faces.
+- **Intent first:** picture emoji queries need emoji strips; font queries need transformed letters; kaomoji queries need faces in the **snippet** (meta description / hero), not always in the title.
+- **When a face belongs in the title:** only for head queries where a *compact* specimen lifts CTR — hub `kaomoji`, cute, cry, heart (♡), Lenny, shrug. Skip wide/complex faces (hand, star stacks, multiline, coquette ASCII) — they truncate as `( ˶... )` and look broken.
+- **`| FancifyText`:** skip on kaomoji money titles. Google already shows sitename + favicon + URL; brand suffixes are the most common rewrite Google removes. Keep brand in `og:site_name`, header, and JSON-LD.
+- **No self-made dots:** `descriptionWithSerpSpecimen()` must **never** append `…` / `...`. Write complete meta lines ≤ ~155 chars.
 - **One primary strip** above the H1 on inner pages; home keeps the two-column hero.
 - **Do not** duplicate the full meta line in the visible lead paragraph (hero lead stays human prose).
 - **AdSense:** specimens are decorative (`aria-hidden="true"`); real copy stays in sections and FAQ.

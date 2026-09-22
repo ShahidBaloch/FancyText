@@ -106,7 +106,7 @@ function list(
     slug,
     emotion,
     primaryKeyword,
-    title: `${label} Kaomojis Copy and Paste | FancifyText`,
+    title: `${label} Kaomojis Copy and Paste`,
     description:
       description ??
       `Copy ${emotion} kaomoji and Japanese emoticons. Free ${emotion} text faces for Discord, Instagram, and chat.`,
@@ -1347,7 +1347,7 @@ export const SPECIAL_KAOMOJI: KaomojiList[] = [
     slug: "lenny-face",
     emotion: "lenny",
     primaryKeyword: "lenny face",
-    title: "Lenny Face Copy and Paste ( ͡° ͜ʖ ͡°) | FancifyText",
+    title: "Lenny Face Copy and Paste ( ͡° ͜ʖ ͡°)",
     description:
       "Copy the classic Lenny face and variants. Free ( ͡° ͜ʖ ͡°) emoticons for Discord, Reddit, and chat.",
     h1: "Lenny Face",
@@ -1418,7 +1418,7 @@ export const SPECIAL_KAOMOJI: KaomojiList[] = [
     slug: "shrug-emoticon",
     emotion: "shrug",
     primaryKeyword: "shrug emoticon",
-    title: "Shrug Emoticon Copy and Paste ¯\\_(ツ)_/¯ | FancifyText",
+    title: "Shrug Emoticon Copy and Paste ¯\\_(ツ)_/¯",
     description:
       "Copy the shrug emoticon ¯\\_(ツ)_/¯ and variants. Free shrug text faces for chat and social media.",
     h1: "Shrug Emoticon",
