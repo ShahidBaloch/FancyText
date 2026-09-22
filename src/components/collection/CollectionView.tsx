@@ -10,6 +10,7 @@ import { RelatedTools } from "@/components/seo/RelatedTools";
 import { StyleGallery } from "@/components/tool/StyleGallery";
 import type { CollectionConfig } from "@/data/collections";
 import { SITE_NAME, getPageByUrl, getTopicalRelated } from "@/data/pages/registry";
+import { getSerpSpecimen } from "@/lib/seo/specimens";
 
 type CollectionViewProps = {
   config: CollectionConfig;
@@ -53,6 +54,7 @@ export function CollectionView({ config }: CollectionViewProps) {
       <PageHero
         h1={h1}
         lead={page?.description ?? "Pick a collection of Unicode styles to copy."}
+        specimenPath={getSerpSpecimen(url) ? url : undefined}
       />
 
       {config.hubCards?.length ? (

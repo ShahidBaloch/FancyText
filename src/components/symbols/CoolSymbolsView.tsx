@@ -41,6 +41,7 @@ export function CoolSymbolsView() {
       <PageHero
         h1="Cool symbols copy and paste"
         lead={page.description}
+        specimenPath="/cool-symbols/"
       />
 
       {SYMBOL_CATEGORIES.map((category) => (

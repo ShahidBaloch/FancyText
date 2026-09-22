@@ -518,6 +518,8 @@ a {
   .home-hero,
   .home-specimen,
   .home-specimen-text,
+  .serp-specimen,
+  .serp-specimen-text,
   .tool-stage,
   .preview-panel,
   .page-hero,
@@ -619,6 +621,86 @@ a {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.6;
+}
+
+/* SERP specimen (inner pages — light panel) */
+.serp-specimen {
+  margin: 0 0 1.15rem;
+  padding: 1rem 1.05rem 0.95rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(
+    145deg,
+    var(--panel-solid) 0%,
+    var(--accent-soft) 100%
+  );
+  overflow: hidden;
+}
+
+.serp-specimen-label {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.serp-specimen-text {
+  margin: 0;
+  min-height: 2.6em;
+  font-size: clamp(1.45rem, 4.8vw, 2.25rem);
+  line-height: 1.28;
+  word-break: break-word;
+  color: var(--ink);
+}
+
+.serp-specimen-glyphs {
+  margin: 0;
+  font-size: clamp(1.25rem, 4.2vw, 1.85rem);
+  line-height: 1.45;
+  word-break: break-word;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.serp-specimen-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+}
+
+.serp-specimen-chip {
+  padding: 0.26rem 0.58rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-solid);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  opacity: 0.65;
+  transition:
+    opacity 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.serp-specimen-chip.is-active {
+  opacity: 1;
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+@media (max-width: 480px) {
+  .serp-specimen {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .serp-specimen-glyphs {
+    font-size: clamp(1.05rem, 5vw, 1.45rem);
+  }
 }
 
 /* ——— Tool ——— */

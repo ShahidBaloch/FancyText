@@ -9,6 +9,7 @@ import {
   renderOgImage,
   titleFromRegistryTitle,
 } from "@/lib/seo/og-image";
+import { getSerpSpecimenForSlug, ogSubtitleForPath } from "@/lib/seo/specimens";
 
 export const size = OG_SIZE;
 export const contentType = "image/png";
@@ -44,8 +45,22 @@ export default async function OpenGraphImage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const path = `/${slug}/`;
+  const specimenOg = ogSubtitleForPath(path);
+  const kaomojiSub = kaomojiOgSubtitle(slug);
+  const collection = getCollectionPage(slug);
+  const fallback =
+    specimenOg ??
+    kaomojiSub ??
+    (collection
+      ? "Unicode font collections to copy and paste"
+      : undefined);
+
   return renderOgImage({
     title: ogTitle(slug),
-    subtitle: kaomojiOgSubtitle(slug),
+    subtitle:
+      fallback ??
+      getSerpSpecimenForSlug(slug)?.metaLine ??
+      "Free Unicode copy and paste tools",
   });
 }
