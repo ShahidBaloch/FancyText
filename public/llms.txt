@@ -19,7 +19,7 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 - /bubble-text-generator/ — Bubble — Bubble text generator
 - /case-converter/ — case converter — Convert sentence, title, upper, lower, alternating, and inverse case
 - /cool-symbols/ — Symbols — Cool symbols copy and paste
-- /copy-paste-fonts/ — Copy & Paste — Copy and paste fonts by collection: aesthetic, cute, cursive, cool lookalikes, platform fonts, and big ASCII
+- /copy-paste-fonts/ — Copy & Paste — Copy and paste fonts with a live preview
 - /cursive-text-generator/ — Cursive — Cursive text generator
 - /cute-symbols/ — cute symbols — Cute symbols copy and paste
 - /glitch-text-generator/ — glitch text generator — Glitch text generator
@@ -39,10 +39,13 @@ FancifyText converts normal letters into Unicode look-alike “fonts” (bold, c
 ## Collections & name fonts
 
 - /aesthetic-fonts/ — aesthetic fonts — Aesthetic fonts
+- /cat-emoji/ — cat emoji — Cat emoji copy and paste
 - /cool-text-generator/ — Cool Text — Cool Unicode lookalikes: Japanese, CJK, Cherokee, fat, and squared styles
 - /cute-fonts/ — cute fonts copy and paste — Cute fonts copy and paste
 - /emoji-combos/ — Emoji combos — Emoji combos copy and paste
+- /heart-emoji/ — heart emoji — Heart emoji copy and paste
 - /name-font-generator/ — name fonts — Name fonts
+- /star-emoji/ — star emoji — Star emoji copy and paste
 - /stylish-text-generator/ — stylish text generator — Stylish text generator
 
 ## Platform & LinkedIn tools

@@ -102,6 +102,27 @@ export const SERP_SPECIMENS: Record<string, SerpSpecimenConfig> = {
     metaLine: "⋆｡°✩ ─── aesthetic symbols copy and paste",
     ogSubtitle: "⋆ dividers & moon marks — aesthetic symbols",
   },
+  "/heart-emoji/": {
+    kind: "glyph-strip",
+    glyphs: ["❤️", "💕", "💖", "🥰", "💗", "💘"],
+    stripLabel: "Heart emoji — tap to copy",
+    metaLine: "❤️ 💕 🥰 — heart emoji copy and paste",
+    ogSubtitle: "❤️ 💕 🥰 heart emoji — tap to copy",
+  },
+  "/star-emoji/": {
+    kind: "glyph-strip",
+    glyphs: ["⭐", "🌟", "✨", "💫", "🌠", "⚡"],
+    stripLabel: "Star emoji — tap to copy",
+    metaLine: "⭐ 🌟 ✨ — star emoji copy and paste",
+    ogSubtitle: "⭐ 🌟 ✨ star emoji — tap to copy",
+  },
+  "/cat-emoji/": {
+    kind: "glyph-strip",
+    glyphs: ["🐱", "😺", "😸", "🐾", "😻", "🐈‍⬛"],
+    stripLabel: "Cat emoji — tap to copy",
+    metaLine: "🐱 😺 🐾 — cat emoji copy and paste",
+    ogSubtitle: "🐱 😺 🐾 cat emoji — tap to copy",
+  },
 };
 
 export function normalizeSpecimenPath(path: string): string {
