@@ -72,8 +72,8 @@ export function SiteNav({
 
   useLayoutEffect(() => {
     if (!open) return;
-    const header = toggleRef.current?.closest(".site-header");
-    const bar = header?.querySelector(".header-inner");
+    const header = toggleRef.current?.closest<HTMLElement>(".site-header");
+    const bar = header?.querySelector<HTMLElement>(".header-inner");
     const height = bar?.getBoundingClientRect().height ?? 0;
     if (header && height > 0) {
       header.style.setProperty("--header-bar-height", `${height}px`);
