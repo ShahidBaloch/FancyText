@@ -2,7 +2,7 @@
  * Catalog scope for Google-friendly kaomoji pages:
  * - Full multiline matrix: /multiline-kaomojis/ only (indexed).
  * - Full coquette matrix: /coquette-kaomojis/ only (indexed).
- * - Indexed moods (cute, cry, heart, hand): small multiline teaser + one-liners.
+ * - Indexed moods (cute, cry, heart, hand): one-liners first, then a small multiline teaser.
  * - Browse-only moods (angry, happy, …): entire generated multiline set for that mood.
  */
 

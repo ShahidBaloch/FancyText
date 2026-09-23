@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 type NavItem = {
@@ -70,6 +70,16 @@ export function SiteNav({
     setOpen(false);
   }
 
+  useLayoutEffect(() => {
+    if (!open) return;
+    const header = toggleRef.current?.closest(".site-header");
+    const bar = header?.querySelector(".header-inner");
+    const height = bar?.getBoundingClientRect().height ?? 0;
+    if (header && height > 0) {
+      header.style.setProperty("--header-bar-height", `${height}px`);
+    }
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
 
@@ -77,7 +87,7 @@ export function SiteNav({
     const focusables = drawer?.querySelectorAll<HTMLElement>(
       "a[href], button:not([disabled])",
     );
-    focusables?.[0]?.focus();
+    focusables?.[0]?.focus({ preventScroll: true });
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -91,10 +101,10 @@ export function SiteNav({
       const last = list[list.length - 1]!;
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
-        last.focus();
+        last.focus({ preventScroll: true });
       } else if (!e.shiftKey && document.activeElement === last) {
         e.preventDefault();
-        first.focus();
+        first.focus({ preventScroll: true });
       }
     };
 
@@ -105,13 +115,20 @@ export function SiteNav({
       setOpen(false);
     };
 
+    const stopBackgroundScroll = (event: Event) => {
+      if (drawerRef.current?.contains(event.target as Node)) return;
+      event.preventDefault();
+    };
+
     document.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onPointerDown);
-    document.body.style.overflow = "hidden";
+    document.addEventListener("wheel", stopBackgroundScroll, { passive: false });
+    document.addEventListener("touchmove", stopBackgroundScroll, { passive: false });
     return () => {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("pointerdown", onPointerDown);
-      document.body.style.overflow = "";
+      document.removeEventListener("wheel", stopBackgroundScroll);
+      document.removeEventListener("touchmove", stopBackgroundScroll);
     };
   }, [open]);
 

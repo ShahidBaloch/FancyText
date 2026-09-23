@@ -174,7 +174,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "bear-kaomojis",
     "bear",
     "bear kaomoji",
-    mergeKaomojiFaces(COQUETTE_BEAR_HIGHLIGHTS, [
+    mergeKaomojiFaces([
       "ʕ•ᴥ•ʔ",
       "ʕ·ᴥ·ʔ",
       "ʕ￫ᴥ￩ʔ",
@@ -205,13 +205,13 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "ʕᵔᴥᵔʔ♡",
       "ʕっ•ᴥ•ʔっ💕",
       "ʕ￫ᴥ￩ʔﾉ",
-    ]),
+    ], COQUETTE_BEAR_HIGHLIGHTS),
   ),
   list(
     "cat-kaomojis",
     "cat",
     "cat kaomoji",
-    mergeKaomojiFaces(COQUETTE_CAT_HIGHLIGHTS, [
+    mergeKaomojiFaces([
       "(=^･ω･^=)",
       "(=^･ｪ･^=)",
       "(^・ω・^ )",
@@ -242,7 +242,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "(=^ ◡ ^=)",
       "ฅ(⌯͒• ɪ •⌯͒)ฅ",
       "(=^･ω･^)y＝",
-    ]),
+    ], COQUETTE_CAT_HIGHLIGHTS),
   ),
   list(
     "confused-kaomojis",
@@ -882,7 +882,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "dog-kaomojis",
     "dog",
     "dog kaomoji",
-    mergeKaomojiFaces(COQUETTE_DOG_HIGHLIGHTS, [
+    mergeKaomojiFaces([
       "U・ᴥ・U",
       "▼・ᴥ・▼",
       "U＾ェ＾U",
@@ -913,7 +913,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
       "U＾∀＾U",
       "▼ω▼",
       "U・ᴥ・*U",
-    ]),
+    ], COQUETTE_DOG_HIGHLIGHTS),
   ),
   list(
     "funny-kaomojis",
@@ -1284,7 +1284,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "bunny-kaomojis",
     "bunny",
     "bunny kaomoji",
-    mergeKaomojiFaces(COQUETTE_BUNNY_HIGHLIGHTS, [
+    mergeKaomojiFaces([
     "／( ・×・)＼",
     "／(≧ x ≦)＼",
     "(=\\(=^･^=)/=)",
@@ -1315,7 +1315,7 @@ export const KAOMOJI_LISTS: KaomojiList[] = [
     "／(≧ヘ≦)＼",
     "(\\(◕ᴥ◕)/)",
     "(\\(◕∀◕)ゞ",
-  ]),
+  ], COQUETTE_BUNNY_HIGHLIGHTS),
   ),
 ];
 
@@ -1548,7 +1548,7 @@ export const KAOMOJI_TOPIC_SPOKE_SLUGS = new Set([
   "multiline-kaomojis",
 ]);
 
-/** Apply multiline rows: full set on browse moods; teaser only on indexed lists. */
+/** Apply multiline rows after one-line faces so the copy grid matches the query. */
 for (const entry of KAOMOJI_LISTS) {
   if (KAOMOJI_FULL_CATALOG_SLUGS.has(entry.slug)) continue;
   const generated = getMultilineKaomojiForSlug(entry.slug);
@@ -1556,7 +1556,7 @@ for (const entry of KAOMOJI_LISTS) {
   const multiline = INDEXABLE_KAOMOJI_SLUGS.has(entry.slug)
     ? getMultilineHighlightsForSlug(entry.slug)
     : generated;
-  entry.faces = mergeKaomojiFaces(multiline, entry.faces);
+  entry.faces = mergeKaomojiFaces(entry.faces, multiline);
 }
 
 export function isKaomojiTopicSpoke(slug: string): boolean {
@@ -1743,8 +1743,35 @@ export function getHubShowcase(): { emotion: string; href: string; sample: strin
   return [...featured, ...rest].map((k) => ({
     emotion: k.emotion,
     href: `/${k.slug}/`,
-    sample: k.faces[0] ?? "",
+    sample: k.faces.find((face) => !face.includes("\n")) ?? k.faces[0] ?? "",
   }));
+}
+
+/**
+ * Faces the "kaomoji" query expects above the fold.
+ * One-line classics only — multiline stacks stay on their own URLs and fill
+ * the hub only after these samples.
+ */
+const HUB_CLASSIC_SLUGS = [
+  "cute-kaomojis",
+  "cry-kaomojis",
+  "shrug-emoticon",
+  "lenny-face",
+  "heart-kaomojis",
+] as const;
+
+/** Same faces as the hub hero, so the first grid row matches the kaomoji query. */
+const HUB_PINNED_FACES = [
+  "(｡◕‿◕｡)",
+  "(T_T)",
+  "¯\\_(ツ)_/¯",
+  "( ͡° ͜ʖ ͡°)",
+  "(◕‿◕)",
+  "(╥_╥)",
+] as const;
+
+function isOneLineKaomoji(face: string): boolean {
+  return !face.includes("\n");
 }
 
 /** Mixed popular faces for the hub so visitors can copy without leaving. */
@@ -1752,25 +1779,61 @@ export function getHubFaces(limit = 96): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
 
-  const pushFrom = (pages: KaomojiList[], maxPerList: number) => {
-    for (const page of pages) {
-      for (const face of page.faces.slice(0, maxPerList)) {
-        if (seen.has(face)) continue;
-        seen.add(face);
-        out.push(face);
-        if (out.length >= limit) return;
-      }
+  const pushFaces = (faces: readonly string[], max: number) => {
+    let added = 0;
+    for (const face of faces) {
+      if (!isOneLineKaomoji(face) || seen.has(face)) continue;
+      seen.add(face);
+      out.push(face);
+      added += 1;
+      if (added >= max || out.length >= limit) return;
     }
   };
 
-  const tail = ALL_KAOMOJI_PAGES.filter((k) => !INDEXABLE_KAOMOJI_SLUGS.has(k.slug));
-  const featured = ALL_KAOMOJI_PAGES.filter((k) =>
-    INDEXABLE_KAOMOJI_SLUGS.has(k.slug),
-  );
+  const pushPages = (pages: readonly KaomojiList[], maxPerList: number) => {
+    for (const page of pages) {
+      pushFaces(page.faces, maxPerList);
+      if (out.length >= limit) return;
+    }
+  };
 
-  // Prefer noindex / tail lists so the hub does not mirror indexed mood pages.
-  pushFrom(tail, 4);
-  if (out.length < limit) pushFrom(featured, 2);
+  pushFaces(HUB_PINNED_FACES, HUB_PINNED_FACES.length);
+
+  for (const slug of HUB_CLASSIC_SLUGS) {
+    const page = KAOMOJI_BY_SLUG[slug];
+    if (page) pushFaces(page.faces, 6);
+    if (out.length >= limit) return out;
+  }
+
+  const classic = new Set<string>(HUB_CLASSIC_SLUGS);
+  const featured = ALL_KAOMOJI_PAGES.filter(
+    (page) =>
+      INDEXABLE_KAOMOJI_SLUGS.has(page.slug) &&
+      !classic.has(page.slug) &&
+      page.slug !== "multiline-kaomojis" &&
+      page.slug !== "coquette-kaomojis",
+  );
+  pushPages(featured, 3);
+  if (out.length >= limit) return out;
+
+  const tail = ALL_KAOMOJI_PAGES.filter(
+    (page) => !INDEXABLE_KAOMOJI_SLUGS.has(page.slug),
+  );
+  pushPages(tail, 2);
+  if (out.length >= limit) return out;
+
+  const stacks = ALL_KAOMOJI_PAGES.filter(
+    (page) =>
+      page.slug === "multiline-kaomojis" || page.slug === "coquette-kaomojis",
+  );
+  for (const page of stacks) {
+    for (const face of page.faces) {
+      if (seen.has(face)) continue;
+      seen.add(face);
+      out.push(face);
+      if (out.length >= limit) return out;
+    }
+  }
 
   return out;
 }

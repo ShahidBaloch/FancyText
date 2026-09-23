@@ -95,7 +95,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       {
         question: "Where is the full multiline angry set?",
         answer:
-          "At the top of this angry list (~140 multiline stacks) plus one-line mad faces below. Every mood combined in one grid: multiline kaomojis (indexed).",
+          "One-line mad faces come first on this angry list; the multiline stacks follow. Every mood combined in one grid: multiline kaomojis (indexed).",
       },
       {
         question: "Angry vs evil kaomoji — what’s the difference?",
@@ -225,7 +225,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
     canonicalLead:
       "This is the dedicated crying set—faces with visible tears for memes, apologies, and dramatic reactions. Quiet down moods without waterworks are on the sad kaomoji list; the hub only shows a small cry sample.",
     catalogNote:
-      "A short multiline cry preview may appear at the top; the full mood matrix lives on multiline kaomojis (indexed). Sad kaomojis (browse) cover quiet frowns without waterworks.",
+      "A short multiline cry preview sits after the one-line faces; the full mood matrix lives on multiline kaomojis (indexed). Sad kaomojis (browse) cover quiet frowns without waterworks.",
     whereHeading: "Where crying text faces fit",
     whereBullets: [
       "Discord threads: one (T_T) or (╥_╥) next to words reads clearer than three faces in a row.",
@@ -1563,7 +1563,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       "This indexed hub holds every mood’s multiline rows in one grid (~1,200+ blocks). Browse-only mood URLs (angry, happy, sad, cry, …) repeat the full generated set for that emotion plus one-liners; indexed cute/cry/heart/hand pages keep a short teaser only.",
     meaningsHeading: "Mood posters vs one-line faces",
     meanings:
-      "Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged at the top of each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.",
+      "Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged after the one-line faces on each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.",
     howToHeading: "Copy multiline mood kaomoji",
     howToSteps: [
       "Pick a mood block—or open angry/happy/sad lists for the same rows plus one-line faces.",
@@ -1655,7 +1655,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       {
         question: "Where is the tulip bunny (/\\_/\\ with 🌷)?",
         answer:
-          "At the top of this list and on bunny kaomojis. The 🌷 is a real emoji character you can also grab from cool symbols.",
+          "On this coquette list, and on bunny kaomojis after the one-line rabbits. The 🌷 is a real emoji character you can also grab from cool symbols.",
       },
       {
         question: "Coquette vs cute kaomoji?",
@@ -1665,7 +1665,7 @@ export const KAOMOJI_UNIQUE_COPY: Record<string, KaomojiUniqueCopy> = {
       {
         question: "Is the standing dog ASCII here?",
         answer:
-          "Yes—the tall ／＞ フ dog block is in this list and at the top of dog kaomojis for the same tap-to-copy shape.",
+          "Yes—the tall ／＞ フ dog block is in this list and also on dog kaomojis, after the one-line faces, for the same tap-to-copy shape.",
       },
       {
         question: "Are all coquette combinations on one page?",

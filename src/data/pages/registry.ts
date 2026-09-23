@@ -2193,6 +2193,7 @@ const FOOTER_URLS = [
   "/small-text-generator/",
   "/big-text-generator/",
   "/cool-symbols/",
+  "/kaomoji/",
   "/text-decorator/",
   "/aesthetic-fonts/",
   "/cute-fonts/",
