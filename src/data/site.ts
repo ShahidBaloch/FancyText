@@ -30,9 +30,12 @@ function isUsableSiteOrigin(origin: string): boolean {
 
 /**
  * Canonical site origin used in metadata, sitemap, and JSON-LD.
- * Prefer NEXT_PUBLIC_SITE_URL; otherwise always apex (never *.vercel.app).
+ * Production always uses the apex domain so env mistakes cannot drift canonicals.
  */
 export function resolveSiteUrl(): string {
+  if (process.env.VERCEL_ENV === "production") {
+    return DEFAULT_SITE_URL;
+  }
   const fromEnv = normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL);
   if (fromEnv && isUsableSiteOrigin(fromEnv)) return fromEnv;
   return DEFAULT_SITE_URL;

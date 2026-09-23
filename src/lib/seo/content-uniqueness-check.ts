@@ -2,12 +2,13 @@ import { ALL_KAOMOJI_PAGES } from "@/data/kaomoji";
 import { kaomojiPathIsIndexable } from "@/data/kaomoji-index";
 import { getLivePages, getPageByUrl, type PageEntry } from "@/data/pages/registry";
 import {
+  CURSIVE_LETTER_PAGES_INDEXABLE,
   LETTERS,
   letterDescription,
   letterTitle,
   letterUrl,
 } from "@/lib/fonts/cursive";
-import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
+import { metaDescriptionPlain } from "@/lib/seo/meta-description";
 
 function normalizeText(text: string): string {
   return text
@@ -90,6 +91,7 @@ export function runContentUniquenessCheck(): void {
   }
 
   for (const letter of LETTERS) {
+    if (!CURSIVE_LETTER_PAGES_INDEXABLE) continue;
     for (const letterCase of ["capital", "small"] as const) {
       const path = letterUrl(letter, letterCase);
       const page = getPageByUrl(path);
@@ -126,7 +128,7 @@ export function runContentUniquenessCheck(): void {
   for (const page of getLivePages()) {
     if (!isIndexablePage(page)) continue;
     const meta = effectiveRegistryMeta(page);
-    const effective = descriptionWithSerpSpecimen(meta.url, meta.description);
+    const effective = metaDescriptionPlain(meta.description);
     if (/\u2026|\.{3}\s*$/.test(effective) || effective.includes("…")) {
       ellipsisUrls.push(meta.url);
     }
@@ -138,12 +140,12 @@ export function runContentUniquenessCheck(): void {
   }
 
   for (const letter of LETTERS) {
+    if (!CURSIVE_LETTER_PAGES_INDEXABLE) continue;
     for (const letterCase of ["capital", "small"] as const) {
       const path = letterUrl(letter, letterCase);
       const page = getPageByUrl(path);
       if (page?.index === false) continue;
-      const effective = descriptionWithSerpSpecimen(
-        path,
+      const effective = metaDescriptionPlain(
         letterDescription(letter, letterCase),
       );
       if (/\u2026|\.{3}\s*$/.test(effective) || effective.includes("…")) {

@@ -53,7 +53,7 @@ const faqItems = [
   {
     question: "Is this the same page as copy and paste fonts?",
     answer:
-      "No. This homepage is the live converter: type once, preview popular styles and open the full gallery via copy and paste fonts when you want every lookalike. That catalog lists aesthetic, cute, cursive, cool, platform, and big ASCII collections.",
+      "No. This homepage is the full fancy text generator: type once, search every Unicode style, and copy. Copy and paste fonts is a catalog hub—filtered collections for aesthetic, cute, cool, cursive, platform, and big ASCII when you already know the vibe.",
   },
   {
     question: "Why do some styles become empty boxes?",
@@ -112,8 +112,8 @@ export default function HomePage() {
           name: "How to use the fancy text generator",
           steps: [
             "Type a name, bio line, or short caption in the box at the top.",
-            "Tap a style chip (cursive, bold, bubble, and more). The live preview shows popular styles; open copy and paste fonts for every lookalike.",
-            "Tap Copy, then paste into Instagram, Discord, TikTok, or WhatsApp. Need the full 67-style grid? Use copy and paste fonts.",
+            "Tap a style chip (cursive, bold, bubble, and more). The gallery below loads every Unicode lookalike—use search or category filters to narrow the list.",
+            "Tap Copy on any row, then paste into Instagram, Discord, TikTok, or WhatsApp. Want a curated catalog instead? Open copy and paste fonts.",
           ],
         }}
       />
@@ -137,12 +137,12 @@ export default function HomePage() {
               2
             </span>
             <div>
-              <strong>Tap a style</strong>
+              <strong>Pick a style or browse the gallery</strong>
               <p>
-                Twelve high-traffic styles update live here. Star a favorite, or
-                open{" "}
+                Style chips above show popular looks instantly. The gallery
+                loads every Unicode style (search and filters included)—or open{" "}
                 <Link href="/copy-paste-fonts/">copy and paste fonts</Link> for
-                the full grid.
+                curated collections when you know the vibe.
               </p>
             </div>
           </li>
@@ -237,11 +237,14 @@ export default function HomePage() {
       </section>
 
       <section className="seo-section seo-prose" aria-labelledby="scope-heading">
-        <h2 id="scope-heading">Homepage vs a dedicated generator</h2>
+        <h2 id="scope-heading">Homepage vs copy and paste fonts</h2>
         <p>
-          This URL is the <strong>fancy text generator</strong>—type once, preview
-          every live style. It is not the same page as a single-style tool. Open
-          a dedicated generator when you already know the modifier you want.
+          This URL is the <strong>fancy text generator</strong>—type once, search
+          every Unicode style, and copy from one live grid.{" "}
+          <Link href="/copy-paste-fonts/">Copy and paste fonts</Link> is the
+          catalog hub: jump to aesthetic, cute, cool, cursive, platform, or big
+          ASCII collections when you already know the job. Single-style tools
+          below stay focused on one modifier.
         </p>
         <ul>
           <li>

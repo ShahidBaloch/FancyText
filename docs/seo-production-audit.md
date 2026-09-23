@@ -33,7 +33,7 @@ Use this after deploying the SEO + perf stack (**PR #28**, **PR #29**). Run **`n
 ### Cannibalization you still manage in content (not automatic)
 
 - **Home (`/`)** vs **copy-paste-fonts** vs **style generators** — same ecosystem, different intent; keep titles/descriptions distinct (already separated).
-- **52 cursive letter URLs** vs **cursive-text-generator** — intentional long-tail; hub owns “whole word / name”; letters own “single glyph”. Hub has higher sitemap priority than letters.
+- **Cursive letter spokes** (`/cursive-capital-*`, `/cursive-small-*`) — live for copy UX but **noindex,follow**; `/cursive-text-generator/` owns indexed cursive intent.
 - After deploy, watch GSC **Queries** for two URLs swapping for one query — adjust copy or internal links, not mass noindex, unless truly duplicate.
 
 ---

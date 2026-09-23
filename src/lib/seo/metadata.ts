@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { kaomojiPathIsIndexable } from "@/data/kaomoji-index";
 import type { PageEntry } from "@/data/pages/registry";
 import { SITE_NAME, SITE_URL } from "@/data/site";
-import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
+import {
+  metaDescriptionPlain,
+  socialDescriptionForPath,
+} from "@/lib/seo/meta-description";
 import {
   letterDescription,
   letterTitle,
@@ -29,8 +32,10 @@ export function pageMetadata(
   const canonicalPath = opts?.canonicalPath ?? page.url;
   const canonical = new URL(canonicalPath, SITE_URL).toString();
   const pageUrl = new URL(page.url, SITE_URL).toString();
-  const description = descriptionWithSerpSpecimen(page.url, page.description);
-  const socialDescription = opts?.socialDescription ?? description;
+  const description = metaDescriptionPlain(page.description);
+  const socialDescription =
+    opts?.socialDescription ??
+    socialDescriptionForPath(page.url, page.description);
   const indexable =
     page.index !== false && kaomojiPathIsIndexable(page.url);
   return {
@@ -56,7 +61,7 @@ export function pageMetadata(
 
 /**
  * Shared metadata for every cursive capital + small letter page.
- * Long-tail spokes (e.g. “s in cursive”); hub stays canonical for generator intent.
+ * Pages stay live for old links / UX but are not indexed (hub owns generator intent).
  */
 export function cursiveLetterMetadata(
   letter: Letter,
@@ -64,18 +69,18 @@ export function cursiveLetterMetadata(
 ): Metadata {
   const title = letterTitle(letter, letterCase);
   const path = letterUrl(letter, letterCase);
-  const description = descriptionWithSerpSpecimen(
-    path,
-    letterDescription(letter, letterCase),
-  );
+  const baseDescription = letterDescription(letter, letterCase);
+  const description = metaDescriptionPlain(baseDescription);
+  const socialDescription = socialDescriptionForPath(path, baseDescription);
   const canonical = new URL(path, SITE_URL).toString();
   return {
     title: { absolute: title },
     description,
+    robots: { index: false, follow: true },
     alternates: { canonical },
     openGraph: {
       title,
-      description,
+      description: socialDescription,
       url: canonical,
       siteName: SITE_NAME,
       type: "website",
@@ -84,7 +89,7 @@ export function cursiveLetterMetadata(
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: socialDescription,
     },
   };
 }

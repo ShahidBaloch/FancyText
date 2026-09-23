@@ -14,7 +14,7 @@ import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { CopyButton } from "@/components/tool/CopyButton";
 import { SITE_NAME, SITE_URL, getTopicalRelated } from "@/data/pages/registry";
-import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
+import { metaDescriptionPlain } from "@/lib/seo/meta-description";
 import {
   boldCursiveGlyph,
   cursiveGlyph,
@@ -86,8 +86,7 @@ export function CursiveLetterView({
   const related = getTopicalRelated(letterUrl(letter, letterCase), 6);
   const absoluteUrl = new URL(letterUrl(letter, letterCase), SITE_URL).toString();
   const hubUrl = new URL("/cursive-text-generator/", SITE_URL).toString();
-  const metaDescription = descriptionWithSerpSpecimen(
-    letterUrl(letter, letterCase),
+  const metaDescription = metaDescriptionPlain(
     letterDescription(letter, letterCase),
   );
 

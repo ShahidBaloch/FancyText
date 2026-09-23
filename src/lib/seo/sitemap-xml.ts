@@ -6,7 +6,7 @@ import {
 } from "@/data/pages/registry";
 import { SITEMAP_REQUIRED_PATHS } from "@/lib/seo/required-indexable";
 import { kaomojiPathIsIndexable } from "@/data/kaomoji";
-import { LETTERS, letterUrl } from "@/lib/fonts/cursive";
+import { CURSIVE_LETTER_PAGES_INDEXABLE, LETTERS } from "@/lib/fonts/cursive";
 
 export { CONTENT_UPDATED_AT };
 
@@ -27,14 +27,15 @@ const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
  * Returns undefined if the value cannot be parsed (omit lastmod instead).
  */
 export function toSitemapLastmod(
-  value: Date | string | undefined = CONTENT_UPDATED_AT,
+  value: Date | string | undefined,
 ): string | undefined {
   try {
+    if (value === undefined) return undefined;
     if (value instanceof Date) {
       if (Number.isNaN(value.getTime())) return undefined;
       return value.toISOString().slice(0, 10);
     }
-    const raw = (value ?? CONTENT_UPDATED_AT).trim();
+    const raw = String(value).trim();
     if (!raw) return undefined;
     if (DATE_ONLY.test(raw)) return raw;
     const parsed = new Date(raw);
@@ -96,12 +97,10 @@ function fallbackEntries(): SitemapEntry[] {
 
 /**
  * Indexable URL set for /sitemap.xml.
- * Cursive letter spokes are included at lower priority than /cursive-text-generator/.
+ * Cursive letter spokes stay live but are noindex and omitted here.
  * Thin kaomoji emotion tails stay live for old links but are noindex + omitted here.
  *
- * lastmod comes from PageEntry.updated or CONTENT_UPDATED_AT — never build time.
- * Bump CONTENT_UPDATED_AT only when intentionally publishing changes; after GSC
- * submit the site is meant for infrequent updates (monthly / quarterly / yearly).
+ * lastmod is only PageEntry.updated (or CONTENT_UPDATED_AT on the homepage fallback).
  */
 export function getSitemapEntries(): SitemapEntry[] {
   try {
@@ -116,9 +115,9 @@ export function getSitemapEntries(): SitemapEntry[] {
 
     for (const page of getLivePages()) {
       if (!isIndexablePage(page)) continue;
-      const lastModified = toSitemapLastmod(
-        page.updated ?? CONTENT_UPDATED_AT,
-      );
+      const lastModified = page.updated
+        ? toSitemapLastmod(page.updated)
+        : undefined;
       const changeFrequency: SitemapEntry["changeFrequency"] = "monthly";
       const priority =
         page.url === "/"
@@ -131,23 +130,8 @@ export function getSitemapEntries(): SitemapEntry[] {
       push(entryFor(page.url, changeFrequency, priority, lastModified));
     }
 
-    const letterLastmod = toSitemapLastmod(CONTENT_UPDATED_AT);
-    for (const letter of LETTERS) {
-      for (const letterCase of ["capital", "small"] as const) {
-        push(
-          entryFor(
-            letterUrl(letter, letterCase),
-            "monthly",
-            0.55,
-            letterLastmod,
-          ),
-        );
-      }
-    }
-
-    const legalLastmod = toSitemapLastmod(CONTENT_UPDATED_AT);
     for (const path of ["/privacy/", "/terms/"]) {
-      push(entryFor(path, "yearly", 0.3, legalLastmod));
+      push(entryFor(path, "yearly", 0.3, undefined));
     }
 
     return entries.length > 0 ? entries : fallbackEntries();
@@ -217,10 +201,14 @@ export function assertSitemapInvariants(xml: string, entries: SitemapEntry[]): v
   const letterLocs = locs.filter(
     (loc) => loc.includes("/cursive-capital-") || loc.includes("/cursive-small-"),
   );
-  const expectedLetterCount = LETTERS.length * 2;
-  if (letterLocs.length !== expectedLetterCount) {
+  if (CURSIVE_LETTER_PAGES_INDEXABLE && letterLocs.length !== LETTERS.length * 2) {
     throw new Error(
-      `sitemap must include ${expectedLetterCount} cursive letter URLs, found ${letterLocs.length}`,
+      `sitemap must include ${LETTERS.length * 2} cursive letter URLs, found ${letterLocs.length}`,
+    );
+  }
+  if (!CURSIVE_LETTER_PAGES_INDEXABLE && letterLocs.length > 0) {
+    throw new Error(
+      `sitemap must not include noindex cursive letter URLs: ${letterLocs.slice(0, 3).join(", ")}…`,
     );
   }
   const leakedKaomoji = locs.filter((loc) => {
@@ -245,11 +233,12 @@ export function assertSitemapInvariants(xml: string, entries: SitemapEntry[]): v
   const lastmods = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map(
     (m) => m[1],
   );
-  const allowed = new Set<string>([CONTENT_UPDATED_AT]);
+  const allowed = new Set<string>();
   for (const page of getLivePages()) {
     const honest = toSitemapLastmod(page.updated);
     if (honest) allowed.add(honest);
   }
+  allowed.add(toSitemapLastmod(CONTENT_UPDATED_AT)!);
   for (const lastmod of lastmods) {
     if (!DATE_ONLY.test(lastmod)) {
       throw new Error(`invalid lastmod (want YYYY-MM-DD): ${lastmod}`);

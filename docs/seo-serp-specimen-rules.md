@@ -6,7 +6,8 @@ Goal: match competitor snippets and above-fold previews—show the **right Unico
 
 | Surface | Source |
 |---------|--------|
-| Meta description | `descriptionWithSerpSpecimen()` in `pageMetadata()` |
+| Meta description | Plain registry copy via `metaDescriptionPlain()` in `pageMetadata()` (no Unicode prefix) |
+| Open Graph / Twitter | `socialDescriptionForPath()` — may include specimen faces |
 | Visible hero | `PageHero` + `specimenPath` → `SerpSpecimenBlock` |
 | Home hero | `HomeHeroSpecimen` → shared `SerpSpecimenFontRotate` |
 | OG image subtitle | `ogSubtitleForPath()` in route `opengraph-image.tsx` |

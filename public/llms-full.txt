@@ -3,7 +3,7 @@
 > Extended excerpts for answer engines and autonomous browsers. Compact URL index: /llms.txt
 
 Site: https://fancifytext.com/
-Content updated: 2026-09-22
+Content updated: 2026-09-23
 
 ## Kaomoji routing (summary)
 
@@ -39,7 +39,7 @@ Lead: Multiline mood kaomoji live here—angry ┻━┻ stacks, happy ♪ cheer
 
 Catalog scope: This indexed hub holds every mood’s multiline rows in one grid (~1,200+ blocks). Browse-only mood URLs (angry, happy, sad, cry, …) repeat the full generated set for that emotion plus one-liners; indexed cute/cry/heart/hand pages keep a short teaser only.
 
-When to use: Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged at the top of each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.
+When to use: Each block is a small ASCII poster: table-flip anger, sparkle happiness, rain sad/cry, hug arms, and similar. They paste with newlines intact. The same generated sets are merged after the one-line faces on each mood list (angry, happy, sad, cry, funny, and more) so you can copy from the emotion you searched.
 
 FAQ excerpts:
   Q: What is a multiline kaomoji?
@@ -83,7 +83,7 @@ FAQ excerpts:
   A: Yes when you tap here. If an app flattens spacing, paste into a plain text box or Carrd text block instead of a rich editor.
 
   Q: Where is the tulip bunny (/\_/\ with 🌷)?
-  A: At the top of this list and on bunny kaomojis. The 🌷 is a real emoji character you can also grab from cool symbols.
+  A: On this coquette list, and on bunny kaomojis after the one-line rabbits. The 🌷 is a real emoji character you can also grab from cool symbols.
 
   Q: Coquette vs cute kaomoji?
   A: Cute kaomoji are mostly one-line kawaii faces like (｡◕‿◕｡). Coquette art is multiline layout for bios and Carrd—not the same copy-paste job.
@@ -125,12 +125,12 @@ FAQ excerpts:
   A: Most do in chats and status. If a blush slash shows as a box, pick a face made of common punctuation.
 
 Sample rows (not the full grid):
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
+  - (◕‿◕)
+  - (｡♥‿♥｡)
+  - (✿◠‿◠)
+  - (≧◡≦)
+  - (◠‿◠✿)
+  - ʕ•ᴥ•ʔ
 
 ### Cry Kaomojis (`cry-kaomojis`)
 
@@ -141,7 +141,7 @@ Description: (T_T) (╥_╥) (｡•́︿•̀｡) — cry kaomoji copy paste. T
 
 Lead: This is the dedicated crying set—faces with visible tears for memes, apologies, and dramatic reactions. Quiet down moods without waterworks are on the sad kaomoji list; the hub only shows a small cry sample.
 
-Catalog scope: A short multiline cry preview may appear at the top; the full mood matrix lives on multiline kaomojis (indexed). Sad kaomojis (browse) cover quiet frowns without waterworks.
+Catalog scope: A short multiline cry preview sits after the one-line faces; the full mood matrix lives on multiline kaomojis (indexed). Sad kaomojis (browse) cover quiet frowns without waterworks.
 
 When to use: Cry kaomojis show falling tears or sob lines. Use them for over-the-top apology memes and dramatic reactions. Prefer sad kaomojis when you want melancholy without the waterworks.
 
@@ -159,12 +159,12 @@ FAQ excerpts:
   A: (╥_╥) and (T_T) style faces use common punctuation and rarely box out on phones.
 
 Sample rows (not the full grid):
-  - (multiline) ,,
-  - (multiline) (╥_╥)
-  - (multiline) ...
-  - (multiline) ...
-  - (multiline) ...
-  - (multiline) ...
+  - (Ｔ▽Ｔ)
+  - ( ; ω ; )
+  - (´；ω；`)
+  - (｡•́︿•̀｡)
+  - (╥_╥)
+  - (ಥ﹏ಥ)
 
 ### Heart Kaomojis (`heart-kaomojis`)
 
@@ -193,12 +193,12 @@ FAQ excerpts:
   A: One short heart face is plenty. Too many hearts waste the 150-character limit.
 
 Sample rows (not the full grid):
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
-  - (multiline) ♡
+  - (♥ω♥*)
+  - (✿ ♥‿♥)
+  - ♡(˃͈ દ ˂͈ ༶ )
+  - (´∀｀)♡
+  - (｡♥‿♥｡)
+  - ♡〜٩( ˃́▿˂̀ )۶〜♡
 
 ### Hand Kaomojis (`hand-kaomojis`)
 
@@ -227,12 +227,12 @@ FAQ excerpts:
   A: The hub is for general browsing. This URL is the full hand/arm set so search engines and bookmarks land on one topic.
 
 Sample rows (not the full grid):
-  - (multiline) \
-  - (multiline) \
-  - (multiline) \
-  - (multiline) \
-  - (multiline) \
-  - (multiline) ／
+  - ヽ(・∀・)ﾉ
+  - (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+  - ＼(^o^)／
+  - ＼(＾▽＾)／
+  - ヾ(＾∇＾)/
+  - (ノ°▽°)ノ
 
 ### Kaomoji Dot Art (Mini ASCII) (`kaomoji-dot-art`)
 
@@ -480,56 +480,3 @@ Agent site search: https://fancifytext.com/search/?q={query} (use plus or %20 fo
 - /privacy/ — privacy policy
 - /search/ — search fancifytext tools — Search FancifyText tools
 - /terms/ — terms of use — Terms for using FancifyText, a free Unicode fancy text generator
-
-- /cursive-capital-a/ — /cursive-capital-a/
-- /cursive-capital-b/ — /cursive-capital-b/
-- /cursive-capital-c/ — /cursive-capital-c/
-- /cursive-capital-d/ — /cursive-capital-d/
-- /cursive-capital-e/ — /cursive-capital-e/
-- /cursive-capital-f/ — /cursive-capital-f/
-- /cursive-capital-g/ — /cursive-capital-g/
-- /cursive-capital-h/ — /cursive-capital-h/
-- /cursive-capital-i/ — /cursive-capital-i/
-- /cursive-capital-j/ — /cursive-capital-j/
-- /cursive-capital-k/ — /cursive-capital-k/
-- /cursive-capital-l/ — /cursive-capital-l/
-- /cursive-capital-m/ — /cursive-capital-m/
-- /cursive-capital-n/ — /cursive-capital-n/
-- /cursive-capital-o/ — /cursive-capital-o/
-- /cursive-capital-p/ — /cursive-capital-p/
-- /cursive-capital-q/ — /cursive-capital-q/
-- /cursive-capital-r/ — /cursive-capital-r/
-- /cursive-capital-s/ — /cursive-capital-s/
-- /cursive-capital-t/ — /cursive-capital-t/
-- /cursive-capital-u/ — /cursive-capital-u/
-- /cursive-capital-v/ — /cursive-capital-v/
-- /cursive-capital-w/ — /cursive-capital-w/
-- /cursive-capital-x/ — /cursive-capital-x/
-- /cursive-capital-y/ — /cursive-capital-y/
-- /cursive-capital-z/ — /cursive-capital-z/
-- /cursive-small-a/ — /cursive-small-a/
-- /cursive-small-b/ — /cursive-small-b/
-- /cursive-small-c/ — /cursive-small-c/
-- /cursive-small-d/ — /cursive-small-d/
-- /cursive-small-e/ — /cursive-small-e/
-- /cursive-small-f/ — /cursive-small-f/
-- /cursive-small-g/ — /cursive-small-g/
-- /cursive-small-h/ — /cursive-small-h/
-- /cursive-small-i/ — /cursive-small-i/
-- /cursive-small-j/ — /cursive-small-j/
-- /cursive-small-k/ — /cursive-small-k/
-- /cursive-small-l/ — /cursive-small-l/
-- /cursive-small-m/ — /cursive-small-m/
-- /cursive-small-n/ — /cursive-small-n/
-- /cursive-small-o/ — /cursive-small-o/
-- /cursive-small-p/ — /cursive-small-p/
-- /cursive-small-q/ — /cursive-small-q/
-- /cursive-small-r/ — /cursive-small-r/
-- /cursive-small-s/ — /cursive-small-s/
-- /cursive-small-t/ — /cursive-small-t/
-- /cursive-small-u/ — /cursive-small-u/
-- /cursive-small-v/ — /cursive-small-v/
-- /cursive-small-w/ — /cursive-small-w/
-- /cursive-small-x/ — /cursive-small-x/
-- /cursive-small-y/ — /cursive-small-y/
-- /cursive-small-z/ — /cursive-small-z/

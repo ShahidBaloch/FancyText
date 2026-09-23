@@ -27,7 +27,7 @@ export type PageEntry = {
   index?: boolean;
   /**
    * Optional per-URL sitemap lastmod (YYYY-MM-DD or ISO datetime).
-   * Falls back to CONTENT_UPDATED_AT. Set only when that page actually changed.
+   * Optional YYYY-MM-DD when that page materially changed. Omit for stable pages (no sitemap lastmod).
    */
   updated?: string;
 };
@@ -56,6 +56,7 @@ export const PAGES: PageEntry[] = [
       "unicode text generator",
     ),
     navLabel: "Home",
+    updated: "2026-09-23",
   },
   {
     phase: 1,
@@ -202,7 +203,7 @@ export const PAGES: PageEntry[] = [
     primaryKeyword: "copy and paste fonts",
     title: "Copy and Paste Fonts — Unicode Font Collections",
     description:
-      "Copy and paste fonts with a live preview—bold, cursive, bubble, and script Unicode to copy into bios. Font copy and paste collections plus the full homepage converter.",
+      "Copy and paste fonts with a live preview—bold, cursive, bubble, and script Unicode to copy into bios. Browse aesthetic, cute, cool, and platform collections; the homepage is the full live converter with every style.",
     fellowKeywords: fellows(
       "font copy and paste",
       "fonts copy paste",
@@ -211,6 +212,7 @@ export const PAGES: PageEntry[] = [
       "copy and paste font",
     ),
     navLabel: "Copy & Paste",
+    updated: "2026-09-23",
   },
   {
     phase: 3,
@@ -2273,7 +2275,7 @@ export { SITE_NAME, SITE_URL, resolveSiteUrl } from "@/data/site";
  * quarterly / yearly). Do not set it to "today" on every deploy — that makes
  * every URL look freshly updated and creates false churn in GSC.
  */
-export const CONTENT_UPDATED_AT = "2026-09-22";
+export const CONTENT_UPDATED_AT = "2026-09-23";
 
 /** Date form of CONTENT_UPDATED_AT (UTC midnight). Same bump rule as above. */
 export const SITE_CONTENT_UPDATED = new Date(`${CONTENT_UPDATED_AT}T00:00:00.000Z`);

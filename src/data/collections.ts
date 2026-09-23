@@ -65,7 +65,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       contentOrder: "gallery-first",
       galleryHeading: "Copy and paste fonts — live preview",
       galleryLead:
-        "Type or pick a preset, then copy bold, cursive, italic, or bubble Unicode—font copy and paste without installing anything. This sample grid is the fast path; the homepage has every style with search. Cherokee / Japanese lookalikes stay on cool text.",
+        "Type or pick a preset, then copy bold, cursive, italic, or bubble Unicode—font copy and paste without installing anything. This hub is a catalog of filtered collections (aesthetic, cute, cool, cursive, platforms, big ASCII). The homepage fancy text generator loads every Unicode style in one searchable grid.",
       hubHeading: "Font collections (when you know the vibe)",
       hubLead:
         "Each card opens a filtered page. Bookmark this hub for “fonts copy paste” browsing; use the grid above when you want copy paste fonts immediately.",
@@ -145,7 +145,7 @@ export const COLLECTIONS: CollectionConfig[] = [
       ],
       difference: {
         heading: "A catalog, not a second fancy text generator",
-        body: "Home is the converter: type once, preview every Unicode style, copy. This page is the index of collections. Cool for lookalikes, aesthetic for soft fullwidth/script, cute for kawaii bubbles, cursive for script alphabets, platform tools for Instagram or Discord field rules, Big Text for ASCII banners. If you want the full live grid, go home.",
+        body: "Home is the converter: type once, preview every Unicode style (loaded progressively for speed), search, and copy. This page is the index of collections. Cool for lookalikes, aesthetic for soft fullwidth/script, cute for kawaii bubbles, cursive for script alphabets, platform tools for Instagram or Discord field rules, Big Text for ASCII banners.",
       },
       buckets: [
         {

@@ -24,6 +24,9 @@ export const BOLD_CURSIVE_MAP = buildAlphaMap({
   lower: 0x1d4ea,
 });
 
+/** Live for UX and internal links; omit from sitemap and keep noindex,follow. */
+export const CURSIVE_LETTER_PAGES_INDEXABLE = false;
+
 export const LETTERS = [
   "a",
   "b",

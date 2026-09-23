@@ -9,7 +9,7 @@ import {
 } from "@/components/seo/JsonLd";
 import { homeCrumbLd } from "@/components/seo/Breadcrumbs";
 import { SITE_NAME, SITE_URL, type PageEntry } from "@/data/pages/registry";
-import { descriptionWithSerpSpecimen } from "@/lib/seo/specimens";
+import { metaDescriptionPlain } from "@/lib/seo/meta-description";
 
 type CrumbItem = { name: string; url: string };
 
@@ -37,7 +37,7 @@ export function PageJsonLd({
 }: PageJsonLdProps) {
   const absoluteUrl = new URL(page.url, SITE_URL).toString();
   /** Match `<meta name="description">` / OG (GSC snippet consistency). */
-  const description = descriptionWithSerpSpecimen(page.url, page.description);
+  const description = metaDescriptionPlain(page.description);
   const name = crumbName ?? page.primaryKeyword;
   const displayName = page.title.split("|")[0].trim();
   const breadcrumbItems =
