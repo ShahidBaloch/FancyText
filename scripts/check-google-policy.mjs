@@ -142,6 +142,20 @@ if (!layout.includes("do not load AdSense")) {
   errors.push("Root layout must document AdSense/CMP gating");
 }
 
+const ga = await read("src/components/seo/GoogleAnalytics.tsx");
+if (
+  !ga.includes("gtag('consent', 'default'") ||
+  !ga.includes("analytics_storage:")
+) {
+  errors.push(
+    "GoogleAnalytics must set Consent Mode default (analytics_storage) before gtag config",
+  );
+}
+const analyticsConsent = await read("src/lib/analytics/consent.ts");
+if (!analyticsConsent.includes("ANALYTICS_STORAGE_GRANTED_BY_CMP")) {
+  errors.push("analytics/consent.ts must document CMP-gated analytics storage");
+}
+
 if (errors.length) {
   console.error(
     "Google policy check failed:\n" + errors.map((e) => `  - ${e}`).join("\n"),

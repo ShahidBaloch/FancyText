@@ -122,11 +122,13 @@ export function getSitemapEntries(): SitemapEntry[] {
       const priority =
         page.url === "/"
           ? 1
-          : page.url === "/kaomoji/"
-            ? 0.95
-            : page.url === "/about/" || page.url.startsWith("/guides/")
-              ? 0.45
-              : 0.85;
+          : page.intentClusterRole === "supporting"
+            ? 0.5
+            : page.url === "/kaomoji/"
+              ? 0.95
+              : page.url === "/about/" || page.url.startsWith("/guides/")
+                ? 0.45
+                : 0.85;
       push(entryFor(page.url, changeFrequency, priority, lastModified));
     }
 

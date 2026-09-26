@@ -25,7 +25,9 @@ npm run build
 
 `check:seo` runs plumbing, duplicate primaryKeyword guard, **content-uniqueness** (including effective meta after SERP specimens), ads gate, sitemap, and llms generation.
 
-GitHub Actions (`.github/workflows/ci.yml`) runs `npm run lint`, `npm run check:seo`, `npm run build`, and `npm run check:serp-specimen-html` (SSR must contain `serp-specimen` / `home-specimen` on required URLs) on every pull request and on pushes to `main`.
+GitHub Actions (`.github/workflows/ci.yml`) runs `npm run lint`, `npm run check:seo`, `npm run build`, `npm run check:serp-specimen-html`, `npm run check:perf` (against a production server — fails if unreachable), and `npm run test:e2e` (Playwright + axe smoke) on every pull request and on pushes to `main`.
+
+`check:cannibalization` also enforces **intent clusters** (`intentCluster` / `intentClusterRole` on registry entries; see `src/lib/seo/intent-clusters.ts`). Local perf skip: `PERF_OPTIONAL=1 npm run check:perf`.
 
 See **`docs/seo-production-audit.md`** for GSC, AdSense review, and intent matrix before production.
 

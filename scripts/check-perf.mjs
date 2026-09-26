@@ -3,10 +3,13 @@
  * Requires production server on PORT (default 3000) after `npm run build && npm run start`.
  *
  * Run: node scripts/check-perf.mjs
- * CI-friendly: skips with exit 0 if server unreachable (optional PORT=3000 npm run check:perf)
+ * Local optional skip: PERF_OPTIONAL=1 exits 0 when the server is unreachable.
+ * CI must not set PERF_OPTIONAL — unreachable server fails the check.
  */
 const PORT = process.env.PORT ?? "3000";
 const BASE = `http://127.0.0.1:${PORT}`;
+const PERF_OPTIONAL =
+  process.env.PERF_OPTIONAL === "1" || process.env.PERF_OPTIONAL === "true";
 
 const BUDGETS = [
   {
@@ -47,10 +50,15 @@ async function fetchText(path) {
 try {
   await fetchText("/");
 } catch (err) {
-  console.warn(
-    `check-perf: server not reachable at ${BASE} (${err.message}) — skipping budgets.`,
+  const msg = `check-perf: server not reachable at ${BASE} (${err.message})`;
+  if (PERF_OPTIONAL) {
+    console.warn(`${msg} — PERF_OPTIONAL set, skipping budgets.`);
+    process.exit(0);
+  }
+  console.error(
+    `${msg}. Start with \`npm run build && npm run start\` or set PERF_OPTIONAL=1 for local skip.`,
   );
-  process.exit(0);
+  process.exit(1);
 }
 
 const errors = [];

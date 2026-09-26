@@ -23,7 +23,9 @@
     "check:perf": "node scripts/check-perf.mjs",
     "check:google-policy": "node scripts/check-google-policy.mjs",
     "check:gsc": "node scripts/check-gsc.mjs",
-    "check:policy": "npm run check:seo && npm run check:kaomoji-catalog && npm run check:kaomoji-seo && npm run check:aeo && npm run check:google-policy"
+    "check:policy": "npm run check:seo && npm run check:kaomoji-catalog && npm run check:kaomoji-seo && npm run check:aeo && npm run check:google-policy",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install chromium"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -38,6 +40,8 @@
     "safari >= 17.2"
   ],
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.51.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.1",

@@ -26,6 +26,12 @@ export type PageEntry = {
   /** Defaults to true. False = live for old links, noindex, omitted from sitemap. */
   index?: boolean;
   /**
+   * Optional semantic query family (see intent-clusters.ts). Overrides keyword-derived cluster.
+   * When multiple indexable URLs share a cluster, exactly one needs intentClusterRole: "owner".
+   */
+  intentCluster?: string;
+  intentClusterRole?: "owner" | "supporting";
+  /**
    * Optional per-URL sitemap lastmod (YYYY-MM-DD or ISO datetime).
    * Optional YYYY-MM-DD when that page materially changed. Omit for stable pages (no sitemap lastmod).
    */
@@ -43,6 +49,8 @@ export const PAGES: PageEntry[] = [
     priority: "P0",
     url: "/",
     group: "A_Hub",
+    intentCluster: "fancy-text-core",
+    intentClusterRole: "owner",
     primaryKeyword: "fancy text generator",
     title: "Fancy Text Generator — Stylize Unicode Fonts | FancifyText",
     description:
@@ -263,6 +271,8 @@ export const PAGES: PageEntry[] = [
     priority: "P2",
     url: "/stylish-text-generator/",
     group: "G_Aesthetic_Cute",
+    intentCluster: "fancy-text-core",
+    intentClusterRole: "supporting",
     primaryKeyword: "stylish text generator",
     title: "Stylish Text Generator — Bold & Graphic Unicode",
     description:
@@ -274,6 +284,8 @@ export const PAGES: PageEntry[] = [
     priority: "P0",
     url: "/cool-text-generator/",
     group: "G_Aesthetic_Cute",
+    intentCluster: "fancy-text-core",
+    intentClusterRole: "supporting",
     primaryKeyword: "cool text generator",
     title: "Cool Text Generator — Japanese, Squared & Letterlike Styles",
     description:
@@ -2199,7 +2211,6 @@ const FOOTER_URLS = [
   "/text-decorator/",
   "/aesthetic-fonts/",
   "/cute-fonts/",
-  "/cool-text-generator/",
   "/unformat-text/",
 ];
 
@@ -2247,7 +2258,7 @@ const NAV_URLS = [
   "/bold-text-generator/",
   "/copy-paste-fonts/",
   "/linkedin-text-formatter/",
-  "/cool-text-generator/",
+  "/copy-paste-fonts/",
   "/instagram-font-generator/",
   "/discord-font-generator/",
   "/cool-symbols/",

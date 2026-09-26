@@ -17,6 +17,8 @@ Use this after deploying the SEO + perf stack (**PR #28**, **PR #29**). Run **`n
 | **Search infinite URLs** (`/search/?q=…`) | **noindex** + canonical **`/search/`** |
 | **Preview / wrong host** | `robots` noindex on Vercel preview; proxy **noindex** on non-apex hosts |
 | **Same primaryKeyword twice in sitemap** | `npm run check:cannibalization` fails the build script |
+| **Semantic query families** (fancy text vs stylish vs cool) | `intentCluster` + `intentClusterRole` in registry; supporting URLs cannot sit in global nav/footer; owner callout on page |
+| **Sitewide link equity to one hub** | Footer/nav favor distinct hubs (`copy-paste-fonts`), not supporting cluster pages |
 
 ### Canonical / OG (fixed in this audit)
 
@@ -98,12 +100,22 @@ Misspellings (`/kamoji/`) → same faces, **canonical hub**, no sitemap entry �
 
 ---
 
-## 5. Performance
+## 5. SERP page-1 strategy (policy-safe)
+
+Google will not rank a utility site on page 1 from metadata alone. Within **spam policies** (no scaled doorways, no link schemes, no keyword stuffing), prioritize:
+
+1. **One owner URL per query family** — homepage owns “fancy text generator”; stylish/cool stay indexable only as **supporting** spokes with on-page links back to `/`.
+2. **Earn usefulness Google can cite** — original compatibility tests, platform limits, and guides that answer real failures (boxes, Discord color, LinkedIn paste).
+3. **Protect crawl budget** — noindex thin tails; do not add platform swap pages without a distinct job; freeze mass new landings until GSC shows impressions for existing URLs.
+4. **Authority off-site** — editorial links from relevant communities/docs (see `docs/backlinks-playbook.md`); track outreach locally in `docs/backlinks-tracker.csv` (gitignored).
+5. **Measure in GSC** — weekly: homepage position for core query, query families with 2+ URLs, CWV field data, indexed vs impression count.
+
+## 6. Performance
 
 - Pre-rendered static pages (SSG); tools code-split on home and collection pages.
 - See **`docs/seo-performance.md`** before adding client bundles or registry imports to layout.
 
-## 6. Deploy recommendation
+## 7. Deploy recommendation
 
 1. Merge **#20 → #28** (or equivalent release branch) to **`main`**.
 2. **`npm run check:seo`** + **`npm run build`** on CI.
