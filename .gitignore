@@ -12,6 +12,19 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Local link-building notes (not versioned)
+docs/backlinks-tracker.csv
+docs/backlinks-playbook.md
+docs/backlinks.md
+
+# Ad-hoc SEO audit exports (keep out of git)
+*seo*audit*.html
+*fancifytext*audit*.html
 
 # next.js
 /.next/

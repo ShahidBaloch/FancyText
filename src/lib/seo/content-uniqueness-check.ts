@@ -9,6 +9,9 @@ import {
   letterUrl,
 } from "@/lib/fonts/cursive";
 import { metaDescriptionPlain } from "@/lib/seo/meta-description";
+import { buildOnPageIntentFingerprint } from "@/lib/seo/page-intent-fingerprint";
+import { resolveIntentCluster } from "@/lib/seo/intent-clusters";
+import { runUserIntentFulfillmentCheck } from "@/lib/seo/user-intent-check";
 
 function normalizeText(text: string): string {
   return text
@@ -17,6 +20,34 @@ function normalizeText(text: string): string {
     .replace(/[.…]+/g, ".")
     .trim();
 }
+
+function wordSet(text: string): Set<string> {
+  const words = normalizeText(text)
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 2);
+  return new Set(words);
+}
+
+/** Jaccard similarity on word sets — flags near-duplicate prose in registry copy. */
+function jaccardSimilarity(a: string, b: string): number {
+  const setA = wordSet(a);
+  const setB = wordSet(b);
+  if (!setA.size && !setB.size) return 1;
+  let intersection = 0;
+  for (const w of setA) {
+    if (setB.has(w)) intersection += 1;
+  }
+  const union = setA.size + setB.size - intersection;
+  return union === 0 ? 0 : intersection / union;
+}
+
+/** Registry meta similarity (title + description only). */
+const META_SIMILARITY_THRESHOLD = 0.82;
+/** Full page intent fingerprint — includes on-page FAQ/uses/platform tables. */
+const INTENT_FINGERPRINT_THRESHOLD = 0.76;
+/** Supporting vs owner in same cluster may share vocabulary; still must differ on-page. */
+const SAME_CLUSTER_INTENT_THRESHOLD = 0.86;
 
 function isIndexablePage(page: PageEntry): boolean {
   if (page.index === false) return false;
@@ -171,4 +202,68 @@ export function runContentUniquenessCheck(): void {
       `Duplicate indexable effective meta description (${urls.length} URLs): ${urls.join(", ")} — adjust SERP metaLine or page description; do not change primaryKeyword`,
     );
   }
+
+  const indexablePages = getLivePages().filter(isIndexablePage);
+
+  const metaBodies: { url: string; page: PageEntry; body: string }[] = [];
+  const intentBodies: { url: string; page: PageEntry; body: string }[] = [];
+
+  for (const page of indexablePages) {
+    const meta = effectiveRegistryMeta(page);
+    metaBodies.push({
+      url: meta.url,
+      page,
+      body: [meta.title, meta.description].join(" "),
+    });
+    intentBodies.push({
+      url: meta.url,
+      page,
+      body: [
+        meta.title,
+        meta.description,
+        buildOnPageIntentFingerprint(meta.url),
+      ].join(" "),
+    });
+  }
+
+  function sameDocumentedCluster(a: PageEntry, b: PageEntry): boolean {
+    if (resolveIntentCluster(a) !== resolveIntentCluster(b)) return false;
+    const roles = new Set(
+      [a.intentClusterRole, b.intentClusterRole].filter(Boolean),
+    );
+    return roles.has("owner") && roles.has("supporting");
+  }
+
+  for (let i = 0; i < metaBodies.length; i += 1) {
+    for (let j = i + 1; j < metaBodies.length; j += 1) {
+      const left = metaBodies[i];
+      const right = metaBodies[j];
+      if (sameDocumentedCluster(left.page, right.page)) continue;
+      const sim = jaccardSimilarity(left.body, right.body);
+      if (sim >= META_SIMILARITY_THRESHOLD) {
+        throw new Error(
+          `Near-duplicate meta copy (${Math.round(sim * 100)}% word overlap): ${left.url} vs ${right.url} — rewrite titles/descriptions; do not change primaryKeyword`,
+        );
+      }
+    }
+  }
+
+  for (let i = 0; i < intentBodies.length; i += 1) {
+    for (let j = i + 1; j < intentBodies.length; j += 1) {
+      const left = intentBodies[i];
+      const right = intentBodies[j];
+      const sameCluster = sameDocumentedCluster(left.page, right.page);
+      const threshold = sameCluster
+        ? SAME_CLUSTER_INTENT_THRESHOLD
+        : INTENT_FINGERPRINT_THRESHOLD;
+      const sim = jaccardSimilarity(left.body, right.body);
+      if (sim >= threshold) {
+        throw new Error(
+          `Near-duplicate user intent (${Math.round(sim * 100)}% overlap in meta + on-page copy): ${left.url} vs ${right.url} — add distinct FAQ/uses/platform data or noindex; do not change primaryKeyword`,
+        );
+      }
+    }
+  }
+
+  runUserIntentFulfillmentCheck();
 }

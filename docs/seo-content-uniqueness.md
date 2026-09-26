@@ -33,8 +33,12 @@ Fails when:
 
 - Two **indexable** URLs share the same meta **title** or **description** (including kaomoji + cursive letter metadata).
 - Money-page descriptions are **too short** (thin content risk).
+- **Meta** title+description pairs are too similar across unrelated URLs (Jaccard word overlap).
+- **User intent** fingerprints (meta + collection/platform/spoke/**kaomoji-copy** FAQ, uses, difference blocks) are too similar — supporting vs owner URLs in the same intent cluster get a slightly higher threshold but must still differ on-page.
+- Indexable **kaomoji** moods must define scope via `catalogNote` or `canonicalLead` in `src/data/kaomoji-copy.ts`.
+- **People-first intent** rules fail (e.g. platform pages missing field tables, filtered collections missing a `difference` block, supporting spokes without clear specialized copy).
 
-Does **not** fail on shared keywords — that is covered separately by `check:cannibalization` (one indexable URL per `primaryKeyword`).
+Does **not** fail on shared keywords — that is covered separately by `check:cannibalization` (one indexable URL per `primaryKeyword` + intent clusters).
 
 ## Adding a new page
 

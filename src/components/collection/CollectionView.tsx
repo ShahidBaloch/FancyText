@@ -5,6 +5,7 @@ import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { IntentOwnerCallout } from "@/components/seo/IntentOwnerCallout";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { StyleGalleryLazy } from "@/components/tool/load-style-gallery";
@@ -114,6 +115,8 @@ export function CollectionView({ config }: CollectionViewProps) {
         lead={page?.description ?? "Pick a collection of Unicode styles to copy."}
         specimenPath={getSerpSpecimen(url) ? url : undefined}
       />
+
+      {page ? <IntentOwnerCallout page={page} /> : null}
 
       {/* AdSense: never place units between gallery input and the first Copy row. */}
       {galleryFirst ? (

@@ -43,3 +43,26 @@ jobs:
 
       - name: SERP specimen in pre-rendered HTML
         run: npm run check:serp-specimen-html
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Performance budgets (production server)
+        run: |
+          npm run start &
+          for i in $(seq 1 45); do
+            if curl -sf "http://127.0.0.1:3000/" > /dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          curl -sf "http://127.0.0.1:3000/" > /dev/null || (echo "Server failed to start" && exit 1)
+          npm run check:perf
+        env:
+          PORT: "3000"
+
+      - name: E2E + accessibility smoke
+        run: npm run test:e2e
+        env:
+          PORT: "3000"
+          CI: "true"

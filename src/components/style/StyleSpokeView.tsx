@@ -4,6 +4,7 @@ import { Breadcrumbs, HOME_CRUMB } from "@/components/seo/Breadcrumbs";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { FellowKeywords } from "@/components/seo/FellowKeywords";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { IntentOwnerCallout } from "@/components/seo/IntentOwnerCallout";
 import { PageHero } from "@/components/seo/PageHero";
 import { RelatedTools } from "@/components/seo/RelatedTools";
 import { StyleSpokeTool } from "@/components/style/StyleSpokeTool";
@@ -53,6 +54,8 @@ export function StyleSpokeView({ config }: StyleSpokeViewProps) {
         h1={h1}
         lead={page?.description ?? "Unicode letters you can copy into a bio or nickname."}
       />
+
+      {page ? <IntentOwnerCallout page={page} /> : null}
 
       <StyleSpokeTool
         config={config}
